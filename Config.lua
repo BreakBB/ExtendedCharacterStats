@@ -168,7 +168,7 @@ function ECSConfig:CreateConfigWindow()
     settingsFrame.title = settingsFrame:CreateFontString(nil, "OVERLAY")
     settingsFrame.title:SetFontObject("GameFontHighlight")
     settingsFrame.title:SetPoint("CENTER", settingsFrame.TitleBg, "CENTER", 5, 0)
-    settingsFrame.title:SetText("Extended Character Stats Configuration")
+    settingsFrame.title:SetText("Extended Character Stats Settings")
     settingsFrame:SetShown(false)
 
     -- Loop through all available items
@@ -721,8 +721,17 @@ function ECSConfig:CreateWindow()
     ECSMainWindow.title:SetPoint("CENTER", ECSMainWindow.TitleBg, "CENTER", 5, 0)
     ECSMainWindow.title:SetText("Extended Character Stats " .. core.Utils:GetAddonVersionString())
 
+    ECSMainWindow.configButton = CreateFrame("Button", nil, ECSMainWindow, "GameMenuButtonTemplate")
+    ECSMainWindow.configButton:SetText("Settings")
+    -- ECSMainWindow.configButton:SetNormalFontObject("GameFontNormalLarge")
+    ECSMainWindow.configButton:SetSize(ExtendedCharacterStats.WindowSize.Width - 10, 20)
+    ECSMainWindow.configButton:SetPoint("CENTER", ECSMainWindow, "TOP", -1, -35)
+    ECSMainWindow.configButton:SetScript("OnClick", function ()
+        Config()
+    end)
+
     ECSMainWindow.ScrollFrame = CreateFrame("ScrollFrame", nil, ECSMainWindow, "UIPanelScrollFrameTemplate")
-    ECSMainWindow.ScrollFrame:SetPoint("TOPLEFT", ECSMainWindow, "TOPLEFT", -35, -30)
+    ECSMainWindow.ScrollFrame:SetPoint("TOPLEFT", ECSMainWindow, "TOPLEFT", -35, -50)
     ECSMainWindow.ScrollFrame:SetPoint("BOTTOMRIGHT", ECSMainWindow, "BOTTOMRIGHT", -35, 10)
 
     ECSMainWindow.ScrollChild = CreateFrame("Frame", nil, ECSMainWindow.ScrollFrame)
@@ -774,7 +783,7 @@ end
 
 -- Creates a new header on the UI
 function ECSConfig:CreateHeader(name, displayText)
-    local yOffset = ECSConfig:GetLastItemPosition() or 10
+    local yOffset = ECSConfig:GetLastItemPosition() or 20
     yOffset = yOffset - 20
     local newHeader = ECSMainWindow.ScrollChild:CreateFontString(name, "OVERLAY", headerFont)
     newHeader:SetPoint("TOPLEFT", 50, yOffset)
