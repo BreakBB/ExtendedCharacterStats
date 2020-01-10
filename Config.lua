@@ -2,8 +2,9 @@
 -- Namespaces
 ------------------------------------------------------------------
 local _, core = ...
+---@class ECSConfig
 core.ECSConfig = {}
-core.DisplayItems = {}
+core.displayedStats = {}
 
 local ECSConfig = core.ECSConfig
 
@@ -52,106 +53,6 @@ function HandleSlash(msg)
     end
 end
 
-local function GetDefaultProfile()
-    return {
-
-        Defense = {
-            Display = true,
-            RefName = "DefenseHeader",
-            Text = "Defense",
-
-            Block = {Display = true, RefName = "BlockChance", Text = "Block: "},
-
-            Parry = {Display = true, RefName = "ParryChance", Text = "Parry: "},
-
-            Dodge = {Display = true, RefName = "DodgeChance", Text = "Dodge: "}
-        },
-
-        Regen = {
-            Display = true,
-            RefName = "ManaHeader",
-            Text = "Mana",
-
-            MP5Casting = {Display = true, RefName = "MP5Casting", Text = "MP5 (Casting): "},
-
-            MP5NotCasting = {Display = true, RefName = "MP5NotCasting", Text = "MP5 (Not Casting): "},
-
-            MP5Current = {Display = true, RefName = "MP5Current", Text = "MP5: "}
-        },
-
-        Melee = {
-            Display = true,
-            RefName = "MeleeHeader",
-            Text = "Melee",
-
-            Hit = {Display = true, RefName = "MeleeHit", Text = "Hit Modifier: "},
-
-            Crit = {Display = true, RefName = "MeleeCritChance", Text = "Crit: "}
-        },
-
-        Ranged = {
-            Display = true,
-            RefName = "RangedHeader",
-            Text = "Ranged",
-
-            Hit = {Display = true, RefName = "RangedHit", Text = "Hit Modifier: "},
-
-            Crit = {Display = true, RefName = "RangedCritChance", Text = "Crit: "}
-        },
-
-        Spell = {
-            Display = true,
-            RefName = "SpellHeader",
-            Text = "Spell",
-
-            Hit = {Display = true, RefName = "SpellHit", Text = "Hit Modifier: "},
-
-            Crit = {Display = true, RefName = "SpellCritChance", Text = "Crit: "}
-        },
-
-        SpellBonus = {
-            Display = true,
-            RefName = "SpellBonusHeader",
-            Text = "Spell Bonus",
-
-            BonusHealing = {Display = true, RefName = "BonusHealing", Text = "Bonus Healing: "},
-
-            ShadowDmg = {Display = true, RefName = "ShadowDmg", Text = "Shadow Damage: "},
-
-            ShadowCrit = {Display = true, RefName = "ShadowCritChance", Text = "Shadow Crit: "},
-
-            HolyDmg = {Display = true, RefName = "HolyDmg", Text = "Holy Damage: "},
-
-            HolyCrit = {Display = true, RefName = "HolyCritChance", Text = "Holy Crit: "},
-
-            FireDmg = {Display = true, RefName = "FireDmg", Text = "Fire Damage: "},
-
-            FireCrit = {Display = true, RefName = "FireCritChance", Text = "Fire Crit: "},
-
-            FrostDmg = {Display = true, RefName = "FrostDmg", Text = "Frost Damage: "},
-
-            FrostCrit = {Display = true, RefName = "FrostCritChance", Text = "Frost Crit: "},
-
-            ArcaneDmg = {Display = true, RefName = "ArcaneDmg", Text = "Arcane Damage: "},
-
-            ArcaneCrit = {Display = true, RefName = "ArcaneCritChance", Text = "Arcane Crit: "},
-
-            NatureDmg = {Display = true, RefName = "NatureDmg", Text = "Nature Damage: "},
-
-            NatureCrit = {Display = true, RefName = "NatureCritChance", Text = "Nature Crit: "},
-
-            PhysicalDmg = {Display = true, RefName = "PhysicalDmg", Text = "Physical Damage: "},
-
-            PhysicalCrit = {Display = true, RefName = "PhysicalCritChance", Text = "Physical Crit: "}
-        }
-    }
-end
-
-function ECSConfig:GetProfileData()
-    -- core.ECSConfig.currentProfile = GetDefaultProfile();
-    return ExtendedCharacterStats.Profile or GetDefaultProfile()
-end
-
 ------------------------------------------------------------------
 -- Configuration Frame
 ------------------------------------------------------------------
@@ -177,27 +78,27 @@ function ECSConfig:CreateConfigWindow()
     -- If the header is unchecked, children will not be allowed to be displayed
 
     -- Ranged
-    -- ExtendedCharacterStats.Profile.Ranged.Display
+    -- ExtendedCharacterStats.profile.ranged.display
     CreateRangedOptions()
 
     -- Defense
-    -- ExtendedCharacterStats.Profile.Defense.Display
+    -- ExtendedCharacterStats.profile.defense.display
     CreateDefenseOptions()
 
     -- Melee
-    -- ExtendedCharacterStats.Profile.Melee.Display
+    -- ExtendedCharacterStats.profile.melee.display
     CreateMeleeOptions()
 
     -- Spell
-    -- ExtendedCharacterStats.Profile.Spell.Display
+    -- ExtendedCharacterStats.profile.spell.display
     CreateSpellOptions()
 
     -- Regen
-    -- ExtendedCharacterStats.Profile.Regen.Display
+    -- ExtendedCharacterStats.profile.Regen.display
     CreateRegenOptions()
 
     -- SpellBonus
-    -- ExtendedCharacterStats.Profile.SpellBonus.Display
+    -- ExtendedCharacterStats.profile.SpellBonus.display
     CreateSpellBonusOptions(rightOffset)
 
     local saveButton = CreateFrame("Button", nil, settingsFrame, "OptionsButtonTemplate")
@@ -215,13 +116,13 @@ function CreateRangedOptions()
     local ShowRanged = CreateCheckBox(20, leftOffset, "Ranged", "TOPLEFT")
     leftOffset = leftOffset - 30
     ShowRanged:SetScript("OnClick", function()
-        ExtendedCharacterStats.Profile.Ranged.Display = not ExtendedCharacterStats.Profile.Ranged.Display
-        local show = ExtendedCharacterStats.Profile.Ranged.Display
+        ExtendedCharacterStats.profile.ranged.display = not ExtendedCharacterStats.profile.ranged.display
+        local show = ExtendedCharacterStats.profile.ranged.display
         ShowRanged:SetChecked(show)
     end)
 
     ShowRanged:SetScript("OnUpdate", function()
-        ShowRanged:SetChecked(ExtendedCharacterStats.Profile.Ranged.Display)
+        ShowRanged:SetChecked(ExtendedCharacterStats.profile.ranged.display)
     end)
 
     -- Create Sub-Header Options
@@ -231,13 +132,13 @@ function CreateRangedOptions()
     leftOffset = leftOffset - 30
 
     ShowRangedHit:SetScript("OnClick", function()
-        ExtendedCharacterStats.Profile.Ranged.Hit.Display = not ExtendedCharacterStats.Profile.Ranged.Hit.Display
-        local show = ExtendedCharacterStats.Profile.Ranged.Hit.Display
+        ExtendedCharacterStats.profile.ranged.hit.display = not ExtendedCharacterStats.profile.ranged.hit.display
+        local show = ExtendedCharacterStats.profile.ranged.hit.display
         ShowRangedHit:SetChecked(show)
     end)
 
     ShowRangedHit:SetScript("OnUpdate", function()
-        ShowRangedHit:SetChecked(ExtendedCharacterStats.Profile.Ranged.Hit.Display)
+        ShowRangedHit:SetChecked(ExtendedCharacterStats.profile.ranged.hit.display)
     end)
 
     -- Crit
@@ -245,13 +146,13 @@ function CreateRangedOptions()
     leftOffset = leftOffset - 30
 
     ShowRangedCrit:SetScript("OnClick", function()
-        ExtendedCharacterStats.Profile.Ranged.Crit.Display = not ExtendedCharacterStats.Profile.Ranged.Crit.Display
-        local show = ExtendedCharacterStats.Profile.Ranged.Crit.Display
+        ExtendedCharacterStats.profile.ranged.crit.display = not ExtendedCharacterStats.profile.ranged.crit.display
+        local show = ExtendedCharacterStats.profile.ranged.crit.display
         ShowRangedCrit:SetChecked(show)
     end)
 
     ShowRangedCrit:SetScript("OnUpdate", function()
-        ShowRangedCrit:SetChecked(ExtendedCharacterStats.Profile.Ranged.Crit.Display)
+        ShowRangedCrit:SetChecked(ExtendedCharacterStats.profile.ranged.crit.display)
     end)
 end
 
@@ -262,13 +163,13 @@ function CreateDefenseOptions()
     leftOffset = leftOffset - 30
 
     ShowDefense:SetScript("OnClick", function()
-        ExtendedCharacterStats.Profile.Defense.Display = not ExtendedCharacterStats.Profile.Defense.Display
-        local show = ExtendedCharacterStats.Profile.Defense.Display
+        ExtendedCharacterStats.profile.defense.display = not ExtendedCharacterStats.profile.defense.display
+        local show = ExtendedCharacterStats.profile.defense.display
         ShowDefense:SetChecked(show)
     end)
 
     ShowDefense:SetScript("OnUpdate", function()
-        ShowDefense:SetChecked(ExtendedCharacterStats.Profile.Defense.Display)
+        ShowDefense:SetChecked(ExtendedCharacterStats.profile.defense.display)
     end)
 
     -- Create Sub-Header Options
@@ -278,13 +179,13 @@ function CreateDefenseOptions()
     leftOffset = leftOffset - 30
 
     ShowDodge:SetScript("OnClick", function()
-        ExtendedCharacterStats.Profile.Defense.Dodge.Display = not ExtendedCharacterStats.Profile.Defense.Dodge.Display
-        local show = ExtendedCharacterStats.Profile.Defense.Dodge.Display
+        ExtendedCharacterStats.profile.defense.dodge.display = not ExtendedCharacterStats.profile.defense.dodge.display
+        local show = ExtendedCharacterStats.profile.defense.dodge.display
         ShowDodge:SetChecked(show)
     end)
 
     ShowDodge:SetScript("OnUpdate", function()
-        ShowDodge:SetChecked(ExtendedCharacterStats.Profile.Defense.Dodge.Display)
+        ShowDodge:SetChecked(ExtendedCharacterStats.profile.defense.dodge.display)
     end)
 
     -- Parry
@@ -292,13 +193,13 @@ function CreateDefenseOptions()
     leftOffset = leftOffset - 30
 
     ShowParry:SetScript("OnClick", function()
-        ExtendedCharacterStats.Profile.Defense.Parry.Display = not ExtendedCharacterStats.Profile.Defense.Parry.Display
-        local show = ExtendedCharacterStats.Profile.Defense.Parry.Display
+        ExtendedCharacterStats.profile.defense.parry.display = not ExtendedCharacterStats.profile.defense.parry.display
+        local show = ExtendedCharacterStats.profile.defense.parry.display
         ShowParry:SetChecked(show)
     end)
 
     ShowParry:SetScript("OnUpdate", function()
-        ShowParry:SetChecked(ExtendedCharacterStats.Profile.Defense.Parry.Display)
+        ShowParry:SetChecked(ExtendedCharacterStats.profile.defense.parry.display)
     end)
 
     -- Block
@@ -306,13 +207,13 @@ function CreateDefenseOptions()
     leftOffset = leftOffset - 30
 
     ShowBlock:SetScript("OnClick", function()
-        ExtendedCharacterStats.Profile.Defense.Block.Display = not ExtendedCharacterStats.Profile.Defense.Block.Display
-        local show = ExtendedCharacterStats.Profile.Defense.Block.Display
+        ExtendedCharacterStats.profile.defense.block.display = not ExtendedCharacterStats.profile.defense.block.display
+        local show = ExtendedCharacterStats.profile.defense.block.display
         ShowBlock:SetChecked(show)
     end)
 
     ShowBlock:SetScript("OnUpdate", function()
-        ShowBlock:SetChecked(ExtendedCharacterStats.Profile.Defense.Block.Display)
+        ShowBlock:SetChecked(ExtendedCharacterStats.profile.defense.block.display)
     end)
 end
 
@@ -323,13 +224,13 @@ function CreateMeleeOptions()
     leftOffset = leftOffset - 30
 
     ShowMelee:SetScript("OnClick", function()
-        ExtendedCharacterStats.Profile.Melee.Display = not ExtendedCharacterStats.Profile.Melee.Display
-        local show = ExtendedCharacterStats.Profile.Melee.Display
+        ExtendedCharacterStats.profile.melee.display = not ExtendedCharacterStats.profile.melee.display
+        local show = ExtendedCharacterStats.profile.melee.display
         ShowMelee:SetChecked(show)
     end)
 
     ShowMelee:SetScript("OnUpdate", function()
-        ShowMelee:SetChecked(ExtendedCharacterStats.Profile.Melee.Display)
+        ShowMelee:SetChecked(ExtendedCharacterStats.profile.melee.display)
     end)
 
     -- Create Sub-Header Options
@@ -339,13 +240,13 @@ function CreateMeleeOptions()
     leftOffset = leftOffset - 30
 
     ShowMeleeHit:SetScript("OnClick", function()
-        ExtendedCharacterStats.Profile.Melee.Hit.Display = not ExtendedCharacterStats.Profile.Melee.Hit.Display
-        local show = ExtendedCharacterStats.Profile.Melee.Hit.Display
+        ExtendedCharacterStats.profile.melee.hit.display = not ExtendedCharacterStats.profile.melee.hit.display
+        local show = ExtendedCharacterStats.profile.melee.hit.display
         ShowMeleeHit:SetChecked(show)
     end)
 
     ShowMeleeHit:SetScript("OnUpdate", function()
-        ShowMeleeHit:SetChecked(ExtendedCharacterStats.Profile.Melee.Hit.Display)
+        ShowMeleeHit:SetChecked(ExtendedCharacterStats.profile.melee.hit.display)
     end)
 
     -- Crit
@@ -353,13 +254,13 @@ function CreateMeleeOptions()
     leftOffset = leftOffset - 30
 
     ShowMeleeCrit:SetScript("OnClick", function()
-        ExtendedCharacterStats.Profile.Melee.Crit.Display = not ExtendedCharacterStats.Profile.Melee.Crit.Display
-        local show = ExtendedCharacterStats.Profile.Melee.Crit.Display
+        ExtendedCharacterStats.profile.melee.crit.display = not ExtendedCharacterStats.profile.melee.crit.display
+        local show = ExtendedCharacterStats.profile.melee.crit.display
         ShowMeleeCrit:SetChecked(show)
     end)
 
     ShowMeleeCrit:SetScript("OnUpdate", function()
-        ShowMeleeCrit:SetChecked(ExtendedCharacterStats.Profile.Melee.Crit.Display)
+        ShowMeleeCrit:SetChecked(ExtendedCharacterStats.profile.melee.crit.display)
     end)
 end
 
@@ -370,13 +271,13 @@ function CreateSpellOptions()
     leftOffset = leftOffset - 30
 
     ShowSpell:SetScript("OnClick", function()
-        ExtendedCharacterStats.Profile.Spell.Display = not ExtendedCharacterStats.Profile.Spell.Display
-        local show = ExtendedCharacterStats.Profile.Spell.Display
+        ExtendedCharacterStats.profile.spell.display = not ExtendedCharacterStats.profile.spell.display
+        local show = ExtendedCharacterStats.profile.spell.display
         ShowSpell:SetChecked(show)
     end)
 
     ShowSpell:SetScript("OnUpdate", function()
-        ShowSpell:SetChecked(ExtendedCharacterStats.Profile.Spell.Display)
+        ShowSpell:SetChecked(ExtendedCharacterStats.profile.spell.display)
     end)
 
     -- Create Sub-Header Options
@@ -386,13 +287,13 @@ function CreateSpellOptions()
     leftOffset = leftOffset - 30
 
     ShowSpellHit:SetScript("OnClick", function()
-        ExtendedCharacterStats.Profile.Spell.Hit.Display = not ExtendedCharacterStats.Profile.Spell.Hit.Display
-        local show = ExtendedCharacterStats.Profile.Spell.Hit.Display
+        ExtendedCharacterStats.profile.spell.hit.display = not ExtendedCharacterStats.profile.spell.hit.display
+        local show = ExtendedCharacterStats.profile.spell.hit.display
         ShowSpellHit:SetChecked(show)
     end)
 
     ShowSpellHit:SetScript("OnUpdate", function()
-        ShowSpellHit:SetChecked(ExtendedCharacterStats.Profile.Spell.Hit.Display)
+        ShowSpellHit:SetChecked(ExtendedCharacterStats.profile.spell.hit.display)
     end)
 
     -- Crit
@@ -400,13 +301,13 @@ function CreateSpellOptions()
     leftOffset = leftOffset - 30
 
     ShowSpellCrit:SetScript("OnClick", function()
-        ExtendedCharacterStats.Profile.Spell.Crit.Display = not ExtendedCharacterStats.Profile.Spell.Crit.Display
-        local show = ExtendedCharacterStats.Profile.Spell.Crit.Display
+        ExtendedCharacterStats.profile.spell.crit.display = not ExtendedCharacterStats.profile.spell.crit.display
+        local show = ExtendedCharacterStats.profile.spell.crit.display
         ShowSpellCrit:SetChecked(show)
     end)
 
     ShowSpellCrit:SetScript("OnUpdate", function()
-        ShowSpellCrit:SetChecked(ExtendedCharacterStats.Profile.Spell.Crit.Display)
+        ShowSpellCrit:SetChecked(ExtendedCharacterStats.profile.spell.crit.display)
     end)
 end
 
@@ -417,13 +318,13 @@ function CreateRegenOptions()
     leftOffset = leftOffset - 30
 
     ShowRegen:SetScript("OnClick", function()
-        ExtendedCharacterStats.Profile.Regen.Display = not ExtendedCharacterStats.Profile.Regen.Display
-        local show = ExtendedCharacterStats.Profile.Regen.Display
+        ExtendedCharacterStats.profile.regen.display = not ExtendedCharacterStats.profile.regen.display
+        local show = ExtendedCharacterStats.profile.regen.display
         ShowRegen:SetChecked(show)
     end)
 
     ShowRegen:SetScript("OnUpdate", function()
-        ShowRegen:SetChecked(ExtendedCharacterStats.Profile.Regen.Display)
+        ShowRegen:SetChecked(ExtendedCharacterStats.profile.regen.display)
     end)
 
     -- Create Sub-Header Options
@@ -433,13 +334,13 @@ function CreateRegenOptions()
     leftOffset = leftOffset - 30
 
     ShowRegenCasting:SetScript("OnClick", function()
-        ExtendedCharacterStats.Profile.Regen.MP5Casting.Display = not ExtendedCharacterStats.Profile.Regen.MP5Casting.Display
-        local show = ExtendedCharacterStats.Profile.Regen.MP5Casting.Display
+        ExtendedCharacterStats.profile.regen.mp5Casting.display = not ExtendedCharacterStats.profile.regen.mp5Casting.display
+        local show = ExtendedCharacterStats.profile.regen.mp5Casting.display
         ShowRegenCasting:SetChecked(show)
     end)
 
     ShowRegenCasting:SetScript("OnUpdate", function()
-        ShowRegenCasting:SetChecked(ExtendedCharacterStats.Profile.Regen.MP5Casting.Display)
+        ShowRegenCasting:SetChecked(ExtendedCharacterStats.profile.regen.mp5Casting.display)
     end)
 
     -- Not Casting Regen
@@ -447,13 +348,13 @@ function CreateRegenOptions()
     leftOffset = leftOffset - 30
 
     ShowRegenNotCasting:SetScript("OnClick", function()
-        ExtendedCharacterStats.Profile.Regen.MP5NotCasting.Display = not ExtendedCharacterStats.Profile.Regen.MP5NotCasting.Display
-        local show = ExtendedCharacterStats.Profile.Regen.MP5NotCasting.Display
+        ExtendedCharacterStats.profile.regen.mp5NotCasting.display = not ExtendedCharacterStats.profile.regen.mp5NotCasting.display
+        local show = ExtendedCharacterStats.profile.regen.mp5NotCasting.display
         ShowRegenNotCasting:SetChecked(show)
     end)
 
     ShowRegenNotCasting:SetScript("OnUpdate", function()
-        ShowRegenNotCasting:SetChecked(ExtendedCharacterStats.Profile.Regen.MP5NotCasting.Display)
+        ShowRegenNotCasting:SetChecked(ExtendedCharacterStats.profile.regen.mp5NotCasting.display)
     end)
 
     -- Current Regen
@@ -461,13 +362,13 @@ function CreateRegenOptions()
     leftOffset = leftOffset - 30
 
     ShowCurrentRegen:SetScript("OnClick", function()
-        ExtendedCharacterStats.Profile.Regen.MP5Current.Display = not ExtendedCharacterStats.Profile.Regen.MP5Current.Display
-        local show = ExtendedCharacterStats.Profile.Regen.MP5Current.Display
+        ExtendedCharacterStats.profile.regen.mp5Current.display = not ExtendedCharacterStats.profile.regen.mp5Current.display
+        local show = ExtendedCharacterStats.profile.regen.mp5Current.display
         ShowCurrentRegen:SetChecked(show)
     end)
 
     ShowCurrentRegen:SetScript("OnUpdate", function()
-        ShowCurrentRegen:SetChecked(ExtendedCharacterStats.Profile.Regen.MP5Current.Display)
+        ShowCurrentRegen:SetChecked(ExtendedCharacterStats.profile.regen.mp5Current.display)
     end)
 end
 
@@ -478,13 +379,13 @@ function CreateSpellBonusOptions()
     rightOffset = rightOffset - 30
 
     ShowSpellBonus:SetScript("OnClick", function()
-        ExtendedCharacterStats.Profile.SpellBonus.Display = not ExtendedCharacterStats.Profile.SpellBonus.Display
-        local show = ExtendedCharacterStats.Profile.SpellBonus.Display
+        ExtendedCharacterStats.profile.spellBonus.display = not ExtendedCharacterStats.profile.spellBonus.display
+        local show = ExtendedCharacterStats.profile.spellBonus.display
         ShowSpellBonus:SetChecked(show)
     end)
 
     ShowSpellBonus:SetScript("OnUpdate", function()
-        ShowSpellBonus:SetChecked(ExtendedCharacterStats.Profile.SpellBonus.Display)
+        ShowSpellBonus:SetChecked(ExtendedCharacterStats.profile.spellBonus.display)
     end)
 
     -- Create Sub-Header Options
@@ -492,210 +393,210 @@ function CreateSpellBonusOptions()
     rightOffset = rightOffset - 30
 
     ShowPhysicalDmg:SetScript("OnClick", function()
-        ExtendedCharacterStats.Profile.SpellBonus.PhysicalDmg.Display =
-            not ExtendedCharacterStats.Profile.SpellBonus.PhysicalDmg.Display
-        local show = ExtendedCharacterStats.Profile.SpellBonus.PhysicalDmg.Display
+        ExtendedCharacterStats.profile.spellBonus.physicalDmg.display =
+            not ExtendedCharacterStats.profile.spellBonus.physicalDmg.display
+        local show = ExtendedCharacterStats.profile.spellBonus.physicalDmg.display
         ShowPhysicalDmg:SetChecked(show)
     end)
 
     ShowPhysicalDmg:SetScript("OnUpdate", function()
-        ShowPhysicalDmg:SetChecked(ExtendedCharacterStats.Profile.SpellBonus.PhysicalDmg.Display)
+        ShowPhysicalDmg:SetChecked(ExtendedCharacterStats.profile.spellBonus.physicalDmg.display)
     end)
 
     local ShowPhysicalCrit = CreateCheckBox(-130, rightOffset, "Physical Crit", "TOPRIGHT")
     rightOffset = rightOffset - 30
 
     ShowPhysicalCrit:SetScript("OnClick", function()
-        ExtendedCharacterStats.Profile.SpellBonus.PhysicalCrit.Display =
-            not ExtendedCharacterStats.Profile.SpellBonus.PhysicalCrit.Display
-        local show = ExtendedCharacterStats.Profile.SpellBonus.PhysicalCrit.Display
+        ExtendedCharacterStats.profile.spellBonus.physicalCrit.display =
+            not ExtendedCharacterStats.profile.spellBonus.physicalCrit.display
+        local show = ExtendedCharacterStats.profile.spellBonus.physicalCrit.display
         ShowPhysicalCrit:SetChecked(show)
     end)
 
     ShowPhysicalCrit:SetScript("OnUpdate", function()
-        ShowPhysicalCrit:SetChecked(ExtendedCharacterStats.Profile.SpellBonus.PhysicalCrit.Display)
+        ShowPhysicalCrit:SetChecked(ExtendedCharacterStats.profile.spellBonus.physicalCrit.display)
     end)
 
     local ShowArcaneDmg = CreateCheckBox(-130, rightOffset, "Arcane Damage", "TOPRIGHT")
     rightOffset = rightOffset - 30
 
     ShowArcaneDmg:SetScript("OnClick", function()
-        ExtendedCharacterStats.Profile.SpellBonus.ArcaneDmg.Display =
-            not ExtendedCharacterStats.Profile.SpellBonus.ArcaneDmg.Display
-        local show = ExtendedCharacterStats.Profile.SpellBonus.ArcaneDmg.Display
+        ExtendedCharacterStats.profile.spellBonus.arcaneDmg.display =
+            not ExtendedCharacterStats.profile.spellBonus.arcaneDmg.display
+        local show = ExtendedCharacterStats.profile.spellBonus.arcaneDmg.display
         ShowArcaneDmg:SetChecked(show)
     end)
 
     ShowArcaneDmg:SetScript("OnUpdate", function()
-        ShowArcaneDmg:SetChecked(ExtendedCharacterStats.Profile.SpellBonus.ArcaneDmg.Display)
+        ShowArcaneDmg:SetChecked(ExtendedCharacterStats.profile.spellBonus.arcaneDmg.display)
     end)
 
     local ShowArcaneCrit = CreateCheckBox(-130, rightOffset, "Arcane Crit", "TOPRIGHT")
     rightOffset = rightOffset - 30
 
     ShowArcaneCrit:SetScript("OnClick", function()
-        ExtendedCharacterStats.Profile.SpellBonus.ArcaneCrit.Display =
-            not ExtendedCharacterStats.Profile.SpellBonus.ArcaneCrit.Display
-        local show = ExtendedCharacterStats.Profile.SpellBonus.ArcaneCrit.Display
+        ExtendedCharacterStats.profile.spellBonus.arcaneCrit.display =
+            not ExtendedCharacterStats.profile.spellBonus.arcaneCrit.display
+        local show = ExtendedCharacterStats.profile.spellBonus.arcaneCrit.display
         ShowArcaneCrit:SetChecked(show)
     end)
 
     ShowArcaneCrit:SetScript("OnUpdate", function()
-        ShowArcaneCrit:SetChecked(ExtendedCharacterStats.Profile.SpellBonus.ArcaneCrit.Display)
+        ShowArcaneCrit:SetChecked(ExtendedCharacterStats.profile.spellBonus.arcaneCrit.display)
     end)
 
     local ShowNatureDmg = CreateCheckBox(-130, rightOffset, "Nature Damage", "TOPRIGHT")
     rightOffset = rightOffset - 30
 
     ShowNatureDmg:SetScript("OnClick", function()
-        ExtendedCharacterStats.Profile.SpellBonus.NatureDmg.Display =
-            not ExtendedCharacterStats.Profile.SpellBonus.NatureDmg.Display
-        local show = ExtendedCharacterStats.Profile.SpellBonus.NatureDmg.Display
+        ExtendedCharacterStats.profile.spellBonus.natureDmg.display =
+            not ExtendedCharacterStats.profile.spellBonus.natureDmg.display
+        local show = ExtendedCharacterStats.profile.spellBonus.natureDmg.display
         ShowNatureDmg:SetChecked(show)
     end)
 
     ShowNatureDmg:SetScript("OnUpdate", function()
-        ShowNatureDmg:SetChecked(ExtendedCharacterStats.Profile.SpellBonus.NatureDmg.Display)
+        ShowNatureDmg:SetChecked(ExtendedCharacterStats.profile.spellBonus.natureDmg.display)
     end)
 
     local ShowNatureCrit = CreateCheckBox(-130, rightOffset, "Nature Crit", "TOPRIGHT")
     rightOffset = rightOffset - 30
 
     ShowNatureCrit:SetScript("OnClick", function()
-        ExtendedCharacterStats.Profile.SpellBonus.NatureCrit.Display =
-            not ExtendedCharacterStats.Profile.SpellBonus.NatureCrit.Display
-        local show = ExtendedCharacterStats.Profile.SpellBonus.NatureCrit.Display
+        ExtendedCharacterStats.profile.spellBonus.natureCrit.display =
+            not ExtendedCharacterStats.profile.spellBonus.natureCrit.display
+        local show = ExtendedCharacterStats.profile.spellBonus.natureCrit.display
         ShowNatureCrit:SetChecked(show)
     end)
 
     ShowNatureCrit:SetScript("OnUpdate", function()
-        ShowNatureCrit:SetChecked(ExtendedCharacterStats.Profile.SpellBonus.NatureCrit.Display)
+        ShowNatureCrit:SetChecked(ExtendedCharacterStats.profile.spellBonus.natureCrit.display)
     end)
 
     local ShowHolyDmg = CreateCheckBox(-130, rightOffset, "Holy Damage", "TOPRIGHT")
     rightOffset = rightOffset - 30
 
     ShowHolyDmg:SetScript("OnClick", function()
-        ExtendedCharacterStats.Profile.SpellBonus.HolyDmg.Display =
-            not ExtendedCharacterStats.Profile.SpellBonus.HolyDmg.Display
-        local show = ExtendedCharacterStats.Profile.SpellBonus.HolyDmg.Display
+        ExtendedCharacterStats.profile.spellBonus.holyDmg.display =
+            not ExtendedCharacterStats.profile.spellBonus.holyDmg.display
+        local show = ExtendedCharacterStats.profile.spellBonus.holyDmg.display
         ShowHolyDmg:SetChecked(show)
     end)
 
     ShowHolyDmg:SetScript("OnUpdate", function()
-        ShowHolyDmg:SetChecked(ExtendedCharacterStats.Profile.SpellBonus.HolyDmg.Display)
+        ShowHolyDmg:SetChecked(ExtendedCharacterStats.profile.spellBonus.holyDmg.display)
     end)
 
     local ShowHolyCrit = CreateCheckBox(-130, rightOffset, "Holy Crit", "TOPRIGHT")
     rightOffset = rightOffset - 30
 
     ShowHolyCrit:SetScript("OnClick", function()
-        ExtendedCharacterStats.Profile.SpellBonus.HolyCrit.Display =
-            not ExtendedCharacterStats.Profile.SpellBonus.HolyCrit.Display
-        local show = ExtendedCharacterStats.Profile.SpellBonus.HolyCrit.Display
+        ExtendedCharacterStats.profile.spellBonus.holyCrit.display =
+            not ExtendedCharacterStats.profile.spellBonus.holyCrit.display
+        local show = ExtendedCharacterStats.profile.spellBonus.holyCrit.display
         ShowHolyCrit:SetChecked(show)
     end)
 
     ShowHolyCrit:SetScript("OnUpdate", function()
-        ShowHolyCrit:SetChecked(ExtendedCharacterStats.Profile.SpellBonus.HolyCrit.Display)
+        ShowHolyCrit:SetChecked(ExtendedCharacterStats.profile.spellBonus.holyCrit.display)
     end)
 
     local ShowFrostDmg = CreateCheckBox(-130, rightOffset, "Frost Damage", "TOPRIGHT")
     rightOffset = rightOffset - 30
 
     ShowFrostDmg:SetScript("OnClick", function()
-        ExtendedCharacterStats.Profile.SpellBonus.FrostDmg.Display =
-            not ExtendedCharacterStats.Profile.SpellBonus.FrostDmg.Display
-        local show = ExtendedCharacterStats.Profile.SpellBonus.FrostDmg.Display
+        ExtendedCharacterStats.profile.spellBonus.frostDmg.display =
+            not ExtendedCharacterStats.profile.spellBonus.frostDmg.display
+        local show = ExtendedCharacterStats.profile.spellBonus.frostDmg.display
         ShowFrostDmg:SetChecked(show)
     end)
 
     ShowFrostDmg:SetScript("OnUpdate", function()
-        ShowFrostDmg:SetChecked(ExtendedCharacterStats.Profile.SpellBonus.FrostDmg.Display)
+        ShowFrostDmg:SetChecked(ExtendedCharacterStats.profile.spellBonus.frostDmg.display)
     end)
 
     local ShowFrostCrit = CreateCheckBox(-130, rightOffset, "Frost Crit", "TOPRIGHT")
     rightOffset = rightOffset - 30
 
     ShowFrostCrit:SetScript("OnClick", function()
-        ExtendedCharacterStats.Profile.SpellBonus.FrostCrit.Display =
-            not ExtendedCharacterStats.Profile.SpellBonus.FrostCrit.Display
-        local show = ExtendedCharacterStats.Profile.SpellBonus.FrostCrit.Display
+        ExtendedCharacterStats.profile.spellBonus.frostCrit.display =
+            not ExtendedCharacterStats.profile.spellBonus.frostCrit.display
+        local show = ExtendedCharacterStats.profile.spellBonus.frostCrit.display
         ShowFrostCrit:SetChecked(show)
     end)
 
     ShowFrostCrit:SetScript("OnUpdate", function()
-        ShowFrostCrit:SetChecked(ExtendedCharacterStats.Profile.SpellBonus.FrostCrit.Display)
+        ShowFrostCrit:SetChecked(ExtendedCharacterStats.profile.spellBonus.frostCrit.display)
     end)
 
     local ShowFireDmg = CreateCheckBox(-130, rightOffset, "Fire Damage", "TOPRIGHT")
     rightOffset = rightOffset - 30
 
     ShowFireDmg:SetScript("OnClick", function()
-        ExtendedCharacterStats.Profile.SpellBonus.FireDmg.Display =
-            not ExtendedCharacterStats.Profile.SpellBonus.FireDmg.Display
-        local show = ExtendedCharacterStats.Profile.SpellBonus.FireDmg.Display
+        ExtendedCharacterStats.profile.spellBonus.fireDmg.display =
+            not ExtendedCharacterStats.profile.spellBonus.fireDmg.display
+        local show = ExtendedCharacterStats.profile.spellBonus.fireDmg.display
         ShowFireDmg:SetChecked(show)
     end)
 
     ShowFireDmg:SetScript("OnUpdate", function()
-        ShowFireDmg:SetChecked(ExtendedCharacterStats.Profile.SpellBonus.FireDmg.Display)
+        ShowFireDmg:SetChecked(ExtendedCharacterStats.profile.spellBonus.fireDmg.display)
     end)
 
     local ShowFireCrit = CreateCheckBox(-130, rightOffset, "Fire Crit", "TOPRIGHT")
     rightOffset = rightOffset - 30
 
     ShowFireCrit:SetScript("OnClick", function()
-        ExtendedCharacterStats.Profile.SpellBonus.FireCrit.Display =
-            not ExtendedCharacterStats.Profile.SpellBonus.FireCrit.Display
-        local show = ExtendedCharacterStats.Profile.SpellBonus.FireCrit.Display
+        ExtendedCharacterStats.profile.spellBonus.fireCrit.display =
+            not ExtendedCharacterStats.profile.spellBonus.fireCrit.display
+        local show = ExtendedCharacterStats.profile.spellBonus.fireCrit.display
         ShowFireCrit:SetChecked(show)
     end)
 
     ShowFireCrit:SetScript("OnUpdate", function()
-        ShowFireCrit:SetChecked(ExtendedCharacterStats.Profile.SpellBonus.FireCrit.Display)
+        ShowFireCrit:SetChecked(ExtendedCharacterStats.profile.spellBonus.fireCrit.display)
     end)
 
     local ShowShadowDmg = CreateCheckBox(-130, rightOffset, "Shadow Damage", "TOPRIGHT")
     rightOffset = rightOffset - 30
 
     ShowShadowDmg:SetScript("OnClick", function()
-        ExtendedCharacterStats.Profile.SpellBonus.ShadowDmg.Display =
-            not ExtendedCharacterStats.Profile.SpellBonus.ShadowDmg.Display
-        local show = ExtendedCharacterStats.Profile.SpellBonus.ShadowDmg.Display
+        ExtendedCharacterStats.profile.spellBonus.shadowDmg.display =
+            not ExtendedCharacterStats.profile.spellBonus.shadowDmg.display
+        local show = ExtendedCharacterStats.profile.spellBonus.shadowDmg.display
         ShowShadowDmg:SetChecked(show)
     end)
 
     ShowShadowDmg:SetScript("OnUpdate", function()
-        ShowShadowDmg:SetChecked(ExtendedCharacterStats.Profile.SpellBonus.ShadowDmg.Display)
+        ShowShadowDmg:SetChecked(ExtendedCharacterStats.profile.spellBonus.shadowDmg.display)
     end)
 
     local ShowShadowCrit = CreateCheckBox(-130, rightOffset, "Shadow Crit", "TOPRIGHT")
     rightOffset = rightOffset - 30
 
     ShowShadowCrit:SetScript("OnClick", function()
-        ExtendedCharacterStats.Profile.SpellBonus.ShadowCrit.Display =
-            not ExtendedCharacterStats.Profile.SpellBonus.ShadowCrit.Display
-        local show = ExtendedCharacterStats.Profile.SpellBonus.ShadowCrit.Display
+        ExtendedCharacterStats.profile.spellBonus.shadowCrit.display =
+            not ExtendedCharacterStats.profile.spellBonus.shadowCrit.display
+        local show = ExtendedCharacterStats.profile.spellBonus.shadowCrit.display
         ShowShadowCrit:SetChecked(show)
     end)
 
     ShowShadowCrit:SetScript("OnUpdate", function()
-        ShowShadowCrit:SetChecked(ExtendedCharacterStats.Profile.SpellBonus.ShadowCrit.Display)
+        ShowShadowCrit:SetChecked(ExtendedCharacterStats.profile.spellBonus.shadowCrit.display)
     end)
 
     local ShowBonusHealing = CreateCheckBox(-130, rightOffset, "Bonus Healing", "TOPRIGHT")
     rightOffset = rightOffset - 30
 
     ShowBonusHealing:SetScript("OnClick", function()
-        ExtendedCharacterStats.Profile.SpellBonus.BonusHealing.Display =
-            not ExtendedCharacterStats.Profile.SpellBonus.BonusHealing.Display
-        local show = ExtendedCharacterStats.Profile.SpellBonus.BonusHealing.Display
+        ExtendedCharacterStats.profile.spellBonus.bonusHealing.display =
+            not ExtendedCharacterStats.profile.spellBonus.bonusHealing.display
+        local show = ExtendedCharacterStats.profile.spellBonus.bonusHealing.display
         ShowBonusHealing:SetChecked(show)
     end)
 
     ShowBonusHealing:SetScript("OnUpdate", function()
-        ShowBonusHealing:SetChecked(ExtendedCharacterStats.Profile.SpellBonus.BonusHealing.Display)
+        ShowBonusHealing:SetChecked(ExtendedCharacterStats.profile.spellBonus.bonusHealing.display)
     end)
 end
 
@@ -713,9 +614,9 @@ end
 -- Creates the main frame for the application
 function ECSConfig:CreateWindow()
     ECSMainWindow = CreateFrame("Frame", "ECS_StatsFrame", PaperDollItemsFrame, "BasicFrameTemplateWithInset")
-    ECSMainWindow:SetSize(ExtendedCharacterStats.WindowSize.Width, ExtendedCharacterStats.WindowSize.Height) -- Width, Height
-    ECSMainWindow:SetPoint("RIGHT", PaperDollItemsFrame, "RIGHT", ExtendedCharacterStats.WindowSize.xOffset,
-                           ExtendedCharacterStats.WindowSize.yOffset) -- Point, relativeFrame, relativePoint, xOffset, yOffset
+    ECSMainWindow:SetSize(ExtendedCharacterStats.windowSize.width, ExtendedCharacterStats.windowSize.height) -- Width, Height
+    ECSMainWindow:SetPoint("RIGHT", PaperDollItemsFrame, "RIGHT", ExtendedCharacterStats.windowSize.xOffset,
+                           ExtendedCharacterStats.windowSize.yOffset) -- Point, relativeFrame, relativePoint, xOffset, yOffset
     ECSMainWindow.title = ECSMainWindow:CreateFontString(nil, "OVERLAY")
     ECSMainWindow.title:SetFontObject("GameFontHighlight")
     ECSMainWindow.title:SetPoint("CENTER", ECSMainWindow.TitleBg, "CENTER", 5, 0)
@@ -724,7 +625,7 @@ function ECSConfig:CreateWindow()
     ECSMainWindow.configButton = CreateFrame("Button", nil, ECSMainWindow, "GameMenuButtonTemplate")
     ECSMainWindow.configButton:SetText("Settings")
     -- ECSMainWindow.configButton:SetNormalFontObject("GameFontNormalLarge")
-    ECSMainWindow.configButton:SetSize(ExtendedCharacterStats.WindowSize.Width - 10, 20)
+    ECSMainWindow.configButton:SetSize(ExtendedCharacterStats.windowSize.width - 10, 20)
     ECSMainWindow.configButton:SetPoint("CENTER", ECSMainWindow, "TOP", -1, -35)
     ECSMainWindow.configButton:SetScript("OnClick", function ()
         Config()
@@ -735,19 +636,19 @@ function ECSConfig:CreateWindow()
     ECSMainWindow.ScrollFrame:SetPoint("BOTTOMRIGHT", ECSMainWindow, "BOTTOMRIGHT", -35, 10)
 
     ECSMainWindow.ScrollChild = CreateFrame("Frame", nil, ECSMainWindow.ScrollFrame)
-    ECSMainWindow.ScrollChild:SetSize(ExtendedCharacterStats.WindowSize.Width, ExtendedCharacterStats.WindowSize.Height)
+    ECSMainWindow.ScrollChild:SetSize(ExtendedCharacterStats.windowSize.width, ExtendedCharacterStats.windowSize.height)
     ECSMainWindow.ScrollFrame:SetScrollChild(ECSMainWindow.ScrollChild)
 
     -- Read the loaded profile and create elements from that
-    for a, b in pairs(ExtendedCharacterStats.Profile) do
+    for a, b in pairs(ExtendedCharacterStats.profile) do
         -- Looping through profile
         -- Create the Headers
 
-        if (b.Display == true) then
-            ECSConfig:CreateHeader(b.RefName, b.Text)
+        if (b.display == true) then
+            ECSConfig:CreateHeader(b.refName, b.text)
         end
 
-        if type(b) == "table" and b.Display == true then
+        if type(b) == "table" and b.display == true then
             -- Loop through all sub items
 
             for c, d in pairs(b) do
@@ -756,9 +657,9 @@ function ECSConfig:CreateWindow()
                 if type(d) == "table" then
 
                     -- Check if item should be created
-                    if d.Display == true then
+                    if d.display == true then
                         -- Create the item
-                        ECSConfig:CreateText(d.RefName, d.Text .. core.ECSData:GetStatInfo(d.RefName))
+                        ECSConfig:CreateText(d.refName, d.text .. core.ECSData:GetStatInfo(d.refName))
                     end
                 end
             end
@@ -770,64 +671,51 @@ function ECSConfig:CreateWindow()
     return ECSMainWindow
 end
 
--- Gets the yOffset of the last item in the displayitems array
-function ECSConfig:GetLastItemPosition()
-    local lastY = nil
-
-    for k, v in pairs(core.DisplayItems) do
-        _, _, _, _, lastY = v:GetPoint()
-    end
-
-    return lastY
-end
+local lastYOffset = 20
 
 -- Creates a new header on the UI
 function ECSConfig:CreateHeader(name, displayText)
-    local yOffset = ECSConfig:GetLastItemPosition() or 20
-    yOffset = yOffset - 20
+    lastYOffset = lastYOffset - 20
     local newHeader = ECSMainWindow.ScrollChild:CreateFontString(name, "OVERLAY", headerFont)
-    newHeader:SetPoint("TOPLEFT", 50, yOffset)
+    newHeader:SetPoint("TOPLEFT", 50, lastYOffset)
     newHeader:SetText(displayText)
-    table.insert(core.DisplayItems, newHeader)
+    core.displayedStats[name] = newHeader
 end
 
 -- Creates a new information text on the UI
 function ECSConfig:CreateText(name, displayText)
-    local yOffset = ECSConfig:GetLastItemPosition() or 0
-    yOffset = yOffset - 15
+    lastYOffset = lastYOffset - 15
     local newStat = ECSMainWindow.ScrollChild:CreateFontString(name, "OVERLAY", statFont)
-    newStat:SetPoint("TOPLEFT", 60, yOffset)
+    newStat:SetPoint("TOPLEFT", 60, lastYOffset)
     newStat:SetText(displayText)
-    table.insert(core.DisplayItems, newStat)
+    core.displayedStats[name] = newStat
 end
 
 function ECSConfig:UpdateItem(refName, text)
 
-    for k, v in pairs(core.DisplayItems) do
-        if (v:GetName() == refName) then
-            v:SetText(text)
-        end
+    local stat = core.displayedStats[refName]
+    if stat then
+        stat:SetText(text)
     end
 end
 
--- Update all the displayed information
+--- Read the loaded profile and update all enabled elements
 function ECSConfig:UpdateInformation()
+    print("[ECSConfig:UpdateInformation]")
 
-    -- Read the loaded profile and update elements enabled
-    for a, b in pairs(ExtendedCharacterStats.Profile) do
-        -- Looping through profile
+    -- Loop through all categories
+    for _, category in pairs(ExtendedCharacterStats.profile) do
 
-        if type(b) == "table" and b.Display == true then
-            -- Loop through all sub items
+        if type(category) == "table" and category.display == true then
 
-            for c, d in pairs(b) do
+            -- Loop through all stats
+            for _, stat in pairs(category) do
 
                 -- If item is table
-                if type(d) == "table" then
+                if type(stat) == "table" then
 
-                    -- Check if item is displayed
-                    if d.Display == true then
-                        ECSConfig:UpdateItem(d.RefName, d.Text .. core.ECSData:GetStatInfo(d.RefName))
+                    if stat.display == true then
+                        ECSConfig:UpdateItem(stat.refName, stat.text .. core.ECSData:GetStatInfo(stat.refName))
                     end
                 end
             end

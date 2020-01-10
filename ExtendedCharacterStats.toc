@@ -8,4 +8,5 @@
 
 Data.lua
 Config.lua
+DefaultProfile.lua
 Main.lua
