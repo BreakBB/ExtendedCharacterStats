@@ -8,7 +8,7 @@ core.DisplayItems = {}
 local ECSConfig = core.ECSConfig
 
 local ECSMainWindow
-local ECSSettingsWindow
+local settingsFrame
 
 ------------------------------------------------------------------
 -- Defaults
@@ -28,11 +28,11 @@ local statFont = "GameFontHighlightSmall"
 -- if the window is hidden or closed, it will be displayed
 -- if the window is visible, it will be hidden
 local function Toggle()
-    menu = ECSMainWindow
+    local menu = ECSMainWindow
     menu:SetShown(not menu:IsShown())
 end
 
-local function Config() ECSSettingsWindow:SetShown(not ECSSettingsWindow:IsShown()) end
+local function Config() settingsFrame:SetShown(not settingsFrame:IsShown()) end
 
 function HandleSlash(msg)
     local cmd = string.lower(msg) or "help"
@@ -161,14 +161,14 @@ local rightOffset = -30
 function ECSConfig:CreateConfigWindow()
 
     -- Create Config Window
-    ECSSettingsWindow = CreateFrame("Frame", "ECS_ConfigFrame", UIParent, "BasicFrameTemplateWithInset")
-    ECSSettingsWindow:SetSize(350, 600) -- Width, Height
-    ECSSettingsWindow:SetPoint("CENTER", UIParent, "CENTER", 0, 100) -- Point, relativeFrame, relativePoint, xOffset, yOffset
-    ECSSettingsWindow.title = ECSSettingsWindow:CreateFontString(nil, "OVERLAY")
-    ECSSettingsWindow.title:SetFontObject("GameFontHighlight")
-    ECSSettingsWindow.title:SetPoint("CENTER", ECSSettingsWindow.TitleBg, "CENTER", 5, 0)
-    ECSSettingsWindow.title:SetText("Extended Character Stats Configuration")
-    ECSSettingsWindow:SetShown(false)
+    settingsFrame = CreateFrame("Frame", "ECS_ConfigFrame", UIParent, "BasicFrameTemplateWithInset")
+    settingsFrame:SetSize(350, 600) -- Width, Height
+    settingsFrame:SetPoint("CENTER", UIParent, "CENTER", 0, 100) -- Point, relativeFrame, relativePoint, xOffset, yOffset
+    settingsFrame.title = settingsFrame:CreateFontString(nil, "OVERLAY")
+    settingsFrame.title:SetFontObject("GameFontHighlight")
+    settingsFrame.title:SetPoint("CENTER", settingsFrame.TitleBg, "CENTER", 5, 0)
+    settingsFrame.title:SetText("Extended Character Stats Configuration")
+    settingsFrame:SetShown(false)
 
     -- Loop through all available items
     -- Display them as checkbox
@@ -199,13 +199,13 @@ function ECSConfig:CreateConfigWindow()
     -- ExtendedCharacterStats.Profile.SpellBonus.Display
     CreateSpellBonusOptions(rightOffset)
 
-    local saveButton = CreateFrame("Button", nil, ECSSettingsWindow, "OptionsButtonTemplate")
+    local saveButton = CreateFrame("Button", nil, settingsFrame, "OptionsButtonTemplate")
     saveButton:SetPoint("BOTTOM", 0, 10) -- pos, y, x
     saveButton:SetSize(320, 40)
     saveButton:SetText("Apply")
     saveButton:SetScript("OnClick", function() ReloadUI() end)
 
-    return ECSSettingsWindow
+    return settingsFrame
 end
 
 function CreateRangedOptions()
@@ -219,7 +219,9 @@ function CreateRangedOptions()
         ShowRanged:SetChecked(show)
     end)
 
-    ShowRanged:SetScript("OnUpdate", function() ShowRanged:SetChecked(ExtendedCharacterStats.Profile.Ranged.Display) end)
+    ShowRanged:SetScript("OnUpdate", function()
+        ShowRanged:SetChecked(ExtendedCharacterStats.Profile.Ranged.Display)
+    end)
 
     -- Create Sub-Header Options
 
@@ -233,8 +235,9 @@ function CreateRangedOptions()
         ShowRangedHit:SetChecked(show)
     end)
 
-    ShowRangedHit:SetScript("OnUpdate",
-                            function() ShowRangedHit:SetChecked(ExtendedCharacterStats.Profile.Ranged.Hit.Display) end)
+    ShowRangedHit:SetScript("OnUpdate", function()
+        ShowRangedHit:SetChecked(ExtendedCharacterStats.Profile.Ranged.Hit.Display)
+    end)
 
     -- Crit
     local ShowRangedCrit = CreateCheckBox(40, leftOffset, "Crit", "TOPLEFT")
@@ -263,8 +266,9 @@ function CreateDefenseOptions()
         ShowDefense:SetChecked(show)
     end)
 
-    ShowDefense:SetScript("OnUpdate",
-                          function() ShowDefense:SetChecked(ExtendedCharacterStats.Profile.Defense.Display) end)
+    ShowDefense:SetScript("OnUpdate", function()
+        ShowDefense:SetChecked(ExtendedCharacterStats.Profile.Defense.Display)
+    end)
 
     -- Create Sub-Header Options
 
@@ -278,8 +282,9 @@ function CreateDefenseOptions()
         ShowDodge:SetChecked(show)
     end)
 
-    ShowDodge:SetScript("OnUpdate",
-                        function() ShowDodge:SetChecked(ExtendedCharacterStats.Profile.Defense.Dodge.Display) end)
+    ShowDodge:SetScript("OnUpdate", function()
+        ShowDodge:SetChecked(ExtendedCharacterStats.Profile.Defense.Dodge.Display)
+    end)
 
     -- Parry
     local ShowParry = CreateCheckBox(40, leftOffset, "Parry", "TOPLEFT")
@@ -291,8 +296,9 @@ function CreateDefenseOptions()
         ShowParry:SetChecked(show)
     end)
 
-    ShowParry:SetScript("OnUpdate",
-                        function() ShowParry:SetChecked(ExtendedCharacterStats.Profile.Defense.Parry.Display) end)
+    ShowParry:SetScript("OnUpdate", function()
+        ShowParry:SetChecked(ExtendedCharacterStats.Profile.Defense.Parry.Display)
+    end)
 
     -- Block
     local ShowBlock = CreateCheckBox(40, leftOffset, "Block", "TOPLEFT")
@@ -304,8 +310,9 @@ function CreateDefenseOptions()
         ShowBlock:SetChecked(show)
     end)
 
-    ShowBlock:SetScript("OnUpdate",
-                        function() ShowBlock:SetChecked(ExtendedCharacterStats.Profile.Defense.Block.Display) end)
+    ShowBlock:SetScript("OnUpdate", function()
+        ShowBlock:SetChecked(ExtendedCharacterStats.Profile.Defense.Block.Display)
+    end)
 end
 
 function CreateMeleeOptions()
@@ -320,7 +327,9 @@ function CreateMeleeOptions()
         ShowMelee:SetChecked(show)
     end)
 
-    ShowMelee:SetScript("OnUpdate", function() ShowMelee:SetChecked(ExtendedCharacterStats.Profile.Melee.Display) end)
+    ShowMelee:SetScript("OnUpdate", function()
+        ShowMelee:SetChecked(ExtendedCharacterStats.Profile.Melee.Display)
+    end)
 
     -- Create Sub-Header Options
 
@@ -334,8 +343,9 @@ function CreateMeleeOptions()
         ShowMeleeHit:SetChecked(show)
     end)
 
-    ShowMeleeHit:SetScript("OnUpdate",
-                           function() ShowMeleeHit:SetChecked(ExtendedCharacterStats.Profile.Melee.Hit.Display) end)
+    ShowMeleeHit:SetScript("OnUpdate", function()
+        ShowMeleeHit:SetChecked(ExtendedCharacterStats.Profile.Melee.Hit.Display)
+    end)
 
     -- Crit
     local ShowMeleeCrit = CreateCheckBox(40, leftOffset, "Crit", "TOPLEFT")
@@ -347,8 +357,9 @@ function CreateMeleeOptions()
         ShowMeleeCrit:SetChecked(show)
     end)
 
-    ShowMeleeCrit:SetScript("OnUpdate",
-                            function() ShowMeleeCrit:SetChecked(ExtendedCharacterStats.Profile.Melee.Crit.Display) end)
+    ShowMeleeCrit:SetScript("OnUpdate", function()
+        ShowMeleeCrit:SetChecked(ExtendedCharacterStats.Profile.Melee.Crit.Display)
+    end)
 end
 
 function CreateSpellOptions()
@@ -363,7 +374,9 @@ function CreateSpellOptions()
         ShowSpell:SetChecked(show)
     end)
 
-    ShowSpell:SetScript("OnUpdate", function() ShowSpell:SetChecked(ExtendedCharacterStats.Profile.Spell.Display) end)
+    ShowSpell:SetScript("OnUpdate", function()
+        ShowSpell:SetChecked(ExtendedCharacterStats.Profile.Spell.Display)
+    end)
 
     -- Create Sub-Header Options
 
@@ -377,8 +390,9 @@ function CreateSpellOptions()
         ShowSpellHit:SetChecked(show)
     end)
 
-    ShowSpellHit:SetScript("OnUpdate",
-                           function() ShowSpellHit:SetChecked(ExtendedCharacterStats.Profile.Spell.Hit.Display) end)
+    ShowSpellHit:SetScript("OnUpdate", function()
+        ShowSpellHit:SetChecked(ExtendedCharacterStats.Profile.Spell.Hit.Display)
+    end)
 
     -- Crit
     local ShowSpellCrit = CreateCheckBox(40, leftOffset, "Crit", "TOPLEFT")
@@ -390,8 +404,9 @@ function CreateSpellOptions()
         ShowSpellCrit:SetChecked(show)
     end)
 
-    ShowSpellCrit:SetScript("OnUpdate",
-                            function() ShowSpellCrit:SetChecked(ExtendedCharacterStats.Profile.Spell.Crit.Display) end)
+    ShowSpellCrit:SetScript("OnUpdate", function()
+        ShowSpellCrit:SetChecked(ExtendedCharacterStats.Profile.Spell.Crit.Display)
+    end)
 end
 
 function CreateRegenOptions()
@@ -406,7 +421,9 @@ function CreateRegenOptions()
         ShowRegen:SetChecked(show)
     end)
 
-    ShowRegen:SetScript("OnUpdate", function() ShowRegen:SetChecked(ExtendedCharacterStats.Profile.Regen.Display) end)
+    ShowRegen:SetScript("OnUpdate", function()
+        ShowRegen:SetChecked(ExtendedCharacterStats.Profile.Regen.Display)
+    end)
 
     -- Create Sub-Header Options
 
@@ -415,8 +432,7 @@ function CreateRegenOptions()
     leftOffset = leftOffset - 30
 
     ShowRegenCasting:SetScript("OnClick", function()
-        ExtendedCharacterStats.Profile.Regen.MP5Casting.Display =
-            not ExtendedCharacterStats.Profile.Regen.MP5Casting.Display
+        ExtendedCharacterStats.Profile.Regen.MP5Casting.Display = not ExtendedCharacterStats.Profile.Regen.MP5Casting.Display
         local show = ExtendedCharacterStats.Profile.Regen.MP5Casting.Display
         ShowRegenCasting:SetChecked(show)
     end)
@@ -430,8 +446,7 @@ function CreateRegenOptions()
     leftOffset = leftOffset - 30
 
     ShowRegenNotCasting:SetScript("OnClick", function()
-        ExtendedCharacterStats.Profile.Regen.MP5NotCasting.Display =
-            not ExtendedCharacterStats.Profile.Regen.MP5NotCasting.Display
+        ExtendedCharacterStats.Profile.Regen.MP5NotCasting.Display = not ExtendedCharacterStats.Profile.Regen.MP5NotCasting.Display
         local show = ExtendedCharacterStats.Profile.Regen.MP5NotCasting.Display
         ShowRegenNotCasting:SetChecked(show)
     end)
@@ -445,8 +460,7 @@ function CreateRegenOptions()
     leftOffset = leftOffset - 30
 
     ShowCurrentRegen:SetScript("OnClick", function()
-        ExtendedCharacterStats.Profile.Regen.MP5Current.Display =
-            not ExtendedCharacterStats.Profile.Regen.MP5Current.Display
+        ExtendedCharacterStats.Profile.Regen.MP5Current.Display = not ExtendedCharacterStats.Profile.Regen.MP5Current.Display
         local show = ExtendedCharacterStats.Profile.Regen.MP5Current.Display
         ShowCurrentRegen:SetChecked(show)
     end)
@@ -685,7 +699,7 @@ function CreateSpellBonusOptions()
 end
 
 function CreateCheckBox(yOffset, xOffset, text, position)
-    local checkbox = CreateFrame("CheckButton", nil, ECSSettingsWindow, "UICheckButtonTemplate")
+    local checkbox = CreateFrame("CheckButton", nil, settingsFrame, "UICheckButtonTemplate")
     checkbox:SetPoint(position, yOffset, xOffset)
     checkbox.text:SetText(text)
     return checkbox
@@ -719,7 +733,9 @@ function ECSConfig:CreateWindow()
         -- Looping through profile
         -- Create the Headers
 
-        if (b.Display == true) then ECSConfig:CreateHeader(b.RefName, b.Text) end
+        if (b.Display == true) then
+            ECSConfig:CreateHeader(b.RefName, b.Text)
+        end
 
         if type(b) == "table" and b.Display == true then
             -- Loop through all sub items
@@ -746,13 +762,13 @@ end
 
 -- Gets the yOffset of the last item in the displayitems array
 function ECSConfig:GetLastItemPosition()
+    local lastY = nil
 
     for k, v in pairs(core.DisplayItems) do
         _, _, _, _, lastY = v:GetPoint()
     end
 
     return lastY
-
 end
 
 -- Creates a new header on the UI

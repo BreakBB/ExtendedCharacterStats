@@ -8,7 +8,7 @@ core.ECSData = { }
 local ECSData = core.ECSData
 
 ------------------------------------------------------------------
--- Data functions 
+-- Data functions
 ------------------------------------------------------------------
 
 -- Rounds every number down to 2 decimal places
@@ -16,7 +16,7 @@ function ECSData:Round(num)
     if not num then
         return 0
     end
-    mult = 10^(2)
+    local mult = 10^(2)
     return math.floor(num * mult + 0.5) / mult
 end
 
@@ -257,12 +257,11 @@ function ECSData:GetStatInfo(refName)
         return ECSData:ShadowCrit()
     end
 
-    if refName == "ArcaneDmg" then 
+    if refName == "ArcaneDmg" then
         return ECSData:ArcaneDmg()
     end
 
     if refName == "NatureCritChance" then
         return ECSData:NatureCrit()
     end
-
 end
