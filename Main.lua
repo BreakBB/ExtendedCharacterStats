@@ -67,7 +67,9 @@ _InitGUI = function ()
     -- Calls the update functions to update all the relevant stats
     ECS_EVENT_FRAME:SetScript("OnEvent", function(self, event, ...)
         print("[ECS_EVENT]", event)
-        core.ECSConfig:UpdateInformation()
+        C_Timer.After(0.5, function ()
+            core.ECSConfig:UpdateInformation()
+        end)
     end)
 end
 
