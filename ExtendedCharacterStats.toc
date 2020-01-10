@@ -1,10 +1,10 @@
-## Interface: 11302
-## Title : Extended Character Stats
+## Interface: 11303
+## Title : Extended Character Stats v1.5
 ## Version : 1.5
 ## Notes: Displays an extra window with more information about your characters stats ( Crit/Hit/Block etc )
 ## SavedVariablesPerCharacter: ExtendedCharacterStats
 ## DefaultState : enabled
-## Author: Ethulu
+## Author: Ethulu, BreakBB
 
 Data.lua
 Config.lua
