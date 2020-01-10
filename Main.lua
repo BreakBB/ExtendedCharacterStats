@@ -4,6 +4,10 @@
 
 local _, core = ...
 
+---@class ECSUtils
+core.Utils = {}
+local Utils = core.Utils
+
 ------------------------------------------------------------------
 -- Events and Variables
 ------------------------------------------------------------------
@@ -63,4 +67,21 @@ _InitGUI = function ()
     ECS_EVENT_FRAME:SetScript("OnEvent", function(self, event, ...)
         core.ECSConfig:UpdateInformation()
     end)
+end
+
+
+local cachedTitle = nil
+function Utils:GetAddonVersionInfo()
+    if (not cachedTitle) then
+        local name, title, _, _, _ = GetAddOnInfo("ExtendedCharacterStats")
+        cachedTitle = title
+    end
+    -- %d = digit, %p = punctuation character, %x = hexadecimal digits.
+    local major, minor, patch, commit = string.match(cachedTitle, "(%d+)%p(%d+)%p(%d+)")
+    return tonumber(major), tonumber(minor), tonumber(patch)
+end
+
+function Utils:GetAddonVersionString()
+    local major, minor, patch = Utils:GetAddonVersionInfo()
+    return "v" .. tostring(major) .. "." .. tostring(minor) .. "." .. tostring(patch)
 end

@@ -32,7 +32,9 @@ local function Toggle()
     menu:SetShown(not menu:IsShown())
 end
 
-local function Config() settingsFrame:SetShown(not settingsFrame:IsShown()) end
+local function Config()
+    settingsFrame:SetShown(not settingsFrame:IsShown())
+end
 
 function HandleSlash(msg)
     local cmd = string.lower(msg) or "help"
@@ -51,7 +53,6 @@ function HandleSlash(msg)
 end
 
 local function GetDefaultProfile()
-
     return {
 
         Defense = {
@@ -718,7 +719,7 @@ function ECSConfig:CreateWindow()
     ECSMainWindow.title = ECSMainWindow:CreateFontString(nil, "OVERLAY")
     ECSMainWindow.title:SetFontObject("GameFontHighlight")
     ECSMainWindow.title:SetPoint("CENTER", ECSMainWindow.TitleBg, "CENTER", 5, 0)
-    ECSMainWindow.title:SetText("Extended Character Stats")
+    ECSMainWindow.title:SetText("Extended Character Stats " .. core.Utils:GetAddonVersionString())
 
     ECSMainWindow.ScrollFrame = CreateFrame("ScrollFrame", nil, ECSMainWindow, "UIPanelScrollFrameTemplate")
     ECSMainWindow.ScrollFrame:SetPoint("TOPLEFT", ECSMainWindow, "TOPLEFT", -35, -30)
