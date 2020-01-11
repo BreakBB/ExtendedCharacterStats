@@ -52,6 +52,10 @@ local function _HandleSlash(msg)
     end
 end
 
+-- Slash Command for toggling the display
+SLASH_ECS1 = "/ecs"
+SlashCmdList["ECS"] = _HandleSlash
+
 ------------------------------------------------------------------
 -- Configuration Frame
 ------------------------------------------------------------------
@@ -75,6 +79,10 @@ function ECSConfig:CreateConfigWindow()
     -- ExtendedCharacterStats.profile.melee
     ECSConfig:CreateMeleeOptions()
 
+    -- Ranged
+    -- ExtendedCharacterStats.profile.ranged
+    ECSConfig:CreateRangedOptions()
+
     -- Defense
     -- ExtendedCharacterStats.profile.defense
     ECSConfig:CreateDefenseOptions()
@@ -82,10 +90,6 @@ function ECSConfig:CreateConfigWindow()
     -- Regen
     -- ExtendedCharacterStats.profile.regen
     ECSConfig:CreateRegenOptions()
-
-    -- Ranged
-    -- ExtendedCharacterStats.profile.ranged
-    ECSConfig:CreateRangedOptions()
 
     -- Spell
     -- ExtendedCharacterStats.profile.spell
@@ -300,7 +304,7 @@ end
 function ECSConfig:CreateRegenOptions()
 
     -- Create Header Options
-    local ShowRegen = _CreateCheckBox(20, leftOffset, "Regen", "TOPLEFT")
+    local ShowRegen = _CreateCheckBox(20, leftOffset, "Mana", "TOPLEFT")
     local ShowRegenNotCasting -- forward declaration
     leftOffset = leftOffset - 30
     local regenProfile = ExtendedCharacterStats.profile.regen
@@ -697,7 +701,6 @@ function ECSConfig:CreateWindow()
 
     ECSMainWindow.configButton = CreateFrame("Button", nil, ECSMainWindow, "GameMenuButtonTemplate")
     ECSMainWindow.configButton:SetText("Settings")
-    -- ECSMainWindow.configButton:SetNormalFontObject("GameFontNormalLarge")
     ECSMainWindow.configButton:SetSize(ExtendedCharacterStats.windowSize.width - 10, 20)
     ECSMainWindow.configButton:SetPoint("CENTER", ECSMainWindow, "TOP", -1, -35)
     ECSMainWindow.configButton:SetScript("OnClick", function ()
@@ -711,6 +714,16 @@ function ECSConfig:CreateWindow()
     ECSMainWindow.ScrollChild = CreateFrame("Frame", nil, ECSMainWindow.ScrollFrame)
     ECSMainWindow.ScrollChild:SetSize(ExtendedCharacterStats.windowSize.width, ExtendedCharacterStats.windowSize.height)
     ECSMainWindow.ScrollFrame:SetScrollChild(ECSMainWindow.ScrollChild)
+
+
+    local toggleButton = CreateFrame("Button", "ECS_ToggleButton", CharacterModelFrame, "GameMenuButtonTemplate")
+    toggleButton:SetText("ECS")
+    toggleButton:SetSize(33, 16)
+    toggleButton:SetPoint("BOTTOMRIGHT", CharacterModelFrame, "BOTTOMRIGHT", 0, 10)
+    toggleButton:SetScript("OnClick", function ()
+        _ToggleMainWindow()
+    end)
+
 
     ECSConfig:CreateStatInfos()
     ECSConfig:CreateConfigWindow()
@@ -831,7 +844,3 @@ function ECSConfig:UpdateInformation()
         end
     end
 end
-
--- Slash Command for toggling the display
-SLASH_ECS1 = "/ecs"
-SlashCmdList["ECS"] = _HandleSlash
