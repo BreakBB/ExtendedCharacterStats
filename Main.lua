@@ -36,6 +36,7 @@ _InitAddon = function()
     end
 
     if ExtendedCharacterStats.profile == nil then
+        ---@class ECSProfile
         ExtendedCharacterStats.profile = core.ECSConfig:GetProfileData()
     end
 

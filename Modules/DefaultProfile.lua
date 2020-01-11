@@ -4,6 +4,7 @@
 local _, core = ...
 local ECSConfig = core.ECSConfig
 
+---@return ECSProfile
 local function GetDefaultProfile()
     return {
 
@@ -60,24 +61,25 @@ local function GetDefaultProfile()
             text = "Spell Bonus",
 
             bonusHealing = {display = true, refName = "BonusHealing", text = "Bonus Healing: "},
-            shadowDmg = {display = true, refName = "ShadowDmg", text = "Shadow Damage: "},
-            shadowCrit = {display = true, refName = "ShadowCritChance", text = "Shadow Crit: "},
-            holyDmg = {display = true, refName = "HolyDmg", text = "Holy Damage: "},
-            holyCrit = {display = true, refName = "HolyCritChance", text = "Holy Crit: "},
+            arcaneDmg = {display = true, refName = "ArcaneDmg", text = "Arcane Damage: "},
+            arcaneCrit = {display = true, refName = "ArcaneCritChance", text = "Arcane Crit: "},
             fireDmg = {display = true, refName = "FireDmg", text = "Fire Damage: "},
             fireCrit = {display = true, refName = "FireCritChance", text = "Fire Crit: "},
             frostDmg = {display = true, refName = "FrostDmg", text = "Frost Damage: "},
             frostCrit = {display = true, refName = "FrostCritChance", text = "Frost Crit: "},
-            arcaneDmg = {display = true, refName = "ArcaneDmg", text = "Arcane Damage: "},
-            arcaneCrit = {display = true, refName = "ArcaneCritChance", text = "Arcane Crit: "},
+            holyDmg = {display = true, refName = "HolyDmg", text = "Holy Damage: "},
+            holyCrit = {display = true, refName = "HolyCritChance", text = "Holy Crit: "},
             natureDmg = {display = true, refName = "NatureDmg", text = "Nature Damage: "},
             natureCrit = {display = true, refName = "NatureCritChance", text = "Nature Crit: "},
             physicalDmg = {display = true, refName = "PhysicalDmg", text = "Physical Damage: "},
-            physicalCrit = {display = true, refName = "PhysicalCritChance", text = "Physical Crit: "}
+            physicalCrit = {display = true, refName = "PhysicalCritChance", text = "Physical Crit: "},
+            shadowDmg = {display = true, refName = "ShadowDmg", text = "Shadow Damage: "},
+            shadowCrit = {display = true, refName = "ShadowCritChance", text = "Shadow Crit: "},
         }
     }
 end
 
+---@return ECSProfile
 function ECSConfig:GetProfileData()
     -- core.ECSConfig.currentProfile = GetDefaultProfile();
     return ExtendedCharacterStats.profile or GetDefaultProfile()
