@@ -818,7 +818,6 @@ end
 
 --- Read the loaded profile and update all enabled elements
 function ECSConfig:UpdateInformation()
-    print("[ECSConfig:UpdateInformation]")
 
     -- Loop through all categories
     for _, category in pairs(ExtendedCharacterStats.profile) do
