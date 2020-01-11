@@ -14,3 +14,10 @@
 ## Issues / Bug reports
 
 **Please file any reports of issues and/or bugs to the [GitHub Repository](https://github.com/BreakBB/ExtendedCharacterStats/issues/new/choose)!**
+
+
+## Donation
+
+If you like this addon and want to support the development of it, you can do so here:
+
+<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=T9DMPD9EZDC98&source=url"><img src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif"/></a>
