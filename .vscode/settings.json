@@ -2397,6 +2397,7 @@
         "CastingBarFrame",
         "ChannelFrame",
         "CharacterFrame",
+        "CharacterModelFrame",
         "ChatAlertFrame",
         "ChatBNPlayerDropDown",
         "ChatChannelDropDown",
