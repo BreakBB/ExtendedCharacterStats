@@ -8,6 +8,6 @@
 
 Main.lua
 
-Modules/Data.lua
-Modules/Config.lua
-Modules/DefaultProfile.lua
+Modules\Data.lua
+Modules\Config.lua
+Modules\DefaultProfile.lua
