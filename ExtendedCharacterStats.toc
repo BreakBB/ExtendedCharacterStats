@@ -6,7 +6,8 @@
 ## DefaultState : enabled
 ## Author: Ethulu, BreakBB
 
-Data.lua
-Config.lua
-DefaultProfile.lua
 Main.lua
+
+Modules/Data.lua
+Modules/Config.lua
+Modules/DefaultProfile.lua

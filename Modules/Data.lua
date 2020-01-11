@@ -29,21 +29,21 @@ function ECSData:SpellHitModifier()
     return ECSData:Round(GetSpellHitModifier()) .. "%"
 end
 
--- Get manaregen while not casting
-function ECSData:ManaRegenNotCasting()
-    local base, casting = GetManaRegen()
-    return ECSData:Round(base)
-end
-
 -- Get current mana regen
 function ECSData:ManaRegenCurrent()
-    return ECSData:Round(GetPowerRegen())
+    return ECSData:Round(GetPowerRegen()) * 5
+end
+
+-- Get manaregen while not casting
+function ECSData:ManaRegenNotCasting()
+    local base, casting = GetManaRegen() -- Returns mana reg per 1 second
+    return ECSData:Round(base) * 5
 end
 
 -- Get manaregen while casting
 function ECSData:ManaRegenCasting()
-    local base, casting = GetManaRegen()
-    return ECSData:Round(casting)
+    local base, casting = GetManaRegen() -- Returns mana reg per 1 second
+    return ECSData:Round(casting) * 5
 end
 
 -- Get melee crit chance
@@ -161,46 +161,40 @@ function ECSData:GetStatInfo(refName)
     if refName == "RangedHit" then
        return ECSData:HitModifier()
     end
+    if refName == "RangedCritChance" then
+        return ECSData:RangedCrit()
+    end
 
     if refName == "MeleeHit" then
        return ECSData:HitModifier()
     end
-
-    if refName == "SpellHit" then
-       return ECSData:SpellHitModifier()
+    if refName == "MeleeCritChance" then
+        return ECSData:MeleeCrit()
     end
 
     if refName == "DodgeChance" then
         return ECSData:Dodge()
     end
-
     if refName == "ParryChance" then
         return ECSData:Parry()
     end
-
     if refName == "BlockChance" then
         return ECSData:Block()
     end
 
-    if refName == "RangedCritChance" then
-        return ECSData:RangedCrit()
+    if refName == "SpellHit" then
+       return ECSData:SpellHitModifier()
     end
-
-    if refName == "MeleeCritChance" then
-        return ECSData:MeleeCrit()
-    end
-
     if refName == "SpellCritChance" then
         return ECSData:SpellCrit()
     end
 
-    if refName == "MP5Current" then
-        return ECSData:ManaRegenCurrent()
-    end
-    if refName == "MP5Casting" then
-        return ECSData:ManaRegenCasting()
-    end
-
+    -- if refName == "MP5Current" then
+    --     return ECSData:ManaRegenCurrent()
+    -- end
+    -- if refName == "MP5Casting" then
+    --     return ECSData:ManaRegenCasting()
+    -- end
     if refName == "MP5NotCasting" then
         return ECSData:ManaRegenNotCasting()
     end
@@ -208,59 +202,45 @@ function ECSData:GetStatInfo(refName)
     if refName == "PhysicalCritChance" then
         return ECSData:PhysicalCrit()
     end
-
     if refName == "ArcaneCritChance" then
         return ECSData:ArcaneCrit()
     end
-
     if refName == "NatureDmg" then
         return ECSData:NatureDmg()
     end
-
     if refName == "HolyDmg" then
         return ECSData:HolyDmg()
     end
-
     if refName == "FrostCritChance" then
         return ECSData:FrostCrit()
     end
-
     if refName == "FireDmg" then
         return ECSData:FireDmg()
     end
-
     if refName == "BonusHealing" then
         return ECSData:HealingBonus()
     end
-
     if refName == "FireCritChance" then
         return ECSData:FireCrit()
     end
-
     if refName == "ShadowDmg" then
         return ECSData:ShadowDmg()
     end
-
     if refName == "FrostDmg" then
         return ECSData:FrostDmg()
     end
-
     if refName == "HolyCritChance" then
         return ECSData:HolyCrit()
     end
-
     if refName == "PhysicalDmg" then
         return ECSData:PhysicalDmg()
     end
-
     if refName == "ShadowCritChance" then
         return ECSData:ShadowCrit()
     end
-
     if refName == "ArcaneDmg" then
         return ECSData:ArcaneDmg()
     end
-
     if refName == "NatureCritChance" then
         return ECSData:NatureCrit()
     end

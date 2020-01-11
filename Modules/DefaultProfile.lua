@@ -7,26 +7,6 @@ local ECSConfig = core.ECSConfig
 local function GetDefaultProfile()
     return {
 
-        defense = {
-            display = true,
-            refName = "DefenseHeader",
-            text = "Defense",
-
-            block = {display = true, refName = "BlockChance", text = "Block: "},
-            parry = {display = true, refName = "ParryChance", text = "Parry: "},
-            dodge = {display = true, refName = "DodgeChance", text = "Dodge: "}
-        },
-
-        regen = {
-            display = true,
-            refName = "ManaHeader",
-            text = "Mana",
-
-            mp5Casting = {display = true, refName = "MP5Casting", text = "MP5 (Casting): "},
-            mp5NotCasting = {display = true, refName = "MP5NotCasting", text = "MP5 (Not Casting): "},
-            mp5Current = {display = true, refName = "MP5Current", text = "MP5: "}
-        },
-
         melee = {
             display = true,
             refName = "MeleeHeader",
@@ -43,6 +23,26 @@ local function GetDefaultProfile()
 
             hit = {display = true, refName = "RangedHit", text = "Hit Modifier: "},
             crit = {display = true, refName = "RangedCritChance", text = "Crit: "}
+        },
+
+        defense = {
+            display = true,
+            refName = "DefenseHeader",
+            text = "Defense",
+
+            block = {display = true, refName = "BlockChance", text = "Block: "},
+            parry = {display = true, refName = "ParryChance", text = "Parry: "},
+            dodge = {display = true, refName = "DodgeChance", text = "Dodge: "}
+        },
+
+        regen = {
+            display = true,
+            refName = "ManaHeader",
+            text = "Mana",
+
+            -- mp5Casting = {display = true, refName = "MP5Casting", text = "MP5 (Casting): "},
+            mp5NotCasting = {display = true, refName = "MP5NotCasting", text = "MP5 through Spirit: "},
+            -- mp5Current = {display = true, refName = "MP5Current", text = "MP5: "}
         },
 
         spell = {

@@ -60,7 +60,6 @@ _InitGUI = function ()
     ECS_EVENT_FRAME:RegisterEvent("PLAYER_ENTERING_WORLD")  -- Triggers whenever the player log in, zone in to a new zone or reloads the UI
     ECS_EVENT_FRAME:RegisterEvent("PLAYER_EQUIPMENT_CHANGED") -- Triggers whenever the player changes gear
     ECS_EVENT_FRAME:RegisterEvent("UNIT_POWER_UPDATE") -- Triggers whenever the player changes gear
-    -- ECS_EVENT_FRAME:RegisterEvent("PLAYER_REGEN_DISABLED") -- Triggers whenever the player changes gear
     ECS_EVENT_FRAME:RegisterEvent("UPDATE_SHAPESHIFT_FORM") -- Triggers whenever the player changes gear
 
     -- Event handler for all the subscribed events

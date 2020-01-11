@@ -77,25 +77,25 @@ function ECSConfig:CreateConfigWindow()
     -- If checked it should be displayed
     -- If the header is unchecked, children will not be allowed to be displayed
 
-    -- Ranged
-    -- ExtendedCharacterStats.profile.ranged.display
-    CreateRangedOptions()
+    -- Melee
+    -- ExtendedCharacterStats.profile.melee.display
+    CreateMeleeOptions()
 
     -- Defense
     -- ExtendedCharacterStats.profile.defense.display
     CreateDefenseOptions()
 
-    -- Melee
-    -- ExtendedCharacterStats.profile.melee.display
-    CreateMeleeOptions()
+    -- Regen
+    -- ExtendedCharacterStats.profile.Regen.display
+    CreateRegenOptions()
+
+    -- Ranged
+    -- ExtendedCharacterStats.profile.ranged.display
+    CreateRangedOptions()
 
     -- Spell
     -- ExtendedCharacterStats.profile.spell.display
     CreateSpellOptions()
-
-    -- Regen
-    -- ExtendedCharacterStats.profile.Regen.display
-    CreateRegenOptions()
 
     -- SpellBonus
     -- ExtendedCharacterStats.profile.SpellBonus.display
@@ -330,18 +330,18 @@ function CreateRegenOptions()
     -- Create Sub-Header Options
 
     -- Casting Regen
-    local ShowRegenCasting = CreateCheckBox(40, leftOffset, "Casting", "TOPLEFT")
-    leftOffset = leftOffset - 30
+    -- local ShowRegenCasting = CreateCheckBox(40, leftOffset, "Casting", "TOPLEFT")
+    -- leftOffset = leftOffset - 30
 
-    ShowRegenCasting:SetScript("OnClick", function()
-        ExtendedCharacterStats.profile.regen.mp5Casting.display = not ExtendedCharacterStats.profile.regen.mp5Casting.display
-        local show = ExtendedCharacterStats.profile.regen.mp5Casting.display
-        ShowRegenCasting:SetChecked(show)
-    end)
+    -- ShowRegenCasting:SetScript("OnClick", function()
+    --     ExtendedCharacterStats.profile.regen.mp5Casting.display = not ExtendedCharacterStats.profile.regen.mp5Casting.display
+    --     local show = ExtendedCharacterStats.profile.regen.mp5Casting.display
+    --     ShowRegenCasting:SetChecked(show)
+    -- end)
 
-    ShowRegenCasting:SetScript("OnUpdate", function()
-        ShowRegenCasting:SetChecked(ExtendedCharacterStats.profile.regen.mp5Casting.display)
-    end)
+    -- ShowRegenCasting:SetScript("OnUpdate", function()
+    --     ShowRegenCasting:SetChecked(ExtendedCharacterStats.profile.regen.mp5Casting.display)
+    -- end)
 
     -- Not Casting Regen
     local ShowRegenNotCasting = CreateCheckBox(40, leftOffset, "Not Casting", "TOPLEFT")
@@ -358,18 +358,18 @@ function CreateRegenOptions()
     end)
 
     -- Current Regen
-    local ShowCurrentRegen = CreateCheckBox(40, leftOffset, "Current", "TOPLEFT")
-    leftOffset = leftOffset - 30
+    -- local ShowCurrentRegen = CreateCheckBox(40, leftOffset, "Current", "TOPLEFT")
+    -- leftOffset = leftOffset - 30
 
-    ShowCurrentRegen:SetScript("OnClick", function()
-        ExtendedCharacterStats.profile.regen.mp5Current.display = not ExtendedCharacterStats.profile.regen.mp5Current.display
-        local show = ExtendedCharacterStats.profile.regen.mp5Current.display
-        ShowCurrentRegen:SetChecked(show)
-    end)
+    -- ShowCurrentRegen:SetScript("OnClick", function()
+    --     ExtendedCharacterStats.profile.regen.mp5Current.display = not ExtendedCharacterStats.profile.regen.mp5Current.display
+    --     local show = ExtendedCharacterStats.profile.regen.mp5Current.display
+    --     ShowCurrentRegen:SetChecked(show)
+    -- end)
 
-    ShowCurrentRegen:SetScript("OnUpdate", function()
-        ShowCurrentRegen:SetChecked(ExtendedCharacterStats.profile.regen.mp5Current.display)
-    end)
+    -- ShowCurrentRegen:SetScript("OnUpdate", function()
+    --     ShowCurrentRegen:SetChecked(ExtendedCharacterStats.profile.regen.mp5Current.display)
+    -- end)
 end
 
 function CreateSpellBonusOptions()
@@ -639,30 +639,147 @@ function ECSConfig:CreateWindow()
     ECSMainWindow.ScrollChild:SetSize(ExtendedCharacterStats.windowSize.width, ExtendedCharacterStats.windowSize.height)
     ECSMainWindow.ScrollFrame:SetScrollChild(ECSMainWindow.ScrollChild)
 
-    -- Read the loaded profile and create elements from that
-    for a, b in pairs(ExtendedCharacterStats.profile) do
-        -- Looping through profile
-        -- Create the Headers
+    local function _CreateStatInfo(category)
+        if category.display then
+            ECSConfig:CreateHeader(category.refName, category.text)
 
-        if (b.display == true) then
-            ECSConfig:CreateHeader(b.refName, b.text)
-        end
-
-        if type(b) == "table" and b.display == true then
-            -- Loop through all sub items
-
-            for c, d in pairs(b) do
-
-                -- If item is table
-                if type(d) == "table" then
-
-                    -- Check if item should be created
-                    if d.display == true then
-                        -- Create the item
-                        ECSConfig:CreateText(d.refName, d.text .. core.ECSData:GetStatInfo(d.refName))
-                    end
+            -- Loop through all stats
+            for _, stat in pairs(category) do
+                if type(stat) == "table" and stat.display == true then
+                    -- Create the item
+                    ECSConfig:CreateText(stat.refName, stat.text .. core.ECSData:GetStatInfo(stat.refName))
                 end
             end
+        end
+    end
+
+    local category = ExtendedCharacterStats.profile.melee
+    if category.display then
+        ECSConfig:CreateHeader(category.refName, category.text)
+        local stat = category.hit
+        if stat.display then
+            ECSConfig:CreateText(stat.refName, stat.text .. core.ECSData:GetStatInfo(stat.refName))
+        end
+        stat = category.crit
+        if stat.display then
+            ECSConfig:CreateText(stat.refName, stat.text .. core.ECSData:GetStatInfo(stat.refName))
+        end
+    end
+
+    category = ExtendedCharacterStats.profile.ranged
+    if category.display then
+        ECSConfig:CreateHeader(category.refName, category.text)
+        local stat = category.hit
+        if stat.display then
+            ECSConfig:CreateText(stat.refName, stat.text .. core.ECSData:GetStatInfo(stat.refName))
+        end
+        stat = category.crit
+        if stat.display then
+            ECSConfig:CreateText(stat.refName, stat.text .. core.ECSData:GetStatInfo(stat.refName))
+        end
+    end
+
+    category = ExtendedCharacterStats.profile.defense
+    if category.display then
+        ECSConfig:CreateHeader(category.refName, category.text)
+        local stat = category.block
+        if stat.display then
+            ECSConfig:CreateText(stat.refName, stat.text .. core.ECSData:GetStatInfo(stat.refName))
+        end
+        stat = category.parry
+        if stat.display then
+            ECSConfig:CreateText(stat.refName, stat.text .. core.ECSData:GetStatInfo(stat.refName))
+        end
+        stat = category.dodge
+        if stat.display then
+            ECSConfig:CreateText(stat.refName, stat.text .. core.ECSData:GetStatInfo(stat.refName))
+        end
+    end
+
+    category = ExtendedCharacterStats.profile.regen
+    if category.display then
+        ECSConfig:CreateHeader(category.refName, category.text)
+        local stat = category.mp5NotCasting
+        if stat.display then
+            ECSConfig:CreateText(stat.refName, stat.text .. core.ECSData:GetStatInfo(stat.refName))
+        end
+    end
+
+    category = ExtendedCharacterStats.profile.spell
+    if category.display then
+        ECSConfig:CreateHeader(category.refName, category.text)
+        local stat = category.hit
+        if stat.display then
+            ECSConfig:CreateText(stat.refName, stat.text .. core.ECSData:GetStatInfo(stat.refName))
+        end
+        stat = category.crit
+        if stat.display then
+            ECSConfig:CreateText(stat.refName, stat.text .. core.ECSData:GetStatInfo(stat.refName))
+        end
+    end
+
+    category = ExtendedCharacterStats.profile.spellBonus
+    if category.display then
+        ECSConfig:CreateHeader(category.refName, category.text)
+        local stat = category.bonusHealing
+        if stat.display then
+            ECSConfig:CreateText(stat.refName, stat.text .. core.ECSData:GetStatInfo(stat.refName))
+        end
+        stat = category.arcaneDmg
+        if stat.display then
+            ECSConfig:CreateText(stat.refName, stat.text .. core.ECSData:GetStatInfo(stat.refName))
+        end
+        stat = category.arcaneCrit
+        if stat.display then
+            ECSConfig:CreateText(stat.refName, stat.text .. core.ECSData:GetStatInfo(stat.refName))
+        end
+        stat = category.fireDmg
+        if stat.display then
+            ECSConfig:CreateText(stat.refName, stat.text .. core.ECSData:GetStatInfo(stat.refName))
+        end
+        stat = category.fireCrit
+        if stat.display then
+            ECSConfig:CreateText(stat.refName, stat.text .. core.ECSData:GetStatInfo(stat.refName))
+        end
+        stat = category.frostDmg
+        if stat.display then
+            ECSConfig:CreateText(stat.refName, stat.text .. core.ECSData:GetStatInfo(stat.refName))
+        end
+        stat = category.frostCrit
+        if stat.display then
+            ECSConfig:CreateText(stat.refName, stat.text .. core.ECSData:GetStatInfo(stat.refName))
+        end
+        stat = category.holyDmg
+        if stat.display then
+            ECSConfig:CreateText(stat.refName, stat.text .. core.ECSData:GetStatInfo(stat.refName))
+        end
+        stat = category.holyCrit
+        if stat.display then
+            ECSConfig:CreateText(stat.refName, stat.text .. core.ECSData:GetStatInfo(stat.refName))
+        end
+        stat = category.natureDmg
+        if stat.display then
+            ECSConfig:CreateText(stat.refName, stat.text .. core.ECSData:GetStatInfo(stat.refName))
+        end
+        stat = category.natureCrit
+        if stat.display then
+            ECSConfig:CreateText(stat.refName, stat.text .. core.ECSData:GetStatInfo(stat.refName))
+        end
+        stat = category.physicalDmg
+        if stat.display then
+            ECSConfig:CreateText(stat.refName, stat.text .. core.ECSData:GetStatInfo(stat.refName))
+        end
+        stat = category.physicalCrit
+        if stat.display then
+            ECSConfig:CreateText(stat.refName, stat.text .. core.ECSData:GetStatInfo(stat.refName))
+        end
+        stat = category.shadowDmg
+        if stat.display then
+            ECSConfig:CreateText(stat.refName, stat.text .. core.ECSData:GetStatInfo(stat.refName))
+        end
+        stat = category.shadowCrit
+        if stat.display then
+            ECSConfig:CreateText(stat.refName, stat.text .. core.ECSData:GetStatInfo(stat.refName))
         end
     end
 
@@ -705,18 +822,12 @@ function ECSConfig:UpdateInformation()
 
     -- Loop through all categories
     for _, category in pairs(ExtendedCharacterStats.profile) do
-
-        if type(category) == "table" and category.display == true then
+        if category.display == true then
 
             -- Loop through all stats
             for _, stat in pairs(category) do
-
-                -- If item is table
-                if type(stat) == "table" then
-
-                    if stat.display == true then
-                        ECSConfig:UpdateItem(stat.refName, stat.text .. core.ECSData:GetStatInfo(stat.refName))
-                    end
+                if type(stat) == "table" and stat.display == true then
+                    ECSConfig:UpdateItem(stat.refName, stat.text .. core.ECSData:GetStatInfo(stat.refName))
                 end
             end
         end
