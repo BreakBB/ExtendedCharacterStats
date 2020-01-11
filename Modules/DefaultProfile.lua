@@ -41,9 +41,9 @@ local function GetDefaultProfile()
             refName = "ManaHeader",
             text = "Mana",
 
-            -- mp5Casting = {display = true, refName = "MP5Casting", text = "MP5 (Casting): "},
-            mp5NotCasting = {display = true, refName = "MP5NotCasting", text = "MP5 through Spirit: "},
-            -- mp5Current = {display = true, refName = "MP5Current", text = "MP5: "}
+            mp5Items = {display = true, refName = "MP5Items", text = "MP5 (Items): "},
+            mp5Spirit = {display = true, refName = "MP5Spirit", text = "MP5 (Spirit): "},
+            mp5Casting = {display = true, refName = "MP5Casting", text = "MP5 (Casting): "},
         },
 
         spell = {

@@ -11,149 +11,203 @@ local ECSData = core.ECSData
 -- Data functions
 ------------------------------------------------------------------
 
--- Rounds every number down to 2 decimal places
-function ECSData:Round(num)
+-- Rounds every number down to the given decimal places
+function ECSData:Round(num, decimalPlaces)
     if not num then
         return 0
     end
-    local mult = 10^(2)
+    local mult = 10^(decimalPlaces)
     return math.floor(num * mult + 0.5) / mult
 end
 
 -- Gets the current bonus hit chance
 function ECSData:HitModifier()
-    return ECSData:Round(GetHitModifier()) .. "%"
+    return ECSData:Round(GetHitModifier(), 2) .. "%"
 end
 
 function ECSData:SpellHitModifier()
-    return ECSData:Round(GetSpellHitModifier()) .. "%"
+    return ECSData:Round(GetSpellHitModifier(), 2) .. "%"
 end
 
--- Get current mana regen
-function ECSData:ManaRegenCurrent()
-    return ECSData:Round(GetPowerRegen()) * 5
+-- Get MP5 from items
+function ECSData:MP5FromItems()
+    local mp5 = 0
+    for i = 1, 18 do
+        local itemLink = GetInventoryItemLink("player", i)
+        if itemLink then
+            local stats = GetItemStats(itemLink)
+            if stats then
+                local statMP5 = stats["ITEM_MOD_POWER_REGEN0_SHORT"]
+                if statMP5 then
+                    mp5 = mp5 + statMP5 + 1
+                end
+            end
+        end
+    end
+    return mp5
 end
 
--- Get manaregen while not casting
-function ECSData:ManaRegenNotCasting()
-    local base, casting = GetManaRegen() -- Returns mana reg per 1 second
-    return ECSData:Round(base) * 5
+local lastManaReg = 0
+
+-- Get MP5 from spirit
+function ECSData:MP5FromSpirit()
+    local base, _ = GetManaRegen() -- Returns mana reg per 1 second
+    if base < 1 then
+        base = lastManaReg
+    end
+    lastManaReg = base
+    return ECSData:Round(base, 0) * 5
+end
+
+local function _GetTalentModifier()
+    local _, _, classId = UnitClass("player")
+    local mod = 0
+
+    if classId == 5 then -- Priest
+        local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 8)
+        mod = points * 0.05 -- 0-15% from Meditation
+    end
+
+    if classId == 8 then -- Mage
+        local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 12)
+        mod = points * 0.05 -- 0-15% Arcane Meditation
+    end
+
+    if classId == 11 then -- Druid
+        local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 6)
+        mod = points * 0.05 -- 0-15% from Reflection
+    end
+
+    return mod
 end
 
 -- Get manaregen while casting
-function ECSData:ManaRegenCasting()
-    local base, casting = GetManaRegen() -- Returns mana reg per 1 second
-    return ECSData:Round(casting) * 5
+function ECSData:MP5WhileCasting()
+    local _, casting = GetManaRegen() -- Returns mana reg per 1 second
+    if casting < 1 then
+        casting = lastManaReg
+    end
+    lastManaReg = casting
+
+    local mod = _GetTalentModifier()
+    if mod > 0 then
+        casting = casting * mod
+    end
+
+    local mp5Items = ECSData:MP5FromItems()
+    casting = (casting * 5) + mp5Items
+
+    return ECSData:Round(casting, 2)
 end
 
 -- Get melee crit chance
 function ECSData:MeleeCrit()
-    return ECSData:Round(GetCritChance()) .. "%"
+    return ECSData:Round(GetCritChance(), 2) .. "%"
 end
 
 -- Get spell crit chance
 function ECSData:SpellCrit()
-    return ECSData:Round(GetSpellCritChance()) .. "%"
+    return ECSData:Round(GetSpellCritChance(), 2) .. "%"
 end
 
 -- Get ranged crit chance
 function ECSData:RangedCrit()
-    return ECSData:Round(GetRangedCritChance()) .. "%"
+    return ECSData:Round(GetRangedCritChance(), 2) .. "%"
 end
 
 -- Get spell penetration %
 function ECSData:SpellPenetration()
-    return ECSData:Round(GetSpellPenetration()) .. "%"
+    return ECSData:Round(GetSpellPenetration(), 2) .. "%"
 end
 
 -- Get dodge chacne
 function ECSData:Dodge()
-    return ECSData:Round(GetDodgeChance()) .. "%"
+    return ECSData:Round(GetDodgeChance(), 2) .. "%"
 end
 
 -- Get parry chance
 function ECSData:Parry()
-    return ECSData:Round(GetParryChance()) .. "%"
+    return ECSData:Round(GetParryChance(), 2) .. "%"
 end
 
 -- Get block chance
 function ECSData:Block()
-    return ECSData:Round(GetBlockChance()) .. "%"
+    return ECSData:Round(GetBlockChance(), 2) .. "%"
 end
 
 -- Get phys dmg bonus
 function ECSData:PhysicalDmg()
-    return ECSData:Round(GetSpellBonusDamage(1))
+    return GetSpellBonusDamage(1)
 end
 
 -- Get phys crit chance
 function ECSData:PhysicalCrit()
-    return ECSData:Round(GetSpellCritChance(1)) .. "%"
+    return ECSData:Round(GetSpellCritChance(1), 2) .. "%"
 end
 
 -- Get holy bonus dmg
 function ECSData:HolyDmg()
-    return ECSData:Round(GetSpellBonusDamage(2))
+    return GetSpellBonusDamage(2)
 end
 
 -- Get holy crit chance
 function ECSData:HolyCrit()
-    return ECSData:Round(GetSpellCritChance(2)) .. "%"
+    return ECSData:Round(GetSpellCritChance(2), 2) .. "%"
 end
 
 -- Get fire bonus dmg
 function ECSData:FireDmg()
-    return ECSData:Round(GetSpellBonusDamage(3))
+    return GetSpellBonusDamage(3)
 end
 
 -- Get fire crit chance
 function ECSData:FireCrit()
-    return ECSData:Round(GetSpellCritChance(3)) .. "%"
+    return ECSData:Round(GetSpellCritChance(3), 2) .. "%"
 end
 
 -- Get nature bonus dmg
 function ECSData:NatureDmg()
-    return ECSData:Round(GetSpellBonusDamage(4))
+    return GetSpellBonusDamage(4)
 end
 
 -- Get nature crit chance
 function ECSData:NatureCrit()
-    return ECSData:Round(GetSpellCritChance(4)) .. "%"
+    return ECSData:Round(GetSpellCritChance(4), 2) .. "%"
 end
 
 -- Get frost bonus dmg
 function ECSData:FrostDmg()
-    return ECSData:Round(GetSpellBonusDamage(5))
+    return GetSpellBonusDamage(5)
 end
 
 -- Get frost crit chance
 function ECSData:FrostCrit()
-    return ECSData:Round(GetSpellCritChance(5)) .. "%"
+    return ECSData:Round(GetSpellCritChance(5), 2) .. "%"
 end
 
 -- Get shadow bonus dmg
 function ECSData:ShadowDmg()
-    return ECSData:Round(GetSpellBonusDamage(6))
+    return GetSpellBonusDamage(6)
 end
 
 -- Get shadow crit chance
 function ECSData:ShadowCrit()
-    return ECSData:Round(GetSpellCritChance(6)) .. "%"
+    return ECSData:Round(GetSpellCritChance(6), 2) .. "%"
 end
 
 -- Get arcane bonus dmg
 function ECSData:ArcaneDmg()
-    return ECSData:Round(GetSpellBonusDamage(7))
+    return GetSpellBonusDamage(7)
 end
 
 -- Get arcane crit chance
 function ECSData:ArcaneCrit()
-    return ECSData:Round(GetSpellCritChance(7)) .. "%"
+    return ECSData:Round(GetSpellCritChance(7), 2) .. "%"
 end
 
 -- Get bonus healing power
 function ECSData:HealingBonus()
-    return ECSData:Round(GetSpellBonusHealing())
+    return GetSpellBonusHealing()
 end
 
 function ECSData:GetStatInfo(refName)
@@ -189,14 +243,14 @@ function ECSData:GetStatInfo(refName)
         return ECSData:SpellCrit()
     end
 
-    -- if refName == "MP5Current" then
-    --     return ECSData:ManaRegenCurrent()
-    -- end
-    -- if refName == "MP5Casting" then
-    --     return ECSData:ManaRegenCasting()
-    -- end
-    if refName == "MP5NotCasting" then
-        return ECSData:ManaRegenNotCasting()
+    if refName == "MP5Items" then
+        return ECSData:MP5FromItems()
+    end
+    if refName == "MP5Spirit" then
+        return ECSData:MP5FromSpirit()
+    end
+    if refName == "MP5Casting" then
+        return ECSData:MP5WhileCasting()
     end
 
     if refName == "PhysicalCritChance" then

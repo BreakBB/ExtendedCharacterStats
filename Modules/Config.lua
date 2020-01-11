@@ -305,7 +305,7 @@ function ECSConfig:CreateRegenOptions()
 
     -- Create Header Options
     local ShowRegen = _CreateCheckBox(20, leftOffset, "Mana", "TOPLEFT")
-    local ShowRegenNotCasting -- forward declaration
+    local ShowRegenSpirit -- forward declaration
     leftOffset = leftOffset - 30
     local regenProfile = ExtendedCharacterStats.profile.regen
 
@@ -313,10 +313,10 @@ function ECSConfig:CreateRegenOptions()
         local show = not regenProfile.display
         ExtendedCharacterStats.profile.regen.display = show
         ShowRegen:SetChecked(show)
-        ShowRegenNotCasting:SetEnabled(show)
+        ShowRegenSpirit:SetEnabled(show)
         if not show then
             ECSConfig:RecycleFrame(core.displayedStats[regenProfile.refName])
-            ECSConfig:RecycleFrame(core.displayedStats[regenProfile.mp5NotCasting.refName])
+            ECSConfig:RecycleFrame(core.displayedStats[regenProfile.mp5Spirit.refName])
         end
         ECSConfig:RebuildStatInfos()
     end)
@@ -324,40 +324,50 @@ function ECSConfig:CreateRegenOptions()
 
     -- Create Sub-Header Options
 
-    -- Casting Regen
-    -- local ShowRegenCasting = CreateCheckBox(40, leftOffset, "Casting", "TOPLEFT")
-    -- leftOffset = leftOffset - 30
-
-    -- ShowRegenCasting:SetScript("OnClick", function()
-    --     ExtendedCharacterStats.profile.regen.mp5Casting.display = not ExtendedCharacterStats.profile.regen.mp5Casting.display
-    --     local show = ExtendedCharacterStats.profile.regen.mp5Casting.display
-    --     ShowRegenCasting:SetChecked(show)
-    -- end)
-
-    -- Not Casting Regen
-    ShowRegenNotCasting = _CreateCheckBox(40, leftOffset, "Not Casting", "TOPLEFT")
+    -- MP5 from Items
+    local ShowRegenItems = _CreateCheckBox(40, leftOffset, "MP5 (Items)", "TOPLEFT")
     leftOffset = leftOffset - 30
 
-    ShowRegenNotCasting:SetScript("OnClick", function()
-        local show = not regenProfile.mp5NotCasting.display
-        ExtendedCharacterStats.profile.regen.mp5NotCasting.display = show
-        ShowRegenNotCasting:SetChecked(show)
+    ShowRegenItems:SetScript("OnClick", function()
+        local show = not regenProfile.mp5Items.display
+        ExtendedCharacterStats.profile.regen.mp5Items.display = show
+        ShowRegenItems:SetChecked(show)
         if not show then
-            ECSConfig:RecycleFrame(core.displayedStats[regenProfile.mp5NotCasting.refName])
+            ECSConfig:RecycleFrame(core.displayedStats[regenProfile.mp5Items.refName])
         end
         ECSConfig:RebuildStatInfos()
     end)
-    ShowRegenNotCasting:SetChecked(ExtendedCharacterStats.profile.regen.mp5NotCasting.display)
+    ShowRegenItems:SetChecked(regenProfile.mp5Items.display)
 
-    -- Current Regen
-    -- local ShowCurrentRegen = CreateCheckBox(40, leftOffset, "Current", "TOPLEFT")
-    -- leftOffset = leftOffset - 30
+    -- MP5 from Spirit
+    ShowRegenSpirit = _CreateCheckBox(40, leftOffset, "MP5 (Spirit)", "TOPLEFT")
+    leftOffset = leftOffset - 30
 
-    -- ShowCurrentRegen:SetScript("OnClick", function()
-    --     ExtendedCharacterStats.profile.regen.mp5Current.display = not ExtendedCharacterStats.profile.regen.mp5Current.display
-    --     local show = ExtendedCharacterStats.profile.regen.mp5Current.display
-    --     ShowCurrentRegen:SetChecked(show)
-    -- end)
+    ShowRegenSpirit:SetScript("OnClick", function()
+        local show = not regenProfile.mp5Spirit.display
+        ExtendedCharacterStats.profile.regen.mp5Spirit.display = show
+        ShowRegenSpirit:SetChecked(show)
+        if not show then
+            ECSConfig:RecycleFrame(core.displayedStats[regenProfile.mp5Spirit.refName])
+        end
+        ECSConfig:RebuildStatInfos()
+    end)
+    ShowRegenSpirit:SetChecked(regenProfile.mp5Spirit.display)
+
+    -- Casting Regen
+    local ShowRegenCasting = _CreateCheckBox(40, leftOffset, "Casting", "TOPLEFT")
+    leftOffset = leftOffset - 30
+
+    ShowRegenCasting:SetScript("OnClick", function()
+        local show = not regenProfile.mp5Casting.display
+        ExtendedCharacterStats.profile.regen.mp5Casting.display = show
+        ShowRegenCasting:SetChecked(show)
+        if not show then
+            ECSConfig:RecycleFrame(core.displayedStats[regenProfile.mp5Casting.refName])
+        end
+        ECSConfig:RebuildStatInfos()
+    end)
+    ShowRegenCasting:SetChecked(regenProfile.mp5Casting.display)
 end
 
 function ECSConfig:CreateSpellOptions()
@@ -758,7 +768,7 @@ function ECSConfig:CreateStatInfos()
     _CreateStatInfo(category, category.block, category.parry, category.dodge)
 
     category = profile.regen
-    _CreateStatInfo(category, category.mp5NotCasting)
+    _CreateStatInfo(category, category.mp5Items, category.mp5Spirit, category.mp5Casting)
 
     category = profile.spell
     _CreateStatInfo(category, category.hit, category.crit)
