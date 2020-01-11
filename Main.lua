@@ -33,6 +33,10 @@ end)
 _InitAddon = function()
     if ExtendedCharacterStats == nil then
         ExtendedCharacterStats = {}
+    elseif ExtendedCharacterStats.v2reset == nil then
+        -- Reset the settings for the update to v2.0.0
+        ExtendedCharacterStats = {}
+        ExtendedCharacterStats.v2reset = true
     end
 
     if ExtendedCharacterStats.profile == nil then
