@@ -8,7 +8,7 @@
 [![Commits Since Latest](https://img.shields.io/github/commits-since/BreakBB/ExtendedCharacterStats/latest.svg)](https://github.com/BreakBB/ExtendedCharacterStats/commits/master)
 
 
-![image](https://user-images.githubusercontent.com/33514570/72207049-1e385080-3495-11ea-8663-86eb392a32c0.png)
+![image](https://user-images.githubusercontent.com/33514570/72217711-4aee7580-3532-11ea-9200-2417914db639.png)
 
 
 ## Issues / Bug reports
