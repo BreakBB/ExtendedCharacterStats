@@ -121,21 +121,25 @@ end
 function ECSConfig:CreateMeleeOptions()
     -- Create Header Options
     local ShowMelee = _CreateCheckBox(20, leftOffset, "Melee", "TOPLEFT")
-    local ShowMeleeHitBonus, ShowMeleeHitSameLevel, ShowMeleeHitBossLevel, ShowMeleeCrit -- forward declaration
+    local ShowMeleeHitBonus, ShowMeleeMissSameLevel, ShowMeleeMissBossLevel, ShowMeleeCrit -- forward declaration
     leftOffset = leftOffset - 30
     local meleeProfile = ExtendedCharacterStats.profile.melee
 
     ShowMelee:SetScript("OnClick", function()
         local show = not meleeProfile.display
         ExtendedCharacterStats.profile.melee.display = show
+        ExtendedCharacterStats.profile.melee.hit.display = show
         ShowMelee:SetChecked(show)
         ShowMeleeHitBonus:SetEnabled(show)
+        ShowMeleeMissSameLevel:SetEnabled(show)
+        ShowMeleeMissBossLevel:SetEnabled(show)
         ShowMeleeCrit:SetEnabled(show)
         if not show then
             ECSConfig:RecycleFrame(core.displayedStats[meleeProfile.refName])
             ECSConfig:RecycleFrame(core.displayedStats[meleeProfile.hit.refName])
-            ECSConfig:RecycleFrame(core.displayedStats[meleeProfile.sameLevel.refName])
-            ECSConfig:RecycleFrame(core.displayedStats[meleeProfile.bossLevel.refName])
+            ECSConfig:RecycleFrame(core.displayedStats[meleeProfile.hit.bonus.refName])
+            ECSConfig:RecycleFrame(core.displayedStats[meleeProfile.hit.sameLevel.refName])
+            ECSConfig:RecycleFrame(core.displayedStats[meleeProfile.hit.bossLevel.refName])
             ECSConfig:RecycleFrame(core.displayedStats[meleeProfile.crit.refName])
         end
         ECSConfig:RebuildStatInfos()
@@ -145,49 +149,49 @@ function ECSConfig:CreateMeleeOptions()
     -- Create Sub-Header Options
 
     -- Hit Bonus
-    ShowMeleeHitBonus = _CreateCheckBox(40, leftOffset, "Hit", "TOPLEFT")
+    ShowMeleeHitBonus = _CreateCheckBox(40, leftOffset, "Hit Bonus", "TOPLEFT")
     leftOffset = leftOffset - 30
 
     ShowMeleeHitBonus:SetScript("OnClick", function()
-        local show = not meleeProfile.hit.display
-        ExtendedCharacterStats.profile.melee.hit.display = show
+        local show = not meleeProfile.hit.bonus.display
+        ExtendedCharacterStats.profile.melee.hit.bonus.display = show
         ShowMeleeHitBonus:SetChecked(show)
         if not show then
-            ECSConfig:RecycleFrame(core.displayedStats[meleeProfile.hit.refName])
+            ECSConfig:RecycleFrame(core.displayedStats[meleeProfile.hit.bonus.refName])
         end
         ECSConfig:RebuildStatInfos()
     end)
-    ShowMeleeHitBonus:SetChecked(meleeProfile.hit.display)
+    ShowMeleeHitBonus:SetChecked(meleeProfile.hit.bonus.display)
 
-    -- Hit Change (Same Level)
-    ShowMeleeHitSameLevel = _CreateCheckBox(40, leftOffset, "Hit", "TOPLEFT")
+    -- Miss Chance (Same Level)
+    ShowMeleeMissSameLevel = _CreateCheckBox(40, leftOffset, "Miss Chance", "TOPLEFT")
     leftOffset = leftOffset - 30
 
-    ShowMeleeHitBonus:SetScript("OnClick", function()
+    ShowMeleeMissSameLevel:SetScript("OnClick", function()
         local show = not meleeProfile.hit.sameLevel.display
         ExtendedCharacterStats.profile.melee.hit.sameLevel.display = show
-        ShowMeleeHitSameLevel:SetChecked(show)
+        ShowMeleeMissSameLevel:SetChecked(show)
         if not show then
             ECSConfig:RecycleFrame(core.displayedStats[meleeProfile.hit.sameLevel.refName])
         end
         ECSConfig:RebuildStatInfos()
     end)
-    ShowMeleeHitSameLevel:SetChecked(meleeProfile.hit.sameLevel.display)
+    ShowMeleeMissSameLevel:SetChecked(meleeProfile.hit.sameLevel.display)
 
-    -- Hit Change (Playerlevel + 3)
-    ShowMeleeHitBossLevel = _CreateCheckBox(40, leftOffset, "Hit", "TOPLEFT")
+    -- Miss Chance (Playerlevel + 3)
+    ShowMeleeMissBossLevel = _CreateCheckBox(40, leftOffset, "Miss Chance (+3)", "TOPLEFT")
     leftOffset = leftOffset - 30
 
-    ShowMeleeHitBossLevel:SetScript("OnClick", function()
+    ShowMeleeMissBossLevel:SetScript("OnClick", function()
         local show = not meleeProfile.hit.bossLevel.display
         ExtendedCharacterStats.profile.melee.hit.bossLevel.display = show
-        ShowMeleeHitBossLevel:SetChecked(show)
+        ShowMeleeMissBossLevel:SetChecked(show)
         if not show then
             ECSConfig:RecycleFrame(core.displayedStats[meleeProfile.hit.bossLevel.refName])
         end
         ECSConfig:RebuildStatInfos()
     end)
-    ShowMeleeHitBossLevel:SetChecked(meleeProfile.hit.bossLevel.display)
+    ShowMeleeMissBossLevel:SetChecked(meleeProfile.hit.bossLevel.display)
 
     -- Crit
     ShowMeleeCrit = _CreateCheckBox(40, leftOffset, "Crit", "TOPLEFT")
@@ -209,19 +213,25 @@ function ECSConfig:CreateRangedOptions()
 
     -- Create Header Options
     local ShowRanged = _CreateCheckBox(20, leftOffset, "Ranged", "TOPLEFT")
-    local ShowRangedHit, ShowRangedCrit -- forward declaration
+    local ShowRangedHitBonus, ShowRangedMissChanceSameLevel, ShowRangedMissChanceBossLevel, ShowRangedCrit -- forward declaration
     leftOffset = leftOffset - 30
     local rangedProfile = ExtendedCharacterStats.profile.ranged
 
     ShowRanged:SetScript("OnClick", function()
         local show = not rangedProfile.display
         ExtendedCharacterStats.profile.ranged.display = show
+        ExtendedCharacterStats.profile.ranged.hit.display = show
         ShowRanged:SetChecked(show)
-        ShowRangedHit:SetEnabled(show)
+        ShowRangedHitBonus:SetEnabled(show)
+        ShowRangedMissChanceSameLevel:SetEnabled(show)
+        ShowRangedMissChanceBossLevel:SetEnabled(show)
         ShowRangedCrit:SetEnabled(show)
         if not show then
             ECSConfig:RecycleFrame(core.displayedStats[rangedProfile.refName])
             ECSConfig:RecycleFrame(core.displayedStats[rangedProfile.hit.refName])
+            ECSConfig:RecycleFrame(core.displayedStats[rangedProfile.hit.bonus.refName])
+            ECSConfig:RecycleFrame(core.displayedStats[rangedProfile.hit.sameLevel.refName])
+            ECSConfig:RecycleFrame(core.displayedStats[rangedProfile.hit.bossLevel.refName])
             ECSConfig:RecycleFrame(core.displayedStats[rangedProfile.crit.refName])
         end
         ECSConfig:RebuildStatInfos()
@@ -230,20 +240,50 @@ function ECSConfig:CreateRangedOptions()
 
     -- Create Sub-Header Options
 
-    -- Hit
-    ShowRangedHit = _CreateCheckBox(40, leftOffset, "Hit", "TOPLEFT")
+    -- Hit Bonus
+    ShowRangedHitBonus = _CreateCheckBox(40, leftOffset, "Hit Bonus", "TOPLEFT")
     leftOffset = leftOffset - 30
 
-    ShowRangedHit:SetScript("OnClick", function()
-        local show = not rangedProfile.hit.display
-        ExtendedCharacterStats.profile.ranged.hit.display = show
-        ShowRangedHit:SetChecked(show)
+    ShowRangedHitBonus:SetScript("OnClick", function()
+        local show = not rangedProfile.hit.bonus.display
+        ExtendedCharacterStats.profile.ranged.hit.bonus.display = show
+        ShowRangedHitBonus:SetChecked(show)
         if not show then
-            ECSConfig:RecycleFrame(core.displayedStats[rangedProfile.hit.refName])
+            ECSConfig:RecycleFrame(core.displayedStats[rangedProfile.hit.bonus.refName])
         end
         ECSConfig:RebuildStatInfos()
     end)
-    ShowRangedHit:SetChecked(rangedProfile.hit.display)
+    ShowRangedHitBonus:SetChecked(rangedProfile.hit.bonus.display)
+
+    -- Miss Chance
+    ShowRangedMissChanceSameLevel = _CreateCheckBox(40, leftOffset, "Miss Chance", "TOPLEFT")
+    leftOffset = leftOffset - 30
+
+    ShowRangedMissChanceSameLevel:SetScript("OnClick", function()
+        local show = not rangedProfile.hit.sameLevel.display
+        ExtendedCharacterStats.profile.ranged.hit.sameLevel.display = show
+        ShowRangedMissChanceSameLevel:SetChecked(show)
+        if not show then
+            ECSConfig:RecycleFrame(core.displayedStats[rangedProfile.hit.sameLevel.refName])
+        end
+        ECSConfig:RebuildStatInfos()
+    end)
+    ShowRangedMissChanceSameLevel:SetChecked(rangedProfile.hit.sameLevel.display)
+
+    -- Miss Chance (+3)
+    ShowRangedMissChanceBossLevel = _CreateCheckBox(40, leftOffset, "Miss Chance (+3)", "TOPLEFT")
+    leftOffset = leftOffset - 30
+
+    ShowRangedMissChanceBossLevel:SetScript("OnClick", function()
+        local show = not rangedProfile.hit.bossLevel.display
+        ExtendedCharacterStats.profile.ranged.hit.bossLevel.display = show
+        ShowRangedMissChanceBossLevel:SetChecked(show)
+        if not show then
+            ECSConfig:RecycleFrame(core.displayedStats[rangedProfile.hit.bossLevel.refName])
+        end
+        ECSConfig:RebuildStatInfos()
+    end)
+    ShowRangedMissChanceBossLevel:SetChecked(rangedProfile.hit.bossLevel.display)
 
     -- Crit
     ShowRangedCrit = _CreateCheckBox(40, leftOffset, "Crit", "TOPLEFT")
@@ -775,7 +815,7 @@ function ECSConfig:CreateWindow()
 end
 
 local function _CreateStatInfo(category, ...)
-    if category.display then
+    if category.display == true then
         ECSConfig:CreateHeader(category.refName, category.text, category.isSubGroup)
         local stats = {...}
         -- Loop through all stats
