@@ -7,11 +7,33 @@ core.ECSData = { }
 
 local ECSData = core.ECSData
 
+local CHAR_EQUIP_SLOTS = {
+    ["Head"] = "HeadSlot",
+    ["Neck"] = "NeckSlot",
+    ["Shoulder"] = "ShoulderSlot",
+    ["Back"] = "BackSlot",
+    ["Chest"] = "ChestSlot",
+    ["Shirt"] = "ShirtSlot",
+    ["Tabard"] = "TabardSlot",
+    ["Wrist"] = "WristSlot",
+    ["Hands"] = "HandsSlot",
+    ["Wairst"] = "WaistSlot",
+    ["Legs"] = "LegsSlot",
+    ["Feet"] = "FeetSlot",
+    ["Finger1"] = "Finger0Slot",
+    ["Finger2"] = "Finger1Slot",
+    ["Trinket1"] = "Trinket0Slot",
+    ["Trinket2"] = "Trinket1Slot",
+    ["MainHand"] = "MainHandSlot",
+    ["OffHand"]  = "SecondaryHandSlot",
+    ["Range"] = "RangedSlot",
+}
+
 ------------------------------------------------------------------
 -- Data functions
 ------------------------------------------------------------------
 
--- Rounds every number down to the given decimal places
+--- Rounds every number down to the given decimal places
 function ECSData:Round(num, decimalPlaces)
     if not num then
         return 0
@@ -21,8 +43,91 @@ function ECSData:Round(num, decimalPlaces)
 end
 
 -- Gets the current bonus hit chance
-function ECSData:HitModifier()
+function ECSData:MeleeHitModifier()
     return ECSData:Round(GetHitModifier(), 2) .. "%"
+end
+
+local function _GetMissChanceByDifference(weaponSkill, defenseValue)
+    if defenseValue - (weaponSkill) <= 10 then
+        return 5 + (defenseValue - weaponSkill) * 0.1
+    else
+        return 6 + (defenseValue - weaponSkill - 10)*0.4
+    end
+end
+
+-- Gets the hit chance against enemies on the player level
+function ECSData:MeleeHitMissChanceSameLevel()
+    local mainBase, mainMod, _, _ = UnitAttackBothHands("player")
+    local playerLevel = UnitLevel("player")
+    local enemyDefenseValue = playerLevel * 5
+
+    local missChance = _GetMissChanceByDifference(mainBase + mainMod, enemyDefenseValue)
+    missChance = missChance - GetHitModifier()
+
+    return ECSData:Round(missChance, 2) .. "%"
+end
+
+-- Gets the hit chance against enemies 3 level above the player level
+function ECSData:MeleeHitMissChanceBossLevel()
+    local mainBase, mainMod, _, _ = UnitAttackBothHands("player")
+    local playerLevel = UnitLevel("player")
+    local enemyDefenseValue = (playerLevel + 3) * 5
+
+    local missChance = _GetMissChanceByDifference(mainBase + mainMod, enemyDefenseValue)
+    missChance = missChance - GetHitModifier()
+
+    return ECSData:Round(missChance, 2) .. "%"
+end
+
+local function _GetRangeHitBonus()
+    local hitValue = 0
+    -- From Enchant
+    local slotId, _ = GetInventorySlotInfo(CHAR_EQUIP_SLOTS["Range"])
+    local item = Item:CreateFromEquipmentSlot(slotId)
+    local itemLink = GetInventoryItemLink("player", slotId)
+    if itemLink then
+        local _, itemStringLink = GetItemInfo(itemLink)
+        if itemStringLink then
+            local _, _, _, _, _, Enchant, _, _, _, _, _, _, _, _ = string.find(itemStringLink,
+            "|?c?f?f?(%x*)|?H?([^:]*):?(%d+):?(%d*):?(%d*):?(%d*):?(%d*):?(%d*):?(%-?%d*):?(%-?%d*):?(%d*):?(%d*):?(%-?%d*)|?h?%[?([^%[%]]*)%]?|?h?|?r?")
+            if (Enchant == "2523") then -- 3% Hit from Biznicks 247x128 Accurascope
+                hitValue = hitValue + 3
+            end
+        end
+    end
+    -- From Items
+    hitValue = hitValue + GetHitModifier()
+
+    return hitValue
+end
+
+-- Gets the current bonus hit chance
+function ECSData:RangeHitBonus()
+    return ECSData:Round(_GetRangeHitBonus(), 2) .. "%"
+end
+
+-- Gets the range hit chance against enemies on the player level
+function ECSData:RangeMissChanceSameLevel()
+    local rangedAttackBase, rangedAttackMod = UnitRangedAttack("player")
+    local playerLevel = UnitLevel("player")
+    local enemyDefenseValue = playerLevel * 5
+
+    local missChance = _GetMissChanceByDifference(rangedAttackBase + rangedAttackMod, enemyDefenseValue)
+    missChance = missChance - _GetRangeHitBonus()
+
+    return ECSData:Round(missChance, 2) .. "%"
+end
+
+-- Gets the range hit chance against enemies 3 level above the player level
+function ECSData:RangeMissChanceBossLevel()
+    local rangedAttackBase, rangedAttackMod = UnitRangedAttack("player")
+    local playerLevel = UnitLevel("player")
+    local enemyDefenseValue = (playerLevel + 3) * 5
+
+    local missChance = _GetMissChanceByDifference(rangedAttackBase + rangedAttackMod, enemyDefenseValue)
+    missChance = missChance - _GetRangeHitBonus()
+
+    return ECSData:Round(missChance, 2) .. "%"
 end
 
 function ECSData:SpellHitModifier()
@@ -212,15 +317,27 @@ end
 
 function ECSData:GetStatInfo(refName)
 
-    if refName == "RangedHit" then
-       return ECSData:HitModifier()
+    if refName == "RangedHitBonus" then
+       return ECSData:RangeHitBonus()
+    end
+    if refName == "RangedHitSameLevel" then
+        return ECSData:RangeMissChanceSameLevel()
+    end
+    if refName == "RangedHitBossLevel" then
+        return ECSData:RangeMissChanceBossLevel()
     end
     if refName == "RangedCritChance" then
         return ECSData:RangedCrit()
     end
 
-    if refName == "MeleeHit" then
-       return ECSData:HitModifier()
+    if refName == "MeleeHitBonus" then
+       return ECSData:MeleeHitModifier()
+    end
+    if refName == "MeleeHitSameLevel" then
+        return ECSData:MeleeHitMissChanceSameLevel()
+    end
+    if refName == "MeleeHitBossLevel" then
+        return ECSData:MeleeHitMissChanceBossLevel()
     end
     if refName == "MeleeCritChance" then
         return ECSData:MeleeCrit()

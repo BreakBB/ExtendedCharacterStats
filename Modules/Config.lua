@@ -121,7 +121,7 @@ end
 function ECSConfig:CreateMeleeOptions()
     -- Create Header Options
     local ShowMelee = _CreateCheckBox(20, leftOffset, "Melee", "TOPLEFT")
-    local ShowMeleeHit, ShowMeleeCrit -- forward declaration
+    local ShowMeleeHitBonus, ShowMeleeHitSameLevel, ShowMeleeHitBossLevel, ShowMeleeCrit -- forward declaration
     leftOffset = leftOffset - 30
     local meleeProfile = ExtendedCharacterStats.profile.melee
 
@@ -129,11 +129,13 @@ function ECSConfig:CreateMeleeOptions()
         local show = not meleeProfile.display
         ExtendedCharacterStats.profile.melee.display = show
         ShowMelee:SetChecked(show)
-        ShowMeleeHit:SetEnabled(show)
+        ShowMeleeHitBonus:SetEnabled(show)
         ShowMeleeCrit:SetEnabled(show)
         if not show then
             ECSConfig:RecycleFrame(core.displayedStats[meleeProfile.refName])
             ECSConfig:RecycleFrame(core.displayedStats[meleeProfile.hit.refName])
+            ECSConfig:RecycleFrame(core.displayedStats[meleeProfile.sameLevel.refName])
+            ECSConfig:RecycleFrame(core.displayedStats[meleeProfile.bossLevel.refName])
             ECSConfig:RecycleFrame(core.displayedStats[meleeProfile.crit.refName])
         end
         ECSConfig:RebuildStatInfos()
@@ -142,20 +144,50 @@ function ECSConfig:CreateMeleeOptions()
 
     -- Create Sub-Header Options
 
-    -- Hit
-    ShowMeleeHit = _CreateCheckBox(40, leftOffset, "Hit", "TOPLEFT")
+    -- Hit Bonus
+    ShowMeleeHitBonus = _CreateCheckBox(40, leftOffset, "Hit", "TOPLEFT")
     leftOffset = leftOffset - 30
 
-    ShowMeleeHit:SetScript("OnClick", function()
+    ShowMeleeHitBonus:SetScript("OnClick", function()
         local show = not meleeProfile.hit.display
         ExtendedCharacterStats.profile.melee.hit.display = show
-        ShowMeleeHit:SetChecked(show)
+        ShowMeleeHitBonus:SetChecked(show)
         if not show then
             ECSConfig:RecycleFrame(core.displayedStats[meleeProfile.hit.refName])
         end
         ECSConfig:RebuildStatInfos()
     end)
-    ShowMeleeHit:SetChecked(meleeProfile.hit.display)
+    ShowMeleeHitBonus:SetChecked(meleeProfile.hit.display)
+
+    -- Hit Change (Same Level)
+    ShowMeleeHitSameLevel = _CreateCheckBox(40, leftOffset, "Hit", "TOPLEFT")
+    leftOffset = leftOffset - 30
+
+    ShowMeleeHitBonus:SetScript("OnClick", function()
+        local show = not meleeProfile.hit.sameLevel.display
+        ExtendedCharacterStats.profile.melee.hit.sameLevel.display = show
+        ShowMeleeHitSameLevel:SetChecked(show)
+        if not show then
+            ECSConfig:RecycleFrame(core.displayedStats[meleeProfile.hit.sameLevel.refName])
+        end
+        ECSConfig:RebuildStatInfos()
+    end)
+    ShowMeleeHitSameLevel:SetChecked(meleeProfile.hit.sameLevel.display)
+
+    -- Hit Change (Playerlevel + 3)
+    ShowMeleeHitBossLevel = _CreateCheckBox(40, leftOffset, "Hit", "TOPLEFT")
+    leftOffset = leftOffset - 30
+
+    ShowMeleeHitBossLevel:SetScript("OnClick", function()
+        local show = not meleeProfile.hit.bossLevel.display
+        ExtendedCharacterStats.profile.melee.hit.bossLevel.display = show
+        ShowMeleeHitBossLevel:SetChecked(show)
+        if not show then
+            ECSConfig:RecycleFrame(core.displayedStats[meleeProfile.hit.bossLevel.refName])
+        end
+        ECSConfig:RebuildStatInfos()
+    end)
+    ShowMeleeHitBossLevel:SetChecked(meleeProfile.hit.bossLevel.display)
 
     -- Crit
     ShowMeleeCrit = _CreateCheckBox(40, leftOffset, "Crit", "TOPLEFT")
@@ -744,13 +776,12 @@ end
 
 local function _CreateStatInfo(category, ...)
     if category.display then
-        ECSConfig:CreateHeader(category.refName, category.text)
+        ECSConfig:CreateHeader(category.refName, category.text, category.isSubGroup)
         local stats = {...}
         -- Loop through all stats
         for _, stat in pairs(stats) do
             if type(stat) == "table" and stat.display == true then
-                -- Create the item
-                ECSConfig:CreateText(stat.refName, stat.text .. core.ECSData:GetStatInfo(stat.refName))
+                ECSConfig:CreateText(stat.refName, stat.text .. core.ECSData:GetStatInfo(stat.refName), category.isSubGroup)
             end
         end
     end
@@ -760,10 +791,14 @@ function ECSConfig:CreateStatInfos()
     local profile = ExtendedCharacterStats.profile
 
     local category = profile.melee
-    _CreateStatInfo(category, category.hit, category.crit)
+    _CreateStatInfo(category, category.crit)
+    category = category.hit
+    _CreateStatInfo(category, category.bonus, category.sameLevel, category.bossLevel)
 
     category = profile.ranged
-    _CreateStatInfo(category, category.hit, category.crit)
+    _CreateStatInfo(category, category.crit)
+    category = category.hit
+    _CreateStatInfo(category, category.bonus, category.sameLevel, category.bossLevel)
 
     category = profile.defense
     _CreateStatInfo(category, category.block, category.parry, category.dodge)
@@ -787,7 +822,11 @@ local framePool = {}
 local lastYOffset = 20
 
 -- Creates a new header on the UI
-function ECSConfig:CreateHeader(name, displayText)
+function ECSConfig:CreateHeader(name, displayText, isSubHeader)
+    local xOffSet = 50
+    if isSubHeader then
+        xOffSet = 60
+    end
     lastYOffset = lastYOffset - 20
     local header = table.remove(framePool)
     if not header then
@@ -795,14 +834,18 @@ function ECSConfig:CreateHeader(name, displayText)
     else
         header:SetFontObject(headerFont)
     end
-    header:SetPoint("TOPLEFT", 50, lastYOffset)
+    header:SetPoint("TOPLEFT", xOffSet, lastYOffset)
     header:SetText(displayText)
     header:Show()
     core.displayedStats[name] = header
 end
 
 -- Creates a new information text on the UI
-function ECSConfig:CreateText(name, displayText)
+function ECSConfig:CreateText(name, displayText, isSubText)
+    local xOffSet = 60
+    if isSubText then
+        xOffSet = 70
+    end
     lastYOffset = lastYOffset - 15
     local stat = table.remove(framePool)
     if not stat then
@@ -810,7 +853,7 @@ function ECSConfig:CreateText(name, displayText)
     else
         stat:SetFontObject(statFont)
     end
-    stat:SetPoint("TOPLEFT", 60, lastYOffset)
+    stat:SetPoint("TOPLEFT", xOffSet, lastYOffset)
     stat:SetText(displayText)
     stat:Show()
     core.displayedStats[name] = stat
@@ -839,19 +882,30 @@ function ECSConfig:UpdateItem(refName, text)
     end
 end
 
+local function _UpdateStats(category)
+    for _, stat in pairs(category) do
+        if type(stat) == "table" then
+            if stat.isSubGroup then
+                for _, subStat in pairs(stat) do
+                    if type(subStat) == "table" and subStat.display == true then
+                        ECSConfig:UpdateItem(subStat.refName, subStat.text .. core.ECSData:GetStatInfo(subStat.refName))
+                    end
+                end
+            elseif stat.display == true then
+                ECSConfig:UpdateItem(stat.refName, stat.text .. core.ECSData:GetStatInfo(stat.refName))
+            end
+        end
+    end
+end
+
 --- Read the loaded profile and update all enabled elements
 function ECSConfig:UpdateInformation()
 
     -- Loop through all categories
     for _, category in pairs(ExtendedCharacterStats.profile) do
         if category.display == true then
-
             -- Loop through all stats
-            for _, stat in pairs(category) do
-                if type(stat) == "table" and stat.display == true then
-                    ECSConfig:UpdateItem(stat.refName, stat.text .. core.ECSData:GetStatInfo(stat.refName))
-                end
-            end
+            _UpdateStats(category)
         end
     end
 end

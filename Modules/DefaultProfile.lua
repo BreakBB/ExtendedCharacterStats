@@ -13,7 +13,16 @@ local function GetDefaultProfile()
             refName = "MeleeHeader",
             text = "Melee",
 
-            hit = {display = true, refName = "MeleeHit", text = "Hit Modifier: "},
+            hit = {
+                display = true,
+                isSubGroup = true,
+                refName = "MeleeHitHeader",
+                text = "Hit",
+
+                bonus = {display = true, refName = "MeleeHitBonus", text = "Bonus: "},
+                sameLevel = {display = true, refName = "MeleeHitSameLevel", text = "Miss-Chance: "},
+                bossLevel = {display = true, refName = "MeleeHitBossLevel", text = "Miss-Chance (Lvl + 3): "},
+            },
             crit = {display = true, refName = "MeleeCritChance", text = "Crit: "}
         },
 
@@ -22,7 +31,16 @@ local function GetDefaultProfile()
             refName = "RangedHeader",
             text = "Ranged",
 
-            hit = {display = true, refName = "RangedHit", text = "Hit Modifier: "},
+            hit = {
+                display = true,
+                isSubGroup = true,
+                refName = "RangedHitHeader",
+                text = "Hit",
+
+                bonus = {display = true, refName = "RangedHitBonus", text = "Bonus: "},
+                sameLevel = {display = true, refName = "RangedHitSameLevel", text = "Miss-Chance: "},
+                bossLevel = {display = true, refName = "RangedHitBossLevel", text = "Miss-Chance (Lvl + 3): "},
+            },
             crit = {display = true, refName = "RangedCritChance", text = "Crit: "}
         },
 
