@@ -67,6 +67,7 @@ function ECSConfig:CreateConfigWindow()
 
     -- Create Config Window
     settingsFrame = CreateFrame("Frame", "ECS_ConfigFrame", UIParent, "BasicFrameTemplateWithInset")
+    table.insert(UISpecialFrames, settingsFrame:GetName())
     settingsFrame:SetSize(350, 600) -- Width, Height
     settingsFrame:SetPoint("CENTER", UIParent, "CENTER", 0, 100) -- Point, relativeFrame, relativePoint, xOffset, yOffset
     settingsFrame:Hide()
