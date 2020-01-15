@@ -47,11 +47,21 @@ function ECSData:MeleeHitModifier()
     return ECSData:Round(GetHitModifier(), 2) .. "%"
 end
 
+local function _IsShapeshifted()
+    for i = 0, 40 do
+        local _, _, _, _, _, _, _, _, _, spellId, _ = UnitAura("player", i, "HELPFUL", "PLAYER")
+        if spellId == 5487 or spellId == 9634 or spellId == 768 then
+            return true
+        end
+    end
+    return false
+end
+
 local function _GetMissChanceByDifference(weaponSkill, defenseValue)
     if defenseValue - (weaponSkill) <= 10 then
         return 5 + (defenseValue - weaponSkill) * 0.1
     else
-        return 6 + (defenseValue - weaponSkill - 10)*0.4
+        return 6 + (defenseValue - weaponSkill - 10) * 0.4
     end
 end
 
@@ -61,7 +71,12 @@ function ECSData:MeleeHitMissChanceSameLevel()
     local playerLevel = UnitLevel("player")
     local enemyDefenseValue = playerLevel * 5
 
-    local missChance = _GetMissChanceByDifference(mainBase + mainMod, enemyDefenseValue)
+    local missChance = 0
+    if _IsShapeshifted() then
+        missChance = 6
+    else
+        missChance = _GetMissChanceByDifference(mainBase + mainMod, enemyDefenseValue)
+    end
     missChance = missChance - GetHitModifier()
 
     return ECSData:Round(missChance, 2) .. "%"
@@ -73,7 +88,12 @@ function ECSData:MeleeHitMissChanceBossLevel()
     local playerLevel = UnitLevel("player")
     local enemyDefenseValue = (playerLevel + 3) * 5
 
-    local missChance = _GetMissChanceByDifference(mainBase + mainMod, enemyDefenseValue)
+    local missChance = 0
+    if _IsShapeshifted() then
+        missChance = 9
+    else
+        missChance = _GetMissChanceByDifference(mainBase + mainMod, enemyDefenseValue)
+    end
     missChance = missChance - GetHitModifier()
 
     return ECSData:Round(missChance, 2) .. "%"
