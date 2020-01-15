@@ -69,7 +69,16 @@ local function GetDefaultProfile()
             refName = "SpellHeader",
             text = "Spell",
 
-            hit = {display = true, refName = "SpellHit", text = "Hit Modifier: "},
+            hit = {
+                display = true,
+                isSubGroup = true,
+                refName = "SpellHitHeader",
+                text = "Hit",
+
+                bonus = {display = true, refName = "SpellHitBonus", text = "Bonus: "},
+                sameLevel = {display = true, refName = "SpellHitSameLevel", text = "Miss-Chance: "},
+                bossLevel = {display = true, refName = "SpellHitBossLevel", text = "Miss-Chance (Lvl + 3): "},
+            },
             crit = {display = true, refName = "SpellCritChance", text = "Crit: "}
         },
 

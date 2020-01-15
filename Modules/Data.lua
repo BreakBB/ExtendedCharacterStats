@@ -42,9 +42,21 @@ function ECSData:Round(num, decimalPlaces)
     return math.floor(num * mult + 0.5) / mult
 end
 
--- Gets the current bonus hit chance
-function ECSData:MeleeHitModifier()
-    return ECSData:Round(GetHitModifier(), 2) .. "%"
+local function _GetTalentModifierMeleeHit()
+    local _, _, classId = UnitClass("player")
+    local mod = 0
+
+    if classId == 4 then -- Rogue
+        local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 6)
+        mod = points * 1 -- 0-5% from Precision
+    end
+
+    if classId == 7 then -- Shaman
+        local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 6)
+        mod = points * 1 -- 0-3% from Nature's Guidance
+    end
+
+    return mod
 end
 
 local function _IsShapeshifted()
@@ -65,6 +77,14 @@ local function _GetMissChanceByDifference(weaponSkill, defenseValue)
     end
 end
 
+-- Gets the current bonus hit chance
+function ECSData:MeleeHitBonus()
+    local hit = _GetTalentModifierMeleeHit()
+    hit = hit + GetHitModifier()
+
+    return ECSData:Round(hit, 2) .. "%"
+end
+
 -- Gets the hit chance against enemies on the player level
 function ECSData:MeleeHitMissChanceSameLevel()
     local mainBase, mainMod, _, _ = UnitAttackBothHands("player")
@@ -77,7 +97,7 @@ function ECSData:MeleeHitMissChanceSameLevel()
     else
         missChance = _GetMissChanceByDifference(mainBase + mainMod, enemyDefenseValue)
     end
-    missChance = missChance - GetHitModifier()
+    missChance = missChance - GetHitModifier() - _GetTalentModifierMeleeHit()
 
     return ECSData:Round(missChance, 2) .. "%"
 end
@@ -94,7 +114,7 @@ function ECSData:MeleeHitMissChanceBossLevel()
     else
         missChance = _GetMissChanceByDifference(mainBase + mainMod, enemyDefenseValue)
     end
-    missChance = missChance - GetHitModifier()
+    missChance = missChance - GetHitModifier() - _GetTalentModifierMeleeHit()
 
     return ECSData:Round(missChance, 2) .. "%"
 end
@@ -103,7 +123,6 @@ local function _GetRangeHitBonus()
     local hitValue = 0
     -- From Enchant
     local slotId, _ = GetInventorySlotInfo(CHAR_EQUIP_SLOTS["Range"])
-    local item = Item:CreateFromEquipmentSlot(slotId)
     local itemLink = GetInventoryItemLink("player", slotId)
     if itemLink then
         local _, itemStringLink = GetItemInfo(itemLink)
@@ -150,8 +169,51 @@ function ECSData:RangeMissChanceBossLevel()
     return ECSData:Round(missChance, 2) .. "%"
 end
 
-function ECSData:SpellHitModifier()
-    return ECSData:Round(GetSpellHitModifier(), 2) .. "%"
+local function _GetTalentModifierSpellHit()
+    local _, _, classId = UnitClass("player")
+    local mod = 0
+
+    if classId == 5 then -- Priest
+        local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 5)
+        mod = points * 2 -- 0-10% from Shadow Focus
+    end
+
+    if classId == 8 then -- Mage
+        local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 3)
+        mod = points * 2 -- 0-6% from Elemental Precision
+    end
+
+    if classId == 7 then -- Shaman
+        local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 6)
+        mod = points * 1 -- 0-3% from Nature's Guidance
+    end
+
+    return mod
+end
+
+function ECSData:SpellHitBonus()
+    local hit = _GetTalentModifierSpellHit()
+    hit = hit + GetSpellHitModifier()
+
+    return ECSData:Round(hit, 2) .. "%"
+end
+
+function ECSData:SpellMissChanceSameLevel()
+    local missChance = 3
+
+    missChance = missChance - _GetTalentModifierSpellHit()
+    missChance = missChance - GetSpellHitModifier()
+
+    return ECSData:Round(missChance, 2) .. "%"
+end
+
+function ECSData:SpellMissChanceBossLevel()
+    local missChance = 16
+
+    missChance = missChance - _GetTalentModifierSpellHit()
+    missChance = missChance - GetSpellHitModifier()
+
+    return ECSData:Round(missChance, 2) .. "%"
 end
 
 -- Get MP5 from items
@@ -184,7 +246,7 @@ function ECSData:MP5FromSpirit()
     return ECSData:Round(base, 0) * 5
 end
 
-local function _GetTalentModifier()
+local function _GetTalentModifierMP5()
     local _, _, classId = UnitClass("player")
     local mod = 0
 
@@ -214,7 +276,7 @@ function ECSData:MP5WhileCasting()
     end
     lastManaReg = casting
 
-    local mod = _GetTalentModifier()
+    local mod = _GetTalentModifierMP5()
     if mod > 0 then
         casting = casting * mod
     end
@@ -351,7 +413,7 @@ function ECSData:GetStatInfo(refName)
     end
 
     if refName == "MeleeHitBonus" then
-       return ECSData:MeleeHitModifier()
+       return ECSData:MeleeHitBonus()
     end
     if refName == "MeleeHitSameLevel" then
         return ECSData:MeleeHitMissChanceSameLevel()
@@ -373,8 +435,14 @@ function ECSData:GetStatInfo(refName)
         return ECSData:Block()
     end
 
-    if refName == "SpellHit" then
-       return ECSData:SpellHitModifier()
+    if refName == "SpellHitBonus" then
+       return ECSData:SpellHitBonus()
+    end
+    if refName == "SpellHitSameLevel" then
+        return ECSData:SpellMissChanceSameLevel()
+    end
+    if refName == "SpellHitBossLevel" then
+        return ECSData:SpellMissChanceBossLevel()
     end
     if refName == "SpellCritChance" then
         return ECSData:SpellCrit()

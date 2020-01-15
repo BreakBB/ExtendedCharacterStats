@@ -847,7 +847,9 @@ function ECSConfig:CreateStatInfos()
     _CreateStatInfo(category, category.mp5Items, category.mp5Spirit, category.mp5Casting)
 
     category = profile.spell
-    _CreateStatInfo(category, category.hit, category.crit)
+    _CreateStatInfo(category, category.crit)
+    category = category.hit
+    _CreateStatInfo(category, category.bonus, category.sameLevel, category.bossLevel)
 
     category = profile.spellBonus
     _CreateStatInfo(
