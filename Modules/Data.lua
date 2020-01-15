@@ -1,11 +1,13 @@
 ------------------------------------------------------------------
--- Namespaces
+-- Modules
 ------------------------------------------------------------------
 
-local _, core = ...
-core.ECSData = { }
+---@class Data
+local Data = ECSLoader:CreateModule("Data")
 
-local ECSData = core.ECSData
+------------------------------------------------------------------
+-- Statics
+------------------------------------------------------------------
 
 local CHAR_EQUIP_SLOTS = {
     ["Head"] = "HeadSlot",
@@ -34,7 +36,7 @@ local CHAR_EQUIP_SLOTS = {
 ------------------------------------------------------------------
 
 --- Rounds every number down to the given decimal places
-function ECSData:Round(num, decimalPlaces)
+function Data:Round(num, decimalPlaces)
     if not num then
         return 0
     end
@@ -78,15 +80,15 @@ local function _GetMissChanceByDifference(weaponSkill, defenseValue)
 end
 
 -- Gets the current bonus hit chance
-function ECSData:MeleeHitBonus()
+function Data:MeleeHitBonus()
     local hit = _GetTalentModifierMeleeHit()
     hit = hit + GetHitModifier()
 
-    return ECSData:Round(hit, 2) .. "%"
+    return Data:Round(hit, 2) .. "%"
 end
 
 -- Gets the hit chance against enemies on the player level
-function ECSData:MeleeHitMissChanceSameLevel()
+function Data:MeleeHitMissChanceSameLevel()
     local mainBase, mainMod, _, _ = UnitAttackBothHands("player")
     local playerLevel = UnitLevel("player")
     local enemyDefenseValue = playerLevel * 5
@@ -99,11 +101,11 @@ function ECSData:MeleeHitMissChanceSameLevel()
     end
     missChance = missChance - GetHitModifier() - _GetTalentModifierMeleeHit()
 
-    return ECSData:Round(missChance, 2) .. "%"
+    return Data:Round(missChance, 2) .. "%"
 end
 
 -- Gets the hit chance against enemies 3 level above the player level
-function ECSData:MeleeHitMissChanceBossLevel()
+function Data:MeleeHitMissChanceBossLevel()
     local mainBase, mainMod, _, _ = UnitAttackBothHands("player")
     local playerLevel = UnitLevel("player")
     local enemyDefenseValue = (playerLevel + 3) * 5
@@ -116,7 +118,7 @@ function ECSData:MeleeHitMissChanceBossLevel()
     end
     missChance = missChance - GetHitModifier() - _GetTalentModifierMeleeHit()
 
-    return ECSData:Round(missChance, 2) .. "%"
+    return Data:Round(missChance, 2) .. "%"
 end
 
 local function _GetRangeHitBonus()
@@ -141,12 +143,12 @@ local function _GetRangeHitBonus()
 end
 
 -- Gets the current bonus hit chance
-function ECSData:RangeHitBonus()
-    return ECSData:Round(_GetRangeHitBonus(), 2) .. "%"
+function Data:RangeHitBonus()
+    return Data:Round(_GetRangeHitBonus(), 2) .. "%"
 end
 
 -- Gets the range hit chance against enemies on the player level
-function ECSData:RangeMissChanceSameLevel()
+function Data:RangeMissChanceSameLevel()
     local rangedAttackBase, rangedAttackMod = UnitRangedAttack("player")
     local playerLevel = UnitLevel("player")
     local enemyDefenseValue = playerLevel * 5
@@ -154,11 +156,11 @@ function ECSData:RangeMissChanceSameLevel()
     local missChance = _GetMissChanceByDifference(rangedAttackBase + rangedAttackMod, enemyDefenseValue)
     missChance = missChance - _GetRangeHitBonus()
 
-    return ECSData:Round(missChance, 2) .. "%"
+    return Data:Round(missChance, 2) .. "%"
 end
 
 -- Gets the range hit chance against enemies 3 level above the player level
-function ECSData:RangeMissChanceBossLevel()
+function Data:RangeMissChanceBossLevel()
     local rangedAttackBase, rangedAttackMod = UnitRangedAttack("player")
     local playerLevel = UnitLevel("player")
     local enemyDefenseValue = (playerLevel + 3) * 5
@@ -166,7 +168,7 @@ function ECSData:RangeMissChanceBossLevel()
     local missChance = _GetMissChanceByDifference(rangedAttackBase + rangedAttackMod, enemyDefenseValue)
     missChance = missChance - _GetRangeHitBonus()
 
-    return ECSData:Round(missChance, 2) .. "%"
+    return Data:Round(missChance, 2) .. "%"
 end
 
 local function _GetTalentModifierSpellHit()
@@ -191,33 +193,33 @@ local function _GetTalentModifierSpellHit()
     return mod
 end
 
-function ECSData:SpellHitBonus()
+function Data:SpellHitBonus()
     local hit = _GetTalentModifierSpellHit()
     hit = hit + GetSpellHitModifier()
 
-    return ECSData:Round(hit, 2) .. "%"
+    return Data:Round(hit, 2) .. "%"
 end
 
-function ECSData:SpellMissChanceSameLevel()
+function Data:SpellMissChanceSameLevel()
     local missChance = 3
 
     missChance = missChance - _GetTalentModifierSpellHit()
     missChance = missChance - GetSpellHitModifier()
 
-    return ECSData:Round(missChance, 2) .. "%"
+    return Data:Round(missChance, 2) .. "%"
 end
 
-function ECSData:SpellMissChanceBossLevel()
+function Data:SpellMissChanceBossLevel()
     local missChance = 16
 
     missChance = missChance - _GetTalentModifierSpellHit()
     missChance = missChance - GetSpellHitModifier()
 
-    return ECSData:Round(missChance, 2) .. "%"
+    return Data:Round(missChance, 2) .. "%"
 end
 
 -- Get MP5 from items
-function ECSData:MP5FromItems()
+function Data:MP5FromItems()
     local mp5 = 0
     for i = 1, 18 do
         local itemLink = GetInventoryItemLink("player", i)
@@ -237,13 +239,13 @@ end
 local lastManaReg = 0
 
 -- Get MP5 from spirit
-function ECSData:MP5FromSpirit()
+function Data:MP5FromSpirit()
     local base, _ = GetManaRegen() -- Returns mana reg per 1 second
     if base < 1 then
         base = lastManaReg
     end
     lastManaReg = base
-    return ECSData:Round(base, 0) * 5
+    return Data:Round(base, 0) * 5
 end
 
 local function _GetTalentModifierMP5()
@@ -269,7 +271,7 @@ local function _GetTalentModifierMP5()
 end
 
 -- Get manaregen while casting
-function ECSData:MP5WhileCasting()
+function Data:MP5WhileCasting()
     local _, casting = GetManaRegen() -- Returns mana reg per 1 second
     if casting < 1 then
         casting = lastManaReg
@@ -281,226 +283,226 @@ function ECSData:MP5WhileCasting()
         casting = casting * mod
     end
 
-    local mp5Items = ECSData:MP5FromItems()
+    local mp5Items = Data:MP5FromItems()
     casting = (casting * 5) + mp5Items
 
-    return ECSData:Round(casting, 2)
+    return Data:Round(casting, 2)
 end
 
 -- Get melee crit chance
-function ECSData:MeleeCrit()
-    return ECSData:Round(GetCritChance(), 2) .. "%"
+function Data:MeleeCrit()
+    return Data:Round(GetCritChance(), 2) .. "%"
 end
 
 -- Get spell crit chance
-function ECSData:SpellCrit()
-    return ECSData:Round(GetSpellCritChance(), 2) .. "%"
+function Data:SpellCrit()
+    return Data:Round(GetSpellCritChance(), 2) .. "%"
 end
 
 -- Get ranged crit chance
-function ECSData:RangedCrit()
-    return ECSData:Round(GetRangedCritChance(), 2) .. "%"
+function Data:RangedCrit()
+    return Data:Round(GetRangedCritChance(), 2) .. "%"
 end
 
 -- Get spell penetration %
-function ECSData:SpellPenetration()
-    return ECSData:Round(GetSpellPenetration(), 2) .. "%"
+function Data:SpellPenetration()
+    return Data:Round(GetSpellPenetration(), 2) .. "%"
 end
 
 -- Get dodge chacne
-function ECSData:Dodge()
-    return ECSData:Round(GetDodgeChance(), 2) .. "%"
+function Data:Dodge()
+    return Data:Round(GetDodgeChance(), 2) .. "%"
 end
 
 -- Get parry chance
-function ECSData:Parry()
-    return ECSData:Round(GetParryChance(), 2) .. "%"
+function Data:Parry()
+    return Data:Round(GetParryChance(), 2) .. "%"
 end
 
 -- Get block chance
-function ECSData:Block()
-    return ECSData:Round(GetBlockChance(), 2) .. "%"
+function Data:Block()
+    return Data:Round(GetBlockChance(), 2) .. "%"
 end
 
 -- Get phys dmg bonus
-function ECSData:PhysicalDmg()
+function Data:PhysicalDmg()
     return GetSpellBonusDamage(1)
 end
 
 -- Get phys crit chance
-function ECSData:PhysicalCrit()
-    return ECSData:Round(GetSpellCritChance(1), 2) .. "%"
+function Data:PhysicalCrit()
+    return Data:Round(GetSpellCritChance(1), 2) .. "%"
 end
 
 -- Get holy bonus dmg
-function ECSData:HolyDmg()
+function Data:HolyDmg()
     return GetSpellBonusDamage(2)
 end
 
 -- Get holy crit chance
-function ECSData:HolyCrit()
-    return ECSData:Round(GetSpellCritChance(2), 2) .. "%"
+function Data:HolyCrit()
+    return Data:Round(GetSpellCritChance(2), 2) .. "%"
 end
 
 -- Get fire bonus dmg
-function ECSData:FireDmg()
+function Data:FireDmg()
     return GetSpellBonusDamage(3)
 end
 
 -- Get fire crit chance
-function ECSData:FireCrit()
-    return ECSData:Round(GetSpellCritChance(3), 2) .. "%"
+function Data:FireCrit()
+    return Data:Round(GetSpellCritChance(3), 2) .. "%"
 end
 
 -- Get nature bonus dmg
-function ECSData:NatureDmg()
+function Data:NatureDmg()
     return GetSpellBonusDamage(4)
 end
 
 -- Get nature crit chance
-function ECSData:NatureCrit()
-    return ECSData:Round(GetSpellCritChance(4), 2) .. "%"
+function Data:NatureCrit()
+    return Data:Round(GetSpellCritChance(4), 2) .. "%"
 end
 
 -- Get frost bonus dmg
-function ECSData:FrostDmg()
+function Data:FrostDmg()
     return GetSpellBonusDamage(5)
 end
 
 -- Get frost crit chance
-function ECSData:FrostCrit()
-    return ECSData:Round(GetSpellCritChance(5), 2) .. "%"
+function Data:FrostCrit()
+    return Data:Round(GetSpellCritChance(5), 2) .. "%"
 end
 
 -- Get shadow bonus dmg
-function ECSData:ShadowDmg()
+function Data:ShadowDmg()
     return GetSpellBonusDamage(6)
 end
 
 -- Get shadow crit chance
-function ECSData:ShadowCrit()
-    return ECSData:Round(GetSpellCritChance(6), 2) .. "%"
+function Data:ShadowCrit()
+    return Data:Round(GetSpellCritChance(6), 2) .. "%"
 end
 
 -- Get arcane bonus dmg
-function ECSData:ArcaneDmg()
+function Data:ArcaneDmg()
     return GetSpellBonusDamage(7)
 end
 
 -- Get arcane crit chance
-function ECSData:ArcaneCrit()
-    return ECSData:Round(GetSpellCritChance(7), 2) .. "%"
+function Data:ArcaneCrit()
+    return Data:Round(GetSpellCritChance(7), 2) .. "%"
 end
 
 -- Get bonus healing power
-function ECSData:HealingBonus()
+function Data:HealingBonus()
     return GetSpellBonusHealing()
 end
 
-function ECSData:GetStatInfo(refName)
+function Data:GetStatInfo(refName)
 
     if refName == "RangedHitBonus" then
-       return ECSData:RangeHitBonus()
+       return Data:RangeHitBonus()
     end
     if refName == "RangedHitSameLevel" then
-        return ECSData:RangeMissChanceSameLevel()
+        return Data:RangeMissChanceSameLevel()
     end
     if refName == "RangedHitBossLevel" then
-        return ECSData:RangeMissChanceBossLevel()
+        return Data:RangeMissChanceBossLevel()
     end
     if refName == "RangedCritChance" then
-        return ECSData:RangedCrit()
+        return Data:RangedCrit()
     end
 
     if refName == "MeleeHitBonus" then
-       return ECSData:MeleeHitBonus()
+       return Data:MeleeHitBonus()
     end
     if refName == "MeleeHitSameLevel" then
-        return ECSData:MeleeHitMissChanceSameLevel()
+        return Data:MeleeHitMissChanceSameLevel()
     end
     if refName == "MeleeHitBossLevel" then
-        return ECSData:MeleeHitMissChanceBossLevel()
+        return Data:MeleeHitMissChanceBossLevel()
     end
     if refName == "MeleeCritChance" then
-        return ECSData:MeleeCrit()
+        return Data:MeleeCrit()
     end
 
     if refName == "DodgeChance" then
-        return ECSData:Dodge()
+        return Data:Dodge()
     end
     if refName == "ParryChance" then
-        return ECSData:Parry()
+        return Data:Parry()
     end
     if refName == "BlockChance" then
-        return ECSData:Block()
+        return Data:Block()
     end
 
     if refName == "SpellHitBonus" then
-       return ECSData:SpellHitBonus()
+       return Data:SpellHitBonus()
     end
     if refName == "SpellHitSameLevel" then
-        return ECSData:SpellMissChanceSameLevel()
+        return Data:SpellMissChanceSameLevel()
     end
     if refName == "SpellHitBossLevel" then
-        return ECSData:SpellMissChanceBossLevel()
+        return Data:SpellMissChanceBossLevel()
     end
     if refName == "SpellCritChance" then
-        return ECSData:SpellCrit()
+        return Data:SpellCrit()
     end
 
     if refName == "MP5Items" then
-        return ECSData:MP5FromItems()
+        return Data:MP5FromItems()
     end
     if refName == "MP5Spirit" then
-        return ECSData:MP5FromSpirit()
+        return Data:MP5FromSpirit()
     end
     if refName == "MP5Casting" then
-        return ECSData:MP5WhileCasting()
+        return Data:MP5WhileCasting()
     end
 
     if refName == "PhysicalCritChance" then
-        return ECSData:PhysicalCrit()
+        return Data:PhysicalCrit()
     end
     if refName == "ArcaneCritChance" then
-        return ECSData:ArcaneCrit()
+        return Data:ArcaneCrit()
     end
     if refName == "NatureDmg" then
-        return ECSData:NatureDmg()
+        return Data:NatureDmg()
     end
     if refName == "HolyDmg" then
-        return ECSData:HolyDmg()
+        return Data:HolyDmg()
     end
     if refName == "FrostCritChance" then
-        return ECSData:FrostCrit()
+        return Data:FrostCrit()
     end
     if refName == "FireDmg" then
-        return ECSData:FireDmg()
+        return Data:FireDmg()
     end
     if refName == "BonusHealing" then
-        return ECSData:HealingBonus()
+        return Data:HealingBonus()
     end
     if refName == "FireCritChance" then
-        return ECSData:FireCrit()
+        return Data:FireCrit()
     end
     if refName == "ShadowDmg" then
-        return ECSData:ShadowDmg()
+        return Data:ShadowDmg()
     end
     if refName == "FrostDmg" then
-        return ECSData:FrostDmg()
+        return Data:FrostDmg()
     end
     if refName == "HolyCritChance" then
-        return ECSData:HolyCrit()
+        return Data:HolyCrit()
     end
     if refName == "PhysicalDmg" then
-        return ECSData:PhysicalDmg()
+        return Data:PhysicalDmg()
     end
     if refName == "ShadowCritChance" then
-        return ECSData:ShadowCrit()
+        return Data:ShadowCrit()
     end
     if refName == "ArcaneDmg" then
-        return ECSData:ArcaneDmg()
+        return Data:ArcaneDmg()
     end
     if refName == "NatureCritChance" then
-        return ECSData:NatureCrit()
+        return Data:NatureCrit()
     end
 end

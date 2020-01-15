@@ -2645,6 +2645,7 @@
         "GameTooltipTextLeft1",
         "------------------------------------------------------> Addon specific",
         "SlashCmdList",
+        "ECSLoader",
     ],
     "Lua.workspace.ignoreDir": [
     ],

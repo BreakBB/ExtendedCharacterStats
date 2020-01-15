@@ -1,8 +1,9 @@
 ------------------------------------------------------------------
--- Namespaces
+-- Modules
 ------------------------------------------------------------------
-local _, core = ...
-local ECSConfig = core.ECSConfig
+
+---@class Profile
+local Profile = ECSLoader:CreateModule("Profile")
 
 ---@return ECSProfile
 local function GetDefaultProfile()
@@ -107,7 +108,6 @@ local function GetDefaultProfile()
 end
 
 ---@return ECSProfile
-function ECSConfig:GetProfileData()
-    -- core.ECSConfig.currentProfile = GetDefaultProfile();
+function Profile:GetProfileData()
     return ExtendedCharacterStats.profile or GetDefaultProfile()
 end

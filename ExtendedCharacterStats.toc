@@ -6,8 +6,15 @@
 ## DefaultState : enabled
 ## Author: Ethulu, BreakBB
 
-Main.lua
+# ModuleLoader
+Modules\ModuleLoader.lua
 
+# Modules
 Modules\Data.lua
+Modules\Utils.lua
 Modules\Config.lua
+Modules\Stats.lua
 Modules\DefaultProfile.lua
+
+# Main
+ECS.lua

@@ -1,60 +1,13 @@
 ------------------------------------------------------------------
--- Namespaces
-------------------------------------------------------------------
-local _, core = ...
----@class ECSConfig
-core.ECSConfig = {}
-core.displayedStats = {}
-
-local ECSConfig = core.ECSConfig
-
-local ECSMainWindow
-local settingsFrame
-
-------------------------------------------------------------------
--- Defaults
+-- Modules
 ------------------------------------------------------------------
 
--- Font for the header display
-local headerFont = "GameFontNormal"
+---@class Config
+local Config = ECSLoader:CreateModule("Config")
+local _Config = Config.private
 
--- Font for the stat display
-local statFont = "GameFontHighlightSmall"
-
-------------------------------------------------------------------
--- Helper functions
-------------------------------------------------------------------
-
--- Toggles the display of the window
--- if the window is hidden or closed, it will be displayed
--- if the window is visible, it will be hidden
-local function _ToggleMainWindow()
-    ECSMainWindow:SetShown(not ECSMainWindow:IsShown())
-end
-
-local function _ToggleConfigWindow()
-    settingsFrame:SetShown(not settingsFrame:IsShown())
-end
-
-local function _HandleSlash(msg)
-    local cmd = string.lower(msg) or "help"
-
-    if cmd == "toggle" then
-        _ToggleMainWindow()
-
-    elseif cmd == "config" then
-        _ToggleConfigWindow()
-
-    else
-        print("Available Commmands")
-        print("/ecs toggle - Toggles the visibility of the GUI")
-        print("/ecs config - Opens up the configuration window")
-    end
-end
-
--- Slash Command for toggling the display
-SLASH_ECS1 = "/ecs"
-SlashCmdList["ECS"] = _HandleSlash
+---@type Stats
+local Stats = ECSLoader:ImportModule("Stats")
 
 ------------------------------------------------------------------
 -- Configuration Frame
@@ -63,66 +16,70 @@ SlashCmdList["ECS"] = _HandleSlash
 local leftOffset = -30
 local rightOffset = -30
 
-function ECSConfig:CreateConfigWindow()
+function Config:CreateWindow()
 
     -- Create Config Window
-    settingsFrame = CreateFrame("Frame", "ECS_ConfigFrame", UIParent, "BasicFrameTemplateWithInset")
+    local settingsFrame = CreateFrame("Frame", "ECS_ConfigFrame", UIParent, "BasicFrameTemplateWithInset")
     table.insert(UISpecialFrames, settingsFrame:GetName())
-    settingsFrame:SetSize(350, 600) -- Width, Height
+    settingsFrame:SetSize(350, 450) -- Width, Height
     settingsFrame:SetPoint("CENTER", UIParent, "CENTER", 0, 100) -- Point, relativeFrame, relativePoint, xOffset, yOffset
     settingsFrame:Hide()
     settingsFrame.title = settingsFrame:CreateFontString(nil, "OVERLAY")
     settingsFrame.title:SetFontObject("GameFontHighlight")
-    settingsFrame.title:SetPoint("CENTER", settingsFrame.TitleBg, "CENTER", 5, 0)
+    settingsFrame.title:SetPoint("CENTER", settingsFrame.TitleBg, "CENTER", 0, 0)
     settingsFrame.title:SetText("Extended Character Stats Settings")
+    _Config.frame = settingsFrame
 
     -- Melee
     -- ExtendedCharacterStats.profile.melee
-    ECSConfig:CreateMeleeOptions()
+    Config:CreateMeleeOptions()
 
     -- Ranged
     -- ExtendedCharacterStats.profile.ranged
-    ECSConfig:CreateRangedOptions()
+    Config:CreateRangedOptions()
 
     -- Defense
     -- ExtendedCharacterStats.profile.defense
-    ECSConfig:CreateDefenseOptions()
+    Config:CreateDefenseOptions()
 
     -- Regen
     -- ExtendedCharacterStats.profile.regen
-    ECSConfig:CreateRegenOptions()
+    Config:CreateRegenOptions()
 
     -- Spell
     -- ExtendedCharacterStats.profile.spell
-    ECSConfig:CreateSpellOptions()
+    Config:CreateSpellOptions()
 
     -- SpellBonus
     -- ExtendedCharacterStats.profile.SpellBonus
-    ECSConfig:CreateSpellBonusOptions()
+    Config:CreateSpellBonusOptions()
 
-    local saveButton = CreateFrame("Button", nil, settingsFrame, "OptionsButtonTemplate")
-    saveButton:SetPoint("BOTTOM", 0, 10) -- pos, y, x
-    saveButton:SetSize(320, 40)
-    saveButton:SetText("Close")
-    saveButton:SetScript("OnClick", function()
+    local closeButton = CreateFrame("Button", nil, settingsFrame, "OptionsButtonTemplate")
+    closeButton:SetPoint("BOTTOM", 0, 10) -- pos, y, x
+    closeButton:SetSize(150, 30)
+    closeButton:SetText("Close")
+    closeButton:SetScript("OnClick", function()
         settingsFrame:Hide()
     end)
+end
 
-    return settingsFrame
+function Config:ToggleWindow()
+    _Config.frame:SetShown(not _Config.frame:IsShown())
 end
 
 local function _CreateCheckBox(yOffset, xOffset, text, position)
-    local checkbox = CreateFrame("CheckButton", nil, settingsFrame, "UICheckButtonTemplate")
+    local checkbox = CreateFrame("CheckButton", nil, _Config.frame, "UICheckButtonTemplate")
+    checkbox:SetSize(20, 20)
     checkbox:SetPoint(position, yOffset, xOffset)
     checkbox.text:SetText(text)
     return checkbox
 end
 
-function ECSConfig:CreateMeleeOptions()
+function Config:CreateMeleeOptions()
     -- Create Header Options
     local ShowMelee = _CreateCheckBox(20, leftOffset, "Melee", "TOPLEFT")
     local ShowMeleeHitBonus, ShowMeleeMissSameLevel, ShowMeleeMissBossLevel, ShowMeleeCrit -- forward declaration
-    leftOffset = leftOffset - 30
+    leftOffset = leftOffset - 15
     local meleeProfile = ExtendedCharacterStats.profile.melee
 
     ShowMelee:SetScript("OnClick", function()
@@ -135,14 +92,15 @@ function ECSConfig:CreateMeleeOptions()
         ShowMeleeMissBossLevel:SetEnabled(show)
         ShowMeleeCrit:SetEnabled(show)
         if not show then
-            ECSConfig:RecycleFrame(core.displayedStats[meleeProfile.refName])
-            ECSConfig:RecycleFrame(core.displayedStats[meleeProfile.hit.refName])
-            ECSConfig:RecycleFrame(core.displayedStats[meleeProfile.hit.bonus.refName])
-            ECSConfig:RecycleFrame(core.displayedStats[meleeProfile.hit.sameLevel.refName])
-            ECSConfig:RecycleFrame(core.displayedStats[meleeProfile.hit.bossLevel.refName])
-            ECSConfig:RecycleFrame(core.displayedStats[meleeProfile.crit.refName])
+            local lines = Stats:GetDisplayedLines()
+            Stats:RecycleFrame(lines[meleeProfile.refName])
+            Stats:RecycleFrame(lines[meleeProfile.hit.refName])
+            Stats:RecycleFrame(lines[meleeProfile.hit.bonus.refName])
+            Stats:RecycleFrame(lines[meleeProfile.hit.sameLevel.refName])
+            Stats:RecycleFrame(lines[meleeProfile.hit.bossLevel.refName])
+            Stats:RecycleFrame(lines[meleeProfile.crit.refName])
         end
-        ECSConfig:RebuildStatInfos()
+        Stats:RebuildStatInfos()
     end)
     ShowMelee:SetChecked(meleeProfile.display)
 
@@ -150,71 +108,76 @@ function ECSConfig:CreateMeleeOptions()
 
     -- Hit Bonus
     ShowMeleeHitBonus = _CreateCheckBox(40, leftOffset, "Hit Bonus", "TOPLEFT")
-    leftOffset = leftOffset - 30
+    leftOffset = leftOffset - 15
 
     ShowMeleeHitBonus:SetScript("OnClick", function()
         local show = not meleeProfile.hit.bonus.display
         ExtendedCharacterStats.profile.melee.hit.bonus.display = show
         ShowMeleeHitBonus:SetChecked(show)
         if not show then
-            ECSConfig:RecycleFrame(core.displayedStats[meleeProfile.hit.bonus.refName])
+            local lines = Stats:GetDisplayedLines()
+            Stats:RecycleFrame(lines[meleeProfile.hit.bonus.refName])
         end
-        ECSConfig:RebuildStatInfos()
+        Stats:RebuildStatInfos()
     end)
     ShowMeleeHitBonus:SetChecked(meleeProfile.hit.bonus.display)
 
     -- Miss Chance (Same Level)
     ShowMeleeMissSameLevel = _CreateCheckBox(40, leftOffset, "Miss Chance", "TOPLEFT")
-    leftOffset = leftOffset - 30
+    leftOffset = leftOffset - 15
 
     ShowMeleeMissSameLevel:SetScript("OnClick", function()
         local show = not meleeProfile.hit.sameLevel.display
         ExtendedCharacterStats.profile.melee.hit.sameLevel.display = show
         ShowMeleeMissSameLevel:SetChecked(show)
         if not show then
-            ECSConfig:RecycleFrame(core.displayedStats[meleeProfile.hit.sameLevel.refName])
+            local lines = Stats:GetDisplayedLines()
+            Stats:RecycleFrame(lines[meleeProfile.hit.sameLevel.refName])
         end
-        ECSConfig:RebuildStatInfos()
+        Stats:RebuildStatInfos()
     end)
     ShowMeleeMissSameLevel:SetChecked(meleeProfile.hit.sameLevel.display)
 
     -- Miss Chance (Playerlevel + 3)
     ShowMeleeMissBossLevel = _CreateCheckBox(40, leftOffset, "Miss Chance (+3)", "TOPLEFT")
-    leftOffset = leftOffset - 30
+    leftOffset = leftOffset - 15
 
     ShowMeleeMissBossLevel:SetScript("OnClick", function()
         local show = not meleeProfile.hit.bossLevel.display
         ExtendedCharacterStats.profile.melee.hit.bossLevel.display = show
         ShowMeleeMissBossLevel:SetChecked(show)
         if not show then
-            ECSConfig:RecycleFrame(core.displayedStats[meleeProfile.hit.bossLevel.refName])
+            local lines = Stats:GetDisplayedLines()
+            Stats:RecycleFrame(lines[meleeProfile.hit.bossLevel.refName])
         end
-        ECSConfig:RebuildStatInfos()
+        Stats:RebuildStatInfos()
     end)
     ShowMeleeMissBossLevel:SetChecked(meleeProfile.hit.bossLevel.display)
 
     -- Crit
     ShowMeleeCrit = _CreateCheckBox(40, leftOffset, "Crit", "TOPLEFT")
-    leftOffset = leftOffset - 30
+    leftOffset = leftOffset - 15
 
     ShowMeleeCrit:SetScript("OnClick", function()
         local show = not meleeProfile.crit.display
         ExtendedCharacterStats.profile.melee.crit.display = show
         ShowMeleeCrit:SetChecked(show)
         if not show then
-            ECSConfig:RecycleFrame(core.displayedStats[meleeProfile.crit.refName])
+            local lines = Stats:GetDisplayedLines()
+            Stats:RecycleFrame(lines[meleeProfile.crit.refName])
         end
-        ECSConfig:RebuildStatInfos()
+        Stats:RebuildStatInfos()
     end)
     ShowMeleeCrit:SetChecked(meleeProfile.crit.display)
+    leftOffset = leftOffset - 5
 end
 
-function ECSConfig:CreateRangedOptions()
+function Config:CreateRangedOptions()
 
     -- Create Header Options
     local ShowRanged = _CreateCheckBox(20, leftOffset, "Ranged", "TOPLEFT")
     local ShowRangedHitBonus, ShowRangedMissChanceSameLevel, ShowRangedMissChanceBossLevel, ShowRangedCrit -- forward declaration
-    leftOffset = leftOffset - 30
+    leftOffset = leftOffset - 15
     local rangedProfile = ExtendedCharacterStats.profile.ranged
 
     ShowRanged:SetScript("OnClick", function()
@@ -227,14 +190,15 @@ function ECSConfig:CreateRangedOptions()
         ShowRangedMissChanceBossLevel:SetEnabled(show)
         ShowRangedCrit:SetEnabled(show)
         if not show then
-            ECSConfig:RecycleFrame(core.displayedStats[rangedProfile.refName])
-            ECSConfig:RecycleFrame(core.displayedStats[rangedProfile.hit.refName])
-            ECSConfig:RecycleFrame(core.displayedStats[rangedProfile.hit.bonus.refName])
-            ECSConfig:RecycleFrame(core.displayedStats[rangedProfile.hit.sameLevel.refName])
-            ECSConfig:RecycleFrame(core.displayedStats[rangedProfile.hit.bossLevel.refName])
-            ECSConfig:RecycleFrame(core.displayedStats[rangedProfile.crit.refName])
+            local lines = Stats:GetDisplayedLines()
+            Stats:RecycleFrame(lines[rangedProfile.refName])
+            Stats:RecycleFrame(lines[rangedProfile.hit.refName])
+            Stats:RecycleFrame(lines[rangedProfile.hit.bonus.refName])
+            Stats:RecycleFrame(lines[rangedProfile.hit.sameLevel.refName])
+            Stats:RecycleFrame(lines[rangedProfile.hit.bossLevel.refName])
+            Stats:RecycleFrame(lines[rangedProfile.crit.refName])
         end
-        ECSConfig:RebuildStatInfos()
+        Stats:RebuildStatInfos()
     end)
     ShowRanged:SetChecked(rangedProfile.display)
 
@@ -242,71 +206,76 @@ function ECSConfig:CreateRangedOptions()
 
     -- Hit Bonus
     ShowRangedHitBonus = _CreateCheckBox(40, leftOffset, "Hit Bonus", "TOPLEFT")
-    leftOffset = leftOffset - 30
+    leftOffset = leftOffset - 15
 
     ShowRangedHitBonus:SetScript("OnClick", function()
         local show = not rangedProfile.hit.bonus.display
         ExtendedCharacterStats.profile.ranged.hit.bonus.display = show
         ShowRangedHitBonus:SetChecked(show)
         if not show then
-            ECSConfig:RecycleFrame(core.displayedStats[rangedProfile.hit.bonus.refName])
+            local lines = Stats:GetDisplayedLines()
+            Stats:RecycleFrame(lines[rangedProfile.hit.bonus.refName])
         end
-        ECSConfig:RebuildStatInfos()
+        Stats:RebuildStatInfos()
     end)
     ShowRangedHitBonus:SetChecked(rangedProfile.hit.bonus.display)
 
     -- Miss Chance
     ShowRangedMissChanceSameLevel = _CreateCheckBox(40, leftOffset, "Miss Chance", "TOPLEFT")
-    leftOffset = leftOffset - 30
+    leftOffset = leftOffset - 15
 
     ShowRangedMissChanceSameLevel:SetScript("OnClick", function()
         local show = not rangedProfile.hit.sameLevel.display
         ExtendedCharacterStats.profile.ranged.hit.sameLevel.display = show
         ShowRangedMissChanceSameLevel:SetChecked(show)
         if not show then
-            ECSConfig:RecycleFrame(core.displayedStats[rangedProfile.hit.sameLevel.refName])
+            local lines = Stats:GetDisplayedLines()
+            Stats:RecycleFrame(lines[rangedProfile.hit.sameLevel.refName])
         end
-        ECSConfig:RebuildStatInfos()
+        Stats:RebuildStatInfos()
     end)
     ShowRangedMissChanceSameLevel:SetChecked(rangedProfile.hit.sameLevel.display)
 
     -- Miss Chance (+3)
     ShowRangedMissChanceBossLevel = _CreateCheckBox(40, leftOffset, "Miss Chance (+3)", "TOPLEFT")
-    leftOffset = leftOffset - 30
+    leftOffset = leftOffset - 15
 
     ShowRangedMissChanceBossLevel:SetScript("OnClick", function()
         local show = not rangedProfile.hit.bossLevel.display
         ExtendedCharacterStats.profile.ranged.hit.bossLevel.display = show
         ShowRangedMissChanceBossLevel:SetChecked(show)
         if not show then
-            ECSConfig:RecycleFrame(core.displayedStats[rangedProfile.hit.bossLevel.refName])
+            local lines = Stats:GetDisplayedLines()
+            Stats:RecycleFrame(lines[rangedProfile.hit.bossLevel.refName])
         end
-        ECSConfig:RebuildStatInfos()
+        Stats:RebuildStatInfos()
     end)
     ShowRangedMissChanceBossLevel:SetChecked(rangedProfile.hit.bossLevel.display)
 
     -- Crit
     ShowRangedCrit = _CreateCheckBox(40, leftOffset, "Crit", "TOPLEFT")
-    leftOffset = leftOffset - 30
+    leftOffset = leftOffset - 15
 
     ShowRangedCrit:SetScript("OnClick", function()
         local show = not rangedProfile.crit.display
         ExtendedCharacterStats.profile.ranged.crit.display = show
         ShowRangedCrit:SetChecked(show)
         if not show then
-            ECSConfig:RecycleFrame(core.displayedStats[rangedProfile.hit.refName])
+            local lines = Stats:GetDisplayedLines()
+            Stats:RecycleFrame(lines[rangedProfile.hit.refName])
         end
-        ECSConfig:RebuildStatInfos()
+        Stats:RebuildStatInfos()
     end)
     ShowRangedCrit:SetChecked(rangedProfile.crit.display)
+    leftOffset = leftOffset - 5
 end
 
-function ECSConfig:CreateDefenseOptions()
+function Config:CreateDefenseOptions()
 
     -- Create Header Options
     local ShowDefense = _CreateCheckBox(20, leftOffset, "Defense", "TOPLEFT")
     local ShowBlock, ShowParry, ShowDodge -- forward declaration
-    leftOffset = leftOffset - 30
+    leftOffset = leftOffset - 15
     local defenseProfile = ExtendedCharacterStats.profile.defense
 
     ShowDefense:SetScript("OnClick", function()
@@ -317,12 +286,13 @@ function ECSConfig:CreateDefenseOptions()
         ShowParry:SetEnabled(show)
         ShowDodge:SetEnabled(show)
         if not show then
-            ECSConfig:RecycleFrame(core.displayedStats[defenseProfile.refName])
-            ECSConfig:RecycleFrame(core.displayedStats[defenseProfile.block.refName])
-            ECSConfig:RecycleFrame(core.displayedStats[defenseProfile.parry.refName])
-            ECSConfig:RecycleFrame(core.displayedStats[defenseProfile.dodge.refName])
+            local lines = Stats:GetDisplayedLines()
+            Stats:RecycleFrame(lines[defenseProfile.refName])
+            Stats:RecycleFrame(lines[defenseProfile.block.refName])
+            Stats:RecycleFrame(lines[defenseProfile.parry.refName])
+            Stats:RecycleFrame(lines[defenseProfile.dodge.refName])
         end
-        ECSConfig:RebuildStatInfos()
+        Stats:RebuildStatInfos()
     end)
     ShowDefense:SetChecked(defenseProfile.display)
 
@@ -330,182 +300,237 @@ function ECSConfig:CreateDefenseOptions()
 
     -- Block
     ShowBlock = _CreateCheckBox(40, leftOffset, "Block", "TOPLEFT")
-    leftOffset = leftOffset - 30
+    leftOffset = leftOffset - 15
 
     ShowBlock:SetScript("OnClick", function()
         local show = not defenseProfile.block.display
         ExtendedCharacterStats.profile.defense.block.display = show
         ShowBlock:SetChecked(show)
         if not show then
-            ECSConfig:RecycleFrame(core.displayedStats[defenseProfile.block.refName])
+            local lines = Stats:GetDisplayedLines()
+            Stats:RecycleFrame(lines[defenseProfile.block.refName])
         end
-        ECSConfig:RebuildStatInfos()
+        Stats:RebuildStatInfos()
     end)
     ShowBlock:SetChecked(ExtendedCharacterStats.profile.defense.block.display)
 
     -- Parry
     ShowParry = _CreateCheckBox(40, leftOffset, "Parry", "TOPLEFT")
-    leftOffset = leftOffset - 30
+    leftOffset = leftOffset - 15
 
     ShowParry:SetScript("OnClick", function()
         local show = not defenseProfile.parry.display
         ExtendedCharacterStats.profile.defense.parry.display = show
         ShowParry:SetChecked(show)
         if not show then
-            ECSConfig:RecycleFrame(core.displayedStats[defenseProfile.parry.refName])
+            local lines = Stats:GetDisplayedLines()
+            Stats:RecycleFrame(lines[defenseProfile.parry.refName])
         end
-        ECSConfig:RebuildStatInfos()
+        Stats:RebuildStatInfos()
     end)
     ShowParry:SetChecked(defenseProfile.parry.display)
 
     -- Dodge
     ShowDodge = _CreateCheckBox(40, leftOffset, "Dodge", "TOPLEFT")
-    leftOffset = leftOffset - 30
+    leftOffset = leftOffset - 15
 
     ShowDodge:SetScript("OnClick", function()
         local show = not defenseProfile.dodge.display
         ExtendedCharacterStats.profile.defense.dodge.display = show
         ShowDodge:SetChecked(show)
         if not show then
-            ECSConfig:RecycleFrame(core.displayedStats[defenseProfile.dodge.refName])
+            local lines = Stats:GetDisplayedLines()
+            Stats:RecycleFrame(lines[defenseProfile.dodge.refName])
         end
-        ECSConfig:RebuildStatInfos()
+        Stats:RebuildStatInfos()
     end)
     ShowDodge:SetChecked(defenseProfile.dodge.display)
+    leftOffset = leftOffset - 5
 end
 
-function ECSConfig:CreateRegenOptions()
+function Config:CreateRegenOptions()
 
     -- Create Header Options
     local ShowRegen = _CreateCheckBox(20, leftOffset, "Mana", "TOPLEFT")
-    local ShowRegenSpirit -- forward declaration
-    leftOffset = leftOffset - 30
+    local ShowRegenItems, ShowRegenSpirit, ShowRegenCasting -- forward declaration
+    leftOffset = leftOffset - 15
     local regenProfile = ExtendedCharacterStats.profile.regen
 
     ShowRegen:SetScript("OnClick", function()
         local show = not regenProfile.display
         ExtendedCharacterStats.profile.regen.display = show
         ShowRegen:SetChecked(show)
+        ShowRegenItems:SetEnabled(show)
         ShowRegenSpirit:SetEnabled(show)
+        ShowRegenCasting:SetEnabled(show)
         if not show then
-            ECSConfig:RecycleFrame(core.displayedStats[regenProfile.refName])
-            ECSConfig:RecycleFrame(core.displayedStats[regenProfile.mp5Spirit.refName])
+            local lines = Stats:GetDisplayedLines()
+            Stats:RecycleFrame(lines[regenProfile.refName])
+            Stats:RecycleFrame(lines[regenProfile.mp5Items.refName])
+            Stats:RecycleFrame(lines[regenProfile.mp5Spirit.refName])
+            Stats:RecycleFrame(lines[regenProfile.mp5Casting.refName])
         end
-        ECSConfig:RebuildStatInfos()
+        Stats:RebuildStatInfos()
     end)
     ShowRegen:SetChecked(ExtendedCharacterStats.profile.regen.display)
 
     -- Create Sub-Header Options
 
     -- MP5 from Items
-    local ShowRegenItems = _CreateCheckBox(40, leftOffset, "MP5 (Items)", "TOPLEFT")
-    leftOffset = leftOffset - 30
+    ShowRegenItems = _CreateCheckBox(40, leftOffset, "MP5 (Items)", "TOPLEFT")
+    leftOffset = leftOffset - 15
 
     ShowRegenItems:SetScript("OnClick", function()
         local show = not regenProfile.mp5Items.display
         ExtendedCharacterStats.profile.regen.mp5Items.display = show
         ShowRegenItems:SetChecked(show)
         if not show then
-            ECSConfig:RecycleFrame(core.displayedStats[regenProfile.mp5Items.refName])
+            local lines = Stats:GetDisplayedLines()
+            Stats:RecycleFrame(lines[regenProfile.mp5Items.refName])
         end
-        ECSConfig:RebuildStatInfos()
+        Stats:RebuildStatInfos()
     end)
     ShowRegenItems:SetChecked(regenProfile.mp5Items.display)
 
     -- MP5 from Spirit
     ShowRegenSpirit = _CreateCheckBox(40, leftOffset, "MP5 (Spirit)", "TOPLEFT")
-    leftOffset = leftOffset - 30
+    leftOffset = leftOffset - 15
 
     ShowRegenSpirit:SetScript("OnClick", function()
         local show = not regenProfile.mp5Spirit.display
         ExtendedCharacterStats.profile.regen.mp5Spirit.display = show
         ShowRegenSpirit:SetChecked(show)
         if not show then
-            ECSConfig:RecycleFrame(core.displayedStats[regenProfile.mp5Spirit.refName])
+            local lines = Stats:GetDisplayedLines()
+            Stats:RecycleFrame(lines[regenProfile.mp5Spirit.refName])
         end
-        ECSConfig:RebuildStatInfos()
+        Stats:RebuildStatInfos()
     end)
     ShowRegenSpirit:SetChecked(regenProfile.mp5Spirit.display)
 
     -- Casting Regen
-    local ShowRegenCasting = _CreateCheckBox(40, leftOffset, "Casting", "TOPLEFT")
-    leftOffset = leftOffset - 30
+    ShowRegenCasting = _CreateCheckBox(40, leftOffset, "Casting", "TOPLEFT")
+    leftOffset = leftOffset - 15
 
     ShowRegenCasting:SetScript("OnClick", function()
         local show = not regenProfile.mp5Casting.display
         ExtendedCharacterStats.profile.regen.mp5Casting.display = show
         ShowRegenCasting:SetChecked(show)
         if not show then
-            ECSConfig:RecycleFrame(core.displayedStats[regenProfile.mp5Casting.refName])
+            local lines = Stats:GetDisplayedLines()
+            Stats:RecycleFrame(lines[regenProfile.mp5Casting.refName])
         end
-        ECSConfig:RebuildStatInfos()
+        Stats:RebuildStatInfos()
     end)
     ShowRegenCasting:SetChecked(regenProfile.mp5Casting.display)
+    leftOffset = leftOffset - 5
 end
 
-function ECSConfig:CreateSpellOptions()
+function Config:CreateSpellOptions()
 
     -- Create Header Options
     local ShowSpell = _CreateCheckBox(20, leftOffset, "Spell", "TOPLEFT")
-    local ShowSpellHit, ShowSpellCrit -- forward declaration
-    leftOffset = leftOffset - 30
+    local ShowSpellHitBonus, ShowSpellMissChanceSameLevel, ShowSpellMissChanceBossLevel, ShowSpellCrit -- forward declaration
+    leftOffset = leftOffset - 15
     local spellProfile = ExtendedCharacterStats.profile.spell
 
     ShowSpell:SetScript("OnClick", function()
         local show = not spellProfile.display
         ExtendedCharacterStats.profile.spell.display = show
+        ExtendedCharacterStats.profile.spell.hit.display = show
         ShowSpell:SetChecked(show)
-        ShowSpellHit:SetEnabled(show)
+        ShowSpellHitBonus:SetEnabled(show)
+        ShowSpellMissChanceSameLevel:SetEnabled(show)
+        ShowSpellMissChanceBossLevel:SetEnabled(show)
         ShowSpellCrit:SetEnabled(show)
         if not show then
-            ECSConfig:RecycleFrame(core.displayedStats[spellProfile.refName])
-            ECSConfig:RecycleFrame(core.displayedStats[spellProfile.hit.refName])
-            ECSConfig:RecycleFrame(core.displayedStats[spellProfile.crit.refName])
+            local lines = Stats:GetDisplayedLines()
+            Stats:RecycleFrame(lines[spellProfile.refName])
+            Stats:RecycleFrame(lines[spellProfile.hit.refName])
+            Stats:RecycleFrame(lines[spellProfile.hit.bonus.refName])
+            Stats:RecycleFrame(lines[spellProfile.hit.sameLevel.refName])
+            Stats:RecycleFrame(lines[spellProfile.hit.bossLevel.refName])
+            Stats:RecycleFrame(lines[spellProfile.crit.refName])
         end
-        ECSConfig:RebuildStatInfos()
+        Stats:RebuildStatInfos()
     end)
     ShowSpell:SetChecked(spellProfile.display)
     -- Create Sub-Header Options
 
-    -- Hit
-    ShowSpellHit = _CreateCheckBox(40, leftOffset, "Hit", "TOPLEFT")
-    leftOffset = leftOffset - 30
+    -- Hit Bonus
+    ShowSpellHitBonus = _CreateCheckBox(40, leftOffset, "Hit", "TOPLEFT")
+    leftOffset = leftOffset - 15
 
-    ShowSpellHit:SetScript("OnClick", function()
-        local show = not spellProfile.hit.display
-        ExtendedCharacterStats.profile.spell.hit.display = show
-        ShowSpellHit:SetChecked(show)
+    ShowSpellHitBonus:SetScript("OnClick", function()
+        local show = not spellProfile.hit.bonus.display
+        ExtendedCharacterStats.profile.spell.hit.bonus.display = show
+        ShowSpellHitBonus:SetChecked(show)
         if not show then
-            ECSConfig:RecycleFrame(core.displayedStats[spellProfile.hit.refName])
+            local lines = Stats:GetDisplayedLines()
+            Stats:RecycleFrame(lines[spellProfile.hit.bonus.refName])
         end
-        ECSConfig:RebuildStatInfos()
+        Stats:RebuildStatInfos()
     end)
-    ShowSpellHit:SetChecked(spellProfile.hit.display)
+    ShowSpellHitBonus:SetChecked(spellProfile.hit.bonus.display)
+
+    -- Miss Chance
+    ShowSpellMissChanceSameLevel = _CreateCheckBox(40, leftOffset, "Miss Chance", "TOPLEFT")
+    leftOffset = leftOffset - 15
+
+    ShowSpellMissChanceSameLevel:SetScript("OnClick", function()
+        local show = not spellProfile.hit.sameLevel.display
+        ExtendedCharacterStats.profile.spell.hit.sameLevel.display = show
+        ShowSpellMissChanceSameLevel:SetChecked(show)
+        if not show then
+            local lines = Stats:GetDisplayedLines()
+            Stats:RecycleFrame(lines[spellProfile.hit.sameLevel.refName])
+        end
+        Stats:RebuildStatInfos()
+    end)
+    ShowSpellMissChanceSameLevel:SetChecked(spellProfile.hit.sameLevel.display)
+
+    -- Miss Chance (+3)
+    ShowSpellMissChanceBossLevel = _CreateCheckBox(40, leftOffset, "Miss Chance (+3)", "TOPLEFT")
+    leftOffset = leftOffset - 15
+
+    ShowSpellMissChanceBossLevel:SetScript("OnClick", function()
+        local show = not spellProfile.hit.bossLevel.display
+        ExtendedCharacterStats.profile.spell.hit.bossLevel.display = show
+        ShowSpellMissChanceBossLevel:SetChecked(show)
+        if not show then
+            local lines = Stats:GetDisplayedLines()
+            Stats:RecycleFrame(lines[spellProfile.hit.bossLevel.refName])
+        end
+        Stats:RebuildStatInfos()
+    end)
+    ShowSpellMissChanceBossLevel:SetChecked(spellProfile.hit.bossLevel.display)
 
     -- Crit
     ShowSpellCrit = _CreateCheckBox(40, leftOffset, "Crit", "TOPLEFT")
-    leftOffset = leftOffset - 30
+    leftOffset = leftOffset - 15
 
     ShowSpellCrit:SetScript("OnClick", function()
         local show = not spellProfile.crit.display
         ExtendedCharacterStats.profile.spell.crit.display = show
         ShowSpellCrit:SetChecked(show)
         if not show then
-            ECSConfig:RecycleFrame(core.displayedStats[spellProfile.crit.refName])
+            local lines = Stats:GetDisplayedLines()
+            Stats:RecycleFrame(lines[spellProfile.crit.refName])
         end
-        ECSConfig:RebuildStatInfos()
+        Stats:RebuildStatInfos()
     end)
     ShowSpellCrit:SetChecked(spellProfile.crit.display)
+    leftOffset = leftOffset - 5
 end
 
-function ECSConfig:CreateSpellBonusOptions()
+function Config:CreateSpellBonusOptions()
 
     -- Create Header Options
     local ShowSpellBonus = _CreateCheckBox(-150, rightOffset, "Spell Bonus", "TOPRIGHT")
     local ShowBonusHealing, ShowArcaneDmg, ShowArcaneCrit, ShowFireDmg, ShowFireCrit, ShowFrostDmg,
         ShowFrostCrit, ShowHolyDmg, ShowHolyCrit, ShowNatureDmg, ShowNatureCrit, ShowPhysicalDmg,
         ShowPhysicalCrit, ShowShadowDmg, ShowShadowCrit -- forward declaration
-    rightOffset = rightOffset - 30
+    rightOffset = rightOffset - 15
     local spellBonusProfile = ExtendedCharacterStats.profile.spellBonus
 
     ShowSpellBonus:SetScript("OnClick", function()
@@ -529,425 +554,253 @@ function ECSConfig:CreateSpellBonusOptions()
         ShowShadowCrit:SetEnabled(show)
 
         if not show then
-            ECSConfig:RecycleFrame(core.displayedStats[spellBonusProfile.refName])
-            ECSConfig:RecycleFrame(core.displayedStats[spellBonusProfile.bonusHealing.refName])
-            ECSConfig:RecycleFrame(core.displayedStats[spellBonusProfile.arcaneDmg.refName])
-            ECSConfig:RecycleFrame(core.displayedStats[spellBonusProfile.arcaneCrit.refName])
-            ECSConfig:RecycleFrame(core.displayedStats[spellBonusProfile.fireDmg.refName])
-            ECSConfig:RecycleFrame(core.displayedStats[spellBonusProfile.fireCrit.refName])
-            ECSConfig:RecycleFrame(core.displayedStats[spellBonusProfile.frostDmg.refName])
-            ECSConfig:RecycleFrame(core.displayedStats[spellBonusProfile.frostCrit.refName])
-            ECSConfig:RecycleFrame(core.displayedStats[spellBonusProfile.holyDmg.refName])
-            ECSConfig:RecycleFrame(core.displayedStats[spellBonusProfile.holyCrit.refName])
-            ECSConfig:RecycleFrame(core.displayedStats[spellBonusProfile.natureDmg.refName])
-            ECSConfig:RecycleFrame(core.displayedStats[spellBonusProfile.natureCrit.refName])
-            ECSConfig:RecycleFrame(core.displayedStats[spellBonusProfile.physicalDmg.refName])
-            ECSConfig:RecycleFrame(core.displayedStats[spellBonusProfile.physicalCrit.refName])
-            ECSConfig:RecycleFrame(core.displayedStats[spellBonusProfile.shadowDmg.refName])
-            ECSConfig:RecycleFrame(core.displayedStats[spellBonusProfile.shadowCrit.refName])
+            local lines = Stats:GetDisplayedLines()
+            Stats:RecycleFrame(lines[spellBonusProfile.refName])
+            Stats:RecycleFrame(lines[spellBonusProfile.bonusHealing.refName])
+            Stats:RecycleFrame(lines[spellBonusProfile.arcaneDmg.refName])
+            Stats:RecycleFrame(lines[spellBonusProfile.arcaneCrit.refName])
+            Stats:RecycleFrame(lines[spellBonusProfile.fireDmg.refName])
+            Stats:RecycleFrame(lines[spellBonusProfile.fireCrit.refName])
+            Stats:RecycleFrame(lines[spellBonusProfile.frostDmg.refName])
+            Stats:RecycleFrame(lines[spellBonusProfile.frostCrit.refName])
+            Stats:RecycleFrame(lines[spellBonusProfile.holyDmg.refName])
+            Stats:RecycleFrame(lines[spellBonusProfile.holyCrit.refName])
+            Stats:RecycleFrame(lines[spellBonusProfile.natureDmg.refName])
+            Stats:RecycleFrame(lines[spellBonusProfile.natureCrit.refName])
+            Stats:RecycleFrame(lines[spellBonusProfile.physicalDmg.refName])
+            Stats:RecycleFrame(lines[spellBonusProfile.physicalCrit.refName])
+            Stats:RecycleFrame(lines[spellBonusProfile.shadowDmg.refName])
+            Stats:RecycleFrame(lines[spellBonusProfile.shadowCrit.refName])
         end
-        ECSConfig:RebuildStatInfos()
+        Stats:RebuildStatInfos()
     end)
     ShowSpellBonus:SetChecked(spellBonusProfile.display)
 
     -- Create Sub-Header Options
 
     ShowBonusHealing = _CreateCheckBox(-130, rightOffset, "Bonus Healing", "TOPRIGHT")
-    rightOffset = rightOffset - 30
+    rightOffset = rightOffset - 15
 
     ShowBonusHealing:SetScript("OnClick", function()
         local show = not spellBonusProfile.bonusHealing.display
         ExtendedCharacterStats.profile.spellBonus.bonusHealing.display = show
         ShowBonusHealing:SetChecked(show)
         if not show then
-            ECSConfig:RecycleFrame(core.displayedStats[spellBonusProfile.bonusHealing.refName])
+            local lines = Stats:GetDisplayedLines()
+            Stats:RecycleFrame(lines[spellBonusProfile.bonusHealing.refName])
         end
-        ECSConfig:RebuildStatInfos()
+        Stats:RebuildStatInfos()
     end)
     ShowBonusHealing:SetChecked(spellBonusProfile.bonusHealing.display)
 
     ShowArcaneDmg = _CreateCheckBox(-130, rightOffset, "Arcane Damage", "TOPRIGHT")
-    rightOffset = rightOffset - 30
+    rightOffset = rightOffset - 15
 
     ShowArcaneDmg:SetScript("OnClick", function()
         local show = not spellBonusProfile.arcaneDmg.display
         ExtendedCharacterStats.profile.spellBonus.arcaneDmg.display = show
         ShowArcaneDmg:SetChecked(show)
         if not show then
-            ECSConfig:RecycleFrame(core.displayedStats[spellBonusProfile.arcaneDmg.refName])
+            local lines = Stats:GetDisplayedLines()
+            Stats:RecycleFrame(lines[spellBonusProfile.arcaneDmg.refName])
         end
-        ECSConfig:RebuildStatInfos()
+        Stats:RebuildStatInfos()
     end)
     ShowArcaneDmg:SetChecked(spellBonusProfile.arcaneDmg.display)
 
     ShowArcaneCrit = _CreateCheckBox(-130, rightOffset, "Arcane Crit", "TOPRIGHT")
-    rightOffset = rightOffset - 30
+    rightOffset = rightOffset - 15
 
     ShowArcaneCrit:SetScript("OnClick", function()
         local show = not spellBonusProfile.arcaneCrit.display
         ExtendedCharacterStats.profile.spellBonus.arcaneCrit.display = show
         ShowArcaneCrit:SetChecked(show)
         if not show then
-            ECSConfig:RecycleFrame(core.displayedStats[spellBonusProfile.arcaneCrit.refName])
+            local lines = Stats:GetDisplayedLines()
+            Stats:RecycleFrame(lines[spellBonusProfile.arcaneCrit.refName])
         end
-        ECSConfig:RebuildStatInfos()
+        Stats:RebuildStatInfos()
     end)
     ShowArcaneCrit:SetChecked(spellBonusProfile.arcaneCrit.display)
 
     ShowFireDmg = _CreateCheckBox(-130, rightOffset, "Fire Damage", "TOPRIGHT")
-    rightOffset = rightOffset - 30
+    rightOffset = rightOffset - 15
 
     ShowFireDmg:SetScript("OnClick", function()
         local show = not spellBonusProfile.fireDmg.display
         ExtendedCharacterStats.profile.spellBonus.fireDmg.display = show
         ShowFireDmg:SetChecked(show)
         if not show then
-            ECSConfig:RecycleFrame(core.displayedStats[spellBonusProfile.fireDmg.refName])
+            local lines = Stats:GetDisplayedLines()
+            Stats:RecycleFrame(lines[spellBonusProfile.fireDmg.refName])
         end
-        ECSConfig:RebuildStatInfos()
+        Stats:RebuildStatInfos()
     end)
     ShowFireDmg:SetChecked(spellBonusProfile.fireDmg.display)
 
     ShowFireCrit = _CreateCheckBox(-130, rightOffset, "Fire Crit", "TOPRIGHT")
-    rightOffset = rightOffset - 30
+    rightOffset = rightOffset - 15
 
     ShowFireCrit:SetScript("OnClick", function()
         local show = not spellBonusProfile.fireCrit.display
         ExtendedCharacterStats.profile.spellBonus.fireCrit.display = show
         ShowFireCrit:SetChecked(show)
         if not show then
-            ECSConfig:RecycleFrame(core.displayedStats[spellBonusProfile.fireCrit.refName])
+            local lines = Stats:GetDisplayedLines()
+            Stats:RecycleFrame(lines[spellBonusProfile.fireCrit.refName])
         end
-        ECSConfig:RebuildStatInfos()
+        Stats:RebuildStatInfos()
     end)
     ShowFireCrit:SetChecked(spellBonusProfile.fireCrit.display)
 
     ShowFrostDmg = _CreateCheckBox(-130, rightOffset, "Frost Damage", "TOPRIGHT")
-    rightOffset = rightOffset - 30
+    rightOffset = rightOffset - 15
 
     ShowFrostDmg:SetScript("OnClick", function()
         local show = not spellBonusProfile.frostDmg.display
         ExtendedCharacterStats.profile.spellBonus.frostDmg.display = show
         ShowFrostDmg:SetChecked(show)
         if not show then
-            ECSConfig:RecycleFrame(core.displayedStats[spellBonusProfile.frostDmg.refName])
+            local lines = Stats:GetDisplayedLines()
+            Stats:RecycleFrame(lines[spellBonusProfile.frostDmg.refName])
         end
-        ECSConfig:RebuildStatInfos()
+        Stats:RebuildStatInfos()
     end)
     ShowFrostDmg:SetChecked(spellBonusProfile.frostDmg.display)
 
     ShowFrostCrit = _CreateCheckBox(-130, rightOffset, "Frost Crit", "TOPRIGHT")
-    rightOffset = rightOffset - 30
+    rightOffset = rightOffset - 15
 
     ShowFrostCrit:SetScript("OnClick", function()
         local show = not spellBonusProfile.frostCrit.display
         ExtendedCharacterStats.profile.spellBonus.frostCrit.display = show
         ShowFrostCrit:SetChecked(show)
         if not show then
-            ECSConfig:RecycleFrame(core.displayedStats[spellBonusProfile.frostCrit.refName])
+            local lines = Stats:GetDisplayedLines()
+            Stats:RecycleFrame(lines[spellBonusProfile.frostCrit.refName])
         end
-        ECSConfig:RebuildStatInfos()
+        Stats:RebuildStatInfos()
     end)
     ShowFrostCrit:SetChecked(spellBonusProfile.frostCrit.display)
 
     ShowHolyDmg = _CreateCheckBox(-130, rightOffset, "Holy Damage", "TOPRIGHT")
-    rightOffset = rightOffset - 30
+    rightOffset = rightOffset - 15
 
     ShowHolyDmg:SetScript("OnClick", function()
         local show = not spellBonusProfile.holyDmg.display
         ExtendedCharacterStats.profile.spellBonus.holyDmg.display = show
         ShowHolyDmg:SetChecked(show)
         if not show then
-            ECSConfig:RecycleFrame(core.displayedStats[spellBonusProfile.holyDmg.refName])
+            local lines = Stats:GetDisplayedLines()
+            Stats:RecycleFrame(lines[spellBonusProfile.holyDmg.refName])
         end
-        ECSConfig:RebuildStatInfos()
+        Stats:RebuildStatInfos()
     end)
     ShowHolyDmg:SetChecked(spellBonusProfile.holyDmg.display)
 
     ShowHolyCrit = _CreateCheckBox(-130, rightOffset, "Holy Crit", "TOPRIGHT")
-    rightOffset = rightOffset - 30
+    rightOffset = rightOffset - 15
 
     ShowHolyCrit:SetScript("OnClick", function()
         local show = not spellBonusProfile.holyCrit.display
         ExtendedCharacterStats.profile.spellBonus.holyCrit.display = show
         ShowHolyCrit:SetChecked(show)
         if not show then
-            ECSConfig:RecycleFrame(core.displayedStats[spellBonusProfile.holyCrit.refName])
+            local lines = Stats:GetDisplayedLines()
+            Stats:RecycleFrame(lines[spellBonusProfile.holyCrit.refName])
         end
-        ECSConfig:RebuildStatInfos()
+        Stats:RebuildStatInfos()
     end)
     ShowHolyCrit:SetChecked(spellBonusProfile.holyCrit.display)
 
     ShowNatureDmg = _CreateCheckBox(-130, rightOffset, "Nature Damage", "TOPRIGHT")
-    rightOffset = rightOffset - 30
+    rightOffset = rightOffset - 15
 
     ShowNatureDmg:SetScript("OnClick", function()
         local show = not spellBonusProfile.natureDmg.display
         ExtendedCharacterStats.profile.spellBonus.natureDmg.display = show
         ShowNatureDmg:SetChecked(show)
         if not show then
-            ECSConfig:RecycleFrame(core.displayedStats[spellBonusProfile.natureDmg.refName])
+            local lines = Stats:GetDisplayedLines()
+            Stats:RecycleFrame(lines[spellBonusProfile.natureDmg.refName])
         end
-        ECSConfig:RebuildStatInfos()
+        Stats:RebuildStatInfos()
     end)
     ShowNatureDmg:SetChecked(spellBonusProfile.natureDmg.display)
 
     ShowNatureCrit = _CreateCheckBox(-130, rightOffset, "Nature Crit", "TOPRIGHT")
-    rightOffset = rightOffset - 30
+    rightOffset = rightOffset - 15
 
     ShowNatureCrit:SetScript("OnClick", function()
         local show = not spellBonusProfile.natureCrit.display
         ExtendedCharacterStats.profile.spellBonus.natureCrit.display = show
         ShowNatureCrit:SetChecked(show)
         if not show then
-            ECSConfig:RecycleFrame(core.displayedStats[spellBonusProfile.natureCrit.refName])
+            local lines = Stats:GetDisplayedLines()
+            Stats:RecycleFrame(lines[spellBonusProfile.natureCrit.refName])
         end
-        ECSConfig:RebuildStatInfos()
+        Stats:RebuildStatInfos()
     end)
     ShowNatureCrit:SetChecked(spellBonusProfile.natureCrit.display)
 
     ShowPhysicalDmg = _CreateCheckBox(-130, rightOffset, "Physical Damage", "TOPRIGHT")
-    rightOffset = rightOffset - 30
+    rightOffset = rightOffset - 15
 
     ShowPhysicalDmg:SetScript("OnClick", function()
         local show = not spellBonusProfile.physicalDmg.display
         ExtendedCharacterStats.profile.spellBonus.physicalDmg.display = show
         ShowPhysicalDmg:SetChecked(show)
         if not show then
-            ECSConfig:RecycleFrame(core.displayedStats[spellBonusProfile.physicalDmg.refName])
+            local lines = Stats:GetDisplayedLines()
+            Stats:RecycleFrame(lines[spellBonusProfile.physicalDmg.refName])
         end
-        ECSConfig:RebuildStatInfos()
+        Stats:RebuildStatInfos()
     end)
     ShowPhysicalDmg:SetChecked(spellBonusProfile.physicalDmg.display)
 
     ShowPhysicalCrit = _CreateCheckBox(-130, rightOffset, "Physical Crit", "TOPRIGHT")
-    rightOffset = rightOffset - 30
+    rightOffset = rightOffset - 15
 
     ShowPhysicalCrit:SetScript("OnClick", function()
         local show = not spellBonusProfile.physicalCrit.display
         ExtendedCharacterStats.profile.spellBonus.physicalCrit.display = show
         ShowPhysicalCrit:SetChecked(show)
         if not show then
-            ECSConfig:RecycleFrame(core.displayedStats[spellBonusProfile.physicalCrit.refName])
+            local lines = Stats:GetDisplayedLines()
+            Stats:RecycleFrame(lines[spellBonusProfile.physicalCrit.refName])
         end
-        ECSConfig:RebuildStatInfos()
+        Stats:RebuildStatInfos()
     end)
     ShowPhysicalCrit:SetChecked(spellBonusProfile.physicalCrit.display)
 
     ShowShadowDmg = _CreateCheckBox(-130, rightOffset, "Shadow Damage", "TOPRIGHT")
-    rightOffset = rightOffset - 30
+    rightOffset = rightOffset - 15
 
     ShowShadowDmg:SetScript("OnClick", function()
         local show = not spellBonusProfile.shadowDmg.display
         ExtendedCharacterStats.profile.spellBonus.shadowDmg.display = show
         ShowShadowDmg:SetChecked(show)
         if not show then
-            ECSConfig:RecycleFrame(core.displayedStats[spellBonusProfile.shadowDmg.refName])
+            local lines = Stats:GetDisplayedLines()
+            Stats:RecycleFrame(lines[spellBonusProfile.shadowDmg.refName])
         end
-        ECSConfig:RebuildStatInfos()
+        Stats:RebuildStatInfos()
     end)
     ShowShadowDmg:SetChecked(spellBonusProfile.shadowDmg.display)
 
     ShowShadowCrit = _CreateCheckBox(-130, rightOffset, "Shadow Crit", "TOPRIGHT")
-    rightOffset = rightOffset - 30
+    rightOffset = rightOffset - 15
 
     ShowShadowCrit:SetScript("OnClick", function()
         local show = not spellBonusProfile.shadowCrit.display
         ExtendedCharacterStats.profile.spellBonus.shadowCrit.display = show
         ShowShadowCrit:SetChecked(show)
         if not show then
-            ECSConfig:RecycleFrame(core.displayedStats[spellBonusProfile.shadowCrit.refName])
+            local lines = Stats:GetDisplayedLines()
+            Stats:RecycleFrame(lines[spellBonusProfile.shadowCrit.refName])
         end
-        ECSConfig:RebuildStatInfos()
+        Stats:RebuildStatInfos()
     end)
     ShowShadowCrit:SetChecked(spellBonusProfile.shadowCrit.display)
-end
-
-function ECSConfig:UpdateShownStats()
-    
-end
-
-------------------------------------------------------------------
--- Config functions
-------------------------------------------------------------------
-
--- Creates the main frame for the application
-function ECSConfig:CreateWindow()
-    ECSMainWindow = CreateFrame("Frame", "ECS_StatsFrame", PaperDollItemsFrame, "BasicFrameTemplateWithInset")
-    ECSMainWindow:SetSize(ExtendedCharacterStats.windowSize.width, ExtendedCharacterStats.windowSize.height) -- Width, Height
-    ECSMainWindow:SetPoint("RIGHT", PaperDollItemsFrame, "RIGHT", ExtendedCharacterStats.windowSize.xOffset,
-                           ExtendedCharacterStats.windowSize.yOffset) -- Point, relativeFrame, relativePoint, xOffset, yOffset
-    ECSMainWindow.title = ECSMainWindow:CreateFontString(nil, "OVERLAY")
-    ECSMainWindow.title:SetFontObject("GameFontHighlight")
-    ECSMainWindow.title:SetPoint("CENTER", ECSMainWindow.TitleBg, "CENTER", 5, 0)
-    ECSMainWindow.title:SetText("Extended Character Stats " .. core.Utils:GetAddonVersionString())
-
-    ECSMainWindow.configButton = CreateFrame("Button", nil, ECSMainWindow, "GameMenuButtonTemplate")
-    ECSMainWindow.configButton:SetText("Settings")
-    ECSMainWindow.configButton:SetSize(ExtendedCharacterStats.windowSize.width - 10, 20)
-    ECSMainWindow.configButton:SetPoint("CENTER", ECSMainWindow, "TOP", -1, -35)
-    ECSMainWindow.configButton:SetScript("OnClick", function ()
-        _ToggleConfigWindow()
-    end)
-
-    ECSMainWindow.ScrollFrame = CreateFrame("ScrollFrame", nil, ECSMainWindow, "UIPanelScrollFrameTemplate")
-    ECSMainWindow.ScrollFrame:SetPoint("TOPLEFT", ECSMainWindow, "TOPLEFT", -35, -50)
-    ECSMainWindow.ScrollFrame:SetPoint("BOTTOMRIGHT", ECSMainWindow, "BOTTOMRIGHT", -35, 10)
-
-    ECSMainWindow.ScrollChild = CreateFrame("Frame", nil, ECSMainWindow.ScrollFrame)
-    ECSMainWindow.ScrollChild:SetSize(ExtendedCharacterStats.windowSize.width, ExtendedCharacterStats.windowSize.height)
-    ECSMainWindow.ScrollFrame:SetScrollChild(ECSMainWindow.ScrollChild)
-
-
-    local toggleButton = CreateFrame("Button", "ECS_ToggleButton", CharacterModelFrame, "GameMenuButtonTemplate")
-    toggleButton:SetText("ECS")
-    toggleButton:SetSize(33, 16)
-    toggleButton:SetPoint("BOTTOMRIGHT", CharacterModelFrame, "BOTTOMRIGHT", 0, 10)
-    toggleButton:SetScript("OnClick", function ()
-        _ToggleMainWindow()
-    end)
-
-
-    ECSConfig:CreateStatInfos()
-    ECSConfig:CreateConfigWindow()
-
-    return ECSMainWindow
-end
-
-local function _CreateStatInfo(category, ...)
-    if category.display == true then
-        ECSConfig:CreateHeader(category.refName, category.text, category.isSubGroup)
-        local stats = {...}
-        -- Loop through all stats
-        for _, stat in pairs(stats) do
-            if type(stat) == "table" and stat.display == true then
-                ECSConfig:CreateText(stat.refName, stat.text .. core.ECSData:GetStatInfo(stat.refName), category.isSubGroup)
-            end
-        end
-    end
-end
-
-function ECSConfig:CreateStatInfos()
-    local profile = ExtendedCharacterStats.profile
-
-    local category = profile.melee
-    _CreateStatInfo(category, category.crit)
-    category = category.hit
-    _CreateStatInfo(category, category.bonus, category.sameLevel, category.bossLevel)
-
-    category = profile.ranged
-    _CreateStatInfo(category, category.crit)
-    category = category.hit
-    _CreateStatInfo(category, category.bonus, category.sameLevel, category.bossLevel)
-
-    category = profile.defense
-    _CreateStatInfo(category, category.block, category.parry, category.dodge)
-
-    category = profile.regen
-    _CreateStatInfo(category, category.mp5Items, category.mp5Spirit, category.mp5Casting)
-
-    category = profile.spell
-    _CreateStatInfo(category, category.crit)
-    category = category.hit
-    _CreateStatInfo(category, category.bonus, category.sameLevel, category.bossLevel)
-
-    category = profile.spellBonus
-    _CreateStatInfo(
-        category, category.bonusHealing, category.arcaneDmg, category.arcaneCrit, category.fireDmg,
-        category.fireCrit, category.frostDmg, category.frostCrit, category.holyDmg,
-        category.holyCrit, category.natureDmg, category.natureCrit, category.physicalDmg,
-        category.physicalCrit, category.shadowDmg, category.shadowCrit
-    )
-end
-
-local framePool = {}
-local lastYOffset = 20
-
--- Creates a new header on the UI
-function ECSConfig:CreateHeader(name, displayText, isSubHeader)
-    local xOffSet = 50
-    if isSubHeader then
-        xOffSet = 60
-    end
-    lastYOffset = lastYOffset - 20
-    local header = table.remove(framePool)
-    if not header then
-        header = ECSMainWindow.ScrollChild:CreateFontString(name, "OVERLAY", headerFont)
-    else
-        header:SetFontObject(headerFont)
-    end
-    header:SetPoint("TOPLEFT", xOffSet, lastYOffset)
-    header:SetText(displayText)
-    header:Show()
-    core.displayedStats[name] = header
-end
-
--- Creates a new information text on the UI
-function ECSConfig:CreateText(name, displayText, isSubText)
-    local xOffSet = 60
-    if isSubText then
-        xOffSet = 70
-    end
-    lastYOffset = lastYOffset - 15
-    local stat = table.remove(framePool)
-    if not stat then
-        stat = ECSMainWindow.ScrollChild:CreateFontString(name, "OVERLAY", statFont)
-    else
-        stat:SetFontObject(statFont)
-    end
-    stat:SetPoint("TOPLEFT", xOffSet, lastYOffset)
-    stat:SetText(displayText)
-    stat:Show()
-    core.displayedStats[name] = stat
-end
-
-function ECSConfig:RecycleFrame(frame)
-    frame:Hide()
-    table.insert(framePool, frame)
-end
-
-function ECSConfig:RebuildStatInfos()
-    lastYOffset = 20
-
-    for _, entry in pairs(core.displayedStats) do
-        entry:Hide()
-    end
-
-    ECSConfig:CreateStatInfos()
-end
-
-function ECSConfig:UpdateItem(refName, text)
-
-    local stat = core.displayedStats[refName]
-    if stat then
-        stat:SetText(text)
-    end
-end
-
-local function _UpdateStats(category)
-    for _, stat in pairs(category) do
-        if type(stat) == "table" then
-            if stat.isSubGroup then
-                for _, subStat in pairs(stat) do
-                    if type(subStat) == "table" and subStat.display == true then
-                        ECSConfig:UpdateItem(subStat.refName, subStat.text .. core.ECSData:GetStatInfo(subStat.refName))
-                    end
-                end
-            elseif stat.display == true then
-                ECSConfig:UpdateItem(stat.refName, stat.text .. core.ECSData:GetStatInfo(stat.refName))
-            end
-        end
-    end
-end
-
---- Read the loaded profile and update all enabled elements
-function ECSConfig:UpdateInformation()
-
-    -- Loop through all categories
-    for _, category in pairs(ExtendedCharacterStats.profile) do
-        if category.display == true then
-            -- Loop through all stats
-            _UpdateStats(category)
-        end
-    end
+    leftOffset = leftOffset - 5
 end
