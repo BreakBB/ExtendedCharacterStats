@@ -56,6 +56,8 @@ _InitAddon = function()
     }
 end
 
+local lastSuccessfulSpell = 0
+
 _InitGUI = function ()
     -- Initialize the AddOn GUI once everything has loaded
     Stats:CreateWindow()
@@ -70,13 +72,24 @@ _InitGUI = function ()
     eventFrame:RegisterEvent("PLAYER_EQUIPMENT_CHANGED") -- Triggers whenever the player changes gear
     eventFrame:RegisterEvent("UNIT_POWER_UPDATE") -- Triggers whenever the player changes gear
     eventFrame:RegisterEvent("UPDATE_SHAPESHIFT_FORM") -- Triggers whenever the player changes gear
+    eventFrame:RegisterEvent("UNIT_SPELLCAST_SUCCEEDED") -- Triggers whenever a cast was successful
 
     -- Event handler for all the subscribed events
     -- Calls the update functions to update all the relevant stats
     eventFrame:SetScript("OnEvent", function(self, event, ...)
-        C_Timer.After(0.5, function ()
-            Stats:UpdateInformation()
-        end)
+        local eventArgs = {...}
+        if eventArgs[1] == "player" then
+            if event == "UNIT_SPELLCAST_SUCCEEDED" then -- If a player casted something the 5 sec rule comes into play
+                lastSuccessfulSpell = GetTime()
+            elseif event == "UNIT_POWER_UPDATE" and lastSuccessfulSpell > 0 and (GetTime() - lastSuccessfulSpell) > 5.5 then -- Only check power update after the 5 sec rule (mana reg is back to normal)
+                lastSuccessfulSpell = 0
+                Stats:UpdateInformation()
+            else
+                C_Timer.After(0.5, function ()
+                    Stats:UpdateInformation()
+                end)
+            end
+        end
     end)
 
     ECS.eventFrame = eventFrame
