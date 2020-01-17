@@ -71,7 +71,7 @@ function Stats:CreateWindow()
 end
 
 function Stats:ToggleWindow()
-    _Stats.frame:SetShown(_Stats.frame:IsShown())
+    _Stats.frame:SetShown(not _Stats.frame:IsShown())
 end
 
 function Stats:GetDisplayedLines()
