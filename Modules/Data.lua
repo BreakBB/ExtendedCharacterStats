@@ -55,7 +55,7 @@ local function _IsShapeshifted()
 end
 
 local function _GetMissChanceByDifference(weaponSkill, defenseValue)
-    if defenseValue - (weaponSkill) <= 10 then
+    if (defenseValue - weaponSkill) <= 10 then
         return 5 + (defenseValue - weaponSkill) * 0.1
     else
         return 6 + (defenseValue - weaponSkill - 10) * 0.4
@@ -81,6 +81,10 @@ function Data:MeleeHitMissChanceSameLevel()
     end
     missChance = missChance - GetHitModifier()
 
+    if missChance < 0 then
+        missChance = 0
+    end
+
     return Data:Round(missChance, 2) .. "%"
 end
 
@@ -97,6 +101,10 @@ function Data:MeleeHitMissChanceBossLevel()
         missChance = _GetMissChanceByDifference(mainBase + mainMod, enemyDefenseValue)
     end
     missChance = missChance - GetHitModifier()
+
+    if missChance < 0 then
+        missChance = 0
+    end
 
     return Data:Round(missChance, 2) .. "%"
 end
@@ -135,6 +143,10 @@ function Data:RangeMissChanceSameLevel()
 
     local missChance = _GetMissChanceByDifference(rangedAttackBase + rangedAttackMod, enemyDefenseValue)
     missChance = missChance - _GetRangeHitBonus()
+
+    if missChance < 0 then
+        missChance = 0
+    end
 
     return Data:Round(missChance, 2) .. "%"
 end
@@ -181,6 +193,10 @@ function Data:SpellMissChanceSameLevel()
     missChance = missChance - _GetTalentModifierSpellHit()
     missChance = missChance - GetSpellHitModifier()
 
+    if missChance < 0 then
+        missChance = 0
+    end
+
     return Data:Round(missChance, 2) .. "%"
 end
 
@@ -189,6 +205,10 @@ function Data:SpellMissChanceBossLevel()
 
     missChance = missChance - _GetTalentModifierSpellHit()
     missChance = missChance - GetSpellHitModifier()
+
+    if missChance < 0 then
+        missChance = 0
+    end
 
     return Data:Round(missChance, 2) .. "%"
 end
