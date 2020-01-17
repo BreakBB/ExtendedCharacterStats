@@ -44,23 +44,6 @@ function Data:Round(num, decimalPlaces)
     return math.floor(num * mult + 0.5) / mult
 end
 
-local function _GetTalentModifierMeleeHit()
-    local _, _, classId = UnitClass("player")
-    local mod = 0
-
-    if classId == 4 then -- Rogue
-        local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 6)
-        mod = points * 1 -- 0-5% from Precision
-    end
-
-    if classId == 7 then -- Shaman
-        local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 6)
-        mod = points * 1 -- 0-3% from Nature's Guidance
-    end
-
-    return mod
-end
-
 local function _IsShapeshifted()
     for i = 0, 40 do
         local _, _, _, _, _, _, _, _, _, spellId, _ = UnitAura("player", i, "HELPFUL", "PLAYER")
@@ -81,10 +64,7 @@ end
 
 -- Gets the current bonus hit chance
 function Data:MeleeHitBonus()
-    local hit = _GetTalentModifierMeleeHit()
-    hit = hit + GetHitModifier()
-
-    return Data:Round(hit, 2) .. "%"
+    return Data:Round(GetHitModifier(), 2) .. "%"
 end
 
 -- Gets the hit chance against enemies on the player level
@@ -99,7 +79,7 @@ function Data:MeleeHitMissChanceSameLevel()
     else
         missChance = _GetMissChanceByDifference(mainBase + mainMod, enemyDefenseValue)
     end
-    missChance = missChance - GetHitModifier() - _GetTalentModifierMeleeHit()
+    missChance = missChance - GetHitModifier()
 
     return Data:Round(missChance, 2) .. "%"
 end
@@ -116,7 +96,7 @@ function Data:MeleeHitMissChanceBossLevel()
     else
         missChance = _GetMissChanceByDifference(mainBase + mainMod, enemyDefenseValue)
     end
-    missChance = missChance - GetHitModifier() - _GetTalentModifierMeleeHit()
+    missChance = missChance - GetHitModifier()
 
     return Data:Round(missChance, 2) .. "%"
 end
@@ -183,11 +163,6 @@ local function _GetTalentModifierSpellHit()
     if classId == 8 then -- Mage
         local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 3)
         mod = points * 2 -- 0-6% from Elemental Precision
-    end
-
-    if classId == 7 then -- Shaman
-        local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 6)
-        mod = points * 1 -- 0-3% from Nature's Guidance
     end
 
     return mod
