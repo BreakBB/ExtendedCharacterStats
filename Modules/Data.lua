@@ -83,6 +83,8 @@ function Data:MeleeHitMissChanceSameLevel()
 
     if missChance < 0 then
         missChance = 0
+    elseif missChance > 100 then
+        missChance = 100
     end
 
     return Data:Round(missChance, 2) .. "%"
@@ -104,6 +106,8 @@ function Data:MeleeHitMissChanceBossLevel()
 
     if missChance < 0 then
         missChance = 0
+    elseif missChance > 100 then
+        missChance = 100
     end
 
     return Data:Round(missChance, 2) .. "%"
@@ -149,6 +153,8 @@ function Data:RangeMissChanceSameLevel()
 
     if missChance < 0 then
         missChance = 0
+    elseif missChance > 100 then
+        missChance = 100
     end
 
     return Data:Round(missChance, 2) .. "%"
@@ -198,6 +204,8 @@ function Data:SpellMissChanceSameLevel()
 
     if missChance < 0 then
         missChance = 0
+    elseif missChance > 100 then
+        missChance = 100
     end
 
     return Data:Round(missChance, 2) .. "%"
@@ -211,6 +219,8 @@ function Data:SpellMissChanceBossLevel()
 
     if missChance < 0 then
         missChance = 0
+    elseif missChance > 100 then
+        missChance = 100
     end
 
     return Data:Round(missChance, 2) .. "%"
