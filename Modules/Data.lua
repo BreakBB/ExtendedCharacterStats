@@ -79,7 +79,11 @@ function Data:MeleeHitMissChanceSameLevel()
     else
         missChance = _GetMissChanceByDifference(mainBase + mainMod, enemyDefenseValue)
     end
-    missChance = missChance - GetHitModifier()
+
+    local hitFromItems = GetHitModifier()
+    if hitFromItems then -- This needs to be checked because on dungeon entering it becomes nil
+        missChance = missChance - hitFromItems
+    end
 
     if missChance < 0 then
         missChance = 0
@@ -102,7 +106,11 @@ function Data:MeleeHitMissChanceBossLevel()
     else
         missChance = _GetMissChanceByDifference(mainBase + mainMod, enemyDefenseValue)
     end
-    missChance = missChance - GetHitModifier()
+
+    local hitFromItems = GetHitModifier()
+    if hitFromItems then -- This needs to be checked because on dungeon entering it becomes nil
+        missChance = missChance - hitFromItems
+    end
 
     if missChance < 0 then
         missChance = 0
