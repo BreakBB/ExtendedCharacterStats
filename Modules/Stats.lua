@@ -78,15 +78,36 @@ function Stats:GetDisplayedLines()
     return _Stats.displayedLines
 end
 
+---@return boolean @True if any stat of the child is displayed, false otherwise
+local function _IsAnyChildDisplayed(child)
+    local anyDisplayed = false
+
+    for _, stat in pairs(child) do
+        if type(stat) == "table" and stat.display == true then
+            anyDisplayed = true
+        end
+    end
+
+    return anyDisplayed
+end
+
 local function _CreateStatInfo(category, ...)
     if category.display == true then
-        Stats:CreateHeader(category.refName, category.text, category.isSubGroup)
+        local header = Stats:CreateHeader(category.refName, category.text, category.isSubGroup)
+        local anyStatDisplayed = false
         local stats = {...}
         -- Loop through all stats
         for _, stat in pairs(stats) do
             if type(stat) == "table" and stat.display == true then
+                anyStatDisplayed = true
                 Stats:CreateText(stat.refName, stat.text .. Data:GetStatInfo(stat.refName), category.isSubGroup)
             end
+        end
+
+        if (not anyStatDisplayed) and ((category.hit == nil) or (not _IsAnyChildDisplayed(category.hit))) then
+            Stats:RecycleFrame(header)
+            lastYOffset = lastYOffset + 20
+            -- header:Hide()
         end
     end
 end
@@ -124,13 +145,18 @@ function Stats:CreateStatInfos()
     )
 end
 
--- Creates a new header on the UI
+--- Creates a new header in the stats UI
+---@param name string
+---@param displayText string
+---@param isSubHeader boolean
+---@return StatsHeader
 function Stats:CreateHeader(name, displayText, isSubHeader)
     local xOffSet = 50
     if isSubHeader then
         xOffSet = 60
     end
     lastYOffset = lastYOffset - 20
+    ---@class StatsHeader
     local header = table.remove(framePool)
     if not header then
         header = _Stats.frame.ScrollChild:CreateFontString(name, "OVERLAY", headerFont)
@@ -141,6 +167,8 @@ function Stats:CreateHeader(name, displayText, isSubHeader)
     header:SetText(displayText)
     header:Show()
     _Stats.displayedLines[name] = header
+
+    return header
 end
 
 -- Creates a new information text on the UI
