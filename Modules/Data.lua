@@ -125,7 +125,10 @@ local function _GetRangeHitBonus()
         end
     end
     -- From Items
-    hitValue = hitValue + GetHitModifier()
+    local hitFromItems = GetHitModifier()
+    if hitFromItems then -- This needs to be checked because on dungeon entering it becomes nil
+        hitValue = hitValue + hitFromItems
+    end
 
     return hitValue
 end
