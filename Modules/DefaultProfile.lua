@@ -9,11 +9,13 @@ local Profile = ECSLoader:CreateModule("Profile")
 local function GetDefaultProfile()
     return {
 
+        ---@class Category
         melee = {
             display = true,
             refName = "MeleeHeader",
             text = "Melee",
 
+            ---@class SubCategory
             hit = {
                 display = true,
                 isSubGroup = true,
@@ -27,11 +29,13 @@ local function GetDefaultProfile()
             crit = {display = true, refName = "MeleeCritChance", text = "Crit: "}
         },
 
+        ---@type Category
         ranged = {
             display = true,
             refName = "RangedHeader",
             text = "Ranged",
 
+            ---@type SubCategory
             hit = {
                 display = true,
                 isSubGroup = true,
@@ -45,6 +49,7 @@ local function GetDefaultProfile()
             crit = {display = true, refName = "RangedCritChance", text = "Crit: "}
         },
 
+        ---@type Category
         defense = {
             display = true,
             refName = "DefenseHeader",
@@ -55,6 +60,7 @@ local function GetDefaultProfile()
             dodge = {display = true, refName = "DodgeChance", text = "Dodge: "}
         },
 
+        ---@type Category
         regen = {
             display = true,
             refName = "ManaHeader",
@@ -65,11 +71,13 @@ local function GetDefaultProfile()
             mp5Casting = {display = true, refName = "MP5Casting", text = "MP5 (Casting): "},
         },
 
+        ---@type Category
         spell = {
             display = true,
             refName = "SpellHeader",
             text = "Spell",
 
+            ---@type SubCategory
             hit = {
                 display = true,
                 isSubGroup = true,
@@ -83,6 +91,7 @@ local function GetDefaultProfile()
             crit = {display = true, refName = "SpellCritChance", text = "Crit: "}
         },
 
+        ---@type Category
         spellBonus = {
             display = true,
             refName = "SpellBonusHeader",

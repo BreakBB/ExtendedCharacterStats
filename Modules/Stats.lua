@@ -30,7 +30,7 @@ local lastYOffset = 20
 ------------------------------------------------------------------
 
 
--- Creates the main frame for the application
+--- Creates the main frame for the Stats window
 function Stats:CreateWindow()
     local mainFrame = CreateFrame("Frame", "ECS_StatsFrame", PaperDollItemsFrame, "BasicFrameTemplateWithInset")
     mainFrame:SetSize(ExtendedCharacterStats.windowSize.width, ExtendedCharacterStats.windowSize.height) -- Width, Height
@@ -70,19 +70,22 @@ function Stats:CreateWindow()
     Config:CreateWindow()
 end
 
+--- Toogles the stats window
 function Stats:ToggleWindow()
     _Stats.frame:SetShown(not _Stats.frame:IsShown())
 end
 
+---@return table<string, StatsHeader|StatsText>
 function Stats:GetDisplayedLines()
     return _Stats.displayedLines
 end
 
+---@param category Category|SubCategory
 ---@return boolean @True if any stat of the child is displayed, false otherwise
-local function _IsAnyChildDisplayed(child)
+local function _IsAnyStatDisplayed(category)
     local anyDisplayed = false
 
-    for _, stat in pairs(child) do
+    for _, stat in pairs(category) do
         if type(stat) == "table" and stat.display == true then
             anyDisplayed = true
         end
@@ -91,6 +94,8 @@ local function _IsAnyChildDisplayed(child)
     return anyDisplayed
 end
 
+--- Helper function to iteracte all field of a given category and create them if they should be displayed
+---@param category Category|SubCategory
 local function _CreateStatInfo(category, ...)
     if category.display == true then
         local header = Stats:CreateHeader(category.refName, category.text, category.isSubGroup)
@@ -104,14 +109,14 @@ local function _CreateStatInfo(category, ...)
             end
         end
 
-        if (not anyStatDisplayed) and ((category.hit == nil) or (not _IsAnyChildDisplayed(category.hit))) then
+        if (not anyStatDisplayed) and ((category.hit == nil) or (not _IsAnyStatDisplayed(category.hit))) then
             Stats:RecycleFrame(header)
             lastYOffset = lastYOffset + 20
-            -- header:Hide()
         end
     end
 end
 
+--- Creates all categories with headers and they child values
 function Stats:CreateStatInfos()
     local profile = ExtendedCharacterStats.profile
 
@@ -171,13 +176,17 @@ function Stats:CreateHeader(name, displayText, isSubHeader)
     return header
 end
 
--- Creates a new information text on the UI
+--- Creates a new value in the stats UI
+---@param name string
+---@param displayText string
+---@param isSubText boolean
 function Stats:CreateText(name, displayText, isSubText)
     local xOffSet = 60
     if isSubText then
         xOffSet = 70
     end
     lastYOffset = lastYOffset - 15
+    ---@class StatsText
     local stat = table.remove(framePool)
     if not stat then
         stat = _Stats.frame.ScrollChild:CreateFontString(name, "OVERLAY", statFont)
@@ -190,11 +199,14 @@ function Stats:CreateText(name, displayText, isSubText)
     _Stats.displayedLines[name] = stat
 end
 
+--- Recycles an existing frame to be reused for the next stat/header
+---@param frame StatsHeader|StatsText
 function Stats:RecycleFrame(frame)
     frame:Hide()
     table.insert(framePool, frame)
 end
 
+--- Resets the Y-Offset and rebuilds the displayed frames
 function Stats:RebuildStatInfos()
     local stats = _Stats.displayedLines
     lastYOffset = 20
@@ -206,7 +218,10 @@ function Stats:RebuildStatInfos()
     Stats:CreateStatInfos()
 end
 
-function Stats:UpdateItem(refName, text)
+--- Updates a single existing stat value
+---@param refName string
+---@param text string
+local function _UpdateItem(refName, text)
     local stats = _Stats.displayedLines
 
     local stat = stats[refName]
@@ -215,17 +230,19 @@ function Stats:UpdateItem(refName, text)
     end
 end
 
+--- Updates all existing stats of a given category
+---@param category Category|SubCategory
 local function _UpdateStats(category)
     for _, stat in pairs(category) do
         if type(stat) == "table" then
             if stat.isSubGroup then
                 for _, subStat in pairs(stat) do
                     if type(subStat) == "table" and subStat.display == true then
-                        Stats:UpdateItem(subStat.refName, subStat.text .. Data:GetStatInfo(subStat.refName))
+                        _UpdateItem(subStat.refName, subStat.text .. Data:GetStatInfo(subStat.refName))
                     end
                 end
             elseif stat.display == true then
-                Stats:UpdateItem(stat.refName, stat.text .. Data:GetStatInfo(stat.refName))
+                _UpdateItem(stat.refName, stat.text .. Data:GetStatInfo(stat.refName))
             end
         end
     end
