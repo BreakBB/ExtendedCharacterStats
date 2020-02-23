@@ -58,7 +58,7 @@ local function _GetMissChanceByDifference(weaponSkill, defenseValue)
     if (defenseValue - weaponSkill) <= 10 then
         return 5 + (defenseValue - weaponSkill) * 0.1
     else
-        return 6 + (defenseValue - weaponSkill - 10) * 0.4
+        return 7 + (defenseValue - weaponSkill - 10) * 0.4
     end
 end
 
