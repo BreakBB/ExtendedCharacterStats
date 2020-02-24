@@ -296,15 +296,17 @@ local function _HasSetBonusModifierMP5()
         if itemLink then
             local itemName = C_Item.GetItemNameByID(GetInventoryItemLink("player", i))
 
-            if classId == 5 then -- Priest
-                if string.sub(itemName, -13) == "Transcendence" or string.sub(itemName, -11) == "Erhabenheit" or string.sub(itemName, -13) == "Trascendencia" or string.sub(itemName, -13) == "transcendance" or string.sub(itemName, -14) == "Transcendência" then
-                    setCounter = setCounter + 1
+            if itemName then
+                if classId == 5 then -- Priest
+                    if string.sub(itemName, -13) == "Transcendence" or string.sub(itemName, -11) == "Erhabenheit" or string.sub(itemName, -13) == "Trascendencia" or string.sub(itemName, -13) == "transcendance" or string.sub(itemName, -14) == "Transcendência" then
+                        setCounter = setCounter + 1
+                    end
                 end
-            end
 
-            if classId == 11 then -- Druid
-                if string.sub(itemName, 1, 9) == "Stormrage" or string.sub(itemName, -9) == "Stormrage" or string.sub(itemName, -10) == "Tempestira" or string.sub(itemName, -11) == "Tempesfúria" then
-                    setCounter = setCounter + 1
+                if classId == 11 then -- Druid
+                    if string.sub(itemName, 1, 9) == "Stormrage" or string.sub(itemName, -9) == "Stormrage" or string.sub(itemName, -10) == "Tempestira" or string.sub(itemName, -11) == "Tempesfúria" then
+                        setCounter = setCounter + 1
+                    end
                 end
             end
         end
