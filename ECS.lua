@@ -5,6 +5,8 @@
 ---@class ECS
 ECS = {...}
 
+---@type Locale
+local Locale = ECSLoader:ImportModule("Locale")
 ---@type Config
 local Config = ECSLoader:ImportModule("Config")
 ---@type Stats
@@ -47,6 +49,8 @@ _InitAddon = function()
         ---@class ECSProfile
         ExtendedCharacterStats.profile = Profile:GetProfileData()
     end
+
+    Locale:Init()
 
     ExtendedCharacterStats.windowSize = {
         height = 425,

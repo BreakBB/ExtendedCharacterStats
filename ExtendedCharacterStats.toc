@@ -16,5 +16,10 @@ Modules\Config.lua
 Modules\Stats.lua
 Modules\DefaultProfile.lua
 
+# Locales
+Modules\Locale\Locale.lua
+Modules\Locale\Locale.lua
+Modules\Locale\en.lua
+
 # Main
 ECS.lua
