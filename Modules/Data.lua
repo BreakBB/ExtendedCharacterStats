@@ -286,6 +286,37 @@ local function _GetTalentModifierMP5()
     return mod
 end
 
+local function _HasSetBonusModifierMP5()
+    local _, _, classId = UnitClass("player")
+    local hasSetBonus = false
+    local setCounter = 0
+
+    for i = 1, 18 do
+        local itemLink = GetInventoryItemLink("player", i)
+        if itemLink then
+            local itemName = C_Item.GetItemNameByID(GetInventoryItemLink("player", i))
+
+            if classId == 5 then -- Priest
+                if string.sub(itemName, -13) == "Transcendence" or string.sub(itemName, -11) == "Erhabenheit" or string.sub(itemName, -13) == "Trascendencia" or string.sub(itemName, -13) == "transcendance" or string.sub(itemName, -14) == "Transcendência" then
+                    setCounter = setCounter + 1
+                end
+            end
+
+            if classId == 11 then -- Druid
+                if string.sub(itemName, 1, 9) == "Stormrage" or string.sub(itemName, -9) == "Stormrage" or string.sub(itemName, -10) == "Tempestira" or string.sub(itemName, -11) == "Tempesfúria" then
+                    setCounter = setCounter + 1
+                end
+            end
+        end
+    end
+
+    if setCounter >= 3 then
+        hasSetBonus = true
+    end
+
+    return hasSetBonus
+end
+
 -- Get manaregen while casting
 function Data:MP5WhileCasting()
     local _, casting = GetManaRegen() -- Returns mana reg per 1 second
@@ -295,6 +326,9 @@ function Data:MP5WhileCasting()
     lastManaReg = casting
 
     local mod = _GetTalentModifierMP5()
+    if _HasSetBonusModifierMP5() then
+        mod = mod + 0.15
+    end
     if mod > 0 then
         casting = casting * mod
     end
