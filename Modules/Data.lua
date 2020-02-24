@@ -369,8 +369,23 @@ function Data:HolyDmg()
     return GetSpellBonusDamage(2)
 end
 
+
+function _GetTalentModifierHolyCrit()
+    local _, _, classId = UnitClass("player")
+    local mod = 0
+
+    if classId == 2 then -- Paladin
+        local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 13)
+        mod = points * 1 -- 0-5% Holy Power
+    end
+
+    return mod
+end
+
 -- Get holy crit chance
 function Data:HolyCrit()
+    local crit = _GetTalentModifierHolyCrit()
+    crit = crit + GetSpellCritChance(2)
     return Data:Round(GetSpellCritChance(2), 2) .. "%"
 end
 
