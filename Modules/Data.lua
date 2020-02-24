@@ -310,9 +310,23 @@ function Data:MeleeCrit()
     return Data:Round(GetCritChance(), 2) .. "%"
 end
 
+function _GetTalentModifierSpellCrit()
+    local _, _, classId = UnitClass("player")
+    local mod = 0
+
+    if classId == 8 then -- Mage
+        local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 15)
+        mod = points * 1 -- 0-3% Arcane Instability
+    end
+
+    return mod
+end
+
 -- Get spell crit chance
 function Data:SpellCrit()
-    return Data:Round(GetSpellCritChance(), 2) .. "%"
+    local crit = _GetTalentModifierSpellCrit()
+    crit = crit + GetSpellCritChance()
+    return Data:Round(crit, 2) .. "%"
 end
 
 -- Get ranged crit chance
