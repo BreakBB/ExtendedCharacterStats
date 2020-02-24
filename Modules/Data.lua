@@ -310,7 +310,7 @@ function Data:MeleeCrit()
     return Data:Round(GetCritChance(), 2) .. "%"
 end
 
-function _GetTalentModifierSpellCrit()
+local function _GetTalentModifierSpellCrit()
     local _, _, classId = UnitClass("player")
     local mod = 0
 
@@ -370,7 +370,7 @@ function Data:HolyDmg()
 end
 
 
-function _GetTalentModifierHolyCrit()
+local function _GetTalentModifierHolyCrit()
     local _, _, classId = UnitClass("player")
     local mod = 0
 
