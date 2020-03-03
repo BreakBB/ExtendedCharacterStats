@@ -413,6 +413,9 @@ local function _GetTalentModifierHolyCrit()
     if classId == 2 then -- Paladin
         local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 13)
         mod = points * 1 -- 0-5% Holy Power
+    elseif classId == 5 then -- Priest
+        local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 3)
+        mod = points * 1 -- 0-5% Holy Specialization
     end
 
     return mod
