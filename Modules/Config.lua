@@ -28,6 +28,7 @@ function Config:CreateWindow()
     table.insert(UISpecialFrames, settingsFrame:GetName())
     settingsFrame:SetSize(350, 450) -- Width, Height
     settingsFrame:SetPoint("CENTER", UIParent, "CENTER", 0, 100) -- Point, relativeFrame, relativePoint, xOffset, yOffset
+    settingsFrame:SetFrameStrata("DIALOG")
     settingsFrame:Hide()
     settingsFrame.title = settingsFrame:CreateFontString(nil, "OVERLAY")
     settingsFrame.title:SetFontObject("GameFontHighlight")
