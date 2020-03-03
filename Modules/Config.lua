@@ -8,10 +8,15 @@ local _Config = Config.private
 
 ---@type Stats
 local Stats = ECSLoader:ImportModule("Stats")
+---@type GearInfos
+local GearInfos = ECSLoader:ImportModule("GearInfos")
 
 ------------------------------------------------------------------
 -- Configuration Frame
 ------------------------------------------------------------------
+
+-- Forward declaration
+local _CreateCheckBox
 
 local leftOffset = -30
 local rightOffset = -30
@@ -29,6 +34,16 @@ function Config:CreateWindow()
     settingsFrame.title:SetPoint("CENTER", settingsFrame.TitleBg, "CENTER", 0, 0)
     settingsFrame.title:SetText("Extended Character Stats Settings")
     _Config.frame = settingsFrame
+
+    local showQualityColors = _CreateCheckBox(20, leftOffset, "Show quality colors", "TOPLEFT")
+    showQualityColors:SetScript("OnClick", function ()
+        local value = not ExtendedCharacterStats.general.showQualityColors
+        GearInfos:ToggleColorFrames(value)
+
+        ExtendedCharacterStats.general.showQualityColors = value
+    end)
+    showQualityColors:SetChecked(ExtendedCharacterStats.general.showQualityColors)
+    leftOffset = leftOffset - 25
 
     -- Melee
     -- ExtendedCharacterStats.profile.melee
@@ -50,6 +65,8 @@ function Config:CreateWindow()
     -- ExtendedCharacterStats.profile.spell
     Config:CreateSpellOptions()
 
+    rightOffset = rightOffset - 25
+
     -- SpellBonus
     -- ExtendedCharacterStats.profile.SpellBonus
     Config:CreateSpellBonusOptions()
@@ -67,7 +84,7 @@ function Config:ToggleWindow()
     _Config.frame:SetShown(not _Config.frame:IsShown())
 end
 
-local function _CreateCheckBox(yOffset, xOffset, text, position)
+_CreateCheckBox = function(yOffset, xOffset, text, position)
     local checkbox = CreateFrame("CheckButton", nil, _Config.frame, "UICheckButtonTemplate")
     checkbox:SetSize(20, 20)
     checkbox:SetPoint(position, yOffset, xOffset)

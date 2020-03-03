@@ -11,6 +11,8 @@ local Locale = ECSLoader:ImportModule("Locale")
 local Config = ECSLoader:ImportModule("Config")
 ---@type Stats
 local Stats = ECSLoader:ImportModule("Stats")
+---@type GearInfos
+local GearInfos = ECSLoader:ImportModule("GearInfos")
 ---@type Profile
 local Profile = ECSLoader:ImportModule("Profile")
 
@@ -45,9 +47,13 @@ _InitAddon = function()
         ExtendedCharacterStats.v21reset = true
     end
 
+    local profileData = Profile:GetProfileData()
     if ExtendedCharacterStats.profile == nil then
         ---@class ECSProfile
-        ExtendedCharacterStats.profile = Profile:GetProfileData()
+        ExtendedCharacterStats.profile = profileData.profile
+    end
+    if ExtendedCharacterStats.general == nil then
+        ExtendedCharacterStats.general = profileData.general
     end
 
     Locale:Init()
@@ -65,6 +71,8 @@ local lastSuccessfulSpell = 0
 _InitGUI = function ()
     -- Initialize the AddOn GUI once everything has loaded
     Stats:CreateWindow()
+
+    GearInfos:Init()
 
     -- Configure Update Event Frame for updating the UI
     local eventFrame = CreateFrame("Frame", nil, UIParent)
@@ -93,7 +101,14 @@ _InitGUI = function ()
                     Stats:UpdateInformation()
                 end)
             end
+        elseif event == "PLAYER_EQUIPMENT_CHANGED" then
+            GearInfos:UpdateGearColorFrames()
         end
+    end)
+
+    -- Update whenever the CharacterFrame is shown
+    PaperDollItemsFrame:HookScript("OnShow", function ()
+        GearInfos:UpdateGearColorFrames()
     end)
 
     ECS.eventFrame = eventFrame

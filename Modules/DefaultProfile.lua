@@ -6,7 +6,7 @@
 local Profile = ECSLoader:CreateModule("Profile")
 
 ---@return ECSProfile
-local function GetDefaultProfile()
+local function GetDefaultStatsProfile()
     return {
 
         ---@class Category
@@ -116,7 +116,20 @@ local function GetDefaultProfile()
     }
 end
 
+local function GetDefaultGeneralSettings()
+    return {
+        showQualityColors = true,
+    }
+end
+
 ---@return ECSProfile
 function Profile:GetProfileData()
-    return ExtendedCharacterStats.profile or GetDefaultProfile()
+    return {
+        general = ExtendedCharacterStats.general or GetDefaultGeneralSettings(),
+        profile = ExtendedCharacterStats.profile or GetDefaultStatsProfile(),
+    }
+    -- local default = {}
+    -- default.general = ExtendedCharacterStats.general or GetDefaultGeneralSettings()
+    -- default.profile = ExtendedCharacterStats.profile or GetDefaultStatsProfile()
+    -- return default
 end
