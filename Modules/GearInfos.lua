@@ -3,7 +3,7 @@
 local GearInfos = ECSLoader:CreateModule("GearInfos")
 
 -- Forward declaration
-local _CreateGearColorFrames
+local _CreateGearColorFrames, _UpdateColorFrame, _GetInspectGearSlots
 
 local GEAR_SLOT_FRAMES = {
     CharacterHeadSlot,
@@ -36,7 +36,6 @@ _CreateGearColorFrames = function()
         gearFrame.qualityTexture:SetPoint("TOPLEFT", gearFrame, "TOPLEFT", -2, 2)
         gearFrame.qualityTexture:SetPoint("BOTTOMRIGHT", gearFrame, "BOTTOMRIGHT", 2, -2)
         gearFrame.qualityTexture:SetTexture("Interface\\Addons\\ExtendedCharacterStats\\Icons\\WhiteIconFrame.blp")
-
     end
     GearInfos:UpdateGearColorFrames()
     GearInfos:ToggleColorFrames(ExtendedCharacterStats.general.showQualityColors)
@@ -45,18 +44,25 @@ end
 ---Updates the colored frames around each gear slot
 function GearInfos:UpdateGearColorFrames()
     for _, gearFrame in ipairs(GEAR_SLOT_FRAMES) do
-        gearFrame.qualityTexture:SetVertexColor(0, 0, 0, 0)
+        _UpdateColorFrame(gearFrame, "player")
+    end
+end
 
-        local itemLink = GetInventoryItemLink("player", gearFrame:GetID())
-        -- print(itemLink)
-        if itemLink ~= nil then
-            local _, itemInfo = GetItemInfo(itemLink)
-            if itemInfo ~= nil then
-                local itemQuality = C_Item.GetItemQualityByID(itemInfo)
-                local r, g, b, _ = GetItemQualityColor(itemQuality)
-                gearFrame.qualityTexture:SetVertexColor(r, g, b, 0.75)
-            end
+_UpdateColorFrame = function (gearFrame, unit)
+    gearFrame.qualityTexture:SetVertexColor(0, 0, 0, 0)
+
+    local itemLink = GetInventoryItemLink(unit, gearFrame:GetID())
+    if itemLink ~= nil then
+        local _, itemInfo = GetItemInfo(itemLink)
+        if itemInfo ~= nil then
+            local itemQuality = C_Item.GetItemQualityByID(itemInfo)
+            local r, g, b, _ = GetItemQualityColor(itemQuality)
+            gearFrame.qualityTexture:SetVertexColor(r, g, b, 0.75)
         end
+    else
+        C_Timer.After(0.2, function ()
+            _UpdateColorFrame(gearFrame, unit)
+        end)
     end
 end
 
@@ -66,8 +72,52 @@ function GearInfos:ToggleColorFrames(value)
     for _, gearFrame in ipairs(GEAR_SLOT_FRAMES) do
         if value then
             gearFrame.qualityTexture:Show()
-            else
+        else
             gearFrame.qualityTexture:Hide()
+        end
+    end
+    for _, gearFrame in ipairs(_GetInspectGearSlots()) do
+        if value then
+            gearFrame.qualityTexture:Show()
+        else
+            gearFrame.qualityTexture:Hide()
+        end
+    end
+end
+
+_GetInspectGearSlots = function()
+    return {
+        InspectHeadSlot,
+        InspectNeckSlot,
+        InspectShoulderSlot,
+        InspectBackSlot,
+        InspectChestSlot,
+        InspectWristSlot,
+        InspectHandsSlot,
+        InspectWaistSlot,
+        InspectLegsSlot,
+        InspectFeetSlot,
+        InspectFinger0Slot,
+        InspectFinger1Slot,
+        InspectTrinket0Slot,
+        InspectTrinket1Slot,
+        InspectMainHandSlot,
+        InspectSecondaryHandSlot,
+        InspectRangedSlot,
+    }
+end
+
+function GearInfos:UpdateInspectGearColorFrames()
+    for _, gearFrame in ipairs(_GetInspectGearSlots()) do
+        if gearFrame.qualityTexture == nil then
+            gearFrame.qualityTexture = gearFrame:CreateTexture(nil,"OVERLAY",nil)
+            gearFrame.qualityTexture:SetPoint("TOPLEFT", gearFrame, "TOPLEFT", -2, 2)
+            gearFrame.qualityTexture:SetPoint("BOTTOMRIGHT", gearFrame, "BOTTOMRIGHT", 2, -2)
+            gearFrame.qualityTexture:SetTexture("Interface\\Addons\\ExtendedCharacterStats\\Icons\\WhiteIconFrame.blp")
+            gearFrame.qualityTexture:SetVertexColor(0, 0, 0, 0)
+        end
+        if ExtendedCharacterStats.general.showQualityColors then
+            _UpdateColorFrame(gearFrame, "target")
         end
     end
 end

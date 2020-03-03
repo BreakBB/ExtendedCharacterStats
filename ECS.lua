@@ -85,6 +85,7 @@ _InitGUI = function ()
     eventFrame:RegisterEvent("UNIT_POWER_UPDATE") -- Triggers whenever the player changes gear
     eventFrame:RegisterEvent("UPDATE_SHAPESHIFT_FORM") -- Triggers whenever the player changes gear
     eventFrame:RegisterEvent("UNIT_SPELLCAST_SUCCEEDED") -- Triggers whenever a cast was successful
+    eventFrame:RegisterEvent("INSPECT_READY") -- Triggers whenever the player inspects someone else and the inspect frame is ready
 
     -- Event handler for all the subscribed events
     -- Calls the update functions to update all the relevant stats
@@ -103,6 +104,8 @@ _InitGUI = function ()
             end
         elseif event == "PLAYER_EQUIPMENT_CHANGED" then
             GearInfos:UpdateGearColorFrames()
+        elseif event == "INSPECT_READY" then
+            GearInfos:UpdateInspectGearColorFrames()
         end
     end)
 
