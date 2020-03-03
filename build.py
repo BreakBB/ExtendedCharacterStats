@@ -103,7 +103,7 @@ def main():
     # define release folder
     destination = 'releases/%s/%s' % (versionDir, addonDir)
     # copy directories
-    for dir in ['Modules']:
+    for dir in ['Modules', 'Icons']:
         shutil.copytree(dir, '%s/%s' % (destination, dir))
     # copy files
     for file in ['ECS.lua', 'README.md', 'LICENCE.md']:
