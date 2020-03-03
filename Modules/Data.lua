@@ -271,14 +271,10 @@ local function _GetTalentModifierMP5()
     if classId == 5 then -- Priest
         local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 8)
         mod = points * 0.05 -- 0-15% from Meditation
-    end
-
-    if classId == 8 then -- Mage
+    elseif classId == 8 then -- Mage
         local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 12)
         mod = points * 0.05 -- 0-15% Arcane Meditation
-    end
-
-    if classId == 11 then -- Druid
+    elseif classId == 11 then -- Druid
         local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 6)
         mod = points * 0.05 -- 0-15% from Reflection
     end
@@ -301,9 +297,7 @@ local function _HasSetBonusModifierMP5()
                     if string.sub(itemName, -13) == "Transcendence" or string.sub(itemName, -11) == "Erhabenheit" or string.sub(itemName, -13) == "Trascendencia" or string.sub(itemName, -13) == "transcendance" or string.sub(itemName, -14) == "Transcendência" then
                         setCounter = setCounter + 1
                     end
-                end
-
-                if classId == 11 then -- Druid
+                elseif classId == 11 then -- Druid
                     if string.sub(itemName, 1, 9) == "Stormrage" or string.sub(itemName, -9) == "Stormrage" or string.sub(itemName, -10) == "Tempestira" or string.sub(itemName, -11) == "Tempesfúria" then
                         setCounter = setCounter + 1
                     end
