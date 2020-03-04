@@ -55,6 +55,8 @@ local function GetDefaultStatsProfile()
             refName = "DefenseHeader",
             text = "Defense",
 
+            armor = {display = true, refName = "Armor", text = "Armor: "},
+            defense = {display = true, refName = "DefenseValue", text = "Defense: "},
             block = {display = true, refName = "BlockChance", text = "Block: "},
             parry = {display = true, refName = "ParryChance", text = "Parry: "},
             dodge = {display = true, refName = "DodgeChance", text = "Dodge: "}

@@ -133,7 +133,7 @@ function Stats:CreateStatInfos()
     _CreateStatInfo(category, category.bonus, category.sameLevel, category.bossLevel)
 
     category = profile.defense
-    _CreateStatInfo(category, category.block, category.parry, category.dodge)
+    _CreateStatInfo(category, category.armor, category.defense, category.block, category.parry, category.dodge)
 
     category = profile.regen
     _CreateStatInfo(category, category.mp5Items, category.mp5Spirit, category.mp5Casting)

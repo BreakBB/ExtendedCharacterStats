@@ -2679,6 +2679,8 @@
         "DEFAULT_CHAT_FRAME",
         "StaticPopupDialogs",
         "GameTooltipTextLeft1",
+        "------------------------------------------------------> Global strings",
+        "DEFENSE",
         "------------------------------------------------------> Addon specific",
         "SlashCmdList",
         "ECSLoader",

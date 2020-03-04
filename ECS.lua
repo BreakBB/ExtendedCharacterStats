@@ -45,6 +45,9 @@ _InitAddon = function()
         -- Reset the settings for the update to v2.1.0
         ExtendedCharacterStats = {}
         ExtendedCharacterStats.v21reset = true
+    elseif ExtendedCharacterStats.v23reset == nil then
+        ExtendedCharacterStats = {}
+        ExtendedCharacterStats.v23reset = true
     end
 
     local profileData = Profile:GetProfileData()
