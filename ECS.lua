@@ -41,11 +41,8 @@ ECS.loadingFrame = loadingFrame
 _InitAddon = function()
     if ExtendedCharacterStats == nil then
         ExtendedCharacterStats = {}
-    elseif ExtendedCharacterStats.v21reset == nil then
-        -- Reset the settings for the update to v2.1.0
-        ExtendedCharacterStats = {}
-        ExtendedCharacterStats.v21reset = true
     elseif ExtendedCharacterStats.v23reset == nil then
+        -- Reset the settings for the update to v2.3.0
         ExtendedCharacterStats = {}
         ExtendedCharacterStats.v23reset = true
     end
