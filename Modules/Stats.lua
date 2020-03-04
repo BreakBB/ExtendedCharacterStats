@@ -61,11 +61,16 @@ function Stats:CreateWindow()
     _Stats.frame = mainFrame
 
     local toggleButton = CreateFrame("Button", "ECS_ToggleButton", CharacterModelFrame, "GameMenuButtonTemplate")
-    toggleButton:SetText("ECS")
-    toggleButton:SetSize(33, 16)
-    toggleButton:SetPoint("BOTTOMRIGHT", CharacterModelFrame, "BOTTOMRIGHT", 0, 10)
+    toggleButton:SetText("< ECS")
+    toggleButton:SetSize(44, 18)
+    toggleButton:SetPoint("BOTTOMRIGHT", PaperDollItemsFrame, "BOTTOMRIGHT", -38, 87)
     toggleButton:SetScript("OnClick", function ()
         Stats:ToggleWindow()
+        if _Stats.frame:IsShown() then
+           toggleButton:SetText("< ECS")
+        else
+            toggleButton:SetText("ECS >")
+        end
     end)
 
     Stats:CreateStatInfos()
