@@ -23,8 +23,8 @@ local function GetDefaultStatsProfile()
                 text = "Hit",
 
                 bonus = {display = true, refName = "MeleeHitBonus", text = "Bonus: "},
-                sameLevel = {display = true, refName = "MeleeHitSameLevel", text = "Miss-Chance: "},
-                bossLevel = {display = true, refName = "MeleeHitBossLevel", text = "Miss-Chance (Lvl + 3): "},
+                sameLevel = {display = true, refName = "MeleeHitSameLevel", text = "Miss: "},
+                bossLevel = {display = true, refName = "MeleeHitBossLevel", text = "Miss (Lvl + 3): "},
             },
             crit = {display = true, refName = "MeleeCritChance", text = "Crit: "}
         },
@@ -43,8 +43,8 @@ local function GetDefaultStatsProfile()
                 text = "Hit",
 
                 bonus = {display = true, refName = "RangedHitBonus", text = "Bonus: "},
-                sameLevel = {display = true, refName = "RangedHitSameLevel", text = "Miss-Chance: "},
-                bossLevel = {display = true, refName = "RangedHitBossLevel", text = "Miss-Chance (Lvl + 3): "},
+                sameLevel = {display = true, refName = "RangedHitSameLevel", text = "Miss: "},
+                bossLevel = {display = true, refName = "RangedHitBossLevel", text = "Miss (Lvl + 3): "},
             },
             crit = {display = true, refName = "RangedCritChance", text = "Crit: "}
         },
@@ -87,8 +87,8 @@ local function GetDefaultStatsProfile()
                 text = "Hit",
 
                 bonus = {display = true, refName = "SpellHitBonus", text = "Bonus: "},
-                sameLevel = {display = true, refName = "SpellHitSameLevel", text = "Miss-Chance: "},
-                bossLevel = {display = true, refName = "SpellHitBossLevel", text = "Miss-Chance (Lvl + 3): "},
+                sameLevel = {display = true, refName = "SpellHitSameLevel", text = "Miss: "},
+                bossLevel = {display = true, refName = "SpellHitBossLevel", text = "Miss (Lvl + 3): "},
             },
             crit = {display = true, refName = "SpellCritChance", text = "Crit: "}
         },

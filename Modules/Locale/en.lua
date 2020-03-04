@@ -8,6 +8,6 @@ function LocaleEN:GetStrings()
 end
 
 strings = {
-    ["NAME_VERSION"] = "Extended Character Stats %s",
+    ["NAME_VERSION"] = "ECS %s",
     ["SETTINGS"] = "Settings",
 }

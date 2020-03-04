@@ -62,9 +62,9 @@ _InitAddon = function()
     Locale:Init()
 
     ExtendedCharacterStats.windowSize = {
-        height = 425,
-        width = 225,
-        xOffset = 200,
+        height = 422,
+        width = 175,
+        xOffset = 144,
         yOffset = 30
     }
 end
