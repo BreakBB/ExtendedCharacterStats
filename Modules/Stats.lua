@@ -26,6 +26,8 @@ local headerFont = "GameFontNormal"
 -- Font for the stat display
 local statFont = "GameFontHighlightSmall"
 
+-- Forward declaration
+local _CreateStatInfos, _CreateHeader, _CreateText
 
 local framePool = {}
 local lastYOffset = 20
@@ -73,7 +75,7 @@ function Stats:CreateWindow()
         end
     end)
 
-    Stats:CreateStatInfos()
+    _CreateStatInfos()
     Config:CreateWindow()
 end
 
@@ -103,16 +105,16 @@ end
 
 --- Helper function to iteracte all field of a given category and create them if they should be displayed
 ---@param category Category|SubCategory
-local function _CreateStatInfo(category, ...)
+_CreateStatInfo = function(category, ...)
     if category.display == true then
-        local header = Stats:CreateHeader(category.refName, category.text, category.isSubGroup)
+        local header = _CreateHeader(category.refName, category.text, category.isSubGroup)
         local anyStatDisplayed = false
         local stats = {...}
         -- Loop through all stats
         for _, stat in pairs(stats) do
             if type(stat) == "table" and stat.display == true then
                 anyStatDisplayed = true
-                Stats:CreateText(stat.refName, stat.text .. Data:GetStatInfo(stat.refName), category.isSubGroup)
+                _CreateText(stat.refName, stat.text .. Data:GetStatInfo(stat.refName), category.isSubGroup)
             end
         end
 
@@ -124,7 +126,7 @@ local function _CreateStatInfo(category, ...)
 end
 
 --- Creates all categories with headers and they child values
-function Stats:CreateStatInfos()
+_CreateStatInfos = function()
     local profile = ExtendedCharacterStats.profile
 
     local category = profile.melee
@@ -162,7 +164,7 @@ end
 ---@param displayText string
 ---@param isSubHeader boolean
 ---@return StatsHeader
-function Stats:CreateHeader(name, displayText, isSubHeader)
+_CreateHeader = function(name, displayText, isSubHeader)
     local xOffSet = 50
     if isSubHeader then
         xOffSet = 60
@@ -187,7 +189,7 @@ end
 ---@param name string
 ---@param displayText string
 ---@param isSubText boolean
-function Stats:CreateText(name, displayText, isSubText)
+_CreateText = function(name, displayText, isSubText)
     local xOffSet = 60
     if isSubText then
         xOffSet = 70
@@ -222,7 +224,7 @@ function Stats:RebuildStatInfos()
         entry:Hide()
     end
 
-    Stats:CreateStatInfos()
+    _CreateStatInfos()
 end
 
 --- Updates a single existing stat value
