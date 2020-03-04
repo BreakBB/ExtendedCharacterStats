@@ -199,7 +199,10 @@ end
 
 function Data:SpellHitBonus()
     local hit = _GetTalentModifierSpellHit()
-    hit = hit + GetSpellHitModifier()
+    local mod = GetSpellHitModifier()
+    if mod then
+        hit = hit + mod
+    end
 
     return Data:Round(hit, 2) .. "%"
 end
@@ -208,7 +211,10 @@ function Data:SpellMissChanceSameLevel()
     local missChance = 3
 
     missChance = missChance - _GetTalentModifierSpellHit()
-    missChance = missChance - GetSpellHitModifier()
+    local mod = GetSpellHitModifier()
+    if mod then
+        missChance = missChance - mod
+    end
 
     if missChance < 0 then
         missChance = 0
@@ -223,7 +229,10 @@ function Data:SpellMissChanceBossLevel()
     local missChance = 16
 
     missChance = missChance - _GetTalentModifierSpellHit()
-    missChance = missChance - GetSpellHitModifier()
+    local mod = GetSpellHitModifier()
+    if mod then
+        missChance = missChance - mod
+    end
 
     if missChance < 0 then
         missChance = 0
