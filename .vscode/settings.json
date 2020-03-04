@@ -2684,6 +2684,7 @@
         "------------------------------------------------------> Addon specific",
         "SlashCmdList",
         "ECSLoader",
+        "LibStub",
     ],
     "Lua.workspace.ignoreDir": [
     ],

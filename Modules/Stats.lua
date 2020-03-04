@@ -42,7 +42,7 @@ function Stats:CreateWindow()
                            ExtendedCharacterStats.windowSize.yOffset) -- Point, relativeFrame, relativePoint, xOffset, yOffset
     mainFrame.title = mainFrame:CreateFontString(nil, "OVERLAY")
     mainFrame.title:SetFontObject("GameFontHighlight")
-    mainFrame.title:SetPoint("CENTER", mainFrame.TitleBg, "CENTER", 5, 0)
+    mainFrame.title:SetPoint("CENTER", mainFrame.TitleBg, "CENTER", 11, 0)
     mainFrame.title:SetText(Locale:GetString("NAME_VERSION", Utils:GetAddonVersionString()))
 
     mainFrame.configButton = CreateFrame("Button", nil, mainFrame, "GameMenuButtonTemplate")
@@ -50,7 +50,7 @@ function Stats:CreateWindow()
     mainFrame.configButton:SetSize(ExtendedCharacterStats.windowSize.width - 10, 20)
     mainFrame.configButton:SetPoint("CENTER", mainFrame, "TOP", -1, -35)
     mainFrame.configButton:SetScript("OnClick", function ()
-        Config:ToggleWindow()
+        ECSConfigFrame:SetShown(not ECSConfigFrame:IsShown())
     end)
 
     mainFrame.ScrollFrame = CreateFrame("ScrollFrame", nil, mainFrame, "UIPanelScrollFrameTemplate")
@@ -117,11 +117,6 @@ _CreateStatInfo = function(category, ...)
                 _CreateText(stat.refName, stat.text .. Data:GetStatInfo(stat.refName), category.isSubGroup)
             end
         end
-
-        if (not anyStatDisplayed) and ((category.hit == nil) or (not _IsAnyStatDisplayed(category.hit))) then
-            Stats:RecycleFrame(header)
-            lastYOffset = lastYOffset + 20
-        end
     end
 end
 
@@ -131,13 +126,17 @@ _CreateStatInfos = function()
 
     local category = profile.melee
     _CreateStatInfo(category, category.crit)
-    category = category.hit
-    _CreateStatInfo(category, category.bonus, category.sameLevel, category.bossLevel)
+    if category.display then
+        category = category.hit
+        _CreateStatInfo(category, category.bonus, category.sameLevel, category.bossLevel)
+    end
 
     category = profile.ranged
     _CreateStatInfo(category, category.crit)
-    category = category.hit
-    _CreateStatInfo(category, category.bonus, category.sameLevel, category.bossLevel)
+    if category.display then
+        category = category.hit
+        _CreateStatInfo(category, category.bonus, category.sameLevel, category.bossLevel)
+    end
 
     category = profile.defense
     _CreateStatInfo(category, category.armor, category.defense, category.block, category.parry, category.dodge)
@@ -147,8 +146,10 @@ _CreateStatInfos = function()
 
     category = profile.spell
     _CreateStatInfo(category, category.crit)
-    category = category.hit
-    _CreateStatInfo(category, category.bonus, category.sameLevel, category.bossLevel)
+    if category.display then
+        category = category.hit
+        _CreateStatInfo(category, category.bonus, category.sameLevel, category.bossLevel)
+    end
 
     category = profile.spellBonus
     _CreateStatInfo(
@@ -165,9 +166,9 @@ end
 ---@param isSubHeader boolean
 ---@return StatsHeader
 _CreateHeader = function(name, displayText, isSubHeader)
-    local xOffSet = 50
+    local xOffSet = 49
     if isSubHeader then
-        xOffSet = 60
+        xOffSet = 56
     end
     lastYOffset = lastYOffset - 20
     ---@class StatsHeader
@@ -190,9 +191,9 @@ end
 ---@param displayText string
 ---@param isSubText boolean
 _CreateText = function(name, displayText, isSubText)
-    local xOffSet = 60
+    local xOffSet = 56
     if isSubText then
-        xOffSet = 70
+        xOffSet = 62
     end
     lastYOffset = lastYOffset - 15
     ---@class StatsText
@@ -221,9 +222,10 @@ function Stats:RebuildStatInfos()
     lastYOffset = 20
 
     for _, entry in pairs(stats) do
-        entry:Hide()
+        Stats:RecycleFrame(entry)
     end
 
+    _Stats.displayedLines = {}
     _CreateStatInfos()
 end
 

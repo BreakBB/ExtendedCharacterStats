@@ -6,16 +6,26 @@
 ## DefaultState : enabled
 ## Author: Ethulu, BreakBB
 
+embeds.xml
+
 # ModuleLoader
 Modules\ModuleLoader.lua
 
 # Modules
 Modules\Data.lua
 Modules\Utils.lua
-Modules\Config.lua
 Modules\Stats.lua
 Modules\GearInfos.lua
 Modules\DefaultProfile.lua
+
+# Config
+Modules\Config\Config.lua
+Modules\Config\MeleeSection.lua
+Modules\Config\RangeSection.lua
+Modules\Config\DefenseSection.lua
+Modules\Config\ManaSection.lua
+Modules\Config\SpellSection.lua
+Modules\Config\SpellBonusSection.lua
 
 # Locales
 Modules\Locale\Locale.lua
