@@ -103,10 +103,10 @@ def main():
     # define release folder
     destination = 'releases/%s/%s' % (versionDir, addonDir)
     # copy directories
-    for dir in ['Modules', 'Icons']:
+    for dir in ['Modules', 'Libs', 'Icons']:
         shutil.copytree(dir, '%s/%s' % (destination, dir))
     # copy files
-    for file in ['ECS.lua', 'README.md', 'LICENCE.md']:
+    for file in ['ECS.lua', 'embeds.xml','README.md', 'LICENCE.md']:
         shutil.copy2(file, '%s/%s' % (destination, file))
     # modify toc
     setVersion()
