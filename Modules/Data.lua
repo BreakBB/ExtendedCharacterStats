@@ -471,7 +471,7 @@ end
 function Data:HolyCrit()
     local crit = _GetTalentModifierHolyCrit()
     crit = crit + GetSpellCritChance(2)
-    return Data:Round(GetSpellCritChance(2), 2) .. "%"
+    return Data:Round(crit, 2) .. "%"
 end
 
 -- Get fire bonus dmg
