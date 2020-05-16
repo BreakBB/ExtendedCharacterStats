@@ -444,7 +444,9 @@ end
 
 -- Get phys crit chance
 function Data:PhysicalCrit()
-    return Data:Round(GetSpellCritChance(1), 2) .. "%"
+    local spellCrit = _GetTalentModifierSpellCrit()
+    spellCrit = spellCrit + GetSpellCritChance(1)
+    return Data:Round(spellCrit, 2) .. "%"
 end
 
 -- Get holy bonus dmg
@@ -469,9 +471,10 @@ end
 
 -- Get holy crit chance
 function Data:HolyCrit()
-    local crit = _GetTalentModifierHolyCrit()
-    crit = crit + GetSpellCritChance(2)
-    return Data:Round(crit, 2) .. "%"
+    local spellCrit = _GetTalentModifierSpellCrit()
+    local talentModifier = _GetTalentModifierHolyCrit()
+    spellCrit = spellCrit + talentModifier + GetSpellCritChance(2)
+    return Data:Round(talentModifier, 2) .. "%"
 end
 
 -- Get fire bonus dmg
@@ -481,7 +484,9 @@ end
 
 -- Get fire crit chance
 function Data:FireCrit()
-    return Data:Round(GetSpellCritChance(3), 2) .. "%"
+    local spellCrit = _GetTalentModifierSpellCrit()
+    spellCrit = spellCrit + GetSpellCritChance(3)
+    return Data:Round(spellCrit, 2) .. "%"
 end
 
 -- Get nature bonus dmg
@@ -491,7 +496,9 @@ end
 
 -- Get nature crit chance
 function Data:NatureCrit()
-    return Data:Round(GetSpellCritChance(4), 2) .. "%"
+    local spellCrit = _GetTalentModifierSpellCrit()
+    spellCrit = spellCrit + GetSpellCritChance(4)
+    return Data:Round(spellCrit, 2) .. "%"
 end
 
 -- Get frost bonus dmg
@@ -501,7 +508,9 @@ end
 
 -- Get frost crit chance
 function Data:FrostCrit()
-    return Data:Round(GetSpellCritChance(5), 2) .. "%"
+    local spellCrit = _GetTalentModifierSpellCrit()
+    spellCrit = spellCrit + GetSpellCritChance(5)
+    return Data:Round(spellCrit, 2) .. "%"
 end
 
 -- Get shadow bonus dmg
@@ -511,7 +520,9 @@ end
 
 -- Get shadow crit chance
 function Data:ShadowCrit()
-    return Data:Round(GetSpellCritChance(6), 2) .. "%"
+    local spellCrit = _GetTalentModifierSpellCrit()
+    spellCrit = spellCrit + GetSpellCritChance(6)
+    return Data:Round(spellCrit, 2) .. "%"
 end
 
 -- Get arcane bonus dmg
@@ -521,7 +532,9 @@ end
 
 -- Get arcane crit chance
 function Data:ArcaneCrit()
-    return Data:Round(GetSpellCritChance(7), 2) .. "%"
+    local spellCrit = _GetTalentModifierSpellCrit()
+    spellCrit = spellCrit + GetSpellCritChance(7)
+    return Data:Round(spellCrit, 2) .. "%"
 end
 
 -- Get bonus healing power
