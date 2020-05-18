@@ -65,8 +65,9 @@ function Stats:CreateWindow()
     local toggleButton = CreateFrame("Button", "ECS_ToggleButton", CharacterModelFrame, "GameMenuButtonTemplate")
     toggleButton:SetText("< ECS")
     toggleButton:SetSize(44, 18)
-    if _G.LeaPlusDB and _G.LeaPlusDB["DurabilityStatus"] == "On" then -- Move to old position if Leatrix Plus durability button is active. See #20
-        toggleButton:SetPoint("BOTTOMRIGHT", CharacterModelFrame, "BOTTOMRIGHT", 0, 10)
+    if (_G.LeaPlusDB and _G.LeaPlusDB["DurabilityStatus"] == "On") -- Move to old position if Leatrix Plus durability button is active. See #20
+        or PawnInitialize then -- Pawn is loaded
+        toggleButton:SetPoint("TOPRIGHT", PaperDollItemsFrame, "TOPRIGHT", -38, -43)
     else
         toggleButton:SetPoint("BOTTOMRIGHT", PaperDollItemsFrame, "BOTTOMRIGHT", -38, 87)
     end
