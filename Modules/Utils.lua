@@ -1,11 +1,27 @@
-------------------------------------------------------------------
--- Modules
-------------------------------------------------------------------
-
 ---@class Utils
 local Utils = ECSLoader:CreateModule("Utils")
 
--------------------------------------------------------------------
+Utils.CHAR_EQUIP_SLOTS = {
+    ["Head"] = "HeadSlot",
+    ["Neck"] = "NeckSlot",
+    ["Shoulder"] = "ShoulderSlot",
+    ["Back"] = "BackSlot",
+    ["Chest"] = "ChestSlot",
+    ["Shirt"] = "ShirtSlot",
+    ["Tabard"] = "TabardSlot",
+    ["Wrist"] = "WristSlot",
+    ["Hands"] = "HandsSlot",
+    ["Wairst"] = "WaistSlot",
+    ["Legs"] = "LegsSlot",
+    ["Feet"] = "FeetSlot",
+    ["Finger1"] = "Finger0Slot",
+    ["Finger2"] = "Finger1Slot",
+    ["Trinket1"] = "Trinket0Slot",
+    ["Trinket2"] = "Trinket1Slot",
+    ["MainHand"] = "MainHandSlot",
+    ["OffHand"]  = "SecondaryHandSlot",
+    ["Range"] = "RangedSlot",
+}
 
 local cachedTitle = nil
 function Utils:GetAddonVersionInfo()
