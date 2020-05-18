@@ -3,25 +3,17 @@ local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
 local DataUtils = ECSLoader:ImportModule("DataUtils")
 
+local _GetTalentModifierDefense
 
-function Data:Armor()
+
+---@return number
+function Data:GetArmorValue()
     local _, effectiveArmor = UnitArmor("player")
     return DataUtils:Round(effectiveArmor, 2)
 end
 
-local function _GetTalentModifierDefense()
-    local _, _, classId = UnitClass("player")
-    local mod = 0
-
-    if classId == Data.WARRIOR then
-        local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 2)
-        mod = points * 2 -- 0-10 Anticipation
-    end
-
-    return mod
-end
-
-function Data:Defense()
+---@return string
+function Data:GetDefenseValue()
     local numSkills = GetNumSkillLines()
     local skillIndex = 0
 
@@ -48,17 +40,30 @@ function Data:Defense()
     return skillRank .. " + " .. skillModifier
 end
 
--- Get dodge chance
-function Data:Dodge()
+---@return number
+_GetTalentModifierDefense = function()
+    local _, _, classId = UnitClass("player")
+    local mod = 0
+
+    if classId == Data.WARRIOR then
+        local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 2)
+        mod = points * 2 -- 0-10 Anticipation
+    end
+
+    return mod
+end
+
+---@return string
+function Data:GetDodgeChance()
     return DataUtils:Round(GetDodgeChance(), 2) .. "%"
 end
 
--- Get parry chance
-function Data:Parry()
+---@return string
+function Data:GetParryChance()
     return DataUtils:Round(GetParryChance(), 2) .. "%"
 end
 
--- Get block chance
-function Data:Block()
+---@return string
+function Data:GetBlockChance()
     return DataUtils:Round(GetBlockChance(), 2) .. "%"
 end

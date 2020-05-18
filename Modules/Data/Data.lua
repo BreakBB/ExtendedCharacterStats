@@ -52,19 +52,19 @@ function Data:GetStatInfo(refName)
     end
 
     if refName == "Armor" then
-        return Data:Armor()
+        return Data:GetArmorValue()
     end
     if refName == "DefenseValue" then
-        return Data:Defense()
+        return Data:GetDefenseValue()
     end
     if refName == "DodgeChance" then
-        return Data:Dodge()
+        return Data:GetDodgeChance()
     end
     if refName == "ParryChance" then
-        return Data:Parry()
+        return Data:GetParryChance()
     end
     if refName == "BlockChance" then
-        return Data:Block()
+        return Data:GetBlockChance()
     end
 
     if refName == "SpellHitBonus" then
