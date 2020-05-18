@@ -3,7 +3,8 @@ local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
 local DataUtils = ECSLoader:ImportModule("DataUtils")
 
-local _GetTalentModifier, _GetGeneralTalentModifier, _GetTalentModifierBySchool, _GetTalentModifierHolyCrit
+local _GetTalentModifier, _GetGeneralTalentModifier, _GetTalentModifierBySchool
+local _GetTalentModifierHolyCrit, _GetTalentModifierFireCrit
 
 local _, _, classId = UnitClass("player")
 
@@ -41,6 +42,8 @@ end
 _GetTalentModifierBySchool = function (school)
     if school == Data.HOLY_SCHOOL then
         return _GetTalentModifierHolyCrit()
+    elseif school == Data.FIRE_SCHOOL then
+        return _GetTalentModifierFireCrit()
     else
         return 0
     end
@@ -56,6 +59,18 @@ _GetTalentModifierHolyCrit = function()
     elseif classId == Data.PRIEST then
         local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 3)
         mod = points * 1 -- 0-5% Holy Specialization
+    end
+
+    return mod
+end
+
+---@return number
+_GetTalentModifierFireCrit = function()
+    local mod = 0
+
+    if classId == Data.MAGE then
+        local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 13)
+        mod = points * 2 -- 0-6% Critical Mass
     end
 
     return mod
