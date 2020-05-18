@@ -66,6 +66,9 @@ function Data:GetStatInfo(refName)
     if refName == "BlockChance" then
         return Data:GetBlockChance()
     end
+    if refName == "BlockValue" then
+        return Data:GetBlockValue()
+    end
 
     if refName == "SpellHitBonus" then
        return Data:SpellHitBonus()

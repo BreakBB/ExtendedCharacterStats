@@ -67,3 +67,8 @@ end
 function Data:GetBlockChance()
     return DataUtils:Round(GetBlockChance(), 2) .. "%"
 end
+
+---@return number
+function Data:GetBlockValue()
+    return DataUtils:Round(GetShieldBlock(), 2)
+end

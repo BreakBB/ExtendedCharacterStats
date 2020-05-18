@@ -57,7 +57,8 @@ local function GetDefaultStatsProfile()
 
             armor = {display = true, refName = "Armor", text = "Armor: "},
             defense = {display = true, refName = "DefenseValue", text = "Defense: "},
-            block = {display = true, refName = "BlockChance", text = "Block: "},
+            blockChance = {display = true, refName = "BlockChance", text = "Block Chance: "},
+            blockValue = {display = true, refName = "BlockValue", text = "Block Value: "},
             parry = {display = true, refName = "ParryChance", text = "Parry: "},
             dodge = {display = true, refName = "DodgeChance", text = "Dodge: "}
         },

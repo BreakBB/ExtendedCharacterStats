@@ -50,22 +50,35 @@ function _Config:LoadDefenseSection()
                     Stats:RebuildStatInfos()
                 end,
             },
-            block = {
+            blockChance = {
                 type = "toggle",
                 order = 3,
-                name = function() return "Block" end,
+                name = function() return "Block Chance" end,
+                desc = function() return "Shows/Hides the block chance." end,
+                width = 1.5,
+                disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
+                get = function () return ExtendedCharacterStats.profile.defense.blockChance.display; end,
+                set = function (info, value)
+                    ExtendedCharacterStats.profile.defense.blockChance.display = value
+                    Stats:RebuildStatInfos()
+                end,
+            },
+            blockValue = {
+                type = "toggle",
+                order = 4,
+                name = function() return "Block Value" end,
                 desc = function() return "Shows/Hides the block value." end,
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
-                get = function () return ExtendedCharacterStats.profile.defense.block.display; end,
+                get = function () return ExtendedCharacterStats.profile.defense.blockValue.display; end,
                 set = function (info, value)
-                    ExtendedCharacterStats.profile.defense.block.display = value
+                    ExtendedCharacterStats.profile.defense.blockValue.display = value
                     Stats:RebuildStatInfos()
                 end,
             },
             parry = {
                 type = "toggle",
-                order = 4,
+                order = 5,
                 name = function() return "Parry" end,
                 desc = function() return "Shows/Hides the parry value." end,
                 width = 1.5,
@@ -78,7 +91,7 @@ function _Config:LoadDefenseSection()
             },
             dodge = {
                 type = "toggle",
-                order = 5,
+                order = 6,
                 name = function() return "Dodge" end,
                 desc = function() return "Shows/Hides the dodge value." end,
                 width = 1.5,
