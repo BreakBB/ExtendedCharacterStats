@@ -92,3 +92,12 @@ _GeneralTab = function()
         }
     }
 end
+
+-- Open the configuration window
+function Config:ToggleWindow()
+    if (not ECSConfigFrame:IsShown()) then
+        ECSConfigFrame:Show()
+    else
+        ECSConfigFrame:Hide()
+    end
+end
