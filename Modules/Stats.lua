@@ -94,31 +94,15 @@ function Stats:GetDisplayedLines()
     return _Stats.displayedLines
 end
 
----@param category Category|SubCategory
----@return boolean @True if any stat of the child is displayed, false otherwise
-local function _IsAnyStatDisplayed(category)
-    local anyDisplayed = false
-
-    for _, stat in pairs(category) do
-        if type(stat) == "table" and stat.display == true then
-            anyDisplayed = true
-        end
-    end
-
-    return anyDisplayed
-end
-
 --- Helper function to iteracte all field of a given category and create them if they should be displayed
 ---@param category Category|SubCategory
 _CreateStatInfo = function(category, ...)
     if category.display == true then
-        local header = _CreateHeader(category.refName, category.text, category.isSubGroup)
-        local anyStatDisplayed = false
+        _CreateHeader(category.refName, category.text, category.isSubGroup)
         local stats = {...}
         -- Loop through all stats
         for _, stat in pairs(stats) do
             if type(stat) == "table" and stat.display == true then
-                anyStatDisplayed = true
                 _CreateText(stat.refName, stat.text .. Data:GetStatInfo(stat.refName), category.isSubGroup)
             end
         end
@@ -169,7 +153,6 @@ end
 ---@param name string
 ---@param displayText string
 ---@param isSubHeader boolean
----@return StatsHeader
 _CreateHeader = function(name, displayText, isSubHeader)
     local xOffSet = 49
     if isSubHeader then
@@ -187,8 +170,6 @@ _CreateHeader = function(name, displayText, isSubHeader)
     header:SetText(displayText)
     header:Show()
     _Stats.displayedLines[name] = header
-
-    return header
 end
 
 --- Creates a new value in the stats UI
