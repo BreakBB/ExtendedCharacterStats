@@ -124,6 +124,12 @@ local function GetDefaultGeneralSettings()
         showQualityColors = true,
         headerFontSize = 11,
         statFontSize = 10,
+        window = {
+            height = 422,
+            width = 175,
+            xOffset = 353,
+            yOffset = 30
+        }
     }
 end
 

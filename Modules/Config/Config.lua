@@ -97,8 +97,8 @@ _GeneralTab = function()
                 name = function() return "Header Font Size" end,
                 desc = function() return "Changes the font size of the headers (e.g. Melee)" end,
                 width = "double",
-                min = 6,
-                max = 15,
+                min = 8,
+                max = 18,
                 step = 1,
                 get = function() return ExtendedCharacterStats.general.headerFontSize; end,
                 set = function (_, value)
@@ -112,13 +112,28 @@ _GeneralTab = function()
                 name = function() return "Stat Font Size" end,
                 desc = function() return "Changes the font size of the stat lines (e.g. Crit)" end,
                 width = "double",
-                min = 6,
-                max = 15,
+                min = 8,
+                max = 18,
                 step = 1,
                 get = function() return ExtendedCharacterStats.general.statFontSize; end,
                 set = function (_, value)
                     ExtendedCharacterStats.general.statFontSize = value
                     Stats:RebuildStatInfos()
+                end,
+            },
+            windowWidth = {
+                type = "range",
+                order = 1.3,
+                name = function() return "Window Width" end,
+                desc = function() return "Changes the width of the stats window" end,
+                width = "double",
+                min = 12,
+                max = 25,
+                step = 0.5,
+                get = function() return ExtendedCharacterStats.general.window.width / 10; end,
+                set = function (_, value)
+                    ExtendedCharacterStats.general.window.width = value * 10
+                    Stats:UpdateWindowSize()
                 end,
             },
         }

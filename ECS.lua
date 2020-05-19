@@ -57,13 +57,6 @@ _InitAddon = function()
     end
 
     Locale:Init()
-
-    ExtendedCharacterStats.windowSize = {
-        height = 422,
-        width = 175,
-        xOffset = 144,
-        yOffset = 30
-    }
 end
 
 local lastSuccessfulSpell = 0
