@@ -2681,10 +2681,12 @@
         "GameTooltipTextLeft1",
         "------------------------------------------------------> Global strings",
         "DEFENSE",
+        "STANDARD_TEXT_FONT",
         "------------------------------------------------------> Addon specific",
         "SlashCmdList",
         "ECSLoader",
         "LibStub",
+        "PawnInitialize",
     ],
     "Lua.workspace.ignoreDir": [
     ],

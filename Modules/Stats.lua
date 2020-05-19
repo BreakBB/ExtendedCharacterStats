@@ -168,6 +168,7 @@ _CreateHeader = function(name, displayText, isSubHeader)
     end
     header:SetPoint("TOPLEFT", xOffSet, lastYOffset)
     header:SetText(displayText)
+    header:SetFont(STANDARD_TEXT_FONT, ExtendedCharacterStats.general.headerFontSize)
     header:Show()
     _Stats.displayedLines[name] = header
 end
@@ -181,6 +182,7 @@ _CreateText = function(name, displayText, isSubText)
     if isSubText then
         xOffSet = 62
     end
+
     lastYOffset = lastYOffset - 15
     ---@class StatsText
     local stat = table.remove(framePool)
@@ -191,6 +193,7 @@ _CreateText = function(name, displayText, isSubText)
     end
     stat:SetPoint("TOPLEFT", xOffSet, lastYOffset)
     stat:SetText(displayText)
+    stat:SetFont(STANDARD_TEXT_FONT, ExtendedCharacterStats.general.statFontSize)
     stat:Show()
     _Stats.displayedLines[name] = stat
 end

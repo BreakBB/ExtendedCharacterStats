@@ -122,6 +122,8 @@ end
 local function GetDefaultGeneralSettings()
     return {
         showQualityColors = true,
+        headerFontSize = 11,
+        statFontSize = 10,
     }
 end
 

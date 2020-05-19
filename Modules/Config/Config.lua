@@ -8,6 +8,8 @@ local _Config = Config.private
 
 ---@type GearInfos
 local GearInfos = ECSLoader:ImportModule("GearInfos")
+---@type Stats
+local Stats = ECSLoader:ImportModule("Stats")
 
 ------------------------------------------------------------------
 -- Configuration Frame
@@ -87,6 +89,36 @@ _GeneralTab = function()
                 set = function (info, value)
                     GearInfos:ToggleColorFrames(value)
                     ExtendedCharacterStats.general.showQualityColors = value
+                end,
+            },
+            headerFontSize = {
+                type = "range",
+                order = 1.2,
+                name = function() return "Header Font Size" end,
+                desc = function() return "Changes the font size of the headers (e.g. Melee)" end,
+                width = "double",
+                min = 6,
+                max = 15,
+                step = 1,
+                get = function() return ExtendedCharacterStats.general.headerFontSize; end,
+                set = function (_, value)
+                    ExtendedCharacterStats.general.headerFontSize = value
+                    Stats:RebuildStatInfos()
+                end,
+            },
+            statFontSize = {
+                type = "range",
+                order = 1.3,
+                name = function() return "Stat Font Size" end,
+                desc = function() return "Changes the font size of the stat lines (e.g. Crit)" end,
+                width = "double",
+                min = 6,
+                max = 15,
+                step = 1,
+                get = function() return ExtendedCharacterStats.general.statFontSize; end,
+                set = function (_, value)
+                    ExtendedCharacterStats.general.statFontSize = value
+                    Stats:RebuildStatInfos()
                 end,
             },
         }
