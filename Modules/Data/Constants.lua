@@ -11,6 +11,8 @@ Data.ARCANE_SCHOOL = 7
 
 Data.WARRIOR = 1
 Data.PALADIN = 2
+Data.HUNTER = 3
+Data.ROGUE = 4
 Data.PRIEST = 5
 Data.MAGE = 8
 Data.DRUID = 11

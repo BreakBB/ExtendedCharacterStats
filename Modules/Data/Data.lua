@@ -25,19 +25,12 @@ end
 ---@return number | string
 function Data:GetStatInfo(refName)
 
-    if refName == "RangedHitBonus" then
-       return Data:RangeHitBonus()
+    if refName == "MeleeAttackpower" then
+        return Data:GetMeleeAttackPower()
     end
-    if refName == "RangedHitSameLevel" then
-        return Data:RangeMissChanceSameLevel()
+    if refName == "MeleeCritChance" then
+        return Data:MeleeCrit()
     end
-    if refName == "RangedHitBossLevel" then
-        return Data:RangeMissChanceBossLevel()
-    end
-    if refName == "RangedCritChance" then
-        return Data:RangedCrit()
-    end
-
     if refName == "MeleeHitBonus" then
        return Data:MeleeHitBonus()
     end
@@ -47,8 +40,21 @@ function Data:GetStatInfo(refName)
     if refName == "MeleeHitBossLevel" then
         return Data:MeleeHitMissChanceBossLevel()
     end
-    if refName == "MeleeCritChance" then
-        return Data:MeleeCrit()
+
+    if refName == "RangeAttackpower" then
+        return Data:GetRangeAttackPower()
+    end
+    if refName == "RangedCritChance" then
+        return Data:RangedCrit()
+    end
+    if refName == "RangedHitBonus" then
+       return Data:RangeHitBonus()
+    end
+    if refName == "RangedHitSameLevel" then
+        return Data:RangeMissChanceSameLevel()
+    end
+    if refName == "RangedHitBossLevel" then
+        return Data:RangeMissChanceBossLevel()
     end
 
     if refName == "Armor" then

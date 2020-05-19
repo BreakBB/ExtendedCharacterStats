@@ -5,12 +5,33 @@ local Utils = ECSLoader:ImportModule("Utils")
 ---@type DataUtils
 local DataUtils = ECSLoader:ImportModule("DataUtils")
 
+local _IsRangeAttackClass
 
--- Get ranged crit chance
+
+---@return string
+function Data:GetRangeAttackPower()
+    if not _IsRangeAttackClass() then
+        return 0
+    end
+
+    local melee, posBuff, negBuff = UnitRangedAttackPower("player")
+    return melee + posBuff + negBuff
+end
+
+---@return boolean
+_IsRangeAttackClass = function()
+    local _, _, classId = UnitClass("player")
+
+    return classId == Data.WARRIOR or classId == Data.ROGUE or classId == Data.HUNTER
+end
+
+
+---@return string
 function Data:RangedCrit()
     return DataUtils:Round(GetRangedCritChance(), 2) .. "%"
 end
 
+---@return number
 local function _GetRangeHitBonus()
     local hitValue = 0
     -- From Enchant
@@ -35,12 +56,12 @@ local function _GetRangeHitBonus()
     return hitValue
 end
 
--- Gets the current bonus hit chance
+---@return string
 function Data:RangeHitBonus()
     return DataUtils:Round(_GetRangeHitBonus(), 2) .. "%"
 end
 
--- Gets the range hit chance against enemies on the player level
+---@return string
 function Data:RangeMissChanceSameLevel()
     local rangedAttackBase, rangedAttackMod = UnitRangedAttack("player")
     local playerLevel = UnitLevel("player")
@@ -58,7 +79,7 @@ function Data:RangeMissChanceSameLevel()
     return DataUtils:Round(missChance, 2) .. "%"
 end
 
--- Gets the range hit chance against enemies 3 level above the player level
+---@return string
 function Data:RangeMissChanceBossLevel()
     local rangedAttackBase, rangedAttackMod = UnitRangedAttack("player")
     local playerLevel = UnitLevel("player")

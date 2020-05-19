@@ -119,14 +119,14 @@ _CreateStatInfos = function()
     local profile = ExtendedCharacterStats.profile
 
     local category = profile.melee
-    _CreateStatInfo(category, category.crit)
+    _CreateStatInfo(category, category.attackPower, category.crit)
     if category.display then
         category = category.hit
         _CreateStatInfo(category, category.bonus, category.sameLevel, category.bossLevel)
     end
 
     category = profile.ranged
-    _CreateStatInfo(category, category.crit)
+    _CreateStatInfo(category, category.attackPower, category.crit)
     if category.display then
         category = category.hit
         _CreateStatInfo(category, category.bonus, category.sameLevel, category.bossLevel)

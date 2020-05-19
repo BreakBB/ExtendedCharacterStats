@@ -26,6 +26,7 @@ local function GetDefaultStatsProfile()
                 sameLevel = {display = true, refName = "MeleeHitSameLevel", text = "Miss: "},
                 bossLevel = {display = true, refName = "MeleeHitBossLevel", text = "Miss (Lvl + 3): "},
             },
+            attackPower = {display = true, refName = "MeleeAttackpower", text = "Attack Power: "},
             crit = {display = true, refName = "MeleeCritChance", text = "Crit: "}
         },
 
@@ -46,6 +47,7 @@ local function GetDefaultStatsProfile()
                 sameLevel = {display = true, refName = "RangedHitSameLevel", text = "Miss: "},
                 bossLevel = {display = true, refName = "RangedHitBossLevel", text = "Miss (Lvl + 3): "},
             },
+            attackPower = {display = true, refName = "RangeAttackpower", text = "Attack Power: "},
             crit = {display = true, refName = "RangedCritChance", text = "Crit: "}
         },
 

@@ -4,17 +4,23 @@ local Data = ECSLoader:ImportModule("Data")
 local DataUtils = ECSLoader:ImportModule("DataUtils")
 
 
--- Get melee crit chance
+---@return string
+function Data:GetMeleeAttackPower()
+    local melee, posBuff, negBuff = UnitAttackPower("player")
+    return melee + posBuff + negBuff
+end
+
+---@return string
 function Data:MeleeCrit()
     return DataUtils:Round(GetCritChance(), 2) .. "%"
 end
 
--- Gets the current bonus hit chance
+---@return string
 function Data:MeleeHitBonus()
     return DataUtils:Round(GetHitModifier(), 2) .. "%"
 end
 
--- Gets the hit chance against enemies on the player level
+---@return string
 function Data:MeleeHitMissChanceSameLevel()
     local mainBase, mainMod, _, _ = UnitAttackBothHands("player")
     local playerLevel = UnitLevel("player")
@@ -41,7 +47,7 @@ function Data:MeleeHitMissChanceSameLevel()
     return DataUtils:Round(missChance, 2) .. "%"
 end
 
--- Gets the hit chance against enemies 3 level above the player level
+---@return string
 function Data:MeleeHitMissChanceBossLevel()
     local mainBase, mainMod, _, _ = UnitAttackBothHands("player")
     local playerLevel = UnitLevel("player")
