@@ -14,5 +14,7 @@ Data.PALADIN = 2
 Data.HUNTER = 3
 Data.ROGUE = 4
 Data.PRIEST = 5
+Data.SHAMAN = 7
 Data.MAGE = 8
+Data.WARLOCK = 9
 Data.DRUID = 11
