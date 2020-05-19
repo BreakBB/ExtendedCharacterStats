@@ -24,9 +24,22 @@ function _Config:LoadRangeSection()
                     Stats:RebuildStatInfos()
                 end,
             },
-            rangeCrit = {
+            rangedAttackPower = {
                 type = "toggle",
                 order = 1,
+                name = function() return "Range Attack Power" end,
+                desc = function() return "Shows/Hides the ranged attack power value." end,
+                width = 1.5,
+                disabled = function() return (not ExtendedCharacterStats.profile.ranged.display); end,
+                get = function () return ExtendedCharacterStats.profile.ranged.attackPower.display; end,
+                set = function (info, value)
+                    ExtendedCharacterStats.profile.ranged.attackPower.display = value
+                    Stats:RebuildStatInfos()
+                end,
+            },
+            rangeCrit = {
+                type = "toggle",
+                order = 2,
                 name = function() return "Range Crit" end,
                 desc = function() return "Shows/Hides the range crit value." end,
                 width = 1.5,
@@ -39,7 +52,7 @@ function _Config:LoadRangeSection()
             },
             rangeHit = {
                 type = "toggle",
-                order = 2,
+                order = 3,
                 name = function() return "Range Hit" end,
                 desc = function() return "Shows/Hides all range hit values." end,
                 width = 1.5,
@@ -52,7 +65,7 @@ function _Config:LoadRangeSection()
             },
             rangeHitGroup = {
                 type = "group",
-                order = 3,
+                order = 4,
                 inline = true,
                 name = function() return "Range Hit Values" end,
                 args = {

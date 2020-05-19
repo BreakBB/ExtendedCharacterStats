@@ -25,9 +25,22 @@ function _Config:LoadMeleeSection()
                     Stats:RebuildStatInfos()
                 end,
             },
-            meleeCrit = {
+            meleeAttackPower = {
                 type = "toggle",
                 order = 1,
+                name = function() return "Melee Attack Power" end,
+                desc = function() return "Shows/Hides the melee attack power value." end,
+                width = 1.5,
+                disabled = function() return (not ExtendedCharacterStats.profile.melee.display); end,
+                get = function () return ExtendedCharacterStats.profile.melee.attackPower.display; end,
+                set = function (info, value)
+                    ExtendedCharacterStats.profile.melee.attackPower.display = value
+                    Stats:RebuildStatInfos()
+                end,
+            },
+            meleeCrit = {
+                type = "toggle",
+                order = 2,
                 name = function() return "Melee Crit" end,
                 desc = function() return "Shows/Hides the melee crit value." end,
                 width = 1.5,
@@ -40,7 +53,7 @@ function _Config:LoadMeleeSection()
             },
             meleeHit = {
                 type = "toggle",
-                order = 2,
+                order = 3,
                 name = function() return "Melee Hit" end,
                 desc = function() return "Shows/Hides all melee hit values." end,
                 width = 1.5,
@@ -53,7 +66,7 @@ function _Config:LoadMeleeSection()
             },
             meleeHitGroup = {
                 type = "group",
-                order = 3,
+                order = 4,
                 inline = true,
                 name = function() return "Melee Hit Values" end,
                 args = {
