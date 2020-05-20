@@ -15,7 +15,7 @@ Modules\ModuleLoader.lua
 Modules\Utils.lua
 Modules\Stats.lua
 Modules\GearInfos.lua
-Modules\DefaultProfile.lua
+Modules\Profile.lua
 
 # Data
 Modules\Data\Constants.lua
