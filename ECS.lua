@@ -39,20 +39,22 @@ end)
 ECS.loadingFrame = loadingFrame
 
 _InitAddon = function()
-    if ExtendedCharacterStats == nil then
+    local ecs = ExtendedCharacterStats
+
+    if ecs == nil then
         ExtendedCharacterStats = {}
-    elseif ExtendedCharacterStats.v24reset == nil then
-        -- Reset the settings for the update to v2.4.0
-        ExtendedCharacterStats = {}
-        ExtendedCharacterStats.v24reset = true
+    elseif ecs.profileVersion == nil or ecs.profileVersion ~= Profile.version then
+        -- Reset the profile an updated profile version
+        ExtendedCharacterStats.profile = nil
+        ExtendedCharacterStats.profileVersion = Profile.version
     end
 
     local profileData = Profile:GetProfileData()
-    if ExtendedCharacterStats.profile == nil then
+    if ecs.profile == nil then
         ---@class ECSProfile
         ExtendedCharacterStats.profile = profileData.profile
     end
-    if ExtendedCharacterStats.general == nil then
+    if ecs.general == nil then
         ExtendedCharacterStats.general = profileData.general
     end
 

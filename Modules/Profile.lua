@@ -5,6 +5,8 @@
 ---@class Profile
 local Profile = ECSLoader:CreateModule("Profile")
 
+Profile.version = 1
+
 ---@return ECSProfile
 local function GetDefaultStatsProfile()
     return {
@@ -141,8 +143,4 @@ function Profile:GetProfileData()
         general = ExtendedCharacterStats.general or GetDefaultGeneralSettings(),
         profile = ExtendedCharacterStats.profile or GetDefaultStatsProfile(),
     }
-    -- local default = {}
-    -- default.general = ExtendedCharacterStats.general or GetDefaultGeneralSettings()
-    -- default.profile = ExtendedCharacterStats.profile or GetDefaultStatsProfile()
-    -- return default
 end
