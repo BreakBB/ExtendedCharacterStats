@@ -37,10 +37,9 @@ Modules\Config\ManaSection.lua
 Modules\Config\SpellSection.lua
 Modules\Config\SpellBonusSection.lua
 
-# Locales
-Modules\Locale\Locale.lua
-Modules\Locale\Locale.lua
-Modules\Locale\en.lua
+# i18n
+Modules\i18n\i18n.lua
+Modules\i18n\en.lua
 
 # Main
 ECS.lua

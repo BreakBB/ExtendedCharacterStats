@@ -5,8 +5,8 @@
 ---@class ECS
 ECS = {...}
 
----@type Locale
-local Locale = ECSLoader:ImportModule("Locale")
+---@type i18n
+local i18n = ECSLoader:ImportModule("i18n")
 ---@type Config
 local Config = ECSLoader:ImportModule("Config")
 ---@type Stats
@@ -56,7 +56,7 @@ _InitAddon = function()
         ExtendedCharacterStats.general = profileData.general
     end
 
-    Locale:Init()
+    i18n:LoadLanguageData()
 end
 
 local lastSuccessfulSpell = 0
