@@ -26,4 +26,4 @@ function i18n:translate(key, ...)
     return string.format(i18n.texts[key], unpack(args))
 end
 
-setmetatable(i18n, {__call = function(_, ...) return i18n.translate(...) end})
+setmetatable(i18n, {__call = function(_, ...) return i18n:translate(...) end})

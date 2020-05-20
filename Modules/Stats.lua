@@ -7,8 +7,8 @@ local Stats = ECSLoader:CreateModule("Stats")
 local _Stats = Stats.private
 _Stats.displayedLines = {}
 
----@type Locale
-local Locale = ECSLoader:CreateModule("Locale")
+---@type i18n
+local i18n = ECSLoader:CreateModule("i18n")
 ---@type Config
 local Config = ECSLoader:ImportModule("Config")
 ---@type Utils
@@ -43,10 +43,10 @@ function Stats:CreateWindow()
     mainFrame.title = mainFrame:CreateFontString(nil, "OVERLAY")
     mainFrame.title:SetFontObject("GameFontHighlight")
     mainFrame.title:SetPoint("CENTER", mainFrame.TitleBg, "CENTER", 11, 0)
-    mainFrame.title:SetText(Locale:GetString("NAME_VERSION", Utils:GetAddonVersionString()))
+    mainFrame.title:SetText(i18n("NAME_VERSION", Utils:GetAddonVersionString()))
 
     mainFrame.configButton = CreateFrame("Button", nil, mainFrame, "GameMenuButtonTemplate")
-    mainFrame.configButton:SetText(Locale:GetString("SETTINGS"))
+    mainFrame.configButton:SetText(i18n("SETTINGS"))
     mainFrame.configButton:SetSize(ExtendedCharacterStats.general.window.width - 10, 20)
     mainFrame.configButton:SetPoint("CENTER", mainFrame, "TOP", -1, -35)
     mainFrame.configButton:SetScript("OnClick", function ()
