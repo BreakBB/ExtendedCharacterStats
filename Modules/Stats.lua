@@ -247,11 +247,11 @@ local function _UpdateStats(category)
             if stat.isSubGroup then
                 for _, subStat in pairs(stat) do
                     if type(subStat) == "table" and subStat.display == true then
-                        _UpdateItem(subStat.refName, subStat.text .. Data:GetStatInfo(subStat.refName))
+                        _UpdateItem(subStat.refName, i18n(subStat.text) .. Data:GetStatInfo(subStat.refName))
                     end
                 end
             elseif stat.display == true then
-                _UpdateItem(stat.refName, stat.text .. Data:GetStatInfo(stat.refName))
+                _UpdateItem(stat.refName, i18n(stat.text) .. Data:GetStatInfo(stat.refName))
             end
         end
     end
@@ -261,7 +261,7 @@ end
 function Stats:UpdateInformation()
 
     -- Loop through all categories
-    for _, category in ipairs(ExtendedCharacterStats.profile) do
+    for _, category in pairs(ExtendedCharacterStats.profile) do
         if category and category.display == true then
             -- Loop through all stats
             _UpdateStats(category)
