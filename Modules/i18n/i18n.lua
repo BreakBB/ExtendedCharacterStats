@@ -22,7 +22,6 @@ end
 
 ---@param lang string
 function i18n:SetLanguage(lang)
-    
     _UseLanguage(lang)
 end
 

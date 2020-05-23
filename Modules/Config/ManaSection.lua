@@ -4,20 +4,23 @@ local _Config = Config.private
 
 ---@type Stats
 local Stats = ECSLoader:ImportModule("Stats")
+---@type i18n
+local i18n = ECSLoader:ImportModule("i18n")
 
 function _Config:LoadManaSection()
     return {
         type = "group",
         order = 5,
         inline = false,
-        name = function() return "Mana" end,
+        width = 2,
+        name = function() return i18n("MANA") end,
         args = {
             showManaStats = {
                 type = "toggle",
                 order = 0,
-                name = function() return "Show Mana Stats" end,
-                desc = function() return "Shows/Hides all mana stats." end,
-                width = 1,
+                name = function() return i18n("MANA_SETTINGS") end,
+                desc = function() return i18n("MANA_SETTINGS_DESC") end,
+                width = 1.5,
                 get = function () return ExtendedCharacterStats.profile.regen.display; end,
                 set = function (info, value)
                     ExtendedCharacterStats.profile.regen.display = value
@@ -27,8 +30,8 @@ function _Config:LoadManaSection()
             mp5Items = {
                 type = "toggle",
                 order = 1,
-                name = function() return "MP5 Items" end,
-                desc = function() return "Shows/Hides the MP5 from items value." end,
+                name = function() return i18n("MP5_ITEMS_SETTING") end,
+                desc = function() return i18n("MP5_ITEMS_SETTING_DESC") end,
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.regen.display); end,
                 get = function () return ExtendedCharacterStats.profile.regen.mp5Items.display; end,
@@ -40,8 +43,8 @@ function _Config:LoadManaSection()
             mp5Spirit = {
                 type = "toggle",
                 order = 2,
-                name = function() return "MP5 Spirit" end,
-                desc = function() return "Shows/Hides the MP5 from spirit value." end,
+                name = function() return i18n("MP5_SPIRIT_SETTING") end,
+                desc = function() return i18n("MP5_SPIRIT_SETTING_DESC") end,
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.regen.display); end,
                 get = function () return ExtendedCharacterStats.profile.regen.mp5Spirit.display; end,
@@ -53,8 +56,8 @@ function _Config:LoadManaSection()
             mp5Casting = {
                 type = "toggle",
                 order = 3,
-                name = function() return "MP5 Casting" end,
-                desc = function() return "Shows/Hides the MP5 value while casting." end,
+                name = function() return i18n("MP5_CASTING_SETTING") end,
+                desc = function() return i18n("MP5_CASTING_SETTING_DESC") end,
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.regen.display); end,
                 get = function () return ExtendedCharacterStats.profile.regen.mp5Casting.display; end,

@@ -4,10 +4,8 @@
 
 ---@class Profile
 local Profile = ECSLoader:CreateModule("Profile")
----@type i18n
-local i18n = ECSLoader:ImportModule("i18n")
 
-Profile.version = 1
+Profile.version = 2
 
 ---@return ECSProfile
 local function GetDefaultStatsProfile()
@@ -140,9 +138,9 @@ local function GetDefaultGeneralSettings()
 end
 
 ---@return ECSProfile
-function Profile:GetProfileData()
+function Profile:GetDefaultProfile()
     return {
-        general = ExtendedCharacterStats.general or GetDefaultGeneralSettings(),
-        profile = ExtendedCharacterStats.profile or GetDefaultStatsProfile(),
+        general = GetDefaultGeneralSettings(),
+        profile = GetDefaultStatsProfile(),
     }
 end

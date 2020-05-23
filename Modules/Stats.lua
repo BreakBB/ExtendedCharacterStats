@@ -261,8 +261,8 @@ end
 function Stats:UpdateInformation()
 
     -- Loop through all categories
-    for _, category in pairs(ExtendedCharacterStats.profile) do
-        if category.display == true then
+    for _, category in ipairs(ExtendedCharacterStats.profile) do
+        if category and category.display == true then
             -- Loop through all stats
             _UpdateStats(category)
         end

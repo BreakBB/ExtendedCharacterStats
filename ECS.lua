@@ -40,24 +40,21 @@ ECS.loadingFrame = loadingFrame
 
 _InitAddon = function()
     local ecs = ExtendedCharacterStats
-    i18n:LoadLanguageData()
+    local defaultProfile = Profile:GetDefaultProfile()
 
-    if ecs == nil then
-        ExtendedCharacterStats = {}
-    elseif ecs.profileVersion == nil or ecs.profileVersion ~= Profile.version then
-        -- Reset the profile an updated profile version
-        ExtendedCharacterStats.profile = nil
-        ExtendedCharacterStats.profileVersion = Profile.version
+    if ecs.general == nil or (not next(ecs.general)) then
+        ExtendedCharacterStats.general = defaultProfile.general
     end
 
-    local profileData = Profile:GetProfileData()
-    if ecs.profile == nil then
+    if ecs.profile == nil or (not next(ecs.profile)) then
         ---@class ECSProfile
-        ExtendedCharacterStats.profile = profileData.profile
+        ExtendedCharacterStats.profile = defaultProfile.profile
     end
-    if ecs.general == nil then
-        ExtendedCharacterStats.general = profileData.general
+
+    if ecs.profile.version == nil or ecs.profile.version ~= Profile.version then
+        ExtendedCharacterStats.profile.version = Profile.version
     end
+    i18n:LoadLanguageData()
 end
 
 local lastSuccessfulSpell = 0

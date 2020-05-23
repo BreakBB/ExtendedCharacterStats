@@ -2683,6 +2683,7 @@
         "DEFENSE",
         "STANDARD_TEXT_FONT",
         "------------------------------------------------------> Addon specific",
+        "ExtendedCharacterStats",
         "SlashCmdList",
         "ECSLoader",
         "LibStub",
