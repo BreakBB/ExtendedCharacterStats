@@ -46,14 +46,12 @@ _InitAddon = function()
         ExtendedCharacterStats.general = defaultProfile.general
     end
 
-    if ecs.profile == nil or (not next(ecs.profile)) then
+    if ecs.profile == nil or (not next(ecs.profile)) or ecs.profile.version == nil or ecs.profile.version ~= Profile.version then
+        ExtendedCharacterStats.profile.version = Profile.version
         ---@class ECSProfile
         ExtendedCharacterStats.profile = defaultProfile.profile
     end
 
-    if ecs.profile.version == nil or ecs.profile.version ~= Profile.version then
-        ExtendedCharacterStats.profile.version = Profile.version
-    end
     i18n:LoadLanguageData()
 end
 
