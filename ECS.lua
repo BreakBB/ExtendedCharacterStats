@@ -42,13 +42,18 @@ _InitAddon = function()
     local ecs = ExtendedCharacterStats
     local defaultProfile = Profile:GetDefaultProfile()
 
+    if ecs.general and (ecs.general.profileVersion == nil or ecs.general.profileVersion ~= Profile.version) then
+        ExtendedCharacterStats.general.profileVersion = Profile.version
+        ---@class ECSProfile
+        ExtendedCharacterStats.profile = defaultProfile.profile
+        ExtendedCharacterStats.general = defaultProfile.general
+    end
+
     if ecs.general == nil or (not next(ecs.general)) then
         ExtendedCharacterStats.general = defaultProfile.general
     end
 
-    if ecs.profile == nil or (not next(ecs.profile)) or ecs.profile.version == nil or ecs.profile.version ~= Profile.version then
-        ExtendedCharacterStats.profile.version = Profile.version
-        ---@class ECSProfile
+    if ecs.profile == nil or (not next(ecs.profile)) then
         ExtendedCharacterStats.profile = defaultProfile.profile
     end
 
