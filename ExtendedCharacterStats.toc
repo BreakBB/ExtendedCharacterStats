@@ -40,6 +40,7 @@ Modules\Config\SpellBonusSection.lua
 # i18n
 Modules\i18n\i18n.lua
 Modules\i18n\en.lua
+Modules\i18n\de.lua
 
 # Main
 ECS.lua

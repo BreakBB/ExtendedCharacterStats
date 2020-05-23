@@ -40,6 +40,7 @@ ECS.loadingFrame = loadingFrame
 
 _InitAddon = function()
     local ecs = ExtendedCharacterStats
+    i18n:LoadLanguageData()
 
     if ecs == nil then
         ExtendedCharacterStats = {}
@@ -57,8 +58,6 @@ _InitAddon = function()
     if ecs.general == nil then
         ExtendedCharacterStats.general = profileData.general
     end
-
-    i18n:LoadLanguageData()
 end
 
 local lastSuccessfulSpell = 0

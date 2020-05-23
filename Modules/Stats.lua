@@ -89,6 +89,10 @@ function Stats:UpdateWindowSize()
     _Stats.frame.configButton:SetSize(ExtendedCharacterStats.general.window.width- 10, 20)
 end
 
+function Stats:UpdateSettingsButtonText()
+    _Stats.frame.configButton:SetText(i18n("SETTINGS"))
+end
+
 --- Toogles the stats window
 function Stats:ToggleWindow()
     _Stats.frame:SetShown(not _Stats.frame:IsShown())
@@ -103,12 +107,12 @@ end
 ---@param category Category|SubCategory
 _CreateStatInfo = function(category, ...)
     if category.display == true then
-        _CreateHeader(category.refName, category.text, category.isSubGroup)
+        _CreateHeader(category.refName, i18n(category.text), category.isSubGroup)
         local stats = {...}
         -- Loop through all stats
         for _, stat in pairs(stats) do
             if type(stat) == "table" and stat.display == true then
-                _CreateText(stat.refName, stat.text .. Data:GetStatInfo(stat.refName), category.isSubGroup)
+                _CreateText(stat.refName, i18n(stat.text) .. Data:GetStatInfo(stat.refName), category.isSubGroup)
             end
         end
     end
