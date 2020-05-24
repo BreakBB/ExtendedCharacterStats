@@ -90,13 +90,13 @@ function Data:GetStatInfo(refName)
     end
 
     if refName == "MP5Items" then
-        return Data:MP5FromItems()
+        return Data:GetMP5FromItems()
     end
     if refName == "MP5Spirit" then
-        return Data:MP5FromSpirit()
+        return Data:GetMP5FromSpirit()
     end
     if refName == "MP5Casting" then
-        return Data:MP5WhileCasting()
+        return Data:GetMP5WhileCasting()
     end
 
     if refName == "PhysicalDmg" then

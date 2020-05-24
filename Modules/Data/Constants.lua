@@ -18,3 +18,10 @@ Data.SHAMAN = 7
 Data.MAGE = 8
 Data.WARLOCK = 9
 Data.DRUID = 11
+
+Data.setNames = {}
+Data.setNames.STORMRAGE_RAIMENT = "Stormrage Raiment"
+Data.setNames.VESTMENTS_OF_TRANSCENDENCE = "Vestments of Transcendence"
+Data.setNames.HARUSPEXS_GARB = "Haruspex's Garb"
+Data.setNames.AUGURS_REGALIA = "Augur's Regalia"
+Data.setNames.FREETHINKERS_ARMOR = "Freethinker's Armor"
