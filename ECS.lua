@@ -41,19 +41,26 @@ ECS.loadingFrame = loadingFrame
 _InitAddon = function()
     local ecs = ExtendedCharacterStats
     local defaultProfile = Profile:GetDefaultProfile()
+    local profileVersion = Profile:GetProfileVersion()
 
-    if ecs.general and (ecs.general.profileVersion == nil or ecs.general.profileVersion ~= Profile.version) then
-        ExtendedCharacterStats.general.profileVersion = Profile.version
+    if ecs.general and (ecs.general.profileVersion == nil or ecs.general.profileVersion ~= profileVersion) then
+        __TEST1 = true
         ---@class ECSProfile
         ExtendedCharacterStats.profile = defaultProfile.profile
         ExtendedCharacterStats.general = defaultProfile.general
+
+        ExtendedCharacterStats.general.profileVersion = profileVersion
     end
 
     if ecs.general == nil or (not next(ecs.general)) then
+        __TEST2 = true
+        print("RESET general")
         ExtendedCharacterStats.general = defaultProfile.general
     end
 
     if ecs.profile == nil or (not next(ecs.profile)) then
+        __TEST3 = true
+        print("RESET profile")
         ExtendedCharacterStats.profile = defaultProfile.profile
     end
 

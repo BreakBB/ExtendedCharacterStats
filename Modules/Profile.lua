@@ -5,7 +5,9 @@
 ---@class Profile
 local Profile = ECSLoader:CreateModule("Profile")
 
-Profile.version = 2
+function Profile:GetProfileVersion()
+    return 1
+end
 
 ---@return ECSProfile
 local function GetDefaultStatsProfile()
