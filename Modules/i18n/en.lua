@@ -66,7 +66,7 @@ strings = {
     -- Defense Settings
     ["DEFENSE_SETTINGS"] = "Show Defense Stats",
     ["DEFENSE_SETTINGS_DESC"] = "Shows/Hides all defense stats.",
-    ["ARMOR_SETTING"] = "Armor Value.",
+    ["ARMOR_SETTING"] = "Armor Value",
     ["ARMOR_SETTING_DESC"] = "Shows/Hides the armor value.",
     ["DEFENSE_VALUE_SETTING"] = "Defense Value",
     ["DEFENSE_VALUE_SETTING_DESC"] = "Shows/Hides the defense value.",
