@@ -5,9 +5,9 @@
 
 local LibStub = LibStub
 local gui = LibStub("AceGUI-3.0")
-local reg = LibStub("AceConfigRegistryECS-3.0")
+local reg = LibStub("AceConfigRegistry-3.0")
 
-local MAJOR, MINOR = "AceConfigDialogECS-3.0", 66
+local MAJOR, MINOR = "AceConfigDialog-3.0", 66
 local AceConfigDialog, oldminor = LibStub:NewLibrary(MAJOR, MINOR)
 
 if not AceConfigDialog then return end
@@ -417,7 +417,7 @@ local function CleanUserData(widget, event)
 		end
 	end
 
-	if widget.type == "DropdownGroup" or widget.type == "LQDropdownGroup" then
+	if widget.type == "DropdownGroup" then
 		widget:SetGroupList(nil)
 		if user.grouplist then
 			del(user.grouplist)
@@ -1238,11 +1238,11 @@ local function FeedOptions(appName, options,container,rootframe,path,group,inlin
 						control:ResumeLayout()
 						control:DoLayout()
 					else
-						local controlType = v.dialogControl or v.control or "LQDropdown"
+						local controlType = v.dialogControl or v.control or "Dropdown"
 						control = gui:Create(controlType)
 						if not control then
 							geterrorhandler()(("Invalid Custom Control Type - %s"):format(tostring(controlType)))
-							control = gui:Create("LQDropdown")
+							control = gui:Create("Dropdown")
 						end
 						local itemType = v.itemControl
 						if itemType and not gui:GetWidgetVersion(itemType) then
@@ -1375,11 +1375,6 @@ local function FeedOptions(appName, options,container,rootframe,path,group,inlin
 						control:SetFontObject(GameFontHighlightLarge)
 					else -- small or invalid
 						control:SetFontObject(GameFontHighlightSmall)
-					end
-					
-					local fontHeight = GetOptionsMemberValue("fontHeight",v, options, path, appName)
-					if fontHeight then
-						control.label:SetTextHeight(fontHeight)
 					end
 					
 					local imageCoords = GetOptionsMemberValue("imageCoords",v, options, path, appName)
@@ -1663,7 +1658,7 @@ function AceConfigDialog:FeedGroup(appName,options,container,rootframe,path, isR
 
 		elseif grouptype == "select" then
 
-			local select = gui:Create("LQDropdownGroup")
+			local select = gui:Create("DropdownGroup")
 			select:SetTitle(name)
 			InjectInfo(select, options, group, path, rootframe, appName)
 			select:SetCallback("OnGroupSelected", GroupSelected)

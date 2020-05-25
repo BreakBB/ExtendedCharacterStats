@@ -16,3 +16,4 @@
 
 releases/
 *__pycache__/
+**.DS_Store

@@ -11,7 +11,7 @@
 -- @release $Id: AceConfigRegistry-3.0.lua 1169 2018-02-27 16:18:28Z nevcairiel $
 local CallbackHandler = LibStub("CallbackHandler-1.0")
 
-local MAJOR, MINOR = "AceConfigRegistryECS-3.0", 18
+local MAJOR, MINOR = "AceConfigRegistry-3.0", 18
 local AceConfigRegistry = LibStub:NewLibrary(MAJOR, MINOR)
 
 if not AceConfigRegistry then return end
@@ -102,7 +102,6 @@ local typedkeys={
 		imageHeight=optnumber,
 		imageWidth=optnumber,
 		fontSize=optstringfunc,
-		fontHeight=optnumber,
 	},
 	group={
 		args=istable,

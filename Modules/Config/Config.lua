@@ -24,12 +24,12 @@ local _CreateGUI, _GeneralTab, _StatsTab
 
 function Config:CreateWindow()
     local optionsGUI = _CreateGUI()
-    LibStub("AceConfigECS-3.0"):RegisterOptionsTable("ECS", optionsGUI)
-    ECS.configFrame = LibStub("AceConfigDialogECS-3.0"):AddToBlizOptions("ECS", "Extended Character Stats");
+    LibStub("AceConfig-3.0"):RegisterOptionsTable("ECS", optionsGUI)
+    ECS.configFrame = LibStub("AceConfigDialog-3.0"):AddToBlizOptions("ECS", "Extended Character Stats");
 
     local configFrame = AceGUI:Create("Frame");
-    LibStub("AceConfigDialogECS-3.0"):SetDefaultSize("ECS", 440, 590)
-    LibStub("AceConfigDialogECS-3.0"):Open("ECS", configFrame)
+    LibStub("AceConfigDialog-3.0"):SetDefaultSize("ECS", 440, 590)
+    LibStub("AceConfigDialog-3.0"):Open("ECS", configFrame)
     configFrame:Hide();
 
     ECSConfigFrame = configFrame.frame;
