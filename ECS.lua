@@ -7,8 +7,6 @@ ECS = {...}
 
 ---@type i18n
 local i18n = ECSLoader:ImportModule("i18n")
----@type Config
-local Config = ECSLoader:ImportModule("Config")
 ---@type Stats
 local Stats = ECSLoader:ImportModule("Stats")
 ---@type GearInfos
@@ -18,9 +16,9 @@ local Profile = ECSLoader:ImportModule("Profile")
 
 ------------------------------------------------------------------
 
-local _InitAddon, _InitGUI -- forward declaration
+ -- forward declaration
+local _InitAddon, _InitGUI, _RegisterEvents, _ProfileVersionIsDifferent, _GeneralSectionIsEmpty
 
--- Configure ADDON_LOADED event frame
 local loadingFrame = CreateFrame("Frame", nil, UIParent)
 loadingFrame:RegisterEvent("ADDON_LOADED") -- Triggers whenever all non-lod addons has been loaded, this will initialize the addon
 loadingFrame:RegisterEvent("PLAYER_LOGIN") -- Triggers whenever the player has logged in and all addons are loaded
@@ -47,7 +45,7 @@ _InitAddon = function()
     local defaultProfile = Profile:GetDefaultProfile()
     local profileVersion = Profile:GetProfileVersion()
 
-    if ecs.general and (ecs.general.profileVersion == nil or ecs.general.profileVersion ~= profileVersion) then
+    if _ProfileVersionIsDifferent(ecs, profileVersion) then
         ---@class ECSProfile
         ExtendedCharacterStats.profile = defaultProfile.profile
         ExtendedCharacterStats.general = defaultProfile.general
@@ -55,15 +53,30 @@ _InitAddon = function()
         ExtendedCharacterStats.general.profileVersion = profileVersion
     end
 
-    if ecs.general == nil or (not next(ecs.general)) then
+    if _GeneralSectionIsEmpty(ecs.general) then
         ExtendedCharacterStats.general = defaultProfile.general
     end
 
-    if ecs.profile == nil or (not next(ecs.profile)) then
+    if _ProfileSectionIsEmpty(ecs.profile) then
         ExtendedCharacterStats.profile = defaultProfile.profile
     end
 
     i18n:LoadLanguageData()
+end
+
+---@return boolean
+_ProfileVersionIsDifferent = function(ecs, profileVersion)
+    return ecs.general and (ecs.general.profileVersion == nil or ecs.general.profileVersion ~= profileVersion)
+end
+
+---@return boolean
+_GeneralSectionIsEmpty = function(general)
+    return general == nil or (not next(general))
+end
+
+---@return boolean
+_ProfileSectionIsEmpty = function(profile)
+    return profile == nil or (not next(profile))
 end
 
 local lastSuccessfulSpell = 0
@@ -74,18 +87,8 @@ _InitGUI = function ()
 
     GearInfos:Init()
 
-    -- Configure Update Event Frame for updating the UI
     local eventFrame = CreateFrame("Frame", nil, UIParent)
-
-    -- Subscribe to events that will trigger an update
-    eventFrame:RegisterEvent("UNIT_AURA") -- Triggers whenever the player gains or loses a buff/debuff
-    eventFrame:RegisterEvent("PLAYER_LEVEL_UP") -- Triggers whenever the player levels up
-    eventFrame:RegisterEvent("PLAYER_ENTERING_WORLD")  -- Triggers whenever the player log in, zone in to a new zone or reloads the UI
-    eventFrame:RegisterEvent("PLAYER_EQUIPMENT_CHANGED") -- Triggers whenever the player changes gear
-    eventFrame:RegisterEvent("UNIT_POWER_UPDATE") -- Triggers whenever the player changes gear
-    eventFrame:RegisterEvent("UPDATE_SHAPESHIFT_FORM") -- Triggers whenever the player changes gear
-    eventFrame:RegisterEvent("UNIT_SPELLCAST_SUCCEEDED") -- Triggers whenever a cast was successful
-    eventFrame:RegisterEvent("INSPECT_READY") -- Triggers whenever the player inspects someone else and the inspect frame is ready
+    _RegisterEvents(eventFrame)
 
     -- Event handler for all the subscribed events
     -- Calls the update functions to update all the relevant stats
@@ -117,20 +120,14 @@ _InitGUI = function ()
     ECS.eventFrame = eventFrame
 end
 
-local function _HandleSlash(msg)
-    local cmd = string.lower(msg) or "help"
-
-    if cmd == "toggle" then
-        Stats:ToggleWindow()
-    elseif cmd == "config" then
-        Config:ToggleWindow()
-    else
-        print(i18n("AVAILABLE_COMMANDS"))
-        print(i18n("SLASH_TOGGLE") .. " - " .. i18n("SLASH_TOGGLE_DESC"))
-        print(i18n("SLASH_CONFIG") .. " - " .. i18n("SLASH_CONFIG_DESC"))
-    end
+_RegisterEvents = function (eventFrame)
+    -- Subscribe to events that will trigger an update
+    eventFrame:RegisterEvent("UNIT_AURA") -- Triggers whenever the player gains or loses a buff/debuff
+    eventFrame:RegisterEvent("PLAYER_LEVEL_UP") -- Triggers whenever the player levels up
+    eventFrame:RegisterEvent("PLAYER_ENTERING_WORLD")  -- Triggers whenever the player log in, zone in to a new zone or reloads the UI
+    eventFrame:RegisterEvent("PLAYER_EQUIPMENT_CHANGED") -- Triggers whenever the player changes gear
+    eventFrame:RegisterEvent("UNIT_POWER_UPDATE") -- Triggers whenever the player changes gear
+    eventFrame:RegisterEvent("UPDATE_SHAPESHIFT_FORM") -- Triggers whenever the player changes gear
+    eventFrame:RegisterEvent("UNIT_SPELLCAST_SUCCEEDED") -- Triggers whenever a cast was successful
+    eventFrame:RegisterEvent("INSPECT_READY") -- Triggers whenever the player inspects someone else and the inspect frame is ready
 end
-
--- Slash Command for toggling the display
-SLASH_ECS1 = "/ecs"
-SlashCmdList["ECS"] = _HandleSlash

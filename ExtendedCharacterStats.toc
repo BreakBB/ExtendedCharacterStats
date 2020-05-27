@@ -16,6 +16,7 @@ Modules\Utils.lua
 Modules\Stats.lua
 Modules\GearInfos.lua
 Modules\Profile.lua
+Modules\SlashCommands.lua
 
 # Data
 Modules\Data\Constants.lua
