@@ -88,5 +88,11 @@ function Data:RangeMissChanceBossLevel()
     local missChance = DataUtils:GetMissChanceByDifference(rangedAttackBase + rangedAttackMod, enemyDefenseValue)
     missChance = missChance - _GetRangeHitBonus()
 
+    if missChance < 0 then
+        missChance = 0
+    elseif missChance > 100 then
+        missChance = 100
+    end
+
     return DataUtils:Round(missChance, 2) .. "%"
 end
