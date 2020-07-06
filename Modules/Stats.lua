@@ -96,11 +96,10 @@ end
 --- Toogles the stats window
 function Stats:ToggleWindow()
     _Stats.frame:SetShown(not _Stats.frame:IsShown())
-    if _Stats.frame:IsShown() then
-        print("[ECS] The ECS stats window is now visible next to the character frame")
-    else
-        print("[ECS] The ECS stats window is now hidden")
-    end
+end
+
+function Stats:GetFrame()
+    return _Stats.frame
 end
 
 ---@return table<string, StatsHeader|StatsText>
