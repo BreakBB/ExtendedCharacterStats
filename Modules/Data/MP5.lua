@@ -16,7 +16,7 @@ end
 
 _GetMP5ValueOnItems = function ()
     local mp5 = 0
-    for i = 1, 17 do
+    for i = 1, 18 do
         local itemLink = GetInventoryItemLink("player", i)
         if itemLink then
             local stats = GetItemStats(itemLink)
