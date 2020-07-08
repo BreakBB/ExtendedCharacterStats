@@ -4,11 +4,29 @@ local Data = ECSLoader:CreateModule("Data")
 ---@type DataUtils
 local DataUtils = ECSLoader:ImportModule("DataUtils")
 
+local _GetGeneralTalentModifier
+
+local _, _, classId = UnitClass("player")
 
 ---@param school number
 ---@return number
 function Data:GetSpellDmg(school)
-    return GetSpellBonusDamage(school)
+    local spellDmg = GetSpellBonusDamage(school)
+    local modifier = _GetGeneralTalentModifier()
+    spellDmg = spellDmg * (1 + (modifier / 100))
+    return DataUtils:Round(spellDmg, 0)
+end
+
+---@return number
+_GetGeneralTalentModifier = function()
+    local mod = 0
+
+    if classId == Data.MAGE then
+        local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 15)
+        mod = points * 1 -- 0-3% Arcane Instability
+    end
+
+    return mod
 end
 
 ---@return number
