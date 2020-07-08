@@ -36,10 +36,11 @@ local lastYOffset = 20
 
 --- Creates the main frame for the Stats window
 function Stats:CreateWindow()
+    local ecs = ExtendedCharacterStats
+
     local mainFrame = CreateFrame("Frame", "ECS_StatsFrame", PaperDollItemsFrame, "BasicFrameTemplateWithInset")
-    mainFrame:SetSize(ExtendedCharacterStats.general.window.width, ExtendedCharacterStats.general.window.height) -- Width, Height
-    mainFrame:SetPoint("LEFT", PaperDollItemsFrame, "LEFT", ExtendedCharacterStats.general.window.xOffset,
-                           ExtendedCharacterStats.general.window.yOffset) -- Point, relativeFrame, relativePoint, xOffset, yOffset
+    mainFrame:SetSize(ecs.general.window.width, ecs.general.window.height) -- Width, Height
+    mainFrame:SetPoint("LEFT", PaperDollItemsFrame, "RIGHT", ecs.general.window.xOffset, ecs.general.window.yOffset) -- Point, relativeFrame, relativePoint, xOffset, yOffset
     mainFrame.title = mainFrame:CreateFontString(nil, "OVERLAY")
     mainFrame.title:SetFontObject("GameFontHighlight")
     mainFrame.title:SetPoint("CENTER", mainFrame.TitleBg, "CENTER", 11, 0)
@@ -47,7 +48,7 @@ function Stats:CreateWindow()
 
     mainFrame.configButton = CreateFrame("Button", nil, mainFrame, "GameMenuButtonTemplate")
     mainFrame.configButton:SetText(i18n("SETTINGS"))
-    mainFrame.configButton:SetSize(ExtendedCharacterStats.general.window.width - 10, 20)
+    mainFrame.configButton:SetSize(ecs.general.window.width - 10, 20)
     mainFrame.configButton:SetPoint("CENTER", mainFrame, "TOP", -1, -35)
     mainFrame.configButton:SetScript("OnClick", function ()
         ECSConfigFrame:SetShown(not ECSConfigFrame:IsShown())
@@ -58,7 +59,7 @@ function Stats:CreateWindow()
     mainFrame.ScrollFrame:SetPoint("BOTTOMRIGHT", mainFrame, "BOTTOMRIGHT", -35, 10)
 
     mainFrame.ScrollChild = CreateFrame("Frame", nil, mainFrame.ScrollFrame)
-    mainFrame.ScrollChild:SetSize(ExtendedCharacterStats.general.window.width, ExtendedCharacterStats.general.window.height)
+    mainFrame.ScrollChild:SetSize(ecs.general.window.width, ecs.general.window.height)
     mainFrame.ScrollFrame:SetScrollChild(mainFrame.ScrollChild)
     _Stats.frame = mainFrame
 

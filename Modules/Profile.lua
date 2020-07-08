@@ -133,7 +133,7 @@ local function GetDefaultGeneralSettings()
         window = {
             height = 422,
             width = 175,
-            xOffset = 353,
+            xOffset = -30,
             yOffset = 30
         }
     }
