@@ -6,7 +6,7 @@
 local Profile = ECSLoader:CreateModule("Profile")
 
 function Profile:GetProfileVersion()
-    return 3
+    return 4
 end
 
 ---@return ECSProfile
