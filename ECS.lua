@@ -107,6 +107,9 @@ _InitGUI = function ()
             end
         elseif event == "PLAYER_EQUIPMENT_CHANGED" then
             GearInfos:UpdateGearColorFrames()
+            C_Timer.After(0.5, function ()
+                Stats:UpdateInformation()
+            end)
         elseif event == "INSPECT_READY" then
             GearInfos:UpdateInspectGearColorFrames()
         end
