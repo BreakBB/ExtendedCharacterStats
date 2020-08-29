@@ -15,6 +15,8 @@ end
 _UseLanguage = function(lang)
     if lang == "deDE" then
         i18n:UseGerman()
+    elseif lang == "frFR" then
+        i18n:UseFrench()
     else
         i18n:UseEnglish()
     end
