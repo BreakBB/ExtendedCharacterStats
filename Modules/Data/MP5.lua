@@ -55,14 +55,15 @@ function Data:GetMP5WhileCasting()
     if Data:HasSetBonusModifierMP5() then
         mod = mod + 0.15
     end
-    mod = mod + _GetAuraModifier()
+    local auraMod, auraValues = _GetAuraModifier()
+    mod = mod + auraMod
     if mod == 0 then
         casting = 0
     end
     casting = casting * mod
 
     local mp5Items = Data:GetMP5FromItems()
-    casting = (casting * 5) + mp5Items
+    casting = (casting * 5) + mp5Items + auraValues
 
     return DataUtils:Round(casting, 2)
 end
@@ -86,6 +87,7 @@ end
 
 _GetAuraModifier = function ()
     local mod = 0
+    local bonus = 0
 
     for i = 1, 40 do
         local _, _, _, _, _, _, _, _, _, spellId, _ = UnitAura("player", i, "HELPFUL")
@@ -96,7 +98,16 @@ _GetAuraModifier = function ()
         if spellId == 6117 or spellId == 22782 or spellId == 22783 then
             mod = mod + 0.3 -- 30% from Mage Armor
         end
+        if spellId == 24363 then
+            bonus = bonus + 12 -- 12 MP5 from Mageblood Potion
+        end
+        if spellId == 16609 then
+            bonus = bonus + 10 -- 10 MP5 from Warchief's Blessing
+        end
+        if spellId == 18194 then
+            bonus = bonus + 8 -- 8 MP5 from Nightfin Soup
+        end
     end
 
-    return mod
+    return mod, bonus
 end
