@@ -60,9 +60,44 @@ _GeneralTab = function()
                 order = 1,
                 name = function() return i18n("GENERAL_SETTINGS") end,
             },
+            addColorsToStatTexts = {
+                type = "toggle",
+                order = 2,
+                name = function() return i18n("COLORIZE_STATS") end,
+                desc = function() return i18n("COLORIZE_STATS_DESC") end,
+                width = "full",
+                get = function () return ExtendedCharacterStats.general.addColorsToStatTexts; end,
+                set = function (_, value)
+                    ExtendedCharacterStats.general.addColorsToStatTexts = value
+                    Stats:RebuildStatInfos()
+                end,
+            },
+            statColorSelection = {
+                type = "select",
+                order = 2.1,
+                values = {
+                    ["full"] = i18n("FULL"),
+                    ["texts"] = i18n("STAT_TEXTS"),
+                    ["values"] = i18n("STAT_VALUES"),
+                },
+                style = "dropdown",
+                disabled = function() return (not ExtendedCharacterStats.general.addColorsToStatTexts) end,
+                name = function() return i18n("SELECT_STAT_COLORS") end,
+                get = function()
+                    if (not ExtendedCharacterStats.general.statColorSelection) then
+                        return "full"
+                    else
+                        return ExtendedCharacterStats.general.statColorSelection;
+                    end
+                end,
+                set = function(_, selection)
+                    ExtendedCharacterStats.general.statColorSelection = selection
+                    Stats:RebuildStatInfos()
+                end,
+            },
             showQualityColors = {
                 type = "toggle",
-                order = 1.1,
+                order = 3,
                 name = function() return i18n("SHOW_ITEM_QUALITY_COLORS") end,
                 desc = function() return i18n("SHOW_ITEM_QUALITY_COLORS_DESC") end,
                 width = "full",
@@ -74,7 +109,7 @@ _GeneralTab = function()
             },
             headerFontSize = {
                 type = "range",
-                order = 1.2,
+                order = 4,
                 name = function() return i18n("HEADER_FONT_SIZE") end,
                 desc = function() return i18n("HEADER_FONT_SIZE_DESC") end,
                 width = "double",
@@ -89,7 +124,7 @@ _GeneralTab = function()
             },
             statFontSize = {
                 type = "range",
-                order = 1.3,
+                order = 5,
                 name = function() return i18n("STAT_FONT_SIZE") end,
                 desc = function() return i18n("STAT_FONT_SIZE_DESC") end,
                 width = "double",
@@ -104,7 +139,7 @@ _GeneralTab = function()
             },
             windowWidth = {
                 type = "range",
-                order = 1.3,
+                order = 6,
                 name = function() return i18n("WINDOW_WIDTH") end,
                 desc = function() return i18n("WINDOW_WIDTH_DESC") end,
                 width = "double",
@@ -119,7 +154,7 @@ _GeneralTab = function()
             },
             language = {
                 type = "select",
-                order = 3.1,
+                order = 7,
                 values = {
                     ["auto"] = "Auto",
                     ["enUS"] = "English",

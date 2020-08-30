@@ -27,8 +27,9 @@ local headerFont = "GameFontNormal"
 local statFont = "GameFontHighlightSmall"
 
 -- Forward declaration
-local _CreateStatInfos, _CreateHeader, _CreateText
+local _CreateStatInfos, _CreateHeader, _CreateText, _FormatStatsText
 
+local colors = Utils.colors
 local framePool = {}
 local lastYOffset = 20
 ------------------------------------------------------------------
@@ -40,16 +41,16 @@ function Stats:CreateWindow()
 
     local mainFrame = CreateFrame("Frame", "ECS_StatsFrame", PaperDollItemsFrame, "BasicFrameTemplateWithInset")
     mainFrame:SetSize(ecs.general.window.width, ecs.general.window.height) -- Width, Height
-    mainFrame:SetPoint("LEFT", PaperDollItemsFrame, "RIGHT", ecs.general.window.xOffset, ecs.general.window.yOffset) -- Point, relativeFrame, relativePoint, xOffset, yOffset
+    mainFrame:SetPoint("LEFT", PaperDollItemsFrame, "RIGHT", ecs.general.window.xOffset,  ecs.general.window.yOffset) -- Point,  relativeFrame, relativePoint,  xOffset,  yOffset
     mainFrame.title = mainFrame:CreateFontString(nil, "OVERLAY")
     mainFrame.title:SetFontObject("GameFontHighlight")
-    mainFrame.title:SetPoint("CENTER", mainFrame.TitleBg, "CENTER", 11, 0)
+    mainFrame.title:SetPoint("CENTER", mainFrame.TitleBg, "CENTER", 11,  0)
     mainFrame.title:SetText(i18n("NAME_VERSION", Utils:GetAddonVersionString()))
 
     mainFrame.configButton = CreateFrame("Button", nil, mainFrame, "GameMenuButtonTemplate")
     mainFrame.configButton:SetText(i18n("SETTINGS"))
     mainFrame.configButton:SetSize(ecs.general.window.width - 10, 20)
-    mainFrame.configButton:SetPoint("CENTER", mainFrame, "TOP", -1, -35)
+    mainFrame.configButton:SetPoint("CENTER", mainFrame, "TOP", -1,  -35)
     mainFrame.configButton:SetScript("OnClick", function ()
         ECSConfigFrame:SetShown(not ECSConfigFrame:IsShown())
     end)
@@ -117,9 +118,28 @@ _CreateStatInfo = function(category, ...)
         -- Loop through all stats
         for _, stat in pairs(stats) do
             if type(stat) == "table" and stat.display == true then
-                _CreateText(stat.refName, i18n(stat.text) .. Data:GetStatInfo(stat.refName), category.isSubGroup)
+                --_CreateText(stat.refName, i18n(stat.text) .. Data:GetStatInfo(stat.refName), category.isSubGroup)
+                _CreateText(stat.refName, _FormatStatsText(stat.text,  stat.refName), category.isSubGroup)
             end
         end
+    end
+end
+
+_FormatStatsText = function(statTextRef, statRefName)
+    local statText = i18n(statTextRef)
+    local statValue = Data:GetStatInfo(statRefName)
+
+    if (not ExtendedCharacterStats.general.addColorsToStatTexts) then
+        return Utils:Colorize(statText, colors.GRAY) .. Utils:Colorize(statValue, colors.WHITE)
+    end
+
+    local statTextColor, statValueColor, percentColor = Utils:GetColorsForStatTextRef(statTextRef)
+
+    if string.sub(statValue, -1) == "%" then
+        statValue = string.sub(statValue, 1,  -2)
+        return Utils:Colorize(statText, statTextColor) .. Utils:Colorize(statValue, statValueColor) .. Utils:Colorize("%", percentColor)
+    else
+        return Utils:Colorize(statText, statTextColor) .. Utils:Colorize(statValue, statValueColor)
     end
 end
 
@@ -180,7 +200,7 @@ _CreateHeader = function(name, displayText, isSubHeader)
     else
         header:SetFontObject(headerFont)
     end
-    header:SetPoint("TOPLEFT", xOffSet, lastYOffset)
+    header:SetPoint("TOPLEFT", xOffSet,  lastYOffset)
     header:SetText(displayText)
     header:SetFont(STANDARD_TEXT_FONT, ExtendedCharacterStats.general.headerFontSize)
     header:Show()
@@ -205,9 +225,9 @@ _CreateText = function(name, displayText, isSubText)
     else
         stat:SetFontObject(statFont)
     end
-    stat:SetPoint("TOPLEFT", xOffSet, lastYOffset)
+    stat:SetPoint("TOPLEFT", xOffSet,  lastYOffset)
     stat:SetText(displayText)
-    stat:SetFont(STANDARD_TEXT_FONT, ExtendedCharacterStats.general.statFontSize)
+    stat:SetFont(STANDARD_TEXT_FONT,  ExtendedCharacterStats.general.statFontSize)
     stat:Show()
     _Stats.displayedLines[name] = stat
 end
@@ -256,7 +276,8 @@ local function _UpdateStats(category)
                     end
                 end
             elseif stat.display == true then
-                _UpdateItem(stat.refName, i18n(stat.text) .. Data:GetStatInfo(stat.refName))
+                --_UpdateItem(stat.refName, i18n(stat.text) .. Data:GetStatInfo(stat.refName))
+                _UpdateItem(stat.refName, _FormatStatsText(stat.text, stat.refName))
             end
         end
     end

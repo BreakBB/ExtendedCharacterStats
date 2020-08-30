@@ -127,6 +127,8 @@ end
 
 local function GetDefaultGeneralSettings()
     return {
+        addColorsToStatTexts = true,
+        statColorSelection = "full",
         showQualityColors = true,
         headerFontSize = 11,
         statFontSize = 10,
