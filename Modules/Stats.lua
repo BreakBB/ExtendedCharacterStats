@@ -273,7 +273,7 @@ _UpdateStats = function(category)
             if stat.isSubGroup then
                 for _, subStat in pairs(stat) do
                     if type(subStat) == "table" and subStat.display == true then
-                        _UpdateItem(subStat.refName, i18n(subStat.text) .. Data:GetStatInfo(subStat.refName))
+                        _UpdateItem(subStat.refName, _FormatStatsText(subStat.text, subStat.refName))
                     end
                 end
             elseif stat.display == true then
