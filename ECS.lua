@@ -97,9 +97,11 @@ _InitGUI = function ()
         if eventArgs[1] == "player" then
             if event == "UNIT_SPELLCAST_SUCCEEDED" then -- If a player casted something the 5 sec rule comes into play
                 lastSuccessfulSpell = GetTime()
-            elseif event == "UNIT_POWER_UPDATE" and lastSuccessfulSpell > 0 and (GetTime() - lastSuccessfulSpell) > 5.5 then -- Only check power update after the 5 sec rule (mana reg is back to normal)
-                lastSuccessfulSpell = 0
-                Stats:UpdateInformation()
+            elseif event == "UNIT_POWER_UPDATE" then
+                if lastSuccessfulSpell > 0 and (GetTime() - lastSuccessfulSpell) > 5.5 then -- Only check power update after the 5 sec rule (mana reg is back to normal)
+                    lastSuccessfulSpell = 0
+                    Stats:UpdateInformation()
+                end
             else
                 C_Timer.After(0.5, function ()
                     Stats:UpdateInformation()
