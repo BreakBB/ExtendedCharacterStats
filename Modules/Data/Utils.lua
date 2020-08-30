@@ -11,8 +11,11 @@ function DataUtils:Round(num, decimalPlaces)
 end
 
 function DataUtils:IsShapeshifted()
-    for i = 0, 40 do
+    for i = 1, 40 do
         local _, _, _, _, _, _, _, _, _, spellId, _ = UnitAura("player", i, "HELPFUL", "PLAYER")
+        if spellId == nil then
+            break
+        end
         if spellId == 5487 or spellId == 9634 or spellId == 768 then
             return true
         end
