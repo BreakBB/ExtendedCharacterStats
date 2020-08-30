@@ -47,6 +47,16 @@ local itemSets = {
         [19827] = true,
         [19826] = true,
         [19825] = true
+    },
+    [setNames.TEN_STORMS] = {
+        [16944] = true,
+        [16943] = true,
+        [16950] = true,
+        [16945] = true,
+        [16948] = true,
+        [16949] = true,
+        [16947] = true,
+        [16946] = true
     }
 }
 
@@ -66,6 +76,13 @@ function Data:GetSetBonusValueMP5()
     end
 
     return 0
+end
+
+function Data:HasNatureCritBonusModifier()
+    if classId == Data.SHAMAN then
+        return _IsSetBonusActive(setNames.TEN_STORMS, 5)
+    end
+    return false
 end
 
 _IsSetBonusActive = function(setName, bonusLevel)

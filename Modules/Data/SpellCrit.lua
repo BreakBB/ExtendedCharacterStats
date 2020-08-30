@@ -5,6 +5,7 @@ local DataUtils = ECSLoader:ImportModule("DataUtils")
 
 local _GetTalentModifier, _GetGeneralTalentModifier, _GetTalentModifierBySchool
 local _GetTalentModifierHolyCrit, _GetTalentModifierFireCrit
+local _GetSetBonus
 
 local _, _, classId = UnitClass("player")
 
@@ -12,7 +13,8 @@ local _, _, classId = UnitClass("player")
 ---@return string
 function Data:GetSpellCrit(school)
     local crit = _GetTalentModifier(school)
-    crit = crit + GetSpellCritChance()
+    local setBonus = _GetSetBonus(school)
+    crit = crit + GetSpellCritChance() + setBonus
     return DataUtils:Round(crit, 2) .. "%"
 end
 
@@ -74,4 +76,14 @@ _GetTalentModifierFireCrit = function()
     end
 
     return mod
+end
+
+_GetSetBonus = function (school)
+    local bonus = 0
+
+    if school == Data.NATURE_SCHOOL and Data:HasNatureCritBonusModifier() then
+        bonus = 3 -- 3% Nature Crit from Shaman T2
+    end
+
+    return bonus
 end
