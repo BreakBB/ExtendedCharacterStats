@@ -3,7 +3,7 @@ local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
 local DataUtils = ECSLoader:ImportModule("DataUtils")
 
-local _GetMP5ValueOnItems
+local _GetMP5ValueOnItems, _GetTalentModifier, _GetAuraModifier
 
 local _, _, classId = UnitClass("player")
 
@@ -43,7 +43,31 @@ function Data:GetMP5FromSpirit()
     return DataUtils:Round(base, 0) * 5
 end
 
-local function _GetTalentModifierMP5()
+-- Get manaregen while casting
+function Data:GetMP5WhileCasting()
+    local _, casting = GetManaRegen() -- Returns mana reg per 1 second
+    if casting < 1 then
+        casting = lastManaReg
+    end
+    lastManaReg = casting
+
+    local mod = _GetTalentModifier()
+    if Data:HasSetBonusModifierMP5() then
+        mod = mod + 0.15
+    end
+    mod = mod + _GetAuraModifier()
+    if mod == 0 then
+        casting = 0
+    end
+    casting = casting * mod
+
+    local mp5Items = Data:GetMP5FromItems()
+    casting = (casting * 5) + mp5Items
+
+    return DataUtils:Round(casting, 2)
+end
+
+_GetTalentModifier = function()
     local mod = 0
 
     if classId == Data.PRIEST then
@@ -60,24 +84,19 @@ local function _GetTalentModifierMP5()
     return mod
 end
 
--- Get manaregen while casting
-function Data:GetMP5WhileCasting()
-    local _, casting = GetManaRegen() -- Returns mana reg per 1 second
-    if casting < 1 then
-        casting = lastManaReg
-    end
-    lastManaReg = casting
+_GetAuraModifier = function ()
+    local mod = 0
 
-    local mod = _GetTalentModifierMP5()
-    if Data:HasSetBonusModifierMP5() then
-        mod = mod + 0.15
-    end
-    if mod > 0 then
-        casting = casting * mod
+    for i = 1, 40 do
+        local _, _, _, _, _, _, _, _, _, spellId, _ = UnitAura("player", i, "HELPFUL")
+        if spellId == nil then
+            break
+        end
+
+        if spellId == 6117 or spellId == 22782 or spellId == 22783 then
+            mod = mod + 0.3 -- 30% from Mage Armor
+        end
     end
 
-    local mp5Items = Data:GetMP5FromItems()
-    casting = (casting * 5) + mp5Items
-
-    return DataUtils:Round(casting, 2)
+    return mod
 end
