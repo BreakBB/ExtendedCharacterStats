@@ -28,6 +28,7 @@ local statFont = "GameFontHighlightSmall"
 
 -- Forward declaration
 local _CreateStatInfos, _CreateHeader, _CreateText, _FormatStatsText
+local _UpdateStats, _UpdateItem
 
 local colors = Utils.colors
 local framePool = {}
@@ -252,21 +253,21 @@ function Stats:RebuildStatInfos()
     _CreateStatInfos()
 end
 
---- Updates a single existing stat value
----@param refName string
----@param text string
-local function _UpdateItem(refName, text)
-    local stats = _Stats.displayedLines
+--- Read the loaded profile and update all enabled elements
+function Stats:UpdateInformation()
 
-    local stat = stats[refName]
-    if stat then
-        stat:SetText(text)
+    -- Loop through all categories
+    for _, category in pairs(ExtendedCharacterStats.profile) do
+        if category and category.display == true then
+            -- Loop through all stats
+            _UpdateStats(category)
+        end
     end
 end
 
 --- Updates all existing stats of a given category
 ---@param category Category|SubCategory
-local function _UpdateStats(category)
+_UpdateStats = function(category)
     for _, stat in pairs(category) do
         if type(stat) == "table" then
             if stat.isSubGroup then
@@ -283,14 +284,14 @@ local function _UpdateStats(category)
     end
 end
 
---- Read the loaded profile and update all enabled elements
-function Stats:UpdateInformation()
+--- Updates a single existing stat value
+---@param refName string
+---@param text string
+_UpdateItem = function(refName, text)
+    local stats = _Stats.displayedLines
 
-    -- Loop through all categories
-    for _, category in pairs(ExtendedCharacterStats.profile) do
-        if category and category.display == true then
-            -- Loop through all stats
-            _UpdateStats(category)
-        end
+    local stat = stats[refName]
+    if stat then
+        stat:SetText(text)
     end
 end
