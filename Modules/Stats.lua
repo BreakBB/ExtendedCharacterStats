@@ -42,7 +42,7 @@ function Stats:CreateWindow()
 
     local mainFrame = CreateFrame("Frame", "ECS_StatsFrame", PaperDollItemsFrame, "BasicFrameTemplateWithInset")
     mainFrame:SetSize(ecs.general.window.width, ecs.general.window.height) -- Width, Height
-    mainFrame:SetPoint("LEFT", PaperDollItemsFrame, "RIGHT", ecs.general.window.xOffset,  ecs.general.window.yOffset) -- Point,  relativeFrame, relativePoint,  xOffset,  yOffset
+    mainFrame:SetPoint("LEFT", PaperDollItemsFrame, "RIGHT", ecs.general.window.xOffset,  ecs.general.window.yOffset) -- Point, relativeFrame, relativePoint, xOffset, yOffset
     mainFrame.title = mainFrame:CreateFontString(nil, "OVERLAY")
     mainFrame.title:SetFontObject("GameFontHighlight")
     mainFrame.title:SetPoint("CENTER", mainFrame.TitleBg, "CENTER", 11,  0)
@@ -76,10 +76,11 @@ function Stats:CreateWindow()
     end
     toggleButton:SetScript("OnClick", function ()
         Stats:ToggleWindow()
-        if _Stats.frame:IsShown() then
-           toggleButton:SetText("< ECS")
-        else
-            toggleButton:SetText("ECS >")
+    end)
+
+    PaperDollItemsFrame:HookScript("OnShow", function()
+        if ExtendedCharacterStats.general.statsWindowClosedOnOpen then
+            Stats:HideWindow()
         end
     end)
 
@@ -98,7 +99,28 @@ end
 
 --- Toogles the stats window
 function Stats:ToggleWindow()
+    local toggleButton = _G["ECS_ToggleButton"]
+    if (not toggleButton) then
+        error("ECS Toggle Button could not be found")
+        return
+    end
+
     _Stats.frame:SetShown(not _Stats.frame:IsShown())
+    if _Stats.frame:IsShown() then
+        toggleButton:SetText("< ECS")
+    else
+        toggleButton:SetText("ECS >")
+    end
+end
+
+function Stats:HideWindow()
+    local toggleButton = _G["ECS_ToggleButton"]
+    if (not toggleButton) then
+        error("ECS Toggle Button could not be found")
+        return
+    end
+    _Stats.frame:SetShown(false)
+    toggleButton:SetText("ECS >")
 end
 
 function Stats:GetFrame()

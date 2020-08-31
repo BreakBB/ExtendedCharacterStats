@@ -60,6 +60,17 @@ _GeneralTab = function()
                 order = 1,
                 name = function() return i18n("GENERAL_SETTINGS") end,
             },
+            statsWindowClosedOnOpen = {
+                type = "toggle",
+                order = 1.1,
+                name = function() return i18n("STATS_WINDOW_CLOSED") end,
+                desc = function() return i18n("STATS_WINDOW_CLOSED_DESC") end,
+                width = "full",
+                get = function () return ExtendedCharacterStats.general.statsWindowClosedOnOpen; end,
+                set = function (_, value)
+                    ExtendedCharacterStats.general.statsWindowClosedOnOpen = value
+                end,
+            },
             addColorsToStatTexts = {
                 type = "toggle",
                 order = 2,

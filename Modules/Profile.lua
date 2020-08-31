@@ -127,6 +127,7 @@ end
 
 local function GetDefaultGeneralSettings()
     return {
+        statsWindowClosedOnOpen = false,
         addColorsToStatTexts = true,
         statColorSelection = "full",
         showQualityColors = true,
