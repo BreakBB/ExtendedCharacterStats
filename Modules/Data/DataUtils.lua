@@ -30,3 +30,22 @@ function DataUtils:GetMissChanceByDifference(weaponSkill, defenseValue)
         return 7 + (defenseValue - weaponSkill - 10) * 0.4
     end
 end
+
+function DataUtils:GetEnchantForEquipSlot(equipSlot)
+    local slotId, _ = GetInventorySlotInfo(equipSlot)
+    local itemLink = GetInventoryItemLink("player", slotId)
+
+    return DataUtils:GetEnchantFromItemLink(itemLink)
+end
+
+function DataUtils:GetEnchantFromItemLink(itemLink)
+    if itemLink then
+        local _, itemStringLink = GetItemInfo(itemLink)
+        if itemStringLink then
+            local _, _, enchant = string.find(itemStringLink, "item:%d+:(%d*)")
+            return enchant
+        end
+    end
+
+    return nil
+end

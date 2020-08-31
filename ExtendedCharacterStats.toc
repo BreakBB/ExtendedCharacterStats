@@ -21,6 +21,7 @@ Modules\SlashCommands.lua
 # Data
 Modules\Data\Constants.lua
 Modules\Data\Data.lua
+Modules\Data\DataUtils.lua
 Modules\Data\Defense.lua
 Modules\Data\ItemSets.lua
 Modules\Data\Melee.lua
@@ -28,7 +29,6 @@ Modules\Data\MP5.lua
 Modules\Data\Ranged.lua
 Modules\Data\SpellCrit.lua
 Modules\Data\SpellHit.lua
-Modules\Data\Utils.lua
 
 # Config
 Modules\Config\Config.lua

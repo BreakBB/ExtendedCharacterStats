@@ -34,19 +34,12 @@ end
 ---@return number
 local function _GetRangeHitBonus()
     local hitValue = 0
-    -- From Enchant
-    local slotId, _ = GetInventorySlotInfo(Utils.CHAR_EQUIP_SLOTS["Range"])
-    local itemLink = GetInventoryItemLink("player", slotId)
-    if itemLink then
-        local _, itemStringLink = GetItemInfo(itemLink)
-        if itemStringLink then
-            local _, _, _, _, _, Enchant, _, _, _, _, _, _, _, _ = string.find(itemStringLink,
-            "|?c?f?f?(%x*)|?H?([^:]*):?(%d+):?(%d*):?(%d*):?(%d*):?(%d*):?(%d*):?(%-?%d*):?(%-?%d*):?(%d*):?(%d*):?(%-?%d*)|?h?%[?([^%[%]]*)%]?|?h?|?r?")
-            if (Enchant == "2523") then -- 3% Hit from Biznicks 247x128 Accurascope
-                hitValue = hitValue + 3
-            end
-        end
+
+    local rangedEnchant = DataUtils:GetEnchantForEquipSlot(Utils.CHAR_EQUIP_SLOTS["Range"])
+    if rangedEnchant and rangedEnchant == Data.enchantIds.BIZNIK_SCOPE then
+        hitValue = hitValue + 3
     end
+
     -- From Items
     local hitFromItems = GetHitModifier()
     if hitFromItems then -- This needs to be checked because on dungeon entering it becomes nil
