@@ -2,6 +2,8 @@
 local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
 local DataUtils = ECSLoader:ImportModule("DataUtils")
+---@type Utils
+local Utils = ECSLoader:ImportModule("Utils")
 
 local _GetMP5ValueOnItems, _GetTalentModifier, _GetAuraModifier
 
@@ -25,6 +27,10 @@ _GetMP5ValueOnItems = function ()
                 if statMP5 then
                     mp5 = mp5 + statMP5 + 1
                 end
+            end
+            local enchant = DataUtils:GetEnchantFromItemLink(itemLink)
+            if enchant and enchant == Data.enchantIds.BRACER_MANA_REGENERATION then
+                mp5 = mp5 + 4
             end
         end
     end
