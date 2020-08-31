@@ -5,6 +5,7 @@ local DataUtils = ECSLoader:ImportModule("DataUtils")
 
 local _GetTalentModifier, _GetGeneralTalentModifier, _GetTalentModifierBySchool
 local _GetTalentModifierHolyCrit, _GetTalentModifierFireCrit
+local _GetItemModifierBySchool
 local _GetSetBonus
 
 local _, _, classId = UnitClass("player")
@@ -13,14 +14,15 @@ local _, _, classId = UnitClass("player")
 ---@return string
 function Data:GetSpellCrit(school)
     local crit = _GetTalentModifier(school)
+    local itemBonus = _GetItemModifierBySchool(school)
     local setBonus = _GetSetBonus(school)
-    crit = crit + GetSpellCritChance() + setBonus
+    crit = crit + GetSpellCritChance() + itemBonus + setBonus
     return DataUtils:Round(crit, 2) .. "%"
 end
 
 ---@param school number
 ---@return number
-_GetTalentModifier = function (school)
+_GetTalentModifier = function(school)
     local modifier = _GetGeneralTalentModifier()
     local modifierForSchool = _GetTalentModifierBySchool(school)
 
@@ -41,7 +43,7 @@ end
 
 ---@param school number
 ---@return number
-_GetTalentModifierBySchool = function (school)
+_GetTalentModifierBySchool = function(school)
     if school == Data.HOLY_SCHOOL then
         return _GetTalentModifierHolyCrit()
     elseif school == Data.FIRE_SCHOOL then
@@ -78,7 +80,23 @@ _GetTalentModifierFireCrit = function()
     return mod
 end
 
-_GetSetBonus = function (school)
+_GetItemModifierBySchool = function(school)
+    if school == Data.HOLY_SCHOOL then
+        return _GetItemModifierHolyCrit()
+    end
+
+    return 0
+end
+
+_GetItemModifierHolyCrit = function()
+    local mainHand, _ = GetInventoryItemID("player", 16)
+    if mainHand == 18608 then
+        return 2 -- 2% Holy Crit from Benediction
+    end
+    return 0
+end
+
+_GetSetBonus = function(school)
     local bonus = 0
 
     if school == Data.NATURE_SCHOOL and Data:HasNatureCritBonusModifier() then
