@@ -113,6 +113,18 @@ _GetAuraModifier = function ()
         if spellId == 18194 then
             bonus = bonus + 8 -- 8 MP5 from Nightfin Soup
         end
+        if spellId == 5677 then
+            bonus = bonus + 10 -- 4 Mana per 2 seconds from Mana Spring Totem (Rank 1)
+        end
+        if spellId == 10491 then
+            bonus = bonus + 15 -- 6 Mana per 2 seconds from Mana Spring Totem (Rank 2)
+        end
+        if spellId == 10493 then
+            bonus = bonus + 20 -- 8 Mana per 2 seconds from Mana Spring Totem (Rank 3)
+        end
+        if spellId == 10494 then
+            bonus = bonus + 25 -- 10 Mana per 2 seconds from Mana Spring Totem (Rank 4)
+        end
     end
 
     return mod, bonus
