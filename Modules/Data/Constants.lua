@@ -32,6 +32,6 @@ Data.enchantIds = {
     BRACER_MANA_REGENERATION = "2565", -- 4 MP5 on bracer
     PROPHETIC_AURA = "2590", -- 4 MP5 for priest ZG Enchant
     BRILLIANT_MANA_OIL = "2629", -- 12 MP5
-	LESSER_MANA_OIL = "2625", -- 8 MP5
+    LESSER_MANA_OIL = "2625", -- 8 MP5
     MINOR_MANA_OIL = "2624", -- 4 MP5
 }
