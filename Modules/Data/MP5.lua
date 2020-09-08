@@ -35,6 +35,21 @@ _GetMP5ValueOnItems = function ()
         end
     end
 
+    -- Check weapon enchants (e.g. Mana Oil)
+    local hasMainEnchant, _, _, mainHandEnchantID = GetWeaponEnchantInfo()
+    mainHandEnchantID = tostring(mainHandEnchantID)
+    if (hasMainEnchant) then
+        if mainHandEnchantID == Data.enchantIds.BRILLIANT_MANA_OIL then
+        	mp5 = mp5 + 12
+        end
+        if mainHandEnchantID == Data.enchantIds.LESSER_MANA_OIL then
+        	mp5 = mp5 + 8
+        end
+        if mainHandEnchantID == Data.enchantIds.MINOR_MANA_OIL then
+        	mp5 = mp5 + 4
+        end
+    end
+    
     return mp5
 end
 
