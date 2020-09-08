@@ -32,6 +32,10 @@ _GetMP5ValueOnItems = function ()
             if enchant and enchant == Data.enchantIds.BRACER_MANA_REGENERATION then
                 mp5 = mp5 + 4
             end
+            -- Priest ZG Enchant
+            if enchant and enchant == Data.enchantIds.PROPHETIC_AURA then
+                mp5 = mp5 + 4
+            end
         end
     end
 
