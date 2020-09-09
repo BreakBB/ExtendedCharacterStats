@@ -93,6 +93,8 @@ strings = {
     ["MP5_ITEMS_SETTING_DESC"] = "Affiche/cache la valeur MP5 des objets.",
     ["MP5_SPIRIT_SETTING"] = "MP5 Esprit",
     ["MP5_SPIRIT_SETTING_DESC"] = "Affiche/cache la valeur MP5 de l'esprit.",
+    ["MP5_BUFFS_SETTING"] = "MP5 Amélioration",
+    ["MP5_BUFFS_SETTING_DESC"] = "Affiche/cache la valeur MP5 de Amélioration.",
     ["MP5_CASTING_SETTING"] = "MP5 Lancer",
     ["MP5_CASTING_SETTING_DESC"] = "Affiche/cache la valeur MP5 pendant le lancer.",
     -- Spell Settings
@@ -163,6 +165,7 @@ strings = {
 
     ["MP5_ITEMS"] = "MP5 (Objets): ",
     ["MP5_SPIRIT"] = "MP5 (Esprit): ",
+    ["MP5_BUFFS"] = "MP5 (Amélioration): ",
     ["MP5_CASTING"] = "MP5 (Lancer): ",
 
     ["SPELL"] = "Sorts",

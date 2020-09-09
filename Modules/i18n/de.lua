@@ -93,6 +93,8 @@ strings = {
     ["MP5_ITEMS_SETTING_DESC"] = "Zeigt/Versteckt den MP5-Wert von Gegenständen.",
     ["MP5_SPIRIT_SETTING"] = "MP5 Willenskraft",
     ["MP5_SPIRIT_SETTING_DESC"] = "Zeigt/Versteckt den MP5-Wert durch Willenskraft.",
+    ["MP5_BUFFS_SETTING"] = "MP5 Stärkungszauber",
+    ["MP5_BUFFS_SETTING_DESC"] = "Zeigt/Versteckt den MP5-Wert Stärkungszauber.",
     ["MP5_CASTING_SETTING"] = "MP5 Zaubernd",
     ["MP5_CASTING_SETTING_DESC"] = "Zeigt/Versteckt den MP5-Wert während des Zauberwirkens.",
     -- Spell Settings
@@ -163,6 +165,7 @@ strings = {
 
     ["MP5_ITEMS"] = "MP5 (Gegenstände): ",
     ["MP5_SPIRIT"] = "MP5 (Willenskraft): ",
+    ["MP5_BUFFS"] = "MP5 (Stärkungszauber): ",
     ["MP5_CASTING"] = "MP5 (Zaubernd): ",
 
     ["SPELL"] = "Zauber",
