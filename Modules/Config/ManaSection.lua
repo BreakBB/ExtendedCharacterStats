@@ -53,6 +53,19 @@ function _Config:LoadManaSection()
                     Stats:RebuildStatInfos()
                 end,
             },
+            mp5Buffs = {
+                type = "toggle",
+                order = 2,
+                name = function() return i18n("MP5_BUFFS_SETTING") end,
+                desc = function() return i18n("MP5_BUFFS_SETTING_DESC") end,
+                width = 1.5,
+                disabled = function() return (not ExtendedCharacterStats.profile.regen.display); end,
+                get = function () return ExtendedCharacterStats.profile.regen.mp5Buffs.display; end,
+                set = function (info, value)
+                    ExtendedCharacterStats.profile.regen.mp5Buffs.display = value
+                    Stats:RebuildStatInfos()
+                end,
+            },
             mp5Casting = {
                 type = "toggle",
                 order = 3,

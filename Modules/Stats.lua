@@ -188,7 +188,7 @@ _CreateStatInfos = function()
     _CreateStatInfo(category, category.armor, category.defense, category.blockChance, category.blockValue, category.parry, category.dodge)
 
     category = profile.regen
-    _CreateStatInfo(category, category.mp5Items, category.mp5Spirit, category.mp5Casting)
+    _CreateStatInfo(category, category.mp5Items, category.mp5Spirit, category.mp5Buffs, category.mp5Casting)
 
     category = profile.spell
     _CreateStatInfo(category, category.crit)

@@ -5,7 +5,7 @@ local DataUtils = ECSLoader:ImportModule("DataUtils")
 ---@type Utils
 local Utils = ECSLoader:ImportModule("Utils")
 
-local _GetMP5ValueOnItems, _GetTalentModifier, _GetAuraModifier
+local _GetMP5ValueOnItems, _GetTalentModifier
 
 local _, _, classId = UnitClass("player")
 
@@ -32,9 +32,28 @@ _GetMP5ValueOnItems = function ()
             if enchant and enchant == Data.enchantIds.BRACER_MANA_REGENERATION then
                 mp5 = mp5 + 4
             end
+            -- Priest ZG Enchant
+            if enchant and enchant == Data.enchantIds.PROPHETIC_AURA then
+                mp5 = mp5 + 4
+            end
         end
     end
 
+    -- Check weapon enchants (e.g. Mana Oil)
+    local hasMainEnchant, _, _, mainHandEnchantID = GetWeaponEnchantInfo()
+    mainHandEnchantID = tostring(mainHandEnchantID)
+    if (hasMainEnchant) then
+        if mainHandEnchantID == Data.enchantIds.BRILLIANT_MANA_OIL then
+        	mp5 = mp5 + 12
+        end
+        if mainHandEnchantID == Data.enchantIds.LESSER_MANA_OIL then
+        	mp5 = mp5 + 8
+        end
+        if mainHandEnchantID == Data.enchantIds.MINOR_MANA_OIL then
+        	mp5 = mp5 + 4
+        end
+    end
+    
     return mp5
 end
 
@@ -61,7 +80,7 @@ function Data:GetMP5WhileCasting()
     if Data:HasSetBonusModifierMP5() then
         mod = mod + 0.15
     end
-    local auraMod, auraValues = _GetAuraModifier()
+    local auraMod, auraValues = Data:GetMP5FromBuffs()
     mod = mod + auraMod
     if mod == 0 then
         casting = 0
@@ -91,7 +110,7 @@ _GetTalentModifier = function()
     return mod
 end
 
-_GetAuraModifier = function ()
+function Data:GetMP5FromBuffs()
     local mod = 0
     local bonus = 0
 
@@ -113,6 +132,12 @@ _GetAuraModifier = function ()
         if spellId == 18194 then
             bonus = bonus + 8 -- 8 MP5 from Nightfin Soup
         end
+        if spellId == 25691 then
+            bonus = bonus + 6 -- 6 MP5 from Sagefish Delight
+        end
+        if spellId == 25690 then
+            bonus = bonus + 3 -- 8 MP5 from Smoked Sagefish
+        end
         if spellId == 5677 then
             bonus = bonus + 10 -- 4 Mana per 2 seconds from Mana Spring Totem (Rank 1)
         end
@@ -124,6 +149,33 @@ _GetAuraModifier = function ()
         end
         if spellId == 10494 then
             bonus = bonus + 25 -- 10 Mana per 2 seconds from Mana Spring Totem (Rank 4)
+        end
+        if spellId == 25894 then
+        	bonus = bonus + 30 -- Greater Blessing of Wisdom Rank 1
+        end
+        if spellId == 25918 then
+        	bonus = bonus + 33 -- Greater Blessing of Wisdom Rank 2
+        end
+        if spellId == 19742 then
+        	bonus = bonus + 10 -- Blessing of Wisdom Rank 1
+        end
+        if spellId == 19850 then
+        	bonus = bonus + 15 -- Blessing of Wisdom Rank 2
+        end
+        if spellId == 19852 then
+        	bonus = bonus + 20 -- Blessing of Wisdom Rank 3
+        end
+        if spellId == 19853 then
+        	bonus = bonus + 25 -- Blessing of Wisdom Rank 4
+        end
+        if spellId == 19854 then
+        	bonus = bonus + 30 -- Blessing of Wisdom Rank 5
+        end
+        if spellId == 25290 then
+        	bonus = bonus + 33 -- Blessing of Wisdom Rank 6
+        end
+        if spellId == 17252 then
+        	bonus = bonus + 22 -- 22 MP5 from Mark of the Dragon Lord
         end
     end
 

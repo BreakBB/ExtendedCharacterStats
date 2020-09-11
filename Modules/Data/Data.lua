@@ -113,6 +113,10 @@ function Data:GetStatInfo(refName)
     if refName == "MP5Spirit" then
         return Data:GetMP5FromSpirit()
     end
+    if refName == "MP5Buffs" then
+    	local _, mp5Buffs = Data:GetMP5FromBuffs()
+        return mp5Buffs
+    end
     if refName == "MP5Casting" then
         return Data:GetMP5WhileCasting()
     end

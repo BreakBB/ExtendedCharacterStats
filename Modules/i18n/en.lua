@@ -93,6 +93,8 @@ strings = {
     ["MP5_ITEMS_SETTING_DESC"] = "Shows/Hides the MP5 value from items.",
     ["MP5_SPIRIT_SETTING"] = "MP5 Spirit",
     ["MP5_SPIRIT_SETTING_DESC"] = "Shows/Hides the MP5 value from spirit.",
+    ["MP5_BUFFS_SETTING"] = "MP5 Buffs",
+    ["MP5_BUFFS_SETTING_DESC"] = "Shows/Hides the MP5 value from buffs.",
     ["MP5_CASTING_SETTING"] = "MP5 Casting",
     ["MP5_CASTING_SETTING_DESC"] = "Shows/Hides the MP5 while casting value.",
     -- Spell Settings
@@ -163,6 +165,7 @@ strings = {
 
     ["MP5_ITEMS"] = "MP5 (Items): ",
     ["MP5_SPIRIT"] = "MP5 (Spirit): ",
+    ["MP5_BUFFS"] = "MP5 (Buffs): ",
     ["MP5_CASTING"] = "MP5 (Casting): ",
 
     ["SPELL"] = "Spell",
