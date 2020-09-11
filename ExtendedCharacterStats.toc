@@ -1,6 +1,6 @@
 ## Interface: 11305
-## Title : Extended Character Stats v2.5.0
-## Version : 2.5.0
+## Title : Extended Character Stats v2.5.1
+## Version : 2.5.1
 ## Notes: Displays an extra window with more information about your characters stats ( Crit/Hit/Block etc )
 ## SavedVariablesPerCharacter: ExtendedCharacterStats
 ## DefaultState : enabled
