@@ -3,7 +3,7 @@ local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
 local DataUtils = ECSLoader:ImportModule("DataUtils")
 
-local _GetTalentModifierDefense
+local _GetTalentModifierDefense, _GetItemModifierBlockValue
 
 
 ---@return number
@@ -33,7 +33,6 @@ function Data:GetDefenseValue()
         skillRank = select(4, GetSkillLineInfo(skillIndex))
         skillModifier = select(6, GetSkillLineInfo(skillIndex))
     end
-
 
     skillModifier = skillModifier + _GetTalentModifierDefense()
 
@@ -70,5 +69,18 @@ end
 
 ---@return number
 function Data:GetBlockValue()
-    return DataUtils:Round(GetShieldBlock(), 2)
+    local setBonus = _GetItemModifierBlockValue()
+    local blockValue = GetShieldBlock() + setBonus
+
+    return DataUtils:Round(blockValue, 2)
+end
+
+_GetItemModifierBlockValue = function()
+    local mod = 0
+
+    if Data:HasSetBonusModifierBlockValue() then
+        mod = mod + 30
+    end
+
+    return mod
 end

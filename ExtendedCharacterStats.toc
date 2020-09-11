@@ -22,8 +22,8 @@ Modules\SlashCommands.lua
 Modules\Data\Constants.lua
 Modules\Data\Data.lua
 Modules\Data\DataUtils.lua
-Modules\Data\Defense.lua
 Modules\Data\ItemSets.lua
+Modules\Data\Defense.lua
 Modules\Data\Melee.lua
 Modules\Data\MP5.lua
 Modules\Data\Ranged.lua

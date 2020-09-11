@@ -7,6 +7,16 @@ local _, _, classId = UnitClass("player")
 local setNames = Data.setNames
 
 local itemSets = {
+    [setNames.BATTLEGEAR_OF_MIGHT] = {
+        [16861] = true,
+        [16862] = true,
+        [16863] = true,
+        [16864] = true,
+        [16865] = true,
+        [16866] = true,
+        [16867] = true,
+        [16868] = true
+    },
     [setNames.STORMRAGE_RAIMENT] = {
         [16899] = true,
         [16900] = true,
@@ -27,37 +37,37 @@ local itemSets = {
         [16925] = true,
         [16926] = true
     },
+    [setNames.TEN_STORMS] = {
+        [16943] = true,
+        [16944] = true,
+        [16945] = true,
+        [16946] = true,
+        [16947] = true,
+        [16948] = true,
+        [16949] = true,
+        [16950] = true
+    },
     [setNames.HARUSPEXS_GARB] = {
         [19613] = true,
-        [19955] = true,
-        [19840] = true,
+        [19838] = true,
         [19839] = true,
-        [19838] = true
+        [19840] = true,
+        [19955] = true
     },
     [setNames.AUGURS_REGALIA] = {
         [19609] = true,
-        [19956] = true,
-        [19830] = true,
+        [19828] = true,
         [19829] = true,
-        [19828] = true
+        [19830] = true,
+        [19956] = true
     },
     [setNames.FREETHINKERS_ARMOR] = {
-        [19952] = true,
         [19588] = true,
-        [19827] = true,
+        [19825] = true,
         [19826] = true,
-        [19825] = true
+        [19827] = true,
+        [19952] = true
     },
-    [setNames.TEN_STORMS] = {
-        [16944] = true,
-        [16943] = true,
-        [16950] = true,
-        [16945] = true,
-        [16948] = true,
-        [16949] = true,
-        [16947] = true,
-        [16946] = true
-    }
 }
 
 function Data:HasSetBonusModifierMP5()
@@ -83,6 +93,14 @@ function Data:HasNatureCritBonusModifier()
         return _IsSetBonusActive(setNames.TEN_STORMS, 5)
     end
     return false
+end
+
+function Data:HasSetBonusModifierBlockValue()
+    if classId == Data.WARRIOR then
+        return _IsSetBonusActive(setNames.BATTLEGEAR_OF_MIGHT, 3)
+    end
+
+    return 0
 end
 
 _IsSetBonusActive = function(setName, bonusLevel)
