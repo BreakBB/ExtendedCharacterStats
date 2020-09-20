@@ -6,12 +6,20 @@
 local Profile = ECSLoader:CreateModule("Profile")
 
 function Profile:GetProfileVersion()
-    return 5
+    return 6
 end
 
 ---@return ECSProfile
 local function GetDefaultStatsProfile()
     return {
+        ---@type Category
+        general = {
+            display = true,
+            refName = "GeneralHeader",
+            text = "GENERAL",
+
+            movementSpeed = {display = true, refName = "MovementSpeed", text = "MOVEMENT_SPEED"},
+        },
 
         ---@class Category
         melee = {
@@ -136,7 +144,7 @@ local function GetDefaultGeneralSettings()
         statFontSize = 10,
         window = {
             height = 422,
-            width = 175,
+            width = 180,
             xOffset = -30,
             yOffset = 30
         }

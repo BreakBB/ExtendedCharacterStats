@@ -23,6 +23,7 @@ Modules\Data\Constants.lua
 Modules\Data\Data.lua
 Modules\Data\DataUtils.lua
 Modules\Data\ItemSets.lua
+Modules\Data\General.lua
 Modules\Data\Defense.lua
 Modules\Data\Melee.lua
 Modules\Data\MP5.lua
@@ -32,6 +33,7 @@ Modules\Data\SpellHit.lua
 
 # Config
 Modules\Config\Config.lua
+Modules\Config\GeneralSection.lua
 Modules\Config\MeleeSection.lua
 Modules\Config\RangeSection.lua
 Modules\Config\DefenseSection.lua

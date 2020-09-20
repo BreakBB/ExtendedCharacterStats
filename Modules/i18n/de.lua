@@ -45,6 +45,11 @@ strings = {
     ["HIT_BONUS_SETTING"] = "Trefferwertungsbonus",
     ["MISS_CHANCE_SETTING"] = "Chance zu verfehlen",
     ["MISS_CHANCE_BOSS_SETTING"] = "Chance zu verfehlen (Boss)",
+    -- General Stat Settings
+    ["GENERAL_STATS"] = "Allgemeine Werte anzeigen",
+    ["GENERAL_STATS_DESC"] = "Zeigt/Versteckt die allgemeinen Werte.",
+    ["MOVEMENT_SPEED_SETTING"] = "Bewegungsgeschwindigkeit anzeigen",
+    ["MOVEMENT_SPEED_SETTING_DESC"] = "Zeigt/Versteckt die Bewegungsgeschwindigkeit.",
     -- Melee Settings
     ["MELEE_SETTINGS"] = "Nahkampfwerte anzeigen",
     ["MELEE_SETTINGS_DESC"] = "Zeigt/Versteckt alle Nahkampfwerte.",

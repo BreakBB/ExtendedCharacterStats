@@ -170,7 +170,10 @@ end
 _CreateStatInfos = function()
     local profile = ExtendedCharacterStats.profile
 
-    local category = profile.melee
+    local category = profile.general
+    _CreateStatInfo(category, category.movementSpeed)
+
+    category = profile.melee
     _CreateStatInfo(category, category.attackPower, category.crit)
     if category.display then
         category = category.hit

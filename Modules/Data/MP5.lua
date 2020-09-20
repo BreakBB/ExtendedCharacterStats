@@ -2,8 +2,6 @@
 local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
 local DataUtils = ECSLoader:ImportModule("DataUtils")
----@type Utils
-local Utils = ECSLoader:ImportModule("Utils")
 
 local _GetMP5ValueOnItems, _GetTalentModifier
 
@@ -53,7 +51,7 @@ _GetMP5ValueOnItems = function ()
         	mp5 = mp5 + 4
         end
     end
-    
+
     return mp5
 end
 

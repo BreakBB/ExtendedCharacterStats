@@ -214,6 +214,7 @@ _StatsTab = function ()
                 order = 1,
                 name = function() return i18n("STATS_SETTINGS") end,
             },
+            generalGroup = _Config:LoadGeneralSection(),
             meleeGroup = _Config:LoadMeleeSection(),
             rangeGroup = _Config:LoadRangeSection(),
             defenseGroup = _Config:LoadDefenseSection(),

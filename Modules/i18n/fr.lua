@@ -45,6 +45,11 @@ strings = {
     ["HIT_BONUS_SETTING"] = "Bonus de toucher",
     ["MISS_CHANCE_SETTING"] = "Chances de rater",
     ["MISS_CHANCE_BOSS_SETTING"] = "Ch. de rater-Boss",
+    -- General Stat Settings
+    ["GENERAL_STATS"] = "Show General Stats",
+    ["GENERAL_STATS_DESC"] = "Shows/Hides all general stats.",
+    ["MOVEMENT_SPEED_SETTING"] = "Show Movement Speed",
+    ["MOVEMENT_SPEED_SETTING_DESC"] = "Shows/Hides the movement speed value.",
     -- Melee Settings
     ["MELEE_SETTINGS"] = "Mêlée Général",
     ["MELEE_SETTINGS_DESC"] = "Affiche/cache toutes les statistiques de mêlée.",

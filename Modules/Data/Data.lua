@@ -43,6 +43,10 @@ end
 ---@return number | string
 function Data:GetStatInfo(refName)
 
+    if refName == "MovementSpeed" then
+        return Data:GetMovementSpeed()
+    end
+
     if refName == "MeleeAttackpower" then
         return Data:GetMeleeAttackPower()
     end

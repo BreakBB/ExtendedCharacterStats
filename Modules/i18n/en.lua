@@ -45,6 +45,11 @@ strings = {
     ["HIT_BONUS_SETTING"] = "Hit Bonus",
     ["MISS_CHANCE_SETTING"] = "Miss Chance",
     ["MISS_CHANCE_BOSS_SETTING"] = "Miss Chance Boss",
+    -- General Stat Settings
+    ["GENERAL_STATS"] = "Show General Stats",
+    ["GENERAL_STATS_DESC"] = "Shows/Hides all general stats.",
+    ["MOVEMENT_SPEED_SETTING"] = "Show Movement Speed",
+    ["MOVEMENT_SPEED_SETTING_DESC"] = "Shows/Hides the movement speed value.",
     -- Melee Settings
     ["MELEE_SETTINGS"] = "Show Melee Stats",
     ["MELEE_SETTINGS_DESC"] = "Shows/Hides all melee stats.",
@@ -144,6 +149,8 @@ strings = {
     ["SHADOW_CRIT_SETTING_DESC"] = "Shows/Hides the shadow crit chance.",
 
     -- Stats
+    ["MOVEMENT_SPEED"] = "Movement Speed: ",
+
     ["HIT"] = "Hit",
     ["MISS"] = "Miss: ",
     ["MISS_BOSS"] = "Miss (Lvl + 3): ",
