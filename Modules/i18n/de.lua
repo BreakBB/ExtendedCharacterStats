@@ -149,7 +149,7 @@ strings = {
     ["SHADOW_CRIT_SETTING_DESC"] = "Zeigt/Versteckt die Chance mit Schattenzaubern kritisch zu treffen.",
 
     -- Stats
-    ["MOVEMENT_SPEED"] = "Bewegungsgeschwindigkeit: ",
+    ["MOVEMENT_SPEED"] = "Geschwindigkeit: ",
 
     ["HIT"] = "Trefferchance",
     ["MISS"] = "Verfehlen: ",
