@@ -31,7 +31,7 @@ function Data:SpellHitBonus()
 end
 
 function Data:SpellMissChanceSameLevel()
-    local missChance = 3
+    local missChance = 4
 
     missChance = missChance - _GetTalentModifierSpellHit()
     local mod = GetSpellHitModifier()
@@ -39,8 +39,8 @@ function Data:SpellMissChanceSameLevel()
         missChance = missChance - mod
     end
 
-    if missChance < 0 then
-        missChance = 0
+    if missChance < 1 then
+        missChance = 1
     elseif missChance > 100 then
         missChance = 100
     end
@@ -49,7 +49,7 @@ function Data:SpellMissChanceSameLevel()
 end
 
 function Data:SpellMissChanceBossLevel()
-    local missChance = 16
+    local missChance = 17
 
     missChance = missChance - _GetTalentModifierSpellHit()
     local mod = GetSpellHitModifier()
@@ -57,8 +57,8 @@ function Data:SpellMissChanceBossLevel()
         missChance = missChance - mod
     end
 
-    if missChance < 0 then
-        missChance = 0
+    if missChance < 1 then
+        missChance = 1
     elseif missChance > 100 then
         missChance = 100
     end
