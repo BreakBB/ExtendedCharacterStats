@@ -57,10 +57,7 @@ end
 _GetTalentModifierHolyCrit = function()
     local mod = 0
 
-    if classId == Data.PALADIN then
-        local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 13)
-        mod = points * 1 -- 0-5% Holy Power
-    elseif classId == Data.PRIEST then
+    if classId == Data.PRIEST then
         local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 3)
         mod = points * 1 -- 0-5% Holy Specialization
     end
