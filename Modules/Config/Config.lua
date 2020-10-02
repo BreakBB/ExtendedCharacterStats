@@ -175,7 +175,7 @@ _GeneralTab = function()
                     ["frFR"] = "Français",
                     ["deDE"] = "Deutsch",
                     -- ["ruRU"] = "русский",
-                    -- ["zhCN"] = "简体中文",
+                    ["zhCN"] = "简体中文",
                     -- ["zhTW"] = "正體中文",
                     -- ["koKR"] = "한국어",
                 },
