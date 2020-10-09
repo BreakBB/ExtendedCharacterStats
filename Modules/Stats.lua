@@ -80,9 +80,15 @@ function Stats:CreateWindow()
     
     mainFrame:SetScript("OnShow", function ()    
         toggleButton:SetText("< ECS")
+        if OutfitterFrame ~= nil and OutfitterButtonFrame ~= nil then
+            OutfitterFrame:SetPoint("TOPLEFT", OutfitterButtonFrame  , "TOPRIGHT", -34 + ExtendedCharacterStats.general.window.width, -38)
+        end
     end)
     mainFrame:SetScript("OnHide", function ()
         toggleButton:SetText("ECS >")
+        if OutfitterFrame ~= nil and OutfitterButtonFrame ~= nil then
+            OutfitterFrame:SetPoint("TOPLEFT", OutfitterButtonFrame  , "TOPRIGHT", -34, -38)
+        end
     end)
 
     PaperDollItemsFrame:HookScript("OnShow", function()
