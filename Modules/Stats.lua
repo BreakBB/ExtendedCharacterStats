@@ -77,6 +77,13 @@ function Stats:CreateWindow()
     toggleButton:SetScript("OnClick", function ()
         Stats:ToggleWindow()
     end)
+    
+    mainFrame:SetScript("OnShow", function ()    
+        toggleButton:SetText("< ECS")
+    end)
+    mainFrame:SetScript("OnHide", function ()
+        toggleButton:SetText("ECS >")
+    end)
 
     PaperDollItemsFrame:HookScript("OnShow", function()
         if ExtendedCharacterStats.general.statsWindowClosedOnOpen then
@@ -106,11 +113,6 @@ function Stats:ToggleWindow()
     end
 
     _Stats.frame:SetShown(not _Stats.frame:IsShown())
-    if _Stats.frame:IsShown() then
-        toggleButton:SetText("< ECS")
-    else
-        toggleButton:SetText("ECS >")
-    end
 end
 
 function Stats:HideWindow()
@@ -120,7 +122,6 @@ function Stats:HideWindow()
         return
     end
     _Stats.frame:SetShown(false)
-    toggleButton:SetText("ECS >")
 end
 
 function Stats:GetFrame()
