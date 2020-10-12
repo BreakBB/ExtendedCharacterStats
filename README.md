@@ -1,6 +1,8 @@
 # Extended Character Stats
 
-## A simple addon to list all the available stats not displayed in the character info pane by default
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+
+### A simple addon to list all the available stats not displayed in the character info pane by default
 
 [![Downloads](https://img.shields.io/github/downloads/BreakBB/ExtendedCharacterStats/total.svg)](https://github.com/BreakBB/ExtendedCharacterStats/releases/)
 [![Downloads Latest](https://img.shields.io/github/downloads/BreakBB/ExtendedCharacterStats/v2.6.1/total.svg)](https://github.com/BreakBB/ExtendedCharacterStats/releases/latest)
