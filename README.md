@@ -1,6 +1,6 @@
 # Extended Character Stats
 
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+![build](https://github.com/BreakBB/ExtendedCharacterStats/workflows/build/badge.svg) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 
 ### A simple addon to list all the available stats not displayed in the character info pane by default
 
