@@ -1,7 +1,9 @@
 max_line_length = 140
 exclude_files = {
     "**/Libs/**/*.lua",
-    ".luacheckrc"
+    ".luacheckrc",
+    "**/.luarocks/**/", -- Created by the GitHub Action
+    "**/.install/**/", -- Created by the GitHub Action
 }
 ignore = {
     "212", -- unused argument
