@@ -27,7 +27,7 @@ local headerFont = "GameFontNormal"
 local statFont = "GameFontHighlightSmall"
 
 -- Forward declaration
-local _CreateStatInfos, _CreateHeader, _CreateText, _FormatStatsText
+local _CreateStatInfos, _CreateStatInfo, _CreateHeader, _CreateText, _FormatStatsText
 local _UpdateStats, _UpdateItem
 
 local colors = Utils.colors
@@ -42,7 +42,7 @@ function Stats:CreateWindow()
 
     local mainFrame = CreateFrame("Frame", "ECS_StatsFrame", PaperDollItemsFrame, "BasicFrameTemplateWithInset")
     mainFrame:SetSize(ecs.general.window.width, ecs.general.window.height) -- Width, Height
-    mainFrame:SetPoint("LEFT", PaperDollItemsFrame, "RIGHT", ecs.general.window.xOffset,  ecs.general.window.yOffset) -- Point, relativeFrame, relativePoint, xOffset, yOffset
+    mainFrame:SetPoint("LEFT", PaperDollItemsFrame, "RIGHT", ecs.general.window.xOffset,  ecs.general.window.yOffset)
     mainFrame.title = mainFrame:CreateFontString(nil, "OVERLAY")
     mainFrame.title:SetFontObject("GameFontHighlight")
     mainFrame.title:SetPoint("CENTER", mainFrame.TitleBg, "CENTER", 11,  0)
@@ -68,8 +68,8 @@ function Stats:CreateWindow()
     local toggleButton = CreateFrame("Button", "ECS_ToggleButton", CharacterModelFrame, "GameMenuButtonTemplate")
     toggleButton:SetText("< ECS")
     toggleButton:SetSize(44, 18)
-    if (_G.LeaPlusDB and _G.LeaPlusDB["DurabilityStatus"] == "On") -- Move to old position if Leatrix Plus durability button is active. See #20
-        or PawnInitialize then -- Pawn is loaded
+    -- Move to old position if Leatrix Plus durability button is active. See #20
+    if (_G.LeaPlusDB and _G.LeaPlusDB["DurabilityStatus"] == "On") or PawnInitialize then
         toggleButton:SetPoint("TOPRIGHT", PaperDollItemsFrame, "TOPRIGHT", -38, -43)
     else
         toggleButton:SetPoint("BOTTOMRIGHT", PaperDollItemsFrame, "BOTTOMRIGHT", -38, 87)
@@ -77,8 +77,8 @@ function Stats:CreateWindow()
     toggleButton:SetScript("OnClick", function ()
         Stats:ToggleWindow()
     end)
-    
-    mainFrame:SetScript("OnShow", function ()    
+
+    mainFrame:SetScript("OnShow", function ()
         toggleButton:SetText("< ECS")
         if OutfitterFrame ~= nil and OutfitterButtonFrame ~= nil then
             OutfitterFrame:SetPoint("TOPLEFT", OutfitterButtonFrame  , "TOPRIGHT", -34 + ExtendedCharacterStats.general.window.width, -38)

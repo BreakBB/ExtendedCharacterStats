@@ -78,7 +78,10 @@ function _Config:LoadRangeSection()
                         name = function() return i18n("HIT_BONUS_SETTING") end,
                         desc = function() return i18n("RANGED_HIT_BONUS_SETTING_DESC") end,
                         width = 1.5,
-                        disabled = function() return ((not ExtendedCharacterStats.profile.ranged.display) or (not ExtendedCharacterStats.profile.ranged.hit.display)); end,
+                        disabled = function()
+                            return ((not ExtendedCharacterStats.profile.ranged.display) or
+                                    (not ExtendedCharacterStats.profile.ranged.hit.display))
+                        end,
                         get = function () return ExtendedCharacterStats.profile.ranged.hit.bonus.display; end,
                         set = function (info, value)
                             ExtendedCharacterStats.profile.ranged.hit.bonus.display = value
@@ -91,7 +94,10 @@ function _Config:LoadRangeSection()
                         name = function() return i18n("MISS_CHANCE_SETTING") end,
                         desc = function() return i18n("RANGED_MISS_CHANCE_SETTING_DESC") end,
                         width = 1.5,
-                        disabled = function() return ((not ExtendedCharacterStats.profile.ranged.display) or (not ExtendedCharacterStats.profile.ranged.hit.display)); end,
+                        disabled = function()
+                            return ((not ExtendedCharacterStats.profile.ranged.display) or
+                                    (not ExtendedCharacterStats.profile.ranged.hit.display))
+                        end,
                         get = function () return ExtendedCharacterStats.profile.ranged.hit.sameLevel.display; end,
                         set = function (info, value)
                             ExtendedCharacterStats.profile.ranged.hit.sameLevel.display = value
@@ -104,7 +110,10 @@ function _Config:LoadRangeSection()
                         name = function() return i18n("MISS_CHANCE_BOSS_SETTING") end,
                         desc = function() return i18n("RANGED_MISS_CHANCE_BOSS_SETTING_DESC") end,
                         width = 1.5,
-                        disabled = function() return ((not ExtendedCharacterStats.profile.ranged.display) or (not ExtendedCharacterStats.profile.ranged.hit.display)); end,
+                        disabled = function()
+                            return ((not ExtendedCharacterStats.profile.ranged.display) or
+                                    (not ExtendedCharacterStats.profile.ranged.hit.display))
+                        end,
                         get = function () return ExtendedCharacterStats.profile.ranged.hit.bossLevel.display; end,
                         set = function (info, value)
                             ExtendedCharacterStats.profile.ranged.hit.bossLevel.display = value

@@ -4,8 +4,8 @@ exclude_files = {
     ".luacheckrc"
 }
 ignore = {
-    "212", -- unused argument "self"
-    "432", -- shadowing upvalue argument "self"
+    "212", -- unused argument
+    "432", -- shadowing upvalue argument
 }
 stds.ecs = {
     read_globals = {}, -- these globals can only be accessed.

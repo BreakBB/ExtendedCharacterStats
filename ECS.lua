@@ -18,6 +18,7 @@ local Profile = ECSLoader:ImportModule("Profile")
 
  -- forward declaration
 local _InitAddon, _InitGUI, _RegisterEvents, _ProfileVersionIsDifferent, _GeneralSectionIsEmpty
+local _ProfileSectionIsEmpty
 
 local loadingFrame = CreateFrame("Frame", nil, UIParent)
 loadingFrame:RegisterEvent("ADDON_LOADED") -- Triggers whenever all non-lod addons has been loaded, this will initialize the addon
@@ -98,7 +99,8 @@ _InitGUI = function ()
             if event == "UNIT_SPELLCAST_SUCCEEDED" then -- If a player casted something the 5 sec rule comes into play
                 lastSuccessfulSpell = GetTime()
             elseif event == "UNIT_POWER_UPDATE" then
-                if lastSuccessfulSpell > 0 and (GetTime() - lastSuccessfulSpell) > 5.5 then -- Only check power update after the 5 sec rule (mana reg is back to normal)
+                -- Only check power update after the 5 sec rule (mana reg is back to normal)
+                if lastSuccessfulSpell > 0 and (GetTime() - lastSuccessfulSpell) > 5.5 then
                     lastSuccessfulSpell = 0
                     Stats:UpdateInformation()
                 end

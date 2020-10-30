@@ -59,10 +59,11 @@ strings = {
     ["MELEE_CRIT_SETTING_DESC"] = "Zeigt/Versteckt die Chance im Nahkampf kritisch zu treffen.",
     ["MELEE_HIT_SETTING"] = "Nahkampf Trefferwertung",
     ["MELEE_HIT_SETTING_DESC"] = "Zeigt/Versteckt alle Trefferwertungen im Nahkampf.",
-    ["MELEE_HIT_VALUES_SETTING"] = "Nahkampf Trefferwertungen",
+    ["MELEE_HIT_VALUES_SETTING"] = "Nahkampf Trefferwertung",
     ["MELEE_HIT_BONUS_SETTING_DESC"] = "Zeigt/Versteckt den Bonus auf die Nahkampf Trefferwertung.",
     ["MELEE_MISS_CHANCE_SETTING_DESC"] = "Zeigt/Versteckt die Chance einen Gegner des gleichen Levels im Nahkampf zu verfehlen.",
-    ["MELEE_MISS_CHANCE_BOSS_SETTING_DESC"] = "Zeigt/Versteckt die Chance einen Gegner mit 3 Level über dem eigenen im Nahkampf zu verfehlen.",
+    ["MELEE_MISS_CHANCE_BOSS_SETTING_DESC"] =
+        "Zeigt/Versteckt die Chance einen Gegner mit 3 Level über dem eigenen im Nahkampf zu verfehlen.",
     -- Range Settings
     ["RANGED_SETTINGS"] = "Fernkampfwerte anzeigen",
     ["RANGED_SETTINGS_DESC"] = "Zeigt/Versteckt alle Fernkampfwerte.",
@@ -75,14 +76,15 @@ strings = {
     ["RANGED_HIT_VALUES_SETTING"] = "Fernkampf Trefferwertungen",
     ["RANGED_HIT_BONUS_SETTING_DESC"] = "Zeigt/Versteckt den Bonus auf die Fernkampf Trefferwertung.",
     ["RANGED_MISS_CHANCE_SETTING_DESC"] = "Zeigt/Versteckt die Chance einen Gegner des gleichen Levels im Fernkampf zu verfehlen.",
-    ["RANGED_MISS_CHANCE_BOSS_SETTING_DESC"] = "Zeigt/Versteckt die Chance einen Gegner mit 3 Level über dem eigenen im Fernkampf zu verfehlen.",
+    ["RANGED_MISS_CHANCE_BOSS_SETTING_DESC"] =
+        "Zeigt/Versteckt die Chance einen Gegner mit 3 Level über dem eigenen im Fernkampf zu verfehlen.",
     -- Defense Settings
     ["DEFENSE_SETTINGS"] = "Verteidigungswerte anzeigen",
     ["DEFENSE_SETTINGS_DESC"] = "Zeigt/Versteckt alle Verteidigungswerte.",
     ["ARMOR_SETTING"] = "Rüstung",
     ["ARMOR_SETTING_DESC"] = "Zeigt/Versteckt den Rüstungswert.",
     ["DEFENSE_VALUE_SETTING"] = "Verteidigungswertung",
-    ["DEFENSE_VALUE_SETTING_DESC"] = "Zeigt/Versteckt die Verteidigunswertung.",
+    ["DEFENSE_VALUE_SETTING_DESC"] = "Zeigt/Versteckt die Verteidigungswertung.",
     ["BLOCK_CHANCE_SETTING"] = "Blockchance",
     ["BLOCK_CHANCE_SETTING_DESC"] = "Zeigt/Versteckt die Blockchance.",
     ["BLOCK_VALUE_SETTING"] = "Blockwertung",
@@ -112,7 +114,8 @@ strings = {
     ["SPELL_HIT_VALUES_SETTING"] = "Zauber Trefferwertungen",
     ["SPELL_HIT_BONUS_SETTING_DESC"] = "Zeigt/Versteckt den Bonus auf die Zauber Trefferwertung.",
     ["SPELL_MISS_CHANCE_SETTING_DESC"] = "Zeigt/Versteckt die Chance einen Gegner des gleichen Levels mit Zauber zu verfehlen.",
-    ["SPELL_MISS_CHANCE_BOSS_SETTING_DESC"] = "Zeigt/Versteckt die Chance einen Gegner mit 3 Level über dem eigenen mit Zauber zu verfehlen.",
+    ["SPELL_MISS_CHANCE_BOSS_SETTING_DESC"] =
+        "Zeigt/Versteckt die Chance einen Gegner mit 3 Level über dem eigenen mit Zauber zu verfehlen.",
     -- Spell Power
     ["SPELL_POWER_SETTINGS"] = "Zaubermacht",
     ["SPELL_POWER_STATS_SETTINGS"] = "Zaubermachtwerte anzeigen",
@@ -193,5 +196,4 @@ strings = {
     ["PHYSICAL_CRIT"] = "Physisch Kritisch: ",
     ["SHADOW_DMG"] = "Schattenschaden: ",
     ["SHADOW_CRIT"] = "Schatten Kritisch: ",
-    
 }

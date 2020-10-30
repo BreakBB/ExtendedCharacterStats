@@ -26,7 +26,7 @@ function Data:MeleeHitMissChanceSameLevel()
     local playerLevel = UnitLevel("player")
     local enemyDefenseValue = playerLevel * 5
 
-    local missChance = 0
+    local missChance
     if DataUtils:IsShapeshifted() then
         missChance = 6
     else
@@ -53,7 +53,7 @@ function Data:MeleeHitMissChanceBossLevel()
     local playerLevel = UnitLevel("player")
     local enemyDefenseValue = (playerLevel + 3) * 5
 
-    local missChance = 0
+    local missChance
     if DataUtils:IsShapeshifted() then
         missChance = 9
     else

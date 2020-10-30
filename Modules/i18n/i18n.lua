@@ -18,7 +18,7 @@ _UseLanguage = function(lang)
     elseif lang == "frFR" then
         i18n:UseFrench()
     elseif lang == "zhCN" then
-        i18n:UseChinese()         
+        i18n:UseChinese()
     else
         i18n:UseEnglish()
     end

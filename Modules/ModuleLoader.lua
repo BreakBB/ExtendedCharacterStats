@@ -1,19 +1,16 @@
 ---@class ECSLoader
 ECSLoader = {}
 
----@class Module
-local module = {}
-module.private = {}
-
 -- ["ModuleName"] = moduleReference
 ---@type table<string, Module>
 local modules = {}
 
 ---@return Module @Module reference
 local function _CreateBlankModule()
-    local ret = {}
-    ret.private = {}
-    return ret
+    ---@class Module
+    local module = {}
+    module.private = {}
+    return module
 end
 
 ---@param name string @Module name

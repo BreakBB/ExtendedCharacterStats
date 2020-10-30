@@ -193,5 +193,4 @@ strings = {
     ["PHYSICAL_CRIT"] = "Physical Crit: ",
     ["SHADOW_DMG"] = "Shadow Damage: ",
     ["SHADOW_CRIT"] = "Shadow Crit: ",
-    
 }

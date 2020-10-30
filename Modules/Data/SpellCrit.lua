@@ -5,7 +5,7 @@ local DataUtils = ECSLoader:ImportModule("DataUtils")
 
 local _GetTalentModifier, _GetGeneralTalentModifier, _GetTalentModifierBySchool
 local _GetTalentModifierHolyCrit, _GetTalentModifierFireCrit
-local _GetItemModifierBySchool
+local _GetItemModifierBySchool, _GetItemModifierHolyCrit
 local _GetSetBonus
 
 local _, _, classId = UnitClass("player")

@@ -65,7 +65,10 @@ function _Config:LoadSpellSection()
                         name = function() return i18n("HIT_BONUS_SETTING") end,
                         desc = function() return i18n("SPELL_HIT_BONUS_SETTING_DESC") end,
                         width = 1.5,
-                        disabled = function() return ((not ExtendedCharacterStats.profile.spell.display) or (not ExtendedCharacterStats.profile.spell.hit.display)); end,
+                        disabled = function()
+                            return ((not ExtendedCharacterStats.profile.spell.display) or
+                                    (not ExtendedCharacterStats.profile.spell.hit.display))
+                        end,
                         get = function () return ExtendedCharacterStats.profile.spell.hit.bonus.display; end,
                         set = function (info, value)
                             ExtendedCharacterStats.profile.spell.hit.bonus.display = value
@@ -78,7 +81,10 @@ function _Config:LoadSpellSection()
                         name = function() return i18n("MISS_CHANCE_SETTING") end,
                         desc = function() return i18n("SPELL_MISS_CHANCE_SETTING_DESC") end,
                         width = 1.5,
-                        disabled = function() return ((not ExtendedCharacterStats.profile.spell.display) or (not ExtendedCharacterStats.profile.spell.hit.display)); end,
+                        disabled = function()
+                            return ((not ExtendedCharacterStats.profile.spell.display) or
+                                    (not ExtendedCharacterStats.profile.spell.hit.display))
+                        end,
                         get = function () return ExtendedCharacterStats.profile.spell.hit.sameLevel.display; end,
                         set = function (info, value)
                             ExtendedCharacterStats.profile.spell.hit.sameLevel.display = value
@@ -91,7 +97,10 @@ function _Config:LoadSpellSection()
                         name = function() return i18n("MISS_CHANCE_BOSS_SETTING") end,
                         desc = function() return i18n("SPELL_MISS_CHANCE_BOSS_SETTING_DESC") end,
                         width = 1.5,
-                        disabled = function() return ((not ExtendedCharacterStats.profile.spell.display) or (not ExtendedCharacterStats.profile.spell.hit.display)); end,
+                        disabled = function()
+                            return ((not ExtendedCharacterStats.profile.spell.display) or
+                                    (not ExtendedCharacterStats.profile.spell.hit.display))
+                        end,
                         get = function () return ExtendedCharacterStats.profile.spell.hit.bossLevel.display; end,
                         set = function (info, value)
                             ExtendedCharacterStats.profile.spell.hit.bossLevel.display = value
