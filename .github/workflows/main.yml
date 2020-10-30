@@ -1,15 +1,13 @@
-# This is a basic workflow to help you get started with Actions
-
-name: CI
+name: build
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
 on:
-  push:
+  push: # trigger on push
     branches: [ master ]
-  pull_request:
+  pull_request: # trigger on PR
     branches: [ master ]
-  workflow_dispatch:
+  workflow_dispatch: # enable manual trigger
 
 jobs:
   build:
@@ -25,7 +23,7 @@ jobs:
           luaVersion: "5.1"
 
       - uses: leafo/gh-actions-luarocks@v3
-        
+
       - name: build
         run: |
           luarocks install luacheck
