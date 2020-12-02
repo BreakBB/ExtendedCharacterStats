@@ -1,6 +1,6 @@
 ## Interface: 11306
-## Title : Extended Character Stats v2.6.2
-## Version : 2.6.2
+## Title : Extended Character Stats v2.6.3
+## Version : 2.6.3
 ## Author: Ethulu, BreakBB
 ## Notes: Displays an extra window with more information about your characters stats ( Crit/Hit/Block etc )
 ## SavedVariablesPerCharacter: ExtendedCharacterStats
