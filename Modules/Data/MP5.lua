@@ -63,7 +63,7 @@ function Data:GetMP5FromSpirit()
         base = lastManaReg
     end
     lastManaReg = base
-    return DataUtils:Round(base, 0) * 5
+    return DataUtils:Round(base * 5, 1)
 end
 
 -- Get manaregen while casting
