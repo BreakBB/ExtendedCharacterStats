@@ -5,6 +5,7 @@ local Data = ECSLoader:CreateModule("Data")
 local DataUtils = ECSLoader:ImportModule("DataUtils")
 
 local _GetGeneralTalentModifier
+local dataFunctionRefs
 
 local _, _, classId = UnitClass("player")
 
@@ -42,134 +43,64 @@ end
 ---@param refName string
 ---@return number | string
 function Data:GetStatInfo(refName)
-
-    if refName == "MovementSpeed" then
-        return Data:GetMovementSpeed()
-    end
-
-    if refName == "MeleeAttackpower" then
-        return Data:GetMeleeAttackPower()
-    end
-    if refName == "MeleeCritChance" then
-        return Data:MeleeCrit()
-    end
-    if refName == "MeleeHitBonus" then
-       return Data:MeleeHitBonus()
-    end
-    if refName == "MeleeHitSameLevel" then
-        return Data:MeleeHitMissChanceSameLevel()
-    end
-    if refName == "MeleeHitBossLevel" then
-        return Data:MeleeHitMissChanceBossLevel()
-    end
-
-    if refName == "RangeAttackpower" then
-        return Data:GetRangeAttackPower()
-    end
-    if refName == "RangedCritChance" then
-        return Data:RangedCrit()
-    end
-    if refName == "RangedHitBonus" then
-       return Data:RangeHitBonus()
-    end
-    if refName == "RangedHitSameLevel" then
-        return Data:RangeMissChanceSameLevel()
-    end
-    if refName == "RangedHitBossLevel" then
-        return Data:RangeMissChanceBossLevel()
-    end
-
-    if refName == "Armor" then
-        return Data:GetArmorValue()
-    end
-    if refName == "DefenseValue" then
-        return Data:GetDefenseValue()
-    end
-    if refName == "DodgeChance" then
-        return Data:GetDodgeChance()
-    end
-    if refName == "ParryChance" then
-        return Data:GetParryChance()
-    end
-    if refName == "BlockChance" then
-        return Data:GetBlockChance()
-    end
-    if refName == "BlockValue" then
-        return Data:GetBlockValue()
-    end
-
-    if refName == "SpellHitBonus" then
-       return Data:SpellHitBonus()
-    end
-    if refName == "SpellHitSameLevel" then
-        return Data:SpellMissChanceSameLevel()
-    end
-    if refName == "SpellHitBossLevel" then
-        return Data:SpellMissChanceBossLevel()
-    end
-    if refName == "SpellCritChance" then
-        return Data:GetSpellCrit(0)
-    end
-
-    if refName == "MP5Items" then
-        return Data:GetMP5FromItems()
-    end
-    if refName == "MP5Spirit" then
-        return Data:GetMP5FromSpirit()
-    end
-    if refName == "MP5Buffs" then
-        local _, mp5Buffs = Data:GetMP5FromBuffs()
-        return mp5Buffs
-    end
-    if refName == "MP5Casting" then
-        return Data:GetMP5WhileCasting()
-    end
-
-    if refName == "PhysicalDmg" then
-        return Data:GetSpellDmg(Data.PHYSICAL_SCHOOL)
-    end
-    if refName == "HolyDmg" then
-        return Data:GetSpellDmg(Data.HOLY_SCHOOL)
-    end
-    if refName == "FireDmg" then
-        return Data:GetSpellDmg(Data.FIRE_SCHOOL)
-    end
-    if refName == "NatureDmg" then
-        return Data:GetSpellDmg(Data.NATURE_SCHOOL)
-    end
-    if refName == "FrostDmg" then
-        return Data:GetSpellDmg(Data.FROST_SCHOOL)
-    end
-    if refName == "ShadowDmg" then
-        return Data:GetSpellDmg(Data.SHADOW_SCHOOL)
-    end
-    if refName == "ArcaneDmg" then
-        return Data:GetSpellDmg(Data.ARCANE_SCHOOL)
-    end
-
-    if refName == "PhysicalCritChance" then
-        return Data:GetSpellCrit(Data.PHYSICAL_SCHOOL)
-    end
-    if refName == "HolyCritChance" then
-        return Data:GetSpellCrit(Data.HOLY_SCHOOL)
-    end
-    if refName == "FireCritChance" then
-        return Data:GetSpellCrit(Data.FIRE_SCHOOL)
-    end
-    if refName == "NatureCritChance" then
-        return Data:GetSpellCrit(Data.NATURE_SCHOOL)
-    end
-    if refName == "FrostCritChance" then
-        return Data:GetSpellCrit(Data.FROST_SCHOOL)
-    end
-    if refName == "ShadowCritChance" then
-        return Data:GetSpellCrit(Data.SHADOW_SCHOOL)
-    end
-    if refName == "ArcaneCritChance" then
-        return Data:GetSpellCrit(Data.ARCANE_SCHOOL)
-    end
-
-    if refName == "BonusHealing" then
-        return Data:GetHealingPower()
+    local dataFunction = dataFunctionRefs[refName];
+    if dataFunction then
+        return dataFunction()
+    else
+        print("[ECS] Invalid data refName:", refName)
     end
 end
+
+dataFunctionRefs = {
+    ["MovementSpeed"] = Data.GetMovementSpeed,
+    -- Melee
+    ["MeleeAttackpower"] = Data.GetMeleeAttackPower,
+    ["MeleeCritChance"] = Data.MeleeCrit,
+    ["MeleeHitBonus"] = Data.MeleeHitBonus,
+    ["MeleeHitSameLevel"] = Data.MeleeHitMissChanceSameLevel,
+    ["MeleeHitBossLevel"] = Data.MeleeHitMissChanceBossLevel,
+    -- Ranged
+    ["RangeAttackpower"] = Data.GetRangeAttackPower,
+    ["RangedCritChance"] = Data.RangedCrit,
+    ["RangedHitBonus"] = Data.RangeHitBonus,
+    ["RangedHitSameLevel"] = Data.RangeMissChanceSameLevel,
+    ["RangedHitBossLevel"] = Data.RangeMissChanceBossLevel,
+    -- Defense
+    ["Armor"] = Data.GetArmorValue,
+    ["DefenseValue"] = Data.GetDefenseValue,
+    ["DodgeChance"] = Data.GetDodgeChance,
+    ["ParryChance"] = Data.GetParryChance,
+    ["BlockChance"] = Data.GetBlockChance,
+    ["BlockValue"] = Data.RangedCrit,
+    ["RangedCritChance"] = Data.GetBlockValue,
+    -- Spell
+    ["SpellHitBonus"] = Data.SpellHitBonus,
+    ["SpellHitSameLevel"] = Data.SpellMissChanceSameLevel,
+    ["SpellHitBossLevel"] = Data.SpellMissChanceBossLevel,
+    ["SpellCritChance"] = function() return Data.GetSpellCrit(0) end,
+    -- MP5
+    ["MP5Items"] = Data.GetMP5FromItems,
+    ["MP5Spirit"] = Data.GetMP5FromSpirit,
+    ["MP5Buffs"] = function()
+        local _, mp5Buffs = Data:GetMP5FromBuffs()
+        return mp5Buffs
+    end,
+    ["MP5Casting"] = Data.GetMP5WhileCasting,
+    -- Spell Power by school
+    ["PhysicalDmg"] = function() return Data:GetSpellDmg(Data.PHYSICAL_SCHOOL) end,
+    ["HolyDmg"] = function() return Data:GetSpellDmg(Data.HOLY_SCHOOL) end,
+    ["FireDmg"] = function() return Data:GetSpellDmg(Data.FIRE_SCHOOL) end,
+    ["NatureDmg"] = function() return Data:GetSpellDmg(Data.NATURE_SCHOOL) end,
+    ["FrostDmg"] = function() return Data:GetSpellDmg(Data.FROST_SCHOOL) end,
+    ["ShadowDmg"] = function() return Data:GetSpellDmg(Data.SHADOW_SCHOOL) end,
+    ["ArcaneDmg"] = function() return Data:GetSpellDmg(Data.ARCANE_SCHOOL) end,
+    ["BonusHealing"] = Data.GetHealingPower,
+    -- Spell Crit by school
+    ["PhysicalCritChance"] = function() return Data:GetSpellCrit(Data.PHYSICAL_SCHOOL) end,
+    ["HolyCritChance"] = function() return Data:GetSpellCrit(Data.HOLY_SCHOOL) end,
+    ["FireCritChance"] = function() return Data:GetSpellCrit(Data.FIRE_SCHOOL) end,
+    ["NatureCritChance"] = function() return Data:GetSpellCrit(Data.NATURE_SCHOOL) end,
+    ["FrostCritChance"] = function() return Data:GetSpellCrit(Data.FROST_SCHOOL) end,
+    ["ShadowCritChance"] = function() return Data:GetSpellCrit(Data.SHADOW_SCHOOL) end,
+    ["ArcaneCritChance"] = function() return Data:GetSpellCrit(Data.ARCANE_SCHOOL) end,
+}

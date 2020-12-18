@@ -80,7 +80,7 @@ _ProfileSectionIsEmpty = function(profile)
     return profile == nil or (not next(profile))
 end
 
-local lastSuccessfulSpell = 0
+local lastSuccessfulSpellTime = 0
 
 _InitGUI = function ()
     -- Initialize the AddOn GUI once everything has loaded
@@ -93,15 +93,14 @@ _InitGUI = function ()
 
     -- Event handler for all the subscribed events
     -- Calls the update functions to update all the relevant stats
-    eventFrame:SetScript("OnEvent", function(self, event, ...)
-        local eventArgs = {...}
-        if eventArgs[1] == "player" then
+    eventFrame:SetScript("OnEvent", function(self, event, eventTarget, ...)
+        if eventTarget == "player" then
             if event == "UNIT_SPELLCAST_SUCCEEDED" then -- If a player casted something the 5 sec rule comes into play
-                lastSuccessfulSpell = GetTime()
+                lastSuccessfulSpellTime = GetTime()
             elseif event == "UNIT_POWER_UPDATE" then
                 -- Only check power update after the 5 sec rule (mana reg is back to normal)
-                if lastSuccessfulSpell > 0 and (GetTime() - lastSuccessfulSpell) > 5.5 then
-                    lastSuccessfulSpell = 0
+                if lastSuccessfulSpellTime > 0 and (GetTime() - lastSuccessfulSpellTime) > 5.5 then
+                    lastSuccessfulSpellTime = 0
                     Stats:UpdateInformation()
                 end
             else
