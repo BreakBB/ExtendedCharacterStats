@@ -71,8 +71,7 @@ dataFunctionRefs = {
     ["DodgeChance"] = Data.GetDodgeChance,
     ["ParryChance"] = Data.GetParryChance,
     ["BlockChance"] = Data.GetBlockChance,
-    ["BlockValue"] = Data.RangedCrit,
-    ["RangedCritChance"] = Data.GetBlockValue,
+    ["BlockValue"] = Data.GetBlockValue,
     -- Spell
     ["SpellHitBonus"] = Data.SpellHitBonus,
     ["SpellHitSameLevel"] = Data.SpellMissChanceSameLevel,
