@@ -18,11 +18,11 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - uses: leafo/gh-actions-lua@v7
+      - uses: leafo/gh-actions-lua@v8.0.0
         with:
           luaVersion: "5.1"
 
-      - uses: leafo/gh-actions-luarocks@v3
+      - uses: leafo/gh-actions-luarocks@v4.0.0
 
       - name: build
         run: |
