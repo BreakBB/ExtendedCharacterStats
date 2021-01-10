@@ -27,7 +27,7 @@ function _Config:LoadGeneralSection()
                     Stats:RebuildStatInfos()
                 end,
             },
-            armor = {
+            movementSpeed = {
                 type = "toggle",
                 order = 1,
                 name = function() return i18n("MOVEMENT_SPEED_SETTING") end,

@@ -52,41 +52,41 @@ function Data:GetStatInfo(refName)
 end
 
 dataFunctionRefs = {
-    ["MovementSpeed"] = Data.GetMovementSpeed,
+    ["MovementSpeed"] = function() return Data:GetMovementSpeed() end,
     -- Melee
-    ["MeleeAttackPower"] = Data.GetMeleeAttackPower,
-    ["MeleeCritChance"] = Data.MeleeCrit,
-    ["MeleeHitBonus"] = Data.MeleeHitBonus,
-    ["MeleeHitSameLevel"] = Data.MeleeHitMissChanceSameLevel,
-    ["MeleeHitBossLevel"] = Data.MeleeHitMissChanceBossLevel,
-    ["MeleeAttackSpeedMainHand"] = Data.GetMeleeAttackSpeedMainHand,
-    ["MeleeAttackSpeedOffHand"] = Data.GetMeleeAttackSpeedOffHand,
+    ["MeleeAttackPower"] = function() return Data:GetMeleeAttackPower() end,
+    ["MeleeCritChance"] = function() return Data:MeleeCrit() end,
+    ["MeleeHitBonus"] = function() return Data:MeleeHitBonus() end,
+    ["MeleeHitSameLevel"] = function() return Data:MeleeHitMissChanceSameLevel() end,
+    ["MeleeHitBossLevel"] = function() return Data:MeleeHitMissChanceBossLevel() end,
+    ["MeleeAttackSpeedMainHand"] = function() return Data:GetMeleeAttackSpeedMainHand() end,
+    ["MeleeAttackSpeedOffHand"] = function() return Data:GetMeleeAttackSpeedOffHand() end,
     -- Ranged
-    ["RangeAttackpower"] = Data.GetRangeAttackPower,
-    ["RangedCritChance"] = Data.RangedCrit,
-    ["RangedHitBonus"] = Data.RangeHitBonus,
-    ["RangedHitSameLevel"] = Data.RangeMissChanceSameLevel,
-    ["RangedHitBossLevel"] = Data.RangeMissChanceBossLevel,
+    ["RangeAttackpower"] = function() return Data:GetRangeAttackPower() end,
+    ["RangedCritChance"] = function() return Data:RangedCrit() end,
+    ["RangedHitBonus"] = function() return Data:RangeHitBonus() end,
+    ["RangedHitSameLevel"] = function() return Data:RangeMissChanceSameLevel() end,
+    ["RangedHitBossLevel"] = function() return Data:RangeMissChanceBossLevel() end,
     -- Defense
-    ["Armor"] = Data.GetArmorValue,
-    ["DefenseValue"] = Data.GetDefenseValue,
-    ["DodgeChance"] = Data.GetDodgeChance,
-    ["ParryChance"] = Data.GetParryChance,
-    ["BlockChance"] = Data.GetBlockChance,
-    ["BlockValue"] = Data.GetBlockValue,
+    ["Armor"] = function() return Data:GetArmorValue() end,
+    ["DefenseValue"] = function() return Data:GetDefenseValue() end,
+    ["DodgeChance"] = function() return Data:GetDodgeChance() end,
+    ["ParryChance"] = function() return Data:GetParryChance() end,
+    ["BlockChance"] = function() return Data:GetBlockChance() end,
+    ["BlockValue"] = function() return Data:GetBlockValue() end,
     -- Spell
-    ["SpellHitBonus"] = Data.SpellHitBonus,
-    ["SpellHitSameLevel"] = Data.SpellMissChanceSameLevel,
-    ["SpellHitBossLevel"] = Data.SpellMissChanceBossLevel,
+    ["SpellHitBonus"] = function() return Data:SpellHitBonus() end,
+    ["SpellHitSameLevel"] = function() return Data:SpellMissChanceSameLevel() end,
+    ["SpellHitBossLevel"] = function() return Data:SpellMissChanceBossLevel() end,
     ["SpellCritChance"] = function() return Data.GetSpellCrit(0) end,
     -- MP5
-    ["MP5Items"] = Data.GetMP5FromItems,
-    ["MP5Spirit"] = Data.GetMP5FromSpirit,
+    ["MP5Items"] = function() return Data:GetMP5FromItems() end,
+    ["MP5Spirit"] = function() return Data:GetMP5FromSpirit() end,
     ["MP5Buffs"] = function()
         local _, mp5Buffs = Data:GetMP5FromBuffs()
         return mp5Buffs
     end,
-    ["MP5Casting"] = Data.GetMP5WhileCasting,
+    ["MP5Casting"] = function() return Data:GetMP5WhileCasting() end,
     -- Spell Power by school
     ["PhysicalDmg"] = function() return Data:GetSpellDmg(Data.PHYSICAL_SCHOOL) end,
     ["HolyDmg"] = function() return Data:GetSpellDmg(Data.HOLY_SCHOOL) end,
