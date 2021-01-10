@@ -5,12 +5,12 @@
 ### A simple addon to list all the available stats not displayed in the character info pane by default
 
 [![Downloads](https://img.shields.io/github/downloads/BreakBB/ExtendedCharacterStats/total.svg)](https://github.com/BreakBB/ExtendedCharacterStats/releases/)
-[![Downloads Latest](https://img.shields.io/github/downloads/BreakBB/ExtendedCharacterStats/v2.6.3/total.svg)](https://github.com/BreakBB/ExtendedCharacterStats/releases/latest)
+[![Downloads Latest](https://img.shields.io/github/downloads/BreakBB/ExtendedCharacterStats/v2.7.0/total.svg)](https://github.com/BreakBB/ExtendedCharacterStats/releases/latest)
 [![Date Latest](https://img.shields.io/github/release-date/BreakBB/ExtendedCharacterStats.svg)](https://github.com/BreakBB/ExtendedCharacterStats/releases/latest)
 [![Commits Since Latest](https://img.shields.io/github/commits-since/BreakBB/ExtendedCharacterStats/latest.svg)](https://github.com/BreakBB/ExtendedCharacterStats/commits/master)
 
 
-![image](https://user-images.githubusercontent.com/33514570/75773542-66197c80-5d4e-11ea-9349-563da206784b.png)
+![image](https://user-images.githubusercontent.com/33514570/104124297-5e543c80-5350-11eb-9805-9e7114515c3f.png)
 
 
 ## Issues / Bug reports
