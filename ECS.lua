@@ -17,8 +17,9 @@ local Profile = ECSLoader:ImportModule("Profile")
 ------------------------------------------------------------------
 
  -- forward declaration
-local _InitAddon, _InitGUI, _RegisterEvents, _ProfileVersionIsDifferent, _GeneralSectionIsEmpty
-local _ProfileSectionIsEmpty
+local _InitAddon, _InitGUI, _RegisterEvents
+local _ProfileVersionIsDifferent, _MigrateToLatestProfileVersion
+local _GeneralSectionIsEmpty, _ProfileSectionIsEmpty
 
 local loadingFrame = CreateFrame("Frame", nil, UIParent)
 loadingFrame:RegisterEvent("ADDON_LOADED") -- Triggers whenever all non-lod addons has been loaded, this will initialize the addon
@@ -44,14 +45,13 @@ _InitAddon = function()
 
     local ecs = ExtendedCharacterStats
     local defaultProfile = Profile:GetDefaultProfile()
-    local profileVersion = Profile:GetProfileVersion()
+    local currentProfileVersion = ecs.general.profileVersion
+    local targetProfileVersion = Profile:GetProfileVersion()
 
-    if _ProfileVersionIsDifferent(ecs, profileVersion) then
-        ---@class ECSProfile
-        ExtendedCharacterStats.profile = defaultProfile.profile
-        ExtendedCharacterStats.general = defaultProfile.general
-
-        ExtendedCharacterStats.general.profileVersion = profileVersion
+    if _ProfileVersionIsDifferent(ecs, targetProfileVersion) then
+        print("|cFF1de9b6[ECS]|r Migrating ECS profile from version " .. currentProfileVersion .. " to " .. targetProfileVersion)
+        _MigrateToLatestProfileVersion(currentProfileVersion, defaultProfile)
+        ExtendedCharacterStats.general.profileVersion = targetProfileVersion
     end
 
     if _GeneralSectionIsEmpty(ecs.general) then
@@ -68,6 +68,21 @@ end
 ---@return boolean
 _ProfileVersionIsDifferent = function(ecs, profileVersion)
     return ecs.general and (ecs.general.profileVersion == nil or ecs.general.profileVersion ~= profileVersion)
+end
+
+_MigrateToLatestProfileVersion = function(profileVersion, defaultProfile)
+    --- Before correct migration
+    if profileVersion < 6 then
+        ---@class ECSProfile
+        ExtendedCharacterStats.profile = defaultProfile.profile
+        ExtendedCharacterStats.general = defaultProfile.general
+        return
+    end
+
+    if profileVersion < 7 then
+        ExtendedCharacterStats.profile.melee.attackPower.refName = "MeleeAttackPower"
+        ExtendedCharacterStats.profile.melee.attackSpeed = defaultProfile.profile.melee.attackSpeed
+    end
 end
 
 ---@return boolean

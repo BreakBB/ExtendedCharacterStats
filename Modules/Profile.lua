@@ -38,7 +38,7 @@ local function GetDefaultStatsProfile()
                 sameLevel = {display = true, refName = "MeleeHitSameLevel", text = "MISS"},
                 bossLevel = {display = true, refName = "MeleeHitBossLevel", text = "MISS_BOSS"},
             },
-            attackPower = {display = true, refName = "MeleeAttackpower", text = "ATTACK_POWER"},
+            attackPower = {display = true, refName = "MeleeAttackPower", text = "ATTACK_POWER"},
             crit = {display = true, refName = "MeleeCritChance", text = "CRIT_CHANCE"},
             attackSpeed = {
                 display = true,

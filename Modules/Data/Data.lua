@@ -54,7 +54,7 @@ end
 dataFunctionRefs = {
     ["MovementSpeed"] = Data.GetMovementSpeed,
     -- Melee
-    ["MeleeAttackpower"] = Data.GetMeleeAttackPower,
+    ["MeleeAttackPower"] = Data.GetMeleeAttackPower,
     ["MeleeCritChance"] = Data.MeleeCrit,
     ["MeleeHitBonus"] = Data.MeleeHitBonus,
     ["MeleeHitSameLevel"] = Data.MeleeHitMissChanceSameLevel,
