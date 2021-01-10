@@ -27,7 +27,7 @@ function DataUtils:GetMissChanceByDifference(weaponSkill, defenseValue)
     if (defenseValue - weaponSkill) <= 10 then
         return 5 + (defenseValue - weaponSkill) * 0.1
     else
-        return 7 + (defenseValue - weaponSkill - 10) * 0.4
+        return min(8, 6 + (defenseValue - weaponSkill) * 0.2)
     end
 end
 

@@ -75,11 +75,16 @@ end
 ---@return string
 function Data:RangeMissChanceBossLevel()
     local rangedAttackBase, rangedAttackMod = UnitRangedAttack("player")
+    local rangedWeaponSkill = rangedAttackBase + rangedAttackMod
     local playerLevel = UnitLevel("player")
     local enemyDefenseValue = (playerLevel + 3) * 5
 
-    local missChance = DataUtils:GetMissChanceByDifference(rangedAttackBase + rangedAttackMod, enemyDefenseValue)
-    missChance = missChance - _GetRangeHitBonus()
+    local missChance = DataUtils:GetMissChanceByDifference(rangedWeaponSkill, enemyDefenseValue)
+    local hitBonus = _GetRangeHitBonus()
+    if rangedWeaponSkill < 305 and hitBonus >= 1 then
+        hitBonus = hitBonus - 1
+    end
+    missChance = missChance - hitBonus
 
     if missChance < 0 then
         missChance = 0
