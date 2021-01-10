@@ -33,9 +33,11 @@ Utils.colors = {
     CRIT_PRIMARY = "d32f2f",
     CRIT_SECONDARY = "ff6659",
     HIT_PRIMARY = "558b2f",
-    -- HIT_PRIMARY = "aed581",
     HIT_SECONDARY = "85bb5c",
-    -- HIT_SECONDARY = "e1ffb1",
+    --ATTACK_SPEED_PRIMARY = "006978",
+    ATTACK_SPEED_PRIMARY = "00766c",
+    --ATTACK_SPEED_SECONDARY = "0097a7",
+    ATTACK_SPEED_SECONDARY = "009688",
     MP5_PRIMARY = "0d47a1",
     MP5_SECONDARY = "5472d3",
     DEFENSE_PRIMARY = "8d6e63",
@@ -89,6 +91,11 @@ function Utils:GetColorsForStatTextRef(statTextRef)
         statTextColor = colors.HIT_SECONDARY
         statValueColor = colors.HIT_PRIMARY
         percentColor = colors.HIT_PRIMARY
+    end
+    if statTextRef == "ATTACK_SPEED_MAIN_HAND" or statTextRef == "ATTACK_SPEED_OFF_HAND" then
+        statTextColor = colors.ATTACK_SPEED_SECONDARY
+        statValueColor = colors.ATTACK_SPEED_PRIMARY
+        percentColor = colors.ATTACK_SPEED_PRIMARY
     end
 
     if _StrStartsWith(statTextRef, "MP5_") then

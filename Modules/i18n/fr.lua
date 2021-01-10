@@ -63,6 +63,12 @@ strings = {
     ["MELEE_HIT_BONUS_SETTING_DESC"] = "Affiche/Cache le bonus de toucher.",
     ["MELEE_MISS_CHANCE_SETTING_DESC"] = "Affiche/cache les chances de rater en mêlée contre un ennemi du même niveau.",
     ["MELEE_MISS_CHANCE_BOSS_SETTING_DESC"] = "Affiche/cache les chances de rater en mêlée contre un boss de 3 niveaux supérieurs.",
+    ["MELEE_ATTACK_SPEED_SETTING"] = "Attack Speed",
+    ["MELEE_ATTACK_SPEED_SETTING_DESC"] =  "Shows/Hides the melee attack speed.",
+    ["MELEE_ATTACK_SPEED_MAIN_HAND_SETTING"] = "Main Hand",
+    ["MELEE_ATTACK_SPEED_MAIN_HAND_SETTING_DESC"] = "Shows/Hides the attack speed of the main hand.",
+    ["MELEE_ATTACK_SPEED_OFF_HAND_SETTING"] = "Off Hand",
+    ["MELEE_ATTACK_SPEED_OFF_HAND_SETTING_DESC"] = "Shows/Hides the attack speed of the off hand.",
     -- Range Settings
     ["RANGED_SETTINGS"] = "À distance Général",
     ["RANGED_SETTINGS_DESC"] = "Affiche/cache toutes les statistiques à distance.",
@@ -157,6 +163,9 @@ strings = {
     ["BONUS"] = "Bonus: ",
     ["ATTACK_POWER"] = "Puissance d'attaque: ",
     ["CRIT_CHANCE"] = "Chances de critique: ",
+    ["ATTACK_SPEED"] = "Attack Speed",
+    ["ATTACK_SPEED_MAIN_HAND"] = "Main Hand: ",
+    ["ATTACK_SPEED_OFF_HAND"] = "Off Hand: ",
 
     ["MELEE"] = "Mêlée",
     ["RANGED"] = "A distance",

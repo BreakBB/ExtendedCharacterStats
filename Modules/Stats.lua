@@ -173,7 +173,7 @@ _FormatStatsText = function(statTextRef, statRefName)
     end
 end
 
---- Creates all categories with headers and they child values
+--- Creates all categories with headers and their child values
 _CreateStatInfos = function()
     local profile = ExtendedCharacterStats.profile
 
@@ -185,6 +185,8 @@ _CreateStatInfos = function()
     if category.display then
         category = category.hit
         _CreateStatInfo(category, category.bonus, category.sameLevel, category.bossLevel)
+        category = profile.melee.attackSpeed
+        _CreateStatInfo(category, category.mainHand, category.offHand)
     end
 
     category = profile.ranged

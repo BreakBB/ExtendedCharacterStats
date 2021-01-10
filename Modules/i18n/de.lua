@@ -62,8 +62,13 @@ strings = {
     ["MELEE_HIT_VALUES_SETTING"] = "Nahkampf Trefferwertung",
     ["MELEE_HIT_BONUS_SETTING_DESC"] = "Zeigt/Versteckt den Bonus auf die Nahkampf Trefferwertung.",
     ["MELEE_MISS_CHANCE_SETTING_DESC"] = "Zeigt/Versteckt die Chance einen Gegner des gleichen Levels im Nahkampf zu verfehlen.",
-    ["MELEE_MISS_CHANCE_BOSS_SETTING_DESC"] =
-        "Zeigt/Versteckt die Chance einen Gegner mit 3 Level über dem eigenen im Nahkampf zu verfehlen.",
+    ["MELEE_MISS_CHANCE_BOSS_SETTING_DESC"] = "Zeigt/Versteckt die Chance einen Gegner mit 3 Level über dem eigenen im Nahkampf zu verfehlen.",
+    ["MELEE_ATTACK_SPEED_SETTING"] = "Angriffstempo",
+    ["MELEE_ATTACK_SPEED_SETTING_DESC"] = "Zeigt/Versteckt das Angriffstempo im Nahkampf.",
+    ["MELEE_ATTACK_SPEED_MAIN_HAND_SETTING"] = "Waffenhand",
+    ["MELEE_ATTACK_SPEED_MAIN_HAND_SETTING_DESC"] = "Zeigt/Versteckt das Angriffstempo der Waffenhand.",
+    ["MELEE_ATTACK_SPEED_OFF_HAND_SETTING"] = "Schildhand",
+    ["MELEE_ATTACK_SPEED_OFF_HAND_SETTING_DESC"] = "Zeigt/Versteckt das Angriffstempo der Schildhand.",
     -- Range Settings
     ["RANGED_SETTINGS"] = "Fernkampfwerte anzeigen",
     ["RANGED_SETTINGS_DESC"] = "Zeigt/Versteckt alle Fernkampfwerte.",
@@ -160,6 +165,9 @@ strings = {
     ["BONUS"] = "Bonus: ",
     ["ATTACK_POWER"] = "Angriffskraft: ",
     ["CRIT_CHANCE"] = "Kritische Chance: ",
+    ["ATTACK_SPEED"] = "Angriffstempo",
+    ["ATTACK_SPEED_MAIN_HAND"] = "Waffenhand: ",
+    ["ATTACK_SPEED_OFF_HAND"] = "Schildhand: ",
 
     ["MELEE"] = "Nahkampf",
     ["RANGED"] = "Fernkampf",

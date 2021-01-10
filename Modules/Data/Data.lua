@@ -59,6 +59,8 @@ dataFunctionRefs = {
     ["MeleeHitBonus"] = Data.MeleeHitBonus,
     ["MeleeHitSameLevel"] = Data.MeleeHitMissChanceSameLevel,
     ["MeleeHitBossLevel"] = Data.MeleeHitMissChanceBossLevel,
+    ["MeleeAttackSpeedMainHand"] = Data.GetMeleeAttackSpeedMainHand,
+    ["MeleeAttackSpeedOffHand"] = Data.GetMeleeAttackSpeedOffHand,
     -- Ranged
     ["RangeAttackpower"] = Data.GetRangeAttackPower,
     ["RangedCritChance"] = Data.RangedCrit,

@@ -63,6 +63,12 @@ strings = {
     ["MELEE_HIT_BONUS_SETTING_DESC"] = "显示/隐藏 近战命中率",
     ["MELEE_MISS_CHANCE_SETTING_DESC"] = "显示/隐藏 针对同等级敌人的近战未命中率",
     ["MELEE_MISS_CHANCE_BOSS_SETTING_DESC"] = "显示/隐藏 针对BOSS的近战未命中率 (+3 等级)。",
+    ["MELEE_ATTACK_SPEED_SETTING"] = "Attack Speed",
+    ["MELEE_ATTACK_SPEED_SETTING_DESC"] =  "Shows/Hides the melee attack speed.",
+    ["MELEE_ATTACK_SPEED_MAIN_HAND_SETTING"] = "Main Hand",
+    ["MELEE_ATTACK_SPEED_MAIN_HAND_SETTING_DESC"] = "Shows/Hides the attack speed of the main hand.",
+    ["MELEE_ATTACK_SPEED_OFF_HAND_SETTING"] = "Off Hand",
+    ["MELEE_ATTACK_SPEED_OFF_HAND_SETTING_DESC"] = "Shows/Hides the attack speed of the off hand.",
     -- Range Settings
     ["RANGED_SETTINGS"] = "显示远程属性",
     ["RANGED_SETTINGS_DESC"] = "显示/隐藏 所有远程属性",
@@ -157,6 +163,9 @@ strings = {
     ["BONUS"] = "命中: ",
     ["ATTACK_POWER"] = "攻击强度: ",
     ["CRIT_CHANCE"] = "暴击几率: ",
+    ["ATTACK_SPEED"] = "Attack Speed",
+    ["ATTACK_SPEED_MAIN_HAND"] = "Main Hand: ",
+    ["ATTACK_SPEED_OFF_HAND"] = "Off Hand: ",
 
     ["MELEE"] = "近战",
     ["RANGED"] = "远程",

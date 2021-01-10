@@ -11,6 +11,18 @@ function Data:GetMeleeAttackPower()
 end
 
 ---@return string
+function Data:GetMeleeAttackSpeedMainHand()
+    local mainHand, _ = UnitAttackSpeed("player")
+    return DataUtils:Round(mainHand, 2)
+end
+
+---@return string
+function Data:GetMeleeAttackSpeedOffHand()
+    local _, offHand = UnitAttackSpeed("player")
+    return DataUtils:Round(offHand, 2)
+end
+
+---@return string
 function Data:MeleeCrit()
     return DataUtils:Round(GetCritChance(), 2) .. "%"
 end

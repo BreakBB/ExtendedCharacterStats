@@ -22,7 +22,7 @@ function _Config:LoadMeleeSection()
                 desc = function() return i18n("MELEE_SETTINGS_DESC") end,
                 width = 1.5,
                 get = function () return ExtendedCharacterStats.profile.melee.display; end,
-                set = function (info, value)
+                set = function (_, value)
                     ExtendedCharacterStats.profile.melee.display = value
                     Stats:RebuildStatInfos()
                 end,
@@ -35,7 +35,7 @@ function _Config:LoadMeleeSection()
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.melee.display); end,
                 get = function () return ExtendedCharacterStats.profile.melee.attackPower.display; end,
-                set = function (info, value)
+                set = function (_, value)
                     ExtendedCharacterStats.profile.melee.attackPower.display = value
                     Stats:RebuildStatInfos()
                 end,
@@ -48,7 +48,7 @@ function _Config:LoadMeleeSection()
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.melee.display); end,
                 get = function () return ExtendedCharacterStats.profile.melee.crit.display; end,
-                set = function (info, value)
+                set = function (_, value)
                     ExtendedCharacterStats.profile.melee.crit.display = value
                     Stats:RebuildStatInfos()
                 end,
@@ -61,7 +61,7 @@ function _Config:LoadMeleeSection()
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.melee.display); end,
                 get = function () return ExtendedCharacterStats.profile.melee.hit.display; end,
-                set = function (info, value)
+                set = function (_, value)
                     ExtendedCharacterStats.profile.melee.hit.display = value
                     Stats:RebuildStatInfos()
                 end,
@@ -83,7 +83,7 @@ function _Config:LoadMeleeSection()
                                     (not ExtendedCharacterStats.profile.melee.hit.display))
                         end,
                         get = function () return ExtendedCharacterStats.profile.melee.hit.bonus.display; end,
-                        set = function (info, value)
+                        set = function (_, value)
                             ExtendedCharacterStats.profile.melee.hit.bonus.display = value
                             Stats:RebuildStatInfos()
                         end,
@@ -99,7 +99,7 @@ function _Config:LoadMeleeSection()
                                     (not ExtendedCharacterStats.profile.melee.hit.display))
                         end,
                         get = function () return ExtendedCharacterStats.profile.melee.hit.sameLevel.display; end,
-                        set = function (info, value)
+                        set = function (_, value)
                             ExtendedCharacterStats.profile.melee.hit.sameLevel.display = value
                             Stats:RebuildStatInfos()
                         end,
@@ -115,8 +115,61 @@ function _Config:LoadMeleeSection()
                                     (not ExtendedCharacterStats.profile.melee.hit.display))
                         end,
                         get = function () return ExtendedCharacterStats.profile.melee.hit.bossLevel.display; end,
-                        set = function (info, value)
+                        set = function (_, value)
                             ExtendedCharacterStats.profile.melee.hit.bossLevel.display = value
+                            Stats:RebuildStatInfos()
+                        end,
+                    },
+                }
+            },
+            meleeAttackSpeed = {
+                type = "toggle",
+                order = 5,
+                name = function() return i18n("MELEE_ATTACK_SPEED_SETTING") end,
+                desc = function() return i18n("MELEE_ATTACK_SPEED_SETTING_DESC") end,
+                width = 1.5,
+                disabled = function() return (not ExtendedCharacterStats.profile.melee.display); end,
+                get = function () return ExtendedCharacterStats.profile.melee.attackSpeed.display; end,
+                set = function (_, value)
+                    ExtendedCharacterStats.profile.melee.attackSpeed.display = value
+                    Stats:RebuildStatInfos()
+                end,
+            },
+            meleeAttackSpeedGroup = {
+                type = "group",
+                order = 6,
+                inline = true,
+                name = function() return i18n("MELEE_ATTACK_SPEED_SETTING") end,
+                args = {
+                    mainHand = {
+                        type = "toggle",
+                        order = 1,
+                        name = function() return i18n("MELEE_ATTACK_SPEED_MAIN_HAND_SETTING") end,
+                        desc = function() return i18n("MELEE_ATTACK_SPEED_MAIN_HAND_SETTING_DESC") end,
+                        width = 1.5,
+                        disabled = function()
+                            return ((not ExtendedCharacterStats.profile.melee.display) or
+                                    (not ExtendedCharacterStats.profile.melee.attackSpeed.display))
+                        end,
+                        get = function () return ExtendedCharacterStats.profile.melee.attackSpeed.mainHand.display; end,
+                        set = function (info, value)
+                            ExtendedCharacterStats.profile.melee.attackSpeed.mainHand.display = value
+                            Stats:RebuildStatInfos()
+                        end,
+                    },
+                    offHand = {
+                        type = "toggle",
+                        order = 2,
+                        name = function() return i18n("MELEE_ATTACK_SPEED_OFF_HAND_SETTING") end,
+                        desc = function() return i18n("MELEE_ATTACK_SPEED_OFF_HAND_SETTING_DESC") end,
+                        width = 1.5,
+                        disabled = function()
+                            return ((not ExtendedCharacterStats.profile.melee.display) or
+                                    (not ExtendedCharacterStats.profile.melee.attackSpeed.display))
+                        end,
+                        get = function () return ExtendedCharacterStats.profile.melee.attackSpeed.offHand.display; end,
+                        set = function (info, value)
+                            ExtendedCharacterStats.profile.melee.attackSpeed.offHand.display = value
                             Stats:RebuildStatInfos()
                         end,
                     },

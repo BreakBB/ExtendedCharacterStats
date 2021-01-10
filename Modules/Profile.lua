@@ -6,7 +6,7 @@
 local Profile = ECSLoader:CreateModule("Profile")
 
 function Profile:GetProfileVersion()
-    return 6
+    return 7
 end
 
 ---@return ECSProfile
@@ -39,7 +39,16 @@ local function GetDefaultStatsProfile()
                 bossLevel = {display = true, refName = "MeleeHitBossLevel", text = "MISS_BOSS"},
             },
             attackPower = {display = true, refName = "MeleeAttackpower", text = "ATTACK_POWER"},
-            crit = {display = true, refName = "MeleeCritChance", text = "CRIT_CHANCE"}
+            crit = {display = true, refName = "MeleeCritChance", text = "CRIT_CHANCE"},
+            attackSpeed = {
+                display = true,
+                isSubGroup = true,
+                refName = "MeleeAttackSpeedHeader",
+                text = "ATTACK_SPEED",
+
+                mainHand = {display = true, refName = "MeleeAttackSpeedMainHand", text = "ATTACK_SPEED_MAIN_HAND"},
+                offHand = {display = true, refName = "MeleeAttackSpeedOffHand", text = "ATTACK_SPEED_OFF_HAND"},
+            },
         },
 
         ---@type Category

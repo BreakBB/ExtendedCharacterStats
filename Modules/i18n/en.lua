@@ -63,6 +63,12 @@ strings = {
     ["MELEE_HIT_BONUS_SETTING_DESC"] = "Shows/Hides the melee hit bonus.",
     ["MELEE_MISS_CHANCE_SETTING_DESC"] = "Shows/Hides the melee miss chance against enemies on the same level.",
     ["MELEE_MISS_CHANCE_BOSS_SETTING_DESC"] = "Shows/Hides the melee miss chance against boss enemies (+3 Level).",
+    ["MELEE_ATTACK_SPEED_SETTING"] = "Attack Speed",
+    ["MELEE_ATTACK_SPEED_SETTING_DESC"] =  "Shows/Hides the melee attack speed.",
+    ["MELEE_ATTACK_SPEED_MAIN_HAND_SETTING"] = "Main Hand",
+    ["MELEE_ATTACK_SPEED_MAIN_HAND_SETTING_DESC"] = "Shows/Hides the attack speed of the main hand.",
+    ["MELEE_ATTACK_SPEED_OFF_HAND_SETTING"] = "Off Hand",
+    ["MELEE_ATTACK_SPEED_OFF_HAND_SETTING_DESC"] = "Shows/Hides the attack speed of the off hand.",
     -- Range Settings
     ["RANGED_SETTINGS"] = "Show Ranged Stats",
     ["RANGED_SETTINGS_DESC"] = "Shows/Hides all ranged stats.",
@@ -157,6 +163,9 @@ strings = {
     ["BONUS"] = "Bonus: ",
     ["ATTACK_POWER"] = "Attack Power: ",
     ["CRIT_CHANCE"] = "Crit Chance: ",
+    ["ATTACK_SPEED"] = "Attack Speed",
+    ["ATTACK_SPEED_MAIN_HAND"] = "Main Hand: ",
+    ["ATTACK_SPEED_OFF_HAND"] = "Off Hand: ",
 
     ["MELEE"] = "Melee",
     ["RANGED"] = "Ranged",
