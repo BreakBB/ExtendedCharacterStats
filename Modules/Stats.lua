@@ -69,7 +69,7 @@ function Stats:CreateWindow()
     toggleButton:SetText("< ECS")
     toggleButton:SetSize(44, 18)
     -- Move to old position if Leatrix Plus durability button is active. See #20
-    if (_G.LeaPlusDB and _G.LeaPlusDB["DurabilityStatus"] == "On") or PawnInitialize then
+    if (LeaPlusDB and LeaPlusDB["DurabilityStatus"] == "On") or PawnInitialize then
         if OutfitterButton then -- See #89
             toggleButton:SetPoint("TOPRIGHT", PaperDollItemsFrame, "TOPRIGHT", -55, -16)
         else

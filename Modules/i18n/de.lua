@@ -62,7 +62,8 @@ strings = {
     ["MELEE_HIT_VALUES_SETTING"] = "Nahkampf Trefferwertung",
     ["MELEE_HIT_BONUS_SETTING_DESC"] = "Zeigt/Versteckt den Bonus auf die Nahkampf Trefferwertung.",
     ["MELEE_MISS_CHANCE_SETTING_DESC"] = "Zeigt/Versteckt die Chance einen Gegner des gleichen Levels im Nahkampf zu verfehlen.",
-    ["MELEE_MISS_CHANCE_BOSS_SETTING_DESC"] = "Zeigt/Versteckt die Chance einen Gegner mit 3 Level über dem eigenen im Nahkampf zu verfehlen.",
+    ["MELEE_MISS_CHANCE_BOSS_SETTING_DESC"] =
+        "Zeigt/Versteckt die Chance einen Gegner mit 3 Level über dem eigenen im Nahkampf zu verfehlen.",
     ["MELEE_ATTACK_SPEED_SETTING"] = "Angriffstempo",
     ["MELEE_ATTACK_SPEED_SETTING_DESC"] = "Zeigt/Versteckt das Angriffstempo im Nahkampf.",
     ["MELEE_ATTACK_SPEED_MAIN_HAND_SETTING"] = "Waffenhand",
