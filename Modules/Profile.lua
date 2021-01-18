@@ -151,6 +151,7 @@ local function GetDefaultGeneralSettings()
         showQualityColors = true,
         headerFontSize = 11,
         statFontSize = 10,
+        profileVersion = 0,
         window = {
             height = 422,
             width = 180,

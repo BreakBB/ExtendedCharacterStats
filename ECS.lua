@@ -19,7 +19,7 @@ local Profile = ECSLoader:ImportModule("Profile")
  -- forward declaration
 local _InitAddon, _InitGUI, _RegisterEvents
 local _ProfileVersionIsDifferent, _MigrateToLatestProfileVersion
-local _GeneralSectionIsEmpty, _ProfileSectionIsEmpty
+local _IsEmptyTable
 
 local loadingFrame = CreateFrame("Frame", nil, UIParent)
 loadingFrame:RegisterEvent("ADDON_LOADED") -- Triggers whenever all non-lod addons has been loaded, this will initialize the addon
@@ -45,6 +45,19 @@ _InitAddon = function()
 
     local ecs = ExtendedCharacterStats
     local defaultProfile = Profile:GetDefaultProfile()
+
+    if _IsEmptyTable(ecs.general) then
+        ExtendedCharacterStats.general = defaultProfile.general
+    end
+
+    if _IsEmptyTable(ecs.profile) then
+        ExtendedCharacterStats.profile = defaultProfile.profile
+    end
+
+    if (not ecs.general.profileVersion) then
+        ecs.general.profileVersion = defaultProfile.general.profileVersion
+    end
+
     local currentProfileVersion = ecs.general.profileVersion
     local targetProfileVersion = Profile:GetProfileVersion()
 
@@ -52,14 +65,6 @@ _InitAddon = function()
         print("|cFF1de9b6[ECS]|r Migrating ECS profile from version " .. currentProfileVersion .. " to " .. targetProfileVersion)
         _MigrateToLatestProfileVersion(currentProfileVersion, defaultProfile)
         ExtendedCharacterStats.general.profileVersion = targetProfileVersion
-    end
-
-    if _GeneralSectionIsEmpty(ecs.general) then
-        ExtendedCharacterStats.general = defaultProfile.general
-    end
-
-    if _ProfileSectionIsEmpty(ecs.profile) then
-        ExtendedCharacterStats.profile = defaultProfile.profile
     end
 
     i18n:LoadLanguageData()
@@ -86,13 +91,8 @@ _MigrateToLatestProfileVersion = function(profileVersion, defaultProfile)
 end
 
 ---@return boolean
-_GeneralSectionIsEmpty = function(general)
-    return general == nil or (not next(general))
-end
-
----@return boolean
-_ProfileSectionIsEmpty = function(profile)
-    return profile == nil or (not next(profile))
+_IsEmptyTable = function(value)
+    return value == nil or (not next(value))
 end
 
 local lastSuccessfulSpellTime = 0
