@@ -24,6 +24,7 @@ Data.setNames = {
     STORMRAGE_RAIMENT = "Stormrage Raiment",
     VESTMENTS_OF_TRANSCENDENCE = "Vestments of Transcendence",
     TEN_STORMS = "The Ten Storms",
+    THE_EARTHSHATTERER = "The Earthshatterer",
     HARUSPEXS_GARB = "Haruspex's Garb",
     AUGURS_REGALIA = "Augur's Regalia",
     FREETHINKERS_ARMOR = "Freethinker's Armor"

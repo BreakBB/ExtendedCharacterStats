@@ -1,8 +1,6 @@
 ---@type Data
 local Data = ECSLoader:ImportModule("Data")
 
-local _IsSetBonusActive
-
 local _, _, classId = UnitClass("player")
 local setNames = Data.setNames
 
@@ -47,6 +45,17 @@ local itemSets = {
         [16949] = true,
         [16950] = true
     },
+    [setNames.THE_EARTHSHATTERER] = {
+        [24468] = true,
+        [22470] = true,
+        [22469] = true,
+        [22466] = true,
+        [22465] = true,
+        [22467] = true,
+        [22464] = true,
+        [24471] = true,
+        [23065] = true
+    },
     [setNames.HARUSPEXS_GARB] = {
         [19613] = true,
         [19838] = true,
@@ -72,16 +81,16 @@ local itemSets = {
 
 function Data:HasSetBonusModifierMP5()
     if classId == Data.PRIEST then
-        return _IsSetBonusActive(setNames.VESTMENTS_OF_TRANSCENDENCE, 3)
+        return Data:IsSetBonusActive(setNames.VESTMENTS_OF_TRANSCENDENCE, 3)
     elseif classId == Data.DRUID then
-        return _IsSetBonusActive(setNames.STORMRAGE_RAIMENT, 3)
+        return Data:IsSetBonusActive(setNames.STORMRAGE_RAIMENT, 3)
     end
 end
 
 function Data:GetSetBonusValueMP5()
-    if (classId == Data.DRUID and _IsSetBonusActive(setNames.HARUSPEXS_GARB, 2))
-        or (classId == Data.SHAMAN and _IsSetBonusActive(setNames.AUGURS_REGALIA, 2))
-        or (classId == Data.PALADIN and _IsSetBonusActive(setNames.FREETHINKERS_ARMOR, 2)) then
+    if (classId == Data.DRUID and Data:IsSetBonusActive(setNames.HARUSPEXS_GARB, 2))
+        or (classId == Data.SHAMAN and Data:IsSetBonusActive(setNames.AUGURS_REGALIA, 2))
+        or (classId == Data.PALADIN and Data:IsSetBonusActive(setNames.FREETHINKERS_ARMOR, 2)) then
         return 4
     end
 
@@ -90,20 +99,20 @@ end
 
 function Data:HasNatureCritBonusModifier()
     if classId == Data.SHAMAN then
-        return _IsSetBonusActive(setNames.TEN_STORMS, 5)
+        return Data:IsSetBonusActive(setNames.TEN_STORMS, 5)
     end
     return false
 end
 
 function Data:HasSetBonusModifierBlockValue()
     if classId == Data.WARRIOR then
-        return _IsSetBonusActive(setNames.BATTLEGEAR_OF_MIGHT, 3)
+        return Data:IsSetBonusActive(setNames.BATTLEGEAR_OF_MIGHT, 3)
     end
 
     return 0
 end
 
-_IsSetBonusActive = function(setName, bonusLevel)
+function Data:IsSetBonusActive(setName, bonusLevel)
     local setItems = itemSets[setName]
     if (not setItems) then
         return false

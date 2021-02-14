@@ -3,7 +3,7 @@ local DataUtils = ECSLoader:CreateModule("DataUtils")
 
 --- Rounds every number down to the given decimal places
 function DataUtils:Round(num, decimalPlaces)
-    if not num then
+    if (not num) then
         return 0
     end
     local mult = 10^(decimalPlaces)

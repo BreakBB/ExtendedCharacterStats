@@ -3,7 +3,7 @@ local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
 local DataUtils = ECSLoader:ImportModule("DataUtils")
 
-local _GetMP5ValueOnItems, _GetTalentModifier, _GetBlessingOfWisdomModifier
+local _GetMP5ValueOnItems, _GetTalentModifier, _GetBlessingOfWisdomModifier, _HasLightningShield
 
 local _, _, classId = UnitClass("player")
 
@@ -111,6 +111,7 @@ end
 function Data:GetMP5FromBuffs()
     local mod = 0
     local bonus = 0
+    local has2pEarthshatterer = Data:IsSetBonusActive(Data.setNames.THE_EARTHSHATTERER, 2)
 
     for i = 1, 40 do
         local _, _, _, _, _, _, _, _, _, spellId, _ = UnitAura("player", i, "HELPFUL")
@@ -138,15 +139,30 @@ function Data:GetMP5FromBuffs()
         end
         if spellId == 5677 then
             bonus = bonus + 10 -- 4 Mana per 2 seconds from Mana Spring Totem (Rank 1)
+            if has2pEarthshatterer then
+                bonus = bonus + 2.5 -- + 0,25% for Shaman T3 2 piece bonus
+            end
         end
         if spellId == 10491 then
             bonus = bonus + 15 -- 6 Mana per 2 seconds from Mana Spring Totem (Rank 2)
+            if has2pEarthshatterer then
+                bonus = bonus + 3.75 -- + 0,25% for Shaman T3 2 piece bonus
+            end
         end
         if spellId == 10493 then
             bonus = bonus + 20 -- 8 Mana per 2 seconds from Mana Spring Totem (Rank 3)
+            if has2pEarthshatterer then
+                bonus = bonus + 5 -- + 0,25% for Shaman T3 2 piece bonus
+            end
         end
         if spellId == 10494 then
             bonus = bonus + 25 -- 10 Mana per 2 seconds from Mana Spring Totem (Rank 4)
+            if has2pEarthshatterer then
+                bonus = bonus + 6.25 -- + 0,25% for Shaman T3 2 piece bonus
+            end
+        end
+        if _HasLightningShield(spellId) and Data:IsSetBonusActive(Data.setNames.THE_EARTHSHATTERER, 8) then
+            bonus = bonus + 15 -- 15 MP5 from Shaman T3 8 piece bonus when Lightning Shield is active
         end
         if spellId == 25894 then
             local blessingMod = _GetBlessingOfWisdomModifier() + 1
@@ -183,9 +199,16 @@ function Data:GetMP5FromBuffs()
         if spellId == 17252 then
             bonus = bonus + 22 -- 22 MP5 from Mark of the Dragon Lord
         end
+        if spellId == 28824 then
+            bonus = bonus + 28 -- 28 MP5 from Shaman T3 6 piece proc Totemic Power
+        end
     end
 
     return mod, bonus
+end
+
+_HasLightningShield = function(spellId)
+    return spellId == 324 or spellId == 325 or spellId == 905 or spellId == 945 or spellId == 8134 or spellId == 10431 or spellId == 10432
 end
 
 _GetBlessingOfWisdomModifier = function()
