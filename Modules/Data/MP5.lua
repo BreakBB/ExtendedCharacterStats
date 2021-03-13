@@ -206,6 +206,9 @@ function Data:GetMP5FromBuffs()
         if spellId == 28824 then
             bonus = bonus + 28 -- 28 MP5 from Shaman T3 6 piece proc Totemic Power
         end
+        if spellId == 28145 then
+            bonus = bonus + 11 -- 11 MP5 from Druid Atiesh
+        end
     end
 
     return mod, bonus
