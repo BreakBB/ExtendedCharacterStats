@@ -34,6 +34,10 @@ _GetMP5ValueOnItems = function ()
             if enchant and enchant == Data.enchantIds.PROPHETIC_AURA then
                 mp5 = mp5 + 4
             end
+            -- Sapphiron Enchant
+            if enchant and enchant == Data.enchantIds.RESILIENCE_OF_THE_SCOURGE then
+                mp5 = mp5 + 5
+            end
         end
     end
 
