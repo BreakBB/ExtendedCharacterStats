@@ -109,7 +109,7 @@ function Data:HasSetBonusModifierBlockValue()
         return Data:IsSetBonusActive(setNames.BATTLEGEAR_OF_MIGHT, 3)
     end
 
-    return 0
+    return false
 end
 
 function Data:IsSetBonusActive(setName, bonusLevel)
