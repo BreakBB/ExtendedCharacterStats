@@ -40,8 +40,13 @@ local function _GetRangeHitBonus()
         hitValue = hitValue + 3
     end
 
-    -- From Items
-    local hitFromItems = GetHitModifier()
+    local hitFromItems = 0
+    if CR_HIT_RANGED then
+        hitFromItems = GetCombatRatingBonus(CR_HIT_RANGED)
+    else
+        hitFromItems = GetHitModifier()
+    end
+
     if hitFromItems then -- This needs to be checked because on dungeon entering it becomes nil
         hitValue = hitValue + hitFromItems
     end

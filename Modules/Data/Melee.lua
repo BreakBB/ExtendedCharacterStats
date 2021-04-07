@@ -27,9 +27,17 @@ function Data:MeleeCrit()
     return DataUtils:Round(GetCritChance(), 2) .. "%"
 end
 
+---@return number
+local function _MeleeHitRating()
+    if CR_HIT_MELEE then
+        return GetCombatRatingBonus(CR_HIT_MELEE)
+    end
+    return GetHitModifier()
+end
+
 ---@return string
 function Data:MeleeHitBonus()
-    return DataUtils:Round(GetHitModifier(), 2) .. "%"
+    return DataUtils:Round(_MeleeHitRating(), 2) .. "%"
 end
 
 ---@return string
@@ -45,9 +53,9 @@ function Data:MeleeHitMissChanceSameLevel()
         missChance = DataUtils:GetMissChanceByDifference(mainBase + mainMod, enemyDefenseValue)
     end
 
-    local hitFromItems = GetHitModifier()
-    if hitFromItems then -- This needs to be checked because on dungeon entering it becomes nil
-        missChance = missChance - hitFromItems
+    local hitValue = _MeleeHitRating()
+    if hitValue then -- This needs to be checked because on dungeon entering it becomes nil
+        missChance = missChance - hitValue
     end
 
     if missChance < 0 then
@@ -72,9 +80,9 @@ function Data:MeleeHitMissChanceBossLevel()
         missChance = DataUtils:GetMissChanceByDifference(mainBase + mainMod, enemyDefenseValue)
     end
 
-    local hitFromItems = GetHitModifier()
-    if hitFromItems then -- This needs to be checked because on dungeon entering it becomes nil
-        missChance = missChance - hitFromItems
+    local hitValue = _MeleeHitRating()
+    if hitValue then -- This needs to be checked because on dungeon entering it becomes nil
+        missChance = missChance - hitValue
     end
 
     if missChance < 0 then

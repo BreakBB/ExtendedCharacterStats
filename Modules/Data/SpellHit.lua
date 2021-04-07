@@ -20,9 +20,17 @@ local function _GetTalentModifierSpellHit()
     return mod
 end
 
+---@return number
+local function _GetSpellHitRating()
+    if CR_HIT_SPELL then
+        return GetCombatRatingBonus(CR_HIT_SPELL)
+    end
+    return GetSpellHitModifier()
+end
+
 function Data:SpellHitBonus()
     local hit = _GetTalentModifierSpellHit()
-    local mod = GetSpellHitModifier()
+    local mod = _GetSpellHitRating()
     if mod then
         hit = hit + mod
     end
@@ -34,7 +42,7 @@ function Data:SpellMissChanceSameLevel()
     local missChance = 4
 
     missChance = missChance - _GetTalentModifierSpellHit()
-    local mod = GetSpellHitModifier()
+    local mod = _GetSpellHitRating()
     if mod then
         missChance = missChance - mod
     end
@@ -52,7 +60,7 @@ function Data:SpellMissChanceBossLevel()
     local missChance = 17
 
     missChance = missChance - _GetTalentModifierSpellHit()
-    local mod = GetSpellHitModifier()
+    local mod = _GetSpellHitRating()
     if mod then
         missChance = missChance - mod
     end
