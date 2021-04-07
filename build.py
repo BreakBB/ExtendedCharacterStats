@@ -31,9 +31,9 @@ This program accepts two command line options:
                     Default: 'ExtendedCharacterStats-v' plus the version string from the toc
                     file, e.g.: 'ExtendedCharacterStats-v2.1.1'
 
--r releaseType      If provided changes the releasetype from BETA, (Release/Alpha etc)
+-i interfaceVersion If provided sets the interface version to the Classic or TBC version
 
-                    Default: ''
+                    Default: 'tbc'
 
 Example usage:
 
@@ -43,34 +43,15 @@ This will create a new release in 'releases/2.1.0/ExtendedCharacterStats-feature
 the '2.1.0' directory already exists.
 
 '''
-releaseType = ''
+interfaceVersion = 'tbc'
 addonDir = 'ExtendedCharacterStats'
 versionDir = None
 
 def setArgs():
     #set defaults
-    global releaseType
+    global interfaceVersion
     global addonDir
     global versionDir
-    version, nrOfCommits, recentCommit = getVersion()
-    print("Tag: " + version)
-    if version != None and nrOfCommits == None and recentCommit == None:
-        versionDir = version.replace(' ', '_')
-        zipName = '%s-v%s' % (addonDir, versionDir)
-    else:
-        if releaseType:
-            versionDir = "%s_%s-%s-%s" % (version, releaseType, nrOfCommits, recentCommit)
-        else:
-            versionDir = "%s_%s-%s" % (version, nrOfCommits, recentCommit)
-
-        print("Number of commits since tag: " + nrOfCommits)
-        print("Most Recent commit: " + recentCommit)
-        branch = getBranch()
-        if branch != "master":
-            versionDir += "-%s" % branch
-        print("Current branch: " + branch)
-        zipName = '%s-%s' % (addonDir, versionDir)
-
     # overwrite with command line arguments, if provided
     pos = 1
     end = len(sys.argv)
@@ -84,10 +65,27 @@ def setArgs():
         elif (sys.argv[pos] == '-z'):
             pos += 1
             zipName = sys.argv[pos]
-        elif (sys.argv[pos] == '-r'):
+        elif (sys.argv[pos] == '-i'):
             pos += 1
-            releaseType = sys.argv[pos]
+            interfaceVersion = sys.argv[pos]
         pos += 1
+
+    version, nrOfCommits, recentCommit = getVersion()
+    print("Tag: " + version)
+    if version != None and nrOfCommits == None and recentCommit == None:
+        versionDir = version.replace(' ', '_')
+        zipName = '%s-v%s-%s' % (addonDir, versionDir, interfaceVersion)
+    else:
+        versionDir = "%s_%s-%s-%s" % (version, nrOfCommits, interfaceVersion, recentCommit)
+
+        print("Number of commits since tag: " + nrOfCommits)
+        print("Most Recent commit: " + recentCommit)
+        branch = getBranch()
+        if branch != "master":
+            versionDir += "-%s" % branch
+        print("Current branch: " + branch)
+        zipName = '%s-%s' % (addonDir, versionDir)
+
     return versionDir, addonDir, zipName
 
 def main():
@@ -120,7 +118,7 @@ def main():
 def setVersion():
     if is_tool("git"):
         global addonDir
-        global releaseType
+        global interfaceVersion
         global versionDir
         scriptDir = os.path.dirname(os.path.realpath(__file__))
         p = subprocess.check_output(["git", "describe", "--tags", "--long"], cwd=scriptDir)
@@ -134,6 +132,9 @@ def setVersion():
         with open('ExtendedCharacterStats.toc') as toc:
             tocData = toc.read()
             cleanData = tocData
+
+            if interfaceVersion == 'classic':
+                tocData = re.sub(r"## Interface:.*", "## Interface: 11306", tocData)
             ## Title: Extended Character Stats v2.1.1
             tocData = re.sub(r"## Title:.*", "## Title: %s %s" % (addonDir, versionTag), tocData)
             cleanData = re.sub(r"\d+\.\d+\.\d+", versionTag.lstrip("v"), cleanData)
