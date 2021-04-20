@@ -13,10 +13,20 @@ local _, _, classId = UnitClass("player")
 ---@param school number
 ---@return string
 function Data:GetSpellCrit(school)
+    if (not school) then
+        return ""
+    end
+
     local crit = _GetTalentModifier(school)
     local itemBonus = _GetItemModifierBySchool(school)
     local setBonus = _GetSetBonus(school)
-    crit = crit + GetSpellCritChance() + itemBonus + setBonus
+
+    if GetClassicExpansionLevel and GetClassicExpansionLevel() == LE_EXPANSION_BURNING_CRUSADE then
+        crit = crit + GetSpellCritChance(school) + itemBonus + setBonus
+    else
+        crit = crit + GetSpellCritChance() + itemBonus + setBonus
+    end
+
     return DataUtils:Round(crit, 2) .. "%"
 end
 
