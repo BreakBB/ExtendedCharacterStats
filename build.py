@@ -134,7 +134,7 @@ def setVersion():
             cleanData = tocData
 
             if interfaceVersion == 'classic':
-                tocData = re.sub(r"## Interface:.*", "## Interface: 11306", tocData)
+                tocData = re.sub(r"## Interface:.*", "## Interface: 11307", tocData)
             ## Title: Extended Character Stats v2.1.1
             tocData = re.sub(r"## Title:.*", "## Title: %s %s" % (addonDir, versionTag), tocData)
             cleanData = re.sub(r"\d+\.\d+\.\d+", versionTag.lstrip("v"), cleanData)
