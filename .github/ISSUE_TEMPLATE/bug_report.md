@@ -14,5 +14,5 @@ labels: "bug"
 
 ## Version
 <!--
-Which version of Extended Character Stats are you using?
+Which version of Extended Character Stats are you using? Please also state if you experience this bug in WoW Classic or TBC.
 -->
