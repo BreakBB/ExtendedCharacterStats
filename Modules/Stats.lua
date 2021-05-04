@@ -207,7 +207,7 @@ _CreateStatInfos = function()
     _CreateStatInfo(category, category.mp5Items, category.mp5Spirit, category.mp5Buffs, category.mp5Casting)
 
     category = profile.spell
-    _CreateStatInfo(category, category.crit)
+    _CreateStatInfo(category, category.crit, category.penetration)
     if category.display then
         category = category.hit
         _CreateStatInfo(category, category.bonus, category.sameLevel, category.bossLevel)

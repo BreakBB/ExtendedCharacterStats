@@ -115,6 +115,8 @@ strings = {
     ["SPELL_SETTINGS_DESC"] = "Affiche/cache toutes les statistiques des sorts.",
     ["SPELL_CRIT_SETTING"] = "Critique des sorts",
     ["SPELL_CRIT_SETTING_DESC"] = "Affiche/cache les chances d'infliger un coup critique avec les sorts.",
+    ["SPELL_PENETRATION_SETTING"] = "Spell Penetration",
+    ["SPELL_PENETRATION_SETTING_DESC"] = "Shows/Hides the spell penetration value.",
     ["SPELL_HIT_SETTING"] = "Toucher des sorts",
     ["SPELL_HIT_SETTING_DESC"] = "Affiche/cache les chances de toucher avec les sorts.",
     ["SPELL_HIT_VALUES_SETTING"] = "Val. de toucher sorts",
@@ -188,6 +190,7 @@ strings = {
     ["MP5_CASTING"] = "MP5 (Lancer): ",
 
     ["SPELL"] = "Sorts",
+    ["SPELL_PENETRATION"] = "Penetration: ",
 
     ["SPELL_POWER"] = "Puissance des sorts",
     ["HEALING_POWER"] = "Puissance des soins: ",

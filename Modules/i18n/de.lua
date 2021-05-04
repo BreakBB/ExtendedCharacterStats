@@ -117,6 +117,8 @@ strings = {
     ["SPELL_SETTINGS_DESC"] = "Zeigt/Versteckt alle Zauberwerte.",
     ["SPELL_CRIT_SETTING"] = "Zauber Kritisch",
     ["SPELL_CRIT_SETTING_DESC"] = "Zeigt/Versteckt die Chance mit einem Zauber kritisch zu treffen.",
+    ["SPELL_PENETRATION_SETTING"] = "Zauberdurchschlagskraft",
+    ["SPELL_PENETRATION_SETTING_DESC"] = "Zeigt/Versteckt die Zauberdurchschlagskraft.",
     ["SPELL_HIT_SETTING"] = "Zauber Trefferwertung",
     ["SPELL_HIT_SETTING_DESC"] = "Zeigt/Versteckt alle Trefferwertungswertungen für Zauber.",
     ["SPELL_HIT_VALUES_SETTING"] = "Zauber Trefferwertungen",
@@ -191,6 +193,7 @@ strings = {
     ["MP5_CASTING"] = "MP5 (Zaubernd): ",
 
     ["SPELL"] = "Zauber",
+    ["SPELL_PENETRATION"] = "Durchschlagskraft: ",
 
     ["SPELL_POWER"] = "Zauberkraft",
     ["HEALING_POWER"] = "Heilungskraft: ",

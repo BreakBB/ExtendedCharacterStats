@@ -116,7 +116,8 @@ local function GetDefaultStatsProfile()
                 sameLevel = {display = true, refName = "SpellHitSameLevel", text = "MISS"},
                 bossLevel = {display = true, refName = "SpellHitBossLevel", text = "MISS_BOSS"},
             },
-            crit = {display = true, refName = "SpellCritChance", text = "CRIT_CHANCE"}
+            crit = {display = true, refName = "SpellCritChance", text = "CRIT_CHANCE"},
+            penetration = {display = true, refName = "SpellPenetration", text = "SPELL_PENETRATION"},
         },
 
         ---@type Category

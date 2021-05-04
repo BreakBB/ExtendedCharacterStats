@@ -40,6 +40,19 @@ function _Config:LoadSpellSection()
                     Stats:RebuildStatInfos()
                 end,
             },
+            spellPenetration = {
+                type = "toggle",
+                order = 1,
+                name = function() return i18n("SPELL_PENETRATION_SETTING") end,
+                desc = function() return i18n("SPELL_PENETRATION_SETTING_DESC") end,
+                width = 1.5,
+                disabled = function() return (not ExtendedCharacterStats.profile.spell.display); end,
+                get = function () return ExtendedCharacterStats.profile.spell.penetration.display; end,
+                set = function (info, value)
+                    ExtendedCharacterStats.profile.spell.penetration.display = value
+                    Stats:RebuildStatInfos()
+                end,
+            },
             spellHit = {
                 type = "toggle",
                 order = 2,

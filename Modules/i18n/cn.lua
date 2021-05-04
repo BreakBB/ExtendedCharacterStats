@@ -115,6 +115,8 @@ strings = {
     ["SPELL_SETTINGS_DESC"] = "显示/隐藏 法术属性",
     ["SPELL_CRIT_SETTING"] = "法术暴击",
     ["SPELL_CRIT_SETTING_DESC"] = "显示/隐藏 法术暴击",
+    ["SPELL_PENETRATION_SETTING"] = "Spell Penetration",
+    ["SPELL_PENETRATION_SETTING_DESC"] = "Shows/Hides the spell penetration value.",
     ["SPELL_HIT_SETTING"] = "法术命中",
     ["SPELL_HIT_SETTING_DESC"] = "显示/隐藏 法术命中",
     ["SPELL_HIT_VALUES_SETTING"] = "法术命中率",
@@ -188,6 +190,7 @@ strings = {
     ["MP5_CASTING"] = "附魔回蓝: ",
 
     ["SPELL"] = "法术强度",
+    ["SPELL_PENETRATION"] = "Penetration: ",
 
     ["SPELL_POWER"] = "法术强度",
     ["HEALING_POWER"] = "法术治疗: ",

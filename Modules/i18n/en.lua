@@ -115,6 +115,8 @@ strings = {
     ["SPELL_SETTINGS_DESC"] = "Shows/Hides all spell stats.",
     ["SPELL_CRIT_SETTING"] = "Spell Crit",
     ["SPELL_CRIT_SETTING_DESC"] = "Shows/Hides the spell crit chance.",
+    ["SPELL_PENETRATION_SETTING"] = "Spell Penetration",
+    ["SPELL_PENETRATION_SETTING_DESC"] = "Shows/Hides the spell penetration value.",
     ["SPELL_HIT_SETTING"] = "Spell Hit",
     ["SPELL_HIT_SETTING_DESC"] = "Shows/Hides all spell hit chance.",
     ["SPELL_HIT_VALUES_SETTING"] = "Spell Hit Values",
@@ -188,6 +190,7 @@ strings = {
     ["MP5_CASTING"] = "MP5 (Casting): ",
 
     ["SPELL"] = "Spell",
+    ["SPELL_PENETRATION"] = "Penetration: ",
 
     ["SPELL_POWER"] = "Spell Power",
     ["HEALING_POWER"] = "Healing Power: ",

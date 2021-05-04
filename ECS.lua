@@ -91,6 +91,7 @@ _MigrateToLatestProfileVersion = function(profileVersion, defaultProfile)
 
     if profileVersion < 8 then
         ExtendedCharacterStats.profile.ranged.attackSpeed = defaultProfile.profile.ranged.attackSpeed
+        ExtendedCharacterStats.profile.spell.penetration = defaultProfile.profile.spell.penetration
     end
 end
 

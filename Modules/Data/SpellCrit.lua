@@ -108,3 +108,7 @@ _GetSetBonus = function(school)
 
     return bonus
 end
+
+function Data:GetSpellPenetration()
+    return DataUtils:Round(GetSpellPenetration(), 2)
+end
