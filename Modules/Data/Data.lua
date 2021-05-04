@@ -78,7 +78,7 @@ dataFunctionRefs = {
     ["SpellHitBonus"] = function() return Data:SpellHitBonus() end,
     ["SpellHitSameLevel"] = function() return Data:SpellMissChanceSameLevel() end,
     ["SpellHitBossLevel"] = function() return Data:SpellMissChanceBossLevel() end,
-    ["SpellCritChance"] = function() return Data.GetSpellCrit(0) end,
+    ["SpellCritChance"] = function() return Data:GetSpellCrit(0) end,
     -- MP5
     ["MP5Items"] = function() return Data:GetMP5FromItems() end,
     ["MP5Spirit"] = function() return Data:GetMP5FromSpirit() end,
