@@ -45,7 +45,7 @@ local function _GetRangeHitBonus()
         hitValue = hitValue + 3
     end
 
-    local hitFromItems = 0
+    local hitFromItems
     if CR_HIT_RANGED then
         hitFromItems = GetCombatRatingBonus(CR_HIT_RANGED)
     else
