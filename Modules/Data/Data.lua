@@ -47,7 +47,7 @@ function Data:GetStatInfo(refName)
     if dataFunction then
         return dataFunction()
     else
-        print("[ECS] Invalid data refName:", refName)
+        ECS:Print("Invalid data refName: " .. refName)
     end
 end
 

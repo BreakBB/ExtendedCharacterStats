@@ -39,7 +39,7 @@ function i18n:translate(key, ...)
     end
 
     if (not i18n.texts[key]) then
-        print("|cffff0000[ERROR]|r Missing translation for <" .. key .. "> key")
+        ECS:Error("Missing translation for <" .. key .. "> key")
         return ""
     end
 

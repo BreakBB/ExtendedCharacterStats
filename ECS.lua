@@ -62,7 +62,7 @@ _InitAddon = function()
     local targetProfileVersion = Profile:GetProfileVersion()
 
     if _ProfileVersionIsDifferent(ecs, targetProfileVersion) then
-        print("|cFF1de9b6[ECS]|r Migrating ECS profile from version " .. currentProfileVersion .. " to " .. targetProfileVersion)
+        ECS:Print("Migrating ECS profile from version " .. currentProfileVersion .. " to " .. targetProfileVersion)
         _MigrateToLatestProfileVersion(currentProfileVersion, defaultProfile)
         ExtendedCharacterStats.general.profileVersion = targetProfileVersion
     end
@@ -155,4 +155,12 @@ _RegisterEvents = function (eventFrame)
     eventFrame:RegisterEvent("UPDATE_SHAPESHIFT_FORM") -- Triggers whenever the player changes gear
     eventFrame:RegisterEvent("UNIT_SPELLCAST_SUCCEEDED") -- Triggers whenever a cast was successful
     eventFrame:RegisterEvent("INSPECT_READY") -- Triggers whenever the player inspects someone else and the inspect frame is ready
+end
+
+function ECS:Error(message)
+   ECS:Print("|cffff0000ERROR|r " .. message)
+end
+
+function ECS:Print(message)
+    print("|cFF1de9b6[ECS]|r " .. message)
 end
