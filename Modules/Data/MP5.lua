@@ -129,9 +129,6 @@ function Data:GetMP5FromBuffs()
         if spellId == 24363 then
             bonus = bonus + 12 -- 12 MP5 from Mageblood Potion
         end
-        if spellId == 16609 then
-            bonus = bonus + 10 -- 10 MP5 from Warchief's Blessing
-        end
         if spellId == 18194 then
             bonus = bonus + 8 -- 8 MP5 from Nightfin Soup
         end
@@ -141,6 +138,7 @@ function Data:GetMP5FromBuffs()
         if spellId == 25690 then
             bonus = bonus + 3 -- 8 MP5 from Smoked Sagefish
         end
+
         if spellId == 5677 then
             bonus = bonus + 10 -- 4 Mana per 2 seconds from Mana Spring Totem (Rank 1)
             if has2pEarthshatterer then
@@ -168,6 +166,16 @@ function Data:GetMP5FromBuffs()
         if _HasLightningShield(spellId) and Data:IsSetBonusActive(Data.setNames.THE_EARTHSHATTERER, 8) then
             bonus = bonus + 15 -- 15 MP5 from Shaman T3 8 piece bonus when Lightning Shield is active
         end
+        if spellId == 28824 then
+            bonus = bonus + 28 -- 28 MP5 from Shaman T3 6 piece proc Totemic Power
+        end
+        if spellId == 24398 then
+            bonus = bonus + 43 -- 43 MP5 from Water Shield Rank 1
+        end
+        if spellId == 33736 then
+            bonus = bonus + 50 -- 50 MP5 from Water Shield Rank 2
+        end
+
         if spellId == 25894 then
             local blessingMod = _GetBlessingOfWisdomModifier() + 1
             bonus = bonus + math.ceil(30 * blessingMod) -- Greater Blessing of Wisdom Rank 1
@@ -200,11 +208,12 @@ function Data:GetMP5FromBuffs()
             local blessingMod = _GetBlessingOfWisdomModifier() + 1
             bonus = bonus + math.ceil(33 * blessingMod) -- Blessing of Wisdom Rank 6
         end
+
+        if spellId == 16609 then
+            bonus = bonus + 10 -- 10 MP5 from Warchief's Blessing
+        end
         if spellId == 17252 then
             bonus = bonus + 22 -- 22 MP5 from Mark of the Dragon Lord
-        end
-        if spellId == 28824 then
-            bonus = bonus + 28 -- 28 MP5 from Shaman T3 6 piece proc Totemic Power
         end
         if spellId == 28145 then
             bonus = bonus + 11 -- 11 MP5 from Druid Atiesh
