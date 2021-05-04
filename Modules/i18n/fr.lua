@@ -82,6 +82,8 @@ strings = {
     ["RANGED_HIT_BONUS_SETTING_DESC"] = "Affiche/cache le bonus de toucher à distance.",
     ["RANGED_MISS_CHANCE_SETTING_DESC"] = "Affiche/cache les chances de rater à distance contre un ennemi du même niveau.",
     ["RANGED_MISS_CHANCE_BOSS_SETTING_DESC"] = "Affiche/cache les chances de rater à distance contre un boss de 3 niveaux supérieurs.",
+    ["RANGED_ATTACK_SPEED_SETTING"] = "Attack Speed",
+    ["RANGED_ATTACK_SPEED_SETTING_DESC"] = "Shows/Hides the ranged attack speed.",
     -- Defense Settings
     ["DEFENSE_SETTINGS"] = "Défense Général",
     ["DEFENSE_SETTINGS_DESC"] = "Affiche/cache toutes les statistiques de défense.",
@@ -163,7 +165,8 @@ strings = {
     ["BONUS"] = "Bonus: ",
     ["ATTACK_POWER"] = "Puissance d'attaque: ",
     ["CRIT_CHANCE"] = "Chances de critique: ",
-    ["ATTACK_SPEED"] = "Attack Speed",
+    ["ATTACK_SPEED_HEADER"] = "Attack Speed",
+    ["ATTACK_SPEED"] = "Attack Speed: ",
     ["ATTACK_SPEED_MAIN_HAND"] = "Main Hand: ",
     ["ATTACK_SPEED_OFF_HAND"] = "Off Hand: ",
 

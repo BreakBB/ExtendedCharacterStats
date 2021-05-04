@@ -82,6 +82,8 @@ strings = {
     ["RANGED_HIT_BONUS_SETTING_DESC"] = "显示/隐藏 远程命中率",
     ["RANGED_MISS_CHANCE_SETTING_DESC"] = "显示/隐藏 针对同等级敌人的远程未命中率",
     ["RANGED_MISS_CHANCE_BOSS_SETTING_DESC"] = "显示/隐藏 针对BOSS的远程未命中率 (+3 等级)。",
+    ["RANGED_ATTACK_SPEED_SETTING"] = "Attack Speed",
+    ["RANGED_ATTACK_SPEED_SETTING_DESC"] = "Shows/Hides the ranged attack speed.",
     -- Defense Settings
     ["DEFENSE_SETTINGS"] = "显示防御属性",
     ["DEFENSE_SETTINGS_DESC"] = "显示/隐藏 所有防御属性",
@@ -163,7 +165,8 @@ strings = {
     ["BONUS"] = "命中: ",
     ["ATTACK_POWER"] = "攻击强度: ",
     ["CRIT_CHANCE"] = "暴击几率: ",
-    ["ATTACK_SPEED"] = "Attack Speed",
+    ["ATTACK_SPEED_HEADER"] = "Attack Speed",
+    ["ATTACK_SPEED"] = "Attack Speed: ",
     ["ATTACK_SPEED_MAIN_HAND"] = "Main Hand: ",
     ["ATTACK_SPEED_OFF_HAND"] = "Off Hand: ",
 

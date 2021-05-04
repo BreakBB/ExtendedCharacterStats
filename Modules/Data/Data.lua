@@ -67,6 +67,7 @@ dataFunctionRefs = {
     ["RangedHitBonus"] = function() return Data:RangeHitBonus() end,
     ["RangedHitSameLevel"] = function() return Data:RangeMissChanceSameLevel() end,
     ["RangedHitBossLevel"] = function() return Data:RangeMissChanceBossLevel() end,
+    ["RangedAttackSpeed"] = function() return Data:GetRangedAttackSpeed() end,
     -- Defense
     ["Armor"] = function() return Data:GetArmorValue() end,
     ["DefenseValue"] = function() return Data:GetDefenseValue() end,

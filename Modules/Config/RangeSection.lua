@@ -53,9 +53,22 @@ function _Config:LoadRangeSection()
                     Stats:RebuildStatInfos()
                 end,
             },
-            rangeHit = {
+            rangedAttackSpeed = {
                 type = "toggle",
                 order = 3,
+                name = function() return i18n("RANGED_ATTACK_SPEED_SETTING") end,
+                desc = function() return i18n("RANGED_ATTACK_SPEED_SETTING_DESC") end,
+                width = 1.5,
+                disabled = function() return (not ExtendedCharacterStats.profile.ranged.display); end,
+                get = function () return ExtendedCharacterStats.profile.ranged.attackSpeed.display; end,
+                set = function (info, value)
+                    ExtendedCharacterStats.profile.ranged.attackSpeed.display = value
+                    Stats:RebuildStatInfos()
+                end,
+            },
+            rangeHit = {
+                type = "toggle",
+                order = 4,
                 name = function() return i18n("RANGED_HIT_SETTING") end,
                 desc = function() return i18n("RANGED_HIT_SETTING_DESC") end,
                 width = 1.5,
@@ -68,7 +81,7 @@ function _Config:LoadRangeSection()
             },
             rangeHitGroup = {
                 type = "group",
-                order = 4,
+                order = 5,
                 inline = true,
                 name = function() return i18n("RANGED_HIT_VALUES_SETTING") end,
                 args = {

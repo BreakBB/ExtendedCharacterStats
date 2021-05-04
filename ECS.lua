@@ -88,6 +88,10 @@ _MigrateToLatestProfileVersion = function(profileVersion, defaultProfile)
         ExtendedCharacterStats.profile.melee.attackPower.refName = "MeleeAttackPower"
         ExtendedCharacterStats.profile.melee.attackSpeed = defaultProfile.profile.melee.attackSpeed
     end
+
+    if profileVersion < 8 then
+        ExtendedCharacterStats.profile.ranged.attackSpeed = defaultProfile.profile.ranged.attackSpeed
+    end
 end
 
 ---@return boolean

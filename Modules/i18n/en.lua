@@ -82,6 +82,8 @@ strings = {
     ["RANGED_HIT_BONUS_SETTING_DESC"] = "Shows/Hides the ranged hit bonus.",
     ["RANGED_MISS_CHANCE_SETTING_DESC"] = "Shows/Hides the ranged miss chance against enemies on the same level.",
     ["RANGED_MISS_CHANCE_BOSS_SETTING_DESC"] = "Shows/Hides the ranged miss chance against boss enemies (+3 Level).",
+    ["RANGED_ATTACK_SPEED_SETTING"] = "Attack Speed",
+    ["RANGED_ATTACK_SPEED_SETTING_DESC"] = "Shows/Hides the ranged attack speed.",
     -- Defense Settings
     ["DEFENSE_SETTINGS"] = "Show Defense Stats",
     ["DEFENSE_SETTINGS_DESC"] = "Shows/Hides all defense stats.",
@@ -163,7 +165,8 @@ strings = {
     ["BONUS"] = "Bonus: ",
     ["ATTACK_POWER"] = "Attack Power: ",
     ["CRIT_CHANCE"] = "Crit Chance: ",
-    ["ATTACK_SPEED"] = "Attack Speed",
+    ["ATTACK_SPEED_HEADER"] = "Attack Speed",
+    ["ATTACK_SPEED"] = "Attack Speed: ",
     ["ATTACK_SPEED_MAIN_HAND"] = "Main Hand: ",
     ["ATTACK_SPEED_OFF_HAND"] = "Off Hand: ",
 

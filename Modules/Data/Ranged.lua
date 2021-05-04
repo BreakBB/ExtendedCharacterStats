@@ -25,6 +25,11 @@ _IsRangeAttackClass = function()
     return classId == Data.WARRIOR or classId == Data.ROGUE or classId == Data.HUNTER
 end
 
+---@return string
+function Data:GetRangedAttackSpeed()
+    local speed, _ = UnitRangedDamage("player")
+    return DataUtils:Round(speed, 2)
+end
 
 ---@return string
 function Data:RangedCrit()

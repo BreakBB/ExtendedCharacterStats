@@ -84,6 +84,8 @@ strings = {
     ["RANGED_MISS_CHANCE_SETTING_DESC"] = "Zeigt/Versteckt die Chance einen Gegner des gleichen Levels im Fernkampf zu verfehlen.",
     ["RANGED_MISS_CHANCE_BOSS_SETTING_DESC"] =
         "Zeigt/Versteckt die Chance einen Gegner mit 3 Level über dem eigenen im Fernkampf zu verfehlen.",
+    ["RANGED_ATTACK_SPEED_SETTING"] = "Angriffstempo",
+    ["RANGED_ATTACK_SPEED_SETTING_DESC"] = "Zeigt/Versteckt das Fernkampf Angriffstempo.",
     -- Defense Settings
     ["DEFENSE_SETTINGS"] = "Verteidigungswerte anzeigen",
     ["DEFENSE_SETTINGS_DESC"] = "Zeigt/Versteckt alle Verteidigungswerte.",
@@ -166,7 +168,8 @@ strings = {
     ["BONUS"] = "Bonus: ",
     ["ATTACK_POWER"] = "Angriffskraft: ",
     ["CRIT_CHANCE"] = "Kritische Chance: ",
-    ["ATTACK_SPEED"] = "Angriffstempo",
+    ["ATTACK_SPEED_HEADER"] = "Angriffstempo",
+    ["ATTACK_SPEED"] = "Attack Speed: ",
     ["ATTACK_SPEED_MAIN_HAND"] = "Waffenhand: ",
     ["ATTACK_SPEED_OFF_HAND"] = "Schildhand: ",
 
