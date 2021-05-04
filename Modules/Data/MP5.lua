@@ -136,7 +136,10 @@ function Data:GetMP5FromBuffs()
             bonus = bonus + 6 -- 6 MP5 from Sagefish Delight
         end
         if spellId == 25690 then
-            bonus = bonus + 3 -- 8 MP5 from Smoked Sagefish
+            bonus = bonus + 3 -- 3 MP5 from Smoked Sagefish
+        end
+        if spellId == 33266 then
+            bonus = bonus + 8 -- 8 MP5 from Blackened Sporefish
         end
 
         if spellId == 5677 then
