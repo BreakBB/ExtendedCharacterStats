@@ -115,7 +115,7 @@ end
 function Data:GetMP5FromBuffs()
     local mod = 0
     local bonus = 0
-    local has2pEarthshatterer = Data:IsSetBonusActive(Data.setNames.THE_EARTHSHATTERER, 2)
+    local has4pEarthshatterer = Data:IsSetBonusActive(Data.setNames.THE_EARTHSHATTERER, 4)
 
     for i = 1, 40 do
         local _, _, _, _, _, _, _, _, _, spellId, _ = UnitAura("player", i, "HELPFUL")
@@ -144,25 +144,25 @@ function Data:GetMP5FromBuffs()
 
         if spellId == 5677 then
             bonus = bonus + 10 -- 4 Mana per 2 seconds from Mana Spring Totem (Rank 1)
-            if has2pEarthshatterer then
+            if has4pEarthshatterer then
                 bonus = bonus + 2.5 -- + 0,25% for Shaman T3 2 piece bonus
             end
         end
         if spellId == 10491 then
             bonus = bonus + 15 -- 6 Mana per 2 seconds from Mana Spring Totem (Rank 2)
-            if has2pEarthshatterer then
+            if has4pEarthshatterer then
                 bonus = bonus + 3.75 -- + 0,25% for Shaman T3 2 piece bonus
             end
         end
         if spellId == 10493 then
             bonus = bonus + 20 -- 8 Mana per 2 seconds from Mana Spring Totem (Rank 3)
-            if has2pEarthshatterer then
+            if has4pEarthshatterer then
                 bonus = bonus + 5 -- + 0,25% for Shaman T3 2 piece bonus
             end
         end
         if spellId == 10494 then
             bonus = bonus + 25 -- 10 Mana per 2 seconds from Mana Spring Totem (Rank 4)
-            if has2pEarthshatterer then
+            if has4pEarthshatterer then
                 bonus = bonus + 6.25 -- + 0,25% for Shaman T3 2 piece bonus
             end
         end

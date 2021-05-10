@@ -46,14 +46,14 @@ local itemSets = {
         [16950] = true
     },
     [setNames.THE_EARTHSHATTERER] = {
-        [24468] = true,
+        [22468] = true,
         [22470] = true,
         [22469] = true,
         [22466] = true,
         [22465] = true,
         [22467] = true,
         [22464] = true,
-        [24471] = true,
+        [22471] = true,
         [23065] = true
     },
     [setNames.HARUSPEXS_GARB] = {
