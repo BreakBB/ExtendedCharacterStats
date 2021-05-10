@@ -1051,6 +1051,7 @@ stds.ecs = {
         "GetExpansionDisplayInfo",
         "GetExpansionLevel",
         "GetExpansionTrialInfo",
+        "GetExpertise",
         "GetFactionInfo",
         "GetFactionInfoByID",
         "GetFileIDFromPath",
