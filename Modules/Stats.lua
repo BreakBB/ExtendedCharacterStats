@@ -185,7 +185,11 @@ _CreateStatInfos = function()
     _CreateStatInfo(category, category.movementSpeed)
 
     category = profile.melee
-    _CreateStatInfo(category, category.attackPower, category.crit)
+    if GetClassicExpansionLevel and GetClassicExpansionLevel() == LE_EXPANSION_BURNING_CRUSADE then
+        _CreateStatInfo(category, category.attackPower, category.crit, category.expertise)
+    else
+        _CreateStatInfo(category, category.attackPower, category.crit)
+    end
     if category.display then
         category = category.hit
         _CreateStatInfo(category, category.bonus, category.sameLevel, category.bossLevel)

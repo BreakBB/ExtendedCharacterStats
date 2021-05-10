@@ -93,3 +93,9 @@ function Data:MeleeHitMissChanceBossLevel()
 
     return DataUtils:Round(missChance, 2) .. "%"
 end
+
+---@return string
+function Data:GetExpertise()
+    local expertise, _ = GetExpertise()
+    return DataUtils:Round(expertise, 0)
+end

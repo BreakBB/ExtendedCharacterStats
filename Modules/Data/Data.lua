@@ -56,6 +56,7 @@ dataFunctionRefs = {
     -- Melee
     ["MeleeAttackPower"] = function() return Data:GetMeleeAttackPower() end,
     ["MeleeCritChance"] = function() return Data:MeleeCrit() end,
+    ["Expertise"] = function() return Data:GetExpertise() end,
     ["MeleeHitBonus"] = function() return Data:MeleeHitBonus() end,
     ["MeleeHitSameLevel"] = function() return Data:MeleeHitMissChanceSameLevel() end,
     ["MeleeHitBossLevel"] = function() return Data:MeleeHitMissChanceBossLevel() end,

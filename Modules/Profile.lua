@@ -40,6 +40,7 @@ local function GetDefaultStatsProfile()
             },
             attackPower = {display = true, refName = "MeleeAttackPower", text = "ATTACK_POWER"},
             crit = {display = true, refName = "MeleeCritChance", text = "CRIT_CHANCE"},
+            expertise = {display = true, refName = "Expertise", text = "EXPERTISE"},
             attackSpeed = {
                 display = true,
                 isSubGroup = true,

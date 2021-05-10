@@ -53,6 +53,20 @@ function _Config:LoadMeleeSection()
                     Stats:RebuildStatInfos()
                 end,
             },
+            expertise = {
+                type = "toggle",
+                order = 2.5,
+                name = function() return i18n("MELEE_EXPERTISE_SETTING") end,
+                desc = function() return i18n("MELEE_EXPERTISE_SETTING_DESC") end,
+                width = 1.5,
+                hidden = function() return (not (GetClassicExpansionLevel and GetClassicExpansionLevel() == LE_EXPANSION_BURNING_CRUSADE)) end,
+                disabled = function() return (not ExtendedCharacterStats.profile.melee.display); end,
+                get = function () return ExtendedCharacterStats.profile.melee.expertise.display; end,
+                set = function (_, value)
+                    ExtendedCharacterStats.profile.melee.expertise.display = value
+                    Stats:RebuildStatInfos()
+                end,
+            },
             meleeHit = {
                 type = "toggle",
                 order = 3,
