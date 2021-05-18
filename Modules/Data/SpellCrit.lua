@@ -17,7 +17,7 @@ function Data:GetSpellCrit(school)
     local itemBonus = _GetItemModifierBySchool(school)
     local setBonus = _GetSetBonus(school)
 
-    if GetClassicExpansionLevel and GetClassicExpansionLevel() == LE_EXPANSION_BURNING_CRUSADE then
+    if WOW_PROJECT_ID == WOW_PROJECT_BURNING_CRUSADE_CLASSIC then
         crit = crit + GetCombatRatingBonus(CR_CRIT_SPELL) + GetSpellCritChanceFromIntellect("player") + itemBonus + setBonus
     else
         crit = crit + GetSpellCritChance() + itemBonus + setBonus

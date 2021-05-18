@@ -185,7 +185,7 @@ _CreateStatInfos = function()
     _CreateStatInfo(category, category.movementSpeed)
 
     category = profile.melee
-    if GetClassicExpansionLevel and GetClassicExpansionLevel() == LE_EXPANSION_BURNING_CRUSADE then
+    if WOW_PROJECT_ID == WOW_PROJECT_BURNING_CRUSADE_CLASSIC then
         _CreateStatInfo(category, category.attackPower, category.crit, category.expertise)
     else
         _CreateStatInfo(category, category.attackPower, category.crit)

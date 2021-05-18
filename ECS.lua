@@ -92,7 +92,7 @@ _MigrateToLatestProfileVersion = function(profileVersion, defaultProfile)
     if profileVersion < 8 then
         ExtendedCharacterStats.profile.ranged.attackSpeed = defaultProfile.profile.ranged.attackSpeed
         ExtendedCharacterStats.profile.spell.penetration = defaultProfile.profile.spell.penetration
-        if GetClassicExpansionLevel and GetClassicExpansionLevel() == LE_EXPANSION_BURNING_CRUSADE then
+        if WOW_PROJECT_ID == WOW_PROJECT_BURNING_CRUSADE_CLASSIC then
             ExtendedCharacterStats.profile.melee.expertise = defaultProfile.profile.melee.expertise
         end
     end
