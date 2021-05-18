@@ -56,7 +56,13 @@ dataFunctionRefs = {
     -- Melee
     ["MeleeAttackPower"] = function() return Data:GetMeleeAttackPower() end,
     ["MeleeCritChance"] = function() return Data:MeleeCrit() end,
-    ["Expertise"] = function() return Data:GetExpertise() end,
+    ["Expertise"] = function()
+        if WOW_PROJECT_ID == WOW_PROJECT_BURNING_CRUSADE_CLASSIC then
+            return Data:GetExpertise()
+        else
+            return ""
+        end
+    end,
     ["MeleeHitBonus"] = function() return Data:MeleeHitBonus() end,
     ["MeleeHitSameLevel"] = function() return Data:MeleeHitMissChanceSameLevel() end,
     ["MeleeHitBossLevel"] = function() return Data:MeleeHitMissChanceBossLevel() end,
