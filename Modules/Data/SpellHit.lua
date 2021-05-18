@@ -14,7 +14,11 @@ local function _GetTalentModifierSpellHit()
 
     if classId == 8 then -- Mage
         local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 3)
-        mod = points * 2 -- 0-6% from Elemental Precision
+        if ECS.IsTBC then
+            mod = points * 1 -- 0-3% from Elemental Precision
+        else
+            mod = points * 2 -- 0-6% from Elemental Precision
+        end
     end
 
     return mod

@@ -3,19 +3,16 @@ local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
 local DataUtils = ECSLoader:ImportModule("DataUtils")
 
-local _GetTalentModifier, _GetGeneralTalentModifier, _GetTalentModifierBySchool
-local _GetTalentModifierHolyCrit, _GetTalentModifierFireCrit
-local _GetItemModifierBySchool, _GetItemModifierHolyCrit
-local _GetSetBonus
+local _SpellCrit = {}
 
 local _, _, classId = UnitClass("player")
 
 ---@param school number
 ---@return string
 function Data:GetSpellCrit(school)
-    local crit = _GetTalentModifier(school)
-    local itemBonus = _GetItemModifierBySchool(school)
-    local setBonus = _GetSetBonus(school)
+    local crit = _SpellCrit:GetTalentModifier(school)
+    local itemBonus = _SpellCrit:GetItemModifierBySchool(school)
+    local setBonus = _SpellCrit:GetSetBonus(school)
 
     if ECS.IsTBC then
         crit = crit + GetCombatRatingBonus(CR_CRIT_SPELL) + GetSpellCritChanceFromIntellect("player") + itemBonus + setBonus
@@ -28,19 +25,20 @@ end
 
 ---@param school number
 ---@return number
-_GetTalentModifier = function(school)
-    local modifier = _GetGeneralTalentModifier()
-    local modifierForSchool = _GetTalentModifierBySchool(school)
+function _SpellCrit:GetTalentModifier(school)
+    local modifier = _SpellCrit:GetGeneralTalentModifier()
+    local modifierForSchool = _SpellCrit:GetTalentModifierBySchool(school)
 
     return modifier + modifierForSchool
 end
 
 ---@return number
-_GetGeneralTalentModifier = function()
+function _SpellCrit:GetGeneralTalentModifier()
     local mod = 0
 
     if classId == Data.MAGE then
-        local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 15)
+        local talentSlot = ECS.IsTBC and 17 or 15;
+        local _, _, _, _, points, _, _, _ = GetTalentInfo(1, talentSlot)
         mod = points * 1 -- 0-3% Arcane Instability
     end
 
@@ -49,18 +47,18 @@ end
 
 ---@param school number
 ---@return number
-_GetTalentModifierBySchool = function(school)
+function _SpellCrit:GetTalentModifierBySchool(school)
     if school == Data.HOLY_SCHOOL then
-        return _GetTalentModifierHolyCrit()
+        return _SpellCrit:GetTalentModifierHolyCrit()
     elseif school == Data.FIRE_SCHOOL then
-        return _GetTalentModifierFireCrit()
+        return _SpellCrit:GetTalentModifierFireCrit()
     else
         return 0
     end
 end
 
 ---@return number
-_GetTalentModifierHolyCrit = function()
+function _SpellCrit:GetTalentModifierHolyCrit()
     local mod = 0
 
     if classId == Data.PRIEST then
@@ -72,26 +70,27 @@ _GetTalentModifierHolyCrit = function()
 end
 
 ---@return number
-_GetTalentModifierFireCrit = function()
+function _SpellCrit:GetTalentModifierFireCrit()
     local mod = 0
 
     if classId == Data.MAGE then
-        local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 13)
+        local talentSlot = ECS.IsTBC and 14 or 13;
+        local _, _, _, _, points, _, _, _ = GetTalentInfo(2, talentSlot)
         mod = points * 2 -- 0-6% Critical Mass
     end
 
     return mod
 end
 
-_GetItemModifierBySchool = function(school)
+function _SpellCrit:GetItemModifierBySchool(school)
     if school == Data.HOLY_SCHOOL then
-        return _GetItemModifierHolyCrit()
+        return _SpellCrit:GetItemModifierHolyCrit()
     end
 
     return 0
 end
 
-_GetItemModifierHolyCrit = function()
+function _SpellCrit:GetItemModifierHolyCrit()
     local mainHand, _ = GetInventoryItemID("player", 16)
     if mainHand == 18608 then
         return 2 -- 2% Holy Crit from Benediction
@@ -99,7 +98,7 @@ _GetItemModifierHolyCrit = function()
     return 0
 end
 
-_GetSetBonus = function(school)
+function _SpellCrit:GetSetBonus(school)
     local bonus = 0
 
     if school == Data.NATURE_SCHOOL and Data:HasNatureCritBonusModifier() then
