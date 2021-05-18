@@ -57,7 +57,7 @@ dataFunctionRefs = {
     ["MeleeAttackPower"] = function() return Data:GetMeleeAttackPower() end,
     ["MeleeCritChance"] = function() return Data:MeleeCrit() end,
     ["Expertise"] = function()
-        if WOW_PROJECT_ID == WOW_PROJECT_BURNING_CRUSADE_CLASSIC then
+        if ECS.IsTBC then
             return Data:GetExpertise()
         else
             return ""

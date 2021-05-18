@@ -185,7 +185,7 @@ _CreateStatInfos = function()
     _CreateStatInfo(category, category.movementSpeed)
 
     category = profile.melee
-    if WOW_PROJECT_ID == WOW_PROJECT_BURNING_CRUSADE_CLASSIC then
+    if ECS.IsTBC then
         _CreateStatInfo(category, category.attackPower, category.crit, category.expertise)
     else
         _CreateStatInfo(category, category.attackPower, category.crit)

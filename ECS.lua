@@ -5,6 +5,8 @@
 ---@class ECS
 ECS = {...}
 
+ECS.IsTBC = WOW_PROJECT_ID == WOW_PROJECT_BURNING_CRUSADE_CLASSIC
+
 ---@type i18n
 local i18n = ECSLoader:ImportModule("i18n")
 ---@type Stats
@@ -92,7 +94,7 @@ _MigrateToLatestProfileVersion = function(profileVersion, defaultProfile)
     if profileVersion < 8 then
         ExtendedCharacterStats.profile.ranged.attackSpeed = defaultProfile.profile.ranged.attackSpeed
         ExtendedCharacterStats.profile.spell.penetration = defaultProfile.profile.spell.penetration
-        if WOW_PROJECT_ID == WOW_PROJECT_BURNING_CRUSADE_CLASSIC then
+        if ECS.IsTBC then
             ExtendedCharacterStats.profile.melee.expertise = defaultProfile.profile.melee.expertise
         end
     end
