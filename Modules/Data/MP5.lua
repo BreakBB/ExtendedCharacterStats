@@ -125,10 +125,10 @@ function _MP5:GetTalentBonus()
     local bonus = 0
 
     if classId == Data.DRUID and ECS.IsTBC then
-        local _, _, _, _, dreamStatePoints, _, _, _ = GetTalentInfo(1, 17)
+        local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 17)
         local _, intValue, _, _ = UnitStat("player", 4)
 
-        bonus = dreamStatePoints * (0.4 * intValue)
+        bonus = points * 0.04 * intValue -- 0-12% of Int as MP5
     end
 
     return bonus
