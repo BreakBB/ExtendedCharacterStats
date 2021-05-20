@@ -131,6 +131,13 @@ function _MP5:GetTalentBonus()
         bonus = points * 0.04 * intValue -- 0-12% of Int as MP5
     end
 
+    if classId == Data.SHAMAN and ECS.IsTBC then
+        local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 14)
+        local _, intValue, _, _ = UnitStat("player", 4)
+
+        bonus = points * 0.02 * intValue -- 0-10% of Int as MP5
+    end
+
     return bonus
 end
 
