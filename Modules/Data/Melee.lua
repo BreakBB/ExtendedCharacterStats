@@ -3,6 +3,8 @@ local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
 local DataUtils = ECSLoader:ImportModule("DataUtils")
 
+local _Melee = {}
+local _, _, classId = UnitClass("player")
 
 ---@return string
 function Data:GetMeleeAttackPower()
@@ -27,17 +29,28 @@ function Data:MeleeCrit()
     return DataUtils:Round(GetCritChance(), 2) .. "%"
 end
 
+---@return string
+function Data:MeleeHitBonus()
+    return DataUtils:Round(_Melee:MeleeHitRating(), 2) .. "%"
+end
+
 ---@return number
-local function _MeleeHitRating()
+function _Melee:MeleeHitRating()
     if CR_HIT_MELEE then
-        return GetCombatRatingBonus(CR_HIT_MELEE)
+        return GetCombatRatingBonus(CR_HIT_MELEE) + _Melee:GetTalentModifier()
     end
     return GetHitModifier()
 end
 
----@return string
-function Data:MeleeHitBonus()
-    return DataUtils:Round(_MeleeHitRating(), 2) .. "%"
+function _Melee:GetTalentModifier()
+    local mod = 0
+
+    if classId == Data.WARRIOR and ECS.IsTBC then
+        local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 17)
+        mod = points * 1 -- 0-3% Precision
+    end
+
+    return mod
 end
 
 ---@return string
@@ -53,7 +66,7 @@ function Data:MeleeHitMissChanceSameLevel()
         missChance = DataUtils:GetMissChanceByDifference(mainBase + mainMod, enemyDefenseValue)
     end
 
-    local hitValue = _MeleeHitRating()
+    local hitValue = _Melee:MeleeHitRating()
     if hitValue then -- This needs to be checked because on dungeon entering it becomes nil
         missChance = missChance - hitValue
     end
@@ -80,7 +93,7 @@ function Data:MeleeHitMissChanceBossLevel()
         missChance = DataUtils:GetMissChanceByDifference(mainBase + mainMod, enemyDefenseValue)
     end
 
-    local hitValue = _MeleeHitRating()
+    local hitValue = _Melee:MeleeHitRating()
     if hitValue then -- This needs to be checked because on dungeon entering it becomes nil
         missChance = missChance - hitValue
     end
