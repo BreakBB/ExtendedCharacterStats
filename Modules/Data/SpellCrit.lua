@@ -37,6 +37,16 @@ function _SpellCrit:GetSpellCritFromBuffs()
         if spellId == 30708 then
             mod = mod + 3 -- 3% from Totem of Wrath
         end
+
+        if spellId == 30165 then
+            mod = mod + 3 -- 3% from Elemental Devastation Rank 1
+        end
+        if spellId == 29177 then
+            mod = mod + 6 -- 6% from Elemental Devastation Rank 2
+        end
+        if spellId == 29178 then
+            mod = mod + 9 -- 9% from Elemental Devastation Rank 3
+        end
     end
 
     return mod
