@@ -45,18 +45,23 @@ function _SpellHit:GetTalentModifierSpellHit()
     local _, _, classId = UnitClass("player")
     local mod = 0
 
-    if classId == 5 then -- Priest
+    if classId == Data.PRIEST then
         local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 5)
         mod = points * 2 -- 0-10% from Shadow Focus
     end
 
-    if classId == 8 then -- Mage
+    if classId == Data.MAGE then
         local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 3)
         if ECS.IsTBC then
             mod = points * 1 -- 0-3% from Elemental Precision
         else
             mod = points * 2 -- 0-6% from Elemental Precision
         end
+    end
+
+    if classId == Data.SHAMAN and ECS.IsTBC then
+        local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 15)
+        mod = points * 2 -- 0-6% from Elemental Precision
     end
 
     return mod
