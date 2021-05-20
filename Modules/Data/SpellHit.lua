@@ -84,6 +84,10 @@ function _SpellHit:GetSpellHitFromBuffs()
             mod = mod + 1 -- 1% from Inspiring Presence
             otherDraeneiInGroup = true
         end
+
+        if spellId == 30708 then
+            mod = mod + 3 -- 3% from Totem of Wrath
+        end
     end
 
     if (not otherDraeneiInGroup) and IsSpellKnown(28878) then

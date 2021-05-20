@@ -20,7 +20,26 @@ function Data:GetSpellCrit(school)
         crit = crit + GetSpellCritChance() + itemBonus + setBonus
     end
 
+    crit = crit + _SpellCrit:GetSpellCritFromBuffs()
+
     return DataUtils:Round(crit, 2) .. "%"
+end
+
+function _SpellCrit:GetSpellCritFromBuffs()
+    local mod = 0
+
+    for i = 1, 40 do
+        local _, _, _, _, _, _, _, _, _, spellId, _ = UnitAura("player", i, "HELPFUL")
+        if spellId == nil then
+            break
+        end
+
+        if spellId == 30708 then
+            mod = mod + 3 -- 3% from Totem of Wrath
+        end
+    end
+
+    return mod
 end
 
 ---@param school number
