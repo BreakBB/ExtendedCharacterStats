@@ -37,7 +37,7 @@ end
 ---@return number
 function _Melee:MeleeHitRating()
     if CR_HIT_MELEE then
-        return GetCombatRatingBonus(CR_HIT_MELEE) + _Melee:GetTalentModifier()
+        return GetCombatRatingBonus(CR_HIT_MELEE) + _Melee:GetTalentModifier() + _Melee:GetHitFromBuffs()
     end
     return GetHitModifier()
 end
@@ -48,6 +48,29 @@ function _Melee:GetTalentModifier()
     if classId == Data.WARRIOR and ECS.IsTBC then
         local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 17)
         mod = points * 1 -- 0-3% Precision
+    end
+
+    return mod
+end
+
+function _Melee:GetHitFromBuffs()
+    local mod = 0
+    local otherDraeneiInGroup = false
+
+    for i = 1, 40 do
+        local _, _, _, _, _, _, _, _, _, spellId, _ = UnitAura("player", i, "HELPFUL")
+        if spellId == nil then
+            break
+        end
+
+        if spellId == 6562 then
+            mod = mod + 1 -- 1% from Heroic Presence
+            otherDraeneiInGroup = true
+        end
+    end
+
+    if (not otherDraeneiInGroup) and IsSpellKnown(6562) then
+        mod = mod + 1
     end
 
     return mod

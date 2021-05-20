@@ -3,7 +3,45 @@ local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
 local DataUtils = ECSLoader:ImportModule("DataUtils")
 
-local function _GetTalentModifierSpellHit()
+local _SpellHit = {}
+
+function Data:SpellMissChanceSameLevel()
+    local missChance = 4
+
+    missChance = missChance - _SpellHit:GetTalentModifierSpellHit()
+    local mod = _SpellHit:GetSpellHitRating()
+    if mod then
+        missChance = missChance - mod
+    end
+
+    if missChance < 1 then
+        missChance = 1
+    elseif missChance > 100 then
+        missChance = 100
+    end
+
+    return DataUtils:Round(missChance, 2) .. "%"
+end
+
+function Data:SpellMissChanceBossLevel()
+    local missChance = 17
+
+    missChance = missChance - _SpellHit:GetTalentModifierSpellHit()
+    local mod = _SpellHit:GetSpellHitRating()
+    if mod then
+        missChance = missChance - mod
+    end
+
+    if missChance < 1 then
+        missChance = 1
+    elseif missChance > 100 then
+        missChance = 100
+    end
+
+    return DataUtils:Round(missChance, 2) .. "%"
+end
+
+function _SpellHit:GetTalentModifierSpellHit()
     local _, _, classId = UnitClass("player")
     local mod = 0
 
@@ -25,55 +63,42 @@ local function _GetTalentModifierSpellHit()
 end
 
 ---@return number
-local function _GetSpellHitRating()
+function _SpellHit:GetSpellHitRating()
     if CR_HIT_SPELL then
-        return GetCombatRatingBonus(CR_HIT_SPELL)
+        return GetCombatRatingBonus(CR_HIT_SPELL) + _SpellHit:GetSpellHitFromBuffs()
     end
     return GetSpellHitModifier()
 end
 
+function _SpellHit:GetSpellHitFromBuffs()
+    local mod = 0
+    local otherDraeneiInGroup = false
+
+    for i = 1, 40 do
+        local _, _, _, _, _, _, _, _, _, spellId, _ = UnitAura("player", i, "HELPFUL")
+        if spellId == nil then
+            break
+        end
+
+        if spellId == 28878 then
+            mod = mod + 1 -- 1% from Inspiring Presence
+            otherDraeneiInGroup = true
+        end
+    end
+
+    if (not otherDraeneiInGroup) and IsSpellKnown(28878) then
+        mod = mod + 1
+    end
+
+    return mod
+end
+
 function Data:SpellHitBonus()
-    local hit = _GetTalentModifierSpellHit()
-    local mod = _GetSpellHitRating()
+    local hit = _SpellHit:GetTalentModifierSpellHit()
+    local mod = _SpellHit:GetSpellHitRating()
     if mod then
         hit = hit + mod
     end
 
     return DataUtils:Round(hit, 2) .. "%"
-end
-
-function Data:SpellMissChanceSameLevel()
-    local missChance = 4
-
-    missChance = missChance - _GetTalentModifierSpellHit()
-    local mod = _GetSpellHitRating()
-    if mod then
-        missChance = missChance - mod
-    end
-
-    if missChance < 1 then
-        missChance = 1
-    elseif missChance > 100 then
-        missChance = 100
-    end
-
-    return DataUtils:Round(missChance, 2) .. "%"
-end
-
-function Data:SpellMissChanceBossLevel()
-    local missChance = 17
-
-    missChance = missChance - _GetTalentModifierSpellHit()
-    local mod = _GetSpellHitRating()
-    if mod then
-        missChance = missChance - mod
-    end
-
-    if missChance < 1 then
-        missChance = 1
-    elseif missChance > 100 then
-        missChance = 100
-    end
-
-    return DataUtils:Round(missChance, 2) .. "%"
 end
