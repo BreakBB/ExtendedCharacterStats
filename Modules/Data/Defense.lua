@@ -34,6 +34,10 @@ function Data:GetDefenseValue()
         skillModifier = select(6, GetSkillLineInfo(skillIndex))
     end
 
+    if ECS.IsTBC then
+        skillModifier = skillModifier + math.floor(GetCombatRatingBonus(CR_DEFENSE_SKILL))
+    end
+
     return skillRank .. " + " .. skillModifier
 end
 
