@@ -70,13 +70,19 @@ function Data:GetMP5FromSpirit()
     return DataUtils:Round(base * 5, 1)
 end
 
--- Get manaregen while casting
+-- Get mana regen while casting
 function Data:GetMP5WhileCasting()
     local _, casting = GetManaRegen() -- Returns mana reg per 1 second
     if casting < 1 then
         casting = lastManaReg
     end
     lastManaReg = casting
+
+    if ECS.IsTBC then
+        casting = (casting * 5) + _MP5:GetTalentBonus()
+
+        return DataUtils:Round(casting, 2)
+    end
 
     local mod = _MP5:GetTalentModifier()
     if Data:HasSetBonusModifierMP5() then
@@ -90,7 +96,7 @@ function Data:GetMP5WhileCasting()
     casting = casting * mod
 
     local mp5Items = Data:GetMP5FromItems()
-    casting = (casting * 5) + mp5Items + auraValues + _MP5:GetTalentBonus()
+    casting = (casting * 5) + mp5Items + auraValues
 
     return DataUtils:Round(casting, 2)
 end
@@ -99,39 +105,37 @@ function _MP5:GetTalentModifier()
     local mod = 0
 
     if classId == Data.PRIEST then
-        local talentSlot = ECS.IsTBC and 9 or 8;
-        local _, _, _, _, points, _, _, _ = GetTalentInfo(1, talentSlot)
+        local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 8)
         mod = points * 0.05 -- 0-15% from Meditation
     elseif classId == Data.MAGE then
         local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 12)
-        if ECS.IsTBC then
-            mod = points * 0.10 -- 0-30% Arcane Meditation
-        else
-            mod = points * 0.05 -- 0-15% Arcane Meditation
-        end
+        mod = points * 0.05 -- 0-15% Arcane Meditation
     elseif classId == Data.DRUID then
         local _, _, _, _, reflectionPoints, _, _, _ = GetTalentInfo(3, 6)
-        if ECS.IsTBC then
-            mod = reflectionPoints * 0.10 -- 0-30% from Reflection
-        else
-            mod = reflectionPoints * 0.05 -- 0-15% from Reflection
-        end
+        mod = reflectionPoints * 0.05 -- 0-15% from Reflection
     end
 
     return mod
 end
 
+-- This is only relevant for the TBC client
 function _MP5:GetTalentBonus()
     local bonus = 0
 
-    if classId == Data.DRUID and ECS.IsTBC then
+    if classId == Data.DRUID then
         local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 17)
         local _, intValue, _, _ = UnitStat("player", 4)
 
-        bonus = points * 0.04 * intValue -- 0-12% of Int as MP5
+        if points == 1 then
+            bonus = 0.04 * intValue -- 4% of Int as MP5
+        elseif points == 2 then
+            bonus = 0.07 * intValue -- 7% of Int as MP5
+        elseif points == 3 then
+            bonus = 0.1 * intValue -- 10% of Int as MP5
+        end
     end
 
-    if classId == Data.SHAMAN and ECS.IsTBC then
+    if classId == Data.SHAMAN then
         local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 14)
         local _, intValue, _, _ = UnitStat("player", 4)
 
