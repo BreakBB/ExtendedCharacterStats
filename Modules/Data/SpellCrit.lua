@@ -104,8 +104,13 @@ function _SpellCrit:GetTalentModifierFireCrit()
 
     if classId == Data.MAGE then
         local talentSlot = ECS.IsTBC and 14 or 13;
-        local _, _, _, _, points, _, _, _ = GetTalentInfo(2, talentSlot)
-        mod = points * 2 -- 0-6% Critical Mass
+        local _, _, _, _, criticalMassPoints, _, _, _ = GetTalentInfo(2, talentSlot)
+        mod = criticalMassPoints * 2 -- 0-6% Critical Mass
+
+        if ECS.IsTBC then
+            local _, _, _, _, pyromaniacPoints, _, _, _ = GetTalentInfo(2, 18)
+            mod = mod + (pyromaniacPoints * 1) -- 0-3% Pyromaniac
+        end
     end
 
     return mod
