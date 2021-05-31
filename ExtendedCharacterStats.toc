@@ -1,4 +1,4 @@
-## Interface: 11307
+## Interface: 20501
 ## Title : Extended Character Stats v2.8.4
 ## Version : 2.8.4
 ## Author: BreakBB, Ethulu

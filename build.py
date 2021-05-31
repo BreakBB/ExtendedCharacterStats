@@ -8,18 +8,18 @@ import subprocess
 '''
 This program accepts one optional command line option:
 
-interfaceVersion    If provided sets the interface version to the Classic or TBC version
+interfaceVersion    If provided sets the interface version to the Era or BCC version
 
-                    Default: 'tbc'
+                    Default: 'bcc'
 
 Example usage:
 
-'python build.py classic'
+'python build.py era'
 
 This will create a new Classic release in 'releases/<version>-classic-<latestCommit>'
 
 '''
-interfaceVersion = 'tbc'
+interfaceVersion = 'bcc'
 addonDir = 'ExtendedCharacterStats'
 versionDir = None
 
