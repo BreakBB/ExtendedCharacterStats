@@ -101,6 +101,8 @@ strings = {
     ["PARRY_CHANCE_SETTING_DESC"] = "显示/隐藏 招架几率",
     ["DODGE_CHANCE_SETTING"] = "躲闪",
     ["DODGE_CHANCE_SETTING_DESC"] = "显示/隐藏 躲闪几率",
+    ["RESILIENCE_SETTING"] = "Resilience",
+    ["RESILIENCE_SETTING_DESC"] = "Shows/Hides the resilience value.",
     -- Mana Settings
     ["MANA_SETTINGS"] = "显示法力回复",
     ["MANA_SETTINGS_DESC"] = "显示/隐藏 所有法力回复",
@@ -186,6 +188,7 @@ strings = {
     ["BLOCK_VALUE"] = "格挡值: ",
     ["PARRY_CHANCE"] = "招架几率: ",
     ["DODGE_CHANCE"] = "躲闪几率: ",
+    ["RESILIENCE_VALUE"] = "Resilience: ",
 
     ["MP5_ITEMS"] = "装备回蓝: ",
     ["MP5_SPIRIT"] = "精神回蓝: ",

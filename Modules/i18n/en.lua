@@ -101,6 +101,8 @@ strings = {
     ["PARRY_CHANCE_SETTING_DESC"] = "Shows/Hides the parry chance.",
     ["DODGE_CHANCE_SETTING"] = "Dodge Chance",
     ["DODGE_CHANCE_SETTING_DESC"] = "Shows/Hides the dodge chance.",
+    ["RESILIENCE_SETTING"] = "Resilience",
+    ["RESILIENCE_SETTING_DESC"] = "Shows/Hides the resilience value.",
     -- Mana Settings
     ["MANA_SETTINGS"] = "Show Mana Stats",
     ["MANA_SETTINGS_DESC"] = "Shows/Hides all mana stats.",
@@ -186,6 +188,7 @@ strings = {
     ["BLOCK_VALUE"] = "Block Value: ",
     ["PARRY_CHANCE"] = "Parry Chance: ",
     ["DODGE_CHANCE"] = "Dodge Chance: ",
+    ["RESILIENCE_VALUE"] = "Resilience: ",
 
     ["MP5_ITEMS"] = "MP5 (Items): ",
     ["MP5_SPIRIT"] = "MP5 (Spirit): ",

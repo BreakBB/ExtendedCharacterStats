@@ -98,6 +98,12 @@ _MigrateToLatestProfileVersion = function(profileVersion, defaultProfile)
             ExtendedCharacterStats.profile.melee.expertise = defaultProfile.profile.melee.expertise
         end
     end
+
+    if profileVersion < 9 then
+        if ECS.IsTBC then
+            ExtendedCharacterStats.profile.defense.resilience = defaultProfile.profile.defense.resilience
+        end
+    end
 end
 
 ---@return boolean

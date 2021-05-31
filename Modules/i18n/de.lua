@@ -103,6 +103,8 @@ strings = {
     ["PARRY_CHANCE_SETTING_DESC"] = "Zeigt/Versteckt die Parrierwertung.",
     ["DODGE_CHANCE_SETTING"] = "Ausweichchance",
     ["DODGE_CHANCE_SETTING_DESC"] = "Zeigt/Versteckt die Ausweichchance.",
+    ["RESILIENCE_SETTING"] = "Abhärtung",
+    ["RESILIENCE_SETTING_DESC"] = "Zeigt/Versteckt den Abhärtungswert.",
     -- Mana Settings
     ["MANA_SETTINGS"] = "Manawerte anzeigen",
     ["MANA_SETTINGS_DESC"] = "Zeigt/Versteckt alle Manawerte.",
@@ -189,6 +191,7 @@ strings = {
     ["BLOCK_VALUE"] = "Blockwertung: ",
     ["PARRY_CHANCE"] = "Parrierchance: ",
     ["DODGE_CHANCE"] = "Ausweichchance: ",
+    ["RESILIENCE_VALUE"] = "Abhärtung: ",
 
     ["MP5_ITEMS"] = "MP5 (Gegenstände): ",
     ["MP5_SPIRIT"] = "MP5 (Willenskraft): ",

@@ -65,6 +65,11 @@ function Data:GetBlockValue()
     return DataUtils:Round(blockValue, 2)
 end
 
+---@return number
+function Data:GetResilienceValue()
+    return DataUtils:Round(GetCombatRating(15), 2)
+end
+
 function _Defense:GetItemModifierBlockValue()
     local mod = 0
 

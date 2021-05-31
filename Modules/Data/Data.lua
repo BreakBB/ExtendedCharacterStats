@@ -82,6 +82,13 @@ dataFunctionRefs = {
     ["ParryChance"] = function() return Data:GetParryChance() end,
     ["BlockChance"] = function() return Data:GetBlockChance() end,
     ["BlockValue"] = function() return Data:GetBlockValue() end,
+    ["ResilienceValue"] = function()
+        if ECS.IsTBC then
+            return Data:GetResilienceValue()
+        else
+            return ""
+        end
+    end,
     -- Spell
     ["SpellHitBonus"] = function() return Data:SpellHitBonus() end,
     ["SpellHitSameLevel"] = function() return Data:SpellMissChanceSameLevel() end,

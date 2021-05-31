@@ -101,6 +101,8 @@ strings = {
     ["PARRY_CHANCE_SETTING_DESC"] = "Affiche/cache les chances de parer.",
     ["DODGE_CHANCE_SETTING"] = "Chances d'esquiver",
     ["DODGE_CHANCE_SETTING_DESC"] = "Affiche/cache les chances d'esquiver.",
+    ["RESILIENCE_SETTING"] = "Résilience",
+    ["RESILIENCE_SETTING_DESC"] = "Affiche/cache la valeur de résilience.",
     -- Mana Settings
     ["MANA_SETTINGS"] = "Mana Général",
     ["MANA_SETTINGS_DESC"] = "Affiche/cache toutes les statistiques de mana.",
@@ -186,6 +188,7 @@ strings = {
     ["BLOCK_VALUE"] = "Bloquage: ",
     ["PARRY_CHANCE"] = "Chances de parrer: ",
     ["DODGE_CHANCE"] = "Chances d'esquiver: ",
+    ["RESILIENCE_VALUE"] = "Résilience: ",
 
     ["MP5_ITEMS"] = "MP5 (Objets): ",
     ["MP5_SPIRIT"] = "MP5 (Esprit): ",

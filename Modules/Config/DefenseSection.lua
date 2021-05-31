@@ -22,7 +22,7 @@ function _Config:LoadDefenseSection()
                 desc = function() return i18n("DEFENSE_SETTINGS_DESC") end,
                 width = 1.5,
                 get = function () return ExtendedCharacterStats.profile.defense.display; end,
-                set = function (info, value)
+                set = function (_, value)
                     ExtendedCharacterStats.profile.defense.display = value
                     Stats:RebuildStatInfos()
                 end,
@@ -35,7 +35,7 @@ function _Config:LoadDefenseSection()
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
                 get = function () return ExtendedCharacterStats.profile.defense.armor.display; end,
-                set = function (info, value)
+                set = function (_, value)
                     ExtendedCharacterStats.profile.defense.armor.display = value
                     Stats:RebuildStatInfos()
                 end,
@@ -48,7 +48,7 @@ function _Config:LoadDefenseSection()
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
                 get = function () return ExtendedCharacterStats.profile.defense.defense.display; end,
-                set = function (info, value)
+                set = function (_, value)
                     ExtendedCharacterStats.profile.defense.defense.display = value
                     Stats:RebuildStatInfos()
                 end,
@@ -61,7 +61,7 @@ function _Config:LoadDefenseSection()
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
                 get = function () return ExtendedCharacterStats.profile.defense.blockChance.display; end,
-                set = function (info, value)
+                set = function (_, value)
                     ExtendedCharacterStats.profile.defense.blockChance.display = value
                     Stats:RebuildStatInfos()
                 end,
@@ -74,7 +74,7 @@ function _Config:LoadDefenseSection()
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
                 get = function () return ExtendedCharacterStats.profile.defense.blockValue.display; end,
-                set = function (info, value)
+                set = function (_, value)
                     ExtendedCharacterStats.profile.defense.blockValue.display = value
                     Stats:RebuildStatInfos()
                 end,
@@ -87,7 +87,7 @@ function _Config:LoadDefenseSection()
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
                 get = function () return ExtendedCharacterStats.profile.defense.parry.display; end,
-                set = function (info, value)
+                set = function (_, value)
                     ExtendedCharacterStats.profile.defense.parry.display = value
                     Stats:RebuildStatInfos()
                 end,
@@ -100,8 +100,24 @@ function _Config:LoadDefenseSection()
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
                 get = function () return ExtendedCharacterStats.profile.defense.dodge.display; end,
-                set = function (info, value)
+                set = function (_, value)
                     ExtendedCharacterStats.profile.defense.dodge.display = value
+                    Stats:RebuildStatInfos()
+                end,
+            },
+            resilience = {
+                type = "toggle",
+                order = 7,
+                name = function() return i18n("RESILIENCE_SETTING") end,
+                desc = function() return i18n("RESILIENCE_SETTING_DESC") end,
+                width = 1.5,
+                hidden = function()
+                    return (not ECS.IsTBC)
+                end,
+                disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
+                get = function () return ExtendedCharacterStats.profile.defense.resilience.display; end,
+                set = function (_, value)
+                    ExtendedCharacterStats.profile.defense.resilience.display = value
                     Stats:RebuildStatInfos()
                 end,
             },

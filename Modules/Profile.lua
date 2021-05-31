@@ -6,7 +6,7 @@
 local Profile = ECSLoader:CreateModule("Profile")
 
 function Profile:GetProfileVersion()
-    return 8
+    return 9
 end
 
 ---@return ECSProfile
@@ -85,7 +85,8 @@ local function GetDefaultStatsProfile()
             blockChance = {display = true, refName = "BlockChance", text = "BLOCK_CHANCE"},
             blockValue = {display = true, refName = "BlockValue", text = "BLOCK_VALUE"},
             parry = {display = true, refName = "ParryChance", text = "PARRY_CHANCE"},
-            dodge = {display = true, refName = "DodgeChance", text = "DODGE_CHANCE"}
+            dodge = {display = true, refName = "DodgeChance", text = "DODGE_CHANCE"},
+            resilience = {display = true, refName = "ResilienceValue", text = "RESILIENCE_VALUE"},
         },
 
         ---@type Category
