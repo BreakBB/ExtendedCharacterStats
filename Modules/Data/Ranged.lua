@@ -44,9 +44,12 @@ end
 function _Ranged:GetHitBonus()
     local hitValue = 0
 
-    local rangedEnchant = DataUtils:GetEnchantForEquipSlot(Utils.CHAR_EQUIP_SLOTS["Range"])
-    if rangedEnchant and rangedEnchant == Data.enchantIds.BIZNIK_SCOPE then
-        hitValue = hitValue + 3
+    -- Biznick Scope awards Hit rating in TBC and is part of CR_HIT_RANGED
+    if (not ECS.IsTBC) then
+        local rangedEnchant = DataUtils:GetEnchantForEquipSlot(Utils.CHAR_EQUIP_SLOTS["Range"])
+        if rangedEnchant and rangedEnchant == Data.enchantIds.BIZNICK_SCOPE then
+            hitValue = hitValue + 3
+        end
     end
 
     local hitFromItems

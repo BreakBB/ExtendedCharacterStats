@@ -31,7 +31,7 @@ Data.setNames = {
 }
 
 Data.enchantIds = {
-    BIZNIK_SCOPE = "2523", -- 3% Hit from Biznicks 247x128 Accurascope
+    BIZNICK_SCOPE = "2523", -- 3% Hit from Biznicks 247x128 Accurascope
     BRACER_MANA_REGENERATION = "2565", -- 4 MP5 on bracer
     PROPHETIC_AURA = "2590", -- 4 MP5 for priest ZG Enchant
     RESILIENCE_OF_THE_SCOURGE = "2715", -- 4 MP5 for priest ZG Enchant
