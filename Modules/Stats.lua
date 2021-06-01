@@ -206,9 +206,11 @@ _CreateStatInfos = function()
 
     category = profile.defense
     if ECS.IsTBC then
-        _CreateStatInfo(category, category.armor, category.defense, category.blockChance, category.blockValue, category.parry, category.dodge, category.resilience)
+        _CreateStatInfo(category, category.armor, category.defense, category.blockChance, category.blockValue, category.parry,
+            category.dodge, category.resilience)
     else
-        _CreateStatInfo(category, category.armor, category.defense, category.blockChance, category.blockValue, category.parry, category.dodge)
+        _CreateStatInfo(category, category.armor, category.defense, category.blockChance, category.blockValue, category.parry,
+            category.dodge)
     end
     category = profile.regen
     _CreateStatInfo(category, category.mp5Items, category.mp5Spirit, category.mp5Buffs, category.mp5Casting)

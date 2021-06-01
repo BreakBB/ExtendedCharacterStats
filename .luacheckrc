@@ -993,6 +993,7 @@ stds.ecs = {
         "GetCoinIcon",
         "GetCoinText",
         "GetCoinTextureString",
+        "GetCombatRating",
         "GetCombatRatingBonus",
         "GetComboPoints",
         "GetContainerFreeSlots",
