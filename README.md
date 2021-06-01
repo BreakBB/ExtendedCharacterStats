@@ -2,15 +2,19 @@
 
 ![build](https://github.com/BreakBB/ExtendedCharacterStats/workflows/build/badge.svg) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 
-### A simple addon to list all the available stats not displayed in the character info pane by default
-
 [![Downloads](https://img.shields.io/github/downloads/BreakBB/ExtendedCharacterStats/total.svg)](https://github.com/BreakBB/ExtendedCharacterStats/releases/)
 [![Downloads Latest](https://img.shields.io/github/downloads/BreakBB/ExtendedCharacterStats/v2.8.5/total.svg)](https://github.com/BreakBB/ExtendedCharacterStats/releases/latest)
 [![Date Latest](https://img.shields.io/github/release-date/BreakBB/ExtendedCharacterStats.svg)](https://github.com/BreakBB/ExtendedCharacterStats/releases/latest)
 [![Commits Since Latest](https://img.shields.io/github/commits-since/BreakBB/ExtendedCharacterStats/latest.svg)](https://github.com/BreakBB/ExtendedCharacterStats/commits/master)
 
+#### A simple addon to list all the available stats not displayed in the character info pane by default
 
-![image](https://user-images.githubusercontent.com/33514570/104124297-5e543c80-5350-11eb-9805-9e7114515c3f.png)
+
+### [Download on CurseForge](https://www.curseforge.com/wow/addons/extended-character-stats/files)
+
+### [Download on GitHub](https://github.com/BreakBB/ExtendedCharacterStats/releases/latest)
+
+![image](https://user-images.githubusercontent.com/33514570/120346975-2ac47f80-c2fc-11eb-90d4-c012a1e56296.png)
 
 
 ## Issues / Bug reports
