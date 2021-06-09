@@ -60,6 +60,11 @@ function _Melee:GetHitTalentBonus()
         mod = points * 1 -- 0-3% Nature's Guidance
     end
 
+    if classId == Data.PALADIN then
+        local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 3)
+        mod = points * 1 -- 0-3% Precision
+    end
+
     return mod
 end
 
