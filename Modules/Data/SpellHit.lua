@@ -8,7 +8,7 @@ local _SpellHit = {}
 function Data:SpellMissChanceSameLevel()
     local missChance = 4
 
-    missChance = missChance - _SpellHit:GetTalentModifierSpellHit()
+    missChance = missChance - _SpellHit:GetTalentSpellHitBonus()
     local mod = _SpellHit:GetSpellHitRating()
     if mod then
         missChance = missChance - mod
@@ -26,7 +26,7 @@ end
 function Data:SpellMissChanceBossLevel()
     local missChance = 17
 
-    missChance = missChance - _SpellHit:GetTalentModifierSpellHit()
+    missChance = missChance - _SpellHit:GetTalentSpellHitBonus()
     local mod = _SpellHit:GetSpellHitRating()
     if mod then
         missChance = missChance - mod
@@ -41,30 +41,35 @@ function Data:SpellMissChanceBossLevel()
     return DataUtils:Round(missChance, 2) .. "%"
 end
 
-function _SpellHit:GetTalentModifierSpellHit()
+function _SpellHit:GetTalentSpellHitBonus()
     local _, _, classId = UnitClass("player")
-    local mod = 0
+    local bonus = 0
 
     if classId == Data.PRIEST then
         local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 5)
-        mod = points * 2 -- 0-10% from Shadow Focus
+        bonus = points * 2 -- 0-10% from Shadow Focus
     end
 
     if classId == Data.MAGE then
         local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 3)
         if ECS.IsTBC then
-            mod = points * 1 -- 0-3% from Elemental Precision
+            bonus = points * 1 -- 0-3% from Elemental Precision
         else
-            mod = points * 2 -- 0-6% from Elemental Precision
+            bonus = points * 2 -- 0-6% from Elemental Precision
         end
     end
 
-    if classId == Data.SHAMAN and ECS.IsTBC then
-        local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 15)
-        mod = points * 2 -- 0-6% from Elemental Precision
+    if classId == Data.SHAMAN then
+        if ECS.IsTBC then
+            local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 15)
+            bonus = points * 2 -- 0-6% from Elemental Precision
+        end
+
+        local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 6)
+        bonus = bonus + points * 1 -- 0-3% Nature's Guidance
     end
 
-    return mod
+    return bonus
 end
 
 ---@return number
@@ -103,7 +108,7 @@ function _SpellHit:GetSpellHitFromBuffs()
 end
 
 function Data:SpellHitBonus()
-    local hit = _SpellHit:GetTalentModifierSpellHit()
+    local hit = _SpellHit:GetTalentSpellHitBonus()
     local mod = _SpellHit:GetSpellHitRating()
     if mod then
         hit = hit + mod

@@ -55,6 +55,11 @@ function _Melee:GetHitTalentBonus()
         mod = points * 1 -- 0-3% Surefooted
     end
 
+    if classId == Data.SHAMAN then
+        local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 6)
+        mod = points * 1 -- 0-3% Nature's Guidance
+    end
+
     return mod
 end
 
