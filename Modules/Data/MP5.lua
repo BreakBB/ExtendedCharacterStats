@@ -227,6 +227,10 @@ function Data:GetMP5FromBuffs()
             local blessingMod = _MP5:GetBlessingOfWisdomModifier() + 1
             bonus = bonus + math.ceil(33 * blessingMod) -- Greater Blessing of Wisdom Rank 2
         end
+        if spellId == 27143 then
+            local blessingMod = _MP5:GetBlessingOfWisdomModifier() + 1
+            bonus = bonus + math.ceil(41 * blessingMod) -- Greater Blessing of Wisdom Rank 3
+        end
         if spellId == 19742 then
             local blessingMod = _MP5:GetBlessingOfWisdomModifier() + 1
             bonus = bonus + math.ceil(10 * blessingMod) -- Blessing of Wisdom Rank 1
@@ -250,6 +254,10 @@ function Data:GetMP5FromBuffs()
         if spellId == 25290 then
             local blessingMod = _MP5:GetBlessingOfWisdomModifier() + 1
             bonus = bonus + math.ceil(33 * blessingMod) -- Blessing of Wisdom Rank 6
+        end
+        if spellId == 27142 then
+            local blessingMod = _MP5:GetBlessingOfWisdomModifier() + 1
+            bonus = bonus + math.ceil(41 * blessingMod) -- Blessing of Wisdom Rank 7
         end
 
         if spellId == 16609 then
