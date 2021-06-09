@@ -1598,6 +1598,7 @@ stds.ecs = {
         "IsFactionInactive",
         "IsFalling",
         "IsFishingLoot",
+        "IsFlying",
         "IsGMClient",
         "IsGUIDInGroup",
         "IsGuildLeader",
