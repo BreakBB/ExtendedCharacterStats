@@ -199,6 +199,13 @@ function Data:GetMP5FromBuffs()
                 bonus = bonus + 6.25 -- + 0,25% for Shaman T3 2 piece bonus
             end
         end
+        if spellId == 25569 then
+            bonus = bonus + 50 -- 20 Mana per 2 seconds from Mana Spring Totem (Rank 5)
+            if has4pEarthshatterer then
+                bonus = bonus + 6.25 -- + 0,25% for Shaman T3 2 piece bonus
+            end
+        end
+
         if _MP5:HasLightningShield(spellId) and Data:IsSetBonusActive(Data.setNames.THE_EARTHSHATTERER, 8) then
             bonus = bonus + 15 -- 15 MP5 from Shaman T3 8 piece bonus when Lightning Shield is active
         end
