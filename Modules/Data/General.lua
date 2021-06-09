@@ -6,7 +6,18 @@ local DataUtils = ECSLoader:ImportModule("DataUtils")
 
 ---@return string
 function Data:GetMovementSpeed()
-    local _, runSpeed, _, _ = GetUnitSpeed("player")
-    runSpeed = runSpeed / 7 * 100
-    return DataUtils:Round(runSpeed, 0) .. "%"
+    local _, runSpeed, flightSpeed, swimSpeed = GetUnitSpeed("player")
+
+    local currentSpeed
+
+    if IsFlying() then
+        currentSpeed = flightSpeed
+    elseif IsSwimming() then
+        currentSpeed = swimSpeed
+    else
+        currentSpeed = runSpeed
+    end
+
+    currentSpeed = currentSpeed / 7 * 100
+    return DataUtils:Round(currentSpeed, 0) .. "%"
 end

@@ -27,7 +27,7 @@ local loadingFrame = CreateFrame("Frame", nil, UIParent)
 loadingFrame:RegisterEvent("ADDON_LOADED") -- Triggers whenever all non-lod addons has been loaded, this will initialize the addon
 loadingFrame:RegisterEvent("PLAYER_LOGIN") -- Triggers whenever the player has logged in and all addons are loaded
 
-loadingFrame:SetScript("OnEvent", function(self, event, arg1, ...)
+loadingFrame:SetScript("OnEvent", function(_, event, arg1, ...)
 
     if event == "ADDON_LOADED" and arg1 == "ExtendedCharacterStats" then
         _InitAddon()
@@ -124,7 +124,7 @@ _InitGUI = function ()
 
     -- Event handler for all the subscribed events
     -- Calls the update functions to update all the relevant stats
-    eventFrame:SetScript("OnEvent", function(self, event, eventTarget, ...)
+    eventFrame:SetScript("OnEvent", function(_, event, eventTarget, ...)
         if eventTarget == "player" then
             if event == "UNIT_SPELLCAST_SUCCEEDED" then -- If a player casted something the 5 sec rule comes into play
                 lastSuccessfulSpellTime = GetTime()
@@ -165,6 +165,7 @@ _RegisterEvents = function (eventFrame)
     eventFrame:RegisterEvent("PLAYER_EQUIPMENT_CHANGED") -- Triggers whenever the player changes gear
     eventFrame:RegisterEvent("UNIT_POWER_UPDATE") -- Triggers whenever the player changes gear
     eventFrame:RegisterEvent("UPDATE_SHAPESHIFT_FORM") -- Triggers whenever the player changes gear
+    eventFrame:RegisterEvent("PLAYER_MOUNT_DISPLAY_CHANGED") -- Triggers whenever the player mounts or dismounts
     eventFrame:RegisterEvent("UNIT_SPELLCAST_SUCCEEDED") -- Triggers whenever a cast was successful
     eventFrame:RegisterEvent("INSPECT_READY") -- Triggers whenever the player inspects someone else and the inspect frame is ready
 end
