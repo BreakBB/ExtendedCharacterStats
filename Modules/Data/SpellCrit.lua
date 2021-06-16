@@ -47,6 +47,9 @@ function _SpellCrit:GetSpellCritFromBuffs()
         if spellId == 29178 then
             mod = mod + 9 -- 9% from Elemental Devastation Rank 3
         end
+        if spellId == 30482 then
+            mod = mod + 3 -- 3% from Molten Armor
+        end
     end
 
     return mod
