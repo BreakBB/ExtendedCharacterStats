@@ -69,6 +69,13 @@ function _SpellHit:GetTalentSpellHitBonus()
         bonus = bonus + points * 1 -- 0-3% Nature's Guidance
     end
 
+    if classId == Data.DRUID then
+        if ECS.IsTBC then
+            local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 16)
+            bonus = points * 2 -- 0-4% from Balance of Power
+        end
+    end
+
     return bonus
 end
 
