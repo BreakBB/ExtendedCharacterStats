@@ -74,6 +74,11 @@ function _SpellCrit:GetGeneralTalentModifier()
         mod = points * 1 -- 0-3% Arcane Instability
     end
 
+    if ECS.IsTBC and classId == Data.WARLOCK then
+        local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 21)
+        mod = points * 1 -- 0-5% Demonic Tactics
+    end
+
     return mod
 end
 
