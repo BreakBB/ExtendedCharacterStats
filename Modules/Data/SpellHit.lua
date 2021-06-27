@@ -76,6 +76,11 @@ function _SpellHit:GetTalentSpellHitBonus()
         end
     end
 
+    if classId == Data.WARLOCK then
+        local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 1)
+        bonus = points * 2 -- 0-10% from Suppression
+    end
+
     return bonus
 end
 
