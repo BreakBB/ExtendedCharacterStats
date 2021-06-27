@@ -8,12 +8,14 @@ local _MP5 = {}
 local _, _, classId = UnitClass("player")
 
 -- Get MP5 from items
+---@return number
 function Data:GetMP5FromItems()
     local mp5 = _MP5:GetMP5ValueOnItems()
     mp5 = mp5 + Data:GetSetBonusValueMP5()
     return mp5
 end
 
+---@return number
 function _MP5:GetMP5ValueOnItems()
     local mp5 = 0
     for i = 1, 18 do
@@ -61,6 +63,7 @@ end
 
 local lastManaReg = 0
 
+---@return number
 function Data:GetMP5FromSpirit()
     local base, _ = GetManaRegen() -- Returns mana reg per 1 second
     if base < 1 then
@@ -71,6 +74,7 @@ function Data:GetMP5FromSpirit()
 end
 
 -- Get mana regen while casting
+---@return number
 function Data:GetMP5WhileCasting()
     local _, casting = GetManaRegen() -- Returns mana reg per 1 second
     if casting < 1 then
@@ -101,6 +105,7 @@ function Data:GetMP5WhileCasting()
     return DataUtils:Round(casting, 2)
 end
 
+---@return number
 function _MP5:GetTalentModifier()
     local mod = 0
 
@@ -118,7 +123,8 @@ function _MP5:GetTalentModifier()
     return mod
 end
 
--- This is only relevant for the TBC client
+---This is only relevant for the TBC client
+---@return number
 function _MP5:GetTalentBonus()
     local bonus = 0
 
@@ -145,6 +151,7 @@ function _MP5:GetTalentBonus()
     return bonus
 end
 
+---@return number, number
 function Data:GetMP5FromBuffs()
     local mod = 0
     local bonus = 0
@@ -274,10 +281,12 @@ function Data:GetMP5FromBuffs()
     return mod, bonus
 end
 
+---@return boolean
 function _MP5:HasLightningShield(spellId)
     return spellId == 324 or spellId == 325 or spellId == 905 or spellId == 945 or spellId == 8134 or spellId == 10431 or spellId == 10432
 end
 
+---@return number
 function _MP5:GetBlessingOfWisdomModifier()
     local mod = 0
     if classId == Data.PALADIN then
