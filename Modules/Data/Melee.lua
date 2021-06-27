@@ -31,11 +31,16 @@ end
 
 ---@return string
 function Data:MeleeHitBonus()
-    return DataUtils:Round(_Melee:GetHitRating(), 2) .. "%"
+    return DataUtils:Round(_Melee:GetHitRatingBonus(), 2) .. "%"
 end
 
 ---@return number
-function _Melee:GetHitRating()
+function Data:MeleeHitRating()
+    return GetCombatRating(CR_HIT_MELEE)
+end
+
+---@return number
+function _Melee:GetHitRatingBonus()
     if CR_HIT_MELEE then
         return GetCombatRatingBonus(CR_HIT_MELEE) + _Melee:GetHitTalentBonus() + _Melee:GetHitFromBuffs()
     end
@@ -109,7 +114,7 @@ function Data:MeleeHitMissChanceSameLevel()
         missChance = DataUtils:GetMissChanceByDifference(mainBase + mainMod, enemyDefenseValue)
     end
 
-    local hitValue = _Melee:GetHitRating()
+    local hitValue = _Melee:GetHitRatingBonus()
     if hitValue then -- This needs to be checked because on dungeon entering it becomes nil
         missChance = missChance - hitValue
     end
@@ -136,7 +141,7 @@ function Data:MeleeHitMissChanceBossLevel()
         missChance = DataUtils:GetMissChanceByDifference(mainBase + mainMod, enemyDefenseValue)
     end
 
-    local hitValue = _Melee:GetHitRating()
+    local hitValue = _Melee:GetHitRatingBonus()
     if hitValue then -- This needs to be checked because on dungeon entering it becomes nil
         missChance = missChance - hitValue
     end
@@ -150,7 +155,7 @@ function Data:MeleeHitMissChanceBossLevel()
     return DataUtils:Round(missChance, 2) .. "%"
 end
 
----@return string
+---@return number
 function Data:GetExpertise()
     local expertise, _ = GetExpertise()
     return DataUtils:Round(expertise, 0)

@@ -35,6 +35,11 @@ function Data:RangedCrit()
     return DataUtils:Round(GetRangedCritChance(), 2) .. "%"
 end
 
+---@return number
+function Data:RangeHitRating()
+    return GetCombatRating(CR_HIT_RANGED)
+end
+
 ---@return string
 function Data:RangeHitBonus()
     return DataUtils:Round(_Ranged:GetHitBonus(), 2) .. "%"

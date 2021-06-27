@@ -104,6 +104,14 @@ _MigrateToLatestProfileVersion = function(profileVersion, defaultProfile)
             ExtendedCharacterStats.profile.defense.resilience = defaultProfile.profile.defense.resilience
         end
     end
+
+    if profileVersion < 10 then
+        if ECS.IsTBC then
+            ExtendedCharacterStats.profile.melee.hit.rating = defaultProfile.profile.melee.hit.rating
+            ExtendedCharacterStats.profile.ranged.hit.rating = defaultProfile.profile.ranged.hit.rating
+            ExtendedCharacterStats.profile.spell.hit.rating = defaultProfile.profile.spell.hit.rating
+        end
+    end
 end
 
 ---@return boolean

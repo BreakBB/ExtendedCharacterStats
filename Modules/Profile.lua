@@ -6,7 +6,7 @@
 local Profile = ECSLoader:CreateModule("Profile")
 
 function Profile:GetProfileVersion()
-    return 9
+    return 10
 end
 
 ---@return ECSProfile
@@ -34,13 +34,14 @@ local function GetDefaultStatsProfile()
                 refName = "MeleeHitHeader",
                 text = "HIT",
 
+                rating = {display = true, isTbcOnly = true, refName = "MeleeHitRating", text = "RATING"},
                 bonus = {display = true, refName = "MeleeHitBonus", text = "BONUS"},
                 sameLevel = {display = true, refName = "MeleeHitSameLevel", text = "MISS"},
                 bossLevel = {display = true, refName = "MeleeHitBossLevel", text = "MISS_BOSS"},
             },
             attackPower = {display = true, refName = "MeleeAttackPower", text = "ATTACK_POWER"},
             crit = {display = true, refName = "MeleeCritChance", text = "CRIT_CHANCE"},
-            expertise = {display = true, refName = "Expertise", text = "EXPERTISE"},
+            expertise = {display = true, isTbcOnly = true, refName = "Expertise", text = "EXPERTISE"},
             attackSpeed = {
                 display = true,
                 isSubGroup = true,
@@ -65,6 +66,7 @@ local function GetDefaultStatsProfile()
                 refName = "RangedHitHeader",
                 text = "HIT",
 
+                rating = {display = true, isTbcOnly = true, refName = "RangedHitRating", text = "RATING"},
                 bonus = {display = true, refName = "RangedHitBonus", text = "BONUS"},
                 sameLevel = {display = true, refName = "RangedHitSameLevel", text = "MISS"},
                 bossLevel = {display = true, refName = "RangedHitBossLevel", text = "MISS_BOSS"},
@@ -86,7 +88,7 @@ local function GetDefaultStatsProfile()
             blockValue = {display = true, refName = "BlockValue", text = "BLOCK_VALUE"},
             parry = {display = true, refName = "ParryChance", text = "PARRY_CHANCE"},
             dodge = {display = true, refName = "DodgeChance", text = "DODGE_CHANCE"},
-            resilience = {display = true, refName = "ResilienceValue", text = "RESILIENCE_VALUE"},
+            resilience = {display = true, isTbcOnly = true, refName = "ResilienceValue", text = "RESILIENCE_VALUE"},
         },
 
         ---@type Category
@@ -114,6 +116,7 @@ local function GetDefaultStatsProfile()
                 refName = "SpellHitHeader",
                 text = "HIT",
 
+                rating = {display = true, isTbcOnly = true, refName = "SpellHitRating", text = "RATING"},
                 bonus = {display = true, refName = "SpellHitBonus", text = "BONUS"},
                 sameLevel = {display = true, refName = "SpellHitSameLevel", text = "MISS"},
                 bossLevel = {display = true, refName = "SpellHitBossLevel", text = "MISS_BOSS"},

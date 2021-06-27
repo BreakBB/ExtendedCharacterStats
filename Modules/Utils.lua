@@ -87,7 +87,7 @@ function Utils:GetColorsForStatTextRef(statTextRef)
         statValueColor = colors.CRIT_PRIMARY
         percentColor = colors.CRIT_PRIMARY
     end
-    if statTextRef == "BONUS" or statTextRef == "MISS" or statTextRef == "MISS_BOSS" then
+    if statTextRef == "RATING" or statTextRef == "BONUS" or statTextRef == "MISS" or statTextRef == "MISS_BOSS" then
         statTextColor = colors.HIT_SECONDARY
         statValueColor = colors.HIT_PRIMARY
         percentColor = colors.HIT_PRIMARY

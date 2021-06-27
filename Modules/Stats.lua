@@ -146,13 +146,16 @@ end
 --- Helper function to iteracte all field of a given category and create them if they should be displayed
 ---@param category Category|SubCategory
 _CreateStatInfo = function(category, ...)
+    if (not ECS.IsTBC) and category.isTbcOnly then
+        return
+    end
+
     if category.display == true then
         _CreateHeader(category.refName, i18n(category.text), category.isSubGroup)
         local stats = {...}
         -- Loop through all stats
         for _, stat in pairs(stats) do
-            if type(stat) == "table" and stat.display == true then
-                --_CreateText(stat.refName, i18n(stat.text) .. Data:GetStatInfo(stat.refName), category.isSubGroup)
+            if type(stat) == "table" and stat.display == true and ((not stat.isTbcOnly) or ECS.IsTBC) then
                 _CreateText(stat.refName, _FormatStatsText(stat.text,  stat.refName), category.isSubGroup)
             end
         end
@@ -192,7 +195,7 @@ _CreateStatInfos = function()
     end
     if category.display then
         category = category.hit
-        _CreateStatInfo(category, category.bonus, category.sameLevel, category.bossLevel)
+        _CreateStatInfo(category, category.rating, category.bonus, category.sameLevel, category.bossLevel)
         category = profile.melee.attackSpeed
         _CreateStatInfo(category, category.mainHand, category.offHand)
     end
@@ -201,17 +204,12 @@ _CreateStatInfos = function()
     _CreateStatInfo(category, category.attackPower, category.crit, category.attackSpeed)
     if category.display then
         category = category.hit
-        _CreateStatInfo(category, category.bonus, category.sameLevel, category.bossLevel)
+        _CreateStatInfo(category, category.rating, category.bonus, category.sameLevel, category.bossLevel)
     end
 
     category = profile.defense
-    if ECS.IsTBC then
-        _CreateStatInfo(category, category.armor, category.defense, category.blockChance, category.blockValue, category.parry,
-            category.dodge, category.resilience)
-    else
-        _CreateStatInfo(category, category.armor, category.defense, category.blockChance, category.blockValue, category.parry,
-            category.dodge)
-    end
+    _CreateStatInfo(category, category.armor, category.defense, category.blockChance, category.blockValue, category.parry,
+        category.dodge, category.resilience)
     category = profile.regen
     _CreateStatInfo(category, category.mp5Items, category.mp5Spirit, category.mp5Buffs, category.mp5Casting)
 
@@ -219,7 +217,7 @@ _CreateStatInfos = function()
     _CreateStatInfo(category, category.crit, category.penetration)
     if category.display then
         category = category.hit
-        _CreateStatInfo(category, category.bonus, category.sameLevel, category.bossLevel)
+        _CreateStatInfo(category, category.rating, category.bonus, category.sameLevel, category.bossLevel)
     end
 
     category = profile.spellBonus

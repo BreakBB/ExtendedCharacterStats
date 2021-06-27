@@ -88,9 +88,28 @@ function _Config:LoadMeleeSection()
                 inline = true,
                 name = function() return i18n("MELEE_HIT_VALUES_SETTING") end,
                 args = {
-                    meleeHitBonus = {
+                    meleeHitRating = {
                         type = "toggle",
                         order = 1,
+                        name = function() return i18n("HIT_RATING_SETTING") end,
+                        desc = function() return i18n("MELEE_HIT_RATING_SETTING_DESC") end,
+                        width = 1.5,
+                        hidden = function()
+                            return (not ECS.IsTBC)
+                        end,
+                        disabled = function()
+                            return ((not ExtendedCharacterStats.profile.melee.display) or
+                                    (not ExtendedCharacterStats.profile.melee.hit.display))
+                        end,
+                        get = function () return ExtendedCharacterStats.profile.melee.hit.rating.display; end,
+                        set = function (_, value)
+                            ExtendedCharacterStats.profile.melee.hit.rating.display = value
+                            Stats:RebuildStatInfos()
+                        end,
+                    },
+                    meleeHitBonus = {
+                        type = "toggle",
+                        order = 2,
                         name = function() return i18n("HIT_BONUS_SETTING") end,
                         desc = function() return i18n("MELEE_HIT_BONUS_SETTING_DESC") end,
                         width = 1.5,
@@ -106,7 +125,7 @@ function _Config:LoadMeleeSection()
                     },
                     meleeMiss = {
                         type = "toggle",
-                        order = 2,
+                        order = 3,
                         name = function() return i18n("MISS_CHANCE_SETTING") end,
                         desc = function() return i18n("MELEE_MISS_CHANCE_SETTING_DESC") end,
                         width = 1.5,
@@ -122,7 +141,7 @@ function _Config:LoadMeleeSection()
                     },
                     meleeMissBoss = {
                         type = "toggle",
-                        order = 3,
+                        order = 4,
                         name = function() return i18n("MISS_CHANCE_BOSS_SETTING") end,
                         desc = function() return i18n("MELEE_MISS_CHANCE_BOSS_SETTING_DESC") end,
                         width = 1.5,
@@ -168,7 +187,7 @@ function _Config:LoadMeleeSection()
                                     (not ExtendedCharacterStats.profile.melee.attackSpeed.display))
                         end,
                         get = function () return ExtendedCharacterStats.profile.melee.attackSpeed.mainHand.display; end,
-                        set = function (info, value)
+                        set = function (_, value)
                             ExtendedCharacterStats.profile.melee.attackSpeed.mainHand.display = value
                             Stats:RebuildStatInfos()
                         end,
@@ -184,7 +203,7 @@ function _Config:LoadMeleeSection()
                                     (not ExtendedCharacterStats.profile.melee.attackSpeed.display))
                         end,
                         get = function () return ExtendedCharacterStats.profile.melee.attackSpeed.offHand.display; end,
-                        set = function (info, value)
+                        set = function (_, value)
                             ExtendedCharacterStats.profile.melee.attackSpeed.offHand.display = value
                             Stats:RebuildStatInfos()
                         end,

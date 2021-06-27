@@ -60,7 +60,14 @@ dataFunctionRefs = {
         if ECS.IsTBC then
             return Data:GetExpertise()
         else
-            return ""
+            return 0
+        end
+    end,
+    ["MeleeHitRating"] = function()
+        if ECS.IsTBC then
+            return Data:MeleeHitRating()
+        else
+            return 0
         end
     end,
     ["MeleeHitBonus"] = function() return Data:MeleeHitBonus() end,
@@ -71,6 +78,13 @@ dataFunctionRefs = {
     -- Ranged
     ["RangeAttackpower"] = function() return Data:GetRangeAttackPower() end,
     ["RangedCritChance"] = function() return Data:RangedCrit() end,
+    ["RangedHitRating"] = function()
+        if ECS.IsTBC then
+            return Data:RangeHitRating()
+        else
+            return 0
+        end
+    end,
     ["RangedHitBonus"] = function() return Data:RangeHitBonus() end,
     ["RangedHitSameLevel"] = function() return Data:RangeMissChanceSameLevel() end,
     ["RangedHitBossLevel"] = function() return Data:RangeMissChanceBossLevel() end,
@@ -86,10 +100,17 @@ dataFunctionRefs = {
         if ECS.IsTBC then
             return Data:GetResilienceValue()
         else
-            return ""
+            return 0
         end
     end,
     -- Spell
+    ["SpellHitRating"] = function()
+        if ECS.IsTBC then
+            return Data:SpellHitRating()
+        else
+            return 0
+        end
+    end,
     ["SpellHitBonus"] = function() return Data:SpellHitBonus() end,
     ["SpellHitSameLevel"] = function() return Data:SpellMissChanceSameLevel() end,
     ["SpellHitBossLevel"] = function() return Data:SpellMissChanceBossLevel() end,
