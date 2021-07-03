@@ -61,8 +61,13 @@ function _Melee:GetHitTalentBonus()
     end
 
     if classId == Data.SHAMAN then
-        local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 6)
-        mod = points * 1 -- 0-3% Nature's Guidance
+        local _, _, _, _, naturesGuidance, _, _, _ = GetTalentInfo(3, 6)
+        mod = naturesGuidance * 1 -- 0-3% Nature's Guidance
+
+        if ECS.IsTBC and Data:GetMeleeAttackSpeedOffHand() > 0 then
+            local _, _, _, _, dualWielding, _, _, _ = GetTalentInfo(2, 17)
+            mod = dualWielding * 2 -- 0-6% Dual Wielding Specialization
+        end
     end
 
     if classId == Data.PALADIN then
