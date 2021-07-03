@@ -30,6 +30,7 @@ Modules\Data\Melee.lua
 Modules\Data\MP5.lua
 Modules\Data\Ranged.lua
 Modules\Data\SpellCrit.lua
+Modules\Data\SpellDamage.lua
 Modules\Data\SpellHit.lua
 
 # Config

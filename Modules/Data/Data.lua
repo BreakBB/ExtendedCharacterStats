@@ -1,44 +1,7 @@
 ---@class Data
 local Data = ECSLoader:CreateModule("Data")
 
----@type DataUtils
-local DataUtils = ECSLoader:ImportModule("DataUtils")
-
-local _GetGeneralTalentModifier
 local dataFunctionRefs
-
-local _, _, classId = UnitClass("player")
-
----@param school number
----@return number
-function Data:GetSpellDmg(school)
-    local spellDmg = GetSpellBonusDamage(school)
-    local modifier = _GetGeneralTalentModifier()
-    spellDmg = spellDmg * (1 + (modifier / 100))
-    return DataUtils:Round(spellDmg, 0)
-end
-
----@return number
-_GetGeneralTalentModifier = function()
-    local mod = 0
-
-    if classId == Data.MAGE then
-        local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 15)
-        mod = points * 1 -- 0-3% Arcane Instability
-    end
-
-    return mod
-end
-
----@return number
-function Data:SpellPenetration()
-    return DataUtils:Round(GetSpellPenetration(), 2) .. "%"
-end
-
----@return number
-function Data:GetHealingPower()
-    return GetSpellBonusHealing()
-end
 
 ---@param refName string
 ---@return number | string
@@ -125,14 +88,14 @@ dataFunctionRefs = {
     end,
     ["MP5Casting"] = function() return Data:GetMP5WhileCasting() end,
     -- Spell Power by school
-    ["PhysicalDmg"] = function() return Data:GetSpellDmg(Data.PHYSICAL_SCHOOL) end,
-    ["HolyDmg"] = function() return Data:GetSpellDmg(Data.HOLY_SCHOOL) end,
-    ["FireDmg"] = function() return Data:GetSpellDmg(Data.FIRE_SCHOOL) end,
-    ["NatureDmg"] = function() return Data:GetSpellDmg(Data.NATURE_SCHOOL) end,
-    ["FrostDmg"] = function() return Data:GetSpellDmg(Data.FROST_SCHOOL) end,
-    ["ShadowDmg"] = function() return Data:GetSpellDmg(Data.SHADOW_SCHOOL) end,
-    ["ArcaneDmg"] = function() return Data:GetSpellDmg(Data.ARCANE_SCHOOL) end,
-    ["BonusHealing"] = Data.GetHealingPower,
+    ["PhysicalDmg"] = function() return Data:GetSpellDamage(Data.PHYSICAL_SCHOOL) end,
+    ["HolyDmg"] = function() return Data:GetSpellDamage(Data.HOLY_SCHOOL) end,
+    ["FireDmg"] = function() return Data:GetSpellDamage(Data.FIRE_SCHOOL) end,
+    ["NatureDmg"] = function() return Data:GetSpellDamage(Data.NATURE_SCHOOL) end,
+    ["FrostDmg"] = function() return Data:GetSpellDamage(Data.FROST_SCHOOL) end,
+    ["ShadowDmg"] = function() return Data:GetSpellDamage(Data.SHADOW_SCHOOL) end,
+    ["ArcaneDmg"] = function() return Data:GetSpellDamage(Data.ARCANE_SCHOOL) end,
+    ["BonusHealing"] = function() return Data:GetHealingPower() end,
     -- Spell Crit by school
     ["PhysicalCritChance"] = function() return Data:GetSpellCrit(Data.PHYSICAL_SCHOOL) end,
     ["HolyCritChance"] = function() return Data:GetSpellCrit(Data.HOLY_SCHOOL) end,
