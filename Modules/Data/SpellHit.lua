@@ -50,7 +50,7 @@ function _SpellHit:GetTalentSpellHitBonus()
         bonus = points * 2 -- 0-10% from Shadow Focus
     end
 
-    if classId == Data.PALADIN then
+    if classId == Data.PALADIN and ECS.IsTBC then
         local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 3)
         mod = points * 1 -- 0-3% Precision
     end
