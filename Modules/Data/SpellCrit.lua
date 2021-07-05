@@ -38,6 +38,10 @@ function _SpellCrit:GetSpellCritFromBuffs()
             mod = mod + 3 -- 3% from Totem of Wrath
         end
 
+        if spellId == 24907 then
+            mod = mod + 5 -- 5% from Moonkin Aura
+        end
+
         if spellId == 30165 then
             mod = mod + 3 -- 3% from Elemental Devastation Rank 1
         end
