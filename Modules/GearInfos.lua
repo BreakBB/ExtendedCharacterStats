@@ -70,19 +70,23 @@ end
 ---@param value boolean @True if the frames should be shown, false otherwise
 function GearInfos:ToggleColorFrames(value)
     for _, gearFrame in ipairs(GEAR_SLOT_FRAMES) do
-        if value then
-            gearFrame.qualityTexture:Show()
-        else
-            gearFrame.qualityTexture:Hide()
-        end
+		if gearFrame.qualityTexture ~= nil then
+			if value then
+				gearFrame.qualityTexture:Show()
+			else
+				gearFrame.qualityTexture:Hide()
+			end
+		end
     end
     for _, gearFrame in ipairs(_GetInspectGearSlots()) do
-        if value then
-            gearFrame.qualityTexture:Show()
-        else
-            gearFrame.qualityTexture:Hide()
-        end
-    end
+		if gearFrame.qualityTexture ~= nil then
+			if value then
+				gearFrame.qualityTexture:Show()
+			else
+				gearFrame.qualityTexture:Hide()
+			end
+		end
+	end
 end
 
 _GetInspectGearSlots = function()
