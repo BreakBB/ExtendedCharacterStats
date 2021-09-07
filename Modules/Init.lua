@@ -88,7 +88,7 @@ function _Init:LoadProfile()
     local currentProfileVersion = ecs.general.profileVersion
     local targetProfileVersion = Profile:GetProfileVersion()
 
-    local isProfileVersionDifferent = ecs.general and (ecs.general.profileVersion == nil or ecs.general.profileVersion ~= targetProfileVersion)
+    local isProfileVersionDifferent = ecs.general and (currentProfileVersion == nil or currentProfileVersion ~= targetProfileVersion)
 
     if isProfileVersionDifferent then
         ECS:Print("Migrating ECS profile from version " .. currentProfileVersion .. " to " .. targetProfileVersion)
