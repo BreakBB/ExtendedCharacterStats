@@ -13,6 +13,8 @@ embeds.xml
 Modules\ModuleLoader.lua
 
 # Modules
+Modules\Migration.lua
+Modules\Init.lua
 Modules\Utils.lua
 Modules\Stats.lua
 Modules\GearInfos.lua
