@@ -66,7 +66,7 @@ function _Melee:GetHitTalentBonus()
 
         if ECS.IsTBC and Data:GetMeleeAttackSpeedOffHand() > 0 then
             local _, _, _, _, dualWielding, _, _, _ = GetTalentInfo(2, 17)
-            mod = dualWielding * 2 -- 0-6% Dual Wielding Specialization
+            mod = mod + dualWielding * 2 -- 0-6% Dual Wielding Specialization
         end
     end
 
