@@ -56,7 +56,7 @@ function Init:OnPlayerLogin()
             C_Timer.After(0.5, function ()
                 Stats:UpdateInformation()
             end)
-        elseif event == "INSPECT_READY" then
+        elseif event == "INSPECT_READY" or event == "SOCKET_INFO_SUCCESS" then
             GearInfos:UpdateInspectGearColorFrames()
         end
     end)
@@ -109,4 +109,5 @@ function _Init:RegisterEvents(eventFrame)
     eventFrame:RegisterEvent("PLAYER_MOUNT_DISPLAY_CHANGED") -- Triggers whenever the player mounts or dismounts
     eventFrame:RegisterEvent("UNIT_SPELLCAST_SUCCEEDED") -- Triggers whenever a cast was successful
     eventFrame:RegisterEvent("INSPECT_READY") -- Triggers whenever the player inspects someone else and the inspect frame is ready
+    eventFrame:RegisterEvent("SOCKET_INFO_SUCCESS") -- Triggers whenever the player successfully sockets an item
 end
