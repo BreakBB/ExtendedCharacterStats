@@ -40,6 +40,38 @@ function _Config:LoadDefenseSection()
                     Stats:RebuildStatInfos()
                 end,
             },
+            critImmunity = {
+                type = "toggle",
+                order = 1.7,
+                name = function() return i18n("CRIT_IMMUNITY_SETTING") end,
+                desc = function() return i18n("CRIT_IMMUNITY_SETTING_DESC") end,
+                width = 1.5,
+                hidden = function()
+                    return (not ECS.IsTBC)
+                end,
+                disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
+                get = function () return ExtendedCharacterStats.profile.defense.critImmunity.display; end,
+                set = function (_, value)
+                    ExtendedCharacterStats.profile.defense.critImmunity.display = value
+                    Stats:RebuildStatInfos()
+                end,
+            },
+            critReduction = {
+                type = "toggle",
+                order = 1.8,
+                name = function() return i18n("CRIT_IMMUNITY_SETTING") end,
+                desc = function() return i18n("CRIT_IMMUNITY_SETTING_DESC") end,
+                width = 1.5,
+                hidden = function()
+                    return (not ECS.IsTBC)
+                end,
+                disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
+                get = function () return ExtendedCharacterStats.profile.defense.critReduction.display; end,
+                set = function (_, value)
+                    ExtendedCharacterStats.profile.defense.critReduction.display = value
+                    Stats:RebuildStatInfos()
+                end,
+            },
             defenseRating = {
                 type = "toggle",
                 order = 1.9,

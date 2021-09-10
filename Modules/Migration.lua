@@ -42,6 +42,8 @@ function Migration:ToLatestProfileVersion(profileVersion, defaultProfile)
     if profileVersion < 11 then
         if ECS.IsTBC then
             ExtendedCharacterStats.profile.defense.defenseRating = defaultProfile.profile.defense.defenseRating
+            ExtendedCharacterStats.profile.defense.critImmunity = defaultProfile.profile.defense.critImmunity
+            ExtendedCharacterStats.profile.defense.critReduction = defaultProfile.profile.defense.critReduction
         end
     end
 end

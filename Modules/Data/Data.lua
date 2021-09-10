@@ -54,6 +54,20 @@ dataFunctionRefs = {
     ["RangedAttackSpeed"] = function() return Data:GetRangedAttackSpeed() end,
     -- Defense
     ["Armor"] = function() return Data:GetArmorValue() end,
+    ["CritImmunity"] = function()
+        if ECS.IsTBC then
+            return Data:GetCritImmunity()
+        else
+            return 0
+        end
+    end,
+    ["CritReduction"] = function()
+        if ECS.IsTBC then
+            return Data:GetCritReduction()
+        else
+            return 0
+        end
+    end,
     ["DefenseRating"] = function()
         if ECS.IsTBC then
             return Data:GetDefenseRating()
@@ -61,7 +75,7 @@ dataFunctionRefs = {
             return 0
         end
     end,
-    ["DefenseValue"] = function() return Data:GetDefenseValue() end,
+    ["DefenseValue"] = function() return Data:GetDefenseValueString() end,
     ["DodgeChance"] = function() return Data:GetDodgeChance() end,
     ["ParryChance"] = function() return Data:GetParryChance() end,
     ["BlockChance"] = function() return Data:GetBlockChance() end,
