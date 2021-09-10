@@ -6,7 +6,7 @@
 local Profile = ECSLoader:CreateModule("Profile")
 
 function Profile:GetProfileVersion()
-    return 10
+    return 11
 end
 
 ---@return ECSProfile
@@ -83,6 +83,7 @@ local function GetDefaultStatsProfile()
             text = "DEFENSE",
 
             armor = {display = true, refName = "Armor", text = "ARMOR"},
+            defenseRating = {display = true, refName = "DefenseRating", text = "DEFENSE_RATING"},
             defense = {display = true, refName = "DefenseValue", text = "DEFENSE_VALUE"},
             blockChance = {display = true, refName = "BlockChance", text = "BLOCK_CHANCE"},
             blockValue = {display = true, refName = "BlockValue", text = "BLOCK_VALUE"},

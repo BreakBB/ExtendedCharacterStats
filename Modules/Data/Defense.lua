@@ -12,6 +12,11 @@ function Data:GetArmorValue()
     return DataUtils:Round(effectiveArmor, 2)
 end
 
+---@return number
+function Data:GetDefenseRating()
+    return DataUtils:Round(GetCombatRating(CR_DEFENSE_SKILL), 2)
+end
+
 ---@return string
 function Data:GetDefenseValue()
     local numSkills = GetNumSkillLines()
@@ -66,7 +71,7 @@ function Data:GetBlockValue()
 end
 
 ---@return number
-function Data:GetResilienceValue()
+function Data:GetResilienceRating()
     return DataUtils:Round(GetCombatRating(15), 2)
 end
 

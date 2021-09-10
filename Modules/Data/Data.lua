@@ -54,6 +54,13 @@ dataFunctionRefs = {
     ["RangedAttackSpeed"] = function() return Data:GetRangedAttackSpeed() end,
     -- Defense
     ["Armor"] = function() return Data:GetArmorValue() end,
+    ["DefenseRating"] = function()
+        if ECS.IsTBC then
+            return Data:GetDefenseRating()
+        else
+            return 0
+        end
+    end,
     ["DefenseValue"] = function() return Data:GetDefenseValue() end,
     ["DodgeChance"] = function() return Data:GetDodgeChance() end,
     ["ParryChance"] = function() return Data:GetParryChance() end,
@@ -61,7 +68,7 @@ dataFunctionRefs = {
     ["BlockValue"] = function() return Data:GetBlockValue() end,
     ["ResilienceValue"] = function()
         if ECS.IsTBC then
-            return Data:GetResilienceValue()
+            return Data:GetResilienceRating()
         else
             return 0
         end

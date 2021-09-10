@@ -40,6 +40,22 @@ function _Config:LoadDefenseSection()
                     Stats:RebuildStatInfos()
                 end,
             },
+            defenseRating = {
+                type = "toggle",
+                order = 1.9,
+                name = function() return i18n("DEFENSE_RATING_SETTING") end,
+                desc = function() return i18n("DEFENSE_RATING_SETTING_DESC") end,
+                width = 1.5,
+                hidden = function()
+                    return (not ECS.IsTBC)
+                end,
+                disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
+                get = function () return ExtendedCharacterStats.profile.defense.defenseRating.display; end,
+                set = function (_, value)
+                    ExtendedCharacterStats.profile.defense.defenseRating.display = value
+                    Stats:RebuildStatInfos()
+                end,
+            },
             defense = {
                 type = "toggle",
                 order = 2,

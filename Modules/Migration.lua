@@ -38,4 +38,10 @@ function Migration:ToLatestProfileVersion(profileVersion, defaultProfile)
             ExtendedCharacterStats.profile.spell.hit.rating = defaultProfile.profile.spell.hit.rating
         end
     end
+
+    if profileVersion < 11 then
+        if ECS.IsTBC then
+            ExtendedCharacterStats.profile.defense.defenseRating = defaultProfile.profile.defense.defenseRating
+        end
+    end
 end
