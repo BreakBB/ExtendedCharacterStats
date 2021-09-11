@@ -40,6 +40,9 @@ function Migration:ToLatestProfileVersion(profileVersion, defaultProfile)
     end
 
     if profileVersion < 11 then
+        ExtendedCharacterStats.general.language = ExtendedCharacterStats.general.langugage
+        ExtendedCharacterStats.general.langugage = nil
+
         if ECS.IsTBC then
             ExtendedCharacterStats.profile.defense.defenseRating = defaultProfile.profile.defense.defenseRating
             ExtendedCharacterStats.profile.defense.critImmunity = defaultProfile.profile.defense.critImmunity

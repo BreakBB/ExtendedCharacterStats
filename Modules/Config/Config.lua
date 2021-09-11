@@ -182,19 +182,15 @@ _GeneralTab = function()
                 style = "dropdown",
                 name = function() return i18n("SELECT_LANGUAGE") end,
                 get = function()
-                    if (not ExtendedCharacterStats.general.langugage) then
+                    if (not ExtendedCharacterStats.general.language) then
                         return "auto"
                     else
-                        return ExtendedCharacterStats.general.langugage;
+                        return ExtendedCharacterStats.general.language;
                     end
                 end,
                 set = function(_, lang)
-                    ExtendedCharacterStats.general.langugage = lang
-                    if lang == "auto" then
-                        i18n:LoadLanguageData()
-                    else
-                        i18n:SetLanguage(lang)
-                    end
+                    i18n:SetLanguage(lang)
+
                     Stats:RebuildStatInfos()
                     Stats:UpdateSettingsButtonText()
                 end,
