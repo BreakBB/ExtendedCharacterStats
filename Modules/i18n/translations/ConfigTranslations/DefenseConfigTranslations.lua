@@ -20,18 +20,6 @@ local defenseConfigTranslations = {
         ["frFR"] = "Affiche/cache la valeur de l'armure.",
         ["zhCN"] = "显示/隐藏 护甲值",
     },
-    ["Shows/Hides the defense value."] = {
-        ["enUS"] = true,
-        ["deDE"] = "Zeigt/Versteckt die den Verteidigungswert.",
-        ["frFR"] = "Affiche/cache la valeur de défense.",
-        ["zhCN"] = "显示/隐藏 防御值",
-    },
-    ["Shows/Hides the defense rating."] = {
-        ["enUS"] = true,
-        ["deDE"] = "Zeigt/Versteckt die Verteidigungswertung.",
-        ["frFR"] = false,
-        ["zhCN"] = false,
-    },
     ["Shows/Hides the percentage of being crit immune."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt die erreichte Crit Immunität in Prozent.",
@@ -44,7 +32,18 @@ local defenseConfigTranslations = {
         ["frFR"] = false,
         ["zhCN"] = false,
     },
-
+    ["Shows/Hides the defense value."] = {
+        ["enUS"] = true,
+        ["deDE"] = "Zeigt/Versteckt die den Verteidigungswert.",
+        ["frFR"] = "Affiche/cache la valeur de défense.",
+        ["zhCN"] = "显示/隐藏 防御值",
+    },
+    ["Shows/Hides the defense rating."] = {
+        ["enUS"] = true,
+        ["deDE"] = "Zeigt/Versteckt die Verteidigungswertung.",
+        ["frFR"] = false,
+        ["zhCN"] = false,
+    },
     ["Shows/Hides the block chance."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt die Blockchance.",

@@ -51,20 +51,20 @@ end
 
 _GeneralTab = function()
     return {
-        name = function() return i18n("GENERAL") end,
+        name = function() return i18n("General") end,
         type = "group",
         order = 1,
         args = {
             generalHeader = {
                 type = "header",
                 order = 1,
-                name = function() return i18n("GENERAL_SETTINGS") end,
+                name = function() return i18n("General Settings") end,
             },
             statsWindowClosedOnOpen = {
                 type = "toggle",
                 order = 1.1,
-                name = function() return i18n("STATS_WINDOW_CLOSED") end,
-                desc = function() return i18n("STATS_WINDOW_CLOSED_DESC") end,
+                name = function() return i18n("Hide ECS when opening character tab") end,
+                desc = function() return i18n("Hides the stats windows when opening the character tab.") end,
                 width = "full",
                 get = function () return ExtendedCharacterStats.general.statsWindowClosedOnOpen; end,
                 set = function (_, value)
@@ -74,8 +74,8 @@ _GeneralTab = function()
             addColorsToStatTexts = {
                 type = "toggle",
                 order = 2,
-                name = function() return i18n("COLORIZE_STATS") end,
-                desc = function() return i18n("COLORIZE_STATS_DESC") end,
+                name = function() return i18n("Colorize Stats") end,
+                desc = function() return i18n("Adds colors to the stats overview.") end,
                 width = "full",
                 get = function () return ExtendedCharacterStats.general.addColorsToStatTexts; end,
                 set = function (_, value)
@@ -87,13 +87,13 @@ _GeneralTab = function()
                 type = "select",
                 order = 2.1,
                 values = {
-                    ["full"] = i18n("FULL"),
-                    ["texts"] = i18n("STAT_TEXTS"),
-                    ["values"] = i18n("STAT_VALUES"),
+                    ["full"] = i18n("Full"),
+                    ["texts"] = i18n("Stat texts"),
+                    ["values"] = i18n("Stat values"),
                 },
                 style = "dropdown",
                 disabled = function() return (not ExtendedCharacterStats.general.addColorsToStatTexts) end,
-                name = function() return i18n("SELECT_STAT_COLORS") end,
+                name = function() return i18n("Stats colorization") end,
                 get = function()
                     if (not ExtendedCharacterStats.general.statColorSelection) then
                         return "full"
@@ -109,11 +109,11 @@ _GeneralTab = function()
             showQualityColors = {
                 type = "toggle",
                 order = 3,
-                name = function() return i18n("SHOW_ITEM_QUALITY_COLORS") end,
-                desc = function() return i18n("SHOW_ITEM_QUALITY_COLORS_DESC") end,
+                name = function() return i18n("Show Item Quality Colors") end,
+                desc = function() return i18n("Shows/Hides the colored frames around equipped items.") end,
                 width = "full",
                 get = function () return ExtendedCharacterStats.general.showQualityColors; end,
-                set = function (info, value)
+                set = function (_, value)
                     GearInfos:ToggleColorFrames(value)
                     ExtendedCharacterStats.general.showQualityColors = value
                 end,
@@ -121,8 +121,8 @@ _GeneralTab = function()
             headerFontSize = {
                 type = "range",
                 order = 4,
-                name = function() return i18n("HEADER_FONT_SIZE") end,
-                desc = function() return i18n("HEADER_FONT_SIZE_DESC") end,
+                name = function() return i18n("Header Font Size") end,
+                desc = function() return i18n("Changes the font size of the headers (e.g. Melee)") end,
                 width = "double",
                 min = 8,
                 max = 18,
@@ -136,8 +136,8 @@ _GeneralTab = function()
             statFontSize = {
                 type = "range",
                 order = 5,
-                name = function() return i18n("STAT_FONT_SIZE") end,
-                desc = function() return i18n("STAT_FONT_SIZE_DESC") end,
+                name = function() return i18n("Stat Font Size") end,
+                desc = function() return i18n("Changes the font size of the stat lines (e.g. Crit)") end,
                 width = "double",
                 min = 8,
                 max = 18,
@@ -151,8 +151,8 @@ _GeneralTab = function()
             windowWidth = {
                 type = "range",
                 order = 6,
-                name = function() return i18n("WINDOW_WIDTH") end,
-                desc = function() return i18n("WINDOW_WIDTH_DESC") end,
+                name = function() return i18n("Window Width") end,
+                desc = function() return i18n("Changes the width of the stats window") end,
                 width = "double",
                 min = 12,
                 max = 25,
@@ -180,7 +180,7 @@ _GeneralTab = function()
                     -- ["koKR"] = "한국어",
                 },
                 style = "dropdown",
-                name = function() return i18n("SELECT_LANGUAGE") end,
+                name = function() return i18n("Language") end,
                 get = function()
                     if (not ExtendedCharacterStats.general.language) then
                         return "auto"
@@ -201,14 +201,14 @@ end
 
 _StatsTab = function ()
     return {
-        name = function() return i18n("STATS") end,
+        name = function() return i18n("Stats") end,
         type = "group",
         order = 2,
         args = {
             statsHeader = {
                 type = "header",
                 order = 1,
-                name = function() return i18n("STATS_SETTINGS") end,
+                name = function() return i18n("Stats Settings") end,
             },
             generalGroup = _Config:LoadGeneralSection(),
             meleeGroup = _Config:LoadMeleeSection(),

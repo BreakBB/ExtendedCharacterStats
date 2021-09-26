@@ -1,7 +1,6 @@
 ---@class i18n
 local i18n = ECSLoader:CreateModule("i18n")
-local _i18n = {}
-
+i18n.translations = {}
 local selectedLocale
 
 
@@ -18,7 +17,7 @@ end
 
 ---@param key string @The specified key for the target text
 ---@return string @The formatted text
-function _i18n:translate(key, ...)
+function translate(key, ...)
     local args = {...}
 
     for i, v in ipairs(args) do
@@ -46,4 +45,4 @@ function _i18n:translate(key, ...)
     return string.format(translationValue, unpack(args))
 end
 
-setmetatable(i18n, {__call = function(_, ...) return _i18n:translate(...) end})
+setmetatable(i18n, {__call = function(_, ...) return translate(...) end})

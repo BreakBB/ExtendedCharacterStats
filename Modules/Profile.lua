@@ -16,40 +16,40 @@ local function GetDefaultStatsProfile()
         general = {
             display = true,
             refName = "GeneralHeader",
-            text = "GENERAL",
+            text = "General",
 
-            movementSpeed = {display = true, refName = "MovementSpeed", text = "MOVEMENT_SPEED"},
+            movementSpeed = {display = true, refName = "MovementSpeed", text = "Movement Speed: "},
         },
 
         ---@class Category
         melee = {
             display = true,
             refName = "MeleeHeader",
-            text = "MELEE",
+            text = "Melee",
 
             ---@class SubCategory
             hit = {
                 display = true,
                 isSubGroup = true,
                 refName = "MeleeHitHeader",
-                text = "HIT",
+                text = "Hit",
 
-                rating = {display = true, isTbcOnly = true, refName = "MeleeHitRating", text = "RATING"},
-                bonus = {display = true, refName = "MeleeHitBonus", text = "BONUS"},
-                sameLevel = {display = true, refName = "MeleeHitSameLevel", text = "MISS"},
-                bossLevel = {display = true, refName = "MeleeHitBossLevel", text = "MISS_BOSS"},
+                rating = {display = true, isTbcOnly = true, refName = "MeleeHitRating", text = "Rating: "},
+                bonus = {display = true, refName = "MeleeHitBonus", text = "Bonus: "},
+                sameLevel = {display = true, refName = "MeleeHitSameLevel", text = "Miss: "},
+                bossLevel = {display = true, refName = "MeleeHitBossLevel", text = "Miss (Lvl + 3): "},
             },
-            attackPower = {display = true, refName = "MeleeAttackPower", text = "ATTACK_POWER"},
-            crit = {display = true, refName = "MeleeCritChance", text = "CRIT_CHANCE"},
-            expertise = {display = true, isTbcOnly = true, refName = "Expertise", text = "EXPERTISE"},
+            attackPower = {display = true, refName = "MeleeAttackPower", text = "Attack Power: "},
+            crit = {display = true, refName = "MeleeCritChance", text = "Crit Chance: "},
+            expertise = {display = true, isTbcOnly = true, refName = "Expertise", text = "Expertise: "},
             attackSpeed = {
                 display = true,
                 isSubGroup = true,
                 refName = "MeleeAttackSpeedHeader",
-                text = "ATTACK_SPEED_HEADER",
+                text = "Attack Speed",
 
-                mainHand = {display = true, refName = "MeleeAttackSpeedMainHand", text = "ATTACK_SPEED_MAIN_HAND"},
-                offHand = {display = true, refName = "MeleeAttackSpeedOffHand", text = "ATTACK_SPEED_OFF_HAND"},
+                mainHand = {display = true, refName = "MeleeAttackSpeedMainHand", text = "Main Hand: "},
+                offHand = {display = true, refName = "MeleeAttackSpeedOffHand", text = "Off Hand: "},
             },
         },
 
@@ -57,98 +57,98 @@ local function GetDefaultStatsProfile()
         ranged = {
             display = true,
             refName = "RangedHeader",
-            text = "RANGED",
+            text = "Ranged",
 
             ---@type SubCategory
             hit = {
                 display = true,
                 isSubGroup = true,
                 refName = "RangedHitHeader",
-                text = "HIT",
+                text = "Hit",
 
-                rating = {display = true, isTbcOnly = true, refName = "RangedHitRating", text = "RATING"},
-                bonus = {display = true, refName = "RangedHitBonus", text = "BONUS"},
-                sameLevel = {display = true, refName = "RangedHitSameLevel", text = "MISS"},
-                bossLevel = {display = true, refName = "RangedHitBossLevel", text = "MISS_BOSS"},
+                rating = {display = true, isTbcOnly = true, refName = "RangedHitRating", text = "Rating: "},
+                bonus = {display = true, refName = "RangedHitBonus", text = "Bonus: "},
+                sameLevel = {display = true, refName = "RangedHitSameLevel", text = "Miss: "},
+                bossLevel = {display = true, refName = "RangedHitBossLevel", text = "Miss (Lvl + 3): "},
             },
-            attackPower = {display = true, refName = "RangeAttackpower", text = "ATTACK_POWER"},
-            crit = {display = true, refName = "RangedCritChance", text = "CRIT_CHANCE"},
-            attackSpeed = {display = true, refName = "RangedAttackSpeed", text = "ATTACK_SPEED"},
+            attackPower = {display = true, refName = "RangeAttackpower", text = "Attack Power: "},
+            crit = {display = true, refName = "RangedCritChance", text = "Crit Chance: "},
+            attackSpeed = {display = true, refName = "RangedAttackSpeed", text = "Attack Speed: "},
         },
 
         ---@type Category
         defense = {
             display = true,
             refName = "DefenseHeader",
-            text = "DEFENSE",
+            text = "Defense",
 
-            armor = {display = true, refName = "Armor", text = "ARMOR"},
-            critImmunity = {display = true, refName = "CritImmunity", text = "CRIT_IMMUNITY"},
-            critReduction = {display = true, refName = "CritReduction", text = "CRIT_REDUCTION"},
-            defenseRating = {display = true, refName = "DefenseRating", text = "DEFENSE_RATING"},
-            defense = {display = true, refName = "DefenseValue", text = "DEFENSE_VALUE"},
-            blockChance = {display = true, refName = "BlockChance", text = "BLOCK_CHANCE"},
-            blockValue = {display = true, refName = "BlockValue", text = "BLOCK_VALUE"},
-            parry = {display = true, refName = "ParryChance", text = "PARRY_CHANCE"},
-            dodge = {display = true, refName = "DodgeChance", text = "DODGE_CHANCE"},
-            resilience = {display = true, isTbcOnly = true, refName = "ResilienceValue", text = "RESILIENCE_VALUE"},
+            armor = {display = true, refName = "Armor", text = "Armor: "},
+            critImmunity = {display = true, refName = "CritImmunity", text = "Crit Immune: "},
+            critReduction = {display = true, refName = "CritReduction", text = "Crit Reduction: "},
+            defenseRating = {display = true, refName = "DefenseRating", text = "Defense Rating: "},
+            defense = {display = true, refName = "DefenseValue", text = "Defense: "},
+            blockChance = {display = true, refName = "BlockChance", text = "Block Chance: "},
+            blockValue = {display = true, refName = "BlockValue", text = "Block Value: "},
+            parry = {display = true, refName = "ParryChance", text = "Parry Chance: "},
+            dodge = {display = true, refName = "DodgeChance", text = "Dodge Chance: "},
+            resilience = {display = true, isTbcOnly = true, refName = "ResilienceValue", text = "Resilience: "},
         },
 
         ---@type Category
         regen = {
             display = true,
             refName = "ManaHeader",
-            text = "MANA",
+            text = "Mana",
 
-            mp5Items = {display = true, refName = "MP5Items", text = "MP5_ITEMS"},
-            mp5Spirit = {display = true, refName = "MP5Spirit", text = "MP5_SPIRIT"},
-            mp5Buffs = {display = true, refName = "MP5Buffs", text = "MP5_BUFFS"},
-            mp5Casting = {display = true, refName = "MP5Casting", text = "MP5_CASTING"},
+            mp5Items = {display = true, refName = "MP5Items", text = "MP5 (Items): "},
+            mp5Spirit = {display = true, refName = "MP5Spirit", text = "MP5 (Spirit): "},
+            mp5Buffs = {display = true, refName = "MP5Buffs", text = "MP5 (Buffs): "},
+            mp5Casting = {display = true, refName = "MP5Casting", text = "MP5 (Casting): "},
         },
 
         ---@type Category
         spell = {
             display = true,
             refName = "SpellHeader",
-            text = "SPELL",
+            text = "Spell",
 
             ---@type SubCategory
             hit = {
                 display = true,
                 isSubGroup = true,
                 refName = "SpellHitHeader",
-                text = "HIT",
+                text = "Hit",
 
-                rating = {display = true, isTbcOnly = true, refName = "SpellHitRating", text = "RATING"},
-                bonus = {display = true, refName = "SpellHitBonus", text = "BONUS"},
-                sameLevel = {display = true, refName = "SpellHitSameLevel", text = "MISS"},
-                bossLevel = {display = true, refName = "SpellHitBossLevel", text = "MISS_BOSS"},
+                rating = {display = true, isTbcOnly = true, refName = "SpellHitRating", text = "Rating: "},
+                bonus = {display = true, refName = "SpellHitBonus", text = "Bonus: "},
+                sameLevel = {display = true, refName = "SpellHitSameLevel", text = "Miss: "},
+                bossLevel = {display = true, refName = "SpellHitBossLevel", text = "Miss (Lvl + 3): "},
             },
-            crit = {display = true, refName = "SpellCritChance", text = "CRIT_CHANCE"},
-            penetration = {display = true, refName = "SpellPenetration", text = "SPELL_PENETRATION"},
+            crit = {display = true, refName = "SpellCritChance", text = "Crit Chance: "},
+            penetration = {display = true, refName = "SpellPenetration", text = "Penetration: "},
         },
 
         ---@type Category
         spellBonus = {
             display = true,
             refName = "SpellBonusHeader",
-            text = "SPELL_POWER",
+            text = "Spell Power",
 
-            bonusHealing = {display = true, refName = "BonusHealing", text = "HEALING_POWER"},
-            arcaneDmg = {display = true, refName = "ArcaneDmg", text = "ARCANCE_DMG"},
-            arcaneCrit = {display = true, refName = "ArcaneCritChance", text = "ARCANCE_CRIT"},
-            fireDmg = {display = true, refName = "FireDmg", text = "FIRE_DMG"},
-            fireCrit = {display = true, refName = "FireCritChance", text = "FIRE_CRIT"},
-            frostDmg = {display = true, refName = "FrostDmg", text = "FROST_DMG"},
-            frostCrit = {display = true, refName = "FrostCritChance", text = "FROST_CRIT"},
-            holyDmg = {display = true, refName = "HolyDmg", text = "HOLY_DMG"},
-            holyCrit = {display = true, refName = "HolyCritChance", text = "HOLY_CRIT"},
-            natureDmg = {display = true, refName = "NatureDmg", text = "NATURE_DMG"},
-            natureCrit = {display = true, refName = "NatureCritChance", text = "NATURE_CRIT"},
-            physicalDmg = {display = true, refName = "PhysicalDmg", text = "PHYSICAL_DMG"},
-            physicalCrit = {display = true, refName = "PhysicalCritChance", text = "PHYSICAL_CRIT"},
-            shadowDmg = {display = true, refName = "ShadowDmg", text = "SHADOW_DMG"},
-            shadowCrit = {display = true, refName = "ShadowCritChance", text = "SHADOW_CRIT"},
+            bonusHealing = {display = true, refName = "BonusHealing", text = "Healing Power: "},
+            arcaneDmg = {display = true, refName = "ArcaneDmg", text = "Arcane Damage: "},
+            arcaneCrit = {display = true, refName = "ArcaneCritChance", text = "Arcane Crit: "},
+            fireDmg = {display = true, refName = "FireDmg", text = "Fire Damage: "},
+            fireCrit = {display = true, refName = "FireCritChance", text = "Fire Crit: "},
+            frostDmg = {display = true, refName = "FrostDmg", text = "Frost Damage: "},
+            frostCrit = {display = true, refName = "FrostCritChance", text = "Frost Crit: "},
+            holyDmg = {display = true, refName = "HolyDmg", text = "Holy Damage: "},
+            holyCrit = {display = true, refName = "HolyCritChance", text = "Holy Crit: "},
+            natureDmg = {display = true, refName = "NatureDmg", text = "Nature Damage: "},
+            natureCrit = {display = true, refName = "NatureCritChance", text = "Nature Crit: "},
+            physicalDmg = {display = true, refName = "PhysicalDmg", text = "Physical Damage: "},
+            physicalCrit = {display = true, refName = "PhysicalCritChance", text = "Physical Crit: "},
+            shadowDmg = {display = true, refName = "ShadowDmg", text = "Shadow Damage: "},
+            shadowCrit = {display = true, refName = "ShadowCritChance", text = "Shadow Crit: "},
         }
     }
 end

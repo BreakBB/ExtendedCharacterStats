@@ -68,6 +68,8 @@ function Utils:Colorize(text, color)
     return "|cFF" .. color .. text .. "|r"
 end
 
+-- TODO: Unten wird so wohl nicht mehr funktionieren, weil statTextRef jetzt übersetzt ist. Oder?
+
 ---@param statTextRef string The text from a stat of the profile
 ---@return table<string, string, string> -- The colors for statText, statValue and the percent symbol
 function Utils:GetColorsForStatTextRef(statTextRef)
@@ -77,22 +79,22 @@ function Utils:GetColorsForStatTextRef(statTextRef)
     local statValueColor = colors.DEFENSE_PRIMARY
     local percentColor = colors.DEFENSE_PRIMARY
 
-    if statTextRef == "ATTACK_POWER" then
+    if statTextRef == "Attack Power: " then
         statTextColor = colors.ATTACK_POWER_SECONDARY
         statValueColor = colors.ATTACK_POWER_PRIMARY
         percentColor = colors.ATTACK_POWER_PRIMARY
     end
-    if statTextRef == "CRIT_CHANCE" then
+    if statTextRef == "Crit Chance: " then
         statTextColor = colors.CRIT_SECONDARY
         statValueColor = colors.CRIT_PRIMARY
         percentColor = colors.CRIT_PRIMARY
     end
-    if statTextRef == "RATING" or statTextRef == "BONUS" or statTextRef == "MISS" or statTextRef == "MISS_BOSS" then
+    if statTextRef == "Rating: " or statTextRef == "Bonus: " or statTextRef == "Miss: " or statTextRef == "Miss (Lvl + 3): " then
         statTextColor = colors.HIT_SECONDARY
         statValueColor = colors.HIT_PRIMARY
         percentColor = colors.HIT_PRIMARY
     end
-    if statTextRef == "ATTACK_SPEED_MAIN_HAND" or statTextRef == "ATTACK_SPEED_OFF_HAND" then
+    if statTextRef == "Main Hand: " or statTextRef == "Off Hand: " then
         statTextColor = colors.ATTACK_SPEED_SECONDARY
         statValueColor = colors.ATTACK_SPEED_PRIMARY
         percentColor = colors.ATTACK_SPEED_PRIMARY

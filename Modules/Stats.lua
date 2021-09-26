@@ -46,10 +46,10 @@ function Stats:CreateWindow()
     mainFrame.title = mainFrame:CreateFontString(nil, "OVERLAY")
     mainFrame.title:SetFontObject("GameFontHighlight")
     mainFrame.title:SetPoint("CENTER", mainFrame.TitleBg, "CENTER", 11,  0)
-    mainFrame.title:SetText(i18n("NAME_VERSION", Utils:GetAddonVersionString()))
+    mainFrame.title:SetText(i18n("ECS %s", Utils:GetAddonVersionString()))
 
     mainFrame.configButton = CreateFrame("Button", nil, mainFrame, "GameMenuButtonTemplate")
-    mainFrame.configButton:SetText(i18n("SETTINGS"))
+    mainFrame.configButton:SetText(i18n("Settings"))
     mainFrame.configButton:SetSize(ecs.general.window.width - 10, 20)
     mainFrame.configButton:SetPoint("CENTER", mainFrame, "TOP", -1,  -35)
     mainFrame.configButton:SetScript("OnClick", function ()
@@ -111,7 +111,7 @@ function Stats:UpdateWindowSize()
 end
 
 function Stats:UpdateSettingsButtonText()
-    _Stats.frame.configButton:SetText(i18n("SETTINGS"))
+    _Stats.frame.configButton:SetText(i18n("Settings"))
 end
 
 --- Toogles the stats window
