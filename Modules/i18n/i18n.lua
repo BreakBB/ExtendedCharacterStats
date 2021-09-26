@@ -17,7 +17,7 @@ end
 
 ---@param key string @The specified key for the target text
 ---@return string @The formatted text
-function translate(key, ...)
+local function translate(key, ...)
     local args = {...}
 
     for i, v in ipairs(args) do
