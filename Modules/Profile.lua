@@ -83,8 +83,8 @@ local function GetDefaultStatsProfile()
             text = "Defense",
 
             armor = {display = true, refName = "Armor", text = "Armor: "},
-            critImmunity = {display = true, refName = "CritImmunity", text = "Crit Immune: "},
-            critReduction = {display = true, refName = "CritReduction", text = "Crit Reduction: "},
+            critImmunity = {display = true, isTbcOnly = true, refName = "CritImmunity", text = "Crit Immune: "},
+            critReduction = {display = true, isTbcOnly = true, refName = "CritReduction", text = "Crit Reduction: "},
             defenseRating = {display = true, refName = "DefenseRating", text = "Defense Rating: "},
             defense = {display = true, refName = "DefenseValue", text = "Defense: "},
             blockChance = {display = true, refName = "BlockChance", text = "Block Chance: "},
