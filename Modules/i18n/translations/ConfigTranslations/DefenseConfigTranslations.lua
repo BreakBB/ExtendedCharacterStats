@@ -1,5 +1,5 @@
 ---@type i18n
-local i18n = QuestieLoader:ImportModule("i18n")
+local i18n = ECSLoader:ImportModule("i18n")
 
 local defenseConfigTranslations = {
     ["Show Defense Stats"] = {
