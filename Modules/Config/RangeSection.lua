@@ -30,7 +30,7 @@ function _Config:LoadRangeSection()
             rangedAttackPower = {
                 type = "toggle",
                 order = 1,
-                name = function() return i18n("Melee Attack Power") end,
+                name = function() return i18n("Ranged Attack Power") end,
                 desc = function() return i18n("Shows/Hides the ranged attack power value.") end,
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.ranged.display); end,

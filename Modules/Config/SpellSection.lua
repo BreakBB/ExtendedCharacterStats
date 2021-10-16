@@ -70,7 +70,7 @@ function _Config:LoadSpellSection()
                 type = "group",
                 order = 3,
                 inline = true,
-                name = function() return "Spell Hit Values" end,
+                name = function() return i18n("Spell Hit Values") end,
                 args = {
                     spellHitRating = {
                         type = "toggle",

@@ -55,7 +55,7 @@ function _Config:LoadManaSection()
             },
             mp5Buffs = {
                 type = "toggle",
-                order = 2,
+                order = 3,
                 name = function() return i18n("MP5 Buffs") end,
                 desc = function() return i18n("Shows/Hides the MP5 value from buffs.") end,
                 width = 1.5,
@@ -68,7 +68,7 @@ function _Config:LoadManaSection()
             },
             mp5Casting = {
                 type = "toggle",
-                order = 3,
+                order = 4,
                 name = function() return i18n("MP5 Casting") end,
                 desc = function() return i18n("Shows/Hides the MP5 while casting value.") end,
                 width = 1.5,

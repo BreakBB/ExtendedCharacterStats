@@ -14,11 +14,23 @@ local rangedConfigTranslations = {
         ["frFR"] = "Affiche/cache toutes les statistiques à distance.",
         ["zhCN"] = "显示/隐藏 所有远程属性",
     },
+    ["Ranged Attack Power"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Fernkampf Angriffskraft",
+        ["frFR"] = "Puissance d'attaque à distance",
+        ["zhCN"] = "远程攻击强度",
+    },
     ["Shows/Hides the ranged attack power value."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt den Fernkampf Angriffskraftwert.",
         ["frFR"] = "Affiche/Cache la puissance d'attaque à distance.",
         ["zhCN"] = "显示/隐藏 远程攻击强度",
+    },
+    ["Ranged Crit"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Fernkampf Kritisch",
+        ["frFR"] = "Critique à distance",
+        ["zhCN"] = "远程暴击",
     },
     ["Shows/Hides the ranged crit chance."] = {
         ["enUS"] = true,
@@ -32,7 +44,18 @@ local rangedConfigTranslations = {
         ["frFR"] = false,
         ["zhCN"] = false,
     },
-
+    ["Ranged Hit"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Fernkampf Trefferwertung",
+        ["frFR"] = "Toucher à distance",
+        ["zhCN"] = "远程命中",
+    },
+    ["Ranged Hit Values"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Fernkampf Trefferwertung",
+        ["frFR"] = "Valeurs de toucher à distance",
+        ["zhCN"] = "远程命中率",
+    },
     ["Shows/Hides all ranged hit chance."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt alle Trefferwertungen im Fernkampf.",

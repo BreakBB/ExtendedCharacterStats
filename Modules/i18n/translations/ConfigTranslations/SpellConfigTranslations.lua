@@ -14,17 +14,47 @@ local spellConfigTranslations = {
         ["frFR"] = "Affiche/cache toutes les statistiques des sorts.",
         ["zhCN"] = "显示/隐藏 法术属性",
     },
+    ["Spell Crit"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Zauber Kritisch",
+        ["frFR"] = "Critique des sorts",
+        ["zhCN"] = "法术暴击",
+    },
     ["Shows/Hides the spell crit chance."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt die Chance mit einem Zauber kritisch zu treffen.",
         ["frFR"] = "Affiche/cache les chances d'infliger un coup critique avec les sorts.",
         ["zhCN"] = "显示/隐藏 法术暴击",
     },
+    ["Spell Penetration"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Zauberdurchschlagskraft",
+        ["frFR"] = false,
+        ["zhCN"] = false,
+    },
+    ["Shows/Hides the spell penetration value."] = {
+        ["enUS"] = true,
+        ["deDE"] = "Zeigt/Versteckt die Zauberdurchschlagskraft.",
+        ["frFR"] = false,
+        ["zhCN"] = false,
+    },
+    ["Spell Hit Values"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Zauber Trefferwertung",
+        ["frFR"] = "Toucher des sorts",
+        ["zhCN"] = "法术命中率",
+    },
     ["Shows/Hides all spell hit chance."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt alle Trefferwertungen für Zauber.",
         ["frFR"] = "Affiche/cache les chances de toucher avec les sorts.",
         ["zhCN"] = "显示/隐藏 法术命中",
+    },
+    ["Spell Hit"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Zauber Trefferwertung",
+        ["frFR"] = "Valeurs de toucher sorts",
+        ["zhCN"] = "法术命中",
     },
     ["Shows/Hides the spell hit rating."] = {
         ["enUS"] = true,
@@ -50,13 +80,6 @@ local spellConfigTranslations = {
         ["frFR"] = "Affiche/cache les chances de rater des sorts contre un boss de 3 niveaux supérieurs.",
         ["zhCN"] = "显示/隐藏 针对BOSS的法术未命中率 (+3 等级)。",
     },
-    ["Shows/Hides the spell penetration value."] = {
-        ["enUS"] = true,
-        ["deDE"] = "Zeigt/Versteckt die Zauberdurchschlagskraft.",
-        ["frFR"] = false,
-        ["zhCN"] = false,
-    },
-
     ["Show Spell Power Stats"] = {
         ["enUS"] = true,
         ["deDE"] = "Zaubermachtwerte anzeigen",

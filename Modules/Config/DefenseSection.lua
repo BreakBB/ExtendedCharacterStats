@@ -30,7 +30,7 @@ function _Config:LoadDefenseSection()
             armor = {
                 type = "toggle",
                 order = 1,
-                name = function() return i18n("Armor Value") end,
+                name = function() return i18n("Armor") end,
                 desc = function() return i18n("Shows/Hides the armor value.") end,
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
