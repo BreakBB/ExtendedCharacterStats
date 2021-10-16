@@ -79,22 +79,22 @@ function Utils:GetColorsForStatTextRef(statTextRef)
     local statValueColor = colors.DEFENSE_PRIMARY
     local percentColor = colors.DEFENSE_PRIMARY
 
-    if statTextRef == "Attack Power: " then
+    if statTextRef == "Attack Power" then
         statTextColor = colors.ATTACK_POWER_SECONDARY
         statValueColor = colors.ATTACK_POWER_PRIMARY
         percentColor = colors.ATTACK_POWER_PRIMARY
     end
-    if statTextRef == "Crit Chance: " then
+    if statTextRef == "Crit Chance" then
         statTextColor = colors.CRIT_SECONDARY
         statValueColor = colors.CRIT_PRIMARY
         percentColor = colors.CRIT_PRIMARY
     end
-    if statTextRef == "Rating: " or statTextRef == "Bonus: " or statTextRef == "Miss: " or statTextRef == "Miss (Lvl + 3): " then
+    if statTextRef == "Rating" or statTextRef == "Bonus" or statTextRef == "Miss" or statTextRef == "Miss (Lvl + 3)" then
         statTextColor = colors.HIT_SECONDARY
         statValueColor = colors.HIT_PRIMARY
         percentColor = colors.HIT_PRIMARY
     end
-    if statTextRef == "Main Hand: " or statTextRef == "Off Hand: " then
+    if statTextRef == "Main Hand" or statTextRef == "Off Hand" then
         statTextColor = colors.ATTACK_SPEED_SECONDARY
         statValueColor = colors.ATTACK_SPEED_PRIMARY
         percentColor = colors.ATTACK_SPEED_PRIMARY

@@ -8,11 +8,11 @@ local statTranslations = {
         ["frFR"] = "Général",
         ["zhCN"] = "一般",
     },
-    ["Movement Speed: "] = {
+    ["Movement Speed"] = {
         ["enUS"] = true,
-        ["deDE"] = "Geschwindigkeit: ",
-        ["frFR"] = "Vitesse de déplacement: ",
-        ["zhCN"] = "移动速度: ",
+        ["deDE"] = "Geschwindigkeit",
+        ["frFR"] = "Vitesse de déplacement",
+        ["zhCN"] = "移动速度",
     },
     ["Melee"] = {
         ["enUS"] = true,
@@ -20,21 +20,21 @@ local statTranslations = {
         ["frFR"] = "Mêlée",
         ["zhCN"] = "近战",
     },
-    ["Attack Power: "] = {
+    ["Attack Power"] = {
         ["enUS"] = true,
-        ["deDE"] = "Angriffskraft: ",
-        ["frFR"] = "Puissance d'attaque: ",
-        ["zhCN"] = "攻击强度: ",
+        ["deDE"] = "Angriffskraft",
+        ["frFR"] = "Puissance d'attaque",
+        ["zhCN"] = "攻击强度",
     },
-    ["Crit Chance: "] = {
+    ["Crit Chance"] = {
         ["enUS"] = true,
-        ["deDE"] = "Kritische Chance: ",
-        ["frFR"] = "Chances de critique: ",
-        ["zhCN"] = "暴击几率: ",
+        ["deDE"] = "Kritische Chance",
+        ["frFR"] = "Chances de critique",
+        ["zhCN"] = "暴击几率",
     },
-    ["Expertise: "] = {
+    ["Expertise"] = {
         ["enUS"] = true,
-        ["deDE"] = "Waffenkundewertung: ",
+        ["deDE"] = "Waffenkundewertung",
         ["frFR"] = false,
         ["zhCN"] = false,
     },
@@ -44,29 +44,29 @@ local statTranslations = {
         ["frFR"] = "Toucher",
         ["zhCN"] = "命中",
     },
-    ["Rating: "] = {
+    ["Rating"] = {
         ["enUS"] = true,
-        ["deDE"] = "Wertung: ",
+        ["deDE"] = "Wertung",
         ["frFR"] = false,
         ["zhCN"] = false,
     },
-    ["Bonus: "] = {
+    ["Bonus"] = {
         ["enUS"] = true,
         ["deDE"] = false,
         ["frFR"] = false,
-        ["zhCN"] = "命中: ",
+        ["zhCN"] = "命中",
     },
-    ["Miss: "] = {
+    ["Miss"] = {
         ["enUS"] = true,
-        ["deDE"] = "Verfehlen: ",
-        ["frFR"] = "Rater: ",
-        ["zhCN"] = "未命中: ",
+        ["deDE"] = "Verfehlen",
+        ["frFR"] = "Rater",
+        ["zhCN"] = "未命中",
     },
-    ["Miss (Lvl + 3): "] = {
+    ["Miss (Lvl + 3)"] = {
         ["enUS"] = true,
-        ["deDE"] = "Verfehlen (Lvl + 3): ",
-        ["frFR"] = "Rater (Lvl + 3): ",
-        ["zhCN"] = "未命中 (等级 + 3): ",
+        ["deDE"] = "Verfehlen (Lvl + 3)",
+        ["frFR"] = "Rater (Lvl + 3)",
+        ["zhCN"] = "未命中 (等级 + 3)",
     },
     ["Attack Speed"] = {
         ["enUS"] = true,
@@ -74,15 +74,15 @@ local statTranslations = {
         ["frFR"] = false,
         ["zhCN"] = false,
     },
-    ["Main Hand: "] = {
+    ["Main Hand"] = {
         ["enUS"] = true,
-        ["deDE"] = "Waffenhand: ",
+        ["deDE"] = "Waffenhand",
         ["frFR"] = false,
         ["zhCN"] = false,
     },
-    ["Off Hand: "] = {
+    ["Off Hand"] = {
         ["enUS"] = true,
-        ["deDE"] = "Schildhand: ",
+        ["deDE"] = "Schildhand",
         ["frFR"] = false,
         ["zhCN"] = false,
     },
@@ -92,9 +92,9 @@ local statTranslations = {
         ["frFR"] = "A distance",
         ["zhCN"] = "远程",
     },
-    ["Attack Speed: "] = {
+    ["Attack Speed"] = {
         ["enUS"] = true,
-        ["deDE"] = "Angriffstempo: ",
+        ["deDE"] = "Angriffstempo",
         ["frFR"] = false,
         ["zhCN"] = false,
     },
@@ -104,64 +104,64 @@ local statTranslations = {
         ["frFR"] = "Défense",
         ["zhCN"] = "防御",
     },
-    ["Armor: "] = {
+    ["Armor"] = {
         ["enUS"] = true,
-        ["deDE"] = "Rüstung: ",
-        ["frFR"] = "Armure: ",
-        ["zhCN"] = "护甲: ",
+        ["deDE"] = "Rüstung",
+        ["frFR"] = "Armure",
+        ["zhCN"] = "护甲",
     },
-    ["Crit Immune: "] = {
+    ["Crit Immune"] = {
         ["enUS"] = true,
-        ["deDE"] = "Krit. Immun: ",
+        ["deDE"] = "Krit. Immun",
         ["frFR"] = false,
         ["zhCN"] = false,
     },
-    ["Crit Reduction: "] = {
+    ["Crit Reduction"] = {
         ["enUS"] = true,
-        ["deDE"] = "Krit. Reduzierung: ",
+        ["deDE"] = "Krit. Reduzierung",
         ["frFR"] = false,
         ["zhCN"] = false,
     },
-    ["Defense Rating: "] = {
+    ["Defense Rating"] = {
         ["enUS"] = true,
-        ["deDE"] = "Verteidigungswertung: ",
+        ["deDE"] = "Verteidigungswertung",
         ["frFR"] = false,
         ["zhCN"] = false,
     },
-    ["Defense: "] = {
+    ["Defense"] = {
         ["enUS"] = true,
-        ["deDE"] = "Verteidigung: ",
-        ["frFR"] = "Défense: ",
-        ["zhCN"] = "防御: ",
+        ["deDE"] = "Verteidigung",
+        ["frFR"] = "Défense",
+        ["zhCN"] = "防御",
     },
-    ["Block Chance: "] = {
+    ["Block Chance"] = {
         ["enUS"] = true,
-        ["deDE"] = "Blockchance: ",
-        ["frFR"] = "Chances de bloquer: ",
-        ["zhCN"] = "格挡几率: ",
+        ["deDE"] = "Blockchance",
+        ["frFR"] = "Chances de bloquer",
+        ["zhCN"] = "格挡几率",
     },
-    ["Block Value: "] = {
+    ["Block Value"] = {
         ["enUS"] = true,
-        ["deDE"] = "Blockwertung: ",
-        ["frFR"] = "Bloquage: ",
-        ["zhCN"] = "格挡值: ",
+        ["deDE"] = "Blockwertung",
+        ["frFR"] = "Bloquage",
+        ["zhCN"] = "格挡值",
     },
-    ["Parry Chance: "] = {
+    ["Parry Chance"] = {
         ["enUS"] = true,
-        ["deDE"] = "Parrierchance: ",
-        ["frFR"] = "Chances de parrer: ",
-        ["zhCN"] = "招架几率: ",
+        ["deDE"] = "Parrierchance",
+        ["frFR"] = "Chances de parrer",
+        ["zhCN"] = "招架几率",
     },
-    ["Dodge Chance: "] = {
+    ["Dodge Chance"] = {
         ["enUS"] = true,
-        ["deDE"] = "Ausweichchance: ",
-        ["frFR"] = "Chances d'esquiver: ",
-        ["zhCN"] = "躲闪几率: ",
+        ["deDE"] = "Ausweichchance",
+        ["frFR"] = "Chances d'esquiver",
+        ["zhCN"] = "躲闪几率",
     },
-    ["Resilience: "] = {
+    ["Resilience"] = {
         ["enUS"] = true,
-        ["deDE"] = "Abhärtung: ",
-        ["frFR"] = "Résilience: ",
+        ["deDE"] = "Abhärtung",
+        ["frFR"] = "Résilience",
         ["zhCN"] = false,
     },
     ["Mana"] = {
@@ -170,29 +170,29 @@ local statTranslations = {
         ["frFR"] = false,
         ["zhCN"] = "法力回复",
     },
-    ["MP5 (Items): "] = {
+    ["MP5 (Items)"] = {
         ["enUS"] = true,
-        ["deDE"] = "MP5 (Gegenstände): ",
-        ["frFR"] = "MP5 (Objets): ",
-        ["zhCN"] = "装备回蓝: ",
+        ["deDE"] = "MP5 (Gegenstände)",
+        ["frFR"] = "MP5 (Objets)",
+        ["zhCN"] = "装备回蓝",
     },
-    ["MP5 (Spirit): "] = {
+    ["MP5 (Spirit)"] = {
         ["enUS"] = true,
-        ["deDE"] = "MP5 (Willenskraft): ",
-        ["frFR"] = "MP5 (Esprit): ",
-        ["zhCN"] = "精神回蓝: ",
+        ["deDE"] = "MP5 (Willenskraft)",
+        ["frFR"] = "MP5 (Esprit)",
+        ["zhCN"] = "精神回蓝",
     },
-    ["MP5 (Buffs): "] = {
+    ["MP5 (Buffs)"] = {
         ["enUS"] = true,
-        ["deDE"] = "MP5 (Stärkungszauber): ",
-        ["frFR"] = "MP5 (Amélioration): ",
-        ["zhCN"] = "增益回蓝: ",
+        ["deDE"] = "MP5 (Stärkungszauber)",
+        ["frFR"] = "MP5 (Amélioration)",
+        ["zhCN"] = "增益回蓝",
     },
-    ["MP5 (Casting): "] = {
+    ["MP5 (Casting)"] = {
         ["enUS"] = true,
-        ["deDE"] = "MP5 (Zaubernd): ",
-        ["frFR"] = "MP5 (Lancer): ",
-        ["zhCN"] = "附魔回蓝: ",
+        ["deDE"] = "MP5 (Zaubernd)",
+        ["frFR"] = "MP5 (Lancer)",
+        ["zhCN"] = "附魔回蓝",
     },
     ["Spell"] = {
         ["enUS"] = true,
@@ -200,9 +200,9 @@ local statTranslations = {
         ["frFR"] = "Sorts",
         ["zhCN"] = "法术强度",
     },
-    ["Penetration: "] = {
+    ["Penetration"] = {
         ["enUS"] = true,
-        ["deDE"] = "Durchschlagskraft: ",
+        ["deDE"] = "Durchschlagskraft",
         ["frFR"] = false,
         ["zhCN"] = false,
     },
@@ -212,95 +212,95 @@ local statTranslations = {
         ["frFR"] = "Puissance des sorts",
         ["zhCN"] = "法术强度",
     },
-    ["Healing Power: "] = {
+    ["Healing Power"] = {
         ["enUS"] = true,
-        ["deDE"] = "Heilungskraft: ",
-        ["frFR"] = "Puissance des soins: ",
-        ["zhCN"] = "法术治疗: ",
+        ["deDE"] = "Heilungskraft",
+        ["frFR"] = "Puissance des soins",
+        ["zhCN"] = "法术治疗",
     },
-    ["Arcane Damage: "] = {
+    ["Arcane Damage"] = {
         ["enUS"] = true,
-        ["deDE"] = "Arkanschaden: ",
-        ["frFR"] = "Dégats des arcanes: ",
-        ["zhCN"] = "奥术伤害: ",
+        ["deDE"] = "Arkanschaden",
+        ["frFR"] = "Dégats des arcanes",
+        ["zhCN"] = "奥术伤害",
     },
-    ["Arcane Crit: "] = {
+    ["Arcane Crit"] = {
         ["enUS"] = true,
-        ["deDE"] = "Arkan Kritisch: ",
-        ["frFR"] = "Critique des arcanes: ",
-        ["zhCN"] = "奥术暴击: ",
+        ["deDE"] = "Arkan Kritisch",
+        ["frFR"] = "Critique des arcanes",
+        ["zhCN"] = "奥术暴击",
     },
-    ["Fire Damage: "] = {
+    ["Fire Damage"] = {
         ["enUS"] = true,
-        ["deDE"] = "Feuerschaden: ",
-        ["frFR"] = "Dégats du feu: ",
-        ["zhCN"] = "火焰伤害: ",
+        ["deDE"] = "Feuerschaden",
+        ["frFR"] = "Dégats du feu",
+        ["zhCN"] = "火焰伤害",
     },
-    ["Fire Crit: "] = {
+    ["Fire Crit"] = {
         ["enUS"] = true,
-        ["deDE"] = "Feuer Kritisch: ",
-        ["frFR"] = "Critique du feu: ",
-        ["zhCN"] = "火焰暴击: ",
+        ["deDE"] = "Feuer Kritisch",
+        ["frFR"] = "Critique du feu",
+        ["zhCN"] = "火焰暴击",
     },
-    ["Frost Damage: "] = {
+    ["Frost Damage"] = {
         ["enUS"] = true,
-        ["deDE"] = "Frostschaden: ",
-        ["frFR"] = "Dégats du givre: ",
-        ["zhCN"] = "冰霜伤害: ",
+        ["deDE"] = "Frostschaden",
+        ["frFR"] = "Dégats du givre",
+        ["zhCN"] = "冰霜伤害",
     },
-    ["Frost Crit: "] = {
+    ["Frost Crit"] = {
         ["enUS"] = true,
-        ["deDE"] = "Frost Kritisch: ",
-        ["frFR"] = "Critique du givre: ",
-        ["zhCN"] = "冰霜暴击: ",
+        ["deDE"] = "Frost Kritisch",
+        ["frFR"] = "Critique du givre",
+        ["zhCN"] = "冰霜暴击",
     },
-    ["Holy Damage: "] = {
+    ["Holy Damage"] = {
         ["enUS"] = true,
-        ["deDE"] = "Heiligschaden: ",
-        ["frFR"] = "Dégats du sacré: ",
-        ["zhCN"] = "神圣伤害: ",
+        ["deDE"] = "Heiligschaden",
+        ["frFR"] = "Dégats du sacré",
+        ["zhCN"] = "神圣伤害",
     },
-    ["Holy Crit: "] = {
+    ["Holy Crit"] = {
         ["enUS"] = true,
-        ["deDE"] = "Heilig Kritisch: ",
-        ["frFR"] = "Critique du sacré: ",
-        ["zhCN"] = "神圣暴击: ",
+        ["deDE"] = "Heilig Kritisch",
+        ["frFR"] = "Critique du sacré",
+        ["zhCN"] = "神圣暴击",
     },
-    ["Nature Damage: "] = {
+    ["Nature Damage"] = {
         ["enUS"] = true,
-        ["deDE"] = "Naturschaden: ",
-        ["frFR"] = "Dégats de la nature: ",
-        ["zhCN"] = "自然伤害: ",
+        ["deDE"] = "Naturschaden",
+        ["frFR"] = "Dégats de la nature",
+        ["zhCN"] = "自然伤害",
     },
-    ["Nature Crit: "] = {
+    ["Nature Crit"] = {
         ["enUS"] = true,
-        ["deDE"] = "Natur Kritisch: ",
-        ["frFR"] = "Critique de la nature: ",
-        ["zhCN"] = "自然暴击: ",
+        ["deDE"] = "Natur Kritisch",
+        ["frFR"] = "Critique de la nature",
+        ["zhCN"] = "自然暴击",
     },
-    ["Physical Damage: "] = {
+    ["Physical Damage"] = {
         ["enUS"] = true,
-        ["deDE"] = "Physischer Schaden: ",
-        ["frFR"] = "Dégats physiques: ",
-        ["zhCN"] = "物理伤害: ",
+        ["deDE"] = "Physischer Schaden",
+        ["frFR"] = "Dégats physiques",
+        ["zhCN"] = "物理伤害",
     },
-    ["Physical Crit: "] = {
+    ["Physical Crit"] = {
         ["enUS"] = true,
-        ["deDE"] = "Physisch Kritisch: ",
-        ["frFR"] = "Critique physique: ",
-        ["zhCN"] = "物理暴击: ",
+        ["deDE"] = "Physisch Kritisch",
+        ["frFR"] = "Critique physique",
+        ["zhCN"] = "物理暴击",
     },
-    ["Shadow Damage: "] = {
+    ["Shadow Damage"] = {
         ["enUS"] = true,
-        ["deDE"] = "Schattenschaden: ",
-        ["frFR"] = "Dégats des ombres: ",
-        ["zhCN"] = "暗影伤害: ",
+        ["deDE"] = "Schattenschaden",
+        ["frFR"] = "Dégats des ombres",
+        ["zhCN"] = "暗影伤害",
     },
-    ["Shadow Crit: "] = {
+    ["Shadow Crit"] = {
         ["enUS"] = true,
-        ["deDE"] = "Schatten Kritisch: ",
-        ["frFR"] = "Critique des ombres: ",
-        ["zhCN"] = "暗影暴击: ",
+        ["deDE"] = "Schatten Kritisch",
+        ["frFR"] = "Critique des ombres",
+        ["zhCN"] = "暗影暴击",
     },
 }
 

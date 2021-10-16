@@ -163,7 +163,7 @@ _CreateStatInfo = function(category, ...)
 end
 
 _FormatStatsText = function(statTextRef, statRefName)
-    local statText = i18n(statTextRef)
+    local statText = i18n(statTextRef) .. ": "
     local statValue = Data:GetStatInfo(statRefName)
 
     if (not ExtendedCharacterStats.general.addColorsToStatTexts) then
