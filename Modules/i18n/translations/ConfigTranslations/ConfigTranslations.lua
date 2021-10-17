@@ -134,6 +134,18 @@ local configTranslations = {
         ["frFR"] = "Paramètres des statistiques",
         ["zhCN"] = "统计信息设置",
     },
+    ["Reset ECS"] = {
+        ["enUS"] = true,
+        ["deDE"] = "ECS zurücksetzen",
+        ["frFR"] = false,
+        ["zhCN"] = false,
+    },
+    ["Restores all default values of ECS."] = {
+        ["enUS"] = true,
+        ["deDE"] = "Stellt alle Standardwerte von ECS wieder her.",
+        ["frFR"] = false,
+        ["zhCN"] = false,
+    },
 }
 
 for k, v in pairs(configTranslations) do

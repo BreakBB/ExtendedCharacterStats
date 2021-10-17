@@ -420,3 +420,9 @@ function Profile:GetDefaultProfile()
         profile = GetDefaultStatsProfile(),
     }
 end
+
+function Profile:Reset()
+    local defaultProfile = Profile:GetDefaultProfile()
+    ExtendedCharacterStats.profile = defaultProfile.profile
+    ExtendedCharacterStats.general = defaultProfile.general
+end

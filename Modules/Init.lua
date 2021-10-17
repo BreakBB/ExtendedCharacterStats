@@ -92,7 +92,7 @@ function _Init:LoadProfile()
 
     if isProfileVersionDifferent then
         ECS:Print("Migrating ECS profile from version " .. currentProfileVersion .. " to " .. targetProfileVersion)
-        Migration:ToLatestProfileVersion(currentProfileVersion, defaultProfile)
+        Migration:ToLatestProfileVersion(currentProfileVersion)
         ExtendedCharacterStats.general.profileVersion = targetProfileVersion
     end
 end
