@@ -71,19 +71,19 @@ local statTranslations = {
     ["Attack Speed"] = {
         ["enUS"] = true,
         ["deDE"] = "Angriffstempo",
-        ["frFR"] = false,
+        ["frFR"] = "Vitesse d'attaque",
         ["zhCN"] = false,
     },
     ["Main Hand"] = {
         ["enUS"] = true,
         ["deDE"] = "Waffenhand",
-        ["frFR"] = false,
+        ["frFR"] = "Main d'arme",
         ["zhCN"] = false,
     },
     ["Off Hand"] = {
         ["enUS"] = true,
         ["deDE"] = "Schildhand",
-        ["frFR"] = false,
+        ["frFR"] = "Main de bouclier",
         ["zhCN"] = false,
     },
     ["Ranged"] = {
@@ -91,18 +91,6 @@ local statTranslations = {
         ["deDE"] = "Fernkampf",
         ["frFR"] = "A distance",
         ["zhCN"] = "远程",
-    },
-    ["Attack Speed"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Angriffstempo",
-        ["frFR"] = false,
-        ["zhCN"] = false,
-    },
-    ["Defense"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Verteidigung",
-        ["frFR"] = "Défense",
-        ["zhCN"] = "防御",
     },
     ["Armor"] = {
         ["enUS"] = true,
@@ -125,7 +113,7 @@ local statTranslations = {
     ["Defense Rating"] = {
         ["enUS"] = true,
         ["deDE"] = "Verteidigungswertung",
-        ["frFR"] = false,
+        ["frFR"] = "Score de défense",
         ["zhCN"] = false,
     },
     ["Defense"] = {
@@ -203,7 +191,7 @@ local statTranslations = {
     ["Penetration"] = {
         ["enUS"] = true,
         ["deDE"] = "Durchschlagskraft",
-        ["frFR"] = false,
+        ["frFR"] = "Pénétration",
         ["zhCN"] = false,
     },
     ["Spell Power"] = {
