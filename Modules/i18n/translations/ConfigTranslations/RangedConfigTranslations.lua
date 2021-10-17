@@ -86,7 +86,6 @@ local rangedConfigTranslations = {
         ["frFR"] = "Affiche/cache les chances de rater à distance contre un boss de 3 niveaux supérieurs.",
         ["zhCN"] = "显示/隐藏 针对BOSS的远程未命中率 (+3 等级)。",
     },
-
 }
 
 for k, v in pairs(rangedConfigTranslations) do

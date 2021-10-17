@@ -4,15 +4,15 @@ local i18n = ECSLoader:ImportModule("i18n")
 local commandTranslations = {
     ["ECS %s"] = {
         ["enUS"] = true,
-        ["deDE"] = false,
-        ["frFR"] = false,
-        ["zhCN"] = false,
+        ["deDE"] = true,
+        ["frFR"] = true,
+        ["zhCN"] = true,
     },
     ["/ecs toggle"] = {
         ["enUS"] = true,
-        ["deDE"] = false,
-        ["frFR"] = false,
-        ["zhCN"] = false,
+        ["deDE"] = true,
+        ["frFR"] = true,
+        ["zhCN"] = true,
     },
     ["Toggles the visibility of the stats window"] = {
         ["enUS"] = true,
@@ -22,9 +22,9 @@ local commandTranslations = {
     },
     ["/ecs config"] = {
         ["enUS"] = true,
-        ["deDE"] = false,
-        ["frFR"] = false,
-        ["zhCN"] = false,
+        ["deDE"] = true,
+        ["frFR"] = true,
+        ["zhCN"] = true,
     },
     ["Shows the configuration window"] = {
         ["enUS"] = true,

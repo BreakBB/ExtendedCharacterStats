@@ -26,7 +26,6 @@ local generalConfigTranslations = {
         ["frFR"] = "Affiche/Cache la vitesse de déplacement.",
         ["zhCN"] = "显示/隐藏 移动速度",
     },
-
 }
 
 for k, v in pairs(generalConfigTranslations) do

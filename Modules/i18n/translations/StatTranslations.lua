@@ -52,7 +52,7 @@ local statTranslations = {
     },
     ["Bonus"] = {
         ["enUS"] = true,
-        ["deDE"] = false,
+        ["deDE"] = true,
         ["frFR"] = false,
         ["zhCN"] = "命中",
     },

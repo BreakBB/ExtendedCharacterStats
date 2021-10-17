@@ -59,7 +59,6 @@ function _Config:LoadDefenseSection()
             critReduction = {
                 type = "toggle",
                 order = 1.8,
-                -- TODO: Wrong strings
                 name = function() return i18n("Crit Reduction") end,
                 desc = function() return i18n("Shows/Hides the reduction percentage of being critically hit.") end,
                 width = 1.5,

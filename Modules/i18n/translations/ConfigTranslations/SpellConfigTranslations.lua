@@ -128,7 +128,6 @@ local spellConfigTranslations = {
         ["frFR"] = "Affiche/Cache les chances de critique des arcanes.",
         ["zhCN"] = "显示/隐藏 奥术暴击",
     },
-
     ["Shows/Hides the nature damage value."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt den Naturschadenswert.",
@@ -165,7 +164,6 @@ local spellConfigTranslations = {
         ["frFR"] = "Affiche/Cache les chances de critique du feu.",
         ["zhCN"] = "显示/隐藏 火焰暴击",
     },
-
     ["Shows/Hides the shadow damage value."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt den Schattenschadenswert.",
