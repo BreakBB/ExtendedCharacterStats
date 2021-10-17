@@ -46,10 +46,10 @@ function Stats:CreateWindow()
     mainFrame.title = mainFrame:CreateFontString(nil, "OVERLAY")
     mainFrame.title:SetFontObject("GameFontHighlight")
     mainFrame.title:SetPoint("CENTER", mainFrame.TitleBg, "CENTER", 11,  0)
-    mainFrame.title:SetText(i18n("NAME_VERSION", Utils:GetAddonVersionString()))
+    mainFrame.title:SetText(i18n("ECS %s", Utils:GetAddonVersionString()))
 
     mainFrame.configButton = CreateFrame("Button", nil, mainFrame, "GameMenuButtonTemplate")
-    mainFrame.configButton:SetText(i18n("SETTINGS"))
+    mainFrame.configButton:SetText(i18n("Settings"))
     mainFrame.configButton:SetSize(ecs.general.window.width - 10, 20)
     mainFrame.configButton:SetPoint("CENTER", mainFrame, "TOP", -1,  -35)
     mainFrame.configButton:SetScript("OnClick", function ()
@@ -111,7 +111,7 @@ function Stats:UpdateWindowSize()
 end
 
 function Stats:UpdateSettingsButtonText()
-    _Stats.frame.configButton:SetText(i18n("SETTINGS"))
+    _Stats.frame.configButton:SetText(i18n("Settings"))
 end
 
 --- Toogles the stats window
@@ -156,28 +156,25 @@ _CreateStatInfo = function(category, ...)
         -- Loop through all stats
         for _, stat in pairs(stats) do
             if type(stat) == "table" and stat.display == true and ((not stat.isTbcOnly) or ECS.IsTBC) then
-                _CreateText(stat.refName, _FormatStatsText(stat.text,  stat.refName), category.isSubGroup)
+                _CreateText(stat.refName, _FormatStatsText(stat), category.isSubGroup)
             end
         end
     end
 end
 
-_FormatStatsText = function(statTextRef, statRefName)
-    local statText = i18n(statTextRef)
-    local statValue = Data:GetStatInfo(statRefName)
+_FormatStatsText = function(stat)
+    local statText = i18n(stat.text) .. ": "
+    local statValue = Data:GetStatInfo(stat.refName)
 
     if (not ExtendedCharacterStats.general.addColorsToStatTexts) then
         return Utils:Colorize(statText, colors.GRAY) .. Utils:Colorize(statValue, colors.WHITE)
     end
 
-    local statTextColor, statValueColor, percentColor = Utils:GetColorsForStatTextRef(statTextRef)
+    --local statTextColor, statValueColor, percentColor = Utils:GetColorsForStatTextRef(statTextRef)
+    local textColor = stat.textColor or colors.DEFENSE_SECONDARY
+    local statColor = stat.statColor or colors.DEFENSE_PRIMARY
 
-    if string.sub(statValue, -1) == "%" then
-        statValue = string.sub(statValue, 1,  -2)
-        return Utils:Colorize(statText, statTextColor) .. Utils:Colorize(statValue, statValueColor) .. Utils:Colorize("%", percentColor)
-    else
-        return Utils:Colorize(statText, statTextColor) .. Utils:Colorize(statValue, statValueColor)
-    end
+    return Utils:Colorize(statText, textColor) .. Utils:Colorize(statValue, statColor)
 end
 
 --- Creates all categories with headers and their child values
@@ -319,12 +316,12 @@ _UpdateStats = function(category)
             if stat.isSubGroup then
                 for _, subStat in pairs(stat) do
                     if type(subStat) == "table" and subStat.display == true then
-                        _UpdateItem(subStat.refName, _FormatStatsText(subStat.text, subStat.refName))
+                        _UpdateItem(subStat.refName, _FormatStatsText(subStat))
                     end
                 end
             elseif stat.display == true then
                 --_UpdateItem(stat.refName, i18n(stat.text) .. Data:GetStatInfo(stat.refName))
-                _UpdateItem(stat.refName, _FormatStatsText(stat.text, stat.refName))
+                _UpdateItem(stat.refName, _FormatStatsText(stat))
             end
         end
     end

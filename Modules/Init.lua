@@ -22,7 +22,7 @@ function Init:OnAddonLoaded()
     end
 
     _Init:LoadProfile()
-    i18n:LoadLanguageData()
+    i18n:SetLanguage(ExtendedCharacterStats.general.language)
 end
 
 function Init:OnPlayerLogin()

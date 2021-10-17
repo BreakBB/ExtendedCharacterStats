@@ -13,13 +13,13 @@ function _Config:LoadDefenseSection()
         order = 4,
         inline = false,
         width = 2,
-        name = function() return i18n("DEFENSE") end,
+        name = function() return i18n("Defense") end,
         args = {
             showDefenseStats = {
                 type = "toggle",
                 order = 0,
-                name = function() return i18n("DEFENSE_SETTINGS") end,
-                desc = function() return i18n("DEFENSE_SETTINGS_DESC") end,
+                name = function() return i18n("Show Defense Stats") end,
+                desc = function() return i18n("Shows/Hides all defense stats.") end,
                 width = 1.5,
                 get = function () return ExtendedCharacterStats.profile.defense.display; end,
                 set = function (_, value)
@@ -30,8 +30,8 @@ function _Config:LoadDefenseSection()
             armor = {
                 type = "toggle",
                 order = 1,
-                name = function() return i18n("ARMOR_SETTING") end,
-                desc = function() return i18n("ARMOR_SETTING_DESC") end,
+                name = function() return i18n("Armor") end,
+                desc = function() return i18n("Shows/Hides the armor value.") end,
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
                 get = function () return ExtendedCharacterStats.profile.defense.armor.display; end,
@@ -43,8 +43,8 @@ function _Config:LoadDefenseSection()
             critImmunity = {
                 type = "toggle",
                 order = 1.7,
-                name = function() return i18n("CRIT_IMMUNITY_SETTING") end,
-                desc = function() return i18n("CRIT_IMMUNITY_SETTING_DESC") end,
+                name = function() return i18n("Crit Immune") end,
+                desc = function() return i18n("Shows/Hides the percentage of being crit immune.") end,
                 width = 1.5,
                 hidden = function()
                     return (not ECS.IsTBC)
@@ -59,8 +59,8 @@ function _Config:LoadDefenseSection()
             critReduction = {
                 type = "toggle",
                 order = 1.8,
-                name = function() return i18n("CRIT_IMMUNITY_SETTING") end,
-                desc = function() return i18n("CRIT_IMMUNITY_SETTING_DESC") end,
+                name = function() return i18n("Crit Reduction") end,
+                desc = function() return i18n("Shows/Hides the reduction percentage of being critically hit.") end,
                 width = 1.5,
                 hidden = function()
                     return (not ECS.IsTBC)
@@ -75,8 +75,8 @@ function _Config:LoadDefenseSection()
             defenseRating = {
                 type = "toggle",
                 order = 1.9,
-                name = function() return i18n("DEFENSE_RATING_SETTING") end,
-                desc = function() return i18n("DEFENSE_RATING_SETTING_DESC") end,
+                name = function() return i18n("Defense Rating") end,
+                desc = function() return i18n("Shows/Hides the defense rating.") end,
                 width = 1.5,
                 hidden = function()
                     return (not ECS.IsTBC)
@@ -91,8 +91,8 @@ function _Config:LoadDefenseSection()
             defense = {
                 type = "toggle",
                 order = 2,
-                name = function() return i18n("DEFENSE") end,
-                desc = function() return i18n("DEFENSE_VALUE_SETTING_DESC") end,
+                name = function() return i18n("Defense") end,
+                desc = function() return i18n("Shows/Hides the defense value.") end,
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
                 get = function () return ExtendedCharacterStats.profile.defense.defense.display; end,
@@ -104,8 +104,8 @@ function _Config:LoadDefenseSection()
             blockChance = {
                 type = "toggle",
                 order = 3,
-                name = function() return i18n("BLOCK_CHANCE_SETTING") end,
-                desc = function() return i18n("BLOCK_CHANCE_SETTING_DESC") end,
+                name = function() return i18n("Block Chance") end,
+                desc = function() return i18n("Shows/Hides the block chance.") end,
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
                 get = function () return ExtendedCharacterStats.profile.defense.blockChance.display; end,
@@ -117,8 +117,8 @@ function _Config:LoadDefenseSection()
             blockValue = {
                 type = "toggle",
                 order = 4,
-                name = function() return i18n("BLOCK_VALUE_SETTING") end,
-                desc = function() return i18n("BLOCK_VALUE_SETTING_DESC") end,
+                name = function() return i18n("Block Value") end,
+                desc = function() return i18n("Shows/Hides the block value.") end,
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
                 get = function () return ExtendedCharacterStats.profile.defense.blockValue.display; end,
@@ -130,8 +130,8 @@ function _Config:LoadDefenseSection()
             parry = {
                 type = "toggle",
                 order = 5,
-                name = function() return i18n("PARRY_CHANCE_SETTING") end,
-                desc = function() return i18n("PARRY_CHANCE_SETTING_DESC") end,
+                name = function() return i18n("Parry Chance") end,
+                desc = function() return i18n("Shows/Hides the parry chance.") end,
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
                 get = function () return ExtendedCharacterStats.profile.defense.parry.display; end,
@@ -143,8 +143,8 @@ function _Config:LoadDefenseSection()
             dodge = {
                 type = "toggle",
                 order = 6,
-                name = function() return i18n("DODGE_CHANCE_SETTING") end,
-                desc = function() return i18n("DODGE_CHANCE_SETTING_DESC") end,
+                name = function() return i18n("Dodge Chance") end,
+                desc = function() return i18n("Shows/Hides the dodge chance.") end,
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
                 get = function () return ExtendedCharacterStats.profile.defense.dodge.display; end,
@@ -156,8 +156,8 @@ function _Config:LoadDefenseSection()
             resilience = {
                 type = "toggle",
                 order = 7,
-                name = function() return i18n("RESILIENCE_SETTING") end,
-                desc = function() return i18n("RESILIENCE_SETTING_DESC") end,
+                name = function() return i18n("Resilience") end,
+                desc = function() return i18n("Shows/Hides the resilience value.") end,
                 width = 1.5,
                 hidden = function()
                     return (not ECS.IsTBC)

@@ -1,10 +1,6 @@
 ---@class Utils
 local Utils = ECSLoader:CreateModule("Utils")
 
-local function _StrStartsWith(str, start)
-    return string.sub(str, 1, str.len(start)) == start
-end
-
 Utils.CHAR_EQUIP_SLOTS = {
     ["Head"] = "HeadSlot",
     ["Neck"] = "NeckSlot",
@@ -66,94 +62,6 @@ Utils.colors = {
 
 function Utils:Colorize(text, color)
     return "|cFF" .. color .. text .. "|r"
-end
-
----@param statTextRef string The text from a stat of the profile
----@return table<string, string, string> -- The colors for statText, statValue and the percent symbol
-function Utils:GetColorsForStatTextRef(statTextRef)
-    local colors = Utils.colors
-
-    local statTextColor = colors.DEFENSE_SECONDARY
-    local statValueColor = colors.DEFENSE_PRIMARY
-    local percentColor = colors.DEFENSE_PRIMARY
-
-    if statTextRef == "ATTACK_POWER" then
-        statTextColor = colors.ATTACK_POWER_SECONDARY
-        statValueColor = colors.ATTACK_POWER_PRIMARY
-        percentColor = colors.ATTACK_POWER_PRIMARY
-    end
-    if statTextRef == "CRIT_CHANCE" then
-        statTextColor = colors.CRIT_SECONDARY
-        statValueColor = colors.CRIT_PRIMARY
-        percentColor = colors.CRIT_PRIMARY
-    end
-    if statTextRef == "RATING" or statTextRef == "BONUS" or statTextRef == "MISS" or statTextRef == "MISS_BOSS" then
-        statTextColor = colors.HIT_SECONDARY
-        statValueColor = colors.HIT_PRIMARY
-        percentColor = colors.HIT_PRIMARY
-    end
-    if statTextRef == "ATTACK_SPEED_MAIN_HAND" or statTextRef == "ATTACK_SPEED_OFF_HAND" then
-        statTextColor = colors.ATTACK_SPEED_SECONDARY
-        statValueColor = colors.ATTACK_SPEED_PRIMARY
-        percentColor = colors.ATTACK_SPEED_PRIMARY
-    end
-
-    if _StrStartsWith(statTextRef, "MP5_") then
-        statTextColor = colors.MP5_SECONDARY
-        statValueColor = colors.MP5_PRIMARY
-        percentColor = colors.MP5_PRIMARY
-    end
-
-    if _StrStartsWith(statTextRef, "HEALING_") then
-        statTextColor = colors.HEALING_SECONDARY
-        statValueColor = colors.HEALING_PRIMARY
-        percentColor = colors.HEALING_PRIMARY
-    end
-    if _StrStartsWith(statTextRef, "ARCANCE_") then
-        statTextColor = colors.ARCANE_SECONDARY
-        statValueColor = colors.ARCANE_PRIMARY
-        percentColor = colors.ARCANE_PRIMARY
-    end
-    if _StrStartsWith(statTextRef, "FIRE_") then
-        statTextColor = colors.FIRE_SECONDARY
-        statValueColor = colors.FIRE_PRIMARY
-        percentColor = colors.FIRE_PRIMARY
-    end
-    if _StrStartsWith(statTextRef, "FROST_") then
-        statTextColor = colors.FROST_SECONDARY
-        statValueColor = colors.FROST_PRIMARY
-        percentColor = colors.FROST_PRIMARY
-    end
-    if _StrStartsWith(statTextRef, "HOLY_") then
-        statTextColor = colors.HOLY_SECONDARY
-        statValueColor = colors.HOLY_PRIMARY
-        percentColor = colors.HOLY_PRIMARY
-    end
-    if _StrStartsWith(statTextRef, "NATURE_") then
-        statTextColor = colors.NATURE_SECONDARY
-        statValueColor = colors.NATURE_PRIMARY
-        percentColor = colors.NATURE_PRIMARY
-    end
-    if _StrStartsWith(statTextRef, "PHYSICAL_") then
-        statTextColor = colors.PHYSICAL_SECONDARY
-        statValueColor = colors.PHYSICAL_PRIMARY
-        percentColor = colors.PHYSICAL_PRIMARY
-    end
-    if _StrStartsWith(statTextRef, "SHADOW_") then
-        statTextColor = colors.SHADOW_SECONDARY
-        statValueColor = colors.SHADOW_PRIMARY
-        percentColor = colors.SHADOW_PRIMARY
-    end
-
-    if (ExtendedCharacterStats.general.statColorSelection == "texts") then
-        statValueColor = colors.GRAY
-        percentColor = colors.GRAY
-    end
-    if (ExtendedCharacterStats.general.statColorSelection == "values") then
-        statTextColor = colors.GRAY
-    end
-
-    return statTextColor, statValueColor, percentColor
 end
 
 local cachedTitle

@@ -13,16 +13,16 @@ function _Config:LoadGeneralSection()
         order = 1.5,
         inline = false,
         width = 2,
-        name = function() return i18n("GENERAL") end,
+        name = function() return i18n("General") end,
         args = {
             showGeneralStats = {
                 type = "toggle",
                 order = 0,
-                name = function() return i18n("GENERAL_STATS") end,
-                desc = function() return i18n("GENERAL_STATS_DESC") end,
+                name = function() return i18n("Show General Stats") end,
+                desc = function() return i18n("Shows/Hides all general stats.") end,
                 width = 1.5,
                 get = function () return ExtendedCharacterStats.profile.general.display; end,
-                set = function (info, value)
+                set = function (_, value)
                     ExtendedCharacterStats.profile.general.display = value
                     Stats:RebuildStatInfos()
                 end,
@@ -30,12 +30,12 @@ function _Config:LoadGeneralSection()
             movementSpeed = {
                 type = "toggle",
                 order = 1,
-                name = function() return i18n("MOVEMENT_SPEED_SETTING") end,
-                desc = function() return i18n("MOVEMENT_SPEED_SETTING_DESC") end,
+                name = function() return i18n("Show Movement Speed") end,
+                desc = function() return i18n("Shows/Hides the movement speed value.") end,
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.general.display); end,
                 get = function () return ExtendedCharacterStats.profile.general.movementSpeed.display; end,
-                set = function (info, value)
+                set = function (_, value)
                     ExtendedCharacterStats.profile.general.movementSpeed.display = value
                     Stats:RebuildStatInfos()
                 end,

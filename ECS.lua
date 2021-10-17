@@ -7,7 +7,7 @@ ECS.IsTBC = WOW_PROJECT_ID == WOW_PROJECT_BURNING_CRUSADE_CLASSIC
 local Init = ECSLoader:ImportModule("Init")
 
 
-local loadingFrame = CreateFrame("Frame", nil, UIParent)
+local loadingFrame = CreateFrame("Frame")
 ECS.loadingFrame = loadingFrame
 
 loadingFrame:RegisterEvent("ADDON_LOADED") -- Triggers whenever all non-lod addons has been loaded, this will initialize the addon

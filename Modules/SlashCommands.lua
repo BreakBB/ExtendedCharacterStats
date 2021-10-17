@@ -19,9 +19,9 @@ local function _HandleSlash(msg)
     elseif cmd == "config" then
         Config:ToggleWindow()
     else
-        print(i18n("AVAILABLE_COMMANDS"))
-        print(i18n("SLASH_TOGGLE") .. " - " .. i18n("SLASH_TOGGLE_DESC"))
-        print(i18n("SLASH_CONFIG") .. " - " .. i18n("SLASH_CONFIG_DESC"))
+        print(i18n("Available Commands"))
+        print(i18n("/ecs toggle") .. " - " .. i18n("Toggles the visibility of the stats window"))
+        print(i18n("/ecs config") .. " - " .. i18n("Shows the configuration window"))
     end
 end
 
