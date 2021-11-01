@@ -168,7 +168,7 @@ local configTranslations = {
         ["deDE"] = "Stellt alle Standardwerte von ECS wieder her.",
         ["frFR"] = false,
         ["zhCN"] = false,
-        ["ruRU"] = "Сбрасывает настройки ECS на используемые по умолчанию",
+        ["ruRU"] = "Сбрасывает настройки ECS на используемые по умолчанию. Это перезагрузит пользовательский интерфейс",
     },
 }
 
