@@ -98,7 +98,7 @@ local meleeConfigTranslations = {
         ["deDE"] = "Trefferwertung",
         ["frFR"] = false,
         ["zhCN"] = false,
-        ["ruRU"] = "Значение",
+        ["ruRU"] = "Меткость",
     },
     ["Shows/Hides the melee hit rating."] = {
         ["enUS"] = true,
