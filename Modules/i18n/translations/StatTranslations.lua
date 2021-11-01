@@ -56,7 +56,7 @@ local statTranslations = {
         ["deDE"] = "Wertung",
         ["frFR"] = false,
         ["zhCN"] = false,
-        ["ruRU"] = "Значение",
+        ["ruRU"] = "Меткость",
     },
     ["Bonus"] = {
         ["enUS"] = true,
