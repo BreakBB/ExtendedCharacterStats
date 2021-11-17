@@ -51,12 +51,12 @@ function Init:OnPlayerLogin()
                     Stats:UpdateInformation()
                 end)
             end
-        elseif event == "PLAYER_EQUIPMENT_CHANGED" then
+        elseif event == "PLAYER_EQUIPMENT_CHANGED" or event == "SOCKET_INFO_SUCCESS" then
             GearInfos:UpdateGearColorFrames()
             C_Timer.After(0.5, function ()
                 Stats:UpdateInformation()
             end)
-        elseif event == "INSPECT_READY" or event == "SOCKET_INFO_SUCCESS" then
+        elseif event == "INSPECT_READY" then
             GearInfos:UpdateInspectGearColorFrames()
         end
     end)

@@ -12,7 +12,7 @@ local _, _, classId = UnitClass("player")
 function Data:GetSpellDamage(school)
     local spellDmg = GetSpellBonusDamage(school)
     local modifier = _SpellDamage:GetGeneralTalentModifier() + _SpellDamage:GetModifierFromBuffs(school)
-    spellDmg = spellDmg * (1 + (modifier / 100)) + _SpellDamage:GetTalentBonus()
+    spellDmg = spellDmg * (1 + (modifier / 100))
     return DataUtils:Round(spellDmg, 0)
 end
 
@@ -47,19 +47,6 @@ function _SpellDamage:GetModifierFromBuffs(school)
     end
 
     return mod
-end
-
----@return number
-function _SpellDamage:GetTalentBonus()
-    local bonus = 0
-
-    if classId == Data.MAGE and ECS.IsTBC then
-        local _, intValue, _, _ = UnitStat("player", 4)
-        local _, _, _, _, mindMastery, _, _, _ = GetTalentInfo(1, 22)
-        bonus = intValue * (mindMastery * 5 / 100) -- 5-25% of Int from Mind Mastery
-    end
-
-    return bonus
 end
 
 ---@return number

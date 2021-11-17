@@ -207,7 +207,7 @@ _GeneralTab = function()
                 type = "execute",
                 order = 8.1,
                 name = function() return i18n("Reset ECS") end,
-                desc = function() return i18n("Reset ECS to the default values for all settings."); end,
+                desc = function() return i18n("Restores all default values of ECS."); end,
                 func = function(_, _)
                     Profile:Reset()
                     ReloadUI()
