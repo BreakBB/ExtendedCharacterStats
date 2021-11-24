@@ -78,9 +78,8 @@ end
 function Data:GetMP5WhileCasting()
     local _, casting = GetManaRegen() -- Returns mana reg per 1 second
     if casting < 1 then
-        casting = lastManaReg
+        casting = 0
     end
-    lastManaReg = casting
 
     if ECS.IsTBC then
         casting = (casting * 5) + _MP5:GetTalentBonus()
