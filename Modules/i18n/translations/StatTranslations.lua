@@ -44,6 +44,13 @@ local statTranslations = {
         ["zhCN"] = false,
         ["ruRU"] = "Мастерство",
     },
+    ["Expertise Rating"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Waffenkundewertung",
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+    },
     ["Hit"] = {
         ["enUS"] = true,
         ["deDE"] = "Trefferchance",

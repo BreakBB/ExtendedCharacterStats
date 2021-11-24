@@ -165,3 +165,9 @@ function Data:GetExpertise()
     local expertise, _ = GetExpertise()
     return DataUtils:Round(expertise, 0)
 end
+
+---@return number
+function Data:GetExpertiseRating()
+    local expertiseRating = GetCombatRating(CR_EXPERTISE)
+    return DataUtils:Round(expertiseRating, 0)
+end

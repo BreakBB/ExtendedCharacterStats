@@ -69,6 +69,22 @@ function _Config:LoadMeleeSection()
                     Stats:RebuildStatInfos()
                 end,
             },
+            expertiseRating = {
+                type = "toggle",
+                order = 2.6,
+                name = function() return i18n("Expertise Rating") end,
+                desc = function() return i18n("Shows/Hides the expertise rating.") end,
+                width = 1.5,
+                hidden = function()
+                    return (not ECS.IsTBC)
+                end,
+                disabled = function() return (not ExtendedCharacterStats.profile.melee.display); end,
+                get = function () return ExtendedCharacterStats.profile.melee.expertiseRating.display; end,
+                set = function (_, value)
+                    ExtendedCharacterStats.profile.melee.expertiseRating.display = value
+                    Stats:RebuildStatInfos()
+                end,
+            },
             meleeHit = {
                 type = "toggle",
                 order = 3,
