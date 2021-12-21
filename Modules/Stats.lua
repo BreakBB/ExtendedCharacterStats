@@ -186,7 +186,7 @@ _CreateStatInfos = function()
 
     category = profile.melee
     if ECS.IsTBC then
-        _CreateStatInfo(category, category.attackPower, category.crit, category.expertise)
+        _CreateStatInfo(category, category.attackPower, category.crit, category.expertise, category.expertiseRating)
     else
         _CreateStatInfo(category, category.attackPower, category.crit)
     end

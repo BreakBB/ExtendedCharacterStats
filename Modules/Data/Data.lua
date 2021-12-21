@@ -26,6 +26,13 @@ dataFunctionRefs = {
             return 0
         end
     end,
+    ["ExpertiseRating"] = function()
+        if ECS.IsTBC then
+            return Data:GetExpertiseRating()
+        else
+            return 0
+        end
+    end,
     ["MeleeHitRating"] = function()
         if ECS.IsTBC then
             return Data:MeleeHitRating()

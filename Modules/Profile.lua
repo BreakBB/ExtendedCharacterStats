@@ -9,7 +9,7 @@ local Profile = ECSLoader:CreateModule("Profile")
 local Utils = ECSLoader:ImportModule("Utils")
 
 function Profile:GetProfileVersion()
-    return 11
+    return 12
 end
 
 ---@return ECSProfile
@@ -84,6 +84,7 @@ local function GetDefaultStatsProfile()
                 statColor = colors.CRIT_PRIMARY
             },
             expertise = {display = true, isTbcOnly = true, refName = "Expertise", text = "Expertise"},
+            expertiseRating = {display = true, isTbcOnly = true, refName = "ExpertiseRating", text = "Expertise Rating"},
             attackSpeed = {
                 display = true,
                 isSubGroup = true,

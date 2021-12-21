@@ -39,10 +39,17 @@ local statTranslations = {
     },
     ["Expertise"] = {
         ["enUS"] = true,
-        ["deDE"] = "Waffenkundewertung",
+        ["deDE"] = "Waffenkunde",
         ["frFR"] = false,
         ["zhCN"] = false,
         ["ruRU"] = "Мастерство",
+    },
+    ["Expertise Rating"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Waffenkundewertung",
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
     },
     ["Hit"] = {
         ["enUS"] = true,

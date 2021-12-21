@@ -74,7 +74,7 @@ end
 function _Ranged:GetHitTalentBonus()
     local bonus = 0
 
-    if classId == Data.HUNTER then
+    if ECS.IsTBC and classId == Data.HUNTER then
         local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 12)
         bonus = points * 1 -- 0-3% Surefooted
     end

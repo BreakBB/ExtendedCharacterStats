@@ -1,0 +1,61 @@
+## Interface: 20502
+## Title : Extended Character Stats v2.10.0
+## Version : 2.10.0
+## Author: BreakBB, Ethulu
+## Notes: Displays an extra window with more information about your characters stats ( Crit/Hit/Block etc )
+## SavedVariablesPerCharacter: ExtendedCharacterStats
+## DefaultState : enabled
+## X-Curse-Project-ID: 334877
+
+embeds.xml
+
+# ModuleLoader
+Modules\ModuleLoader.lua
+
+# Modules
+Modules\Migration.lua
+Modules\Init.lua
+Modules\Utils.lua
+Modules\Stats.lua
+Modules\GearInfos.lua
+Modules\Profile.lua
+Modules\SlashCommands.lua
+
+# Data
+Modules\Data\Constants.lua
+Modules\Data\Data.lua
+Modules\Data\DataUtils.lua
+Modules\Data\ItemSets.lua
+Modules\Data\General.lua
+Modules\Data\Defense.lua
+Modules\Data\Melee.lua
+Modules\Data\MP5.lua
+Modules\Data\Ranged.lua
+Modules\Data\SpellCrit.lua
+Modules\Data\SpellDamage.lua
+Modules\Data\SpellHit.lua
+
+# Config
+Modules\Config\Config.lua
+Modules\Config\GeneralSection.lua
+Modules\Config\MeleeSection.lua
+Modules\Config\RangeSection.lua
+Modules\Config\DefenseSection.lua
+Modules\Config\ManaSection.lua
+Modules\Config\SpellSection.lua
+Modules\Config\SpellBonusSection.lua
+
+# i18n
+Modules\i18n\i18n.lua
+Modules\i18n\translations\CommandTranslations.lua
+Modules\i18n\translations\StatTranslations.lua
+Modules\i18n\translations\ConfigTranslations\ConfigTranslations.lua
+Modules\i18n\translations\ConfigTranslations\DefenseConfigTranslations.lua
+Modules\i18n\translations\ConfigTranslations\GeneralConfigTranslations.lua
+Modules\i18n\translations\ConfigTranslations\ManaConfigTranslations.lua
+Modules\i18n\translations\ConfigTranslations\MeleeConfigTranslations.lua
+Modules\i18n\translations\ConfigTranslations\RangedConfigTranslations.lua
+Modules\i18n\translations\ConfigTranslations\SpellConfigTranslations.lua
+
+# Main
+ECS.lua

@@ -46,10 +46,17 @@ local meleeConfigTranslations = {
     },
     ["Shows/Hides the expertise value."] = {
         ["enUS"] = true,
-        ["deDE"] = "Zeigt/Versteckt die Waffenkundewertung.",
+        ["deDE"] = "Zeigt/Versteckt die Waffenkunde.",
         ["frFR"] = false,
         ["zhCN"] = false,
         ["ruRU"] = "Показать/скрыть значение рейтинга мастерства",
+    },
+    ["Shows/Hides the expertise rating."] = {
+        ["enUS"] = true,
+        ["deDE"] = "Zeigt/Versteckt die Waffenkundewertung.",
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
     },
     ["Shows/Hides the melee attack speed."] = {
         ["enUS"] = true,

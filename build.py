@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-import fileinput
 import os
 import shutil
 import subprocess
@@ -16,7 +15,6 @@ release If provided this will create release ready ZIP files
 '''
 addonDir = 'ExtendedCharacterStats'
 isReleaseBuild = False
-classicInterfaceVersion = "11401"
 
 
 def main():
@@ -25,53 +23,39 @@ def main():
         isReleaseBuild = sys.argv[1]
         print("Creating a release build")
 
-    universal_version_dir, tbc_version_dir, era_version_dir = get_version_dirs(isReleaseBuild)
+    version_dir = get_version_dir(isReleaseBuild)
 
-    if os.path.isdir('releases/%s' % universal_version_dir):
+    if os.path.isdir('releases/%s' % version_dir):
         print("Warning: Folder already exists, removing!")
-        shutil.rmtree('releases/%s' % universal_version_dir)
+        shutil.rmtree('releases/%s' % version_dir)
 
-    release_folder_path = 'releases/%s' % universal_version_dir
+    release_folder_path = 'releases/%s' % version_dir
     release_addon_folder_path = release_folder_path + ('/%s' % addonDir)
 
     copy_content_to(release_addon_folder_path)
 
-    zip_name = '%s-%s' % (addonDir, tbc_version_dir)
-    zip_release_folder(zip_name, universal_version_dir, addonDir)
+    zip_name = '%s-%s' % (addonDir, version_dir)
+    zip_release_folder(zip_name, version_dir, addonDir)
 
-    zip_name = '%s-%s' % (addonDir, era_version_dir)
-
-    for line in fileinput.input(release_addon_folder_path + "/ExtendedCharacterStats.toc", inplace=True):
-        if line.startswith("## Interface"):
-            print("## Interface: {}\n".format(classicInterfaceVersion), end="")
-        else:
-            print(line, end="")
-
-    zip_release_folder(zip_name, universal_version_dir, addonDir)
-
-    print('New release "%s" created successfully' % universal_version_dir)
+    print('New release "%s" created successfully' % version_dir)
 
 
-def get_version_dirs(is_release_build):
+def get_version_dir(is_release_build):
     version, nr_of_commits, recent_commit = get_git_information()
     print("Tag: " + version)
     if is_release_build:
-        tbc_version_dir = "%s-tbc" % version
-        era_version_dir = "%s-era" % version
-        universal_version_dir = "%s" % version
+        version_dir = "%s" % version
     else:
-        tbc_version_dir = "%s-tbc-%s" % (version, recent_commit)
-        era_version_dir = "%s-era-%s" % (version, recent_commit)
-        universal_version_dir = "%s-%s" % (version, recent_commit)
+        version_dir = "%s-%s" % (version, recent_commit)
 
     print("Number of commits since tag: " + nr_of_commits)
     print("Most Recent commit: " + recent_commit)
     branch = get_branch()
     if branch != "master":
-        tbc_version_dir += "-%s" % branch
+        version_dir += "-%s" % branch
     print("Current branch: " + branch)
 
-    return universal_version_dir, tbc_version_dir, era_version_dir
+    return version_dir
 
 
 directoriesToSkip = ['.git', '.github', '.history', '.idea', 'releases']
