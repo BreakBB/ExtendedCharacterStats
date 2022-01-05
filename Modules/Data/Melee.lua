@@ -114,7 +114,7 @@ function Data:MeleeHitMissChanceSameLevel()
 
     local missChance
     if DataUtils:IsShapeshifted() then
-        missChance = 6
+        missChance = 5
     else
         missChance = DataUtils:GetMissChanceByDifference(mainBase + mainMod, enemyDefenseValue)
     end
