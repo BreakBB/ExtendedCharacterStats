@@ -49,7 +49,7 @@ local statTranslations = {
         ["deDE"] = "Waffenkundewertung",
         ["frFR"] = false,
         ["zhCN"] = false,
-        ["ruRU"] = false,
+        ["ruRU"] = "Рейтинг мастерства",
     },
     ["Hit"] = {
         ["enUS"] = true,
