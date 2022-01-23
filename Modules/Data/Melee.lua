@@ -171,3 +171,9 @@ function Data:GetExpertiseRating()
     local expertiseRating = GetCombatRating(CR_EXPERTISE)
     return DataUtils:Round(expertiseRating, 0)
 end
+
+---@return number
+function Data:GetMeleeHasteRating()
+    local hasteRating = GetCombatRating(CR_HASTE_MELEE)
+    return DataUtils:Round(hasteRating, 0)
+end

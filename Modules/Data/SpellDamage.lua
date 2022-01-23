@@ -58,3 +58,15 @@ end
 function Data:GetHealingPower()
     return GetSpellBonusHealing()
 end
+
+---@return number
+function Data:GetSpellHasteRating()
+    local hasteRating = GetCombatRating(CR_HASTE_SPELL)
+    return DataUtils:Round(hasteRating, 0)
+end
+
+---@return string
+function Data:GetSpellHasteBonus()
+    local hasteBonus = GetCombatRatingBonus(CR_HASTE_SPELL)
+    return DataUtils:Round(hasteBonus, 2) .. "%"
+end

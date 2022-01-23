@@ -40,9 +40,41 @@ function _Config:LoadSpellSection()
                     Stats:RebuildStatInfos()
                 end,
             },
+            hasteRating = {
+                type = "toggle",
+                order = 2,
+                name = function() return i18n("Haste Rating") end,
+                desc = function() return i18n("Shows/Hides the spell haste rating value.") end,
+                width = 1.5,
+                hidden = function()
+                    return (not ECS.IsTBC)
+                end,
+                disabled = function() return (not ExtendedCharacterStats.profile.spell.display); end,
+                get = function () return ExtendedCharacterStats.profile.spell.hasteRating.display; end,
+                set = function (_, value)
+                    ExtendedCharacterStats.profile.spell.hasteRating.display = value
+                    Stats:RebuildStatInfos()
+                end,
+            },
+            hasteBonus = {
+                type = "toggle",
+                order = 3,
+                name = function() return i18n("Haste Bonus") end,
+                desc = function() return i18n("Shows/Hides the spell haste bonus value.") end,
+                width = 1.5,
+                hidden = function()
+                    return (not ECS.IsTBC)
+                end,
+                disabled = function() return (not ExtendedCharacterStats.profile.spell.display); end,
+                get = function () return ExtendedCharacterStats.profile.spell.hasteBonus.display; end,
+                set = function (_, value)
+                    ExtendedCharacterStats.profile.spell.hasteBonus.display = value
+                    Stats:RebuildStatInfos()
+                end,
+            },
             spellPenetration = {
                 type = "toggle",
-                order = 1,
+                order = 4,
                 name = function() return i18n("Spell Penetration") end,
                 desc = function() return i18n("Shows/Hides the spell penetration value.") end,
                 width = 1.5,
@@ -55,7 +87,7 @@ function _Config:LoadSpellSection()
             },
             spellHit = {
                 type = "toggle",
-                order = 2,
+                order = 5,
                 name = function() return i18n("Spell Hit") end,
                 desc = function() return i18n("Shows/Hides all spell hit chance.") end,
                 width = 1.5,
@@ -68,7 +100,7 @@ function _Config:LoadSpellSection()
             },
             spellHitGroup = {
                 type = "group",
-                order = 3,
+                order = 6,
                 inline = true,
                 name = function() return i18n("Spell Hit Values") end,
                 args = {

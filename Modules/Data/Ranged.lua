@@ -24,6 +24,12 @@ function _Ranged:IsRangeAttackClass()
     return classId == Data.WARRIOR or classId == Data.ROGUE or classId == Data.HUNTER
 end
 
+---@return number
+function Data:GetRangedHasteRating()
+    local hasteRating = GetCombatRating(CR_HASTE_RANGED)
+    return DataUtils:Round(hasteRating, 0)
+end
+
 ---@return string
 function Data:GetRangedAttackSpeed()
     local speed, _ = UnitRangedDamage("player")

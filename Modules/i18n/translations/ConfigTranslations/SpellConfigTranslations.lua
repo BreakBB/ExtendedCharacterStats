@@ -44,6 +44,20 @@ local spellConfigTranslations = {
         ["zhCN"] = false,
         ["ruRU"] = "Показать/скрыть значение проникающей способности заклинаний",
     },
+    ["Shows/Hides the spell haste rating value."] = {
+        ["enUS"] = true,
+        ["deDE"] = "Zeigt/Versteckt die Zaubertempowertung.",
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+    },
+    ["Shows/Hides the spell haste bonus value."] = {
+        ["enUS"] = true,
+        ["deDE"] = "Zeigt/Versteckt den Zaubertempobonus.",
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+    },
     ["Spell Hit Values"] = {
         ["enUS"] = true,
         ["deDE"] = "Zauber Trefferwertung",
