@@ -53,6 +53,22 @@ function _Config:LoadRangeSection()
                     Stats:RebuildStatInfos()
                 end,
             },
+            hasteRating = {
+                type = "toggle",
+                order = 2.6,
+                name = function() return i18n("Haste Rating") end,
+                desc = function() return i18n("Shows/Hides the ranged haste rating.") end,
+                width = 1.5,
+                hidden = function()
+                    return (not ECS.IsTBC)
+                end,
+                disabled = function() return (not ExtendedCharacterStats.profile.ranged.display); end,
+                get = function () return ExtendedCharacterStats.profile.ranged.hasteRating.display; end,
+                set = function (_, value)
+                    ExtendedCharacterStats.profile.ranged.hasteRating.display = value
+                    Stats:RebuildStatInfos()
+                end,
+            },
             rangedAttackSpeed = {
                 type = "toggle",
                 order = 3,

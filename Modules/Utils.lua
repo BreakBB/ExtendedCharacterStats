@@ -39,6 +39,9 @@ Utils.colors = {
     DEFENSE_PRIMARY = "8d6e63",
     DEFENSE_SECONDARY = "be9c91",
 
+    HASTE_RATING_PRIMARY = "ffd740",
+    HASTE_RATING_SECONDARY = "c8a600",
+
     ARCANE_PRIMARY = "80deea",
     ARCANE_SECONDARY = "b4ffff",
     FIRE_PRIMARY = "d50000",

@@ -85,6 +85,14 @@ local function GetDefaultStatsProfile()
             },
             expertise = {display = true, isTbcOnly = true, refName = "Expertise", text = "Expertise"},
             expertiseRating = {display = true, isTbcOnly = true, refName = "ExpertiseRating", text = "Expertise Rating"},
+            hasteRating = {
+                display = true,
+                isTbcOnly = true,
+                refName = "MeleeHasteRating",
+                text = "Haste Rating",
+                textColor = colors.HASTE_RATING_SECONDARY,
+                statColor = colors.HASTE_RATING_PRIMARY
+            },
             attackSpeed = {
                 display = true,
                 isSubGroup = true,
@@ -164,6 +172,14 @@ local function GetDefaultStatsProfile()
                 text = "Crit Chance",
                 textColor = colors.CRIT_SECONDARY,
                 statColor = colors.CRIT_PRIMARY
+            },
+            hasteRating = {
+                display = true,
+                isTbcOnly = true,
+                refName = "RangedHasteRating",
+                text = "Haste Rating",
+                textColor = colors.HASTE_RATING_SECONDARY,
+                statColor = colors.HASTE_RATING_PRIMARY
             },
             attackSpeed = {
                 display = true,
@@ -277,6 +293,22 @@ local function GetDefaultStatsProfile()
                 text = "Crit Chance",
                 textColor = colors.CRIT_SECONDARY,
                 statColor = colors.CRIT_PRIMARY
+            },
+            hasteRating = {
+                display = true,
+                isTbcOnly = true,
+                refName = "SpellHasteRating",
+                text = "Haste Rating",
+                textColor = colors.HASTE_RATING_SECONDARY,
+                statColor = colors.HASTE_RATING_PRIMARY
+            },
+            hasteBonus = {
+                display = true,
+                isTbcOnly = true,
+                refName = "SpellHasteBonus",
+                text = "Haste Bonus",
+                textColor = colors.HASTE_RATING_SECONDARY,
+                statColor = colors.HASTE_RATING_PRIMARY
             },
             penetration = {display = true, refName = "SpellPenetration", text = "Penetration"},
         },

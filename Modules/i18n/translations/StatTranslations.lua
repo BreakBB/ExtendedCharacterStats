@@ -86,6 +86,20 @@ local statTranslations = {
         ["zhCN"] = "未命中 (等级 + 3)",
         ["ruRU"] = "Сопрот. (+3 ур.)",
     },
+    ["Haste Rating"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Tempowertung",
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+    },
+    ["Haste Bonus"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Tempobonus",
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+    },
     ["Attack Speed"] = {
         ["enUS"] = true,
         ["deDE"] = "Angriffstempo",

@@ -43,6 +43,13 @@ dataFunctionRefs = {
     ["MeleeHitBonus"] = function() return Data:MeleeHitBonus() end,
     ["MeleeHitSameLevel"] = function() return Data:MeleeHitMissChanceSameLevel() end,
     ["MeleeHitBossLevel"] = function() return Data:MeleeHitMissChanceBossLevel() end,
+    ["MeleeHasteRating"] = function()
+        if ECS.IsTBC then
+            return Data:GetMeleeHasteRating()
+        else
+            return 0
+        end
+    end,
     ["MeleeAttackSpeedMainHand"] = function() return Data:GetMeleeAttackSpeedMainHand() end,
     ["MeleeAttackSpeedOffHand"] = function() return Data:GetMeleeAttackSpeedOffHand() end,
     -- Ranged
@@ -58,6 +65,13 @@ dataFunctionRefs = {
     ["RangedHitBonus"] = function() return Data:RangeHitBonus() end,
     ["RangedHitSameLevel"] = function() return Data:RangeMissChanceSameLevel() end,
     ["RangedHitBossLevel"] = function() return Data:RangeMissChanceBossLevel() end,
+    ["RangedHasteRating"] = function()
+        if ECS.IsTBC then
+            return Data:GetRangedHasteRating()
+        else
+            return 0
+        end
+    end,
     ["RangedAttackSpeed"] = function() return Data:GetRangedAttackSpeed() end,
     -- Defense
     ["Armor"] = function() return Data:GetArmorValue() end,
@@ -106,6 +120,20 @@ dataFunctionRefs = {
     ["SpellHitSameLevel"] = function() return Data:SpellMissChanceSameLevel() end,
     ["SpellHitBossLevel"] = function() return Data:SpellMissChanceBossLevel() end,
     ["SpellCritChance"] = function() return Data:GetSpellCrit(0) end,
+    ["SpellHasteRating"] = function()
+        if ECS.IsTBC then
+            return Data:GetSpellHasteRating()
+        else
+            return 0
+        end
+    end,
+    ["SpellHasteBonus"] = function()
+        if ECS.IsTBC then
+            return Data:GetSpellHasteBonus()
+        else
+            return "0 %"
+        end
+    end,
     ["SpellPenetration"] = function() return Data:GetSpellPenetration() end,
     -- MP5
     ["MP5Items"] = function() return Data:GetMP5FromItems() end,
