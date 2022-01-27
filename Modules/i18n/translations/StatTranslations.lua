@@ -91,14 +91,14 @@ local statTranslations = {
         ["deDE"] = "Tempowertung",
         ["frFR"] = false,
         ["zhCN"] = false,
-        ["ruRU"] = false,
+        ["ruRU"] = "Рейтинг скорости",
     },
     ["Haste Bonus"] = {
         ["enUS"] = true,
         ["deDE"] = "Tempobonus",
         ["frFR"] = false,
         ["zhCN"] = false,
-        ["ruRU"] = false,
+        ["ruRU"] = "Бонус к скорости",
     },
     ["Attack Speed"] = {
         ["enUS"] = true,
