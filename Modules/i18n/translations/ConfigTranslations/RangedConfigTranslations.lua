@@ -49,7 +49,7 @@ local rangedConfigTranslations = {
         ["deDE"] = "Zeigt/Versteckt die Fernkampftempowertung.",
         ["frFR"] = false,
         ["zhCN"] = false,
-        ["ruRU"] = false,
+        ["ruRU"] = "Показать/скрыть значение рейтинга скорости дальнего боя",
     },
     ["Shows/Hides the ranged attack speed."] = {
         ["enUS"] = true,

@@ -49,14 +49,14 @@ local spellConfigTranslations = {
         ["deDE"] = "Zeigt/Versteckt die Zaubertempowertung.",
         ["frFR"] = false,
         ["zhCN"] = false,
-        ["ruRU"] = false,
+        ["ruRU"] = "Показать/скрыть значение рейтинга скорости заклинаний",
     },
     ["Shows/Hides the spell haste bonus value."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt den Zaubertempobonus.",
         ["frFR"] = false,
         ["zhCN"] = false,
-        ["ruRU"] = false,
+        ["ruRU"] = "Показать/скрыть значение бонуса к скорости заклинаний",
     },
     ["Spell Hit Values"] = {
         ["enUS"] = true,
