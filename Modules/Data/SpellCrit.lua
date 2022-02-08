@@ -17,7 +17,7 @@ function Data:GetSpellCrit(school)
     if ECS.IsTBC then
         crit = crit + GetCombatRatingBonus(CR_CRIT_SPELL) + GetSpellCritChanceFromIntellect("player") + itemBonus + setBonus
     else
-        crit = crit + GetSpellCritChance(1) + itemBonus + setBonus
+        crit = crit + GetSpellCritChance(school) + itemBonus + setBonus
     end
 
     crit = crit + _SpellCrit:GetSpellCritFromBuffs()

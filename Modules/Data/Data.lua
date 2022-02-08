@@ -119,7 +119,7 @@ dataFunctionRefs = {
     ["SpellHitBonus"] = function() return Data:SpellHitBonus() end,
     ["SpellHitSameLevel"] = function() return Data:SpellMissChanceSameLevel() end,
     ["SpellHitBossLevel"] = function() return Data:SpellMissChanceBossLevel() end,
-    ["SpellCritChance"] = function() return Data:GetSpellCrit(0) end,
+    ["SpellCritChance"] = function() return Data:GetSpellCrit(2) end,
     ["SpellHasteRating"] = function()
         if ECS.IsTBC then
             return Data:GetSpellHasteRating()
