@@ -9,7 +9,7 @@ local Profile = ECSLoader:CreateModule("Profile")
 local Utils = ECSLoader:ImportModule("Utils")
 
 function Profile:GetProfileVersion()
-    return 12
+    return 13
 end
 
 ---@return ECSProfile
