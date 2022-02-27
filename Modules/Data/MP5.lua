@@ -40,8 +40,29 @@ function _MP5:GetMP5ValueOnItems()
             if enchant and enchant == Data.enchantIds.RESILIENCE_OF_THE_SCOURGE then
                 mp5 = mp5 + 5
             end
+            -- Honor Hold/Thrallmar enchant
+            if enchant and enchant == Data.enchantIds.GLYPH_OF_RENEWAL then
+                mp5 = mp5 + 7
+            end
+            -- aldor enchant
+            if enchant and enchant == Data.enchantIds.INSCRIPTION_OF_FAITH then
+                mp5 = mp5 + 4
+            end
+            
+            -- Check for socketed gems (TODO: check for socket bonus)
+            local gem1, gem2, gem3 = DataUtils:GetSocketedGemsFromItemLink(itemLink)
+            if gem1 then
+                mp5 = mp5 + _MP5:GetGemBonusMP5(gem1)
+            end
+            if gem2 then
+                mp5 = mp5 + _MP5:GetGemBonusMP5(gem2)
+            end
+            if gem3 then
+                mp5 = mp5 + _MP5:GetGemBonusMP5(gem3)
+            end
         end
     end
+
 
     -- Check weapon enchants (e.g. Mana Oil)
     local hasMainEnchant, _, _, mainHandEnchantID = GetWeaponEnchantInfo()
@@ -65,12 +86,19 @@ local lastManaReg = 0
 
 ---@return number
 function Data:GetMP5FromSpirit()
+    local _, intValue = UnitStat("player", 4)
+    local _, spiritValue = UnitStat("player", 5)
+    return DataUtils:Round((0.001 + (spiritValue * 0.009327 * (intValue^0.5))) * 5, 1)
+end
+
+---@return number
+function Data:GetInnervateManaRen()
     local base, _ = GetManaRegen() -- Returns mana reg per 1 second
     if base < 1 then
         base = lastManaReg
     end
     lastManaReg = base
-    return DataUtils:Round(base * 5, 1)
+    return DataUtils:Round(base * 5 * 16, 0) -- total mana regened by innervate
 end
 
 -- Get mana regen while casting
@@ -294,4 +322,29 @@ function _MP5:GetBlessingOfWisdomModifier()
         mod = points * 0.1 -- 0-20% from Improved Blessing of Wisdom
     end
     return mod
+end
+
+---@return number
+function _MP5:GetGemBonusMP5(gemId)
+    for _, value in ipairs(Data.gemIds.FOUR_MP5_GEMS) do
+        if value == gemId then
+            return 4
+        end
+    end
+    for _, value in ipairs(Data.gemIds.THREE_MP5_GEMS) do
+        if value == gemId then
+            return 3
+        end
+    end
+    for _, value in ipairs(Data.gemIds.TWO_MP5_GEMS) do
+        if value == gemId then
+            return 2
+        end
+    end
+    for _, value in ipairs(Data.gemIds.ONE_MP5_GEMS) do
+        if value == gemId then
+            return 1
+        end
+    end
+    return 0
 end

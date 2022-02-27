@@ -242,6 +242,13 @@ local function GetDefaultStatsProfile()
                 textColor = colors.MP5_SECONDARY,
                 statColor = colors.MP5_PRIMARY
             },
+            InnervateMana = {
+                display = true,
+                refName = "InnervateMana",
+                text = "Innervate mana",
+                textColor = colors.MP5_SECONDARY,
+                statColor = colors.MP5_PRIMARY
+            },
         },
 
         ---@type Category

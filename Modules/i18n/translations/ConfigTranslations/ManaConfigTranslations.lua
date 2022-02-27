@@ -72,6 +72,20 @@ local manaConfigTranslations = {
         ["zhCN"] = "显示/隐藏 附魔回蓝",
         ["ruRU"] = "Показать/скрыть значение MP5 (восполнение маны каждые 5 сек вне боя) во время произношения заклинаний",
     },
+    ["Innervate mana"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Anregen Manaregeneration",
+        ["frFR"] = "Mana d'Innervation",
+        ["zhCN"] = true,
+        ["ruRU"] = true,
+    },
+    ["Shows/Hides the total mana regen from innervate."] = {
+        ["enUS"] = true,
+        ["deDE"] = "Toont/verbergt de totale mana die door Innervate is gegenereerd.",
+        ["frFR"] = "Affiche/cache le total de mana regénéré par Innervation.",
+        ["zhCN"] = "显示/隐藏由 Innervate 再生的总法力值。",
+        ["ruRU"] = "Показывает/скрывает общее количество маны, регенерируемой Innervate.",
+    },
 }
 
 for k, v in pairs(manaConfigTranslations) do

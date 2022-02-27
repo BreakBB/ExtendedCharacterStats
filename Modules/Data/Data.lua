@@ -143,6 +143,7 @@ dataFunctionRefs = {
         return mp5Buffs
     end,
     ["MP5Casting"] = function() return Data:GetMP5WhileCasting() end,
+    ["InnervateMana"] = function() return Data:GetInnervateManaRen() end,
     -- Spell Power by school
     ["PhysicalDmg"] = function() return Data:GetSpellDamage(Data.PHYSICAL_SCHOOL) end,
     ["HolyDmg"] = function() return Data:GetSpellDamage(Data.HOLY_SCHOOL) end,

@@ -79,6 +79,19 @@ function _Config:LoadManaSection()
                     Stats:RebuildStatInfos()
                 end,
             },
+            InnervateMana = {
+                type = "toggle",
+                order = 5,
+                name = function() return i18n("Innervate mana") end,
+                desc = function() return i18n("Shows/Hides the total mana regen from innervate.") end,
+                width = 1.5,
+                disabled = function() return (not ExtendedCharacterStats.profile.regen.display); end,
+                get = function () return ExtendedCharacterStats.profile.regen.InnervateMana.display; end,
+                set = function (_, value)
+                    ExtendedCharacterStats.profile.regen.InnervateMana.display = value
+                    Stats:RebuildStatInfos()
+                end,
+            },
         },
     }
 end
