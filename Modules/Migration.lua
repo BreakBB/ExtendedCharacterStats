@@ -22,4 +22,7 @@ function Migration:ToLatestProfileVersion(profileVersion)
         ExtendedCharacterStats.profile.spell.hasteRating = defaultProfile.profile.spell.hasteRating
         ExtendedCharacterStats.profile.spell.hasteBonus = defaultProfile.profile.spell.hasteBonus
     end
+    if profileVersion < 14 then
+        ExtendedCharacterStats.profile.defense.avoidance = defaultProfile.profile.defense.avoidance
+    end
 end

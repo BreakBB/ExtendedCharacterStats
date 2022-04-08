@@ -63,6 +63,15 @@ function Data:GetCritReduction()
     return DataUtils:Round(_Defense:GetCritReduction(), 2) .. "%"
 end
 
+---@return string
+function Data:GetAvoidance()
+    local defenseRank, defenseModifier = _Defense:GetDefenseValues()
+    local enemyAttackRating = (UnitLevel("player") + 3) * 5
+    local enemyMissChance = 5 + (((defenseRank + defenseModifier) - enemyAttackRating) * .04)
+    local avoidance = enemyMissChance + GetDodgeChance() + GetParryChance() + GetBlockChance()
+    return DataUtils:Round(avoidance, 2) .. "%"
+end
+
 ---@return number
 function Data:GetDefenseRating()
     return DataUtils:Round(GetCombatRating(CR_DEFENSE_SKILL), 2)

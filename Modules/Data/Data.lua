@@ -89,6 +89,9 @@ dataFunctionRefs = {
             return 0
         end
     end,
+    ["Avoidance"] = function()
+        return Data:GetAvoidance()
+    end,
     ["DefenseRating"] = function()
         if ECS.IsTBC then
             return Data:GetDefenseRating()
