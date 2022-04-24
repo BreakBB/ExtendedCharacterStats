@@ -56,7 +56,7 @@ local rangedConfigTranslations = {
         ["deDE"] = "Zeigt/Versteckt den Fernkampftempobonus.",
         ["frFR"] = false,
         ["zhCN"] = false,
-        ["ruRU"] = false,
+        ["ruRU"] = "Показать/скрыть значение бонуса к скорости дальнего боя",
     },
     ["Shows/Hides the ranged attack speed."] = {
         ["enUS"] = true,
