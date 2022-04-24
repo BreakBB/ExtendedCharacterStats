@@ -154,7 +154,7 @@ local statTranslations = {
         ["deDE"] = "Vermeidung",
         ["frFR"] = false,
         ["zhCN"] = false,
-        ["ruRU"] = false,
+        ["ruRU"] = "Избежание",
     },
     ["Defense Rating"] = {
         ["enUS"] = true,
