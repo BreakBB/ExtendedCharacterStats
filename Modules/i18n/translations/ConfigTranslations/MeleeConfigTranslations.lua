@@ -70,7 +70,7 @@ local meleeConfigTranslations = {
         ["deDE"] = "Zeigt/Versteckt den Nahkampftempobonus.",
         ["frFR"] = false,
         ["zhCN"] = false,
-        ["ruRU"] = false,
+        ["ruRU"] = "Показать/скрыть значение бонуса к скорости ближнего боя",
     },
     ["Shows/Hides the melee attack speed."] = {
         ["enUS"] = true,
