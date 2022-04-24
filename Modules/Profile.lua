@@ -93,6 +93,14 @@ local function GetDefaultStatsProfile()
                 textColor = colors.HASTE_RATING_SECONDARY,
                 statColor = colors.HASTE_RATING_PRIMARY
             },
+            hasteBonus = {
+                display = true,
+                isTbcOnly = true,
+                refName = "MeleeHasteBonus",
+                text = "Haste Bonus",
+                textColor = colors.HASTE_RATING_SECONDARY,
+                statColor = colors.HASTE_RATING_PRIMARY
+            },
             attackSpeed = {
                 display = true,
                 isSubGroup = true,
@@ -178,6 +186,14 @@ local function GetDefaultStatsProfile()
                 isTbcOnly = true,
                 refName = "RangedHasteRating",
                 text = "Haste Rating",
+                textColor = colors.HASTE_RATING_SECONDARY,
+                statColor = colors.HASTE_RATING_PRIMARY
+            },
+            hasteBonus = {
+                display = true,
+                isTbcOnly = true,
+                refName = "RangedHasteBonus",
+                text = "Haste Bonus",
                 textColor = colors.HASTE_RATING_SECONDARY,
                 statColor = colors.HASTE_RATING_PRIMARY
             },

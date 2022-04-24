@@ -24,5 +24,7 @@ function Migration:ToLatestProfileVersion(profileVersion)
     end
     if profileVersion < 14 then
         ExtendedCharacterStats.profile.defense.avoidance = defaultProfile.profile.defense.avoidance
+        ExtendedCharacterStats.profile.melee.hasteBonus = defaultProfile.profile.melee.hasteBonus
+        ExtendedCharacterStats.profile.ranged.hasteBonus = defaultProfile.profile.ranged.hasteBonus
     end
 end

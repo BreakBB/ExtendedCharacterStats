@@ -51,6 +51,13 @@ local rangedConfigTranslations = {
         ["zhCN"] = false,
         ["ruRU"] = "Показать/скрыть значение рейтинга скорости дальнего боя",
     },
+    ["Shows/Hides the ranged haste bonus value."] = {
+        ["enUS"] = true,
+        ["deDE"] = "Zeigt/Versteckt den Fernkampftempobonus.",
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+    },
     ["Shows/Hides the ranged attack speed."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt das Fernkampf Angriffstempo.",

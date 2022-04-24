@@ -50,6 +50,13 @@ dataFunctionRefs = {
             return 0
         end
     end,
+    ["MeleeHasteBonus"] = function()
+        if ECS.IsTBC then
+            return Data:GetMeleeHasteBonus()
+        else
+            return 0
+        end
+    end,
     ["MeleeAttackSpeedMainHand"] = function() return Data:GetMeleeAttackSpeedMainHand() end,
     ["MeleeAttackSpeedOffHand"] = function() return Data:GetMeleeAttackSpeedOffHand() end,
     -- Ranged
@@ -68,6 +75,13 @@ dataFunctionRefs = {
     ["RangedHasteRating"] = function()
         if ECS.IsTBC then
             return Data:GetRangedHasteRating()
+        else
+            return 0
+        end
+    end,
+    ["RangedHasteBonus"] = function()
+        if ECS.IsTBC then
+            return Data:GetRangedHasteBonus()
         else
             return 0
         end
