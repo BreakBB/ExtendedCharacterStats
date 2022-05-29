@@ -89,16 +89,6 @@ function Data:GetMP5FromSpirit()
     return DataUtils:Round((0.001 + (spiritValue * 0.009327 * (intValue^0.5))) * 5, 1)
 end
 
----@return number
-function Data:GetInnervateManaRen()
-    local base, _ = GetManaRegen() -- Returns mana reg per 1 second
-    if base < 1 then
-        base = lastManaReg
-    end
-    lastManaReg = base
-    return DataUtils:Round(base * 5 * 16, 0) -- total mana regened by innervate
-end
-
 -- Get mana regen while casting
 ---@return number
 function Data:GetMP5WhileCasting()
