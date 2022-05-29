@@ -210,7 +210,7 @@ _CreateStatInfos = function()
             category.defense, category.blockChance, category.blockValue, category.parry, category.dodge, category.resilience)
 
     category = profile.regen
-    _CreateStatInfo(category, category.mp5Items, category.mp5Spirit, category.mp5Buffs, category.mp5Casting, category.InnervateMana)
+    _CreateStatInfo(category, category.mp5Items, category.mp5Spirit, category.mp5Buffs, category.mp5Casting, category.mp5NotCasting, category.InnervateMana)
 
     category = profile.spell
     _CreateStatInfo(category, category.crit, category.hasteRating, category.hasteBonus, category.penetration)

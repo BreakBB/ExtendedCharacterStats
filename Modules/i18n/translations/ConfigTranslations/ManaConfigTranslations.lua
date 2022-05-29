@@ -76,8 +76,8 @@ local manaConfigTranslations = {
         ["enUS"] = true,
         ["deDE"] = "Anregen Manaregeneration",
         ["frFR"] = "Mana d'Innervation",
-        ["zhCN"] = true,
-        ["ruRU"] = true,
+        ["zhCN"] = "支配法力",
+        ["ruRU"] = "Иннервировать ману",
     },
     ["Shows/Hides the total mana regen from innervate."] = {
         ["enUS"] = true,

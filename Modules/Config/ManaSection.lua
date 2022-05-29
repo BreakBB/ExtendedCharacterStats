@@ -79,9 +79,22 @@ function _Config:LoadManaSection()
                     Stats:RebuildStatInfos()
                 end,
             },
-            InnervateMana = {
+            mp5NotCasting = {
                 type = "toggle",
                 order = 5,
+                name = "MP5 (not casting)",
+                desc = "Shows/Hides the MP5 value when outside of the 5 second rule.",
+                width = 1.5,
+                disabled = function() return (not ExtendedCharacterStats.profile.regen.display); end,
+                get = function () return ExtendedCharacterStats.profile.regen.mp5NotCasting.display; end,
+                set = function (_, value)
+                    ExtendedCharacterStats.profile.regen.mp5NotCasting.display = value
+                    Stats:RebuildStatInfos()
+                end,
+            },
+            InnervateMana = {
+                type = "toggle",
+                order = 6,
                 name = function() return i18n("Innervate mana") end,
                 desc = function() return i18n("Shows/Hides the total mana regen from innervate.") end,
                 width = 1.5,

@@ -132,6 +132,15 @@ function Data:GetMP5WhileCasting()
     return DataUtils:Round(casting, 2)
 end
 
+function Data:GetMP5OutsideCasting()
+    local base, _ = GetManaRegen() -- Returns mana reg per 1 second
+    if base < 1 then
+        base = lastManaReg
+    end
+    lastManaReg = base
+    return base * 5
+end
+
 ---@return number
 function _MP5:GetTalentModifier()
     local mod = 0

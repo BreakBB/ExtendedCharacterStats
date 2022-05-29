@@ -259,6 +259,13 @@ local function GetDefaultStatsProfile()
                 textColor = colors.MP5_SECONDARY,
                 statColor = colors.MP5_PRIMARY
             },
+            mp5NotCasting = {
+                display = true,
+                refName = "MP5NotCasting",
+                text = "MP5 (Not casting)",
+                textColor = colors.MP5_SECONDARY,
+                statColor = colors.MP5_PRIMARY
+            },
             InnervateMana = {
                 display = true,
                 refName = "InnervateMana",
