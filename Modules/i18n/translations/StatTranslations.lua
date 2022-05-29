@@ -242,10 +242,10 @@ local statTranslations = {
     },
     ["MP5 (Not casting)"] = {
         ["enUS"] = true,
-        ["deDE"] = true,
-        ["frFR"] = true,
-        ["zhCN"] = true,
-        ["ruRU"] = true,
+        ["deDE"] = "MP5 (nicht übertragen)",
+        ["frFR"] = "MP5 (pas de diffusion)",
+        ["zhCN"] = "MP5（非铸造）",
+        ["ruRU"] = "MP5 (без кастинга)",
     },
     ["Spell"] = {
         ["enUS"] = true,
