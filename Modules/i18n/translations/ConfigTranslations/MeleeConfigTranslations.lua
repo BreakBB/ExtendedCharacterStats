@@ -65,6 +65,13 @@ local meleeConfigTranslations = {
         ["zhCN"] = false,
         ["ruRU"] = "Показать/скрыть значение рейтинга скорости ближнего боя",
     },
+    ["Shows/Hides the melee haste bonus value."] = {
+        ["enUS"] = true,
+        ["deDE"] = "Zeigt/Versteckt den Nahkampftempobonus.",
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = "Показать/скрыть значение бонуса к скорости ближнего боя",
+    },
     ["Shows/Hides the melee attack speed."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt das Angriffstempo im Nahkampf.",

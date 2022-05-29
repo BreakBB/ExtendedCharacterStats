@@ -149,6 +149,13 @@ local statTranslations = {
         ["zhCN"] = false,
         ["ruRU"] = "Снижение крита",
     },
+    ["Avoidance"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Vermeidung",
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = "Избежание",
+    },
     ["Defense Rating"] = {
         ["enUS"] = true,
         ["deDE"] = "Verteidigungswertung",

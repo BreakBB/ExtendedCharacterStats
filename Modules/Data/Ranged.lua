@@ -31,6 +31,12 @@ function Data:GetRangedHasteRating()
 end
 
 ---@return string
+function Data:GetRangedHasteBonus()
+    local hasteBonus = GetCombatRatingBonus(CR_HASTE_RANGED)
+    return DataUtils:Round(hasteBonus, 2) .. "%"
+end
+
+---@return string
 function Data:GetRangedAttackSpeed()
     local speed, _ = UnitRangedDamage("player")
     return DataUtils:Round(speed, 2)

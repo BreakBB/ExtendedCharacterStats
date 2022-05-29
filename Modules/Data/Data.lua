@@ -50,6 +50,13 @@ dataFunctionRefs = {
             return 0
         end
     end,
+    ["MeleeHasteBonus"] = function()
+        if ECS.IsTBC then
+            return Data:GetMeleeHasteBonus()
+        else
+            return 0
+        end
+    end,
     ["MeleeAttackSpeedMainHand"] = function() return Data:GetMeleeAttackSpeedMainHand() end,
     ["MeleeAttackSpeedOffHand"] = function() return Data:GetMeleeAttackSpeedOffHand() end,
     -- Ranged
@@ -72,6 +79,13 @@ dataFunctionRefs = {
             return 0
         end
     end,
+    ["RangedHasteBonus"] = function()
+        if ECS.IsTBC then
+            return Data:GetRangedHasteBonus()
+        else
+            return 0
+        end
+    end,
     ["RangedAttackSpeed"] = function() return Data:GetRangedAttackSpeed() end,
     -- Defense
     ["Armor"] = function() return Data:GetArmorValue() end,
@@ -88,6 +102,9 @@ dataFunctionRefs = {
         else
             return 0
         end
+    end,
+    ["Avoidance"] = function()
+        return Data:GetAvoidance()
     end,
     ["DefenseRating"] = function()
         if ECS.IsTBC then

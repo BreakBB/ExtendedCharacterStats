@@ -186,7 +186,8 @@ _CreateStatInfos = function()
 
     category = profile.melee
     if ECS.IsTBC then
-        _CreateStatInfo(category, category.attackPower, category.crit, category.expertise, category.expertiseRating, category.hasteRating)
+        _CreateStatInfo(category, category.attackPower, category.crit, category.expertise, category.expertiseRating,
+                category.hasteRating, category.hasteBonus)
     else
         _CreateStatInfo(category, category.attackPower, category.crit)
     end
@@ -198,15 +199,15 @@ _CreateStatInfos = function()
     end
 
     category = profile.ranged
-    _CreateStatInfo(category, category.attackPower, category.crit, category.hasteRating, category.attackSpeed)
+    _CreateStatInfo(category, category.attackPower, category.crit, category.hasteRating, category.hasteBonus, category.attackSpeed)
     if category.display then
         category = category.hit
         _CreateStatInfo(category, category.rating, category.bonus, category.sameLevel, category.bossLevel)
     end
 
     category = profile.defense
-    _CreateStatInfo(category, category.armor, category.critImmunity, category.critReduction, category.defenseRating, category.defense,
-            category.blockChance, category.blockValue, category.parry, category.dodge, category.resilience)
+    _CreateStatInfo(category, category.armor, category.critImmunity, category.critReduction, category.avoidance, category.defenseRating,
+            category.defense, category.blockChance, category.blockValue, category.parry, category.dodge, category.resilience)
 
     category = profile.regen
     _CreateStatInfo(category, category.mp5Items, category.mp5Spirit, category.mp5Buffs, category.mp5Casting, category.InnervateMana)

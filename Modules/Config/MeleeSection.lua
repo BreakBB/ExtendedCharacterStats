@@ -101,6 +101,22 @@ function _Config:LoadMeleeSection()
                     Stats:RebuildStatInfos()
                 end,
             },
+            hasteBonus = {
+                type = "toggle",
+                order = 2.7,
+                name = function() return i18n("Haste Bonus") end,
+                desc = function() return i18n("Shows/Hides the melee haste bonus value.") end,
+                width = 1.5,
+                hidden = function()
+                    return (not ECS.IsTBC)
+                end,
+                disabled = function() return (not ExtendedCharacterStats.profile.melee.display); end,
+                get = function () return ExtendedCharacterStats.profile.melee.hasteBonus.display; end,
+                set = function (_, value)
+                    ExtendedCharacterStats.profile.melee.hasteBonus.display = value
+                    Stats:RebuildStatInfos()
+                end,
+            },
             meleeHit = {
                 type = "toggle",
                 order = 3,
