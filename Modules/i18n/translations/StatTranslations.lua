@@ -240,6 +240,13 @@ local statTranslations = {
         ["zhCN"] = "附魔回蓝",
         ["ruRU"] = "MP5 (каст)",
     },
+    ["MP5 (Not casting)"] = {
+        ["enUS"] = true,
+        ["deDE"] = "MP5 (Nicht zaubernd)",
+        ["frFR"] = "MP5 (pas de diffusion)",
+        ["zhCN"] = "MP5（非铸造）",
+        ["ruRU"] = "MP5 (без кастинга)",
+    },
     ["Spell"] = {
         ["enUS"] = true,
         ["deDE"] = "Zauber",

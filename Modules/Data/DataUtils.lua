@@ -49,3 +49,15 @@ function DataUtils:GetEnchantFromItemLink(itemLink)
 
     return nil
 end
+
+function DataUtils:GetSocketedGemsFromItemLink(itemLink)
+    if itemLink then
+        local _, itemStringLink = GetItemInfo(itemLink)
+        if itemStringLink then
+            local _, _, gem1, gem2, gem3 = string.find(itemStringLink, "item:%d*:%d*:(%d*):(%d*):(%d*)")
+            return gem1, gem2, gem3
+        end
+    end
+
+    return nil
+end
