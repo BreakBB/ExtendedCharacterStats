@@ -83,7 +83,7 @@ function _Config:LoadManaSection()
                 type = "toggle",
                 order = 5,
                 name = function() return i18n("MP5 (not casting)") end,
-                desc = "Shows/Hides the MP5 value when outside of the 5 second rule.",
+                desc = function() return i18n("Shows/Hides the MP5 value when outside of the 5 second rule.") end,
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.regen.display); end,
                 get = function () return ExtendedCharacterStats.profile.regen.mp5NotCasting.display; end,
