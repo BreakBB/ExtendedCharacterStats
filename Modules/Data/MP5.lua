@@ -48,6 +48,10 @@ function _MP5:GetMP5ValueOnItems()
             if enchant and enchant == Data.enchantIds.INSCRIPTION_OF_FAITH then
                 mp5 = mp5 + 4
             end
+            -- aldor enchant
+            if enchant and enchant == Data.enchantIds.RESTORE_MANA_PRIME then
+                mp5 = mp5 + 6
+            end
             -- Check for socketed gems (TODO: check for socket bonus)
             local gem1, gem2, gem3 = DataUtils:GetSocketedGemsFromItemLink(itemLink)
             if gem1 then
