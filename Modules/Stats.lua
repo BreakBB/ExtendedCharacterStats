@@ -170,7 +170,6 @@ _FormatStatsText = function(stat)
         return Utils:Colorize(statText, colors.GRAY) .. Utils:Colorize(statValue, colors.WHITE)
     end
 
-    --local statTextColor, statValueColor, percentColor = Utils:GetColorsForStatTextRef(statTextRef)
     local textColor = stat.textColor or colors.DEFENSE_SECONDARY
     local statColor = stat.statColor or colors.DEFENSE_PRIMARY
 
@@ -321,7 +320,6 @@ _UpdateStats = function(category)
                     end
                 end
             elseif stat.display == true then
-                --_UpdateItem(stat.refName, i18n(stat.text) .. Data:GetStatInfo(stat.refName))
                 _UpdateItem(stat.refName, _FormatStatsText(stat))
             end
         end
