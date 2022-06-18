@@ -44,6 +44,13 @@ local meleeConfigTranslations = {
         ["zhCN"] = "显示/隐藏 近战暴击几率",
         ["ruRU"] = "Показать/скрыть шанс критического урона",
     },
+    ["Shows/Hides the armor penetration value."] = {
+        ["enUS"] = true,
+        ["deDE"] = "Zeigt/Versteckt die Rüstungsdurchschlagskraft.",
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+    },
     ["Shows/Hides the expertise value."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt die Waffenkunde.",

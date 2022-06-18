@@ -79,6 +79,14 @@ local function GetDefaultStatsProfile()
                 textColor = colors.CRIT_SECONDARY,
                 statColor = colors.CRIT_PRIMARY
             },
+            penetration = {
+                display = true,
+                isTbcOnly = true,
+                refName = "ArmorPenetration",
+                text = "Armor Penetration",
+                textColor = colors.ATTACK_SPEED_SECONDARY,
+                statColor = colors.ATTACK_SPEED_PRIMARY,
+            },
             expertise = {display = true, isTbcOnly = true, refName = "Expertise", text = "Expertise"},
             expertiseRating = {display = true, isTbcOnly = true, refName = "ExpertiseRating", text = "Expertise Rating"},
             hasteRating = {
@@ -176,6 +184,14 @@ local function GetDefaultStatsProfile()
                 text = "Crit Chance",
                 textColor = colors.CRIT_SECONDARY,
                 statColor = colors.CRIT_PRIMARY
+            },
+            penetration = {
+                display = true,
+                isTbcOnly = true,
+                refName = "ArmorPenetration",
+                text = "Armor Penetration",
+                textColor = colors.ATTACK_SPEED_SECONDARY,
+                statColor = colors.ATTACK_SPEED_PRIMARY,
             },
             hasteRating = {
                 display = true,

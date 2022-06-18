@@ -37,6 +37,13 @@ local statTranslations = {
         ["zhCN"] = "暴击几率",
         ["ruRU"] = "Крит",
     },
+    ["Armor Penetration"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Rüstungsdurchschlagskraft",
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+    },
     ["Expertise"] = {
         ["enUS"] = true,
         ["deDE"] = "Waffenkunde",

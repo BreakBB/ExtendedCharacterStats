@@ -29,5 +29,7 @@ function Migration:ToLatestProfileVersion(profileVersion)
     end
     if profileVersion < 15 then
         ExtendedCharacterStats.profile.regen.mp5NotCasting = defaultProfile.profile.regen.mp5NotCasting
+        ExtendedCharacterStats.profile.melee.penetration = defaultProfile.profile.melee.penetration
+        ExtendedCharacterStats.profile.ranged.penetration = defaultProfile.profile.ranged.penetration
     end
 end

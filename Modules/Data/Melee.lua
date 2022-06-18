@@ -173,6 +173,12 @@ function Data:GetExpertiseRating()
 end
 
 ---@return number
+function Data:GetArmorPenetration()
+    local armorPenetration = GetArmorPenetration()
+    return DataUtils:Round(armorPenetration, 0)
+end
+
+---@return number
 function Data:GetMeleeHasteRating()
     local hasteRating = GetCombatRating(CR_HASTE_MELEE)
     return DataUtils:Round(hasteRating, 0)

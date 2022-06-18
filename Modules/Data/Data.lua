@@ -33,6 +33,13 @@ dataFunctionRefs = {
             return 0
         end
     end,
+    ["ArmorPenetration"] = function()
+        if ECS.IsTBC then
+            return Data:GetArmorPenetration()
+        else
+            return 0
+        end
+    end,
     ["MeleeHitRating"] = function()
         if ECS.IsTBC then
             return Data:MeleeHitRating()
