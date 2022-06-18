@@ -27,4 +27,7 @@ function Migration:ToLatestProfileVersion(profileVersion)
         ExtendedCharacterStats.profile.melee.hasteBonus = defaultProfile.profile.melee.hasteBonus
         ExtendedCharacterStats.profile.ranged.hasteBonus = defaultProfile.profile.ranged.hasteBonus
     end
+    if profileVersion < 15 then
+        ExtendedCharacterStats.profile.regen.mp5NotCasting = defaultProfile.profile.regen.mp5NotCasting
+    end
 end
