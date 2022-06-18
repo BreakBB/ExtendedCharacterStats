@@ -33,6 +33,13 @@ dataFunctionRefs = {
             return 0
         end
     end,
+    ["ArmorPenetration"] = function()
+        if ECS.IsTBC then
+            return Data:GetArmorPenetration()
+        else
+            return 0
+        end
+    end,
     ["MeleeHitRating"] = function()
         if ECS.IsTBC then
             return Data:MeleeHitRating()
@@ -160,6 +167,7 @@ dataFunctionRefs = {
         return mp5Buffs
     end,
     ["MP5Casting"] = function() return Data:GetMP5WhileCasting() end,
+    ["MP5NotCasting"] = function() return Data:GetMP5OutsideCasting() end,
     -- Spell Power by school
     ["PhysicalDmg"] = function() return Data:GetSpellDamage(Data.PHYSICAL_SCHOOL) end,
     ["HolyDmg"] = function() return Data:GetSpellDamage(Data.HOLY_SCHOOL) end,

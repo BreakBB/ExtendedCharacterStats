@@ -53,6 +53,22 @@ function _Config:LoadMeleeSection()
                     Stats:RebuildStatInfos()
                 end,
             },
+            penetration = {
+                type = "toggle",
+                order = 2.3,
+                name = function() return i18n("Armor Penetration") end,
+                desc = function() return i18n("Shows/Hides the armor penetration value.") end,
+                width = 1.5,
+                hidden = function()
+                    return (not ECS.IsTBC)
+                end,
+                disabled = function() return (not ExtendedCharacterStats.profile.melee.display); end,
+                get = function () return ExtendedCharacterStats.profile.melee.penetration.display; end,
+                set = function (_, value)
+                    ExtendedCharacterStats.profile.melee.penetration.display = value
+                    Stats:RebuildStatInfos()
+                end,
+            },
             expertise = {
                 type = "toggle",
                 order = 2.5,

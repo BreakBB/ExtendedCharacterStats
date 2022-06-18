@@ -72,6 +72,13 @@ local manaConfigTranslations = {
         ["zhCN"] = "显示/隐藏 附魔回蓝",
         ["ruRU"] = "Показать/скрыть значение MP5 (восполнение маны каждые 5 сек вне боя) во время произношения заклинаний",
     },
+    ["Shows/Hides the MP5 value when outside of the 5 second rule."] = {
+        ["enUS"] = true,
+        ["deDE"] = "Zeigt/Versteckt den MP5-Wert der die Mana-Regeneration außerhalb der 5-Sekunden-Regel angibt.",
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+    },
 }
 
 for k, v in pairs(manaConfigTranslations) do

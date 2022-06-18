@@ -35,7 +35,17 @@ Data.enchantIds = {
     BRACER_MANA_REGENERATION = "2565", -- 4 MP5 on bracer
     PROPHETIC_AURA = "2590", -- 4 MP5 for priest ZG Enchant
     RESILIENCE_OF_THE_SCOURGE = "2715", -- 4 MP5 for priest ZG Enchant
+    INSCRIPTION_OF_FAITH = "2980", -- 4 MP5 from aldor enchant
+    GLYPH_OF_RENEWAL = "3001", -- 7 MP5 from Honor Hold/Thrallmar enchant
+    RESTORE_MANA_PRIME = "3150", -- 6 MP5 on chest
     BRILLIANT_MANA_OIL = "2629", -- 12 MP5
     LESSER_MANA_OIL = "2625", -- 8 MP5
     MINOR_MANA_OIL = "2624", -- 4 MP5
+}
+
+Data.gemIds = {
+    FOUR_MP5_GEMS = {"32202"},
+    THREE_MP5_GEMS = {"24037"},
+    TWO_MP5_GEMS = {"30589", "32225", "24065", "30594", "31865", "32214", "30606", "23121", "24057", "32216", "30603", "30560", "30550"},
+    ONE_MP5_GEMS = {"23106", "31864", "28465", "23109"}
 }

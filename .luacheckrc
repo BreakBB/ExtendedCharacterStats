@@ -915,6 +915,7 @@ stds.ecs = {
         "GetAllowLowLevelRaid",
         "GetAlternativeDefaultLanguage",
         "GetAreaSpiritHealerTime",
+        "GetArmorPenetration",
         "GetAtlasInfo",
         "GetAttackPowerForStat",
         "GetAuctionDeposit",

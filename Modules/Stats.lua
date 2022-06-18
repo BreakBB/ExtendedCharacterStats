@@ -170,7 +170,6 @@ _FormatStatsText = function(stat)
         return Utils:Colorize(statText, colors.GRAY) .. Utils:Colorize(statValue, colors.WHITE)
     end
 
-    --local statTextColor, statValueColor, percentColor = Utils:GetColorsForStatTextRef(statTextRef)
     local textColor = stat.textColor or colors.DEFENSE_SECONDARY
     local statColor = stat.statColor or colors.DEFENSE_PRIMARY
 
@@ -186,7 +185,7 @@ _CreateStatInfos = function()
 
     category = profile.melee
     if ECS.IsTBC then
-        _CreateStatInfo(category, category.attackPower, category.crit, category.expertise, category.expertiseRating,
+        _CreateStatInfo(category, category.attackPower, category.crit, category.penetration, category.expertise, category.expertiseRating,
                 category.hasteRating, category.hasteBonus)
     else
         _CreateStatInfo(category, category.attackPower, category.crit)
@@ -199,7 +198,8 @@ _CreateStatInfos = function()
     end
 
     category = profile.ranged
-    _CreateStatInfo(category, category.attackPower, category.crit, category.hasteRating, category.hasteBonus, category.attackSpeed)
+    _CreateStatInfo(category, category.attackPower, category.crit, category.penetration, category.hasteRating, category.hasteBonus,
+            category.attackSpeed)
     if category.display then
         category = category.hit
         _CreateStatInfo(category, category.rating, category.bonus, category.sameLevel, category.bossLevel)
@@ -210,7 +210,7 @@ _CreateStatInfos = function()
             category.defense, category.blockChance, category.blockValue, category.parry, category.dodge, category.resilience)
 
     category = profile.regen
-    _CreateStatInfo(category, category.mp5Items, category.mp5Spirit, category.mp5Buffs, category.mp5Casting)
+    _CreateStatInfo(category, category.mp5Items, category.mp5Spirit, category.mp5Buffs, category.mp5Casting, category.mp5NotCasting)
 
     category = profile.spell
     _CreateStatInfo(category, category.crit, category.hasteRating, category.hasteBonus, category.penetration)
@@ -321,7 +321,6 @@ _UpdateStats = function(category)
                     end
                 end
             elseif stat.display == true then
-                --_UpdateItem(stat.refName, i18n(stat.text) .. Data:GetStatInfo(stat.refName))
                 _UpdateItem(stat.refName, _FormatStatsText(stat))
             end
         end
