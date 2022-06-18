@@ -198,7 +198,8 @@ _CreateStatInfos = function()
     end
 
     category = profile.ranged
-    _CreateStatInfo(category, category.attackPower, category.crit, category.penetration, category.hasteRating, category.hasteBonus, category.attackSpeed)
+    _CreateStatInfo(category, category.attackPower, category.crit, category.penetration, category.hasteRating, category.hasteBonus,
+            category.attackSpeed)
     if category.display then
         category = category.hit
         _CreateStatInfo(category, category.rating, category.bonus, category.sameLevel, category.bossLevel)
