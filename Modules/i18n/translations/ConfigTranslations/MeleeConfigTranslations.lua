@@ -49,7 +49,7 @@ local meleeConfigTranslations = {
         ["deDE"] = "Zeigt/Versteckt die Rüstungsdurchschlagskraft.",
         ["frFR"] = false,
         ["zhCN"] = false,
-        ["ruRU"] = false,
+        ["ruRU"] = "Показать/скрыть значение проникающую способность брони",
     },
     ["Shows/Hides the expertise value."] = {
         ["enUS"] = true,

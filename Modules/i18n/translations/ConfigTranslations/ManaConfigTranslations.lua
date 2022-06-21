@@ -77,7 +77,7 @@ local manaConfigTranslations = {
         ["deDE"] = "Zeigt/Versteckt den MP5-Wert der die Mana-Regeneration außerhalb der 5-Sekunden-Regel angibt.",
         ["frFR"] = false,
         ["zhCN"] = false,
-        ["ruRU"] = false,
+        ["ruRU"] = "Показать/скрыть значение MP5 (восполнение маны каждые 5 сек вне боя) не во время произношения заклинаний",
     },
 }
 

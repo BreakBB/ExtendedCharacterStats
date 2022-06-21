@@ -42,7 +42,7 @@ local statTranslations = {
         ["deDE"] = "Rüstungsdurchschlagskraft",
         ["frFR"] = false,
         ["zhCN"] = false,
-        ["ruRU"] = false,
+        ["ruRU"] = "Проник. способ. броня",
     },
     ["Expertise"] = {
         ["enUS"] = true,
@@ -252,7 +252,7 @@ local statTranslations = {
         ["deDE"] = "MP5 (Nicht zaubernd)",
         ["frFR"] = "MP5 (pas de diffusion)",
         ["zhCN"] = "MP5（非铸造）",
-        ["ruRU"] = "MP5 (без кастинга)",
+        ["ruRU"] = "MP5 (не каст)",
     },
     ["Spell"] = {
         ["enUS"] = true,
