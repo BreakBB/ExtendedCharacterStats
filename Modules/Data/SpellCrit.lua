@@ -78,6 +78,11 @@ function _SpellCrit:GetGeneralTalentModifier()
         mod = points * 1 -- 0-3% Arcane Instability
     end
 
+    if classId == Data.DRUID and ECS.IsTBC then
+        local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 18)
+        mod = points * 1 -- 0-3% Natural Perfection
+    end
+
     if classId == Data.WARLOCK then
         if ECS.IsTBC then
             local _, _, _, _, demonicTactics, _, _, _ = GetTalentInfo(1, 21)
