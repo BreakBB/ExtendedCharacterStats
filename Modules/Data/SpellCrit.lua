@@ -85,7 +85,7 @@ function _SpellCrit:GetGeneralTalentModifier()
 
     if classId == Data.WARLOCK then
         if ECS.IsTBC then
-            local _, _, _, _, demonicTactics, _, _, _ = GetTalentInfo(1, 21)
+            local _, _, _, _, demonicTactics, _, _, _ = GetTalentInfo(2, 21)
             local _, _, _, _, backlash, _, _, _ = GetTalentInfo(3, 17)
             mod = demonicTactics * 1 -- 0-5% Demonic Tactics
             mod = mod + backlash * 1 -- 0-3% Backlash
