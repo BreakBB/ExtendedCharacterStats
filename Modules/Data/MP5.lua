@@ -130,7 +130,7 @@ function Data:GetMP5OutsideCasting()
         base = lastManaReg
     end
     lastManaReg = base
-    return base * 5
+    return DataUtils:Round(base * 5, 2)
 end
 
 ---@return number
