@@ -33,7 +33,7 @@ dataFunctionRefs = {
             return 0
         end
     end,
-    ["ArmorPenetration"] = function()
+    ["MeleeArmorPenetration"] = function()
         if ECS.IsTBC then
             return Data:GetArmorPenetration()
         else
@@ -78,6 +78,13 @@ dataFunctionRefs = {
     end,
     ["RangedHitBonus"] = function() return Data:RangeHitBonus() end,
     ["RangedHitSameLevel"] = function() return Data:RangeMissChanceSameLevel() end,
+    ["RangedArmorPenetration"] = function()
+        if ECS.IsTBC then
+            return Data:GetArmorPenetration()
+        else
+            return 0
+        end
+    end,
     ["RangedHitBossLevel"] = function() return Data:RangeMissChanceBossLevel() end,
     ["RangedHasteRating"] = function()
         if ECS.IsTBC then

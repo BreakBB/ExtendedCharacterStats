@@ -32,4 +32,8 @@ function Migration:ToLatestProfileVersion(profileVersion)
         ExtendedCharacterStats.profile.melee.penetration = defaultProfile.profile.melee.penetration
         ExtendedCharacterStats.profile.ranged.penetration = defaultProfile.profile.ranged.penetration
     end
+    if profileVersion < 16 then
+        ExtendedCharacterStats.profile.melee.penetration = defaultProfile.profile.melee.penetration
+        ExtendedCharacterStats.profile.ranged.penetration = defaultProfile.profile.ranged.penetration
+    end
 end
