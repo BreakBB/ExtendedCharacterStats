@@ -4,6 +4,7 @@ import os
 import shutil
 import subprocess
 import sys
+import re
 
 '''
 This program accepts one optional command line option:
@@ -36,6 +37,32 @@ def main():
 
     zip_name = '%s-%s' % (addonDir, version_dir)
     zip_release_folder(zip_name, version_dir, addonDir)
+
+    interface_version = get_interface_version()
+
+    with open(release_folder_path + '/release.json', 'w') as rf:
+        rf.write('''{
+    "releases": [
+        {
+            "filename": "%(z)s.zip",
+            "nolib": false,
+            "metadata": [
+                {
+                    "flavor": "classic",
+                    "interface": %(s)s
+                },
+                {
+                    "flavor": "bcc",
+                    "interface": %(s)s
+                },
+                {
+                    "flavor": "wrath",
+                    "interface": %(s)s
+                }
+            ]
+        }
+    ]
+}''' % ({'z': zip_name, 's': interface_version}))
 
     print('New release "%s" created successfully' % version_dir)
 
@@ -101,6 +128,11 @@ def get_branch():
         p = subprocess.check_output(["git", "rev-parse", "--abbrev-ref", "HEAD"], cwd=script_dir)
         branch = str(p).rstrip("\\n'").lstrip("b'")
         return branch
+
+
+def get_interface_version():
+    with open('ExtendedCharacterStats-Classic.toc', 'r') as toc:
+        return re.match('## Interface: (.*?)\n', toc.read(), re.DOTALL).group(1)
 
 
 def is_tool(name):
