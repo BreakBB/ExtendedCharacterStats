@@ -150,12 +150,12 @@ _CreateStatInfo = function(category, ...)
         return
     end
 
-    if category.display == true then
+    if category.display then
         _CreateHeader(category.refName, i18n(category.text), category.isSubGroup)
         local stats = {...}
         -- Loop through all stats
         for _, stat in pairs(stats) do
-            if type(stat) == "table" and stat.display == true and ((not stat.isTbcOnly) or ECS.IsTBC) then
+            if type(stat) == "table" and stat.display and ((not stat.isTbcOnly) or ECS.IsTBC) then
                 _CreateText(stat.refName, _FormatStatsText(stat), category.isSubGroup)
             end
         end
@@ -198,8 +198,13 @@ _CreateStatInfos = function()
     end
 
     category = profile.ranged
-    _CreateStatInfo(category, category.attackPower, category.crit, category.penetration, category.hasteRating, category.hasteBonus,
-            category.attackSpeed)
+    if ECS.IsTBC then
+        _CreateStatInfo(category, category.attackPower, category.crit, category.penetration, category.hasteRating, category.hasteBonus,
+                category.attackSpeed)
+    else
+        _CreateStatInfo(category, category.attackPower, category.crit, category.attackSpeed)
+    end
+
     if category.display then
         category = category.hit
         _CreateStatInfo(category, category.rating, category.bonus, category.sameLevel, category.bossLevel)
@@ -213,7 +218,12 @@ _CreateStatInfos = function()
     _CreateStatInfo(category, category.mp5Items, category.mp5Spirit, category.mp5Buffs, category.mp5Casting, category.mp5NotCasting)
 
     category = profile.spell
-    _CreateStatInfo(category, category.crit, category.hasteRating, category.hasteBonus, category.penetration)
+    if ECS.IsTBC then
+        _CreateStatInfo(category, category.crit, category.hasteRating, category.hasteBonus, category.penetration)
+    else
+        _CreateStatInfo(category, category.crit, category.penetration)
+    end
+
     if category.display then
         category = category.hit
         _CreateStatInfo(category, category.rating, category.bonus, category.sameLevel, category.bossLevel)
@@ -302,7 +312,7 @@ function Stats:UpdateInformation()
 
     -- Loop through all categories
     for _, category in pairs(ExtendedCharacterStats.profile) do
-        if category and category.display == true then
+        if category and category.display then
             -- Loop through all stats
             _UpdateStats(category)
         end
@@ -316,11 +326,11 @@ _UpdateStats = function(category)
         if type(stat) == "table" then
             if stat.isSubGroup then
                 for _, subStat in pairs(stat) do
-                    if type(subStat) == "table" and subStat.display == true then
+                    if type(subStat) == "table" and subStat.display then
                         _UpdateItem(subStat.refName, _FormatStatsText(subStat))
                     end
                 end
-            elseif stat.display == true then
+            elseif stat.display then
                 _UpdateItem(stat.refName, _FormatStatsText(stat))
             end
         end
