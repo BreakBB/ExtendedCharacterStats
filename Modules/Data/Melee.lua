@@ -51,7 +51,7 @@ function _Melee:GetHitTalentBonus()
     local mod = 0
 
     if classId == Data.WARRIOR and ECS.IsWotlk then
-        local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 17)
+        local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 18)
         mod = points * 1 -- 0-3% Precision
     end
 
