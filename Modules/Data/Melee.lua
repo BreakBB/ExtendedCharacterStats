@@ -56,8 +56,8 @@ function _Melee:GetHitTalentBonus()
     end
 
     if ECS.IsWotlk and classId == Data.HUNTER then
-        local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 12)
-        mod = points * 1 -- 0-3% Surefooted
+        local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 27)
+        mod = points * 1 -- 0-3% Focused Aim
     end
 
     if classId == Data.SHAMAN then
