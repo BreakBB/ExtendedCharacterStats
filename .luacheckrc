@@ -2743,6 +2743,7 @@ stds.ecs = {
         "CLOSE",
         "WOW_PROJECT_ID",
         "WOW_PROJECT_BURNING_CRUSADE_CLASSIC",
+        "WOW_PROJECT_WRATH_CLASSIC",
         "WOW_PROJECT_MAINLINE",
         "-----------------------------------------------------> External Addons",
         "LibStub",
