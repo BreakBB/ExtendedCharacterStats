@@ -78,8 +78,13 @@ function _Melee:GetHitTalentBonus()
     end
 
     if classId == Data.ROGUE then
-        local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 6)
-        mod = points * 1 -- 0-5% Precision
+        if ECS.IsWotlk then
+            local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 1)
+            mod = points * 1 -- 0-5% Precision
+        else
+            local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 6)
+            mod = points * 1 -- 0-5% Precision
+        end
     end
 
     return mod
