@@ -26,6 +26,8 @@ end
 function DataUtils:GetMissChanceByDifference(weaponSkill, defenseValue)
     if (defenseValue - weaponSkill) <= 10 then
         return 5 + (defenseValue - weaponSkill) * 0.1
+    elseif ECS.IsWotlk then
+        return 5 + (defenseValue - weaponSkill) * 0.2
     else
         return 6 + (defenseValue - weaponSkill) * 0.2
     end
