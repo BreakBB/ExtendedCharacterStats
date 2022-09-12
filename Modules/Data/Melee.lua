@@ -50,12 +50,12 @@ end
 function _Melee:GetHitTalentBonus()
     local mod = 0
 
-    if classId == Data.WARRIOR and ECS.IsTBC then
+    if classId == Data.WARRIOR and ECS.IsWotlk then
         local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 17)
         mod = points * 1 -- 0-3% Precision
     end
 
-    if ECS.IsTBC and classId == Data.HUNTER then
+    if ECS.IsWotlk and classId == Data.HUNTER then
         local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 12)
         mod = points * 1 -- 0-3% Surefooted
     end
@@ -64,7 +64,7 @@ function _Melee:GetHitTalentBonus()
         local _, _, _, _, naturesGuidance, _, _, _ = GetTalentInfo(3, 6)
         mod = naturesGuidance * 1 -- 0-3% Nature's Guidance
 
-        if ECS.IsTBC and Data:GetMeleeAttackSpeedOffHand() > 0 then
+        if ECS.IsWotlk and Data:GetMeleeAttackSpeedOffHand() > 0 then
             local _, _, _, _, dualWielding, _, _, _ = GetTalentInfo(2, 17)
             mod = mod + dualWielding * 2 -- 0-6% Dual Wielding Specialization
         end

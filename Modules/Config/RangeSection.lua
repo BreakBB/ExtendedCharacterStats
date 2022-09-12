@@ -60,7 +60,7 @@ function _Config:LoadRangeSection()
                 desc = function() return i18n("Shows/Hides the armor penetration value.") end,
                 width = 1.5,
                 hidden = function()
-                    return (not ECS.IsTBC)
+                    return (not ECS.IsWotlk)
                 end,
                 disabled = function() return (not ExtendedCharacterStats.profile.ranged.display); end,
                 get = function () return ExtendedCharacterStats.profile.ranged.penetration.display; end,
@@ -76,7 +76,7 @@ function _Config:LoadRangeSection()
                 desc = function() return i18n("Shows/Hides the ranged haste rating.") end,
                 width = 1.5,
                 hidden = function()
-                    return (not ECS.IsTBC)
+                    return (not ECS.IsWotlk)
                 end,
                 disabled = function() return (not ExtendedCharacterStats.profile.ranged.display); end,
                 get = function () return ExtendedCharacterStats.profile.ranged.hasteRating.display; end,
@@ -92,7 +92,7 @@ function _Config:LoadRangeSection()
                 desc = function() return i18n("Shows/Hides the ranged haste bonus value.") end,
                 width = 1.5,
                 hidden = function()
-                    return (not ECS.IsTBC)
+                    return (not ECS.IsWotlk)
                 end,
                 disabled = function() return (not ExtendedCharacterStats.profile.ranged.display); end,
                 get = function () return ExtendedCharacterStats.profile.ranged.hasteBonus.display; end,
@@ -140,7 +140,7 @@ function _Config:LoadRangeSection()
                         desc = function() return i18n("Shows/Hides the ranged hit rating.") end,
                         width = 1.5,
                         hidden = function()
-                            return (not ECS.IsTBC)
+                            return (not ECS.IsWotlk)
                         end,
                         disabled = function()
                             return ((not ExtendedCharacterStats.profile.ranged.display) or

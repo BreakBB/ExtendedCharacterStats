@@ -47,7 +47,7 @@ function _Config:LoadSpellSection()
                 desc = function() return i18n("Shows/Hides the spell haste rating value.") end,
                 width = 1.5,
                 hidden = function()
-                    return (not ECS.IsTBC)
+                    return (not ECS.IsWotlk)
                 end,
                 disabled = function() return (not ExtendedCharacterStats.profile.spell.display); end,
                 get = function () return ExtendedCharacterStats.profile.spell.hasteRating.display; end,
@@ -63,7 +63,7 @@ function _Config:LoadSpellSection()
                 desc = function() return i18n("Shows/Hides the spell haste bonus value.") end,
                 width = 1.5,
                 hidden = function()
-                    return (not ECS.IsTBC)
+                    return (not ECS.IsWotlk)
                 end,
                 disabled = function() return (not ExtendedCharacterStats.profile.spell.display); end,
                 get = function () return ExtendedCharacterStats.profile.spell.hasteBonus.display; end,
@@ -111,7 +111,7 @@ function _Config:LoadSpellSection()
                         desc = function() return i18n("Shows/Hides the spell hit rating.") end,
                         width = 1.5,
                         hidden = function()
-                            return (not ECS.IsTBC)
+                            return (not ECS.IsWotlk)
                         end,
                         disabled = function()
                             return ((not ExtendedCharacterStats.profile.spell.display) or

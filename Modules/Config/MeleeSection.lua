@@ -60,7 +60,7 @@ function _Config:LoadMeleeSection()
                 desc = function() return i18n("Shows/Hides the armor penetration value.") end,
                 width = 1.5,
                 hidden = function()
-                    return (not ECS.IsTBC)
+                    return (not ECS.IsWotlk)
                 end,
                 disabled = function() return (not ExtendedCharacterStats.profile.melee.display); end,
                 get = function () return ExtendedCharacterStats.profile.melee.penetration.display; end,
@@ -76,7 +76,7 @@ function _Config:LoadMeleeSection()
                 desc = function() return i18n("Shows/Hides the expertise value.") end,
                 width = 1.5,
                 hidden = function()
-                    return (not ECS.IsTBC)
+                    return (not ECS.IsWotlk)
                 end,
                 disabled = function() return (not ExtendedCharacterStats.profile.melee.display); end,
                 get = function () return ExtendedCharacterStats.profile.melee.expertise.display; end,
@@ -92,7 +92,7 @@ function _Config:LoadMeleeSection()
                 desc = function() return i18n("Shows/Hides the expertise rating.") end,
                 width = 1.5,
                 hidden = function()
-                    return (not ECS.IsTBC)
+                    return (not ECS.IsWotlk)
                 end,
                 disabled = function() return (not ExtendedCharacterStats.profile.melee.display); end,
                 get = function () return ExtendedCharacterStats.profile.melee.expertiseRating.display; end,
@@ -108,7 +108,7 @@ function _Config:LoadMeleeSection()
                 desc = function() return i18n("Shows/Hides the melee haste rating.") end,
                 width = 1.5,
                 hidden = function()
-                    return (not ECS.IsTBC)
+                    return (not ECS.IsWotlk)
                 end,
                 disabled = function() return (not ExtendedCharacterStats.profile.melee.display); end,
                 get = function () return ExtendedCharacterStats.profile.melee.hasteRating.display; end,
@@ -124,7 +124,7 @@ function _Config:LoadMeleeSection()
                 desc = function() return i18n("Shows/Hides the melee haste bonus value.") end,
                 width = 1.5,
                 hidden = function()
-                    return (not ECS.IsTBC)
+                    return (not ECS.IsWotlk)
                 end,
                 disabled = function() return (not ExtendedCharacterStats.profile.melee.display); end,
                 get = function () return ExtendedCharacterStats.profile.melee.hasteBonus.display; end,
@@ -159,7 +159,7 @@ function _Config:LoadMeleeSection()
                         desc = function() return i18n("Shows/Hides the melee hit rating.") end,
                         width = 1.5,
                         hidden = function()
-                            return (not ECS.IsTBC)
+                            return (not ECS.IsWotlk)
                         end,
                         disabled = function()
                             return ((not ExtendedCharacterStats.profile.melee.display) or

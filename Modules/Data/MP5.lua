@@ -101,7 +101,7 @@ function Data:GetMP5WhileCasting()
         casting = 0
     end
 
-    if ECS.IsTBC then
+    if ECS.IsWotlk then
         casting = (casting * 5) + _MP5:GetTalentBonus()
 
         return DataUtils:Round(casting, 2)
@@ -138,7 +138,7 @@ function _MP5:GetTalentModifier()
     local mod = 0
 
     if classId == Data.PRIEST then
-        local meditationTalentSlot = ECS.IsTBC and 9 or 8
+        local meditationTalentSlot = ECS.IsWotlk and 9 or 8
         local _, _, _, _, points, _, _, _ = GetTalentInfo(1, meditationTalentSlot)
         mod = points * 0.05 -- 0-15% from Meditation
     elseif classId == Data.MAGE then

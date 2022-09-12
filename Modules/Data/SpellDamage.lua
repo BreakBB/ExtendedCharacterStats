@@ -21,7 +21,7 @@ function _SpellDamage:GetGeneralTalentModifier()
     local mod = 0
 
     if classId == Data.MAGE then
-        local aiTalentSlot = ECS.IsTBC and 17 or 15
+        local aiTalentSlot = ECS.IsWotlk and 17 or 15
         local _, _, _, _, arcaneInstability, _, _, _ = GetTalentInfo(1, aiTalentSlot)
         mod = arcaneInstability * 1 -- 0-3% Arcane Instability
     end

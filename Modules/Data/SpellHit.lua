@@ -50,14 +50,14 @@ function _SpellHit:GetTalentSpellHitBonus()
         bonus = points * 2 -- 0-10% from Shadow Focus
     end
 
-    if classId == Data.PALADIN and ECS.IsTBC then
+    if classId == Data.PALADIN and ECS.IsWotlk then
         local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 3)
         bonus = points * 1 -- 0-3% Precision
     end
 
     if classId == Data.MAGE then
         local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 3)
-        if ECS.IsTBC then
+        if ECS.IsWotlk then
             bonus = points * 1 -- 0-3% from Elemental Precision
         else
             bonus = points * 2 -- 0-6% from Elemental Precision
@@ -65,7 +65,7 @@ function _SpellHit:GetTalentSpellHitBonus()
     end
 
     if classId == Data.SHAMAN then
-        if ECS.IsTBC then
+        if ECS.IsWotlk then
             local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 15)
             bonus = points * 2 -- 0-6% from Elemental Precision
         end
@@ -75,7 +75,7 @@ function _SpellHit:GetTalentSpellHitBonus()
     end
 
     if classId == Data.DRUID then
-        if ECS.IsTBC then
+        if ECS.IsWotlk then
             local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 16)
             bonus = points * 2 -- 0-4% from Balance of Power
         end

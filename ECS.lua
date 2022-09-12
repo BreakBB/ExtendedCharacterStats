@@ -1,7 +1,7 @@
 ---@class ECS
 ECS = {...}
 
-ECS.IsTBC = WOW_PROJECT_ID == WOW_PROJECT_BURNING_CRUSADE_CLASSIC
+ECS.IsWotlk = WOW_PROJECT_ID == WOW_PROJECT_WRATH_CLASSIC
 
 ---@type Init
 local Init = ECSLoader:ImportModule("Init")

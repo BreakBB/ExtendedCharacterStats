@@ -47,7 +47,7 @@ function _Config:LoadDefenseSection()
                 desc = function() return i18n("Shows/Hides the percentage of being crit immune.") end,
                 width = 1.5,
                 hidden = function()
-                    return (not ECS.IsTBC)
+                    return (not ECS.IsWotlk)
                 end,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
                 get = function () return ExtendedCharacterStats.profile.defense.critImmunity.display; end,
@@ -63,7 +63,7 @@ function _Config:LoadDefenseSection()
                 desc = function() return i18n("Shows/Hides the reduction percentage of being critically hit.") end,
                 width = 1.5,
                 hidden = function()
-                    return (not ECS.IsTBC)
+                    return (not ECS.IsWotlk)
                 end,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
                 get = function () return ExtendedCharacterStats.profile.defense.critReduction.display; end,
@@ -79,7 +79,7 @@ function _Config:LoadDefenseSection()
                 desc = function() return i18n("Shows/Hides the defense rating.") end,
                 width = 1.5,
                 hidden = function()
-                    return (not ECS.IsTBC)
+                    return (not ECS.IsWotlk)
                 end,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
                 get = function () return ExtendedCharacterStats.profile.defense.defenseRating.display; end,
@@ -160,7 +160,7 @@ function _Config:LoadDefenseSection()
                 desc = function() return i18n("Shows/Hides the resilience value.") end,
                 width = 1.5,
                 hidden = function()
-                    return (not ECS.IsTBC)
+                    return (not ECS.IsWotlk)
                 end,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
                 get = function () return ExtendedCharacterStats.profile.defense.resilience.display; end,

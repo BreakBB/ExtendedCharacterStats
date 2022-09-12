@@ -96,7 +96,7 @@ function _Defense:GetDefenseValues()
         end
     end
 
-    if ECS.IsTBC then
+    if ECS.IsWotlk then
         skillModifier = skillModifier + math.floor(GetCombatRatingBonus(CR_DEFENSE_SKILL))
     end
 

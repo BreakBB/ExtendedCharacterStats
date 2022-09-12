@@ -146,7 +146,7 @@ end
 --- Helper function to iteracte all field of a given category and create them if they should be displayed
 ---@param category Category|SubCategory
 _CreateStatInfo = function(category, ...)
-    if (not ECS.IsTBC) and category.isTbcOnly then
+    if (not ECS.IsWotlk) and category.isTbcOnly then
         return
     end
 
@@ -155,7 +155,7 @@ _CreateStatInfo = function(category, ...)
         local stats = {...}
         -- Loop through all stats
         for _, stat in pairs(stats) do
-            if type(stat) == "table" and stat.display and ((not stat.isTbcOnly) or ECS.IsTBC) then
+            if type(stat) == "table" and stat.display and ((not stat.isTbcOnly) or ECS.IsWotlk) then
                 _CreateText(stat.refName, _FormatStatsText(stat), category.isSubGroup)
             end
         end
@@ -184,7 +184,7 @@ _CreateStatInfos = function()
     _CreateStatInfo(category, category.movementSpeed)
 
     category = profile.melee
-    if ECS.IsTBC then
+    if ECS.IsWotlk then
         _CreateStatInfo(category, category.attackPower, category.crit, category.penetration, category.expertise, category.expertiseRating,
                 category.hasteRating, category.hasteBonus)
     else
@@ -198,7 +198,7 @@ _CreateStatInfos = function()
     end
 
     category = profile.ranged
-    if ECS.IsTBC then
+    if ECS.IsWotlk then
         _CreateStatInfo(category, category.attackPower, category.crit, category.penetration, category.hasteRating, category.hasteBonus,
                 category.attackSpeed)
     else
@@ -218,7 +218,7 @@ _CreateStatInfos = function()
     _CreateStatInfo(category, category.mp5Items, category.mp5Spirit, category.mp5Buffs, category.mp5Casting, category.mp5NotCasting)
 
     category = profile.spell
-    if ECS.IsTBC then
+    if ECS.IsWotlk then
         _CreateStatInfo(category, category.crit, category.hasteRating, category.hasteBonus, category.penetration)
     else
         _CreateStatInfo(category, category.crit, category.penetration)
