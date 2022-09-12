@@ -60,14 +60,16 @@ function _Melee:GetHitTalentBonus()
         mod = points * 1 -- 0-3% Focused Aim
     end
 
-    if ECS.IsWotlk and classId == Data.SHAMAN then
-        if ECS.IsWotlk and Data:GetMeleeAttackSpeedOffHand() > 0 then
-            local _, _, _, _, dualWielding, _, _, _ = GetTalentInfo(2, 19)
-            mod = mod + dualWielding * 2 -- 0-6% Dual Wielding Specialization
+    if classId == Data.SHAMAN then
+        if ECS.IsWotlk then
+            if Data:GetMeleeAttackSpeedOffHand() > 0 then
+                local _, _, _, _, dualWielding, _, _, _ = GetTalentInfo(2, 19)
+                mod = mod + dualWielding * 2 -- 0-6% Dual Wielding Specialization
+            end
+        else
+            local _, _, _, _, naturesGuidance, _, _, _ = GetTalentInfo(3, 6)
+            mod = naturesGuidance * 1 -- 0-3% Nature's Guidance
         end
-    else
-        local _, _, _, _, naturesGuidance, _, _, _ = GetTalentInfo(3, 6)
-        mod = naturesGuidance * 1 -- 0-3% Nature's Guidance
     end
 
     if (not ECS.IsWotlk) and classId == Data.PALADIN then
