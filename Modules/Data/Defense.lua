@@ -66,7 +66,7 @@ end
 ---@return string
 function Data:GetAvoidance()
     local defenseRank, defenseModifier = _Defense:GetDefenseValues()
-    local enemyAttackRating = (UnitLevel("player") + 3) * 5
+    local enemyAttackRating = (UnitLevel("player")) * 5
     local enemyMissChance = 5 + (((defenseRank + defenseModifier) - enemyAttackRating) * .04)
     local avoidance = enemyMissChance + GetDodgeChance() + GetParryChance() + GetBlockChance()
     return DataUtils:Round(avoidance, 2) .. "%"
