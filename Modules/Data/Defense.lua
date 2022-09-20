@@ -13,8 +13,6 @@ local LEVEL_70_MAX_SKILL = 350
 local CRIT_IMMUNITY_CAP = 5.6
 -- Every 25 defense reduce the chance to be critically hit by 1 %
 local DEFENSE_FOR_CRIT_REDUCTION = 25
--- Every 39.4231 resilience reduce the chance to be critically hit by 1 %
-local RESILIENCE_FOR_CRIT_REDUCTION = 39.4231
 
 
 ---@return number
@@ -26,7 +24,6 @@ end
 ---@return number
 function _Defense:GetCritReduction()
     local defSkillRank, defSkillModifier = _Defense:GetDefenseValues()
-    local resilience = Data:GetResilienceRating()
 
     local defBonus = defSkillRank + defSkillModifier
 
@@ -41,7 +38,7 @@ function _Defense:GetCritReduction()
     if critReductionFromDefense < 0 then
         critReductionFromDefense = 0
     end
-    local critReducingFromResilience = resilience / RESILIENCE_FOR_CRIT_REDUCTION
+    local critReducingFromResilience = GetCombatRatingBonus(15)
 
     return critReductionFromDefense + critReducingFromResilience + talentBonus
 end
