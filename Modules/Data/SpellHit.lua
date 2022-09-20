@@ -46,8 +46,13 @@ function _SpellHit:GetTalentSpellHitBonus()
     local bonus = 0
 
     if classId == Data.PRIEST then
-        local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 5)
-        bonus = points * 2 -- 0-10% from Shadow Focus
+        if ECS.IsWotlk then
+            local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 3)
+            bonus = points -- 0-3% from Shadow Focus
+        else
+            local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 5)
+            bonus = points * 2 -- 0-10% from Shadow Focus
+        end
     end
 
     if classId == Data.PALADIN and ECS.IsWotlk then
