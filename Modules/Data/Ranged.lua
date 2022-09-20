@@ -87,8 +87,8 @@ function _Ranged:GetHitTalentBonus()
     local bonus = 0
 
     if ECS.IsWotlk and classId == Data.HUNTER then
-        local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 12)
-        bonus = points * 1 -- 0-3% Surefooted
+        local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 27)
+        bonus = points * 1 -- 0-3% Focused Aim
     end
 
     return bonus
