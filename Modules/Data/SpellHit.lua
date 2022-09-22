@@ -85,7 +85,7 @@ function _SpellHit:GetTalentSpellHitBonus()
 
     if classId == Data.DRUID then
         if ECS.IsWotlk then
-            local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 16)
+            local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 13)
             bonus = points * 2 -- 0-4% from Balance of Power
         end
     end
