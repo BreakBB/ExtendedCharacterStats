@@ -26,7 +26,7 @@ function Data:SpellMissChanceSameLevel()
 end
 
 function Data:SpellMissChanceBossLevel()
-    local missChance = ECS.IsWotlk and 16 or 17
+    local missChance = 17
 
     missChance = missChance - _SpellHit:GetTalentSpellHitBonus()
     local mod = _SpellHit:GetSpellHitBonus()
