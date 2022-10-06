@@ -8,7 +8,7 @@ local _Defense = {}
 local _, _, classId = UnitClass("player")
 local MAX_SKILL_LINES = 75 -- Something high, because we stop if we are too far
 
-local LEVEL_70_MAX_SKILL = 350
+local MAX_SKILL = (UnitLevel("player")) * 5
 -- A tank needs to reduce the chance to be critically hit by 5.6% to achieve crit immunity
 local CRIT_IMMUNITY_CAP = 5.6
 -- Every 25 defense reduce the chance to be critically hit by 1 %
@@ -39,7 +39,7 @@ function _Defense:GetCritReduction()
     end
 
     -- Only the defense value above 350 counts towards crit immunity
-    local critReductionFromDefense =  (defBonus - LEVEL_70_MAX_SKILL) / DEFENSE_FOR_CRIT_REDUCTION
+    local critReductionFromDefense =  (defBonus - MAX_SKILL) / DEFENSE_FOR_CRIT_REDUCTION
     if critReductionFromDefense < 0 then
         critReductionFromDefense = 0
     end
