@@ -90,7 +90,7 @@ local lastManaReg = 0
 function Data:GetMP5FromSpirit()
     local _, intValue = UnitStat("player", 4)
     local _, spiritValue = UnitStat("player", 5)
-    return DataUtils:Round((0.001 + (spiritValue * 0.009327 * (intValue^0.5))) * 5, 1)
+    return DataUtils:Round((0.001 + (spiritValue * 0.009327 * (intValue^0.5))) * 5 * 0.6, 2)
 end
 
 -- Get mana regen while casting
