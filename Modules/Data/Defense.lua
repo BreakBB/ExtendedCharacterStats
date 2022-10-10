@@ -6,7 +6,6 @@ local DataUtils = ECSLoader:ImportModule("DataUtils")
 local _Defense = {}
 
 local _, _, classId = UnitClass("player")
-local MAX_SKILL_LINES = 75 -- Something high, because we stop if we are too far
 
 local MAX_SKILL = (UnitLevel("player")) * 5
 -- A tank needs to reduce the chance to be critically hit by 5.6% to achieve crit immunity
@@ -23,9 +22,7 @@ end
 
 ---@return number
 function _Defense:GetCritReduction()
-    local defSkillRank, defSkillModifier = _Defense:GetDefenseValues()
-
-    local defBonus = defSkillRank + defSkillModifier
+    local defBonus = Data:GetDefenseValue()
 
     local talentBonus = 0
     if classId == Data.DRUID then
@@ -67,9 +64,9 @@ end
 
 ---@return string
 function Data:GetAvoidance()
-    local defenseRank, defenseModifier = _Defense:GetDefenseValues()
+    local defense = Data:GetDefenseValue()
     local enemyAttackRating = (UnitLevel("player")) * 5
-    local enemyMissChance = 5 + (((defenseRank + defenseModifier) - enemyAttackRating) * .04)
+    local enemyMissChance = 5 + (((defense) - enemyAttackRating) * .04)
     local avoidance = enemyMissChance + GetDodgeChance() + GetParryChance() + GetBlockChance()
     return DataUtils:Round(avoidance, 2) .. "%"
 end
@@ -79,36 +76,10 @@ function Data:GetDefenseRating()
     return DataUtils:Round(GetCombatRating(CR_DEFENSE_SKILL), 2)
 end
 
----@return table<number, number>
-function _Defense:GetDefenseValues()
-    local skillRank = 0
-    local skillModifier = 0
-
-    for i = 1, MAX_SKILL_LINES do
-        local skillName, isHeader, _, rank, _, modifier  = GetSkillLineInfo(i)
-        if (not skillName) then
-            -- We exceeded the available skill lines
-            break
-        end
-
-        if (not isHeader) and (skillName == DEFENSE) then
-            skillRank = rank
-            skillModifier = modifier
-            break
-        end
-    end
-
-    if ECS.IsWotlk then
-        skillModifier = skillModifier + math.floor(GetCombatRatingBonus(CR_DEFENSE_SKILL))
-    end
-
-    return skillRank, skillModifier
-end
-
----@return string
-function Data:GetDefenseValueString()
-    local skillRank, skillModifier = _Defense:GetDefenseValues()
-    return skillRank .. " + " .. skillModifier
+---@return number
+function Data:GetDefenseValue()
+    local skillRank, skillModifier = UnitDefense("player")
+    return skillRank + skillModifier
 end
 
 

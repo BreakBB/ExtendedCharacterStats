@@ -127,7 +127,7 @@ dataFunctionRefs = {
             return 0
         end
     end,
-    ["DefenseValue"] = function() return Data:GetDefenseValueString() end,
+    ["DefenseValue"] = function() return Data:GetDefenseValue() end,
     ["DodgeChance"] = function() return Data:GetDodgeChance() end,
     ["ParryChance"] = function() return Data:GetParryChance() end,
     ["BlockChance"] = function() return Data:GetBlockChance() end,
