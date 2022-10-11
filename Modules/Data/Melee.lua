@@ -152,7 +152,7 @@ function Data:MeleeHitMissChanceBossLevel()
 
     local missChance
     if DataUtils:IsShapeshifted() then
-        missChance = 9
+        missChance = ECS.IsWotlk and 8 or 9
     else
         missChance = DataUtils:GetMissChanceByDifference(mainBase + mainMod, enemyDefenseValue)
     end
