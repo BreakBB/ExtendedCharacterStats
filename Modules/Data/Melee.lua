@@ -193,10 +193,18 @@ function Data:GetExpertiseRating()
     return DataUtils:Round(expertiseRating, 0)
 end
 
----@return number
+---@return string
 function Data:GetArmorPenetration()
     local armorPenetration = GetArmorPenetration()
-    return DataUtils:Round(armorPenetration, 2)
+
+    if ECS.IsWotlk and classId == Data.WARRIOR then
+        local _, isActive = GetShapeshiftFormInfo(1)
+        if isActive then
+            armorPenetration = armorPenetration + 10 -- 10% from Battle Stance
+        end
+    end
+
+    return DataUtils:Round(armorPenetration, 2) .. "%"
 end
 
 ---@return number
