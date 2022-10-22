@@ -87,6 +87,12 @@ function _Melee:GetHitTalentBonus()
         end
     end
 
+    -- This assumes a DK is dual wielding and not only using a one-hand main hand weapon
+    if classId == Data.DEATHKNIGHT and Data:GetMeleeAttackSpeedOffHand() > 0 then
+        local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 16)
+        mod = points * 1 -- 0-3% Nerves of Cold Steel
+    end
+
     return mod
 end
 
