@@ -14,6 +14,7 @@ Modules\ModuleLoader.lua
 
 # Modules
 Modules\Migration.lua
+Modules\EventHandler.lua
 Modules\Init.lua
 Modules\Utils.lua
 Modules\Stats.lua
