@@ -95,6 +95,11 @@ function _SpellCrit:GetGeneralTalentModifier()
         mod = mod + devastation * 1 -- 0-5% Devastation
     end
 
+    if ECS.IsWotlk and classId == Data.SHAMAN then
+        local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 8)
+        mod = points * 1 -- 0-5% Thundering Strikes
+    end
+
     return mod
 end
 
