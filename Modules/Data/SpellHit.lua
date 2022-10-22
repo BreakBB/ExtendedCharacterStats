@@ -131,7 +131,7 @@ function _SpellHit:GetSpellHitFromBuffs()
         end
     end
 
-    if (not otherDraeneiInGroup) and IsSpellKnown(28878) then
+    if (not otherDraeneiInGroup) and (IsSpellKnown(28878) or IsSpellKnown(6562)) then
         mod = mod + 1
     end
 

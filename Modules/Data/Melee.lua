@@ -106,7 +106,7 @@ function _Melee:GetHitFromBuffs()
         end
     end
 
-    if (not otherDraeneiInGroup) and IsSpellKnown(6562) then
+    if (not otherDraeneiInGroup) and (IsSpellKnown(6562) or IsSpellKnown(28878)) then
         mod = mod + 1
     end
 
