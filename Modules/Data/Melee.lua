@@ -196,7 +196,7 @@ end
 ---@return number
 function Data:GetArmorPenetration()
     local armorPenetration = GetArmorPenetration()
-    return DataUtils:Round(armorPenetration, 0)
+    return DataUtils:Round(armorPenetration, 2)
 end
 
 ---@return number
