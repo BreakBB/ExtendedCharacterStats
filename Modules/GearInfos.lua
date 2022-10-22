@@ -25,7 +25,7 @@ local GEAR_SLOT_FRAMES = {
     CharacterRangedSlot,
 }
 
-function GearInfos:Init()
+function GearInfos.Init()
     _CreateGearColorFrames()
 end
 
@@ -37,12 +37,12 @@ _CreateGearColorFrames = function()
         gearFrame.qualityTexture:SetPoint("BOTTOMRIGHT", gearFrame, "BOTTOMRIGHT", 2, -2)
         gearFrame.qualityTexture:SetTexture("Interface\\Addons\\ExtendedCharacterStats\\Icons\\WhiteIconFrame.blp")
     end
-    GearInfos:UpdateGearColorFrames()
+    GearInfos.UpdateGearColorFrames()
     GearInfos:ToggleColorFrames(ExtendedCharacterStats.general.showQualityColors)
 end
 
 ---Updates the colored frames around each gear slot
-function GearInfos:UpdateGearColorFrames()
+function GearInfos.UpdateGearColorFrames()
     for _, gearFrame in ipairs(GEAR_SLOT_FRAMES) do
         _UpdateColorFrame(gearFrame, "player")
     end
@@ -70,23 +70,23 @@ end
 ---@param value boolean @True if the frames should be shown, false otherwise
 function GearInfos:ToggleColorFrames(value)
     for _, gearFrame in ipairs(GEAR_SLOT_FRAMES) do
-		if gearFrame.qualityTexture ~= nil then
-			if value then
-				gearFrame.qualityTexture:Show()
-			else
-				gearFrame.qualityTexture:Hide()
-			end
-		end
+        if gearFrame.qualityTexture ~= nil then
+            if value then
+                gearFrame.qualityTexture:Show()
+            else
+                gearFrame.qualityTexture:Hide()
+            end
+        end
     end
     for _, gearFrame in ipairs(_GetInspectGearSlots()) do
-		if gearFrame.qualityTexture ~= nil then
-			if value then
-				gearFrame.qualityTexture:Show()
-			else
-				gearFrame.qualityTexture:Hide()
-			end
-		end
-	end
+        if gearFrame.qualityTexture ~= nil then
+            if value then
+                gearFrame.qualityTexture:Show()
+            else
+                gearFrame.qualityTexture:Hide()
+            end
+        end
+    end
 end
 
 _GetInspectGearSlots = function()

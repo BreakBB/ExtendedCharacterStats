@@ -24,7 +24,7 @@ local AceGUI = LibStub("AceGUI-3.0")
 -- Forward declaration
 local _CreateGUI, _GeneralTab, _StatsTab
 
-function Config:CreateWindow()
+function Config.CreateWindow()
     local optionsGUI = _CreateGUI()
     LibStub("AceConfig-3.0"):RegisterOptionsTable("ECS", optionsGUI)
     ECS.configFrame = LibStub("AceConfigDialog-3.0"):AddToBlizOptions("ECS", "Extended Character Stats");

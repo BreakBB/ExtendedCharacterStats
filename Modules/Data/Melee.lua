@@ -127,8 +127,8 @@ function Data:MeleeHitMissChanceSameLevel()
     end
 
     if Data:GetMeleeAttackSpeedOffHand() > 0 then
-		missChance = missChance + 19;
-	end
+        missChance = missChance + 19;
+    end
 
     local hitValue = _Melee:GetHitRatingBonus()
     if hitValue then -- This needs to be checked because on dungeon entering it becomes nil
@@ -157,9 +157,9 @@ function Data:MeleeHitMissChanceBossLevel()
         missChance = DataUtils:GetMissChanceByDifference(mainBase + mainMod, enemyDefenseValue)
     end
 
-	if Data:GetMeleeAttackSpeedOffHand() > 0 then
-		missChance = missChance + 19;
-	end
+    if Data:GetMeleeAttackSpeedOffHand() > 0 then
+        missChance = missChance + 19;
+    end
 
     local hitValue = _Melee:GetHitRatingBonus()
     if hitValue then -- This needs to be checked because on dungeon entering it becomes nil

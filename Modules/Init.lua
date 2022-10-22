@@ -28,9 +28,9 @@ end
 
 function Init:OnPlayerLogin()
     -- Initialize the AddOn GUI once everything has loaded
-    Stats:CreateWindow()
+    Stats.CreateWindow()
 
-    GearInfos:Init()
+    GearInfos.Init()
 
     local eventFrame = CreateFrame("Frame", nil, UIParent)
     _Init.RegisterEvents(eventFrame)

@@ -37,7 +37,7 @@ local lastYOffset = 20
 
 
 --- Creates the main frame for the Stats window
-function Stats:CreateWindow()
+function Stats.CreateWindow()
     local ecs = ExtendedCharacterStats
 
     local mainFrame = CreateFrame("Frame", "ECS_StatsFrame", PaperDollItemsFrame, "BasicFrameTemplateWithInset")
@@ -102,7 +102,7 @@ function Stats:CreateWindow()
     end)
 
     _CreateStatInfos()
-    Config:CreateWindow()
+    Config.CreateWindow()
 end
 
 function Stats:UpdateWindowSize()
