@@ -7,14 +7,13 @@ local Stats = ECSLoader:ImportModule("Stats")
 local GearInfos = ECSLoader:ImportModule("GearInfos")
 
 local UPDATE_INTERVAL = 2
-local updateTicker
 local currentGroupMembers = 0
 local shouldUpdate = false
 
 function EventHandler.Init()
     currentGroupMembers = GetNumGroupMembers()
 
-    updateTicker = C_Timer.NewTicker(UPDATE_INTERVAL, function()
+    C_Timer.NewTicker(UPDATE_INTERVAL, function()
         if shouldUpdate then
             Stats:UpdateInformation()
             shouldUpdate = false

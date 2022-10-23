@@ -889,6 +889,7 @@ stds.ecs = {
         "GMSurveyQuestion",
         "GMSurveySubmit",
         "GameMovieFinished",
+        "GearManagerDialog",
         "GetAbandonQuestItems",
         "GetAbandonQuestName",
         "GetAccountExpansionLevel",
