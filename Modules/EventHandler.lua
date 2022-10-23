@@ -6,28 +6,10 @@ local Stats = ECSLoader:ImportModule("Stats")
 ---@type GearInfos
 local GearInfos = ECSLoader:ImportModule("GearInfos")
 
-local UPDATE_INTERVAL = 1
+local UPDATE_INTERVAL = 2
 local updateTicker
 local currentGroupMembers = 0
 local shouldUpdate = false
-
-local lastSuccessfulSpellTime = 0
-
-local function _HandleUpdate(event)
-    if event == "UNIT_SPELLCAST_SUCCEEDED" then -- If a player casted something the 5 sec rule comes into play
-        lastSuccessfulSpellTime = GetTime()
-    elseif event == "UNIT_POWER_UPDATE" then
-        -- Only check power update after the 5 sec rule (mana reg is back to normal)
-        if lastSuccessfulSpellTime > 0 and (GetTime() - lastSuccessfulSpellTime) > 5.5 then
-            lastSuccessfulSpellTime = 0
-            Stats:UpdateInformation()
-        end
-    else
-        C_Timer.After(0.5, function ()
-            Stats:UpdateInformation()
-        end)
-    end
-end
 
 function EventHandler.Init()
     currentGroupMembers = GetNumGroupMembers()
@@ -51,7 +33,7 @@ function EventHandler.HandleOnEvent(_, event, eventTarget, ...)
             shouldUpdate = true
         else
             -- Otherwise update right away
-            _HandleUpdate(event)
+            Stats:UpdateInformation()
         end
     elseif event == "PLAYER_EQUIPMENT_CHANGED" or event == "SOCKET_INFO_SUCCESS" then
         GearInfos.UpdateGearColorFrames()

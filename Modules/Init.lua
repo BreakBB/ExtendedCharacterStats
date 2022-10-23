@@ -80,10 +80,8 @@ function _Init.RegisterEvents(eventFrame)
     eventFrame:RegisterEvent("PLAYER_LEVEL_UP") -- Triggers whenever the player levels up
     eventFrame:RegisterEvent("PLAYER_ENTERING_WORLD")  -- Triggers whenever the player log in, zone in to a new zone or reloads the UI
     eventFrame:RegisterEvent("PLAYER_EQUIPMENT_CHANGED") -- Triggers whenever the player changes gear
-    eventFrame:RegisterEvent("UNIT_POWER_UPDATE") -- Triggers whenever the player changes gear
     eventFrame:RegisterEvent("UPDATE_SHAPESHIFT_FORM") -- Triggers whenever someone (not only the player) changes shape
     eventFrame:RegisterEvent("PLAYER_MOUNT_DISPLAY_CHANGED") -- Triggers whenever the player mounts or dismounts
-    eventFrame:RegisterEvent("UNIT_SPELLCAST_SUCCEEDED") -- Triggers whenever a cast was successful
     eventFrame:RegisterEvent("INSPECT_READY") -- Triggers whenever the player inspects someone else and the inspect frame is ready
     eventFrame:RegisterEvent("CHARACTER_POINTS_CHANGED") -- Triggered whenever a player spends talent points
     eventFrame:RegisterEvent("GROUP_ROSTER_UPDATE") -- Triggered whenever someone joins or leaves the group (party and raid)
