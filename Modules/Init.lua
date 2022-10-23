@@ -87,5 +87,12 @@ function _Init.RegisterEvents(eventFrame)
     eventFrame:RegisterEvent("GROUP_ROSTER_UPDATE") -- Triggered whenever someone joins or leaves the group (party and raid)
     if ECS.IsWotlk then
         eventFrame:RegisterEvent("SOCKET_INFO_SUCCESS") -- Triggers whenever the player successfully sockets an item
+
+        GearManagerDialog:SetScript("OnShow", function()
+            Stats:HideWindow()
+        end)
+        GearManagerDialog:SetScript("OnHide", function()
+            Stats:ShowWindow()
+        end)
     end
 end

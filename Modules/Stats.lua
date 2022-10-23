@@ -134,6 +134,10 @@ function Stats:HideWindow()
     _Stats.frame:SetShown(false)
 end
 
+function Stats:ShowWindow()
+    _Stats.frame:SetShown(true)
+end
+
 function Stats:GetFrame()
     return _Stats.frame
 end
