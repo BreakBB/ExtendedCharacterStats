@@ -88,10 +88,10 @@ function _Init.RegisterEvents(eventFrame)
     if ECS.IsWotlk then
         eventFrame:RegisterEvent("SOCKET_INFO_SUCCESS") -- Triggers whenever the player successfully sockets an item
 
-        GearManagerDialog:SetScript("OnShow", function()
+        GearManagerDialog:HookScript("OnShow", function()
             Stats:HideWindow()
         end)
-        GearManagerDialog:SetScript("OnHide", function()
+        GearManagerDialog:HookScript("OnHide", function()
             Stats:ShowWindow()
         end)
     end
