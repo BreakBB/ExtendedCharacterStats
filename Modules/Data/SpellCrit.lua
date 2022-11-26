@@ -54,6 +54,12 @@ function _SpellCrit:GetSpellCritFromBuffs()
         if (not ECS.IsWotlk) and spellId == 30482 then
             mod = mod + 3 -- 3% from Molten Armor
         end
+        if (ECS.IsWotlk and spellId == 51466) then
+            mod = mod + 3 -- 3% from Elemental Oath Rank 1
+        end
+        if (ECS.IsWotlk and spellId == 51470) then
+            mod = mod + 5 -- 5% from Elemental Oath Rank 2
+        end
     end
 
     return mod
