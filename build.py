@@ -38,31 +38,33 @@ def main():
     zip_name = '%s-%s' % (addonDir, version_dir)
     zip_release_folder(zip_name, version_dir, addonDir)
 
-    interface_version = get_interface_version()
+    interface_classic = get_interface_version()
+    interface_bcc = get_interface_version('BCC')
+    interface_wotlk = get_interface_version('WOTLKC')
 
     with open(release_folder_path + '/release.json', 'w') as rf:
         rf.write('''{
     "releases": [
         {
-            "filename": "%(z)s.zip",
+            "filename": "%s.zip",
             "nolib": false,
             "metadata": [
                 {
                     "flavor": "classic",
-                    "interface": %(s)s
+                    "interface": %s
                 },
                 {
                     "flavor": "bcc",
-                    "interface": %(s)s
+                    "interface": %s
                 },
                 {
                     "flavor": "wrath",
-                    "interface": %(s)s
+                    "interface": %s
                 }
             ]
         }
     ]
-}''' % ({'z': zip_name, 's': interface_version}))
+}''' % (zip_name, interface_classic, interface_bcc, interface_wotlk))
 
     print('New release "%s" created successfully' % version_dir)
 
@@ -130,8 +132,8 @@ def get_branch():
         return branch
 
 
-def get_interface_version():
-    with open('ExtendedCharacterStats-Classic.toc', 'r') as toc:
+def get_interface_version(expansion='Classic'):
+    with open('ExtendedCharacterStats-%s.toc' % expansion, 'r') as toc:
         return re.match('## Interface: (.*?)\n', toc.read(), re.DOTALL).group(1)
 
 
