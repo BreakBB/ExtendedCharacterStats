@@ -1,4 +1,4 @@
-## Interface: 30400
+## Interface: 30401
 ## Title: Extended Character Stats v3.0.8
 ## Version: 3.0.8
 ## Author: BreakBB, Ethulu
