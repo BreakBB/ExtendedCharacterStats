@@ -1,13 +1,18 @@
 #!/usr/bin/env python3
 
 import subprocess
+import sys
 
 # define the tags that should be shown and their order
 commit_keys_and_header = (
     ('feature', '## New Features\n\n'),
     ('fix', '## General Fixes\n\n'),
-    ('locale', '## Localisation Fixes\n\n'),
+    ('locale', '## Localization Fixes\n\n'),
 )
+
+
+def is_python_36():
+    return sys.version_info.major == 3 and sys.version_info.minor >= 6
 
 
 def get_commit_changelog():
@@ -20,8 +25,8 @@ def get_commit_changelog():
 
 def get_last_git_tag():
     return subprocess.run(
-        ["git", "describe", "--abbrev=0", "--tags"], 
-        capture_output=True
+        ["git", "describe", "--tags", "--abbrev=0", "HEAD^"],
+        **({"stdout": subprocess.PIPE, "stderr": subprocess.PIPE} if is_python_36() else {"capture_output": True, })
     ).stdout.decode().strip('\n')
 
 
@@ -29,7 +34,7 @@ def get_chronological_git_log(last_tag):
     # get array of the first line of the commit messages since last tag
     git_log = subprocess.run(
         ["git", "log", "--pretty=format:%s", f"{last_tag}..HEAD"],
-        capture_output=True
+        **({"stdout": subprocess.PIPE, "stderr": subprocess.PIPE} if is_python_36() else {"capture_output": True, })
     ).stdout.decode().split('\n')
 
     # reverse it so it's chronological
@@ -44,19 +49,33 @@ def get_sorted_categories(git_log):
 
     for line in git_log:
         for key in categories.keys():
-            if f'[{key}]' in line:
+            if line.startswith(f'[{key}]'):
                 line = line.replace(f'[{key}]', '').strip()
                 line = transform_lines_into_past_tense(line)
                 categories[key].append(line)
+            elif line.startswith(f'[{key.capitalize()}]'):
+                line = line.replace(f'[{key.capitalize()}]', '').strip()
+                line = transform_lines_into_past_tense(line)
+                categories[key].append(line)
+
+    for key in categories.keys():
+        categories[key].sort()
 
     return categories
 
 
+def replace_start(line, a, b):
+    if line.strip().startswith(a):
+        return line.replace(a, b)
+    else:
+        return line
+
+
 def transform_lines_into_past_tense(line):
-    line = line.replace('Add', 'Added')
-    line = line.replace('Fix', 'Fixed')
-    line = line.replace('Change', 'Changed')
-    line = line.replace('Update', 'Updated')
+    line = replace_start(line, 'Add ', 'Added ')
+    line = replace_start(line, 'Fix ', 'Fixed ')
+    line = replace_start(line, 'Change ', 'Changed ')
+    line = replace_start(line, 'Update ', 'Updated ')
     return line
 
 
@@ -68,7 +87,7 @@ def get_changelog_string(categories):
             header = key_header[1]
             changelog += header
             for line in categories[key]:
-                changelog += f'* {line}\n'.replace('[', '\\[')
+                changelog += f'* {line}\n'.replace('\\[', '[')
             changelog += '\n'
 
     return changelog
