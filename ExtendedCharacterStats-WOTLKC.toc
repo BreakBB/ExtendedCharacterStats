@@ -3,9 +3,11 @@
 ## Version: 3.0.9
 ## Author: BreakBB, Ethulu
 ## Notes: Displays an extra window with more information about your characters stats ( Crit/Hit/Block etc )
+## OptionalDeps: Ace3, CallbackHandler-1.0, LibStub
 ## SavedVariablesPerCharacter: ExtendedCharacterStats
 ## DefaultState: enabled
 ## X-Curse-Project-ID: 334877
+## X-Wago-ID: e56nwDK9
 
 embeds.xml
 
