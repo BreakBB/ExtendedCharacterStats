@@ -1,6 +1,6 @@
 ## Interface: 30402
-## Title: Extended Character Stats v3.0.9
-## Version: 3.0.9
+## Title: Extended Character Stats v3.0.10
+## Version: 3.0.10
 ## Author: BreakBB, Ethulu
 ## Notes: Displays an extra window with more information about your characters stats ( Crit/Hit/Block etc )
 ## OptionalDeps: Ace3, CallbackHandler-1.0, LibStub
