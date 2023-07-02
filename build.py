@@ -4,43 +4,117 @@ import os
 import shutil
 import subprocess
 import sys
+import fileinput
 import re
 
 '''
-This program accepts one optional command line option:
+This program accepts optional command line options:
 
-release If provided this will create release ready ZIP files
-
-        Default: 'False'
+    -r
+    --release
+        Do not include commit hash in directory/zip/version names
+    -a
+    --all
+        Included files for all expansions
+    -c
+    --classic
+        Include Classic/Era files
+    -t
+    --tbc
+        Include TBC files
+    -w
+    --wotlk
+        Include WotLK files
+    -v <versionString>
+    --version <versionString>
+        Disregard git and toc versions, and use <versionString> instead
 
 '''
 addonDir = 'ExtendedCharacterStats'
-isReleaseBuild = False
+includedExpansions = []
+tocs = ['', 'ExtendedCharacterStats-Classic.toc', 'ExtendedCharacterStats-BCC.toc', 'ExtendedCharacterStats-WOTLKC.toc']
 
 
 def main():
-    global isReleaseBuild
+    isReleaseBuild = False
+    versionOverride = ''
     if len(sys.argv) > 1:
-        isReleaseBuild = sys.argv[1]
-        print("Creating a release build")
+        ver = False
+        for arg in sys.argv[1:]:
+            if ver:
+                versionOverride = arg
+                ver = False
+            elif arg in ['-r', '--release']:
+                isReleaseBuild = True
+                print("Creating a release build")
+            elif arg in ['-v', '--version']:
+                ver = True
+            elif arg in ['-a', '--all']:
+                if 1 not in includedExpansions:
+                    includedExpansions.append(1)
+                if 2 not in includedExpansions:
+                    includedExpansions.append(2)
+                if 3 not in includedExpansions:
+                    includedExpansions.append(3)
+            elif arg in ['-c', '--classic'] and 1 not in includedExpansions:
+                includedExpansions.append(1)
+            elif arg in ['-t', '--tbc'] and 2 not in includedExpansions:
+                includedExpansions.append(2)
+            elif arg in ['-w', '--wotlk'] and 3 not in includedExpansions:
+                includedExpansions.append(3)
+    if len(includedExpansions) == 0:
+        # If expansions go online/offline their major version needs to be added/removed here
+        includedExpansions.append(1)
+        includedExpansions.append(3)
 
-    version_dir = get_version_dir(isReleaseBuild)
+    release_dir = get_version_dir(isReleaseBuild, versionOverride)
 
-    if os.path.isdir('releases/%s' % version_dir):
+    if os.path.isdir('releases/%s' % release_dir):
         print("Warning: Folder already exists, removing!")
-        shutil.rmtree('releases/%s' % version_dir)
+        shutil.rmtree('releases/%s' % release_dir)
 
-    release_folder_path = 'releases/%s' % version_dir
+    release_folder_path = 'releases/%s' % release_dir
     release_addon_folder_path = release_folder_path + ('/%s' % addonDir)
 
     copy_content_to(release_addon_folder_path)
 
-    zip_name = '%s-%s' % (addonDir, version_dir)
-    zip_release_folder(zip_name, version_dir, addonDir)
+    if versionOverride != '':
+        for tocN in includedExpansions:
+            toc = tocs[tocN]
+            toc_path = release_addon_folder_path + toc
+            with fileinput.FileInput(toc_path, inplace=True) as file:
+                for line in file:
+                    if line[:10] == '## Version':
+                        print('## Version: ' + versionOverride)
+                    else:
+                        print(line, end='')
+
+    zip_name = '%s-%s' % (addonDir, release_dir)
+    zip_release_folder(zip_name, release_dir, addonDir)
 
     interface_classic = get_interface_version()
     interface_bcc = get_interface_version('BCC')
     interface_wotlk = get_interface_version('WOTLKC')
+
+    flavorString = ""
+    if 1 in includedExpansions:
+        flavorString += """
+                {
+                    "flavor": "classic",
+                    "interface": %s
+                },""" % interface_classic
+    if 2 in includedExpansions:
+        flavorString += """
+                {
+                    "flavor": "bcc",
+                    "interface": %s
+                },""" % interface_bcc
+    if 3 in includedExpansions:
+        flavorString += """
+                {
+                    "flavor": "wrath",
+                    "interface": %s
+                },""" % interface_wotlk
 
     with open(release_folder_path + '/release.json', 'w') as rf:
         rf.write('''{
@@ -48,56 +122,54 @@ def main():
         {
             "filename": "%s.zip",
             "nolib": false,
-            "metadata": [
-                {
-                    "flavor": "classic",
-                    "interface": %s
-                },
-                {
-                    "flavor": "bcc",
-                    "interface": %s
-                },
-                {
-                    "flavor": "wrath",
-                    "interface": %s
-                }
+            "metadata": [%s
             ]
         }
     ]
-}''' % (zip_name, interface_classic, interface_bcc, interface_wotlk))
+}''' % (zip_name, flavorString[:-1]))
 
-    print('New release "%s" created successfully' % version_dir)
+    print('New release "%s" created successfully' % release_dir)
 
 
-def get_version_dir(is_release_build):
+def get_version_dir(is_release_build, versionOverride):
     version, nr_of_commits, recent_commit = get_git_information()
+    if versionOverride != '':
+        version = versionOverride
     print("Tag: " + version)
     if is_release_build:
-        version_dir = "%s" % version
+        release_dir = "%s" % version
     else:
-        version_dir = "%s-%s" % (version, recent_commit)
+        release_dir = "%s-%s" % (version, recent_commit)
 
     print("Number of commits since tag: " + nr_of_commits)
     print("Most Recent commit: " + recent_commit)
     branch = get_branch()
-    if branch != "master":
-        version_dir += "-%s" % branch
+    if branch != "master" and branch != "HEAD":
+        release_dir += "-%s" % branch
     print("Current branch: " + branch)
 
-    return version_dir
+    return release_dir
 
 
-directoriesToSkip = ['.git', '.github', '.history', '.idea', 'releases']
-filesToSkip = ['.gitattributes', '.gitignore', '.luacheckrc', 'build.py', 'changelog.py', 'lua-style.config']
+directoriesToInclude = ['Icons', 'Libs', 'Modules']
+filesToInclude = ['embeds.xml', 'ECS.lua', 'ExtendedCharacterStats.toc']
+expansionStrings = ['', 'Classic', 'TBC', 'Wotlk']
+ignorePatterns = []
 
 
 def copy_content_to(release_folder_path):
+    for i in [1,2,3]:
+        if i in includedExpansions:
+            filesToInclude.append(tocs[i])
+        else:
+            ignorePatterns.append(f'{expansionStrings[i]}')
+
     for _, directories, files in os.walk('.'):
         for directory in directories:
-            if directory not in directoriesToSkip:
-                shutil.copytree(directory, '%s/%s' % (release_folder_path, directory))
+            if directory in directoriesToInclude:
+                shutil.copytree(directory, '%s/%s' % (release_folder_path, directory), ignore=shutil.ignore_patterns(*ignorePatterns))
         for file in files:
-            if file not in filesToSkip:
+            if file in filesToInclude:
                 shutil.copy2(file, '%s/%s' % (release_folder_path, file))
         break
 
@@ -105,6 +177,7 @@ def copy_content_to(release_folder_path):
 def zip_release_folder(zip_name, version_dir, addon_dir):
     root = os.getcwd()
     os.chdir('releases/%s' % version_dir)
+    print("Zipping %s" % zip_name)
     shutil.make_archive(zip_name, "zip", ".", addon_dir)
     os.chdir(root)
 
