@@ -785,6 +785,7 @@ stds.ecs = {
         "CreateFrame",
         "CreateMacro",
         "CreateNewRaidProfile",
+        "CR_ARMOR_PENETRATION",
         "CR_WEAPON_SKILL",
         "CR_DEFENSE_SKILL",
         "CR_DODGE",

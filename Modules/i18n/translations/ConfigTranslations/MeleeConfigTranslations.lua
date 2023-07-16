@@ -51,6 +51,13 @@ local meleeConfigTranslations = {
         ["zhCN"] = false,
         ["ruRU"] = "Показать/скрыть значение проникающую способность брони",
     },
+    ["Shows/Hides the armor penetration rating value."] = {
+        ["enUS"] = true,
+        ["deDE"] = "Zeigt/Versteckt die Rüstungsdurchschlagwertung.",
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+    },
     ["Shows/Hides the expertise value."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt die Waffenkunde.",

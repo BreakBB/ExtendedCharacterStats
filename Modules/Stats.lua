@@ -189,8 +189,8 @@ _CreateStatInfos = function()
 
     category = profile.melee
     if ECS.IsWotlk then
-        _CreateStatInfo(category, category.attackPower, category.crit, category.penetration, category.expertise, category.expertiseRating,
-                category.hasteRating, category.hasteBonus)
+        _CreateStatInfo(category, category.attackPower, category.crit, category.penetration, category.penetrationRating, category.expertise,
+                category.expertiseRating, category.hasteRating, category.hasteBonus)
     else
         _CreateStatInfo(category, category.attackPower, category.crit)
     end
@@ -203,8 +203,8 @@ _CreateStatInfos = function()
 
     category = profile.ranged
     if ECS.IsWotlk then
-        _CreateStatInfo(category, category.attackPower, category.crit, category.penetration, category.hasteRating, category.hasteBonus,
-                category.attackSpeed)
+        _CreateStatInfo(category, category.attackPower, category.crit, category.penetration, category.penetrationRating,
+                category.hasteRating, category.hasteBonus, category.attackSpeed)
     else
         _CreateStatInfo(category, category.attackPower, category.crit, category.attackSpeed)
     end

@@ -40,6 +40,13 @@ dataFunctionRefs = {
             return 0
         end
     end,
+    ["MeleeArmorPenetrationRating"] = function()
+        if ECS.IsWotlk then
+            return Data:GetArmorPenetrationRating()
+        else
+            return 0
+        end
+    end,
     ["MeleeHitRating"] = function()
         if ECS.IsWotlk then
             return Data:MeleeHitRating()
@@ -81,6 +88,13 @@ dataFunctionRefs = {
     ["RangedArmorPenetration"] = function()
         if ECS.IsWotlk then
             return Data:GetArmorPenetration()
+        else
+            return 0
+        end
+    end,
+    ["RangedArmorPenetrationRating"] = function()
+        if ECS.IsWotlk then
+            return Data:GetArmorPenetrationRating()
         else
             return 0
         end

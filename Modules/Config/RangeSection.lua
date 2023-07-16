@@ -56,7 +56,7 @@ function _Config:LoadRangeSection()
             penetration = {
                 type = "toggle",
                 order = 2.3,
-                name = function() return i18n("Armor Penetration") end,
+                name = function() return i18n("Armor Pen.") end,
                 desc = function() return i18n("Shows/Hides the armor penetration value.") end,
                 width = 1.5,
                 hidden = function()
@@ -66,6 +66,22 @@ function _Config:LoadRangeSection()
                 get = function () return ExtendedCharacterStats.profile.ranged.penetration.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.ranged.penetration.display = value
+                    Stats:RebuildStatInfos()
+                end,
+            },
+            penetrationRating = {
+                type = "toggle",
+                order = 2.4,
+                name = function() return i18n("Armor Pen. Rating") end,
+                desc = function() return i18n("Shows/Hides the armor penetration rating value.") end,
+                width = 1.5,
+                hidden = function()
+                    return (not ECS.IsWotlk)
+                end,
+                disabled = function() return (not ExtendedCharacterStats.profile.ranged.display); end,
+                get = function () return ExtendedCharacterStats.profile.ranged.penetrationRating.display; end,
+                set = function (_, value)
+                    ExtendedCharacterStats.profile.ranged.penetrationRating.display = value
                     Stats:RebuildStatInfos()
                 end,
             },
