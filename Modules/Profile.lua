@@ -5,7 +5,7 @@ local Profile = ECSLoader:CreateModule("Profile")
 local Utils = ECSLoader:ImportModule("Utils")
 
 function Profile:GetProfileVersion()
-    return 16
+    return 17
 end
 
 ---@return ECSProfile
@@ -83,7 +83,15 @@ local function GetDefaultStatsProfile()
                 display = true,
                 isTbcOnly = true,
                 refName = "MeleeArmorPenetration",
-                text = "Armor Penetration",
+                text = "Armor Pen.",
+                textColor = colors.ATTACK_SPEED_SECONDARY,
+                statColor = colors.ATTACK_SPEED_PRIMARY,
+            },
+            penetrationRating = {
+                display = true,
+                isTbcOnly = true,
+                refName = "MeleeArmorPenetrationRating",
+                text = "Armor Pen. Rating",
                 textColor = colors.ATTACK_SPEED_SECONDARY,
                 statColor = colors.ATTACK_SPEED_PRIMARY,
             },
@@ -189,7 +197,15 @@ local function GetDefaultStatsProfile()
                 display = true,
                 isTbcOnly = true,
                 refName = "RangedArmorPenetration",
-                text = "Armor Penetration",
+                text = "Armor Pen.",
+                textColor = colors.ATTACK_SPEED_SECONDARY,
+                statColor = colors.ATTACK_SPEED_PRIMARY,
+            },
+            penetrationRating = {
+                display = true,
+                isTbcOnly = true,
+                refName = "RangedArmorPenetrationRating",
+                text = "Armor Pen. Rating",
                 textColor = colors.ATTACK_SPEED_SECONDARY,
                 statColor = colors.ATTACK_SPEED_PRIMARY,
             },

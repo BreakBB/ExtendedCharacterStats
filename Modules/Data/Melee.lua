@@ -207,6 +207,12 @@ function Data:GetArmorPenetration()
     return DataUtils:Round(armorPenetration, 2) .. "%"
 end
 
+---@return string
+function Data:GetArmorPenetrationRating()
+    local armorPenetrationRating = GetCombatRating(CR_ARMOR_PENETRATION)
+    return DataUtils:Round(armorPenetrationRating, 0)
+end
+
 ---@return number
 function Data:GetMeleeHasteRating()
     local hasteRating = GetCombatRating(CR_HASTE_MELEE)
