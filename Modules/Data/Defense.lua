@@ -64,9 +64,13 @@ end
 
 ---@return string
 function Data:GetAvoidance()
-    local defense = Data:GetDefenseValue()
     local enemyAttackRating = (UnitLevel("player")) * 5
-    local enemyMissChance = 5 + (((defense) - enemyAttackRating) * .04)
+
+    local defense = math.floor(GetCombatRatingBonus(CR_DEFENSE_SKILL));
+    local enemyMissCoef = classId == Data.DRUID and 0.972 or 0.956; -- 0.972 for bears
+    local baseMissChance = 5 - (enemyAttackRating - select(1, UnitDefense("player"))) * 0.04; -- vs lvl 80
+    local enemyMissChance = baseMissChance + 1 / (0.0625 + enemyMissCoef / (defense * 0.04));
+
     local avoidance = enemyMissChance + GetDodgeChance() + GetParryChance() + GetBlockChance()
     return DataUtils:Round(avoidance, 2) .. "%"
 end
