@@ -72,6 +72,19 @@ function _Config:LoadDefenseSection()
                     Stats:RebuildStatInfos()
                 end,
             },
+            avoidance = {
+                type = "toggle",
+                order = 1.85,
+                name = function() return i18n("Avoidance") end,
+                desc = function() return i18n("Shows/Hides the total avoidance.") end,
+                width = 1.5,
+                disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
+                get = function () return ExtendedCharacterStats.profile.defense.avoidance.display; end,
+                set = function (_, value)
+                    ExtendedCharacterStats.profile.defense.avoidance.display = value
+                    Stats:RebuildStatInfos()
+                end,
+            },
             defenseRating = {
                 type = "toggle",
                 order = 1.9,

@@ -86,6 +86,13 @@ local defenseConfigTranslations = {
         ["zhCN"] = false,
         ["ruRU"] = "Показать/скрыть значение устойчивости",
     },
+    ["Shows/Hides the total avoidance."] = {
+        ["enUS"] = true,
+        ["deDE"] = "Zeigt/Versteckt den Vermeidungswert.",
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+    },
 }
 
 for k, v in pairs(defenseConfigTranslations) do
