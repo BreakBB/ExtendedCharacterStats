@@ -5,7 +5,7 @@ local Profile = ECSLoader:CreateModule("Profile")
 local Utils = ECSLoader:ImportModule("Utils")
 
 function Profile:GetProfileVersion()
-    return 17
+    return 18
 end
 
 ---@return ECSProfile
@@ -244,7 +244,7 @@ local function GetDefaultStatsProfile()
             critImmunity = {display = true, isTbcOnly = true, refName = "CritImmunity", text = "Crit Immune"},
             critReduction = {display = true, isTbcOnly = true, refName = "CritReduction", text = "Crit Reduction"},
             avoidance = {display = true, refName = "Avoidance", text = "Avoidance"},
-            defenseRating = {display = true, refName = "DefenseRating", text = "Defense Rating"},
+            defenseRating = {display = true, isTbcOnly = true, refName = "DefenseRating", text = "Defense Rating"},
             defense = {display = true, refName = "DefenseValue", text = "Defense"},
             blockChance = {display = true, refName = "BlockChance", text = "Block Chance"},
             blockValue = {display = true, refName = "BlockValue", text = "Block Value"},

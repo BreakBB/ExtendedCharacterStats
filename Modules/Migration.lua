@@ -42,4 +42,7 @@ function Migration:ToLatestProfileVersion(profileVersion)
         ExtendedCharacterStats.profile.melee.penetrationRating = defaultProfile.profile.melee.penetrationRating
         ExtendedCharacterStats.profile.ranged.penetrationRating = defaultProfile.profile.ranged.penetrationRating
     end
+    if profileVersion < 18 then
+        ExtendedCharacterStats.profile.defense.defenseRating.isTbcOnly = true
+    end
 end
