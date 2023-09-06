@@ -69,7 +69,7 @@ function _SpellHit:GetTalentSpellHitBonus()
             local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 17)
             bonus = points * 1 -- 0-3% from Elemental Precision
         else
-            local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 3)
+            local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 17)
             bonus = points * 2 -- 0-6% from Elemental Precision
         end
     end

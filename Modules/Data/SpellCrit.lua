@@ -79,7 +79,7 @@ function _SpellCrit:GetGeneralTalentModifier()
     local mod = 0
 
     if classId == Data.MAGE then
-        local talentSlot = ECS.IsWotlk and 17 or 15;
+        local talentSlot = ECS.IsWotlk and 17 or 14;
         local _, _, _, _, points, _, _, _ = GetTalentInfo(1, talentSlot)
         mod = points * 1 -- 0-3% Arcane Instability
     end
@@ -142,8 +142,7 @@ function _SpellCrit:GetTalentModifierFireCrit()
     local mod = 0
 
     if classId == Data.MAGE then
-        local talentSlot = ECS.IsWotlk and 11 or 13;
-        local _, _, _, _, criticalMassPoints, _, _, _ = GetTalentInfo(2, talentSlot)
+        local _, _, _, _, criticalMassPoints, _, _, _ = GetTalentInfo(2, 1)
         mod = criticalMassPoints * 2 -- 0-6% Critical Mass
 
         if ECS.IsWotlk then

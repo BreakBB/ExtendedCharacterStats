@@ -142,7 +142,7 @@ function _MP5:GetTalentModifier()
         local _, _, _, _, points, _, _, _ = GetTalentInfo(1, meditationTalentSlot)
         mod = points * 0.05 -- 0-15% from Meditation
     elseif classId == Data.MAGE then
-        local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 12)
+        local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 15)
         mod = points * 0.05 -- 0-15% Arcane Meditation
     elseif classId == Data.DRUID then
         local _, _, _, _, reflectionPoints, _, _, _ = GetTalentInfo(3, 6)
