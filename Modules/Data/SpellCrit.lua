@@ -126,7 +126,7 @@ function _SpellCrit:GetTalentModifierHolyCrit()
     local mod = 0
 
     if classId == Data.PRIEST then
-        local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 3)
+        local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 2)
         mod = points * 1 -- 0-5% Holy Specialization
     end
     if classId == Data.PALADIN then
