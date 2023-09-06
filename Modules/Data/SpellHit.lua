@@ -54,7 +54,7 @@ function _SpellHit:GetTalentSpellHitBonus()
             local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 3)
             bonus = points -- 0-3% from Shadow Focus
         else
-            local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 5)
+            local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 3)
             bonus = points * 2 -- 0-10% from Shadow Focus
         end
     end
