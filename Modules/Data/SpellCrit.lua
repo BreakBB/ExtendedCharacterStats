@@ -20,16 +20,16 @@ function Data:GetSpellCrit(school)
         crit = crit + GetSpellCritChance(school) + itemBonus + setBonus
     end
 
-    crit = crit + _SpellCrit:GetSpellCritFromBuffs()
+    crit = crit + _SpellCrit:GetSpellCritFromBuffs(school)
 
     return DataUtils:Round(crit, 2) .. "%"
 end
 
-function _SpellCrit:GetSpellCritFromBuffs()
+function _SpellCrit:GetSpellCritFromBuffs(school)
     local mod = 0
 
     for i = 1, 40 do
-        local _, _, _, _, _, _, _, _, _, spellId, _ = UnitAura("player", i, "HELPFUL")
+        local _, _, count, _, _, _, _, _, _, spellId, _ = UnitAura("player", i, "HELPFUL")
         if spellId == nil then
             break
         end
@@ -59,6 +59,15 @@ function _SpellCrit:GetSpellCritFromBuffs()
         end
         if (ECS.IsWotlk and spellId == 51470) then
             mod = mod + 5 -- 5% from Elemental Oath Rank 2
+        end
+        if (ECS.IsWotlk and school == Data.FIRE_SCHOOL and spellId == 11129) then
+            mod = mod + 50 -- 50% from Combustion
+        end
+        if (ECS.IsWotlk and school == Data.FIRE_SCHOOL and spellId == 28682) then
+            mod = mod + (count * 10) -- 10% for each stack from Combustion
+        end
+        if ((not ECS.IsWotlk) and school == Data.FIRE_SCHOOL and spellId == 11129) then
+            mod = mod + 10 -- 10% from Combustion
         end
     end
 
