@@ -72,8 +72,8 @@ function _Melee:GetHitTalentBonus()
         end
     end
 
-    if (not ECS.IsWotlk) and classId == Data.PALADIN then
-        local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 3)
+    if ECS.IsTBC and classId == Data.PALADIN then
+        local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 15)
         mod = points * 1 -- 0-3% Precision
     end
 

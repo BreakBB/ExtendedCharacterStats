@@ -1,6 +1,16 @@
 ---@class ECS
 ECS = {...}
 
+--- Addon is running on Classic "Vanilla" client: Means Classic Era and its seasons like SoM
+---@type boolean
+ECS.IsClassic = WOW_PROJECT_ID == WOW_PROJECT_CLASSIC
+
+--- Addon is running on Classic TBC client
+---@type boolean
+ECS.IsTBC = WOW_PROJECT_ID == WOW_PROJECT_BURNING_CRUSADE_CLASSIC
+
+--- Addon is running on Classic Wotlk client
+---@type boolean
 ECS.IsWotlk = WOW_PROJECT_ID == WOW_PROJECT_WRATH_CLASSIC
 
 ---@type Init
