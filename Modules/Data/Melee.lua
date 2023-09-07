@@ -67,7 +67,7 @@ function _Melee:GetHitTalentBonus()
                 mod = mod + dualWielding * 2 -- 0-6% Dual Wielding Specialization
             end
         else
-            local _, _, _, _, naturesGuidance, _, _, _ = GetTalentInfo(3, 6)
+            local _, _, _, _, naturesGuidance, _, _, _ = GetTalentInfo(3, 3)
             mod = naturesGuidance * 1 -- 0-3% Nature's Guidance
         end
     end

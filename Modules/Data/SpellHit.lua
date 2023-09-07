@@ -81,7 +81,7 @@ function _SpellHit:GetTalentSpellHitBonus()
             end
 
         if (not ECS.IsWotlk) then
-            local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 6)
+            local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 3)
             bonus = bonus + points * 1 -- 0-3% Nature's Guidance
         end
     end
