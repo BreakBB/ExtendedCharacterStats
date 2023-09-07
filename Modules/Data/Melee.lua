@@ -78,13 +78,8 @@ function _Melee:GetHitTalentBonus()
     end
 
     if classId == Data.ROGUE then
-        if ECS.IsWotlk then
-            local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 1)
-            mod = points * 1 -- 0-5% Precision
-        else
-            local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 6)
-            mod = points * 1 -- 0-5% Precision
-        end
+        local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 1)
+        mod = points * 1 -- 0-5% Precision
     end
 
     -- This assumes a DK is dual wielding and not only using a one-hand main hand weapon
