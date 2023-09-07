@@ -143,8 +143,8 @@ function _MP5:GetTalentModifier()
     elseif classId == Data.MAGE then
         local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 15)
         mod = points * 0.05 -- 0-15% Arcane Meditation
-    elseif classId == Data.DRUID then
-        local _, _, _, _, reflectionPoints, _, _, _ = GetTalentInfo(3, 6)
+    elseif (not ECS.IsWotlk) and classId == Data.DRUID then
+        local _, _, _, _, reflectionPoints, _, _, _ = GetTalentInfo(3, 9)
         mod = reflectionPoints * 0.05 -- 0-15% from Reflection
     end
 
