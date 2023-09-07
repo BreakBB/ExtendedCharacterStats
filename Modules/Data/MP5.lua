@@ -151,7 +151,7 @@ function _MP5:GetTalentModifier()
     return mod
 end
 
----This is only relevant for the TBC client
+---This is only relevant for the TBC/Wotlk client
 ---@return number
 function _MP5:GetTalentBonus()
     local bonus = 0
