@@ -25,14 +25,9 @@ function _Defense:GetCritReduction()
     local defBonus = Data:GetDefenseValue()
 
     local talentBonus = 0
-    if classId == Data.DRUID then
-        if ECS.IsWotlk then
-            local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 18)
-            talentBonus = points * 2 -- 0-6% from Survival of the Fittest
-        else
-            local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 16)
-            talentBonus = points * 1 -- 0-3% from Survival of the Fittest
-        end
+    if ECS.IsWotlk and classId == Data.DRUID then
+        local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 18)
+        talentBonus = points * 2 -- 0-6% from Survival of the Fittest
     end
 
     -- Only the defense value above 350 counts towards crit immunity
