@@ -151,7 +151,7 @@ function _SpellCrit:GetTalentModifierFireCrit()
     local mod = 0
 
     if classId == Data.MAGE then
-        local _, _, _, _, criticalMassPoints, _, _, _ = GetTalentInfo(2, 1)
+        local _, _, _, _, criticalMassPoints, _, _, _ = GetTalentInfo(2, 11)
         mod = criticalMassPoints * 2 -- 0-6% Critical Mass
 
         if ECS.IsWotlk then
