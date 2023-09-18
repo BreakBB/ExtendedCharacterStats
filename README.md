@@ -3,7 +3,7 @@
 ![build](https://github.com/BreakBB/ExtendedCharacterStats/workflows/build/badge.svg) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 
 [![Downloads](https://img.shields.io/github/downloads/BreakBB/ExtendedCharacterStats/total.svg)](https://github.com/BreakBB/ExtendedCharacterStats/releases/)
-[![Downloads Latest](https://img.shields.io/github/downloads/BreakBB/ExtendedCharacterStats/v3.1.4/total.svg)](https://github.com/BreakBB/ExtendedCharacterStats/releases/latest)
+[![Downloads Latest](https://img.shields.io/github/downloads/BreakBB/ExtendedCharacterStats/v3.1.5/total.svg)](https://github.com/BreakBB/ExtendedCharacterStats/releases/latest)
 [![Date Latest](https://img.shields.io/github/release-date/BreakBB/ExtendedCharacterStats.svg)](https://github.com/BreakBB/ExtendedCharacterStats/releases/latest)
 [![Commits Since Latest](https://img.shields.io/github/commits-since/BreakBB/ExtendedCharacterStats/latest.svg)](https://github.com/BreakBB/ExtendedCharacterStats/commits/master)
 
