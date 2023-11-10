@@ -115,6 +115,14 @@ function _SpellCrit:GetGeneralTalentModifier()
         mod = points * 1 -- 0-5% Thundering Strikes
     end
 
+    if ECS.IsWotlk and classId == Data.PALADIN then
+        local _, _, _, _, convictionPoints, _, _, _ = GetTalentInfo(3, 6)
+        mod = convictionPoints * 1 -- 0-5% Conviction
+
+        local _, _, _, _, sanctityPoints, _, _, _ = GetTalentInfo(3, 19)
+        mod = mod + sanctityPoints * 1 -- 0-3% Sanctity of Battle
+    end
+
     return mod
 end
 
