@@ -104,8 +104,7 @@ function Stats.CreateWindow()
             C_Timer.After(0.3, function ()
                 if EngravingFrame then
                     mainFrame:ClearAllPoints()
-                    mainFrame:SetPoint("LEFT", EngravingFrame, "RIGHT", ecs.general.window.xOffset,  ecs.general.window.yOffset)
-                    ECS_StatsFrame:SetPoint("LEFT", EngravingFrame, "RIGHT", 10, 19)
+                    mainFrame:SetPoint("LEFT", EngravingFrame, "RIGHT", 10, 19)
                 end
             end)
         end
