@@ -2733,6 +2733,7 @@ stds.ecs = {
         "ChatFrame_AddMessageEventFilter",
         "ReloadUI",
         "PaperDollItemsFrame",
+        "EngravingFrame",
         "CharacterModelFrame",
         "-----------------------------------------------------> Blizzard Data",
         "CALENDAR_FULLDATE_MONTH_NAMES",

@@ -13,6 +13,10 @@ ECS.IsTBC = WOW_PROJECT_ID == WOW_PROJECT_BURNING_CRUSADE_CLASSIC
 ---@type boolean
 ECS.IsWotlk = WOW_PROJECT_ID == WOW_PROJECT_WRATH_CLASSIC
 
+--- Addon is running on Classic Season of Discovery client
+---@type boolean
+ECS.IsSoD = ECS.IsClassic and C_Seasons.HasActiveSeason() and (C_Seasons.GetActiveSeason() ~= Enum.SeasonID.Hardcore)
+
 ---@type Init
 local Init = ECSLoader:ImportModule("Init")
 
