@@ -199,6 +199,11 @@ function Data:GetArmorPenetration()
         end
     end
 
+    if classId == Data.DEATHKNIGHT then
+        local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 24)
+        armorPenetration = armorPenetration + points * 2 -- 0-10% Blood Gorged
+    end
+
     return DataUtils:Round(armorPenetration, 2) .. "%"
 end
 
