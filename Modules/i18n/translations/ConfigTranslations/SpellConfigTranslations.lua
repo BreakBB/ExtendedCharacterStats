@@ -161,6 +161,8 @@ local spellConfigTranslations = {
         ["frFR"] = "Affiche/Cache les dégats physiques.",
         ["zhCN"] = "显示/隐藏 物理伤害",
         ["ruRU"] = "Показать/скрыть значение дополнительного физического урона",
+        ["esES"] = "Muestra/oculta el valor de daño físico",
+        ["esMX"] = "Muestra/oculta el valor de daño físico"
     },
     ["Shows/Hides the physical crit chance."] = {
         ["enUS"] = true,
@@ -168,6 +170,8 @@ local spellConfigTranslations = {
         ["frFR"] = "Affiche/Cache les chances de critique physique.",
         ["zhCN"] = "显示/隐藏 物理暴击",
         ["ruRU"] = "Показать/скрыть шанс критического физического урона",
+        ["esES"] = "Muestra/oculta la probabilidad de conseguir un golpe crítico físico",
+        ["esMX"] = "Muestra/oculta la probabilidad de asestar un golpe crítico físico" 
     },
     ["Shows/Hides the holy damage value."] = {
         ["enUS"] = true,
