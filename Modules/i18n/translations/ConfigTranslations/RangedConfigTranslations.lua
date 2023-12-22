@@ -89,8 +89,8 @@ local rangedConfigTranslations = {
         ["frFR"] = "Toucher à distance",
         ["zhCN"] = "远程命中",
         ["ruRU"] = "Меткость",
-        ["esES"] = "Prob. de golpear",
-        ["esMX"] = "Prob. de golpear"
+        ["esES"] = "Probabilidad de golpear",
+        ["esMX"] = "Probabilidad de golpear"
     },
     ["Ranged Hit Values"] = {
         ["enUS"] = true,
