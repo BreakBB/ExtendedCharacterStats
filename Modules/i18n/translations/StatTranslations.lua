@@ -44,8 +44,8 @@ local statTranslations = {
         ["frFR"] = "Chances de critique",
         ["zhCN"] = "暴击几率",
         ["ruRU"] = "Крит",
-        ["esES"] = "Prob. de golpe crítico",
-        ["esMX"] = "Prob. de golpe crítico"
+        ["esES"] = "Probabilidad de golpe crítico",
+        ["esMX"] = "Probabilidad de golpe crítico"
     },
     ["Armor Pen."] = {
         ["enUS"] = true,
@@ -89,8 +89,8 @@ local statTranslations = {
         ["frFR"] = "Toucher",
         ["zhCN"] = "命中",
         ["ruRU"] = "Меткость",
-        ["esES"] = "Prob. de golpear",
-        ["esMX"] = "Prob. de golpear",
+        ["esES"] = "Probabilidad de golpear",
+        ["esMX"] = "Probabilidad de golpear",
     },
     ["Rating"] = {
         ["enUS"] = true,
@@ -242,8 +242,8 @@ local statTranslations = {
         ["frFR"] = "Chances de bloquer",
         ["zhCN"] = "格挡几率",
         ["ruRU"] = "Шанс блока",
-        ["esES"] = "Prob. de bloquear",
-        ["esMX"] = "Prob. de bloquear",
+        ["esES"] = "Probabilidad de bloquear",
+        ["esMX"] = "Probabilidad de bloquear",
     },
     ["Block Value"] = {
         ["enUS"] = true,
@@ -260,8 +260,8 @@ local statTranslations = {
         ["frFR"] = "Chances de parrer",
         ["zhCN"] = "招架几率",
         ["ruRU"] = "Парирование",
-        ["esES"] = "Prob. de parar",
-        ["esMX"] = "Prob. de parar",
+        ["esES"] = "Probabilidad de parar",
+        ["esMX"] = "Probabilidad de parar",
     },
     ["Dodge Chance"] = {
         ["enUS"] = true,
@@ -269,8 +269,8 @@ local statTranslations = {
         ["frFR"] = "Chances d'esquiver",
         ["zhCN"] = "躲闪几率",
         ["ruRU"] = "Уклонение",
-        ["esES"] = "Prob. de esquivar",
-        ["esMX"] = "Prob. de esquivar",
+        ["esES"] = "Probabilidad de esquivar",
+        ["esMX"] = "Probabilidad de esquivar",
     },
     ["Resilience"] = {
         ["enUS"] = true,
