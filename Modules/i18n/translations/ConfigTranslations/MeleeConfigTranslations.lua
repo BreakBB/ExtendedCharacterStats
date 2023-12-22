@@ -143,8 +143,8 @@ local meleeConfigTranslations = {
         ["frFR"] = "Toucher en mêlée",
         ["zhCN"] = "近战命中",
         ["ruRU"] = "Меткость",
-        ["esES"] = "Prob. de golpear",
-        ["esMX"] = "Prob. de golpear"
+        ["esES"] = "Probabilidad de golpear",
+        ["esMX"] = "Probabilidad de golpear"
     },
     ["Melee Hit Values"] = {
         ["enUS"] = true,
@@ -206,8 +206,8 @@ local meleeConfigTranslations = {
         ["frFR"] = "Chances de rater",
         ["zhCN"] = "未命中几率",
         ["ruRU"] = "Сопротивление",
-        ["esES"] = "Prob. de fallo",
-        ["esMX"] = "Prob. de fallo"
+        ["esES"] = "Probabilidad de fallo",
+        ["esMX"] = "Probabilidad de fallo"
     },
     ["Shows/Hides the melee miss chance against enemies on the same level."] = {
         ["enUS"] = true,
@@ -224,8 +224,8 @@ local meleeConfigTranslations = {
         ["frFR"] = "Chances de rater-Boss",
         ["zhCN"] = "未命中 Boss",
         ["ruRU"] = "Сопрот. (+3 ур.)",
-        ["esES"] = "Prob. de fallo (jefe)",
-        ["esMX"] = "Prob. de fallo (jefe)"
+        ["esES"] = "Probabilidad de fallo (jefe)",
+        ["esMX"] = "Probabilidad de fallo (jefe)"
     },
     ["Shows/Hides the melee miss chance against boss enemies (+3 Level)."] = {
         ["enUS"] = true,
