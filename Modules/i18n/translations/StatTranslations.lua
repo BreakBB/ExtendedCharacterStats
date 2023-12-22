@@ -90,7 +90,7 @@ local statTranslations = {
         ["zhCN"] = "命中",
         ["ruRU"] = "Меткость",
         ["esES"] = "Probabilidad de golpear",
-        ["esMX"] = "Probabilidad de golpear"        
+        ["esMX"] = "Probabilidad de golpear",
     },
     ["Rating"] = {
         ["enUS"] = true,
@@ -99,7 +99,7 @@ local statTranslations = {
         ["zhCN"] = false,
         ["ruRU"] = "Меткость",
         ["esES"] = "Índice",
-        ["esMX"] = "Índice"  
+        ["esMX"] = "Índice",
     },
     ["Bonus"] = {
         ["enUS"] = true,
@@ -107,8 +107,8 @@ local statTranslations = {
         ["frFR"] = false,
         ["zhCN"] = "命中",
         ["ruRU"] = "Бонус",
-        ["esES"] = "Bonus",
-        ["esMX"] = "Bonus"  
+        ["esES"] = true,
+        ["esMX"] = true,
     },
     ["Miss"] = {
         ["enUS"] = true,
@@ -117,7 +117,7 @@ local statTranslations = {
         ["zhCN"] = "未命中",
         ["ruRU"] = "Сопротивление",
         ["esES"] = "Falla",
-        ["esMX"] = "Falla"  
+        ["esMX"] = "Falla",
     },
     ["Miss (Lvl + 3)"] = {
         ["enUS"] = true,
@@ -126,7 +126,7 @@ local statTranslations = {
         ["zhCN"] = "未命中 (等级 + 3)",
         ["ruRU"] = "Сопрот. (+3 ур.)",
         ["esES"] = "Falla (Niv. + 3)",
-        ["esMX"] = "Falla (Niv. + 3)"  
+        ["esMX"] = "Falla (Niv. + 3)",
     },
     ["Haste Rating"] = {
         ["enUS"] = true,
@@ -135,7 +135,7 @@ local statTranslations = {
         ["zhCN"] = false,
         ["ruRU"] = "Рейтинг скорости",
         ["esES"] = "Índice de celeridad",
-        ["esMX"] = "Índice de celeridad"  
+        ["esMX"] = "Índice de celeridad",
     },
     ["Haste Bonus"] = {
         ["enUS"] = true,
@@ -144,7 +144,7 @@ local statTranslations = {
         ["zhCN"] = false,
         ["ruRU"] = "Бонус к скорости",
         ["esES"] = "Bonus de celeridad",
-        ["esMX"] = "Bonus de celeridad"  
+        ["esMX"] = "Bonus de celeridad",
     },
     ["Attack Speed"] = {
         ["enUS"] = true,
@@ -153,7 +153,7 @@ local statTranslations = {
         ["zhCN"] = false,
         ["ruRU"] = "Скорость атаки",
         ["esES"] = "Velocidad de ataque",
-        ["esMX"] = "Velocidad de ataque"  
+        ["esMX"] = "Velocidad de ataque",
     },
     ["Main Hand"] = {
         ["enUS"] = true,
@@ -162,7 +162,7 @@ local statTranslations = {
         ["zhCN"] = false,
         ["ruRU"] = "Правая рука",
         ["esES"] = "Mano derecha",
-        ["esMX"] = "Mano derecha"  
+        ["esMX"] = "Mano derecha",
     },
     ["Off Hand"] = {
         ["enUS"] = true,
@@ -171,7 +171,7 @@ local statTranslations = {
         ["zhCN"] = false,
         ["ruRU"] = "Левая рука",
         ["esES"] = "Mano izquierda",
-        ["esMX"] = "Mano izquierda"  
+        ["esMX"] = "Mano izquierda",
     },
     ["Ranged"] = {
         ["enUS"] = true,
@@ -180,7 +180,7 @@ local statTranslations = {
         ["zhCN"] = "远程",
         ["ruRU"] = "Дальний бой",
         ["esES"] = "A distancia",
-        ["esMX"] = "A distancia"  
+        ["esMX"] = "A distancia",
     },
     ["Armor"] = {
         ["enUS"] = true,
@@ -189,7 +189,7 @@ local statTranslations = {
         ["zhCN"] = "护甲",
         ["ruRU"] = "Броня",
         ["esES"] = "Armadura",
-        ["esMX"] = "Armadura"  
+        ["esMX"] = "Armadura",
     },
     ["Crit Immune"] = {
         ["enUS"] = true,
@@ -198,7 +198,7 @@ local statTranslations = {
         ["zhCN"] = false,
         ["ruRU"] = "Крит иммун",
         ["esES"] = "Inmune Crít",
-        ["esMX"] = "Inmune Crít"  
+        ["esMX"] = "Inmune Crít",
     },
     ["Crit Reduction"] = {
         ["enUS"] = true,
@@ -207,7 +207,7 @@ local statTranslations = {
         ["zhCN"] = false,
         ["ruRU"] = "Снижение крита",
         ["esES"] = "Reducción de Crít",
-        ["esMX"] = "Reducción de Crít"  
+        ["esMX"] = "Reducción de Crít",
     },
     ["Avoidance"] = {
         ["enUS"] = true,
@@ -216,7 +216,7 @@ local statTranslations = {
         ["zhCN"] = false,
         ["ruRU"] = "Избежание",
         ["esES"] = "Eludir",
-        ["esMX"] = "Eludir"  
+        ["esMX"] = "Eludir",
     },
     ["Defense Rating"] = {
         ["enUS"] = true,
@@ -225,7 +225,7 @@ local statTranslations = {
         ["zhCN"] = false,
         ["ruRU"] = "Доп. защита",
         ["esES"] = "Índice de defensa",
-        ["esMX"] = "Índice de defensa"  
+        ["esMX"] = "Índice de defensa",
     },
     ["Defense"] = {
         ["enUS"] = true,
@@ -234,7 +234,7 @@ local statTranslations = {
         ["zhCN"] = "防御",
         ["ruRU"] = "Защита",
         ["esES"] = "Defensa",
-        ["esMX"] = "Defensa"  
+        ["esMX"] = "Defensa",
     },
     ["Block Chance"] = {
         ["enUS"] = true,
@@ -243,7 +243,7 @@ local statTranslations = {
         ["zhCN"] = "格挡几率",
         ["ruRU"] = "Шанс блока",
         ["esES"] = "Probabilidad de bloquear",
-        ["esMX"] = "Probabilidad de bloquear" 
+        ["esMX"] = "Probabilidad de bloquear",
     },
     ["Block Value"] = {
         ["enUS"] = true,
@@ -252,7 +252,7 @@ local statTranslations = {
         ["zhCN"] = "格挡值",
         ["ruRU"] = "Блок",
         ["esES"] = "Valor de bloqueo",
-        ["esMX"] = "Valor de bloqueo" 
+        ["esMX"] = "Valor de bloqueo",
     },
     ["Parry Chance"] = {
         ["enUS"] = true,
@@ -261,7 +261,7 @@ local statTranslations = {
         ["zhCN"] = "招架几率",
         ["ruRU"] = "Парирование",
         ["esES"] = "Probabilidad de parar",
-        ["esMX"] = "Probabilidad de parar" 
+        ["esMX"] = "Probabilidad de parar",
     },
     ["Dodge Chance"] = {
         ["enUS"] = true,
@@ -270,7 +270,7 @@ local statTranslations = {
         ["zhCN"] = "躲闪几率",
         ["ruRU"] = "Уклонение",
         ["esES"] = "Probabilidad de esquivar",
-        ["esMX"] = "Probabilidad de esquivar" 
+        ["esMX"] = "Probabilidad de esquivar",
     },
     ["Resilience"] = {
         ["enUS"] = true,
@@ -279,7 +279,7 @@ local statTranslations = {
         ["zhCN"] = false,
         ["ruRU"] = "Устойчивость",
         ["esES"] = "Temple",
-        ["esMX"] = "Temple" 
+        ["esMX"] = "Temple",
     },
     ["Mana"] = {
         ["enUS"] = true,
@@ -288,7 +288,7 @@ local statTranslations = {
         ["zhCN"] = "法力回复",
         ["ruRU"] = "Мана",
         ["esES"] = "Maná",
-        ["esMX"] = "Maná" 
+        ["esMX"] = "Maná",
     },
     ["MP5 (Items)"] = {
         ["enUS"] = true,
@@ -297,7 +297,7 @@ local statTranslations = {
         ["zhCN"] = "装备回蓝",
         ["ruRU"] = "MP5 (экип.)",
         ["esES"] = "MP5 (Objetos)",
-        ["esMX"] = "MP5 (Objetos)" 
+        ["esMX"] = "MP5 (Objetos)",
     },
     ["MP5 (Spirit)"] = {
         ["enUS"] = true,
