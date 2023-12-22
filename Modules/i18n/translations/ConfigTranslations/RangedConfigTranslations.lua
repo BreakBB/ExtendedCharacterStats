@@ -8,8 +8,8 @@ local rangedConfigTranslations = {
         ["frFR"] = "À distance Général",
         ["zhCN"] = "显示远程属性",
         ["ruRU"] = "Дальний бой",
-        ["esES"] = "Mostrar estadísticas a distancia",
-        ["esMX"] = "Mostrar estadísticas a distancia"
+        ["esES"] = "Mostrar a distancia",
+        ["esMX"] = "Mostrar a distancia"
     },
     ["Shows/Hides all ranged stats."] = {
         ["enUS"] = true,
@@ -26,8 +26,8 @@ local rangedConfigTranslations = {
         ["frFR"] = "Puissance d'attaque à distance",
         ["zhCN"] = "远程攻击强度",
         ["ruRU"] = "Сила атаки",
-        ["esES"] = "Poder de ataque a distancia",
-        ["esMX"] = "Poder de ataque a distancia"
+        ["esES"] = "Poder de ataque",
+        ["esMX"] = "Poder de ataque"
     },
     ["Shows/Hides the ranged attack power value."] = {
         ["enUS"] = true,
@@ -89,8 +89,8 @@ local rangedConfigTranslations = {
         ["frFR"] = "Toucher à distance",
         ["zhCN"] = "远程命中",
         ["ruRU"] = "Меткость",
-        ["esES"] = "Probabilidad de golpear",
-        ["esMX"] = "Probabilidad de golpear"
+        ["esES"] = "Prob. de golpear",
+        ["esMX"] = "Prob. de golpear"
     },
     ["Ranged Hit Values"] = {
         ["enUS"] = true,
