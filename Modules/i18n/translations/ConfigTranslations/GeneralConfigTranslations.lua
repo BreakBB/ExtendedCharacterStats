@@ -8,8 +8,8 @@ local generalConfigTranslations = {
         ["frFR"] = "Général",
         ["zhCN"] = "显示常规属性信息",
         ["ruRU"] = "Основные характеристики",
-        ["esES"] = "Mostrar estadísticas generales",
-        ["esMX"] = "Mostrar estadísticas generales"
+        ["esES"] = "Mostrar estadísticas",
+        ["esMX"] = "Mostrar estadísticas"
     },
     ["Shows/Hides all general stats."] = {
         ["enUS"] = true,
