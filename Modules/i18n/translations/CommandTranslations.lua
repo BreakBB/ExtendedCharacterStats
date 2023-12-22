@@ -8,6 +8,8 @@ local commandTranslations = {
         ["frFR"] = true,
         ["zhCN"] = true,
         ["ruRU"] = true,
+        ["esES"] = true,
+        ["esMX"] = true,
     },
     ["/ecs toggle"] = {
         ["enUS"] = true,
@@ -15,6 +17,8 @@ local commandTranslations = {
         ["frFR"] = true,
         ["zhCN"] = true,
         ["ruRU"] = true,
+        ["esES"] = true,
+        ["esMX"] = true,
     },
     ["Toggles the visibility of the stats window"] = {
         ["enUS"] = true,
@@ -22,6 +26,8 @@ local commandTranslations = {
         ["frFR"] = "Affiche/Cache la fenêtre des statistiques ECS",
         ["zhCN"] = "切换统计信息窗口",
         ["ruRU"] = "Открыть окно характеристик",
+        ["esES"] = "Alterna la visibilidad de la ventana de estadísticas",
+        ["esMX"] = "Alterna la visibilidad de la ventana de estadísticas",
     },
     ["/ecs config"] = {
         ["enUS"] = true,
@@ -29,6 +35,8 @@ local commandTranslations = {
         ["frFR"] = true,
         ["zhCN"] = true,
         ["ruRU"] = true,
+        ["esES"] = true,
+        ["esMX"] = true,
     },
     ["Shows the configuration window"] = {
         ["enUS"] = true,
@@ -36,6 +44,8 @@ local commandTranslations = {
         ["frFR"] = "Affiche la fenêtre de configuration ECS",
         ["zhCN"] = "显示配置窗口",
         ["ruRU"] = "Открыть окно настроек",
+        ["esES"] = "Muestra la ventana de configuración",
+        ["esMX"] = "Muestra la ventana de configuración",
     },
 }
 
