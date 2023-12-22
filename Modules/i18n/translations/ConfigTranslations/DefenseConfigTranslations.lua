@@ -8,8 +8,8 @@ local defenseConfigTranslations = {
         ["frFR"] = "Défense Général",
         ["zhCN"] = "显示防御属性",
         ["ruRU"] = "Защита",
-        ["esES"] = "Mostrar estadísticas de defensa",
-        ["esMX"] = "Mostrar estadísticas de defensa",
+        ["esES"] = "Mostrar defensa",
+        ["esMX"] = "Mostrar defensa",
     },
     ["Shows/Hides all defense stats."] = {
         ["enUS"] = true,
