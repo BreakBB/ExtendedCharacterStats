@@ -72,7 +72,7 @@ local configTranslations = {
         ["zhCN"] = "添加颜色的统计概览。",
         ["ruRU"] = "Окрашивает характеристики в панели ECS",
         ["esES"] = "Añade colores a la vista de estadísticas",
-        ["esMX"] = "Añade colores a la vista de estadísticas",  
+        ["esMX"] = "Añade colores a la vista de estadísticas", 
     },
     ["Stats colorization"] = {
         ["enUS"] = true,
