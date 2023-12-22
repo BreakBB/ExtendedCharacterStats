@@ -98,8 +98,8 @@ local spellConfigTranslations = {
         ["frFR"] = "Valeurs de toucher sorts",
         ["zhCN"] = "法术命中",
         ["ruRU"] = "Меткость",
-        ["esES"] = "Prob. de golpear con hechizos",
-        ["esMX"] = "Prob. de golpear con hechizos"
+        ["esES"] = "Probabilidad de golpear con hechizos",
+        ["esMX"] = "Probabilidad de golpear con hechizos"
     },
     ["Shows/Hides the spell hit rating."] = {
         ["enUS"] = true,
