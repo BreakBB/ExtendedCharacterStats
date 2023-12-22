@@ -171,7 +171,7 @@ local spellConfigTranslations = {
         ["zhCN"] = "显示/隐藏 物理暴击",
         ["ruRU"] = "Показать/скрыть шанс критического физического урона",
         ["esES"] = "Muestra/oculta la probabilidad de conseguir un golpe crítico físico",
-        ["esMX"] = "Muestra/oculta la probabilidad de asestar un golpe crítico físico" 
+        ["esMX"] = "Muestra/oculta la probabilidad de asestar un golpe crítico físico",
     },
     ["Shows/Hides the holy damage value."] = {
         ["enUS"] = true,
@@ -180,7 +180,7 @@ local spellConfigTranslations = {
         ["zhCN"] = "显示/隐藏 神圣伤害",
         ["ruRU"] = "Показать/скрыть значение дополнительного урона заклинаниями света",
         ["esES"] = "Muestra/oculta el valor de daño sagrado",
-        ["esMX"] = "Muestra/oculta el valor de daño sagrado" 
+        ["esMX"] = "Muestra/oculta el valor de daño sagrado",
     },
     ["Shows/Hides the holy crit chance."] = {
         ["enUS"] = true,
@@ -189,7 +189,7 @@ local spellConfigTranslations = {
         ["zhCN"] = "显示/隐藏 神圣暴击",
         ["ruRU"] = "Показать/скрыть шанс критического урона заклинаниями света",
         ["esES"] = "Muestra/oculta la probabilidad de asestar un golpe crítico con hechizos sagrados",
-        ["esMX"] = "Muestra/oculta la probabilidad de asestar un golpe crítico con hechizos sagrados" 
+        ["esMX"] = "Muestra/oculta la probabilidad de asestar un golpe crítico con hechizos sagrados",
     },
     ["Shows/Hides the arcane damage value."] = {
         ["enUS"] = true,
@@ -198,7 +198,7 @@ local spellConfigTranslations = {
         ["zhCN"] = "显示/隐藏 奥术伤害",
         ["ruRU"] = "Показать/скрыть значение дополнительного урона заклинаниями тайной магии",
         ["esES"] = "Muestra/oculta el valor de daño arcano",
-        ["esMX"] = "Muestra/oculta el valor de daño arcano" 
+        ["esMX"] = "Muestra/oculta el valor de daño arcano",
     },
     ["Shows/Hides the arcane crit chance."] = {
         ["enUS"] = true,
@@ -207,7 +207,7 @@ local spellConfigTranslations = {
         ["zhCN"] = "显示/隐藏 奥术暴击",
         ["ruRU"] = "Показать/скрыть шанс критического урона заклинаниями тайной магии",
         ["esES"] = "Muestra/oculta la probabilidad de asestar un golpe crítico con hechizos arcanos",
-        ["esMX"] = "Muestra/oculta la probabilidad de asestar un golpe crítico con hechizos arcanos" 
+        ["esMX"] = "Muestra/oculta la probabilidad de asestar un golpe crítico con hechizos arcanos",
     },
     ["Shows/Hides the nature damage value."] = {
         ["enUS"] = true,
@@ -216,7 +216,7 @@ local spellConfigTranslations = {
         ["zhCN"] = "显示/隐藏 自然伤害",
         ["ruRU"] = "Показать/скрыть значение дополнительного урона заклинаниями природы",
         ["esES"] = "Muestra/oculta el valor de daño de la naturaleza",
-        ["esMX"] = "Muestra/oculta el valor de daño de la naturaleza" 
+        ["esMX"] = "Muestra/oculta el valor de daño de la naturaleza",
     },
     ["Shows/Hides the nature crit chance."] = {
         ["enUS"] = true,
@@ -234,7 +234,7 @@ local spellConfigTranslations = {
         ["zhCN"] = "显示/隐藏 冰霜伤害",
         ["ruRU"] = "Показать/скрыть значение дополнительного урона заклинаниями льда",
         ["esES"] = "Muestra/oculta el valor de daño de escarcha",
-        ["esMX"] = "Muestra/oculta el valor de daño de escarcha" 
+        ["esMX"] = "Muestra/oculta el valor de daño de escarcha",
     },
     ["Shows/Hides the frost crit chance."] = {
         ["enUS"] = true,
@@ -252,7 +252,7 @@ local spellConfigTranslations = {
         ["zhCN"] = "显示/隐藏 火焰伤害",
         ["ruRU"] = "Показать/скрыть значение дополнительного урона заклинаниями огня",
         ["esES"] = "Muestra/oculta el valor de daño de fuego",
-        ["esMX"] = "Muestra/oculta el valor de daño de fuego" 
+        ["esMX"] = "Muestra/oculta el valor de daño de fuego",
     },
     ["Shows/Hides the fire crit chance."] = {
         ["enUS"] = true,
@@ -270,7 +270,7 @@ local spellConfigTranslations = {
         ["zhCN"] = "显示/隐藏 暗影伤害",
         ["ruRU"] = "Показать/скрыть значение дополнительного урона заклинаниями тьмы",
         ["esES"] = "Muestra/oculta el valor de daño de sombras",
-        ["esMX"] = "Muestra/oculta el valor de daño de sombras" 
+        ["esMX"] = "Muestra/oculta el valor de daño de sombras",
     },
     ["Shows/Hides the shadow crit chance."] = {
         ["enUS"] = true,
@@ -289,7 +289,7 @@ local spellConfigTranslations = {
         ["zhCN"] = "显示/隐藏 法术治疗",
         ["ruRU"] = "Показать/скрыть значение дополнительного исцеления",
         ["esES"] = "Muestra/oculta el valor poder de sanación",
-        ["esMX"] = "Muestra/oculta el valor poder de sanación" 
+        ["esMX"] = "Muestra/oculta el valor poder de sanación",
     },
 }
 
