@@ -8,8 +8,8 @@ local spellConfigTranslations = {
         ["frFR"] = "Sorts Général",
         ["zhCN"] = "显示法术属性",
         ["ruRU"] = "Заклинания",
-        ["esES"] = "Mostrar estadísticas de hechizos",
-        ["esMX"] = "Mostrar estadísticas de hechizos"
+        ["esES"] = "Mostrar hechizos",
+        ["esMX"] = "Mostrar hechizos"
     },
     ["Shows/Hides all spell stats."] = {
         ["enUS"] = true,
@@ -98,8 +98,8 @@ local spellConfigTranslations = {
         ["frFR"] = "Valeurs de toucher sorts",
         ["zhCN"] = "法术命中",
         ["ruRU"] = "Меткость",
-        ["esES"] = "Probabilidad de golpear con hechizos",
-        ["esMX"] = "Probabilidad de golpear con hechizos"
+        ["esES"] = "Prob. de golpear con hechizos",
+        ["esMX"] = "Prob. de golpear con hechizos"
     },
     ["Shows/Hides the spell hit rating."] = {
         ["enUS"] = true,
@@ -143,8 +143,8 @@ local spellConfigTranslations = {
         ["frFR"] = "Afficher la puissance des sorts",
         ["zhCN"] = "显示法术强度属性",
         ["ruRU"] = "Сила заклинаний",
-        ["esES"] = "Mostrar estadísticas de poder con hechizos",
-        ["esMX"] = "Mostrar estadísticas de poder con hechizos",
+        ["esES"] = "Mostrar poder con hechizos",
+        ["esMX"] = "Mostrar poder con hechizos",
     },
     ["Shows/Hides all spell power stats."] = {
         ["enUS"] = true,
@@ -269,8 +269,8 @@ local spellConfigTranslations = {
         ["frFR"] = "Affiche/Cache les dégats des ombres.",
         ["zhCN"] = "显示/隐藏 暗影伤害",
         ["ruRU"] = "Показать/скрыть значение дополнительного урона заклинаниями тьмы",
-        ["esES"] = "Muestra/oculta el valor de daño de sombras",
-        ["esMX"] = "Muestra/oculta el valor de daño de sombras",
+        ["esES"] = "Muestra/oculta el valor de daño de las sombras",
+        ["esMX"] = "Muestra/oculta el valor de daño de las sombras",
     },
     ["Shows/Hides the shadow crit chance."] = {
         ["enUS"] = true,
@@ -278,8 +278,8 @@ local spellConfigTranslations = {
         ["frFR"] = "Affiche/Cache les chances de critique des ombres.",
         ["zhCN"] = "显示/隐藏 暗影暴击",
         ["ruRU"] = "Показать/скрыть шанс критического урона заклинаниями тьмы",
-        ["esES"] = "Muestra/oculta la probabilidad de asestar un golpe crítico con hechizos de sombras",
-        ["esMX"] = "Muestra/oculta la probabilidad de asestar un golpe crítico con hechizos de sombras"
+        ["esES"] = "Muestra/oculta la probabilidad de asestar un golpe crítico con hechizos de las sombras",
+        ["esMX"] = "Muestra/oculta la probabilidad de asestar un golpe crítico con hechizos de las sombras"
     },
 
     ["Shows/Hides the healing power value."] = {
