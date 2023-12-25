@@ -17,8 +17,8 @@ local statTranslations = {
         ["frFR"] = "Vitesse de déplacement",
         ["zhCN"] = "移动速度",
         ["ruRU"] = "Скорость движения",
-        ["esES"] = "Velocidad de carrera",
-        ["esMX"] = "Velocidad de carrera"
+        ["esES"] = "Velocidad de movimiento",
+        ["esMX"] = "Velocidad de movimiento"
     },
     ["Melee"] = {
         ["enUS"] = true,
