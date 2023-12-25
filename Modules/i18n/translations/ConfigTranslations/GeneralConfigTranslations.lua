@@ -26,8 +26,8 @@ local generalConfigTranslations = {
         ["frFR"] = "Affiche la vitesse de déplacement",
         ["zhCN"] = "显示移动速度",
         ["ruRU"] = "Скорость движения",
-        ["esES"] = "Mostrar velocidad de carrera",
-        ["esMX"] = "Mostrar velocidad de carrera"
+        ["esES"] = "Mostrar velocidad de movimiento",
+        ["esMX"] = "Mostrar velocidad de movimiento"
     },
     ["Shows/Hides the movement speed value."] = {
         ["enUS"] = true,
@@ -35,8 +35,8 @@ local generalConfigTranslations = {
         ["frFR"] = "Affiche/Cache la vitesse de déplacement.",
         ["zhCN"] = "显示/隐藏 移动速度",
         ["ruRU"] = "Показать/скрыть значение скорости движения",
-        ["esES"] = "Muestra/oculta el valor de velocidad de carrera",
-        ["esMX"] = "Muestra/oculta el valor de velocidad de carrera"
+        ["esES"] = "Muestra/oculta el valor de velocidad de movimiento",
+        ["esMX"] = "Muestra/oculta el valor de velocidad de movimiento"
     },
 }
 
