@@ -12,8 +12,8 @@ local EventHandler = ECSLoader:ImportModule("EventHandler")
 local Stats = ECSLoader:ImportModule("Stats")
 ---@type GearInfos
 local GearInfos = ECSLoader:ImportModule("GearInfos")
----@type Profile
-local Profile = ECSLoader:ImportModule("Profile")
+---@type Settings
+local Settings = ECSLoader:ImportModule("Settings")
 
 
 
@@ -47,7 +47,7 @@ end
 
 function _Init:LoadProfile()
     local ecs = ExtendedCharacterStats
-    local defaultProfile = Profile:GetDefaultProfile()
+    local defaultProfile = Settings:GetDefaults()
 
     if ecs.general == nil or (not next(ecs.general)) then
         ExtendedCharacterStats.general = defaultProfile.general
@@ -62,7 +62,7 @@ function _Init:LoadProfile()
     end
 
     local currentProfileVersion = ecs.general.profileVersion
-    local targetProfileVersion = Profile:GetProfileVersion()
+    local targetProfileVersion = Settings:GetProfileVersion()
 
     local isProfileVersionDifferent = ecs.general and (currentProfileVersion == nil or currentProfileVersion ~= targetProfileVersion)
 

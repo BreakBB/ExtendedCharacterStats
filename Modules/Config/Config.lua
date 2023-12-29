@@ -12,8 +12,8 @@ local GearInfos = ECSLoader:ImportModule("GearInfos")
 local Stats = ECSLoader:ImportModule("Stats")
 ---@type i18n
 local i18n = ECSLoader:ImportModule("i18n")
----@type Profile
-local Profile = ECSLoader:ImportModule("Profile")
+---@type Settings
+local Settings = ECSLoader:ImportModule("Settings")
 
 ------------------------------------------------------------------
 -- Configuration Frame
@@ -209,7 +209,7 @@ _GeneralTab = function()
                 name = function() return i18n("Reset ECS") end,
                 desc = function() return i18n("Restores all default values of ECS."); end,
                 func = function(_, _)
-                    Profile:Reset()
+                    Settings:Reset()
                     ReloadUI()
                 end
             }

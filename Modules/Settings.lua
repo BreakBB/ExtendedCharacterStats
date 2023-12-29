@@ -1,15 +1,15 @@
----@class Profile
-local Profile = ECSLoader:CreateModule("Profile")
+---@class Settings
+local Settings = ECSLoader:CreateModule("Settings")
 
 ---@type Utils
 local Utils = ECSLoader:ImportModule("Utils")
 
-function Profile:GetProfileVersion()
+function Settings:GetProfileVersion()
     return 18
 end
 
----@return ECSProfile
-local function GetDefaultStatsProfile()
+---@return ECSSettings
+local function GetDefaultProfile()
     local colors = Utils.colors
 
     return {
@@ -498,16 +498,16 @@ local function GetDefaultGeneralSettings()
     }
 end
 
----@return ECSProfile
-function Profile:GetDefaultProfile()
+---@return ECSSettings
+function Settings:GetDefaults()
     return {
         general = GetDefaultGeneralSettings(),
-        profile = GetDefaultStatsProfile(),
+        profile = GetDefaultProfile(),
     }
 end
 
-function Profile:Reset()
-    local defaultProfile = Profile:GetDefaultProfile()
+function Settings:Reset()
+    local defaultProfile = Settings:GetDefaults()
     ExtendedCharacterStats.profile = defaultProfile.profile
     ExtendedCharacterStats.general = defaultProfile.general
 end
