@@ -8,8 +8,8 @@ local meleeConfigTranslations = {
         ["frFR"] = "Mêlée Général",
         ["zhCN"] = "显示近战属性",
         ["ruRU"] = "Ближний бой",
-        ["esES"] = "Mostrar estadísticas cuerpo a cuerpo",
-        ["esMX"] = "Mostrar estadísticas cuerpo a cuerpo"
+        ["esES"] = "Mostrar cuerpo a cuerpo",
+        ["esMX"] = "Mostrar cuerpo a cuerpo"
     },
     ["Shows/Hides all melee stats."] = {
         ["enUS"] = true,
