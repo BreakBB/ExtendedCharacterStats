@@ -2,6 +2,15 @@
 local i18n = ECSLoader:ImportModule("i18n")
 
 local commandTranslations = {
+    ["Available Commands"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Verfügbare Befehle",
+        ["frFR"] = "Commandes disponibles",
+        ["zhCN"] = "可用命令",
+        ["ruRU"] = "Доступные команды",
+        ["esES"] = "Comandos disponibles",
+        ["esMX"] = "Comandos disponibles",
+    },
     ["ECS %s"] = {
         ["enUS"] = true,
         ["deDE"] = true,
