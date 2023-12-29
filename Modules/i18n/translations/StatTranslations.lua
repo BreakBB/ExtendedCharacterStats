@@ -17,8 +17,8 @@ local statTranslations = {
         ["frFR"] = "Vitesse de déplacement",
         ["zhCN"] = "移动速度",
         ["ruRU"] = "Скорость движения",
-        ["esES"] = "Velocidad de carrera",
-        ["esMX"] = "Velocidad de carrera"
+        ["esES"] = "Velocidad de movimiento",
+        ["esMX"] = "Velocidad de movimiento"
     },
     ["Melee"] = {
         ["enUS"] = true,
@@ -116,8 +116,8 @@ local statTranslations = {
         ["frFR"] = "Rater",
         ["zhCN"] = "未命中",
         ["ruRU"] = "Сопротивление",
-        ["esES"] = "Falla",
-        ["esMX"] = "Falla",
+        ["esES"] = "Fallo",
+        ["esMX"] = "Fallo",
     },
     ["Miss (Lvl + 3)"] = {
         ["enUS"] = true,
@@ -125,8 +125,8 @@ local statTranslations = {
         ["frFR"] = "Rater (Lvl + 3)",
         ["zhCN"] = "未命中 (等级 + 3)",
         ["ruRU"] = "Сопрот. (+3 ур.)",
-        ["esES"] = "Falla (Niv. + 3)",
-        ["esMX"] = "Falla (Niv. + 3)",
+        ["esES"] = "Fallo (Niv. + 3)",
+        ["esMX"] = "Fallo (Niv. + 3)",
     },
     ["Haste Rating"] = {
         ["enUS"] = true,
@@ -368,8 +368,8 @@ local statTranslations = {
         ["frFR"] = "Puissance des soins",
         ["zhCN"] = "法术治疗",
         ["ruRU"] = "Доп. исцеление",
-        ["esES"] = "Sanación con hechizos",
-        ["esMX"] = "Sanación con hechizos"
+        ["esES"] = "Sanación",
+        ["esMX"] = "Sanación"
     },
     ["Arcane Damage"] = {
         ["enUS"] = true,
@@ -377,8 +377,8 @@ local statTranslations = {
         ["frFR"] = "Dégats des arcanes",
         ["zhCN"] = "奥术伤害",
         ["ruRU"] = "Тайная магия",
-        ["esES"] = "Daño de arcano",
-        ["esMX"] = "Daño de arcano"
+        ["esES"] = "Daño arcano",
+        ["esMX"] = "Daño arcano"
     },
     ["Arcane Crit"] = {
         ["enUS"] = true,
@@ -386,8 +386,8 @@ local statTranslations = {
         ["frFR"] = "Critique des arcanes",
         ["zhCN"] = "奥术暴击",
         ["ruRU"] = "Крит (ТМ)",
-        ["esES"] = "Crítico de arcano",
-        ["esMX"] = "Crítico de arcano"
+        ["esES"] = "Crít. arcano",
+        ["esMX"] = "Crít. arcano"
     },
     ["Fire Damage"] = {
         ["enUS"] = true,
@@ -404,8 +404,8 @@ local statTranslations = {
         ["frFR"] = "Critique du feu",
         ["zhCN"] = "火焰暴击",
         ["ruRU"] = "Крит (огонь)",
-        ["esES"] = "Crítico de fuego",
-        ["esMX"] = "Crítico de fuego"
+        ["esES"] = "Crít. de fuego",
+        ["esMX"] = "Crít. de fuego"
     },
     ["Frost Damage"] = {
         ["enUS"] = true,
@@ -422,8 +422,8 @@ local statTranslations = {
         ["frFR"] = "Critique du givre",
         ["zhCN"] = "冰霜暴击",
         ["ruRU"] = "Крит (лед)",
-        ["esES"] = "Crítico de escarcha",
-        ["esMX"] = "Crítico de escarcha"
+        ["esES"] = "Crít. de escarcha",
+        ["esMX"] = "Crít. de escarcha"
     },
     ["Holy Damage"] = {
         ["enUS"] = true,
@@ -440,8 +440,8 @@ local statTranslations = {
         ["frFR"] = "Critique du sacré",
         ["zhCN"] = "神圣暴击",
         ["ruRU"] = "Крит (свет)",
-        ["esES"] = "Crítico de sagrado",
-        ["esMX"] = "Crítico de sagrado"
+        ["esES"] = "Crít. sagrado",
+        ["esMX"] = "Crít. sagrado"
     },
     ["Nature Damage"] = {
         ["enUS"] = true,
@@ -458,8 +458,8 @@ local statTranslations = {
         ["frFR"] = "Critique de la nature",
         ["zhCN"] = "自然暴击",
         ["ruRU"] = "Крит (природа)",
-        ["esES"] = "Crítico de la naturaleza",
-        ["esMX"] = "Crítico de la naturaleza"
+        ["esES"] = "Crít. de la naturaleza",
+        ["esMX"] = "Crít. de la naturaleza"
     },
     ["Physical Damage"] = {
         ["enUS"] = true,
@@ -476,8 +476,8 @@ local statTranslations = {
         ["frFR"] = "Critique physique",
         ["zhCN"] = "物理暴击",
         ["ruRU"] = "Крит (физ.)",
-        ["esES"] = "Crítico físico",
-        ["esMX"] = "Crítico físico"
+        ["esES"] = "Crít. físico",
+        ["esMX"] = "Crít. físico"
     },
     ["Shadow Damage"] = {
         ["enUS"] = true,
@@ -494,8 +494,8 @@ local statTranslations = {
         ["frFR"] = "Critique des ombres",
         ["zhCN"] = "暗影暴击",
         ["ruRU"] = "Крит (тьма)",
-        ["esES"] = "Crítico de las sombras",
-        ["esMX"] = "Crítico de las sombras"
+        ["esES"] = "Crít. de las sombras",
+        ["esMX"] = "Crít. de las sombras"
     },
 }
 
