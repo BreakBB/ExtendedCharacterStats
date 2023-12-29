@@ -21,7 +21,7 @@ Modules\Init.lua
 Modules\Utils.lua
 Modules\Stats.lua
 Modules\GearInfos.lua
-Modules\Profile.lua
+Modules\Settings.lua
 Modules\SlashCommands.lua
 
 # Data
