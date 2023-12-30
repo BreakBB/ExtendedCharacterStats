@@ -35,8 +35,8 @@ local meleeConfigTranslations = {
         ["frFR"] = "Affiche/Cache la puissance d'attaque en mêlée.",
         ["zhCN"] = "显示/隐藏 近战攻击强度",
         ["ruRU"] = "Показать/скрыть значение силы атаки",
-        ["esES"] = "Muestra/oculta el valor de poder de ataque",
-        ["esMX"] = "Muestra/oculta el valor de poder de ataque"
+        ["esES"] = "Muestra/oculta el valor de poder de ataque cuerpo a cuerpo",
+        ["esMX"] = "Muestra/oculta el valor de poder de ataque cuerpo a cuerpo"
     },
     ["Melee Crit"] = {
         ["enUS"] = true,
