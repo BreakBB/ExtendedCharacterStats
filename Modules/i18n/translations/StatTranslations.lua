@@ -251,8 +251,8 @@ local statTranslations = {
         ["frFR"] = "Bloquage",
         ["zhCN"] = "格挡值",
         ["ruRU"] = "Блок",
-        ["esES"] = "Valor de bloqueo",
-        ["esMX"] = "Valor de bloqueo",
+        ["esES"] = "Bloqueo",
+        ["esMX"] = "Bloqueo",
     },
     ["Parry Chance"] = {
         ["enUS"] = true,
@@ -386,8 +386,8 @@ local statTranslations = {
         ["frFR"] = "Critique des arcanes",
         ["zhCN"] = "奥术暴击",
         ["ruRU"] = "Крит (ТМ)",
-        ["esES"] = "Crít. arcano",
-        ["esMX"] = "Crít. arcano"
+        ["esES"] = "Crítico arcano",
+        ["esMX"] = "Crítico arcano"
     },
     ["Fire Damage"] = {
         ["enUS"] = true,
@@ -404,8 +404,8 @@ local statTranslations = {
         ["frFR"] = "Critique du feu",
         ["zhCN"] = "火焰暴击",
         ["ruRU"] = "Крит (огонь)",
-        ["esES"] = "Crít. de fuego",
-        ["esMX"] = "Crít. de fuego"
+        ["esES"] = "Crítico de fuego",
+        ["esMX"] = "Crítico de fuego"
     },
     ["Frost Damage"] = {
         ["enUS"] = true,
@@ -422,8 +422,8 @@ local statTranslations = {
         ["frFR"] = "Critique du givre",
         ["zhCN"] = "冰霜暴击",
         ["ruRU"] = "Крит (лед)",
-        ["esES"] = "Crít. de escarcha",
-        ["esMX"] = "Crít. de escarcha"
+        ["esES"] = "Crítico de escarcha",
+        ["esMX"] = "Crítico de escarcha"
     },
     ["Holy Damage"] = {
         ["enUS"] = true,
@@ -440,8 +440,8 @@ local statTranslations = {
         ["frFR"] = "Critique du sacré",
         ["zhCN"] = "神圣暴击",
         ["ruRU"] = "Крит (свет)",
-        ["esES"] = "Crít. sagrado",
-        ["esMX"] = "Crít. sagrado"
+        ["esES"] = "Crítico sagrado",
+        ["esMX"] = "Crítico sagrado"
     },
     ["Nature Damage"] = {
         ["enUS"] = true,
@@ -458,8 +458,8 @@ local statTranslations = {
         ["frFR"] = "Critique de la nature",
         ["zhCN"] = "自然暴击",
         ["ruRU"] = "Крит (природа)",
-        ["esES"] = "Crít. de la naturaleza",
-        ["esMX"] = "Crít. de la naturaleza"
+        ["esES"] = "Crítico de la naturaleza",
+        ["esMX"] = "Crítico de la naturaleza"
     },
     ["Physical Damage"] = {
         ["enUS"] = true,
@@ -476,8 +476,8 @@ local statTranslations = {
         ["frFR"] = "Critique physique",
         ["zhCN"] = "物理暴击",
         ["ruRU"] = "Крит (физ.)",
-        ["esES"] = "Crít. físico",
-        ["esMX"] = "Crít. físico"
+        ["esES"] = "Crítico físico",
+        ["esMX"] = "Crítico físico"
     },
     ["Shadow Damage"] = {
         ["enUS"] = true,
@@ -494,8 +494,8 @@ local statTranslations = {
         ["frFR"] = "Critique des ombres",
         ["zhCN"] = "暗影暴击",
         ["ruRU"] = "Крит (тьма)",
-        ["esES"] = "Crít. de las sombras",
-        ["esMX"] = "Crít. de las sombras"
+        ["esES"] = "Crítico de las sombras",
+        ["esMX"] = "Crítico de las sombras"
     },
 }
 
