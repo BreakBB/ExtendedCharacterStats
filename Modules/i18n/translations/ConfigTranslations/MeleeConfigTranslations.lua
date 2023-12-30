@@ -44,8 +44,8 @@ local meleeConfigTranslations = {
         ["frFR"] = "Critique en mêlée",
         ["zhCN"] = "近战暴击",
         ["ruRU"] = "Крит",
-        ["esES"] = "Crítico cuerpo a cuerpo",
-        ["esMX"] = "Crítico cuerpo a cuerpo"
+        ["esES"] = "Probabilidad de golpe crítico",
+        ["esMX"] = "Probabilidad de golpe crítico"
     },
     ["Shows/Hides the melee crit chance."] = {
         ["enUS"] = true,
