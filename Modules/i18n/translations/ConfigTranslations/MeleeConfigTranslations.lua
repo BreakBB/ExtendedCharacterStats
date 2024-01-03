@@ -53,8 +53,8 @@ local meleeConfigTranslations = {
         ["frFR"] = "Affiche/cache les chances d'infliger un coup critique en mêlée.",
         ["zhCN"] = "显示/隐藏 近战暴击几率",
         ["ruRU"] = "Показать/скрыть шанс критического урона",
-        ["esES"] = "Muestra/oculta la probabilidad de golpe crítico cuerpo a cuerpo",
-        ["esMX"] = "Muestra/oculta la probabilidad de golpe crítico cuerpo a cuerpo"
+        ["esES"] = "Muestra/oculta la probabilidad de conseguir un golpe crítico cuerpo a cuerpo",
+        ["esMX"] = "Muestra/oculta la probabilidad de conseguir un golpe crítico cuerpo a cuerpo"
     },
     ["Shows/Hides the armor penetration value."] = {
         ["enUS"] = true,
