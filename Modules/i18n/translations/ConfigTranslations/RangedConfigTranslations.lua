@@ -53,8 +53,8 @@ local rangedConfigTranslations = {
         ["frFR"] = "Affiche/cache les chances de coup critique à distance.",
         ["zhCN"] = "显示/隐藏 远程暴击",
         ["ruRU"] = "Показать/скрыть шанс критического урона",
-        ["esES"] = "Muestra/oculta la probabilidad de golpe crítico a distancia",
-        ["esMX"] = "Muestra/oculta la probabilidad de golpe crítico a distancia"
+        ["esES"] = "Muestra/oculta la probabilidad de conseguir un golpe crítico a distancia",
+        ["esMX"] = "Muestra/oculta la probabilidad de conseguir un golpe crítico a distancia"
     },
     ["Shows/Hides the ranged haste rating."] = {
         ["enUS"] = true,
