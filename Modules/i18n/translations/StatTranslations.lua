@@ -377,8 +377,8 @@ local statTranslations = {
         ["frFR"] = "Dégats des arcanes",
         ["zhCN"] = "奥术伤害",
         ["ruRU"] = "Тайная магия",
-        ["esES"] = "Daño arcano",
-        ["esMX"] = "Daño arcano"
+        ["esES"] = "Daño con hechizos Arcano",
+        ["esMX"] = "Daño con hechizos Arcano"
     },
     ["Arcane Crit"] = {
         ["enUS"] = true,
@@ -386,8 +386,8 @@ local statTranslations = {
         ["frFR"] = "Critique des arcanes",
         ["zhCN"] = "奥术暴击",
         ["ruRU"] = "Крит (ТМ)",
-        ["esES"] = "Crítico arcano",
-        ["esMX"] = "Crítico arcano"
+        ["esES"] = "Crítico con hechizos Arcano",
+        ["esMX"] = "Crítico con hechizos Arcano"
     },
     ["Fire Damage"] = {
         ["enUS"] = true,
@@ -395,8 +395,8 @@ local statTranslations = {
         ["frFR"] = "Dégats du feu",
         ["zhCN"] = "火焰伤害",
         ["ruRU"] = "Огонь",
-        ["esES"] = "Daño de fuego",
-        ["esMX"] = "Daño de fuego"
+        ["esES"] = "Daño con hechizos de Fuego",
+        ["esMX"] = "Daño con hechizos de Fuego"
     },
     ["Fire Crit"] = {
         ["enUS"] = true,
@@ -404,8 +404,8 @@ local statTranslations = {
         ["frFR"] = "Critique du feu",
         ["zhCN"] = "火焰暴击",
         ["ruRU"] = "Крит (огонь)",
-        ["esES"] = "Crítico de fuego",
-        ["esMX"] = "Crítico de fuego"
+        ["esES"] = "Crítico con hechizos de Fuego",
+        ["esMX"] = "Crítico con hechizos de Fuego"
     },
     ["Frost Damage"] = {
         ["enUS"] = true,
@@ -413,8 +413,8 @@ local statTranslations = {
         ["frFR"] = "Dégats du givre",
         ["zhCN"] = "冰霜伤害",
         ["ruRU"] = "Лед",
-        ["esES"] = "Daño de escarcha",
-        ["esMX"] = "Daño de escarcha"
+        ["esES"] = "Daño con hechizos de Escarcha",
+        ["esMX"] = "Daño con hechizos de Escarcha"
     },
     ["Frost Crit"] = {
         ["enUS"] = true,
@@ -422,8 +422,8 @@ local statTranslations = {
         ["frFR"] = "Critique du givre",
         ["zhCN"] = "冰霜暴击",
         ["ruRU"] = "Крит (лед)",
-        ["esES"] = "Crítico de escarcha",
-        ["esMX"] = "Crítico de escarcha"
+        ["esES"] = "Crítico con hechizos de Escarcha",
+        ["esMX"] = "Crítico con hechizos de Escarcha"
     },
     ["Holy Damage"] = {
         ["enUS"] = true,
@@ -431,8 +431,8 @@ local statTranslations = {
         ["frFR"] = "Dégats du sacré",
         ["zhCN"] = "神圣伤害",
         ["ruRU"] = "Свет",
-        ["esES"] = "Daño sagrado",
-        ["esMX"] = "Daño sagrado"
+        ["esES"] = "Daño con hechizos Sagrado",
+        ["esMX"] = "Daño con hechizos Sagrado"
     },
     ["Holy Crit"] = {
         ["enUS"] = true,
@@ -440,8 +440,8 @@ local statTranslations = {
         ["frFR"] = "Critique du sacré",
         ["zhCN"] = "神圣暴击",
         ["ruRU"] = "Крит (свет)",
-        ["esES"] = "Crítico sagrado",
-        ["esMX"] = "Crítico sagrado"
+        ["esES"] = "Crítico con hechizos Sagrado",
+        ["esMX"] = "Crítico con hechizos Sagrado"
     },
     ["Nature Damage"] = {
         ["enUS"] = true,
@@ -449,8 +449,8 @@ local statTranslations = {
         ["frFR"] = "Dégats de la nature",
         ["zhCN"] = "自然伤害",
         ["ruRU"] = "Природа",
-        ["esES"] = "Daño de la naturaleza",
-        ["esMX"] = "Daño de la naturaleza"
+        ["esES"] = "Daño con hechizos de Naturaleza",
+        ["esMX"] = "Daño con hechizos de Naturaleza"
     },
     ["Nature Crit"] = {
         ["enUS"] = true,
@@ -458,8 +458,8 @@ local statTranslations = {
         ["frFR"] = "Critique de la nature",
         ["zhCN"] = "自然暴击",
         ["ruRU"] = "Крит (природа)",
-        ["esES"] = "Crítico de la naturaleza",
-        ["esMX"] = "Crítico de la naturaleza"
+        ["esES"] = "Crítico con hechizos de Naturaleza",
+        ["esMX"] = "Crítico con hechizos de Naturaleza"
     },
     ["Physical Damage"] = {
         ["enUS"] = true,
@@ -485,8 +485,8 @@ local statTranslations = {
         ["frFR"] = "Dégats des ombres",
         ["zhCN"] = "暗影伤害",
         ["ruRU"] = "Тьма",
-        ["esES"] = "Daño de las sombras",
-        ["esMX"] = "Daño de las sombras"
+        ["esES"] = "Daño con hechizos de las Sombras",
+        ["esMX"] = "Daño con hechizos de las Sombras"
     },
     ["Shadow Crit"] = {
         ["enUS"] = true,
@@ -494,8 +494,8 @@ local statTranslations = {
         ["frFR"] = "Critique des ombres",
         ["zhCN"] = "暗影暴击",
         ["ruRU"] = "Крит (тьма)",
-        ["esES"] = "Crítico de las sombras",
-        ["esMX"] = "Crítico de las sombras"
+        ["esES"] = "Crítico con hechizos de las Sombras",
+        ["esMX"] = "Crítico con hechizos de las Sombras"
     },
 }
 
