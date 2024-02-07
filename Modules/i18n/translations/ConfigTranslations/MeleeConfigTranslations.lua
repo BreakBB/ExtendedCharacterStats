@@ -35,8 +35,8 @@ local meleeConfigTranslations = {
         ["frFR"] = "Affiche/Cache la puissance d'attaque en mêlée.",
         ["zhCN"] = "显示/隐藏 近战攻击强度",
         ["ruRU"] = "Показать/скрыть значение силы атаки",
-        ["esES"] = "Muestra/oculta el valor de poder de ataque",
-        ["esMX"] = "Muestra/oculta el valor de poder de ataque"
+        ["esES"] = "Muestra/oculta el valor de poder de ataque cuerpo a cuerpo",
+        ["esMX"] = "Muestra/oculta el valor de poder de ataque cuerpo a cuerpo"
     },
     ["Melee Crit"] = {
         ["enUS"] = true,
@@ -44,8 +44,8 @@ local meleeConfigTranslations = {
         ["frFR"] = "Critique en mêlée",
         ["zhCN"] = "近战暴击",
         ["ruRU"] = "Крит",
-        ["esES"] = "Crítico cuerpo a cuerpo",
-        ["esMX"] = "Crítico cuerpo a cuerpo"
+        ["esES"] = "Probabilidad de golpe crítico",
+        ["esMX"] = "Probabilidad de golpe crítico"
     },
     ["Shows/Hides the melee crit chance."] = {
         ["enUS"] = true,
@@ -53,8 +53,8 @@ local meleeConfigTranslations = {
         ["frFR"] = "Affiche/cache les chances d'infliger un coup critique en mêlée.",
         ["zhCN"] = "显示/隐藏 近战暴击几率",
         ["ruRU"] = "Показать/скрыть шанс критического урона",
-        ["esES"] = "Muestra/oculta la probabilidad de golpe crítico cuerpo a cuerpo",
-        ["esMX"] = "Muestra/oculta la probabilidad de golpe crítico cuerpo a cuerpo"
+        ["esES"] = "Muestra/oculta la probabilidad de conseguir un golpe crítico cuerpo a cuerpo",
+        ["esMX"] = "Muestra/oculta la probabilidad de conseguir un golpe crítico cuerpo a cuerpo"
     },
     ["Shows/Hides the armor penetration value."] = {
         ["enUS"] = true,
