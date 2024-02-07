@@ -1,4 +1,4 @@
-## Interface: 11500
+## Interface: 11501
 ## Title: Extended Character Stats v3.2.1
 ## Version: 3.2.1
 ## Author: BreakBB, Ethulu
