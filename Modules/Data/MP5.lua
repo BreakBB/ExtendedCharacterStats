@@ -97,7 +97,7 @@ end
 ---@return number
 function Data:GetMP5WhileCasting()
     local _, casting = GetManaRegen() -- Returns mana reg per 1 second
-    if casting < 1 then
+    if casting < 0.1 then
         casting = 0
     end
 
