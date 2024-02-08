@@ -10,6 +10,7 @@ local configTranslations = {
         ["ruRU"] = "Настройки",
         ["esES"] = "Configuración",
         ["esMX"] = "Configuración",
+        ["ptBR"] = "Configurações"
     },
     ["General"] = {
         ["enUS"] = true,
@@ -19,6 +20,7 @@ local configTranslations = {
         ["ruRU"] = "Основные",
         ["esES"] = true,
         ["esMX"] = true,
+        ["ptBR"] = "Geral"
     },
     ["Stats"] = {
         ["enUS"] = true,
@@ -28,6 +30,7 @@ local configTranslations = {
         ["ruRU"] = "Характеристики",
         ["esES"] = "Estadísticas",
         ["esMX"] = "Estadísticas",
+        ["ptBR"] = "Estatísticas"
     },
     ["General Settings"] = {
         ["enUS"] = true,
@@ -37,6 +40,7 @@ local configTranslations = {
         ["ruRU"] = "Основные настройки",
         ["esES"] = "Configuración general",
         ["esMX"] = "Configuración general",
+        ["ptBR"] = "Configurações gerais"
     },
     ["Hide ECS when opening character tab"] = {
         ["enUS"] = true,
@@ -44,8 +48,9 @@ local configTranslations = {
         ["frFR"] = "Cache ECS quand la fenêtre du personnage est ouverte",
         ["zhCN"] = "显示ECS切换按键",
         ["ruRU"] = "Скрывать ECS",
-        ["esES"] = "Ocultar ECS cuando abriendo la información del personaje",
-        ["esMX"] = "Ocultar ECS cuando abriendo la información del personaje",
+        ["esES"] = "Oculta ECS cuando abriendo la información del personaje",
+        ["esMX"] = "Oculta ECS cuando abriendo la información del personaje",
+        ["ptBR"] = "Oculta ECS ao abrir as informações do personagem"
     },
     ["Hides the stats windows when opening the character tab."] = {
         ["enUS"] = true,
@@ -54,7 +59,8 @@ local configTranslations = {
         ["zhCN"] = "显示ECS打开/关闭按键",
         ["ruRU"] = "Скрывает панель ECS при открытии окна персонажа",
         ["esES"] = "Oculta la ventana de estadísticas cuando abriendo la información del personaje",
-        ["esMX"] = "Ocultar ECS cuando abriendo información del personaje",
+        ["esMX"] = "Oculta la ventana de estadísticas cuando abriendo la información del personaje",
+        ["ptBR"] = "Oculta as janelas de estatísticas ao abrir as informações do personagem"
     },
     ["Colorize Stats"] = {
         ["enUS"] = true,
@@ -64,6 +70,7 @@ local configTranslations = {
         ["ruRU"] = "Окрашивание характеристик",
         ["esES"] = "Colorear estadísticas",
         ["esMX"] = "Colorear estadísticas",
+        ["ptBR"] = "Colorir estatísticas"
     },
     ["Adds colors to the stats overview."] = {
         ["enUS"] = true,
@@ -73,6 +80,7 @@ local configTranslations = {
         ["ruRU"] = "Окрашивает характеристики в панели ECS",
         ["esES"] = "Añade colores a la vista de estadísticas",
         ["esMX"] = "Añade colores a la vista de estadísticas",
+        ["ptBR"] = "Adiciona cores à visão geral das estatísticas"
     },
     ["Stats colorization"] = {
         ["enUS"] = true,
@@ -82,6 +90,7 @@ local configTranslations = {
         ["ruRU"] = "Окрашивание характеристик",
         ["esES"] = "Colorización de estadísticas",
         ["esMX"] = "Colorización de estadísticas",
+        ["ptBR"] = "Colorização das estatísticas"
     },
     ["Full"] = {
         ["enUS"] = true,
@@ -91,6 +100,7 @@ local configTranslations = {
         ["ruRU"] = "Полное",
         ["esES"] = "Lleno",
         ["esMX"] = "Lleno",
+        ["ptBR"] = "Cheia"
     },
     ["Stat texts"] = {
         ["enUS"] = true,
@@ -100,6 +110,7 @@ local configTranslations = {
         ["ruRU"] = "Только текст",
         ["esES"] = "Textos de estadísticas",
         ["esMX"] = "Textos de estadísticas",
+        ["ptBR"] = "Textos de estatísticas"
     },
     ["Stat values"] = {
         ["enUS"] = true,
@@ -109,6 +120,7 @@ local configTranslations = {
         ["ruRU"] = "Только значения",
         ["esES"] = "Valores de estadísticas",
         ["esMX"] = "Valores de estadísticas",
+        ["ptBR"] = "Valores das estatísticas"
     },
     ["Show Item Quality Colors"] = {
         ["enUS"] = true,
@@ -118,6 +130,7 @@ local configTranslations = {
         ["ruRU"] = "Окрашивание предметов",
         ["esES"] = "Mostrar color de la calidad del objeto",
         ["esMX"] = "Mostrar color de la calidad del objeto",
+        ["ptBR"] = "Mostrar cores de qualidade dos itens"
     },
     ["Shows/Hides the colored frames around equipped items."] = {
         ["enUS"] = true,
@@ -125,8 +138,9 @@ local configTranslations = {
         ["frFR"] = "Affiche/cache le niveau de rareté des objets par un cadre coloré.",
         ["zhCN"] = "显示/隐藏 装备边框染色 。",
         ["ruRU"] = "Показать/скрыть цветную рамку вокруг надетых предметов в зависимости от их качества",
-        ["esES"] = "Muestra/oculta los marcos de colores alrededor de los objetos equipados.",
-        ["esMX"] = "Muestra/oculta los marcos de colores alrededor de los objetos equipados.",
+        ["esES"] = "Muestra/oculta los marcos coloreados alrededor de los objetos equipados",
+        ["esMX"] = "Muestra/oculta los marcos coloreados alrededor de los objetos equipados",
+        ["ptBR"] = "Mostra/oculta os quadros coloridos ao redor dos itens equipados"
     },
     ["Header Font Size"] = {
         ["enUS"] = true,
@@ -136,6 +150,7 @@ local configTranslations = {
         ["ruRU"] = "Размер шрифта заголовка",
         ["esES"] = "Tamaño de fuente del encabezado",
         ["esMX"] = "Tamaño de fuente del encabezado",
+        ["ptBR"] = "Tamanho da fonte do cabeçalho"
     },
     ["Changes the font size of the headers (e.g. Melee)"] = {
         ["enUS"] = true,
@@ -145,6 +160,7 @@ local configTranslations = {
         ["ruRU"] = "Изменяет размер шрифта заголовка (например, \"Ближний бой\")",
         ["esES"] = "Cambia el tamaño de fuente de los encabezados (p. ej., cuerpo a cuerpo)",
         ["esMX"] = "Cambia el tamaño de fuente de los encabezados (p. ej., cuerpo a cuerpo)",
+        ["ptBR"] = "Altera o tamanho da fonte dos cabeçalhos (por exemplo, corpo a corpo)"
     },
     ["Stat Font Size"] = {
         ["enUS"] = true,
@@ -154,6 +170,7 @@ local configTranslations = {
         ["ruRU"] = "Размер шрифта характеристик",
         ["esES"] = "Tamaño de fuente de estadística",
         ["esMX"] = "Tamaño de fuente de estadística",
+        ["ptBR"] = "Tamanho da fonte das estatísticas"
     },
     ["Changes the font size of the stat lines (e.g. Crit)"] = {
         ["enUS"] = true,
@@ -161,8 +178,9 @@ local configTranslations = {
         ["frFR"] = "Modifie la taille de la police des statistiques (ex. Critique)",
         ["zhCN"] = "更改统计行的字体大小 (例如：暴击)",
         ["ruRU"] = "Изменяет размер шрифта характеристик (например, \"Крит\")",
-        ["esES"] = "Cambia el tamaño de fuente de las líneas de estadísticas (p. ej., Crítico)",
-        ["esMX"] = "Cambia el tamaño de fuente de las líneas de estadísticas (p. ej., Crítico)",
+        ["esES"] = "Cambia el tamaño de fuente de las líneas de estadísticas (p. ej., crítico)",
+        ["esMX"] = "Cambia el tamaño de fuente de las líneas de estadísticas (p. ej., crítico)",
+        ["ptBR"] = "Altera o tamanho da fonte das linhas de estatísticas (por exemplo, crítico)"
     },
     ["Window Width"] = {
         ["enUS"] = true,
@@ -172,6 +190,7 @@ local configTranslations = {
         ["ruRU"] = "Ширина панели",
         ["esES"] = "Anchura de ventana",
         ["esMX"] = "Anchura de ventana",
+        ["ptBR"] = "Largura da janela"
     },
     ["Changes the width of the stats window"] = {
         ["enUS"] = true,
@@ -179,8 +198,9 @@ local configTranslations = {
         ["frFR"] = "Modifie la largeur de la fenêtre des statistiques",
         ["zhCN"] = "更改统计窗口的宽度",
         ["ruRU"] = "Изменяет ширину панели ECS",
-        ["esES"] = "Cambia la anchura de la ventana de estadísticas.",
-        ["esMX"] = "Cambia la anchura de la ventana de estadísticas.",
+        ["esES"] = "Cambia la anchura de la ventana de estadísticas",
+        ["esMX"] = "Cambia la anchura de la ventana de estadísticas",
+        ["ptBR"] = "Altera a largura da janela de estatísticas"
     },
     ["Language"] = {
         ["enUS"] = true,
@@ -190,6 +210,7 @@ local configTranslations = {
         ["ruRU"] = "Язык",
         ["esES"] = "Idioma",
         ["esMX"] = "Idioma",
+        ["ptBR"] = "Idioma"
     },
     ["Stats Settings"] = {
         ["enUS"] = true,
@@ -199,6 +220,7 @@ local configTranslations = {
         ["ruRU"] = "Настройки характеристик",
         ["esES"] = "Configuración de estadísticas",
         ["esMX"] = "Configuración de estadísticas",
+        ["ptBR"] = "Configurações das estatísticas"
     },
     ["Reset ECS"] = {
         ["enUS"] = true,
@@ -208,6 +230,7 @@ local configTranslations = {
         ["ruRU"] = "Сброс настроек",
         ["esES"] = "Restablecer ECS",
         ["esMX"] = "Restablecer ECS",
+        ["ptBR"] = "Resetar ECS"
     },
     ["Restores all default values of ECS."] = {
         ["enUS"] = true,
@@ -215,8 +238,9 @@ local configTranslations = {
         ["frFR"] = "Restaure toutes les valeurs par défaut de l'ECS.",
         ["zhCN"] = false,
         ["ruRU"] = "Сбрасывает настройки ECS на используемые по умолчанию. Это перезагрузит пользовательский интерфейс",
-        ["esES"] = "Restablece todos los valores predeterminados de ECS.",
-        ["esMX"] = "Restablece todos los valores predeterminados de ECS.",
+        ["esES"] = "Restablece todos los valores predeterminados de ECS",
+        ["esMX"] = "Restablece todos los valores predeterminados de ECS",
+        ["ptBR"] = "Restaura todos os valores padrão do ECS"
     },
 }
 
