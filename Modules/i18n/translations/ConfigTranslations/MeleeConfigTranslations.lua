@@ -9,7 +9,8 @@ local meleeConfigTranslations = {
         ["zhCN"] = "显示近战属性",
         ["ruRU"] = "Ближний бой",
         ["esES"] = "Mostrar cuerpo a cuerpo",
-        ["esMX"] = "Mostrar cuerpo a cuerpo"
+        ["esMX"] = "Mostrar cuerpo a cuerpo",
+        ["ptBR"] = "Mostrar corpo a corpo"
     },
     ["Shows/Hides all melee stats."] = {
         ["enUS"] = true,
@@ -18,7 +19,8 @@ local meleeConfigTranslations = {
         ["zhCN"] = "显示/隐藏 所有近战属性",
         ["ruRU"] = "Показать/скрыть все характеристики ближнего боя",
         ["esES"] = "Muestra/oculta todas estadísticas cuerpo a cuerpo",
-        ["esMX"] = "Muestra/oculta todas estadísticas cuerpo a cuerpo"
+        ["esMX"] = "Muestra/oculta todas estadísticas cuerpo a cuerpo",
+        ["ptBR"] = "Mostra/oculta todas as estatísticas corpo a corpo"
     },
     ["Melee Attack Power"] = {
         ["enUS"] = true,
@@ -27,7 +29,8 @@ local meleeConfigTranslations = {
         ["zhCN"] = "近战攻击强度",
         ["ruRU"] = "Сила атаки",
         ["esES"] = "Poder de ataque",
-        ["esMX"] = "Poder de ataque"
+        ["esMX"] = "Poder de ataque",
+        ["ptBR"] = "Poder de ataque"
     },
     ["Shows/Hides the melee attack power value."] = {
         ["enUS"] = true,
@@ -36,7 +39,8 @@ local meleeConfigTranslations = {
         ["zhCN"] = "显示/隐藏 近战攻击强度",
         ["ruRU"] = "Показать/скрыть значение силы атаки",
         ["esES"] = "Muestra/oculta el valor de poder de ataque cuerpo a cuerpo",
-        ["esMX"] = "Muestra/oculta el valor de poder de ataque cuerpo a cuerpo"
+        ["esMX"] = "Muestra/oculta el valor de poder de ataque cuerpo a cuerpo",
+        ["esMX"] = "Mostra/oculta o valor de poder de ataque corpo a corpo"
     },
     ["Melee Crit"] = {
         ["enUS"] = true,
@@ -45,7 +49,8 @@ local meleeConfigTranslations = {
         ["zhCN"] = "近战暴击",
         ["ruRU"] = "Крит",
         ["esES"] = "Probabilidad de golpe crítico",
-        ["esMX"] = "Probabilidad de golpe crítico"
+        ["esMX"] = "Probabilidad de golpe crítico",
+        ["ptBR"] = "Chance de acerto crítico"
     },
     ["Shows/Hides the melee crit chance."] = {
         ["enUS"] = true,
@@ -54,7 +59,8 @@ local meleeConfigTranslations = {
         ["zhCN"] = "显示/隐藏 近战暴击几率",
         ["ruRU"] = "Показать/скрыть шанс критического урона",
         ["esES"] = "Muestra/oculta la probabilidad de conseguir un golpe crítico cuerpo a cuerpo",
-        ["esMX"] = "Muestra/oculta la probabilidad de conseguir un golpe crítico cuerpo a cuerpo"
+        ["esMX"] = "Muestra/oculta la probabilidad de conseguir un golpe crítico cuerpo a cuerpo",
+        ["ptBR"] = "Mostra/oculta a chance de realizar acertos críticos"
     },
     ["Shows/Hides the armor penetration value."] = {
         ["enUS"] = true,
@@ -63,7 +69,8 @@ local meleeConfigTranslations = {
         ["zhCN"] = false,
         ["ruRU"] = "Показать/скрыть значение проникающую способность брони",
         ["esES"] = "Muestra/oculta el valor de penetración de armadura",
-        ["esMX"] = "Muestra/oculta el valor de penetración de armadura"
+        ["esMX"] = "Muestra/oculta el valor de penetración de armadura",
+        ["ptBR"] = "Mostra/oculta o valor de penetração de armadura"
     },
     ["Shows/Hides the armor penetration rating value."] = {
         ["enUS"] = true,
@@ -72,7 +79,8 @@ local meleeConfigTranslations = {
         ["zhCN"] = false,
         ["ruRU"] = false,
         ["esES"] = "Muestra/oculta el índice de penetración de armadura",
-        ["esMX"] = "Muestra/oculta el índice de penetración de armadura"
+        ["esMX"] = "Muestra/oculta el índice de penetración de armadura",
+        ["ptBR"] = "Mostra/oculta a taxa de penetração de armadura"
     },
     ["Shows/Hides the expertise value."] = {
         ["enUS"] = true,
@@ -81,7 +89,8 @@ local meleeConfigTranslations = {
         ["zhCN"] = false,
         ["ruRU"] = "Показать/скрыть значение мастерства",
         ["esES"] = "Muestra/oculta el valor de pericia",
-        ["esMX"] = "Muestra/oculta el valor de pericia"
+        ["esMX"] = "Muestra/oculta el valor de pericia",
+        ["ptBR"] = "Mostra/oculta o valor de aptidão"
     },
     ["Shows/Hides the expertise rating."] = {
         ["enUS"] = true,
@@ -90,7 +99,8 @@ local meleeConfigTranslations = {
         ["zhCN"] = false,
         ["ruRU"] = "Показать/скрыть значение рейтинга мастерства",
         ["esES"] = "Muestra/oculta el índice de pericia",
-        ["esMX"] = "Muestra/oculta el índice de pericia"
+        ["esMX"] = "Muestra/oculta el índice de pericia",
+        ["ptBR"] = "Mostra/oculta a taxa de aptidão"
     },
     ["Shows/Hides the melee haste rating."] = {
         ["enUS"] = true,
@@ -99,7 +109,8 @@ local meleeConfigTranslations = {
         ["zhCN"] = false,
         ["ruRU"] = "Показать/скрыть значение рейтинга скорости ближнего боя",
         ["esES"] = "Muestra/oculta el índice de celeridad cuerpo a cuerpo",
-        ["esMX"] = "Muestra/oculta el índice de celeridad cuerpo a cuerpo"
+        ["esMX"] = "Muestra/oculta el índice de celeridad cuerpo a cuerpo",
+        ["ptBR"] = "Mostra/oculta a taxa de aceleração corpo a corpo"
     },
     ["Shows/Hides the melee haste bonus value."] = {
         ["enUS"] = true,
@@ -108,7 +119,8 @@ local meleeConfigTranslations = {
         ["zhCN"] = false,
         ["ruRU"] = "Показать/скрыть значение бонуса к скорости ближнего боя",
         ["esES"] = "Muestra/oculta el bonus de celeridad cuerpo a cuerpo",
-        ["esMX"] = "Muestra/oculta el bonus de celeridad cuerpo a cuerpo"
+        ["esMX"] = "Muestra/oculta el bonus de celeridad cuerpo a cuerpo",
+        ["ptBR"] = "Mostra/oculta o bônus de aceleração corpo a corpo"
     },
     ["Shows/Hides the melee attack speed."] = {
         ["enUS"] = true,
@@ -117,7 +129,8 @@ local meleeConfigTranslations = {
         ["zhCN"] = false,
         ["ruRU"] = "Показать/скрыть значения скорости атаки",
         ["esES"] = "Muestra/oculta la velocidad de ataque cuerpo a cuerpo",
-        ["esMX"] = "Muestra/oculta la velocidad de ataque cuerpo a cuerpo"
+        ["esMX"] = "Muestra/oculta la velocidad de ataque cuerpo a cuerpo",
+        ["ptBR"] = "Mostra/oculta a velocidade de ataque corpo a corpo"
     },
     ["Shows/Hides the attack speed of the main hand."] = {
         ["enUS"] = true,
@@ -126,7 +139,8 @@ local meleeConfigTranslations = {
         ["zhCN"] = false,
         ["ruRU"] = "Показать/скрыть значение скорости атаки оружия в правой руке",
         ["esES"] = "Muestra/oculta la velocidad de ataque de la mano derecha",
-        ["esMX"] = "Muestra/oculta la velocidad de ataque de la mano derecha"
+        ["esMX"] = "Muestra/oculta la velocidad de ataque de la mano derecha",
+        ["ptBR"] = "Mostra/oculta a velocidade de ataque da mão principal"
     },
     ["Shows/Hides the attack speed of the off hand."] = {
         ["enUS"] = true,
@@ -135,7 +149,8 @@ local meleeConfigTranslations = {
         ["zhCN"] = false,
         ["ruRU"] = "Показать/скрыть значение скорости атаки оружия в левой руке",
         ["esES"] = "Muestra/oculta la velocidad de ataque de la mano izquierda",
-        ["esMX"] = "Muestra/oculta la velocidad de ataque de la mano izquierda"
+        ["esMX"] = "Muestra/oculta la velocidad de ataque de la mano izquierda",
+        ["ptBR"] = "Mostra/oculta a velocidade de ataque da mão secundária"
     },
     ["Melee Hit"] = {
         ["enUS"] = true,
@@ -144,7 +159,8 @@ local meleeConfigTranslations = {
         ["zhCN"] = "近战命中",
         ["ruRU"] = "Меткость",
         ["esES"] = "Probabilidad de golpear",
-        ["esMX"] = "Probabilidad de golpear"
+        ["esMX"] = "Probabilidad de golpear",
+        ["ptBR"] = "Chance de acerto"
     },
     ["Melee Hit Values"] = {
         ["enUS"] = true,
@@ -153,7 +169,8 @@ local meleeConfigTranslations = {
         ["zhCN"] = "近战命中率",
         ["ruRU"] = "Показатели меткости",
         ["esES"] = "Valor de probabilidad de golpear",
-        ["esMX"] = "Valor de probabilidad de golpear"
+        ["esMX"] = "Valor de probabilidad de golpear",
+        ["ptBR"] = "Valor de chance de acerto"
     },
     ["Shows/Hides all melee hit chance."] = {
         ["enUS"] = true,
@@ -162,7 +179,8 @@ local meleeConfigTranslations = {
         ["zhCN"] = "显示/隐藏 所有近战命中率",
         ["ruRU"] = "Показать/скрыть все показатели меткости",
         ["esES"] = "Muestra/oculta la probabilidad de golpear",
-        ["esMX"] = "Muestra/oculta la probabilidad de golpear"
+        ["esMX"] = "Muestra/oculta la probabilidad de golpear",
+        ["ptBR"] = "Mostra/oculta a chance de acerto"
     },
     ["Hit Rating"] = {
         ["enUS"] = true,
@@ -171,7 +189,8 @@ local meleeConfigTranslations = {
         ["zhCN"] = false,
         ["ruRU"] = "Меткость",
         ["esES"] = "Índice de golpear",
-        ["esMX"] = "Índice de golpear"
+        ["esMX"] = "Índice de golpear",
+        ["ptBR"] = "Taxa de acerto"
     },
     ["Shows/Hides the melee hit rating."] = {
         ["enUS"] = true,
@@ -180,7 +199,8 @@ local meleeConfigTranslations = {
         ["zhCN"] = false,
         ["ruRU"] = "Показать/скрыть значение рейтинга меткости",
         ["esES"] = "Muestra/oculta el índice de golpear",
-        ["esMX"] = "Muestra/oculta el índice de golpear"
+        ["esMX"] = "Muestra/oculta el índice de golpear",
+        ["ptBR"] = "Mostra/oculta a taxa de acerto"
     },
     ["Hit Bonus"] = {
         ["enUS"] = true,
@@ -189,7 +209,8 @@ local meleeConfigTranslations = {
         ["zhCN"] = "命中几率",
         ["ruRU"] = "Бонус",
         ["esES"] = "Bonus de golpear",
-        ["esMX"] = "Bonus de golpear"
+        ["esMX"] = "Bonus de golpear",
+        ["ptBR"] = "Bônus de acerto"
     },
     ["Shows/Hides the melee hit bonus."] = {
         ["enUS"] = true,
@@ -198,7 +219,8 @@ local meleeConfigTranslations = {
         ["zhCN"] = "显示/隐藏 近战命中率",
         ["ruRU"] = "Показать/скрыть значение бонуса к меткости",
         ["esES"] = "Muestra/oculta el bonus de golpear",
-        ["esMX"] = "Muestra/oculta el bonus de golpear"
+        ["esMX"] = "Muestra/oculta el bonus de golpear",
+        ["ptBR"] = "Mostra/oculta o bônus de acerto"
     },
     ["Miss Chance"] = {
         ["enUS"] = true,
@@ -207,7 +229,8 @@ local meleeConfigTranslations = {
         ["zhCN"] = "未命中几率",
         ["ruRU"] = "Сопротивление",
         ["esES"] = "Probabilidad de fallo",
-        ["esMX"] = "Probabilidad de fallo"
+        ["esMX"] = "Probabilidad de fallo",
+        ["ptBR"] = "Chance de erro"
     },
     ["Shows/Hides the melee miss chance against enemies on the same level."] = {
         ["enUS"] = true,
@@ -216,7 +239,8 @@ local meleeConfigTranslations = {
         ["zhCN"] = "显示/隐藏 针对同等级敌人的近战未命中率",
         ["ruRU"] = "Показать/скрыть значение шанса сопротивления вашим атакам цели вашего уровня",
         ["esES"] = "Muestra/oculta la probabilidad de fallo contra enemigos del mismo nivel",
-        ["esMX"] = "Muestra/oculta la probabilidad de fallo contra enemigos del mismo nivel"
+        ["esMX"] = "Muestra/oculta la probabilidad de fallo contra enemigos del mismo nivel",
+        ["ptBR"] = "Mostra/oculta a chance de erro contra inimigos do mesmo nível"
     },
     ["Miss Chance Boss"] = {
         ["enUS"] = true,
@@ -225,7 +249,8 @@ local meleeConfigTranslations = {
         ["zhCN"] = "未命中 Boss",
         ["ruRU"] = "Сопрот. (+3 ур.)",
         ["esES"] = "Probabilidad de fallo (jefe)",
-        ["esMX"] = "Probabilidad de fallo (jefe)"
+        ["esMX"] = "Probabilidad de fallo (jefe)",
+        ["ptBR"] = "Chance de erro (chefe)"
     },
     ["Shows/Hides the melee miss chance against boss enemies (+3 Level)."] = {
         ["enUS"] = true,
@@ -234,7 +259,8 @@ local meleeConfigTranslations = {
         ["zhCN"] = "显示/隐藏 针对BOSS的近战未命中率 (+3 等级)。",
         ["ruRU"] = "Показать/скрыть значение шанса сопротивления вашим атакам цели на 3 уровня выше вашего",
         ["esES"] = "Muestra/oculta la probabilidad de fallo contra jefes (nivel +3)",
-        ["esMX"] = "Muestra/oculta la probabilidad de fallo contra jefes (nivel +3)"
+        ["esMX"] = "Muestra/oculta la probabilidad de fallo contra jefes (nivel +3)",
+        ["ptBR"] = "Mostra/oculta a chance de erro contra chefes (nível +3)."
     },
 }
 
