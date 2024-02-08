@@ -9,7 +9,8 @@ local rangedConfigTranslations = {
         ["zhCN"] = "显示远程属性",
         ["ruRU"] = "Дальний бой",
         ["esES"] = "Mostrar a distancia",
-        ["esMX"] = "Mostrar a distancia"
+        ["esMX"] = "Mostrar a distancia",
+        ["ptBR"] = "Mostrar longo alcance"
     },
     ["Shows/Hides all ranged stats."] = {
         ["enUS"] = true,
@@ -27,7 +28,8 @@ local rangedConfigTranslations = {
         ["zhCN"] = "远程攻击强度",
         ["ruRU"] = "Сила атаки",
         ["esES"] = "Poder de ataque",
-        ["esMX"] = "Poder de ataque"
+        ["esMX"] = "Poder de ataque",
+        ["ptBR"] = "Poder de ataque"
     },
     ["Shows/Hides the ranged attack power value."] = {
         ["enUS"] = true,
@@ -36,7 +38,8 @@ local rangedConfigTranslations = {
         ["zhCN"] = "显示/隐藏 远程攻击强度",
         ["ruRU"] = "Показать/скрыть значение силы атаки",
         ["esES"] = "Muestra/oculta el valor de poder de ataque a distancia",
-        ["esMX"] = "Muestra/oculta el valor de poder de ataque a distancia"
+        ["esMX"] = "Muestra/oculta el valor de poder de ataque a distancia",
+        ["esMX"] = "Mostra/oculta o valor de poder de ataque de longo alcance"
     },
     ["Ranged Crit"] = {
         ["enUS"] = true,
@@ -45,7 +48,8 @@ local rangedConfigTranslations = {
         ["zhCN"] = "远程暴击",
         ["ruRU"] = "Крит",
         ["esES"] = "Probabilidad de golpe crítico",
-        ["esMX"] = "Crítico a distancia"
+        ["esMX"] = "Crítico a distancia,
+        ["ptBR"] = "Crítico de longo alcance"
     },
     ["Shows/Hides the ranged crit chance."] = {
         ["enUS"] = true,
@@ -54,34 +58,38 @@ local rangedConfigTranslations = {
         ["zhCN"] = "显示/隐藏 远程暴击",
         ["ruRU"] = "Показать/скрыть шанс критического урона",
         ["esES"] = "Muestra/oculta la probabilidad de conseguir un golpe crítico a distancia",
-        ["esMX"] = "Muestra/oculta la probabilidad de conseguir un golpe crítico a distancia"
+        ["esMX"] = "Muestra/oculta la probabilidad de conseguir un golpe crítico a distancia",
+        ["ptBR"] = "Mostra/oculta a chance de realizar acertos críticos de longo alcance"
     },
     ["Shows/Hides the ranged haste rating."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt die Fernkampftempowertung.",
-        ["frFR"] = false,
+        ["frFR"] = "Affiche/cache le score de hâte à distance.",
         ["zhCN"] = false,
         ["ruRU"] = "Показать/скрыть значение рейтинга скорости дальнего боя",
         ["esES"] = "Muestra/oculta el índice de celeridad a distancia",
-        ["esMX"] = "Muestra/oculta el índice de celeridad a distancia"
+        ["esMX"] = "Muestra/oculta el índice de celeridad a distancia",
+        ["ptBR"] = "Mostra/oculta a taxa de aceleração de longo alcance"
     },
     ["Shows/Hides the ranged haste bonus value."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt den Fernkampftempobonus.",
-        ["frFR"] = false,
+        ["frFR"] = "Affiche/cache le bonus de hâte à distance.",
         ["zhCN"] = false,
         ["ruRU"] = "Показать/скрыть значение бонуса к скорости дальнего боя",
         ["esES"] = "Muestra/oculta el bonus de celeridad a distancia",
-        ["esMX"] = "Muestra/oculta el bonus de celeridad a distancia"
+        ["esMX"] = "Muestra/oculta el bonus de celeridad a distancia",
+        ["ptBR"] = "Mostra/oculta o bônus de aceleração de longo alcance"
     },
     ["Shows/Hides the ranged attack speed."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt das Fernkampf Angriffstempo.",
-        ["frFR"] = false,
+        ["frFR"] = "Affiche/cache la vitesse d'attaque à distance.",
         ["zhCN"] = false,
         ["ruRU"] = "Показать/скрыть значение скорости атаки",
         ["esES"] = "Muestra/oculta la velocidad de ataque a distancia",
-        ["esMX"] = "Muestra/oculta la velocidad de ataque a distancia"
+        ["esMX"] = "Muestra/oculta la velocidad de ataque a distancia",
+        ["ptBR"] = "Mostra/oculta a velocidade de ataque de longo alcance"
     },
     ["Ranged Hit"] = {
         ["enUS"] = true,
@@ -90,7 +98,8 @@ local rangedConfigTranslations = {
         ["zhCN"] = "远程命中",
         ["ruRU"] = "Меткость",
         ["esES"] = "Probabilidad de golpear",
-        ["esMX"] = "Probabilidad de golpear"
+        ["esMX"] = "Probabilidad de golpear",
+        ["ptBR"] = "Chance de acerto"
     },
     ["Ranged Hit Values"] = {
         ["enUS"] = true,
@@ -99,7 +108,8 @@ local rangedConfigTranslations = {
         ["zhCN"] = "远程命中率",
         ["ruRU"] = "Показатели меткости",
         ["esES"] = "Valor de probabilidad de golpear",
-        ["esMX"] = "Valor de probabilidad de golpear"
+        ["esMX"] = "Valor de probabilidad de golpear",
+        ["ptBR"] = "Valor de chance de acerto"
     },
     ["Shows/Hides all ranged hit chance."] = {
         ["enUS"] = true,
@@ -108,16 +118,18 @@ local rangedConfigTranslations = {
         ["zhCN"] = "显示/隐藏 所有远程命中",
         ["ruRU"] = "Показать/скрыть все показатели меткости",
         ["esES"] = "Muestra/oculta la probabilidad de golpear",
-        ["esMX"] = "Muestra/oculta la probabilidad de golpear"
+        ["esMX"] = "Muestra/oculta la probabilidad de golpear",
+        ["ptBR"] = "Mostra/oculta a chance de acerto"
     },
     ["Shows/Hides the ranged hit rating."] = {
-        ["frFR"] = false,
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt die Fernkampf Trefferwertung.",
+        ["frFR"] = "Affiche/cache le score de toucher à distance.",
         ["zhCN"] = false,
         ["ruRU"] = "Показать/скрыть значение рейтинга меткости",
         ["esES"] = "Muestra/oculta el índice de golpear",
-        ["esMX"] = "Muestra/oculta el índice de golpear"
+        ["esMX"] = "Muestra/oculta el índice de golpear",
+        ["ptBR"] = "Mostra/oculta a taxa de acerto"
     },
     ["Shows/Hides the ranged hit bonus."] = {
         ["enUS"] = true,
@@ -126,7 +138,8 @@ local rangedConfigTranslations = {
         ["zhCN"] = "显示/隐藏 远程命中率",
         ["ruRU"] = "Показать/скрыть значение бонуса к меткости",
         ["esES"] = "Muestra/oculta el bonus de golpear",
-        ["esMX"] = "Muestra/oculta el bonus de golpear"
+        ["esMX"] = "Muestra/oculta el bonus de golpear",
+        ["ptBR"] = "Mostra/oculta o bônus de acerto"
     },
     ["Shows/Hides the ranged miss chance against enemies on the same level."] = {
         ["enUS"] = true,
@@ -135,7 +148,8 @@ local rangedConfigTranslations = {
         ["zhCN"] = "显示/隐藏 针对同等级敌人的远程未命中率",
         ["ruRU"] = "Показать/скрыть значение шанса сопротивления вашим атакам цели вашего уровня",
         ["esES"] = "Muestra/oculta la probabilidad de fallo contra enemigos del mismo nivel",
-        ["esMX"] = "Muestra/oculta la probabilidad de fallo contra enemigos del mismo nivel"
+        ["esMX"] = "Muestra/oculta la probabilidad de fallo contra enemigos del mismo nivel",
+        ["ptBR"] = "Mostra/oculta a chance de erro contra inimigos do mesmo nível"
     },
     ["Shows/Hides the ranged miss chance against boss enemies (+3 Level)."] = {
         ["enUS"] = true,
@@ -144,7 +158,8 @@ local rangedConfigTranslations = {
         ["zhCN"] = "显示/隐藏 针对BOSS的远程未命中率 (+3 等级)。",
         ["ruRU"] = "Показать/скрыть значение шанса сопротивления вашим атакам цели на 3 уровня выше вашего",
         ["esES"] = "Muestra/oculta la probabilidad de fallo contra jefes (nivel +3)",
-        ["esMX"] = "Muestra/oculta la probabilidad de fallo contra jefes (nivel +3)"
+        ["esMX"] = "Muestra/oculta la probabilidad de fallo contra jefes (nivel +3)",
+        ["ptBR"] = "Mostra/oculta a chance de erro contra chefes (nível +3)
     },
 }
 
