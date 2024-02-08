@@ -10,7 +10,7 @@ local spellConfigTranslations = {
         ["ruRU"] = "Заклинания",
         ["esES"] = "Mostrar hechizos",
         ["esMX"] = "Mostrar hechizos",
-        ["ptBR"] = "Mostrar feitiços",
+        ["ptBR"] = "Mostrar feitiços"
     },
     ["Shows/Hides all spell stats."] = {
         ["enUS"] = true,
@@ -20,7 +20,7 @@ local spellConfigTranslations = {
         ["ruRU"] = "Показать/скрыть все характеристики заклинаний",
         ["esES"] = "Muestra/oculta todas estadísticas de hechizos",
         ["esMX"] = "Muestra/oculta todas estadísticas de hechizos",
-        ["ptBR"] = "Mostra/oculta todas as estatísticas de feitiços",
+        ["ptBR"] = "Mostra/oculta todas as estatísticas de feitiços"
     },
     ["Spell Crit"] = {
         ["enUS"] = true,
