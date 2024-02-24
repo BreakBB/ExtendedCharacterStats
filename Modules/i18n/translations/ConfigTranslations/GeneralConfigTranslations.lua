@@ -20,7 +20,7 @@ local generalConfigTranslations = {
         ["ruRU"] = "Показать/скрыть все основные характеристики",
         ["esES"] = "Muestra/oculta todas estadísticas generales",
         ["esMX"] = "Muestra/oculta todas estadísticas generales",
-        ["ptBR"] = "Mostra/oculta todas as estatísticas gerais"      
+        ["ptBR"] = "Mostra/oculta todas as estatísticas gerais" 
     },
     ["Show Movement Speed"] = {
         ["enUS"] = true,
@@ -30,7 +30,7 @@ local generalConfigTranslations = {
         ["ruRU"] = "Скорость движения",
         ["esES"] = "Mostrar velocidad de movimiento",
         ["esMX"] = "Mostrar velocidad de movimiento",
-        ["ptBR"] = "Mostrar velocidade de movimento" 
+        ["ptBR"] = "Mostrar velocidade de movimento"
     },
     ["Shows/Hides the movement speed value."] = {
         ["enUS"] = true,
@@ -40,7 +40,7 @@ local generalConfigTranslations = {
         ["ruRU"] = "Показать/скрыть значение скорости движения",
         ["esES"] = "Muestra/oculta el valor de velocidad de movimiento",
         ["esMX"] = "Muestra/oculta el valor de velocidad de movimiento",
-        ["ptBR"] = "Mostra/oculta o valor da velocidade de movimento"  
+        ["ptBR"] = "Mostra/oculta o valor da velocidade de movimento"
     },
 }
 
