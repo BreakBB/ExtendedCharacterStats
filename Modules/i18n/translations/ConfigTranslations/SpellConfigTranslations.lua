@@ -79,7 +79,7 @@ local spellConfigTranslations = {
         ["zhCN"] = false,
         ["ruRU"] = "Показать/скрыть значение бонуса к скорости заклинаний",
         ["esES"] = "Muestra/oculta el bonus de celeridad con hechizos",
-        ["esMX"] = "Muestra/oculta el bonus de celeridad con hechizos"
+        ["esMX"] = "Muestra/oculta el bonus de celeridad con hechizos",
         ["ptBR"] = "Mostra/oculta o bônus de de aceleração de feitiço"
     },
     ["Spell Hit Values"] = {
