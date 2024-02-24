@@ -20,7 +20,7 @@ local generalConfigTranslations = {
         ["ruRU"] = "Показать/скрыть все основные характеристики",
         ["esES"] = "Muestra/oculta todas estadísticas generales",
         ["esMX"] = "Muestra/oculta todas estadísticas generales",
-        ["ptBR"] = "Mostra/oculta todas as estatísticas gerais" 
+        ["ptBR"] = "Mostra/oculta todas as estatísticas gerais"
     },
     ["Show Movement Speed"] = {
         ["enUS"] = true,
