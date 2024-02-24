@@ -48,7 +48,7 @@ local rangedConfigTranslations = {
         ["zhCN"] = "远程暴击",
         ["ruRU"] = "Крит",
         ["esES"] = "Probabilidad de golpe crítico",
-        ["esMX"] = "Crítico a distancia,
+        ["esMX"] = "Crítico a distancia",
         ["ptBR"] = "Crítico de longo alcance"
     },
     ["Shows/Hides the ranged crit chance."] = {
