@@ -319,7 +319,7 @@ local spellConfigTranslations = {
         ["frFR"] = "Affiche/cache la puissance des soins.",
         ["zhCN"] = "显示/隐藏 法术治疗",
         ["ruRU"] = "Показать/скрыть значение дополнительного исцеления",
-        ["esES"] = "Muestra/oculta el valor de poder de sanación",
+        ["esES"] = "Muestra/oculta el valor de poder de curación",
         ["esMX"] = "Muestra/oculta el valor de poder de sanación",
         ["ptBR"] = "Mostra/oculta o valor de poder de cura"
     },
