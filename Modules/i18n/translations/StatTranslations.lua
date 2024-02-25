@@ -368,7 +368,7 @@ local statTranslations = {
         ["frFR"] = "Puissance des soins",
         ["zhCN"] = "法术治疗",
         ["ruRU"] = "Доп. исцеление",
-        ["esES"] = "Sanación",
+        ["esES"] = "Curación",
         ["esMX"] = "Sanación"
     },
     ["Arcane Damage"] = {
