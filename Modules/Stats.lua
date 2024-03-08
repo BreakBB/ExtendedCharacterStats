@@ -206,6 +206,10 @@ _CreateStatInfos = function()
     if category.display then
         category = category.hit
         _CreateStatInfo(category, category.rating, category.bonus, category.sameLevel, category.bossLevel)
+
+        category = profile.melee.glance
+        _CreateStatInfo(category, category.sameLevel, category.damageSameLevel, category.bossLevel,  category.damageBossLevel)
+
         category = profile.melee.attackSpeed
         _CreateStatInfo(category, category.mainHand, category.offHand)
     end

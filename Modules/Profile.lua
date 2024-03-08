@@ -65,6 +65,40 @@ local function GetDefaultStatsProfile()
                     statColor = colors.HIT_PRIMARY
                 },
             },
+            glance = {
+                display = true,
+                isSubGroup = true,
+                refName = "GlanceChanceHeader",
+                text = "Glancing Blow",
+                sameLevel = {
+                    display = true,
+                    refName = "GlanceHitChanceSameLevel",
+                    text = "Chance",
+                    textColor = colors.GRAY,
+                    statColor = colors.WHITE
+                },
+                bossLevel = {
+                    display = true,
+                    refName = "GlanceHitChanceBossLevel",
+                    text = "Chance (Lvl + 3)",
+                    textColor = colors.GRAY,
+                    statColor = colors.WHITE
+                },
+                damageSameLevel = {
+                    display = true,
+                    refName = "GlanceDamageSameLevel",
+                    text = "Damage",
+                    textColor = colors.GRAY,
+                    statColor = colors.WHITE
+                },
+                damageBossLevel = {
+                    display = true,
+                    refName = "GlanceDamageBossLevel",
+                    text = "Damage (Lvl + 3)",
+                    textColor = colors.GRAY,
+                    statColor = colors.WHITE
+                },
+            },
             attackPower = {
                 display = true,
                 refName = "MeleeAttackPower",
