@@ -188,8 +188,8 @@ local configTranslations = {
         ["frFR"] = "Largeur de fenêtre",
         ["zhCN"] = "窗口宽度",
         ["ruRU"] = "Ширина панели",
-        ["esES"] = "Anchura de ventana",
-        ["esMX"] = "Anchura de ventana",
+        ["esES"] = "Anchura de la ventana",
+        ["esMX"] = "Anchura de la ventana",
         ["ptBR"] = "Largura da janela"
     },
     ["Changes the width of the stats window"] = {
