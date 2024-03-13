@@ -309,7 +309,7 @@ local spellConfigTranslations = {
         ["zhCN"] = "显示/隐藏 暗影暴击",
         ["ruRU"] = "Показать/скрыть шанс критического урона заклинаниями тьмы",
         ["esES"] = "Muestra/oculta la probabilidad de asestar un golpe crítico con hechizos de las sombras",
-        ["esMX"] = "Muestra/oculta la probabilidad de asestar un golpe crítico con hechizos de las sombras"
+        ["esMX"] = "Muestra/oculta la probabilidad de asestar un golpe crítico con hechizos de las sombras",
         ["ptBR"] = "Mostra/oculta a chance de realizar acertos críticos com feitiços de sombra"
     },
 
