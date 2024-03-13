@@ -40,7 +40,7 @@ local meleeConfigTranslations = {
         ["ruRU"] = "Показать/скрыть значение силы атаки",
         ["esES"] = "Muestra/oculta el valor de poder de ataque cuerpo a cuerpo",
         ["esMX"] = "Muestra/oculta el valor de poder de ataque cuerpo a cuerpo",
-        ["esMX"] = "Mostra/oculta o valor de poder de ataque corpo a corpo"
+        ["ptBR"] = "Mostra/oculta o valor de poder de ataque corpo a corpo"
     },
     ["Melee Crit"] = {
         ["enUS"] = true,
