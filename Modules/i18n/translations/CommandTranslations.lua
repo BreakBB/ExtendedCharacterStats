@@ -10,6 +10,7 @@ local commandTranslations = {
         ["ruRU"] = "Доступные команды",
         ["esES"] = "Comandos disponibles",
         ["esMX"] = "Comandos disponibles",
+        ["ptBR"] = "Comandos disponíveis"
     },
     ["ECS %s"] = {
         ["enUS"] = true,
@@ -19,6 +20,7 @@ local commandTranslations = {
         ["ruRU"] = true,
         ["esES"] = true,
         ["esMX"] = true,
+        ["ptBR"] = true
     },
     ["/ecs toggle"] = {
         ["enUS"] = true,
@@ -28,15 +30,17 @@ local commandTranslations = {
         ["ruRU"] = true,
         ["esES"] = true,
         ["esMX"] = true,
+        ["ptBR"] = true
     },
     ["Toggles the visibility of the stats window"] = {
         ["enUS"] = true,
         ["deDE"] = "Öffnet/Schließt das Attributefenster",
-        ["frFR"] = "Affiche/Cache la fenêtre des statistiques ECS",
+        ["frFR"] = "Affiche/cache la fenêtre des statistiques ECS",
         ["zhCN"] = "切换统计信息窗口",
         ["ruRU"] = "Открыть окно характеристик",
-        ["esES"] = "Alterna la visibilidad de la ventana de estadísticas",
-        ["esMX"] = "Alterna la visibilidad de la ventana de estadísticas",
+        ["esES"] = "Muestra/oculta la ventana de estadísticas",
+        ["esMX"] = "Muestra/oculta la ventana de estadísticas",
+        ["ptBR"] = "Mostra/oculta a janela de estatísticas"
     },
     ["/ecs config"] = {
         ["enUS"] = true,
@@ -46,6 +50,7 @@ local commandTranslations = {
         ["ruRU"] = true,
         ["esES"] = true,
         ["esMX"] = true,
+        ["ptBR"] = true
     },
     ["Shows the configuration window"] = {
         ["enUS"] = true,
@@ -55,6 +60,7 @@ local commandTranslations = {
         ["ruRU"] = "Открыть окно настроек",
         ["esES"] = "Muestra la ventana de configuración",
         ["esMX"] = "Muestra la ventana de configuración",
+        ["ptBR"] = "Mostra a janela de configuração"
     },
 }
 
