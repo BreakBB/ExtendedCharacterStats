@@ -60,7 +60,7 @@ local manaConfigTranslations = {
         ["ruRU"] = "Показать/скрыть значение MP5 (восполнение маны каждые 5 сек вне боя) от баффов",
         ["esES"] = "Muestra/oculta el valor de MP5 de beneficios",
         ["esMX"] = "Muestra/oculta el valor de MP5 de beneficios",
-        ["esMX"] = "Mostra/oculta o valor de MP5 de bônus"
+        ["ptBR"] = "Mostra/oculta o valor de MP5 de bônus"
     },
     ["MP5 Spirit"] = {
         ["enUS"] = true,
