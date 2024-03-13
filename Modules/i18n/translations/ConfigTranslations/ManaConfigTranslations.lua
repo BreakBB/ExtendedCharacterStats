@@ -80,7 +80,7 @@ local manaConfigTranslations = {
         ["ruRU"] = "Показать/скрыть значение MP5 (восполнение маны каждые 5 сек вне боя) от духа",
         ["esES"] = "Muestra/oculta el valor de MP5 de espíritu",
         ["esMX"] = "Muestra/oculta el valor de MP5 de espíritu",
-        ["esMX"] = "Mostra/oculta o valor de MP5 de espírito",
+        ["ptBR"] = "Mostra/oculta o valor de MP5 de espírito",
     },
     ["MP5 Casting"] = {
         ["enUS"] = true,
