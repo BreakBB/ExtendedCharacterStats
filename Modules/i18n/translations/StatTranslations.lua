@@ -140,7 +140,7 @@ local statTranslations = {
         ["ruRU"] = "Сопрот. (+3 ур.)",
         ["esES"] = "Fallo (Niv. + 3)",
         ["esMX"] = "Fallo (Niv. + 3)",
-        ["ptBR"= = "Erro (Nív. + 3)"
+        ["ptBR"] = "Erro (Nív. + 3)"
     },
     ["Haste Rating"] = {
         ["enUS"] = true,
