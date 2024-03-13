@@ -159,7 +159,7 @@ local rangedConfigTranslations = {
         ["ruRU"] = "Показать/скрыть значение шанса сопротивления вашим атакам цели на 3 уровня выше вашего",
         ["esES"] = "Muestra/oculta la probabilidad de fallo contra jefes (nivel +3)",
         ["esMX"] = "Muestra/oculta la probabilidad de fallo contra jefes (nivel +3)",
-        ["ptBR"] = "Mostra/oculta a chance de erro contra chefes (nível +3)
+        ["ptBR"] = "Mostra/oculta a chance de erro contra chefes (nível +3)"
     },
 }
 
