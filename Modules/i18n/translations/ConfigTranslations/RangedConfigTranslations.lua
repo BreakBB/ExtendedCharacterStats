@@ -39,7 +39,7 @@ local rangedConfigTranslations = {
         ["ruRU"] = "Показать/скрыть значение силы атаки",
         ["esES"] = "Muestra/oculta el valor de poder de ataque a distancia",
         ["esMX"] = "Muestra/oculta el valor de poder de ataque a distancia",
-        ["esMX"] = "Mostra/oculta o valor de poder de ataque de longo alcance"
+        ["ptBR"] = "Mostra/oculta o valor de poder de ataque de longo alcance"
     },
     ["Ranged Crit"] = {
         ["enUS"] = true,
