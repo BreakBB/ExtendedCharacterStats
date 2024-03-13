@@ -30,7 +30,7 @@ local defenseConfigTranslations = {
         ["ruRU"] = "Показать/скрыть значение брони",
         ["esES"] = "Muestra/oculta el valor de armadura",
         ["esMX"] = "Muestra/oculta el valor de armadura",
-        ["esMX"] = "Mostra/oculta o valor de armadura"
+        ["ptBR"] = "Mostra/oculta o valor de armadura"
     },
     ["Shows/Hides the percentage of being crit immune."] = {
         ["enUS"] = true,
@@ -60,7 +60,7 @@ local defenseConfigTranslations = {
         ["ruRU"] = "Показать/скрыть значение защиты",
         ["esES"] = "Muestra/oculta el valor de defensa",
         ["esMX"] = "Muestra/oculta el valor de defensa",
-        ["esMX"] = "Mostra/oculta o valor de defesa"
+        ["ptBR"] = "Mostra/oculta o valor de defesa"
     },
     ["Shows/Hides the defense rating."] = {
         ["enUS"] = true,
@@ -90,7 +90,7 @@ local defenseConfigTranslations = {
         ["ruRU"] = "Показать/скрыть значение рейтинга блокирования",
         ["esES"] = "Muestra/oculta el valor de bloqueo",
         ["esMX"] = "Muestra/oculta el valor de bloqueo",
-        ["esMX"] = "Muestra/oculta o valor de bloqueio"
+        ["ptBR"] = "Muestra/oculta o valor de bloqueio"
     },
     ["Shows/Hides the parry chance."] = {
         ["enUS"] = true,
