@@ -260,7 +260,7 @@ function _Config:LoadMeleeSection()
                         type = "toggle",
                         order = 1,
                         name = function() return i18n("Glancing Blow Chance") end,
-                        desc = function() return i18n("Shows/Hides the melee miss chance against enemies on the same level.") end,
+                        desc = function() return i18n("Shows/Hides the glancing chance against enemies on same level.") end,
                         width = 1.5,
                         disabled = function()
                             return ((not ExtendedCharacterStats.profile.melee.display) or
@@ -276,7 +276,7 @@ function _Config:LoadMeleeSection()
                         type = "toggle",
                         order = 2,
                         name = function() return i18n("Glancing Blow Chance Boss") end,
-                        desc = function() return i18n("Shows/Hides the melee miss chance against boss enemies (+3 Level).") end,
+                        desc = function() return i18n("Shows/Hides the glancing chance against boss enemies (+3 Level).") end,
                         width = 1.5,
                         disabled = function()
                             return ((not ExtendedCharacterStats.profile.melee.display) or

@@ -237,7 +237,7 @@ local meleeConfigTranslations = {
         ["esMX"] = "Muestra/oculta la probabilidad de fallo contra jefes (nivel +3)"
     },
     ["Glancing Blow Chance"] = {
-        ["enUS"] = "Glancing Blow Chance",
+        ["enUS"] = true,
         ["deDE"] = "Streifschlagchance",
         ["frFR"] = "Chance de coup éraflant",
         ["zhCN"] = "偏斜打击几率",
@@ -255,7 +255,7 @@ local meleeConfigTranslations = {
         ["esMX"] = "Muestra/Oculta la probabilidad de golpe de refilón contra enemigos del mismo nivel."
     },
     ["Glancing Blow Chance Boss"] = {
-        ["enUS"] = "Glancing Blow Chance Boss",
+        ["enUS"] = true,
         ["deDE"] = "Streifschlagchance Boss",
         ["frFR"] = "Chance de coup éraflant sur le boss",
         ["zhCN"] = "对Boss的偏斜打击几率",
@@ -264,7 +264,7 @@ local meleeConfigTranslations = {
         ["esMX"] = "Probabilidad de golpe de refilón contra jefes"
     },
     ["Shows/Hides the glancing chance against boss enemies (+3 Level)."] = {
-        ["enUS"] = "Shows/Hides the glancing chance against boss enemies (+3 Level).",
+        ["enUS"] = true,
         ["deDE"] = "Zeigt/Verbirgt die Streifschlagchance gegenüber Bossgegnern (+3 Stufen).",
         ["frFR"] = "Affiche/Masque la chance de coup éraflant contre les boss (+3 Niveaux).",
         ["zhCN"] = "显示/隐藏对Boss敌人的偏斜打击几率（+3级）。",
@@ -273,7 +273,7 @@ local meleeConfigTranslations = {
         ["esMX"] = "Muestra/Oculta la probabilidad de golpe de refilón contra jefes (+3 Niveles)."
     },
     ["Glancing Blow Damage"] = {
-        ["enUS"] = "Glancing Blow Damage",
+        ["enUS"] = true,
         ["deDE"] = "Streifschlagschaden",
         ["frFR"] = "Dégâts du coup éraflant",
         ["zhCN"] = "偏斜打击伤害",
@@ -291,7 +291,7 @@ local meleeConfigTranslations = {
         ["esMX"] = "Muestra/Oculta el daño de golpe de refilón contra enemigos del mismo nivel"
     },
     ["Glancing Blow Damage Boss"] = {
-        ["enUS"] = "Glancing Blow Damage Boss",
+        ["enUS"] = true,
         ["deDE"] = "Streifschlagschaden Boss",
         ["frFR"] = "Dégâts du coup éraflant sur le boss",
         ["zhCN"] = "对Boss的偏斜打击伤害",
@@ -309,7 +309,7 @@ local meleeConfigTranslations = {
         ["esMX"] = "Muestra/Oculta el daño de golpe de refilón contra jefes (+3 Niveles)."
     },
     ["Melee Glance Values"] = {
-        ["enUS"] = "Melee Glance Values",
+        ["enUS"] = true,
         ["deDE"] = "Nahkampf-Streifwerte",
         ["frFR"] = "Valeurs de coup éraflant en mêlée",
         ["zhCN"] = "近战偏斜值",
@@ -318,7 +318,7 @@ local meleeConfigTranslations = {
         ["esMX"] = "Valores de refilón en combate cuerpo a cuerpo"
     },
     ["Shows/Hides all glancing blow stats"] = {
-        ["enUS"] = "Shows/Hides all glancing blow stats",
+        ["enUS"] = true,
         ["deDE"] = "Zeigt/Verbirgt alle Streifschlagstatistiken",
         ["frFR"] = "Affiche/Masque toutes les statistiques de coups éraflants",
         ["zhCN"] = "显示/隐藏所有偏斜打击统计",

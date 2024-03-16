@@ -208,8 +208,7 @@ function Data:GlanceDamageByLevel(level)
     local playerLevel = UnitLevel("player")
     local enemyDefenseValue = (playerLevel + level) * 5
 
-    local glancePenalty
-    glancePenalty = DataUtils:GetGlancingDamage(mainBase + mainMod, enemyDefenseValue)
+    local glancePenalty = DataUtils:GetGlancingDamage(mainBase + mainMod, enemyDefenseValue)
 
     return DataUtils:Round(glancePenalty*100, 2) .. "%"
 end
