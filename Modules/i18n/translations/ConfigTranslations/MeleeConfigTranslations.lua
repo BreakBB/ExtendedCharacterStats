@@ -246,7 +246,7 @@ local meleeConfigTranslations = {
         ["esMX"] = "Probabilidad de golpe de refilón"
     },
     ["Shows/Hides the glancing chance against enemies on same level."] = {
-        ["enUS"] = "Shows/Hides the glancing chance against enemies on same level.",
+        ["enUS"] = true,
         ["deDE"] = "Zeigt/Verbirgt die Streifschlagchance gegenüber Gegnern auf gleichem Niveau.",
         ["frFR"] = "Affiche/Masque la chance de coup éraflant contre les ennemis du même niveau.",
         ["zhCN"] = "显示/隐藏与同等级敌人的偏斜打击几率。",
@@ -282,7 +282,7 @@ local meleeConfigTranslations = {
         ["esMX"] = "Daño de golpe de refilón"
     },
     ["Shows/Hides the glancing damage against enemies on same level"] = {
-        ["enUS"] = "Shows/Hides the glancing damage against enemies on same level",
+        ["enUS"] = true,
         ["deDE"] = "Zeigt/Verbirgt den Streifschlagschaden gegenüber Gegnern auf gleichem Niveau",
         ["frFR"] = "Affiche/Masque les dégâts du coup éraflant contre les ennemis du même niveau",
         ["zhCN"] = "显示/隐藏对同等级敌人的偏斜打击伤害",
@@ -300,7 +300,7 @@ local meleeConfigTranslations = {
         ["esMX"] = "Daño de golpe de refilón contra jefes"
     },
     ["Shows/Hides the glancing damage against boss enemies (+3 Level)."] = {
-        ["enUS"] = "Shows/Hides the glancing damage against boss enemies (+3 Level).",
+        ["enUS"] = true,
         ["deDE"] = "Zeigt/Verbirgt den Streifschlagschaden gegenüber Bossgegnern (+3 Stufen).",
         ["frFR"] = "Affiche/Masque les dégâts du coup éraflant contre les boss (+3 Niveaux).",
         ["zhCN"] = "显示/隐藏对Boss敌人的偏斜打击伤害（+3级）。",

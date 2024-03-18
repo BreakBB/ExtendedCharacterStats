@@ -243,6 +243,9 @@ function _Config:LoadMeleeSection()
                 name = function() return i18n("Glancing Blow") end,
                 desc = function() return i18n("Shows/Hides all glancing blow stats") end,
                 width = 1.5,
+                hidden = function()
+                    return (not ECS.IsClassic)
+                end,
                 disabled = function() return (not ExtendedCharacterStats.profile.melee.display); end,
                 get = function () return ExtendedCharacterStats.profile.melee.glance.display; end,
                 set = function (_, value)
@@ -255,6 +258,9 @@ function _Config:LoadMeleeSection()
                 order = 6,
                 inline = true,
                 name = function() return i18n("Melee Glance Values") end,
+                hidden = function()
+                    return (not ECS.IsClassic)
+                end,
                 args = {
                     meleeGlance = {
                         type = "toggle",
@@ -292,7 +298,7 @@ function _Config:LoadMeleeSection()
                         type = "toggle",
                         order = 3,
                         name = function() return i18n("Glancing Blow Damage") end,
-                        desc = function() return i18n("Shows/Hides the glancing dmg mod % against enemies on the same level.") end,
+                        desc = function() return i18n("Shows/Hides the damage reduction against enemies on the same level.") end,
                         width = 1.5,
                         disabled = function()
                             return ((not ExtendedCharacterStats.profile.melee.display) or
@@ -307,8 +313,8 @@ function _Config:LoadMeleeSection()
                     meleeGlanceDamageBoss = {
                         type = "toggle",
                         order = 4,
-                        name = function() return i18n("Glancing Blow Damage") end,
-                        desc = function() return i18n("Shows/Hides the glancing dmg mod % against enemies on the same level.") end,
+                        name = function() return i18n("Glancing Blow Damage Boss") end,
+                        desc = function() return i18n("Shows/Hides the glancing damage against boss enemies (+3 Level).") end,
                         width = 1.5,
                         disabled = function()
                             return ((not ExtendedCharacterStats.profile.melee.display) or

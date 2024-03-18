@@ -207,8 +207,10 @@ _CreateStatInfos = function()
         category = category.hit
         _CreateStatInfo(category, category.rating, category.bonus, category.sameLevel, category.bossLevel)
 
-        category = profile.melee.glance
-        _CreateStatInfo(category, category.sameLevel, category.damageSameLevel, category.bossLevel,  category.damageBossLevel)
+        if(ECS.IsClassic) then
+            category = profile.melee.glance
+            _CreateStatInfo(category, category.sameLevel, category.damageSameLevel, category.bossLevel,  category.damageBossLevel)
+        end
 
         category = profile.melee.attackSpeed
         _CreateStatInfo(category, category.mainHand, category.offHand)
