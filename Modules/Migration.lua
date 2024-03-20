@@ -1,18 +1,18 @@
 ---@class Migration
 local Migration = ECSLoader:CreateModule("Migration")
 
----@type Profile
-local Profile = ECSLoader:ImportModule("Profile")
+---@type Settings
+local Settings = ECSLoader:ImportModule("Settings")
 
 ---@param profileVersion number
 function Migration:ToLatestProfileVersion(profileVersion)
     if profileVersion < 11 then
-        ---@class ECSProfile
-        Profile:Reset()
+        ---@class ECSSettings
+        Settings:Reset()
         return
     end
 
-    local defaultProfile = Profile:GetDefaultProfile()
+    local defaultProfile = Settings:GetDefaults()
     if profileVersion < 12 then
         ExtendedCharacterStats.profile.melee.expertiseRating = defaultProfile.profile.melee.expertiseRating
     end

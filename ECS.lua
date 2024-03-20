@@ -1,5 +1,5 @@
 ---@class ECS
-ECS = {...}
+ECS = LibStub("AceAddon-3.0"):NewAddon("Questie")
 
 --- Addon is running on Classic "Vanilla" client: Means Classic Era and its seasons like SoM
 ---@type boolean
@@ -19,23 +19,22 @@ ECS.IsSoD = ECS.IsClassic and C_Seasons.HasActiveSeason() and (C_Seasons.GetActi
 
 ---@type Init
 local Init = ECSLoader:ImportModule("Init")
+---@type Settings
+local Settings = ECSLoader:ImportModule("Settings")
 
+function ECS:OnInitialize()
+    -- This has to happen OnInitialize to be available asap
+    self.db = LibStub("AceDB-3.0"):New("ECSSettings", Settings:GetDefaults(), true)
 
-local loadingFrame = CreateFrame("Frame")
-ECS.loadingFrame = loadingFrame
+    -- These events basically all mean the same: The active profile changed.
+    self.db.RegisterCallback(self, "OnProfileChanged", "RefreshConfig")
+    self.db.RegisterCallback(self, "OnProfileCopied", "RefreshConfig")
+    self.db.RegisterCallback(self, "OnProfileReset", "RefreshConfig")
+end
 
-loadingFrame:RegisterEvent("ADDON_LOADED") -- Triggers whenever all non-lod addons has been loaded, this will initialize the addon
-
-loadingFrame:SetScript("OnEvent", function(self, event, arg1, ...)
-    if event == "ADDON_LOADED" and arg1 == "ExtendedCharacterStats" then
-        Init:OnAddonLoaded()
-        self:RegisterEvent("PLAYER_LOGIN") -- Triggers whenever the player has logged in and all addons are loaded
-    end
-
-    if event == "PLAYER_LOGIN" then
-        Init:OnPlayerLogin()
-    end
-end)
+function ECS:OnAddonLoaded()
+    Init:OnAddonLoaded()
+end
 
 ---@param message string
 function ECS:Error(message)

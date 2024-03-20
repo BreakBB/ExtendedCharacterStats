@@ -6,7 +6,7 @@
 ## Notes-esMX: Muestra una ventana adicional con más información sobre las estadísticas de tus personajes (Crítico/Golpe/Bloqueo, etc.)
 ## Notes-esES: Muestra una ventana adicional con más información sobre las estadísticas de tus personajes (Crítico/Golpe/Bloqueo, etc.)
 ## OptionalDeps: Ace3, CallbackHandler-1.0, LibStub
-## SavedVariablesPerCharacter: ExtendedCharacterStats
+## SavedVariables: ECSSettings
 ## DefaultState: enabled
 ## X-Curse-Project-ID: 334877
 ## X-Wago-ID: e56nwDK9
@@ -23,7 +23,7 @@ Modules\Init.lua
 Modules\Utils.lua
 Modules\Stats.lua
 Modules\GearInfos.lua
-Modules\Profile.lua
+Modules\Settings.lua
 Modules\SlashCommands.lua
 
 # Data
