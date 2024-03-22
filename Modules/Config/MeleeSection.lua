@@ -314,7 +314,7 @@ function _Config:LoadMeleeSection()
                         type = "toggle",
                         order = 4,
                         name = function() return i18n("Glancing Blow Damage Boss") end,
-                        desc = function() return i18n("Shows/Hides the glancing damage against boss enemies (+3 Level).") end,
+                        desc = function() return i18n("Shows/Hides the damage reduction against enemies boss enemies (+3 Level).") end,
                         width = 1.5,
                         disabled = function()
                             return ((not ExtendedCharacterStats.profile.melee.display) or
