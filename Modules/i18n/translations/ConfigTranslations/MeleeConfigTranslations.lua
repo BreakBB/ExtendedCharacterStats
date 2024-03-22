@@ -281,7 +281,7 @@ local meleeConfigTranslations = {
         ["esES"] = "Daño de golpe de refilón",
         ["esMX"] = "Daño de golpe de refilón"
     },
-    ["Shows/Hides the glancing damage against enemies on same level"] = {
+    ["Shows/Hides the damage reduction against enemies on the same level."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Verbirgt den Streifschlagschaden gegenüber Gegnern auf gleichem Niveau",
         ["frFR"] = "Affiche/Masque les dégâts du coup éraflant contre les ennemis du même niveau",
