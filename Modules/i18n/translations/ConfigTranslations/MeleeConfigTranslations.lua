@@ -299,7 +299,7 @@ local meleeConfigTranslations = {
         ["esES"] = "Daño de golpe de refilón contra jefes",
         ["esMX"] = "Daño de golpe de refilón contra jefes"
     },
-    ["Shows/Hides the damage reduction against enemies boss enemies (+3 Level)."] = {
+    ["Shows/Hides the damage reduction against boss enemies (+3 Level)."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Verbirgt den Streifschlagschaden gegenüber Bossgegnern (+3 Stufen).",
         ["frFR"] = "Affiche/Masque les dégâts du coup éraflant contre les boss (+3 Niveaux).",
