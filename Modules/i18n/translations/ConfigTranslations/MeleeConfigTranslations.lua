@@ -262,6 +262,96 @@ local meleeConfigTranslations = {
         ["esMX"] = "Muestra/oculta la probabilidad de fallo contra jefes (nivel +3)",
         ["ptBR"] = "Mostra/oculta a chance de erro contra chefes (nível +3)."
     },
+    ["Glancing Blow Chance"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Streifschlagchance",
+        ["frFR"] = "Chance de coup éraflant",
+        ["zhCN"] = "偏斜打击几率",
+        ["ruRU"] = "Шанс скользящего удара",
+        ["esES"] = "Probabilidad de golpe de refilón",
+        ["esMX"] = "Probabilidad de golpe de refilón"
+    },
+    ["Shows/Hides the glancing chance against enemies on same level."] = {
+        ["enUS"] = true,
+        ["deDE"] = "Zeigt/Verbirgt die Streifschlagchance gegenüber Gegnern auf gleichem Niveau.",
+        ["frFR"] = "Affiche/Masque la chance de coup éraflant contre les ennemis du même niveau.",
+        ["zhCN"] = "显示/隐藏与同等级敌人的偏斜打击几率。",
+        ["ruRU"] = "Показывает/Скрывает шанс скользящего удара против врагов того же уровня.",
+        ["esES"] = "Muestra/Oculta la probabilidad de golpe de refilón contra enemigos del mismo nivel.",
+        ["esMX"] = "Muestra/Oculta la probabilidad de golpe de refilón contra enemigos del mismo nivel."
+    },
+    ["Glancing Blow Chance Boss"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Streifschlagchance Boss",
+        ["frFR"] = "Chance de coup éraflant sur le boss",
+        ["zhCN"] = "对Boss的偏斜打击几率",
+        ["ruRU"] = "Шанс скользящего удара по боссу",
+        ["esES"] = "Probabilidad de golpe de refilón contra jefes",
+        ["esMX"] = "Probabilidad de golpe de refilón contra jefes"
+    },
+    ["Shows/Hides the glancing chance against boss enemies (+3 Level)."] = {
+        ["enUS"] = true,
+        ["deDE"] = "Zeigt/Verbirgt die Streifschlagchance gegenüber Bossgegnern (+3 Stufen).",
+        ["frFR"] = "Affiche/Masque la chance de coup éraflant contre les boss (+3 Niveaux).",
+        ["zhCN"] = "显示/隐藏对Boss敌人的偏斜打击几率（+3级）。",
+        ["ruRU"] = "Показывает/Скрывает шанс скользящего удара против боссов (+3 Уровня).",
+        ["esES"] = "Muestra/Oculta la probabilidad de golpe de refilón contra jefes (+3 Niveles).",
+        ["esMX"] = "Muestra/Oculta la probabilidad de golpe de refilón contra jefes (+3 Niveles)."
+    },
+    ["Glancing Blow Damage"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Streifschlagschaden",
+        ["frFR"] = "Dégâts du coup éraflant",
+        ["zhCN"] = "偏斜打击伤害",
+        ["ruRU"] = "Урон от скользящего удара",
+        ["esES"] = "Daño de golpe de refilón",
+        ["esMX"] = "Daño de golpe de refilón"
+    },
+    ["Shows/Hides the damage reduction against enemies on the same level."] = {
+        ["enUS"] = true,
+        ["deDE"] = "Zeigt/Verbirgt den Streifschlagschaden gegenüber Gegnern auf gleichem Niveau",
+        ["frFR"] = "Affiche/Masque les dégâts du coup éraflant contre les ennemis du même niveau",
+        ["zhCN"] = "显示/隐藏对同等级敌人的偏斜打击伤害",
+        ["ruRU"] = "Показывает/Скрывает урон от скользящего удара против врагов того же уровня",
+        ["esES"] = "Muestra/Oculta el daño de golpe de refilón contra enemigos del mismo nivel",
+        ["esMX"] = "Muestra/Oculta el daño de golpe de refilón contra enemigos del mismo nivel"
+    },
+    ["Glancing Blow Damage Boss"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Streifschlagschaden Boss",
+        ["frFR"] = "Dégâts du coup éraflant sur le boss",
+        ["zhCN"] = "对Boss的偏斜打击伤害",
+        ["ruRU"] = "Урон от скользящего удара по боссу",
+        ["esES"] = "Daño de golpe de refilón contra jefes",
+        ["esMX"] = "Daño de golpe de refilón contra jefes"
+    },
+    ["Shows/Hides the damage reduction against boss enemies (+3 Level)."] = {
+        ["enUS"] = true,
+        ["deDE"] = "Zeigt/Verbirgt den Streifschlagschaden gegenüber Bossgegnern (+3 Stufen).",
+        ["frFR"] = "Affiche/Masque les dégâts du coup éraflant contre les boss (+3 Niveaux).",
+        ["zhCN"] = "显示/隐藏对Boss敌人的偏斜打击伤害（+3级）。",
+        ["ruRU"] = "Показывает/Скрывает урон от скользящего удара против боссов (+3 Уровня).",
+        ["esES"] = "Muestra/Oculta el daño de golpe de refilón contra jefes (+3 Niveles).",
+        ["esMX"] = "Muestra/Oculta el daño de golpe de refilón contra jefes (+3 Niveles)."
+    },
+    ["Melee Glance Values"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Nahkampf-Streifwerte",
+        ["frFR"] = "Valeurs de coup éraflant en mêlée",
+        ["zhCN"] = "近战偏斜值",
+        ["ruRU"] = "Значения скользящих ударов в ближнем бою",
+        ["esES"] = "Valores de refilón en combate cuerpo a cuerpo",
+        ["esMX"] = "Valores de refilón en combate cuerpo a cuerpo"
+    },
+    ["Shows/Hides all glancing blow stats"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Zeigt/Verbirgt alle Streifschlagstatistiken",
+        ["frFR"] = "Affiche/Masque toutes les statistiques de coups éraflants",
+        ["zhCN"] = "显示/隐藏所有偏斜打击统计",
+        ["ruRU"] = "Показывает/Скрывает все статистики скользящих ударов",
+        ["esES"] = "Muestra/Oculta todas las estadísticas de golpes de refilón",
+        ["esMX"] = "Muestra/Oculta todas las estadísticas de golpes de refilón"
+    }
 }
 
 for k, v in pairs(meleeConfigTranslations) do
