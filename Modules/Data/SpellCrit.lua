@@ -38,7 +38,7 @@ function _SpellCrit:GetSpellCritFromBuffs(school)
             mod = mod + 3 -- 3% from Totem of Wrath
         end
 
-        if spellId == 24907 then
+        if ECS.IsWotlk and spellId == 24907 then
             mod = mod + 5 -- 5% from Moonkin Aura
         end
 
