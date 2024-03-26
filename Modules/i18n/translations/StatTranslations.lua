@@ -164,7 +164,7 @@ local statTranslations = {
     },
     ["Chance (Lvl + 3)"] = {
         ["enUS"] = true,
-        ["deDE"] = true",
+        ["deDE"] = true,
         ["frFR"] = "Chance (Niv. + 3)",
         ["zhCN"] = "几率（等级 + 3）",
         ["ruRU"] = "Шанс (+3 ур.)",
