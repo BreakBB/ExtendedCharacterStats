@@ -560,6 +560,7 @@ local statTranslations = {
         ["ruRU"] = "Крит (природа)",
         ["esES"] = "Crítico de la naturaleza",
         ["esMX"] = "Crítico de la naturaleza"
+        ["ptBR"] = "Crítico de natureza"
     },
     ["Physical Damage"] = {
         ["enUS"] = true,
