@@ -45,12 +45,12 @@ local configTranslations = {
     ["Hide ECS when opening character tab"] = {
         ["enUS"] = true,
         ["deDE"] = "Verstecke das ECS Fenster beim Öffnen des Charakterfensters",
-        ["frFR"] = "Cache ECS quand la fenêtre du personnage est ouverte",
+        ["frFR"] = "Cacher ECS quand la fenêtre du personnage est ouverte",
         ["zhCN"] = "显示ECS切换按键",
         ["ruRU"] = "Скрывать ECS",
-        ["esES"] = "Oculta ECS cuando abriendo la información del personaje",
-        ["esMX"] = "Oculta ECS cuando abriendo la información del personaje",
-        ["ptBR"] = "Oculta ECS ao abrir as informações do personagem"
+        ["esES"] = "Ocultar ECS al abrir la información del personaje",
+        ["esMX"] = "Ocultar ECS al abrir la información del personaje",
+        ["ptBR"] = "Ocultar ECS ao abrir as informações do personagem"
     },
     ["Hides the stats windows when opening the character tab."] = {
         ["enUS"] = true,
