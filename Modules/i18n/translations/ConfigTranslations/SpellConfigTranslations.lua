@@ -50,7 +50,7 @@ local spellConfigTranslations = {
         ["ruRU"] = "Проник. способ.",
         ["esES"] = "Penetración de hechizos",
         ["esMX"] = "Penetración de hechizos",
-        ["ptBR"] = "Penetração de Feitiço"
+        ["ptBR"] = "Penetração de feitiço"
     },
     ["Shows/Hides the spell penetration value."] = {
         ["enUS"] = true,
