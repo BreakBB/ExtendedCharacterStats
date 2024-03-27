@@ -145,12 +145,12 @@ local statTranslations = {
     ["Glancing Blow"] = {
         ["enUS"] = true,
         ["deDE"] = "Streifschlag",
-        ["frFR"] = "Coup dévié",
+        ["frFR"] = "Coup d'éraflure",
         ["zhCN"] = "偏斜打击",
         ["ruRU"] = "Скользящий удар",
         ["esES"] = "Golpe de refilón",
         ["esMX"] = "Golpe de refilón",
-        ["ptBR"] = "Pancada de Relance",
+        ["ptBR"] = "Pancada de relance",
     },
     ["Chance"] = {
         ["enUS"] = true,
