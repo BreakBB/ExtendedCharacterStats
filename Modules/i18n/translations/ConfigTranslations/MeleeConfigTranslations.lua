@@ -270,7 +270,7 @@ local meleeConfigTranslations = {
         ["ruRU"] = "Шанс скользящего удара",
         ["esES"] = "Probabilidad de golpe de refilón",
         ["esMX"] = "Probabilidad de golpe de refilón",
-        ["ptBR"] = "Chance de Pancada de Relance"
+        ["ptBR"] = "Chance de pancada de relance"
     },
     ["Shows/Hides the glancing chance against enemies on same level."] = {
         ["enUS"] = true,
@@ -280,7 +280,7 @@ local meleeConfigTranslations = {
         ["ruRU"] = "Показывает/Скрывает шанс скользящего удара против врагов того же уровня.",
         ["esES"] = "Muestra/oculta la probabilidad de golpe de refilón contra enemigos del mismo nivel.",
         ["esMX"] = "Muestra/oculta la probabilidad de golpe de refilón contra enemigos del mismo nivel.",
-        ["ptBR"] = "Mostra/oculta a chance de Pancada de Relance contra inimigos do mesmo nível."
+        ["ptBR"] = "Mostra/oculta a chance de pancada de relance contra inimigos do mesmo nível."
     },
     ["Glancing Blow Chance Boss"] = {
         ["enUS"] = true,
@@ -290,7 +290,7 @@ local meleeConfigTranslations = {
         ["ruRU"] = "Шанс скользящего удара по боссу",
         ["esES"] = "Probabilidad de golpe de refilón (Jefe)",
         ["esMX"] = "Probabilidad de golpe de refilón (Jefe)",
-        ["ptBR"] = "Chance de Pancada de Relance (Chefe)"
+        ["ptBR"] = "Chance de pancada de relance (Chefe)"
     },
     ["Shows/Hides the glancing chance against boss enemies (+3 Level)."] = {
         ["enUS"] = true,
@@ -300,7 +300,7 @@ local meleeConfigTranslations = {
         ["ruRU"] = "Показывает/Скрывает шанс скользящего удара против боссов (+3 Уровня).",
         ["esES"] = "Muestra/oculta la probabilidad de golpe de refilón contra jefes (nivel +3)",
         ["esMX"] = "Muestra/oculta la probabilidad de golpe de refilón contra jefes (nivel +3)",
-        ["ptBR"] = "Mostra/oculta a chance de Pancada de Relance contra chefes (nível +3)."
+        ["ptBR"] = "Mostra/oculta a chance de pancada de relance contra chefes (nível +3)."
     },
     ["Glancing Blow Damage"] = {
         ["enUS"] = true,
@@ -310,7 +310,7 @@ local meleeConfigTranslations = {
         ["ruRU"] = "Урон от скользящего удара",
         ["esES"] = "Daño de golpe de refilón",
         ["esMX"] = "Daño de golpe de refilón",
-        ["ptBR"] = "Dano de Pancada de Relance"
+        ["ptBR"] = "Dano de pancada de relance"
     },
     ["Shows/Hides the damage reduction against enemies on the same level."] = {
         ["enUS"] = true,
@@ -320,7 +320,7 @@ local meleeConfigTranslations = {
         ["ruRU"] = "Показывает/Скрывает урон от скользящего удара против врагов того же уровня",
         ["esES"] = "Muestra/oculta el daño de golpe de refilón contra enemigos del mismo nivel.",
         ["esMX"] = "Muestra/oculta el daño de golpe de refilón contra enemigos del mismo nivel.",
-        ["ptBR"] = "Mostra/oculta o dano de Pancada de Relance contra inimigos do mesmo nível."
+        ["ptBR"] = "Mostra/oculta o dano de pancada de relance contra inimigos do mesmo nível."
     },
     ["Glancing Blow Damage Boss"] = {
         ["enUS"] = true,
@@ -330,7 +330,7 @@ local meleeConfigTranslations = {
         ["ruRU"] = "Урон от скользящего удара по боссу",
         ["esES"] = "Daño de golpe de refilón (Jefe)",
         ["esMX"] = "Daño de golpe de refilón (Jefe)",
-        ["ptBR"] = "Dano de Pancada de Relance (Chefe)"
+        ["ptBR"] = "Dano de pancada de relance (Chefe)"
     },
     ["Shows/Hides the damage reduction against boss enemies (+3 Level)."] = {
         ["enUS"] = true,
@@ -340,7 +340,7 @@ local meleeConfigTranslations = {
         ["ruRU"] = "Показывает/Скрывает урон от скользящего удара против боссов (+3 Уровня).",
         ["esES"] = "Muestra/oculta el daño de golpe de refilón contra jefes (nivel +3)",
         ["esMX"] = "Muestra/oculta el daño de golpe de refilón contra jefes (nivel +3)",
-        ["ptBR"] = "Mostra/oculta o dano de Pancada de Relance contra chefes (nível +3)."
+        ["ptBR"] = "Mostra/oculta o dano de pancada de relance contra chefes (nível +3)."
     },
     ["Melee Glance Values"] = {
         ["enUS"] = true,
@@ -350,7 +350,7 @@ local meleeConfigTranslations = {
         ["ruRU"] = "Значения скользящих ударов в ближнем бою",
         ["esES"] = "Valores de refilón cuerpo a cuerpo",
         ["esMX"] = "Valores de refilón cuerpo a cuerpo",
-        ["ptBR"] = "Valores de Relance corpo a corpo"
+        ["ptBR"] = "Valores de relance corpo a corpo"
     },
     ["Shows/Hides all glancing blow stats"] = {
         ["enUS"] = true,
@@ -360,7 +360,7 @@ local meleeConfigTranslations = {
         ["ruRU"] = "Показывает/Скрывает все статистики скользящих ударов",
         ["esES"] = "Muestra/oculta todas las estadísticas de golpes de refilón",
         ["esMX"] = "Muestra/oculta todas las estadísticas de golpes de refilón",
-        ["ptBR"] = "Mostra/oculta todas as estatísticas de Pancada de Relance"
+        ["ptBR"] = "Mostra/oculta todas as estatísticas de pancada de relance"
     }
 }
 
