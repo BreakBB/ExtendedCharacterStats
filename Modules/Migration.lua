@@ -45,4 +45,7 @@ function Migration:ToLatestProfileVersion(profileVersion)
     if profileVersion < 18 then
         ExtendedCharacterStats.profile.defense.defenseRating.isTbcOnly = true
     end
+    if profileVersion < 19 then
+        ExtendedCharacterStats.profile.melee.glance = defaultProfile.profile.melee.glance
+    end
 end
