@@ -559,7 +559,7 @@ local statTranslations = {
         ["zhCN"] = "自然暴击",
         ["ruRU"] = "Крит (природа)",
         ["esES"] = "Crítico de la naturaleza",
-        ["esMX"] = "Crítico de la naturaleza"
+        ["esMX"] = "Crítico de la naturaleza",
         ["ptBR"] = "Crítico de natureza"
     },
     ["Physical Damage"] = {
