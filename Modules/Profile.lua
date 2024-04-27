@@ -5,7 +5,7 @@ local Profile = ECSLoader:CreateModule("Profile")
 local Utils = ECSLoader:ImportModule("Utils")
 
 function Profile:GetProfileVersion()
-    return 18
+    return 19
 end
 
 ---@return ECSProfile
@@ -63,6 +63,40 @@ local function GetDefaultStatsProfile()
                     text = "Miss (Lvl + 3)",
                     textColor = colors.HIT_SECONDARY,
                     statColor = colors.HIT_PRIMARY
+                },
+            },
+            glance = {
+                display = true,
+                isSubGroup = true,
+                refName = "GlanceChanceHeader",
+                text = "Glancing Blow",
+                sameLevel = {
+                    display = true,
+                    refName = "GlanceHitChanceSameLevel",
+                    text = "Chance",
+                    textColor = colors.GRAY,
+                    statColor = colors.WHITE
+                },
+                bossLevel = {
+                    display = true,
+                    refName = "GlanceHitChanceBossLevel",
+                    text = "Chance (Lvl + 3)",
+                    textColor = colors.GRAY,
+                    statColor = colors.WHITE
+                },
+                damageSameLevel = {
+                    display = true,
+                    refName = "GlanceDamageSameLevel",
+                    text = "Damage",
+                    textColor = colors.GRAY,
+                    statColor = colors.WHITE
+                },
+                damageBossLevel = {
+                    display = true,
+                    refName = "GlanceDamageBossLevel",
+                    text = "Damage (Lvl + 3)",
+                    textColor = colors.GRAY,
+                    statColor = colors.WHITE
                 },
             },
             attackPower = {

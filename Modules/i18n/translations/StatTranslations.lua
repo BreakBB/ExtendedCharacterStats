@@ -140,7 +140,52 @@ local statTranslations = {
         ["ruRU"] = "Сопрот. (+3 ур.)",
         ["esES"] = "Fallo (Niv. + 3)",
         ["esMX"] = "Fallo (Niv. + 3)",
-        ["ptBR"] = "Erro (Nív. + 3)"
+        ["ptBR"] = "Erro (Nív. + 3)",
+    },
+    ["Glancing Blow"] = {
+        ["enUS"] = "Glancing Blow",
+        ["deDE"] = "Streifschlag",
+        ["frFR"] = "Coup éraflant",
+        ["zhCN"] = "偏斜打击",
+        ["ruRU"] = "Скользящий удар",
+        ["esES"] = "Golpe de refilón",
+        ["esMX"] = "Golpe de refilón"
+    },
+    ["Chance"] = {
+        ["enUS"] = "Chance",
+        ["deDE"] = "Chance",
+        ["frFR"] = "Chance",
+        ["zhCN"] = "几率",
+        ["ruRU"] = "Шанс",
+        ["esES"] = "Probabilidad",
+        ["esMX"] = "Probabilidad"
+    },
+    ["Chance (Lvl + 3)"] = {
+        ["enUS"] = "Chance (Lvl + 3)",
+        ["deDE"] = "Chance (Lvl + 3)",
+        ["frFR"] = "Chance (Lvl + 3)",
+        ["zhCN"] = "几率（等级 + 3）",
+        ["ruRU"] = "Шанс (Lvl + 3)",
+        ["esES"] = "Probabilidad (Lvl + 3)",
+        ["esMX"] = "Probabilidad (Lvl + 3)"
+    },
+    ["Damage"] = {
+        ["enUS"] = "Damage",
+        ["deDE"] = "Schaden",
+        ["frFR"] = "Dégâts",
+        ["zhCN"] = "伤害",
+        ["ruRU"] = "Урон",
+        ["esES"] = "Daño",
+        ["esMX"] = "Daño"
+    },
+    ["Damage (Lvl + 3)"] = {
+        ["enUS"] = "Damage (Lvl + 3)",
+        ["deDE"] = "Schaden (Lvl + 3)",
+        ["frFR"] = "Dégâts (Lvl + 3)",
+        ["zhCN"] = "伤害（等级 + 3）",
+        ["ruRU"] = "Урон (Lvl + 3)",
+        ["esES"] = "Daño (Lvl + 3)",
+        ["esMX"] = "Daño (Lvl + 3)"
     },
     ["Haste Rating"] = {
         ["enUS"] = true,

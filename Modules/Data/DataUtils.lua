@@ -33,6 +33,24 @@ function DataUtils:GetMissChanceByDifference(weaponSkill, defenseValue)
     end
 end
 
+function DataUtils:GetGlancingChanceByDifference(level, weaponSkill, defenseValue)
+    return 0.1 + (defenseValue - math.min(level*5, weaponSkill)) * 0.02
+end
+
+function DataUtils:GetGlancingDamage(weaponSkill, defenseValue)
+    local difference = defenseValue - weaponSkill
+    local low = math.min(0.91 ,(1.3 - 0.05 * difference))
+
+    local high = 1.2 - (0.03 * difference)
+
+    if high > 0.99 then
+        high = 0.99
+    elseif high < 0.2 then
+        high = 0.2
+    end
+    return (high + low)/2
+end
+
 function DataUtils:GetEnchantForEquipSlot(equipSlot)
     local slotId, _ = GetInventorySlotInfo(equipSlot)
     local itemLink = GetInventoryItemLink("player", slotId)

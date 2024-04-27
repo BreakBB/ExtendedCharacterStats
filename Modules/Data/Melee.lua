@@ -176,6 +176,42 @@ function Data:MeleeHitMissChanceBossLevel()
     return DataUtils:Round(missChance, 2) .. "%"
 end
 
+function Data:GlanceHitChanceSameLevel()
+    return Data:GlanceHitChanceByLevel(0)
+end
+
+function Data:GlanceHitChanceBossLevel()
+    return Data:GlanceHitChanceByLevel(3)
+end
+
+---@return string
+function Data:GlanceHitChanceByLevel(level)
+    local mainBase, mainMod, _, _ = UnitAttackBothHands("player")
+    local playerLevel = UnitLevel("player")
+    local enemyDefenseValue = (playerLevel + level) * 5
+
+    local glancingChance = DataUtils:GetGlancingChanceByDifference(playerLevel, mainBase + mainMod, enemyDefenseValue)
+
+    return DataUtils:Round(glancingChance*100, 2) .. "%"
+end
+
+function Data:GlanceDamageSameLevel()
+    return Data:GlanceDamageByLevel(0)
+end
+
+function Data:GlanceDamageBossLevel()
+    return Data:GlanceDamageByLevel(3)
+end
+---@return string
+function Data:GlanceDamageByLevel(level)
+    local mainBase, mainMod, _, _ = UnitAttackBothHands("player")
+    local playerLevel = UnitLevel("player")
+    local enemyDefenseValue = (playerLevel + level) * 5
+
+    local glancePenalty = DataUtils:GetGlancingDamage(mainBase + mainMod, enemyDefenseValue)
+
+    return DataUtils:Round(glancePenalty*100, 2) .. "%"
+end
 ---@return number
 function Data:GetExpertise()
     local expertise, _ = GetExpertise()

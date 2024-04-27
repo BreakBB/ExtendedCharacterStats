@@ -304,6 +304,10 @@ function Data:GetMP5FromBuffs()
         if spellId == 28145 then
             bonus = bonus + 11 -- 11 MP5 from Druid Atiesh
         end
+
+        if ECS.IsSoD and spellId == 430948 then
+            bonus = bonus + 8 -- 8 MP5 from Arcane Recovery
+        end
     end
 
     return mod, bonus

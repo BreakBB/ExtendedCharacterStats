@@ -57,6 +57,13 @@ dataFunctionRefs = {
     ["MeleeHitBonus"] = function() return Data:MeleeHitBonus() end,
     ["MeleeHitSameLevel"] = function() return Data:MeleeHitMissChanceSameLevel() end,
     ["MeleeHitBossLevel"] = function() return Data:MeleeHitMissChanceBossLevel() end,
+
+    ["GlanceHitChanceSameLevel"] = function() return Data:GlanceHitChanceSameLevel() end,
+    ["GlanceHitChanceBossLevel"] = function() return Data:GlanceHitChanceBossLevel() end,
+
+    ["GlanceDamageSameLevel"] = function() return Data:GlanceDamageSameLevel() end,
+    ["GlanceDamageBossLevel"] = function() return Data:GlanceDamageBossLevel() end,
+
     ["MeleeHasteRating"] = function()
         if ECS.IsWotlk then
             return Data:GetMeleeHasteRating()
