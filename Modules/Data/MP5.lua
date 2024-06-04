@@ -113,15 +113,11 @@ function Data:GetMP5WhileCasting()
 end
 
 function Data:GetMP5OutsideCasting()
-    local base, _ = GetManaRegen() -- Returns mana reg per 1 second (including talent and buff modifiers)
-    if base < 1 then
-        base = lastManaReg
-    end
-    lastManaReg = base
-
+    local mp5FromSpirit = Data:GetMP5FromSpirit()
     local _, mp5BuffBonus = Data:GetMP5FromBuffs()
     local mp5FromItems = Data:GetMP5FromItems()
-    local totalMP5 = (base * 5) + mp5FromItems + mp5BuffBonus
+
+    local totalMP5 = mp5FromSpirit + mp5FromItems + mp5BuffBonus
     return DataUtils:Round(totalMP5, 2)
 end
 
