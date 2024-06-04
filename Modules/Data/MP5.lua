@@ -88,9 +88,13 @@ local lastManaReg = 0
 
 ---@return number
 function Data:GetMP5FromSpirit()
-    local _, intValue = UnitStat("player", 4)
-    local _, spiritValue = UnitStat("player", 5)
-    return DataUtils:Round((0.001 + (spiritValue * 0.009327 * (intValue^0.5))) * 5 * 0.6, 2)
+    local base, _ = GetManaRegen() -- Returns mana reg per 1 second (including talent and buff modifiers)
+    if base < 1 then
+        base = lastManaReg
+    end
+    lastManaReg = base
+
+    return DataUtils:Round(base * 5, 2)
 end
 
 -- Get mana regen while casting
