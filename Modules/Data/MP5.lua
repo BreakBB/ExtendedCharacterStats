@@ -96,87 +96,25 @@ end
 -- Get mana regen while casting
 ---@return number
 function Data:GetMP5WhileCasting()
-    local _, casting = GetManaRegen() -- Returns mana reg per 1 second
+    local _, casting = GetManaRegen() -- Returns mana reg per 1 second (including talent and buff modifiers)
     if casting < 0.1 then
         casting = 0
     end
 
-    if ECS.IsWotlk then
-        casting = (casting * 5) + _MP5:GetTalentBonus()
-
-        return DataUtils:Round(casting, 2)
-    end
-
-    local mod = _MP5:GetTalentModifier()
-    if Data:HasSetBonusModifierMP5() then
-        mod = mod + 0.15
-    end
-    local auraMod, auraValues = Data:GetMP5FromBuffs()
-    mod = mod + auraMod
-    if mod == 0 then
-        casting = 0
-    end
-    casting = casting * mod
-
+    local _, mp5BuffBonus = Data:GetMP5FromBuffs()
     local mp5Items = Data:GetMP5FromItems()
-    casting = (casting * 5) + mp5Items + auraValues
+    casting = (casting * 5) + mp5Items + mp5BuffBonus
 
     return DataUtils:Round(casting, 2)
 end
 
 function Data:GetMP5OutsideCasting()
-    local base, _ = GetManaRegen() -- Returns mana reg per 1 second
+    local base, _ = GetManaRegen() -- Returns mana reg per 1 second (including talent and buff modifiers)
     if base < 1 then
         base = lastManaReg
     end
     lastManaReg = base
     return DataUtils:Round(base * 5, 2)
-end
-
----@return number
-function _MP5:GetTalentModifier()
-    local mod = 0
-
-    if classId == Data.PRIEST then
-        local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 9)
-        mod = points * 0.05 -- 0-15% from Meditation
-    elseif classId == Data.MAGE then
-        local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 15)
-        mod = points * 0.05 -- 0-15% Arcane Meditation
-    elseif (not ECS.IsWotlk) and classId == Data.DRUID then
-        local _, _, _, _, reflectionPoints, _, _, _ = GetTalentInfo(3, 9)
-        mod = reflectionPoints * 0.05 -- 0-15% from Reflection
-    end
-
-    return mod
-end
-
----This is only relevant for the TBC/Wotlk client
----@return number
-function _MP5:GetTalentBonus()
-    local bonus = 0
-
-    if classId == Data.DRUID then
-        local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 17)
-        local _, intValue, _, _ = UnitStat("player", 4)
-
-        if points == 1 then
-            bonus = 0.04 * intValue -- 4% of Int as MP5
-        elseif points == 2 then
-            bonus = 0.07 * intValue -- 7% of Int as MP5
-        elseif points == 3 then
-            bonus = 0.1 * intValue -- 10% of Int as MP5
-        end
-    end
-
-    if classId == Data.SHAMAN then
-        local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 14)
-        local _, intValue, _, _ = UnitStat("player", 4)
-
-        bonus = points * 0.02 * intValue -- 0-10% of Int as MP5
-    end
-
-    return bonus
 end
 
 ---@return number, number
