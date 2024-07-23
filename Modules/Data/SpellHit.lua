@@ -106,7 +106,7 @@ function _SpellHit:GetSpellHitBonus()
     if CR_HIT_SPELL then
         return GetCombatRatingBonus(CR_HIT_SPELL) + _SpellHit:GetSpellHitFromBuffs()
     end
-    return (GetSpellHitModifier() or 0) / 7 -- For 1% hit on gear GetSpellHitModifier returns 7
+    return GetSpellHitModifier()
 end
 
 function _SpellHit:GetSpellHitFromBuffs()
