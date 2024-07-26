@@ -93,7 +93,7 @@ function _SpellHit:GetTalentSpellHitBonus()
         end
     end
 
-    if classId == Data.WARLOCK then
+    if ECS.IsWotlk and classId == Data.WARLOCK then
         local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 5)
         bonus = points -- 0-3% from Suppression
     end
