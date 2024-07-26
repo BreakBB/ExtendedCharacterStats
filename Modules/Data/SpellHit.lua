@@ -77,20 +77,16 @@ function _SpellHit:GetTalentSpellHitBonus()
     if classId == Data.SHAMAN then
         if ECS.IsWotlk then
             local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 16)
-                bonus = points -- 0-3% from Elemental Precision
-            end
-
-        if (not ECS.IsWotlk) then
+            bonus = points -- 0-3% from Elemental Precision
+        else
             local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 3)
-            bonus = bonus + points * 1 -- 0-3% Nature's Guidance
+            bonus = points * 1 -- 0-3% Nature's Guidance
         end
     end
 
-    if classId == Data.DRUID then
-        if ECS.IsWotlk then
-            local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 13)
-            bonus = points * 2 -- 0-4% from Balance of Power
-        end
+    if ECS.IsWotlk and classId == Data.DRUID then
+        local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 13)
+        bonus = points * 2 -- 0-4% from Balance of Power
     end
 
     if ECS.IsWotlk and classId == Data.WARLOCK then
