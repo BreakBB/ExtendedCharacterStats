@@ -21,8 +21,17 @@ function EventHandler.Init()
     end)
 end
 
+local lastEventTime = 0
+local DEBOUNCE_INTERVAL = 0.5 -- 0.5 seconds debounce interval
+
 ---Event handler for all the events subscribed to in _Init.RegisterEvents
 function EventHandler.HandleOnEvent(_, event, eventTarget, ...)
+    local currentTime = GetTime()
+    if currentTime - lastEventTime < DEBOUNCE_INTERVAL then
+        return -- Ignore the event if it's within the debounce interval
+    end
+    lastEventTime = currentTime
+
     if event == "GROUP_ROSTER_UPDATE" then
         -- Someone joined or left the group
         currentGroupMembers = GetNumGroupMembers()
