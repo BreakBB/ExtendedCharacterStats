@@ -48,7 +48,7 @@ function EventHandler.HandleOnEvent(_, event, ...)
         C_Timer.After(0.5, function ()
             Stats:UpdateInformation()
         end)
-    elseif event == "PLAYER_MOUNT_DISPLAY_CHANGED" or event == "UPDATE_SHAPESHIFT_FORM" then
+    elseif event == "PLAYER_MOUNT_DISPLAY_CHANGED" then
         C_Timer.After(0.5, function ()
             Stats:UpdateInformation()
         end)
