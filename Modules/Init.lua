@@ -76,7 +76,7 @@ end
 
 ---Subscribes to events that will trigger an update
 function _Init.RegisterEvents(eventFrame)
-    eventFrame:RegisterEvent("UNIT_AURA") -- Triggers whenever the player gains or loses a buff/debuff
+    eventFrame:RegisterUnitEvent("UNIT_AURA", "player") -- Triggers whenever the player gains or loses a buff/debuff
     eventFrame:RegisterEvent("PLAYER_LEVEL_UP") -- Triggers whenever the player levels up
     eventFrame:RegisterEvent("PLAYER_ENTERING_WORLD")  -- Triggers whenever the player log in, zone in to a new zone or reloads the UI
     eventFrame:RegisterEvent("PLAYER_EQUIPMENT_CHANGED") -- Triggers whenever the player changes gear
