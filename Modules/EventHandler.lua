@@ -25,7 +25,7 @@ local lastEventTime = 0
 local DEBOUNCE_INTERVAL = 0.5 -- 0.5 seconds debounce interval
 
 ---Event handler for all the events subscribed to in _Init.RegisterEvents
-function EventHandler.HandleOnEvent(_, event, eventTarget, ...)
+function EventHandler.HandleOnEvent(_, event, ...)
     local currentTime = GetTime()
     if currentTime - lastEventTime < DEBOUNCE_INTERVAL then
         return -- Ignore the event if it's within the debounce interval
@@ -35,7 +35,7 @@ function EventHandler.HandleOnEvent(_, event, eventTarget, ...)
     if event == "GROUP_ROSTER_UPDATE" then
         -- Someone joined or left the group
         currentGroupMembers = GetNumGroupMembers()
-    elseif eventTarget == "player" then
+    elseif event == "UNIT_AURA" or event == "PLAYER_LEVEL_UP" or event == "CHARACTER_POINTS_CHANGED" then
         if currentGroupMembers > 5 then
             -- When in a raid update on the next UPDATE_INTERVAL tick
             shouldUpdate = true
