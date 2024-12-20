@@ -30,6 +30,11 @@ jobs:
           files: .
           args: "--no-color -q"
 
+      - name: Run Unit Tests
+        uses: lunarmodules/busted@v2.2.0
+        with:
+          args: -p ".test.lua" .
+
   publish:
     needs: check
     if: startsWith(github.ref, 'refs/tags/v')
