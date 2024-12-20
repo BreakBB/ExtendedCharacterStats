@@ -134,3 +134,5 @@ function Data.RangeMissChanceBossLevel()
 
     return DataUtils:Round(missChance, 2) .. "%"
 end
+
+return Data
