@@ -131,5 +131,62 @@ describe("Ranged", function()
 
             assert.are_equal("0%", result)
         end)
+
+        it("should return 6.4 % miss chance for 304 weapon skill vs 315 defense value and with 1% hit equipped", function()
+            _G.UnitRangedAttack = function()
+                return 304, 0
+            end
+            _G.UnitLevel = function()
+                return 60
+            end
+            DataUtils.GetEnchantForEquipSlot = function()
+                return nil
+            end
+            _G.GetHitModifier = function()
+                return 1
+            end
+
+            local result = Data.RangeMissChanceBossLevel()
+
+            assert.are_equal("6.4%", result)
+        end)
+
+        it("should return 4.6 % miss chance for 309 weapon skill vs 315 defense value and with 1% hit equipped", function()
+            _G.UnitRangedAttack = function()
+                return 309, 0
+            end
+            _G.UnitLevel = function()
+                return 60
+            end
+            DataUtils.GetEnchantForEquipSlot = function()
+                return nil
+            end
+            _G.GetHitModifier = function()
+                return 1
+            end
+
+            local result = Data.RangeMissChanceBossLevel()
+
+            assert.are_equal("4.6%", result)
+        end)
+
+        it("should return 5.6 % miss chance for 309 weapon skill vs 315 defense value", function()
+            _G.UnitRangedAttack = function()
+                return 309, 0
+            end
+            _G.UnitLevel = function()
+                return 60
+            end
+            DataUtils.GetEnchantForEquipSlot = function()
+                return nil
+            end
+            _G.GetHitModifier = function()
+                return 0
+            end
+
+            local result = Data.RangeMissChanceBossLevel()
+
+            assert.are_equal("5.6%", result)
+        end)
     end)
 end)

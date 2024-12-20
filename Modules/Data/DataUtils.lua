@@ -24,12 +24,20 @@ function DataUtils:IsShapeshifted()
 end
 
 function DataUtils.GetMissChanceByDifference(weaponSkill, defenseValue)
-    if (defenseValue - weaponSkill) <= 10 then
-        return 5 + (defenseValue - weaponSkill) * 0.1
+    local delta = defenseValue - weaponSkill
+    if delta <= 10 then
+        -- For a difference of 0-10 each point in weapon skill is worth 0.1% miss chance reduction
+        return 5 + delta * 0.1
+    elseif delta <= 14 then
+        -- For a difference of 11-14 each point in weapon skill is worth 0.4% miss chance reduction
+        local extraWeaponSkillDifference = ((15 - delta) * 0.2)
+        return math.floor((6 + delta * 0.2 - extraWeaponSkillDifference) * 10) / 10
     elseif ECS.IsWotlk then
-        return 5 + (defenseValue - weaponSkill) * 0.2
+        -- For a difference of 15+ each point in weapon skill is worth 0.2% miss chance reduction
+        return 5 + delta * 0.2
     else
-        return 6 + (defenseValue - weaponSkill) * 0.2
+        -- For a difference of 15+ each point in weapon skill is worth 0.2% miss chance reduction
+        return 6 + delta * 0.2
     end
 end
 
