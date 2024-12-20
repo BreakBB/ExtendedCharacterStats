@@ -124,7 +124,7 @@ function Data:MeleeHitMissChanceSameLevel()
     if DataUtils:IsShapeshifted() then
         missChance = 5
     else
-        missChance = DataUtils:GetMissChanceByDifference(mainBase + mainMod, enemyDefenseValue)
+        missChance = DataUtils.GetMissChanceByDifference(mainBase + mainMod, enemyDefenseValue)
     end
 
     if Data:GetMeleeAttackSpeedOffHand() > 0 then
@@ -155,7 +155,7 @@ function Data:MeleeHitMissChanceBossLevel()
     if DataUtils:IsShapeshifted() then
         missChance = ECS.IsWotlk and 8 or 9
     else
-        missChance = DataUtils:GetMissChanceByDifference(mainBase + mainMod, enemyDefenseValue)
+        missChance = DataUtils.GetMissChanceByDifference(mainBase + mainMod, enemyDefenseValue)
     end
 
     if Data:GetMeleeAttackSpeedOffHand() > 0 then

@@ -23,7 +23,7 @@ function DataUtils:IsShapeshifted()
     return false
 end
 
-function DataUtils:GetMissChanceByDifference(weaponSkill, defenseValue)
+function DataUtils.GetMissChanceByDifference(weaponSkill, defenseValue)
     if (defenseValue - weaponSkill) <= 10 then
         return 5 + (defenseValue - weaponSkill) * 0.1
     elseif ECS.IsWotlk then
