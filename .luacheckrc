@@ -2764,7 +2764,14 @@ stds.ecs = {
         "ECSConfigFrame",
         "ECSLoader",
         "SLASH_ECS1",
-        "SlashCmdList"
+        "SlashCmdList",
+        "assert.spy",
+        "assert.are_same",
+        "assert.is_nil",
+        "describe",
+        "before_each",
+        "it",
+        "spy",
     }
 }
 std = "max+ecs"
