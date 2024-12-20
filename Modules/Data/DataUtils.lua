@@ -81,3 +81,5 @@ function DataUtils:GetSocketedGemsFromItemLink(itemLink)
 
     return nil
 end
+
+return DataUtils
