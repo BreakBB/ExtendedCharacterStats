@@ -121,11 +121,8 @@ function Data.RangeMissChanceBossLevel()
 
     local missChance = DataUtils.GetMissChanceByDifference(rangedWeaponSkill, enemyDefenseValue)
     local hitBonus = _Ranged:GetHitBonus()
-    if rangedWeaponSkill < 305 and hitBonus >= 1 then
-        hitBonus = hitBonus - 1
-    end
-    missChance = missChance - hitBonus
 
+    missChance = missChance - hitBonus
     if missChance < 0 then
         missChance = 0
     elseif missChance > 100 then

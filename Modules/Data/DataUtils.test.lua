@@ -23,6 +23,12 @@ describe("DataUtils", function()
             assert.are_equal(9, result)
         end)
 
+        it("should return 6 % miss chance for 305 weapon skill vs 315 defense value", function()
+            local result = DataUtils.GetMissChanceByDifference(305, 315)
+
+            assert.are_equal(6, result)
+        end)
+
         it("should return 8 % miss chance for WotLK and 300 weapon skill vs 315 defense value", function()
             _G.ECS = {IsWotlk = true}
             DataUtils = require("Modules.Data.DataUtils")
