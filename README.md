@@ -21,6 +21,36 @@
 
 **Please file any reports of issues and/or bugs to the [GitHub Repository](https://github.com/BreakBB/ExtendedCharacterStats/issues/new/choose)!**
 
+## Development
+
+### Installing lua
+
+1. Install [Lua](https://www.lua.org/download.html) (5.1, since the WoW client uses Lua 5.1)
+    - For macOS that is `brew install lua@5.1`
+2. Install [luarocks](https://luarocks.org/)
+    - For macOS that is `brew install luarocks`
+3. Configure `luarocks` to use the correct Lua version (by default luarocks uses the latest installed Lua version)
+    - `luarocks config lua_version 5.1`
+4. Install [busted](https://github.com/lunarmodules/busted)
+    - `luarocks install busted`
+5. Install [luacheck](https://github.com/lunarmodules/luacheck/)
+    - `luarocks install luacheck`
+
+### luacheck
+
+This project uses `luacheck` for linting. To run the linter, execute the following command:
+
+```sh
+luacheck -q .
+```
+
+### Unit Tests
+
+This project uses `busted` for unit testing. To run the tests, execute the following command:
+
+```sh
+busted -p ".test.lua" .
+```
 
 ## Donation
 
