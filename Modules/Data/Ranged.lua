@@ -113,7 +113,7 @@ function Data:RangeMissChanceSameLevel()
 end
 
 ---@return string
-function Data:RangeMissChanceBossLevel()
+function Data.RangeMissChanceBossLevel()
     local rangedAttackBase, rangedAttackMod = UnitRangedAttack("player")
     local rangedWeaponSkill = rangedAttackBase + rangedAttackMod
     local playerLevel = UnitLevel("player")

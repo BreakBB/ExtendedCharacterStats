@@ -106,7 +106,7 @@ dataFunctionRefs = {
             return 0
         end
     end,
-    ["RangedHitBossLevel"] = function() return Data:RangeMissChanceBossLevel() end,
+    ["RangedHitBossLevel"] = function() return Data.RangeMissChanceBossLevel() end,
     ["RangedHasteRating"] = function()
         if ECS.IsWotlk then
             return Data:GetRangedHasteRating()
