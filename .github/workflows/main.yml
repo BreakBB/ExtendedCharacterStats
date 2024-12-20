@@ -9,7 +9,7 @@ on:
   pull_request:
 
 jobs:
-  check:
+  lua-check:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,22 +21,35 @@ jobs:
         with:
           luaVersion: "5.1"
 
-      - name: Install Luarocks
-        uses: leafo/gh-actions-luarocks@v4
-
       - name: Install and run Luacheck
         uses: nebularg/actions-luacheck@v1
         with:
-          files: .
+          files: Database Localization Modules Questie.lua
           args: "--no-color -q"
 
-      - name: Run Unit Tests
-        uses: lunarmodules/busted@v2.2.0
+  unit-tests:
+    needs: lua-check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install Lua
+        uses: leafo/gh-actions-lua@v10
         with:
-          args: -p ".test.lua" .
+          luaVersion: "5.1"
+
+      - name: Install Luarocks
+        uses: leafo/gh-actions-luarocks@v4
+
+      - name: Run Unit Tests
+        run: |
+          luarocks install busted
+          busted -p ".test.lua" .
 
   publish:
-    needs: check
+    needs: unit-tests
     if: startsWith(github.ref, 'refs/tags/v')
 
     runs-on: ubuntu-latest
