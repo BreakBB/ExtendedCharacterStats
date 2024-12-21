@@ -268,35 +268,34 @@ _CreateStatInfos = function()
                 category.physicalCrit, category.shadowDmg, category.shadowCrit
         )
     else
-        _CreateStatInfo(category, category.penetration)
-
-        category = profile.spellBonus
+        local spellBonus = profile.spellBonus
         _CreateStatInfo(
                 category,
-                category.bonusHealing,
-                category.arcaneDmg,
-                category.arcaneCrit,
-                category.arcaneHitBonus,
-                category.arcaneMissChance,
-                category.arcaneMissChanceBoss,
-                category.fireDmg,
-                category.fireCrit,
-                category.fireHitBonus,
-                category.fireMissChance,
-                category.fireMissChanceBoss,
-                category.frostDmg,
-                category.frostCrit,
-                category.frostHitBonus,
-                category.frostMissChance,
-                category.frostMissChanceBoss,
-                category.holyDmg,
-                category.holyCrit,
-                category.natureDmg,
-                category.natureCrit,
-                category.physicalDmg,
-                category.physicalCrit,
-                category.shadowDmg,
-                category.shadowCrit
+                category.penetration,
+                spellBonus.bonusHealing,
+                spellBonus.arcaneDmg,
+                spellBonus.arcaneCrit,
+                spellBonus.arcaneHitBonus,
+                spellBonus.arcaneMissChance,
+                spellBonus.arcaneMissChanceBoss,
+                spellBonus.fireDmg,
+                spellBonus.fireCrit,
+                spellBonus.fireHitBonus,
+                spellBonus.fireMissChance,
+                spellBonus.fireMissChanceBoss,
+                spellBonus.frostDmg,
+                spellBonus.frostCrit,
+                spellBonus.frostHitBonus,
+                spellBonus.frostMissChance,
+                spellBonus.frostMissChanceBoss,
+                spellBonus.holyDmg,
+                spellBonus.holyCrit,
+                spellBonus.natureDmg,
+                spellBonus.natureCrit,
+                spellBonus.physicalDmg,
+                spellBonus.physicalCrit,
+                spellBonus.shadowDmg,
+                spellBonus.shadowCrit
         )
     end
 end
