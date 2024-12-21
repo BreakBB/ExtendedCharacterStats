@@ -45,7 +45,9 @@ function Data:SpellMissChanceBossLevel()
     return DataUtils:Round(missChance, 2) .. "%"
 end
 
-function _SpellHit:GetTalentSpellHitBonus()
+---@param school number
+---@return number
+function _SpellHit:GetTalentSpellHitBonus(school)
     local _, _, classId = UnitClass("player")
     local bonus = 0
 
@@ -130,6 +132,18 @@ end
 ---@return string
 function Data:SpellHitBonus()
     local hit = _SpellHit:GetTalentSpellHitBonus()
+    local mod = _SpellHit:GetSpellHitBonus()
+    if mod then
+        hit = hit + mod
+    end
+
+    return DataUtils:Round(hit, 2) .. "%"
+end
+
+---@param school number
+---@return string
+function Data.SpellHitBonusBySchool(school)
+    local hit = _SpellHit:GetTalentSpellHitBonus(school)
     local mod = _SpellHit:GetSpellHitBonus()
     if mod then
         hit = hit + mod
