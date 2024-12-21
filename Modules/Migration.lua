@@ -51,33 +51,33 @@ function Migration:ToLatestProfileVersion(profileVersion)
     if profileVersion < 20 then
         ExtendedCharacterStats.profile.spell.crit = nil
         if (not ECS.IsWotlk) then
-            ExtendedCharacterStats.profile.spellBonus.arcaneHitBonus = defaultProfile.profile.spellBonus.arcaneHitBonus
-            ExtendedCharacterStats.profile.spellBonus.arcaneMissChance = defaultProfile.profile.spellBonus.arcaneMissChance
-            ExtendedCharacterStats.profile.spellBonus.arcaneMissChanceBoss = defaultProfile.profile.spellBonus.arcaneMissChanceBoss
+            ExtendedCharacterStats.profile.spell.hit.arcaneHitBonus = defaultProfile.profile.spell.hit.arcaneHitBonus
+            ExtendedCharacterStats.profile.spell.hit.arcaneMissChance = defaultProfile.profile.spell.hit.arcaneMissChance
+            ExtendedCharacterStats.profile.spell.hit.arcaneMissChanceBoss = defaultProfile.profile.spell.hit.arcaneMissChanceBoss
 
-            ExtendedCharacterStats.profile.spellBonus.fireHitBonus = defaultProfile.profile.spellBonus.fireHitBonus
-            ExtendedCharacterStats.profile.spellBonus.fireMissChance = defaultProfile.profile.spellBonus.fireMissChance
-            ExtendedCharacterStats.profile.spellBonus.fireMissChanceBoss = defaultProfile.profile.spellBonus.fireMissChanceBoss
+            ExtendedCharacterStats.profile.spell.hit.fireHitBonus = defaultProfile.profile.spell.hit.fireHitBonus
+            ExtendedCharacterStats.profile.spell.hit.fireMissChance = defaultProfile.profile.spell.hit.fireMissChance
+            ExtendedCharacterStats.profile.spell.hit.fireMissChanceBoss = defaultProfile.profile.spell.hit.fireMissChanceBoss
 
-            ExtendedCharacterStats.profile.spellBonus.frostHitBonus = defaultProfile.profile.spellBonus.frostHitBonus
-            ExtendedCharacterStats.profile.spellBonus.frostMissChance = defaultProfile.profile.spellBonus.frostMissChance
-            ExtendedCharacterStats.profile.spellBonus.frostMissChanceBoss = defaultProfile.profile.spellBonus.frostMissChanceBoss
+            ExtendedCharacterStats.profile.spell.hit.frostHitBonus = defaultProfile.profile.spell.hit.frostHitBonus
+            ExtendedCharacterStats.profile.spell.hit.frostMissChance = defaultProfile.profile.spell.hit.frostMissChance
+            ExtendedCharacterStats.profile.spell.hit.frostMissChanceBoss = defaultProfile.profile.spell.hit.frostMissChanceBoss
 
-            ExtendedCharacterStats.profile.spellBonus.holyHitBonus = defaultProfile.profile.spellBonus.holyHitBonus
-            ExtendedCharacterStats.profile.spellBonus.holyMissChance = defaultProfile.profile.spellBonus.holyMissChance
-            ExtendedCharacterStats.profile.spellBonus.holyMissChanceBoss = defaultProfile.profile.spellBonus.holyMissChanceBoss
+            ExtendedCharacterStats.profile.spell.hit.holyHitBonus = defaultProfile.profile.spell.hit.holyHitBonus
+            ExtendedCharacterStats.profile.spell.hit.holyMissChance = defaultProfile.profile.spell.hit.holyMissChance
+            ExtendedCharacterStats.profile.spell.hit.holyMissChanceBoss = defaultProfile.profile.spell.hit.holyMissChanceBoss
 
-            ExtendedCharacterStats.profile.spellBonus.natureHitBonus = defaultProfile.profile.spellBonus.natureHitBonus
-            ExtendedCharacterStats.profile.spellBonus.natureMissChance = defaultProfile.profile.spellBonus.natureMissChance
-            ExtendedCharacterStats.profile.spellBonus.natureMissChanceBoss = defaultProfile.profile.spellBonus.natureMissChanceBoss
+            ExtendedCharacterStats.profile.spell.hit.natureHitBonus = defaultProfile.profile.spell.hit.natureHitBonus
+            ExtendedCharacterStats.profile.spell.hit.natureMissChance = defaultProfile.profile.spell.hit.natureMissChance
+            ExtendedCharacterStats.profile.spell.hit.natureMissChanceBoss = defaultProfile.profile.spell.hit.natureMissChanceBoss
 
-            ExtendedCharacterStats.profile.spellBonus.physicalHitBonus = defaultProfile.profile.spellBonus.physicalHitBonus
-            ExtendedCharacterStats.profile.spellBonus.physicalMissChance = defaultProfile.profile.spellBonus.physicalMissChance
-            ExtendedCharacterStats.profile.spellBonus.physicalMissChanceBoss = defaultProfile.profile.spellBonus.physicalMissChanceBoss
+            ExtendedCharacterStats.profile.spell.hit.physicalHitBonus = defaultProfile.profile.spell.hit.physicalHitBonus
+            ExtendedCharacterStats.profile.spell.hit.physicalMissChance = defaultProfile.profile.spell.hit.physicalMissChance
+            ExtendedCharacterStats.profile.spell.hit.physicalMissChanceBoss = defaultProfile.profile.spell.hit.physicalMissChanceBoss
 
-            ExtendedCharacterStats.profile.spellBonus.shadowHitBonus = defaultProfile.profile.spellBonus.shadowHitBonus
-            ExtendedCharacterStats.profile.spellBonus.shadowMissChance = defaultProfile.profile.spellBonus.shadowMissChance
-            ExtendedCharacterStats.profile.spellBonus.shadowMissChanceBoss = defaultProfile.profile.spellBonus.shadowMissChanceBoss
+            ExtendedCharacterStats.profile.spell.hit.shadowHitBonus = defaultProfile.profile.spell.hit.shadowHitBonus
+            ExtendedCharacterStats.profile.spell.hit.shadowMissChance = defaultProfile.profile.spell.hit.shadowMissChance
+            ExtendedCharacterStats.profile.spell.hit.shadowMissChanceBoss = defaultProfile.profile.spell.hit.shadowMissChanceBoss
         end
     end
 end
