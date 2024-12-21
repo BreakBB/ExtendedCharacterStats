@@ -55,7 +55,7 @@ function _SpellHit:GetTalentSpellHitBonus(school)
         if ECS.IsWotlk then
             local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 3)
             bonus = points -- 0-3% from Shadow Focus
-        else
+        elseif school == Data.SHADOW_SCHOOL then
             local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 3)
             bonus = points * 2 -- 0-10% from Shadow Focus
         end
@@ -70,9 +70,10 @@ function _SpellHit:GetTalentSpellHitBonus(school)
         if ECS.IsWotlk then
             local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 17)
             bonus = points * 1 -- 0-3% from Elemental Precision
-        else
+        elseif school == Data.FIRE_SCHOOL or school == Data.FROST_SCHOOL then
             local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 17)
             bonus = points * 2 -- 0-6% from Elemental Precision
+        -- TODO Add Arcane Focus and Arcane Subtlety
         end
     end
 
