@@ -5,10 +5,12 @@ local DataUtils = ECSLoader:ImportModule("DataUtils")
 
 local _SpellHit = {}
 
-function Data:SpellMissChanceSameLevel()
+---@param school number
+---@return string
+function Data:SpellMissChanceSameLevel(school)
     local missChance = ECS.IsWotlk and 3 or 4
 
-    missChance = missChance - _SpellHit:GetTalentSpellHitBonus()
+    missChance = missChance - _SpellHit:GetTalentSpellHitBonus(school)
     local mod = _SpellHit:GetSpellHitBonus()
     if mod then
         missChance = missChance - mod
@@ -25,10 +27,12 @@ function Data:SpellMissChanceSameLevel()
     return DataUtils:Round(missChance, 2) .. "%"
 end
 
-function Data:SpellMissChanceBossLevel()
+---@param school number
+---@return string
+function Data:SpellMissChanceBossLevel(school)
     local missChance = 17
 
-    missChance = missChance - _SpellHit:GetTalentSpellHitBonus()
+    missChance = missChance - _SpellHit:GetTalentSpellHitBonus(school)
     local mod = _SpellHit:GetSpellHitBonus()
     if mod then
         missChance = missChance - mod
