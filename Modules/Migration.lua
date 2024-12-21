@@ -66,6 +66,10 @@ function Migration:ToLatestProfileVersion(profileVersion)
             ExtendedCharacterStats.profile.spellBonus.holyHitBonus = defaultProfile.profile.spellBonus.holyHitBonus
             ExtendedCharacterStats.profile.spellBonus.holyMissChance = defaultProfile.profile.spellBonus.holyMissChance
             ExtendedCharacterStats.profile.spellBonus.holyMissChanceBoss = defaultProfile.profile.spellBonus.holyMissChanceBoss
+
+            ExtendedCharacterStats.profile.spellBonus.natureHitBonus = defaultProfile.profile.spellBonus.natureHitBonus
+            ExtendedCharacterStats.profile.spellBonus.natureMissChance = defaultProfile.profile.spellBonus.natureMissChance
+            ExtendedCharacterStats.profile.spellBonus.natureMissChanceBoss = defaultProfile.profile.spellBonus.natureMissChanceBoss
         end
     end
 end

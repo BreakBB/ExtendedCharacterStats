@@ -682,6 +682,36 @@ local statTranslations = {
         ["esMX"] = "Crítico de la naturaleza",
         ["ptBR"] = "Crítico de natureza"
     },
+    ["Nature Hit Bonus"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Natur Trefferchancebonus",
+        ["frFR"] = "Bonus de toucher de la nature",
+        ["zhCN"] = "自然命中加成",
+        ["ruRU"] = "Меткость (природа)",
+        ["esES"] = "Bonificación de golpe de la naturaleza",
+        ["esMX"] = "Bonificación de golpe de la naturaleza",
+        ["ptBR"] = "Bônus de acerto de natureza"
+    },
+    ["Nature Miss"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Natur Verfehlen",
+        ["frFR"] = "Rater de la nature",
+        ["zhCN"] = "自然未命中",
+        ["ruRU"] = "Сопротивление (природа)",
+        ["esES"] = "Fallo de la naturaleza",
+        ["esMX"] = "Fallo de la naturaleza",
+        ["ptBR"] = "Erro de natureza"
+    },
+    ["Nature Miss (Lvl + 3)"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Natur Verfehlen (Lvl + 3)",
+        ["frFR"] = "Rater de la nature (Niv. + 3)",
+        ["zhCN"] = "自然未命中（等级 + 3）",
+        ["ruRU"] = "Сопрот. (природа) (+3 ур.)",
+        ["esES"] = "Fallo de la naturaleza (Niv. + 3)",
+        ["esMX"] = "Fallo de la naturaleza (Niv. + 3)",
+        ["ptBR"] = "Erro de natureza (Nív. + 3)"
+    },
     ["Physical Damage"] = {
         ["enUS"] = true,
         ["deDE"] = "Physischer Schaden",

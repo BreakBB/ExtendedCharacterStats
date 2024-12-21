@@ -559,6 +559,27 @@ local function GetDefaultStatsProfile()
                 textColor = colors.NATURE_SECONDARY,
                 statColor = colors.NATURE_PRIMARY
             },
+            natureHitBonus = {
+                display = true,
+                refName = "NatureHitBonus",
+                text = "Nature Hit Bonus",
+                textColor = colors.NATURE_SECONDARY,
+                statColor = colors.NATURE_PRIMARY
+            },
+            natureMissChance = {
+                display = true,
+                refName = "NatureMissChance",
+                text = "Nature Miss",
+                textColor = colors.NATURE_SECONDARY,
+                statColor = colors.NATURE_PRIMARY
+            },
+            natureMissChanceBoss = {
+                display = true,
+                refName = "NatureMissChanceBoss",
+                text = "Nature Miss (Lvl + 3)",
+                textColor = colors.NATURE_SECONDARY,
+                statColor = colors.NATURE_PRIMARY
+            },
             physicalDmg = {
                 display = true,
                 refName = "PhysicalDmg",

@@ -225,4 +225,7 @@ dataFunctionRefs = {
     ["HolyHitBonus"] = function() return Data.SpellHitBonusBySchool(Data.HOLY_SCHOOL) end,
     ["HolyMissChance"] = function() return 0 end,
     ["HolyMissChanceBoss"] = function() return 0 end,
+    ["NatureHitBonus"] = function() return Data.SpellHitBonusBySchool(Data.NATURE_SCHOOL) end,
+    ["NatureMissChance"] = function() return 0 end,
+    ["NatureMissChanceBoss"] = function() return 0 end,
 }
