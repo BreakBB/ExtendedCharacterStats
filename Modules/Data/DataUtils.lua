@@ -78,6 +78,18 @@ function DataUtils:GetEnchantFromItemLink(itemLink)
     return nil
 end
 
+---@return number|nil
+function DataUtils.GetRuneForEquipSlot(equipSlot)
+    local slotId, _ = GetInventorySlotInfo(equipSlot)
+    local runeInfo = C_Engraving.GetRuneForEquipmentSlot(slotId)
+
+    if runeInfo then
+        return runeInfo.skillLineAbilityID
+    else
+        return nil
+    end
+end
+
 function DataUtils:GetSocketedGemsFromItemLink(itemLink)
     if itemLink then
         local _, itemStringLink = GetItemInfo(itemLink)

@@ -82,3 +82,5 @@ function Utils:GetAddonVersionString()
     local major, minor, patch = Utils:GetAddonVersionInfo()
     return "v" .. tostring(major) .. "." .. tostring(minor) .. "." .. tostring(patch)
 end
+
+return Utils

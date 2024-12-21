@@ -1,12 +1,16 @@
 dofile("Modules/ModuleLoader.lua")
+dofile("Modules/Utils.lua")
 
 describe("DataUtils", function()
 
     ---@type DataUtils
     local DataUtils
+    ---@type Utils
+    local Utils
 
     before_each(function()
         _G.ECS = {IsWotlk = false}
+        Utils = require("Modules.Utils")
         DataUtils = require("Modules.Data.DataUtils")
     end)
 
@@ -66,6 +70,30 @@ describe("DataUtils", function()
             local result = DataUtils.GetMissChanceByDifference(300, 315)
 
             assert.are_equal(8, result)
+        end)
+    end)
+
+    describe("GetRuneForEquipSlot", function()
+        it("should return nil when no rune is found", function()
+            _G.GetInventorySlotInfo = function(equipSlot)
+                return nil, nil
+            end
+            _G.C_Engraving = {GetRuneForEquipmentSlot = function() return nil end}
+            local result = DataUtils.GetRuneForEquipSlot(Utils.CHAR_EQUIP_SLOTS.Head)
+
+            assert.is_nil(result)
+        end)
+
+        it("should return spell ID when rune is found", function()
+            _G.GetInventorySlotInfo = function()
+                return 1, nil
+            end
+            _G.C_Engraving = {GetRuneForEquipmentSlot = function() return {
+                skillLineAbilityID = 123
+            } end}
+            local result = DataUtils.GetRuneForEquipSlot(Utils.CHAR_EQUIP_SLOTS.Head)
+
+            assert.are_equal(123, result)
         end)
     end)
 end)
