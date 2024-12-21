@@ -73,7 +73,10 @@ function _SpellHit:GetTalentSpellHitBonus(school)
         elseif school == Data.FIRE_SCHOOL or school == Data.FROST_SCHOOL then
             local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 17)
             bonus = points * 2 -- 0-6% from Elemental Precision
-        -- TODO Add Arcane Focus and Arcane Subtlety
+        elseif school == Data.ARCANE_SCHOOL then
+            local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 3)
+            bonus = points * 2 -- 0-10% from Arcane Focus
+        -- TODO Add Arcane Subtlety
         end
     end
 
