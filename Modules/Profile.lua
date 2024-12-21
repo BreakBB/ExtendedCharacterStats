@@ -524,6 +524,27 @@ local function GetDefaultStatsProfile()
                 textColor = colors.HOLY_SECONDARY,
                 statColor = colors.HOLY_PRIMARY
             },
+            holyHitBonus = {
+                display = true,
+                refName = "HolyHitBonus",
+                text = "Holy Hit Bonus",
+                textColor = colors.HOLY_SECONDARY,
+                statColor = colors.HOLY_PRIMARY
+            },
+            holyMissChance = {
+                display = true,
+                refName = "HolyMissChance",
+                text = "Holy Miss",
+                textColor = colors.HOLY_SECONDARY,
+                statColor = colors.HOLY_PRIMARY
+            },
+            holyMissChanceBoss = {
+                display = true,
+                refName = "HolyMissChanceBoss",
+                text = "Holy Miss (Lvl + 3)",
+                textColor = colors.HOLY_SECONDARY,
+                statColor = colors.HOLY_PRIMARY
+            },
             natureDmg = {
                 display = true,
                 refName = "NatureDmg",

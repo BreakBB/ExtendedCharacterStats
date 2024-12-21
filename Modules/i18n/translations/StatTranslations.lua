@@ -632,6 +632,36 @@ local statTranslations = {
         ["esMX"] = "Crítico sagrado",
         ["ptBR"] = "Crítico sagrado"
     },
+    ["Holy Hit Bonus"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Heilig Trefferchancebonus",
+        ["frFR"] = "Bonus de toucher du sacré",
+        ["zhCN"] = "神圣命中加成",
+        ["ruRU"] = "Меткость (свет)",
+        ["esES"] = "Bonificación de golpe sagrado",
+        ["esMX"] = "Bonificación de golpe sagrado",
+        ["ptBR"] = "Bônus de acerto sagrado"
+    },
+    ["Holy Miss"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Heilig Verfehlen",
+        ["frFR"] = "Rater du sacré",
+        ["zhCN"] = "神圣未命中",
+        ["ruRU"] = "Сопротивление (свет)",
+        ["esES"] = "Fallo sagrado",
+        ["esMX"] = "Fallo sagrado",
+        ["ptBR"] = "Erro sagrado"
+    },
+    ["Holy Miss (Lvl + 3)"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Heilig Verfehlen (Lvl + 3)",
+        ["frFR"] = "Rater du sacré (Niv. + 3)",
+        ["zhCN"] = "神圣未命中（等级 + 3）",
+        ["ruRU"] = "Сопрот. (свет) (+3 ур.)",
+        ["esES"] = "Fallo sagrado (Niv. + 3)",
+        ["esMX"] = "Fallo sagrado (Niv. + 3)",
+        ["ptBR"] = "Erro sagrado (Nív. + 3)"
+    },
     ["Nature Damage"] = {
         ["enUS"] = true,
         ["deDE"] = "Naturschaden",
