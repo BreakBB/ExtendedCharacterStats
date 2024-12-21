@@ -629,6 +629,27 @@ local function GetDefaultStatsProfile()
                 textColor = colors.SHADOW_SECONDARY,
                 statColor = colors.SHADOW_PRIMARY
             },
+            shadowHitBonus = {
+                display = true,
+                refName = "ShadowHitBonus",
+                text = "Shadow Hit Bonus",
+                textColor = colors.SHADOW_SECONDARY,
+                statColor = colors.SHADOW_PRIMARY
+            },
+            shadowMissChance = {
+                display = true,
+                refName = "ShadowMissChance",
+                text = "Shadow Miss",
+                textColor = colors.SHADOW_SECONDARY,
+                statColor = colors.SHADOW_PRIMARY
+            },
+            shadowMissChanceBoss = {
+                display = true,
+                refName = "ShadowMissChanceBoss",
+                text = "Shadow Miss (Lvl + 3)",
+                textColor = colors.SHADOW_SECONDARY,
+                statColor = colors.SHADOW_PRIMARY
+            },
         }
     }
 end

@@ -782,6 +782,36 @@ local statTranslations = {
         ["esMX"] = "Crítico de las sombras",
         ["ptBR"] = "Crítico de sombra"
     },
+    ["Shadow Hit Bonus"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Schatten Trefferchancebonus",
+        ["frFR"] = "Bonus de toucher des ombres",
+        ["zhCN"] = "暗影命中加成",
+        ["ruRU"] = "Меткость (тьма)",
+        ["esES"] = "Bonificación de golpe de las sombras",
+        ["esMX"] = "Bonificación de golpe de las sombras",
+        ["ptBR"] = "Bônus de acerto de sombra"
+    },
+    ["Shadow Miss"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Schatten Verfehlen",
+        ["frFR"] = "Rater des ombres",
+        ["zhCN"] = "暗影未命中",
+        ["ruRU"] = "Сопротивление (тьма)",
+        ["esES"] = "Fallo de las sombras",
+        ["esMX"] = "Fallo de las sombras",
+        ["ptBR"] = "Erro de sombra"
+    },
+    ["Shadow Miss (Lvl + 3)"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Schatten Verfehlen (Lvl + 3)",
+        ["frFR"] = "Rater des ombres (Niv. + 3)",
+        ["zhCN"] = "暗影未命中（等级 + 3）",
+        ["ruRU"] = "Сопрот. (тьма) (+3 ур.)",
+        ["esES"] = "Fallo de las sombras (Niv. + 3)",
+        ["esMX"] = "Fallo de las sombras (Niv. + 3)",
+        ["ptBR"] = "Erro de sombra (Nív. + 3)"
+    },
 }
 
 for k, v in pairs(statTranslations) do
