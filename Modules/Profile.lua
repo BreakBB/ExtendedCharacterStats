@@ -537,6 +537,59 @@ local function GetDefaultStatsProfile()
                 statColor = colors.HASTE_RATING_PRIMARY
             },
             penetration = {display = true, refName = "SpellPenetration", text = "Penetration"},
+
+            crit = {
+                display = true,
+                arcane = {
+                    display = true,
+                    refName = "ArcaneCritChance",
+                    text = "Arcane Crit",
+                    textColor = colors.ARCANE_SECONDARY,
+                    statColor = colors.ARCANE_PRIMARY
+                },
+                fire = {
+                    display = true,
+                    refName = "FireCritChance",
+                    text = "Fire Crit",
+                    textColor = colors.FIRE_SECONDARY,
+                    statColor = colors.FIRE_PRIMARY
+                },
+                frost = {
+                    display = true,
+                    refName = "FrostCritChance",
+                    text = "Frost Crit",
+                    textColor = colors.FROST_SECONDARY,
+                    statColor = colors.FROST_PRIMARY
+                },
+                holy = {
+                    display = true,
+                    refName = "HolyCritChance",
+                    text = "Holy Crit",
+                    textColor = colors.HOLY_SECONDARY,
+                    statColor = colors.HOLY_PRIMARY
+                },
+                nature = {
+                    display = true,
+                    refName = "NatureCritChance",
+                    text = "Nature Crit",
+                    textColor = colors.NATURE_SECONDARY,
+                    statColor = colors.NATURE_PRIMARY
+                },
+                physical = {
+                    display = true,
+                    refName = "PhysicalCritChance",
+                    text = "Physical Crit",
+                    textColor = colors.PHYSICAL_SECONDARY,
+                    statColor = colors.PHYSICAL_PRIMARY
+                },
+                shadow = {
+                    display = true,
+                    refName = "ShadowCritChance",
+                    text = "Shadow Crit",
+                    textColor = colors.SHADOW_SECONDARY,
+                    statColor = colors.SHADOW_PRIMARY
+                },
+            }
         },
 
         ---@type Category
@@ -559,24 +612,10 @@ local function GetDefaultStatsProfile()
                 textColor = colors.ARCANE_SECONDARY,
                 statColor = colors.ARCANE_PRIMARY
             },
-            arcaneCrit = {
-                display = true,
-                refName = "ArcaneCritChance",
-                text = "Arcane Crit",
-                textColor = colors.ARCANE_SECONDARY,
-                statColor = colors.ARCANE_PRIMARY
-            },
             fireDmg = {
                 display = true,
                 refName = "FireDmg",
                 text = "Fire Damage",
-                textColor = colors.FIRE_SECONDARY,
-                statColor = colors.FIRE_PRIMARY
-            },
-            fireCrit = {
-                display = true,
-                refName = "FireCritChance",
-                text = "Fire Crit",
                 textColor = colors.FIRE_SECONDARY,
                 statColor = colors.FIRE_PRIMARY
             },
@@ -587,24 +626,10 @@ local function GetDefaultStatsProfile()
                 textColor = colors.FROST_SECONDARY,
                 statColor = colors.FROST_PRIMARY
             },
-            frostCrit = {
-                display = true,
-                refName = "FrostCritChance",
-                text = "Frost Crit",
-                textColor = colors.FROST_SECONDARY,
-                statColor = colors.FROST_PRIMARY
-            },
             holyDmg = {
                 display = true,
                 refName = "HolyDmg",
                 text = "Holy Damage",
-                textColor = colors.HOLY_SECONDARY,
-                statColor = colors.HOLY_PRIMARY
-            },
-            holyCrit = {
-                display = true,
-                refName = "HolyCritChance",
-                text = "Holy Crit",
                 textColor = colors.HOLY_SECONDARY,
                 statColor = colors.HOLY_PRIMARY
             },
@@ -615,13 +640,6 @@ local function GetDefaultStatsProfile()
                 textColor = colors.NATURE_SECONDARY,
                 statColor = colors.NATURE_PRIMARY
             },
-            natureCrit = {
-                display = true,
-                refName = "NatureCritChance",
-                text = "Nature Crit",
-                textColor = colors.NATURE_SECONDARY,
-                statColor = colors.NATURE_PRIMARY
-            },
             physicalDmg = {
                 display = true,
                 refName = "PhysicalDmg",
@@ -629,24 +647,10 @@ local function GetDefaultStatsProfile()
                 textColor = colors.PHYSICAL_SECONDARY,
                 statColor = colors.PHYSICAL_PRIMARY
             },
-            physicalCrit = {
-                display = true,
-                refName = "PhysicalCritChance",
-                text = "Physical Crit",
-                textColor = colors.PHYSICAL_SECONDARY,
-                statColor = colors.PHYSICAL_PRIMARY
-            },
             shadowDmg = {
                 display = true,
                 refName = "ShadowDmg",
                 text = "Shadow Damage",
-                textColor = colors.SHADOW_SECONDARY,
-                statColor = colors.SHADOW_PRIMARY
-            },
-            shadowCrit = {
-                display = true,
-                refName = "ShadowCritChance",
-                text = "Shadow Crit",
                 textColor = colors.SHADOW_SECONDARY,
                 statColor = colors.SHADOW_PRIMARY
             },

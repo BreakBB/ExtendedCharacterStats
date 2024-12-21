@@ -261,51 +261,65 @@ _CreateStatInfos = function()
         end
 
         category = profile.spellBonus
+        local spellCrit = profile.spell.crit
         _CreateStatInfo(
-                category, category.bonusHealing, category.arcaneDmg, category.arcaneCrit, category.fireDmg,
-                category.fireCrit, category.frostDmg, category.frostCrit, category.holyDmg,
-                category.holyCrit, category.natureDmg, category.natureCrit, category.physicalDmg,
-                category.physicalCrit, category.shadowDmg, category.shadowCrit
+                category,
+                category.bonusHealing,
+                category.arcaneDmg,
+                spellCrit.arcane,
+                category.fireDmg,
+                spellCrit.fire,
+                category.frostDmg,
+                spellCrit.frost,
+                category.holyDmg,
+                spellCrit.holy,
+                category.natureDmg,
+                spellCrit.nature,
+                category.physicalDmg,
+                spellCrit.physical,
+                category.shadowDmg,
+                spellCrit.shadow
         )
     else
         local spellBonus = profile.spellBonus
+        local spellCrit = profile.spell.crit
         local spellHit = profile.spell.hit
         _CreateStatInfo(
                 category,
                 category.penetration,
                 spellBonus.bonusHealing,
                 spellBonus.arcaneDmg,
-                spellBonus.arcaneCrit,
+                spellCrit.arcane,
                 spellHit.arcaneHitBonus,
                 spellHit.arcaneMissChance,
                 spellHit.arcaneMissChanceBoss,
                 spellBonus.fireDmg,
-                spellBonus.fireCrit,
+                spellCrit.fire,
                 spellHit.fireHitBonus,
                 spellHit.fireMissChance,
                 spellHit.fireMissChanceBoss,
                 spellBonus.frostDmg,
-                spellBonus.frostCrit,
+                spellCrit.frost,
                 spellHit.frostHitBonus,
                 spellHit.frostMissChance,
                 spellHit.frostMissChanceBoss,
                 spellBonus.holyDmg,
-                spellBonus.holyCrit,
+                spellCrit.holy,
                 spellHit.holyHitBonus,
                 spellHit.holyMissChance,
                 spellHit.holyMissChanceBoss,
                 spellBonus.natureDmg,
-                spellBonus.natureCrit,
+                spellCrit.nature,
                 spellHit.natureHitBonus,
                 spellHit.natureMissChance,
                 spellHit.natureMissChanceBoss,
                 spellBonus.physicalDmg,
-                spellBonus.physicalCrit,
+                spellCrit.physical,
                 spellHit.physicalHitBonus,
                 spellHit.physicalMissChance,
                 spellHit.physicalMissChanceBoss,
                 spellBonus.shadowDmg,
-                spellBonus.shadowCrit,
+                spellCrit.shadow,
                 spellHit.shadowHitBonus,
                 spellHit.shadowMissChance,
                 spellHit.shadowMissChanceBoss

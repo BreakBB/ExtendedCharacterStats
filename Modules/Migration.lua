@@ -49,7 +49,15 @@ function Migration:ToLatestProfileVersion(profileVersion)
         ExtendedCharacterStats.profile.melee.glance = defaultProfile.profile.melee.glance
     end
     if profileVersion < 20 then
-        ExtendedCharacterStats.profile.spell.crit = nil
+        ExtendedCharacterStats.profile.spell.crit = {
+            arcane = defaultProfile.profile.spell.crit.arcane,
+            fire = defaultProfile.profile.spell.crit.fire,
+            frost = defaultProfile.profile.spell.crit.frost,
+            holy = defaultProfile.profile.spell.crit.holy,
+            nature = defaultProfile.profile.spell.crit.nature,
+            physical = defaultProfile.profile.spell.crit.physical,
+            shadow = defaultProfile.profile.spell.crit.shadow
+        }
         if (not ECS.IsWotlk) then
             ExtendedCharacterStats.profile.spell.hit.arcaneHitBonus = defaultProfile.profile.spell.hit.arcaneHitBonus
             ExtendedCharacterStats.profile.spell.hit.arcaneMissChance = defaultProfile.profile.spell.hit.arcaneMissChance
