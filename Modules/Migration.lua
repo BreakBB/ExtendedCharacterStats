@@ -70,6 +70,10 @@ function Migration:ToLatestProfileVersion(profileVersion)
             ExtendedCharacterStats.profile.spellBonus.natureHitBonus = defaultProfile.profile.spellBonus.natureHitBonus
             ExtendedCharacterStats.profile.spellBonus.natureMissChance = defaultProfile.profile.spellBonus.natureMissChance
             ExtendedCharacterStats.profile.spellBonus.natureMissChanceBoss = defaultProfile.profile.spellBonus.natureMissChanceBoss
+
+            ExtendedCharacterStats.profile.spellBonus.physicalHitBonus = defaultProfile.profile.spellBonus.physicalHitBonus
+            ExtendedCharacterStats.profile.spellBonus.physicalMissChance = defaultProfile.profile.spellBonus.physicalMissChance
+            ExtendedCharacterStats.profile.spellBonus.physicalMissChanceBoss = defaultProfile.profile.spellBonus.physicalMissChanceBoss
         end
     end
 end

@@ -228,4 +228,7 @@ dataFunctionRefs = {
     ["NatureHitBonus"] = function() return Data.SpellHitBonusBySchool(Data.NATURE_SCHOOL) end,
     ["NatureMissChance"] = function() return 0 end,
     ["NatureMissChanceBoss"] = function() return 0 end,
+    ["PhysicalHitBonus"] = function() return Data.SpellHitBonusBySchool(Data.PHYSICAL_SCHOOL) end,
+    ["PhysicalMissChance"] = function() return 0 end,
+    ["PhysicalMissChanceBoss"] = function() return 0 end,
 }

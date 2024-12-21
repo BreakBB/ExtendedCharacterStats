@@ -594,6 +594,27 @@ local function GetDefaultStatsProfile()
                 textColor = colors.PHYSICAL_SECONDARY,
                 statColor = colors.PHYSICAL_PRIMARY
             },
+            physicalHitBonus = {
+                display = true,
+                refName = "PhysicalHitBonus",
+                text = "Physical Hit Bonus",
+                textColor = colors.PHYSICAL_SECONDARY,
+                statColor = colors.PHYSICAL_PRIMARY
+            },
+            physicalMissChance = {
+                display = true,
+                refName = "PhysicalMissChance",
+                text = "Physical Miss",
+                textColor = colors.PHYSICAL_SECONDARY,
+                statColor = colors.PHYSICAL_PRIMARY
+            },
+            physicalMissChanceBoss = {
+                display = true,
+                refName = "PhysicalMissChanceBoss",
+                text = "Physical Miss (Lvl + 3)",
+                textColor = colors.PHYSICAL_SECONDARY,
+                statColor = colors.PHYSICAL_PRIMARY
+            },
             shadowDmg = {
                 display = true,
                 refName = "ShadowDmg",

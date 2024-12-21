@@ -732,6 +732,36 @@ local statTranslations = {
         ["esMX"] = "Crítico físico",
         ["ptBR"] = "Crítico físico"
     },
+    ["Physical Hit Bonus"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Physischer Trefferchancebonus",
+        ["frFR"] = "Bonus de toucher physique",
+        ["zhCN"] = "物理命中加成",
+        ["ruRU"] = "Меткость (физ.)",
+        ["esES"] = "Bonificación de golpe físico",
+        ["esMX"] = "Bonificación de golpe físico",
+        ["ptBR"] = "Bônus de acerto físico"
+    },
+    ["Physical Miss"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Physisch Verfehlen",
+        ["frFR"] = "Rater physique",
+        ["zhCN"] = "物理未命中",
+        ["ruRU"] = "Сопротивление (физ.)",
+        ["esES"] = "Fallo físico",
+        ["esMX"] = "Fallo físico",
+        ["ptBR"] = "Erro físico"
+    },
+    ["Physical Miss (Lvl + 3)"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Physisch Verfehlen (Lvl + 3)",
+        ["frFR"] = "Rater physique (Niv. + 3)",
+        ["zhCN"] = "物理未命中（等级 + 3）",
+        ["ruRU"] = "Сопрот. (физ.) (+3 ур.)",
+        ["esES"] = "Fallo físico (Niv. + 3)",
+        ["esMX"] = "Fallo físico (Niv. + 3)",
+        ["ptBR"] = "Erro físico (Nív. + 3)"
+    },
     ["Shadow Damage"] = {
         ["enUS"] = true,
         ["deDE"] = "Schattenschaden",

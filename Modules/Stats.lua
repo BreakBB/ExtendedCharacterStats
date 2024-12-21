@@ -300,6 +300,9 @@ _CreateStatInfos = function()
                 spellBonus.natureMissChanceBoss,
                 spellBonus.physicalDmg,
                 spellBonus.physicalCrit,
+                spellBonus.physicalHitBonus,
+                spellBonus.physicalMissChance,
+                spellBonus.physicalMissChanceBoss,
                 spellBonus.shadowDmg,
                 spellBonus.shadowCrit
         )
