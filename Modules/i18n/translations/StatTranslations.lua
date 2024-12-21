@@ -482,6 +482,36 @@ local statTranslations = {
         ["esMX"] = "Crítico arcano",
         ["ptBR"] = "Crítico arcano"
     },
+    ["Arcane Hit Bonus"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Arkan Trefferchancebonus",
+        ["frFR"] = "Bonus de toucher des arcanes",
+        ["zhCN"] = "奥术命中加成",
+        ["ruRU"] = "Меткость (ТМ)",
+        ["esES"] = "Bonificación de golpe arcano",
+        ["esMX"] = "Bonificación de golpe arcano",
+        ["ptBR"] = "Bônus de acerto arcano"
+    },
+    ["Arcane Miss"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Arkan Verfehlen",
+        ["frFR"] = "Rater des arcanes",
+        ["zhCN"] = "奥术未命中",
+        ["ruRU"] = "Сопротивление (ТМ)",
+        ["esES"] = "Fallo arcano",
+        ["esMX"] = "Fallo arcano",
+        ["ptBR"] = "Erro arcano"
+    },
+    ["Arcane Miss (Lvl + 3)"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Arkan Verfehlen (Lvl + 3)",
+        ["frFR"] = "Rater des arcanes (Niv. + 3)",
+        ["zhCN"] = "奥术未命中（等级 + 3）",
+        ["ruRU"] = "Сопрот. (ТМ) (+3 ур.)",
+        ["esES"] = "Fallo arcano (Niv. + 3)",
+        ["esMX"] = "Fallo arcano (Niv. + 3)",
+        ["ptBR"] = "Erro arcano (Nív. + 3)"
+    },
     ["Fire Damage"] = {
         ["enUS"] = true,
         ["deDE"] = "Feuerschaden",
@@ -502,6 +532,36 @@ local statTranslations = {
         ["esMX"] = "Crítico de fuego",
         ["ptBR"] = "Crítico de fogo"
     },
+    ["Fire Hit Bonus"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Feuer Trefferchancebonus",
+        ["frFR"] = "Bonus de toucher du feu",
+        ["zhCN"] = "火焰命中加成",
+        ["ruRU"] = "Меткость (огонь)",
+        ["esES"] = "Bonificación de golpe de fuego",
+        ["esMX"] = "Bonificación de golpe de fuego",
+        ["ptBR"] = "Bônus de acerto de fogo"
+    },
+    ["Fire Miss"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Feuer Verfehlen",
+        ["frFR"] = "Rater du feu",
+        ["zhCN"] = "火焰未命中",
+        ["ruRU"] = "Сопротивление (огонь)",
+        ["esES"] = "Fallo de fuego",
+        ["esMX"] = "Fallo de fuego",
+        ["ptBR"] = "Erro de fogo"
+    },
+    ["Fire Miss (Lvl + 3)"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Feuer Verfehlen (Lvl + 3)",
+        ["frFR"] = "Rater du feu (Niv. + 3)",
+        ["zhCN"] = "火焰未命中（等级 + 3）",
+        ["ruRU"] = "Сопрот. (огонь) (+3 ур.)",
+        ["esES"] = "Fallo de fuego (Niv. + 3)",
+        ["esMX"] = "Fallo de fuego (Niv. + 3)",
+        ["ptBR"] = "Erro de fogo (Nív. + 3)"
+    },
     ["Frost Damage"] = {
         ["enUS"] = true,
         ["deDE"] = "Frostschaden",
@@ -521,6 +581,36 @@ local statTranslations = {
         ["esES"] = "Crítico de escarcha",
         ["esMX"] = "Crítico de escarcha",
         ["ptBR"] = "Crítico de gelo"
+    },
+    ["Frost Hit Bonus"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Frost Trefferchancebonus",
+        ["frFR"] = "Bonus de toucher du givre",
+        ["zhCN"] = "冰霜命中加成",
+        ["ruRU"] = "Меткость (лед)",
+        ["esES"] = "Bonificación de golpe de escarcha",
+        ["esMX"] = "Bonificación de golpe de escarcha",
+        ["ptBR"] = "Bônus de acerto de gelo"
+    },
+    ["Frost Miss"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Frost Verfehlen",
+        ["frFR"] = "Rater du givre",
+        ["zhCN"] = "冰霜未命中",
+        ["ruRU"] = "Сопротивление (лед)",
+        ["esES"] = "Fallo de escarcha",
+        ["esMX"] = "Fallo de escarcha",
+        ["ptBR"] = "Erro de gelo"
+    },
+    ["Frost Miss (Lvl + 3)"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Frost Verfehlen (Lvl + 3)",
+        ["frFR"] = "Rater du givre (Niv. + 3)",
+        ["zhCN"] = "冰霜未命中（等级 + 3）",
+        ["ruRU"] = "Сопрот. (лед) (+3 ур.)",
+        ["esES"] = "Fallo de escarcha (Niv. + 3)",
+        ["esMX"] = "Fallo de escarcha (Niv. + 3)",
+        ["ptBR"] = "Erro de gelo (Nív. + 3)"
     },
     ["Holy Damage"] = {
         ["enUS"] = true,

@@ -50,5 +50,18 @@ function Migration:ToLatestProfileVersion(profileVersion)
     end
     if profileVersion < 20 then
         ExtendedCharacterStats.profile.spell.crit = nil
+        if (not ECS.IsWotlk) then
+            ExtendedCharacterStats.profile.spellBonus.arcaneHitBonus = defaultProfile.profile.spellBonus.arcaneHitBonus
+            ExtendedCharacterStats.profile.spellBonus.arcaneMissChance = defaultProfile.profile.spellBonus.arcaneMissChance
+            ExtendedCharacterStats.profile.spellBonus.arcaneMissChanceBoss = defaultProfile.profile.spellBonus.arcaneMissChanceBoss
+
+            ExtendedCharacterStats.profile.spellBonus.fireHitBonus = defaultProfile.profile.spellBonus.fireHitBonus
+            ExtendedCharacterStats.profile.spellBonus.fireMissChance = defaultProfile.profile.spellBonus.fireMissChance
+            ExtendedCharacterStats.profile.spellBonus.fireMissChanceBoss = defaultProfile.profile.spellBonus.fireMissChanceBoss
+
+            ExtendedCharacterStats.profile.spellBonus.frostHitBonus = defaultProfile.profile.spellBonus.frostHitBonus
+            ExtendedCharacterStats.profile.spellBonus.frostMissChance = defaultProfile.profile.spellBonus.frostMissChance
+            ExtendedCharacterStats.profile.spellBonus.frostMissChanceBoss = defaultProfile.profile.spellBonus.frostMissChanceBoss
+        end
     end
 end

@@ -213,4 +213,13 @@ dataFunctionRefs = {
     ["FrostCritChance"] = function() return Data:GetSpellCrit(Data.FROST_SCHOOL) end,
     ["ShadowCritChance"] = function() return Data:GetSpellCrit(Data.SHADOW_SCHOOL) end,
     ["ArcaneCritChance"] = function() return Data:GetSpellCrit(Data.ARCANE_SCHOOL) end,
+    ["ArcaneHitBonus"] = function() return Data.SpellHitBonusBySchool(Data.ARCANE_SCHOOL) end,
+    ["ArcaneMissChance"] = function() return 0 end,
+    ["ArcaneMissChanceBoss"] = function() return 0 end,
+    ["FireHitBonus"] = function() return Data.SpellHitBonusBySchool(Data.FIRE_SCHOOL) end,
+    ["FireMissChance"] = function() return 0 end,
+    ["FireMissChanceBoss"] = function() return 0 end,
+    ["FrostHitBonus"] = function() return Data.SpellHitBonusBySchool(Data.FROST_SCHOOL) end,
+    ["FrostMissChance"] = function() return 0 end,
+    ["FrostMissChanceBoss"] = function() return 0 end,
 }

@@ -254,22 +254,51 @@ _CreateStatInfos = function()
     category = profile.spell
     if ECS.IsWotlk then
         _CreateStatInfo(category, category.hasteRating, category.hasteBonus, category.penetration)
+
+        if category.display then
+            category = category.hit
+            _CreateStatInfo(category, category.rating, category.bonus, category.sameLevel, category.bossLevel)
+        end
+
+        category = profile.spellBonus
+        _CreateStatInfo(
+                category, category.bonusHealing, category.arcaneDmg, category.arcaneCrit, category.fireDmg,
+                category.fireCrit, category.frostDmg, category.frostCrit, category.holyDmg,
+                category.holyCrit, category.natureDmg, category.natureCrit, category.physicalDmg,
+                category.physicalCrit, category.shadowDmg, category.shadowCrit
+        )
     else
         _CreateStatInfo(category, category.penetration)
-    end
 
-    if category.display then
-        category = category.hit
-        _CreateStatInfo(category, category.rating, category.bonus, category.sameLevel, category.bossLevel)
+        category = profile.spellBonus
+        _CreateStatInfo(
+                category,
+                category.bonusHealing,
+                category.arcaneDmg,
+                category.arcaneCrit,
+                category.arcaneHitBonus,
+                category.arcaneMissChance,
+                category.arcaneMissChanceBoss,
+                category.fireDmg,
+                category.fireCrit,
+                category.fireHitBonus,
+                category.fireMissChance,
+                category.fireMissChanceBoss,
+                category.frostDmg,
+                category.frostCrit,
+                category.frostHitBonus,
+                category.frostMissChance,
+                category.frostMissChanceBoss,
+                category.holyDmg,
+                category.holyCrit,
+                category.natureDmg,
+                category.natureCrit,
+                category.physicalDmg,
+                category.physicalCrit,
+                category.shadowDmg,
+                category.shadowCrit
+        )
     end
-
-    category = profile.spellBonus
-    _CreateStatInfo(
-        category, category.bonusHealing, category.arcaneDmg, category.arcaneCrit, category.fireDmg,
-        category.fireCrit, category.frostDmg, category.frostCrit, category.holyDmg,
-        category.holyCrit, category.natureDmg, category.natureCrit, category.physicalDmg,
-        category.physicalCrit, category.shadowDmg, category.shadowCrit
-    )
 end
 
 --- Creates a new header in the stats UI

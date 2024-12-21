@@ -419,6 +419,27 @@ local function GetDefaultStatsProfile()
                 textColor = colors.ARCANE_SECONDARY,
                 statColor = colors.ARCANE_PRIMARY
             },
+            arcaneHitBonus = {
+                display = true,
+                refName = "ArcaneHitBonus",
+                text = "Arcane Hit Bonus",
+                textColor = colors.ARCANE_SECONDARY,
+                statColor = colors.ARCANE_PRIMARY
+            },
+            arcaneMissChance = {
+                display = true,
+                refName = "ArcaneMissChance",
+                text = "Arcane Miss",
+                textColor = colors.ARCANE_SECONDARY,
+                statColor = colors.ARCANE_PRIMARY
+            },
+            arcaneMissChanceBoss = {
+                display = true,
+                refName = "ArcaneMissChanceBoss",
+                text = "Arcane Miss (Lvl + 3)",
+                textColor = colors.ARCANE_SECONDARY,
+                statColor = colors.ARCANE_PRIMARY
+            },
             fireDmg = {
                 display = true,
                 refName = "FireDmg",
@@ -433,6 +454,27 @@ local function GetDefaultStatsProfile()
                 textColor = colors.FIRE_SECONDARY,
                 statColor = colors.FIRE_PRIMARY
             },
+            fireHitBonus = {
+                display = true,
+                refName = "FireHitBonus",
+                text = "Fire Hit Bonus",
+                textColor = colors.FIRE_SECONDARY,
+                statColor = colors.FIRE_PRIMARY
+            },
+            fireMissChance = {
+                display = true,
+                refName = "FireMissChance",
+                text = "Fire Miss",
+                textColor = colors.FIRE_SECONDARY,
+                statColor = colors.FIRE_PRIMARY
+            },
+            fireMissChanceBoss = {
+                display = true,
+                refName = "FireMissChanceBoss",
+                text = "Fire Miss (Lvl + 3)",
+                textColor = colors.FIRE_SECONDARY,
+                statColor = colors.FIRE_PRIMARY
+            },
             frostDmg = {
                 display = true,
                 refName = "FrostDmg",
@@ -444,6 +486,27 @@ local function GetDefaultStatsProfile()
                 display = true,
                 refName = "FrostCritChance",
                 text = "Frost Crit",
+                textColor = colors.FROST_SECONDARY,
+                statColor = colors.FROST_PRIMARY
+            },
+            frostHitBonus = {
+                display = true,
+                refName = "FrostHitBonus",
+                text = "Frost Hit Bonus",
+                textColor = colors.FROST_SECONDARY,
+                statColor = colors.FROST_PRIMARY
+            },
+            frostMissChance = {
+                display = true,
+                refName = "FrostMissChance",
+                text = "Frost Miss",
+                textColor = colors.FROST_SECONDARY,
+                statColor = colors.FROST_PRIMARY
+            },
+            frostMissChanceBoss = {
+                display = true,
+                refName = "FrostMissChanceBoss",
+                text = "Frost Miss (Lvl + 3)",
                 textColor = colors.FROST_SECONDARY,
                 statColor = colors.FROST_PRIMARY
             },
