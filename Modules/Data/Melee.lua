@@ -2,6 +2,8 @@
 local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
 local DataUtils = ECSLoader:ImportModule("DataUtils")
+---@type Utils
+local Utils = ECSLoader:ImportModule("Utils")
 
 local _Melee = {}
 local _, _, classId = UnitClass("player")
@@ -44,7 +46,7 @@ function _Melee:GetHitRatingBonus()
     if CR_HIT_MELEE then
         return GetCombatRatingBonus(CR_HIT_MELEE) + _Melee:GetHitTalentBonus() + _Melee:GetHitFromBuffs()
     end
-    return GetHitModifier()
+    return GetHitModifier() + _Melee.GetHitFromRunes()
 end
 
 function _Melee:GetHitTalentBonus()
@@ -109,6 +111,23 @@ function _Melee:GetHitFromBuffs()
 
     if (not otherDraeneiInGroup) and (IsSpellKnown(6562) or IsSpellKnown(28878)) then
         mod = mod + 1
+    end
+
+    return mod
+end
+
+function _Melee.GetHitFromRunes()
+    local mod = 0
+
+    if (not ECS.IsSoD) then
+        return mod
+    end
+
+    local finger1Rune = DataUtils.GetRuneForEquipSlot(Utils.CHAR_EQUIP_SLOTS.Finger1)
+    local finger2Rune = DataUtils.GetRuneForEquipSlot(Utils.CHAR_EQUIP_SLOTS.Finger2)
+
+    if classId == Data.DRUID and (finger1Rune == 51245 or finger2Rune == 51245) and DataUtils:IsShapeshifted() then
+        mod = mod + 3 -- 3% from Feral Combat Specialization Rune
     end
 
     return mod
