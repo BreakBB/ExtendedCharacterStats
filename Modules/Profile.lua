@@ -5,7 +5,7 @@ local Profile = ECSLoader:CreateModule("Profile")
 local Utils = ECSLoader:ImportModule("Utils")
 
 function Profile:GetProfileVersion()
-    return 19
+    return 20
 end
 
 ---@return ECSProfile
@@ -372,13 +372,6 @@ local function GetDefaultStatsProfile()
                     textColor = colors.HIT_SECONDARY,
                     statColor = colors.HIT_PRIMARY
                 },
-            },
-            crit = {
-                display = true,
-                refName = "SpellCritChance",
-                text = "Crit Chance",
-                textColor = colors.CRIT_SECONDARY,
-                statColor = colors.CRIT_PRIMARY
             },
             hasteRating = {
                 display = true,

@@ -253,9 +253,9 @@ _CreateStatInfos = function()
 
     category = profile.spell
     if ECS.IsWotlk then
-        _CreateStatInfo(category, category.crit, category.hasteRating, category.hasteBonus, category.penetration)
+        _CreateStatInfo(category, category.hasteRating, category.hasteBonus, category.penetration)
     else
-        _CreateStatInfo(category, category.crit, category.penetration)
+        _CreateStatInfo(category, category.penetration)
     end
 
     if category.display then

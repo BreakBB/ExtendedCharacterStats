@@ -48,4 +48,7 @@ function Migration:ToLatestProfileVersion(profileVersion)
     if profileVersion < 19 then
         ExtendedCharacterStats.profile.melee.glance = defaultProfile.profile.melee.glance
     end
+    if profileVersion < 20 then
+        ExtendedCharacterStats.profile.spell.crit = nil
+    end
 end
