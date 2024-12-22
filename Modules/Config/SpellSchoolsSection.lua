@@ -40,7 +40,7 @@ function _Config:SpellSchoolsSection()
                 desc = function() return i18n("Shows/Hides all fire values.") end,
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.spellBonus.display); end,
-                get = function () return ExtendedCharacterStats.profile.spellBonus.fireDmg.display; end,
+                get = function () return ExtendedCharacterStats.profile.spell.fire.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.spell.fire.display = value
                     ExtendedCharacterStats.profile.spellBonus.fireDmg.display = value
