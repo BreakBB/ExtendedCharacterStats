@@ -442,16 +442,6 @@ local statTranslations = {
         ["esMX"] = "Penetración",
         ["ptBR"] = "Penetração"
     },
-    ["Spell Schools"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Zauber Schulen",
-        ["frFR"] = "Écoles de magie",
-        ["zhCN"] = "法术学派",
-        ["ruRU"] = "Школы магии",
-        ["esES"] = "Escuelas de hechizos",
-        ["esMX"] = "Escuelas de hechizos",
-        ["ptBR"] = "Escolas de feitiços"
-    },
     ["Healing Power"] = {
         ["enUS"] = true,
         ["deDE"] = "Heilungskraft",

@@ -132,6 +132,86 @@ local spellConfigTranslations = {
         ["esMX"] = "Muestra/oculta la probabilidad de fallo con hechizos contra jefes (nivel +3)",
         ["ptBR"] = "Mostra/oculta a chance de erro de feitiço contra inimigos chefes (nível +3)"
     },
+    ["Spell Schools"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Zauber Schulen",
+        ["frFR"] = "Écoles de magie",
+        ["zhCN"] = "法术学派",
+        ["ruRU"] = "Школы магии",
+        ["esES"] = "Escuelas de hechizos",
+        ["esMX"] = "Escuelas de hechizos",
+        ["ptBR"] = "Escolas de feitiços"
+    },
+    ["Arcane"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Arkan",
+        ["frFR"] = "Arcanes",
+        ["zhCN"] = "奥术",
+        ["ruRU"] = "Тайная магия",
+        ["esES"] = "Arcano",
+        ["esMX"] = "Arcano",
+        ["ptBR"] = "Arcano"
+    },
+    ["Fire"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Feuer",
+        ["frFR"] = "Feu",
+        ["zhCN"] = "火焰",
+        ["ruRU"] = "Огонь",
+        ["esES"] = "Fuego",
+        ["esMX"] = "Fuego",
+        ["ptBR"] = "Fogo"
+    },
+    ["Frost"] = {
+        ["enUS"] = true,
+        ["deDE"] = true,
+        ["frFR"] = "Givre",
+        ["zhCN"] = "冰霜",
+        ["ruRU"] = "Лед",
+        ["esES"] = "Escarcha",
+        ["esMX"] = "Escarcha",
+        ["ptBR"] = "Gelo"
+    },
+    ["Holy"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Heilig",
+        ["frFR"] = "Sacré",
+        ["zhCN"] = "神圣",
+        ["ruRU"] = "Свет",
+        ["esES"] = "Sagrado",
+        ["esMX"] = "Sagrado",
+        ["ptBR"] = "Sagrado"
+    },
+    ["Nature"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Natur",
+        ["frFR"] = true,
+        ["zhCN"] = "自然",
+        ["ruRU"] = "Природа",
+        ["esES"] = "Naturaleza",
+        ["esMX"] = "Naturaleza",
+        ["ptBR"] = "Natureza"
+    },
+    ["Physical"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Physisch",
+        ["frFR"] = "Physique",
+        ["zhCN"] = "物理",
+        ["ruRU"] = "Физический",
+        ["esES"] = "Físico",
+        ["esMX"] = "Físico",
+        ["ptBR"] = "Físico"
+    },
+    ["Shadow"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Schatten",
+        ["frFR"] = "Ombre",
+        ["zhCN"] = "暗影",
+        ["ruRU"] = "Тьма",
+        ["esES"] = "Sombras",
+        ["esMX"] = "Sombras",
+        ["ptBR"] = "Sombra"
+    },
     ["Shows/Hides the physical damage value."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt den physischen Schadenswert.",
