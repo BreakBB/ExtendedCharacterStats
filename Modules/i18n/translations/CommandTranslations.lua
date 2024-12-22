@@ -62,6 +62,16 @@ local commandTranslations = {
         ["esMX"] = "Muestra la ventana de configuración",
         ["ptBR"] = "Mostra a janela de configuração"
     },
+    ["Profile has been reset due to a major update."] = {
+        ["enUS"] = true,
+        ["deDE"] = "Profil wurde aufgrund eines größeren Updates zurückgesetzt.",
+        ["frFR"] = "Le profil a été réinitialisé en raison d'une mise à jour majeure.",
+        ["zhCN"] = "由于重大更新，配置文件已重置。",
+        ["ruRU"] = "Профиль был сброшен из-за крупного обновления.",
+        ["esES"] = "El perfil se ha restablecido debido a una actualización importante.",
+        ["esMX"] = "El perfil se ha restablecido debido a una actualización importante.",
+        ["ptBR"] = "O perfil foi redefinido devido a uma atualização importante.",
+    },
 }
 
 for k, v in pairs(commandTranslations) do
