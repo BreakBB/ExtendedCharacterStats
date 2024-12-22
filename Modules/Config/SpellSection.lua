@@ -188,7 +188,7 @@ function _Config:LoadSpellSection()
                     },
                 }
             },
-            spellSchoolsGroup = {
+            spellPower = {
                 type = "group",
                 order = 6,
                 inline = true,
