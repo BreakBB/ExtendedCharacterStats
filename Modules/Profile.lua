@@ -690,7 +690,7 @@ local function GetDefaultGeneralSettings()
         profileVersion = 0,
         window = {
             height = 422,
-            width = 180,
+            width = 195,
             xOffset = -30,
             yOffset = 30
         }
