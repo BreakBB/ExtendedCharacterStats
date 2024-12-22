@@ -171,7 +171,7 @@ function Stats:GetDisplayedLines()
     return _Stats.displayedLines
 end
 
---- Helper function to iteracte all field of a given category and create them if they should be displayed
+--- Helper function to iterate all field of a given category and create them if they should be displayed
 ---@param category Category|SubCategory
 _CreateStatInfo = function(category, ...)
     if (not ECS.IsWotlk) and category.isTbcOnly then
