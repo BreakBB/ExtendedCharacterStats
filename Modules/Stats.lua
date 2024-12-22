@@ -192,7 +192,7 @@ end
 
 _FormatStatsText = function(stat)
     local statText = i18n(stat.text) .. ": "
-    local statValue = Data:GetStatInfo(stat.refName)
+    local statValue = Data.GetStatInfo(stat.refName)
 
     if (not ExtendedCharacterStats.general.addColorsToStatTexts) then
         return Utils:Colorize(statText, colors.GRAY) .. Utils:Colorize(statValue, colors.WHITE)

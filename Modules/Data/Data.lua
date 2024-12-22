@@ -5,7 +5,7 @@ local dataFunctionRefs
 
 ---@param refName string
 ---@return number | string
-function Data:GetStatInfo(refName)
+function Data.GetStatInfo(refName)
     local dataFunction = dataFunctionRefs[refName];
     if dataFunction then
         return dataFunction()
