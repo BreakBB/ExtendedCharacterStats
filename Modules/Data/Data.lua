@@ -168,7 +168,7 @@ dataFunctionRefs = {
             return 0
         end
     end,
-    ["SpellHitBonus"] = function() return Data:SpellHitBonus() end,
+    ["SpellHitBonus"] = function() return Data.SpellHitBonusBySchool(Data.HOLY_SCHOOL) end,
     ["SpellHitSameLevel"] = function() return Data:SpellMissChanceSameLevel(Data.HOLY_SCHOOL) end,
     ["SpellHitBossLevel"] = function() return Data:SpellMissChanceBossLevel(Data.HOLY_SCHOOL) end,
     ["SpellCritChance"] = function() return Data:GetSpellCrit(Data.HOLY_SCHOOL) end,
