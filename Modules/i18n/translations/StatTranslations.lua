@@ -442,15 +442,15 @@ local statTranslations = {
         ["esMX"] = "Penetración",
         ["ptBR"] = "Penetração"
     },
-    ["Spell Power"] = {
+    ["Spell Schools"] = {
         ["enUS"] = true,
-        ["deDE"] = "Zauberkraft",
-        ["frFR"] = "Puissance des sorts",
-        ["zhCN"] = "法术强度",
-        ["ruRU"] = "Сила заклинаний",
-        ["esES"] = "Poder con hechizos",
-        ["esMX"] = "Poder con hechizos",
-        ["ptBR"] = "Poder mágico"
+        ["deDE"] = "Zauber Schulen",
+        ["frFR"] = "Écoles de magie",
+        ["zhCN"] = "法术学派",
+        ["ruRU"] = "Школы магии",
+        ["esES"] = "Escuelas de hechizos",
+        ["esMX"] = "Escuelas de hechizos",
+        ["ptBR"] = "Escolas de feitiços"
     },
     ["Healing Power"] = {
         ["enUS"] = true,

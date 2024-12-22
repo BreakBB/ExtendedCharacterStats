@@ -234,7 +234,6 @@ _StatsTab = function ()
             defenseGroup = _Config:LoadDefenseSection(),
             mp5Group = _Config:LoadManaSection(),
             spellGroup = _Config:LoadSpellSection(),
-            spellBonusGroup = _Config:SpellBonusSection(),
         }
     }
 end

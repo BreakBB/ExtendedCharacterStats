@@ -596,7 +596,6 @@ local function GetDefaultStatsProfile()
         spellBonus = {
             display = true,
             refName = "SpellBonusHeader",
-            text = "Spell Power",
 
             bonusHealing = {
                 display = true,

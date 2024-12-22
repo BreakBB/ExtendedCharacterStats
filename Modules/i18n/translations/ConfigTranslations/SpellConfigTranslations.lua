@@ -152,26 +152,6 @@ local spellConfigTranslations = {
         ["esMX"] = "Muestra/oculta la probabilidad de fallo con hechizos contra jefes (nivel +3)",
         ["ptBR"] = "Mostra/oculta a chance de erro de feitiço contra inimigos chefes (nível +3)"
     },
-    ["Show Spell Power Stats"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Zaubermachtwerte anzeigen",
-        ["frFR"] = "Afficher la puissance des sorts",
-        ["zhCN"] = "显示法术强度属性",
-        ["ruRU"] = "Сила заклинаний",
-        ["esES"] = "Mostrar poder con hechizos",
-        ["esMX"] = "Mostrar poder con hechizos",
-        ["ptBR"] = "Mostrar poder mágico"
-    },
-    ["Shows/Hides all spell power stats."] = {
-        ["enUS"] = true,
-        ["deDE"] = "Zeigt/Versteckt alle Zaubermachtwerte.",
-        ["frFR"] = "Affiche/cache toutes les statistiques de puissance des sorts.",
-        ["zhCN"] = "显示/隐藏 法术强度属性",
-        ["ruRU"] = "Показать/скрыть все характеристики силы заклинаний",
-        ["esES"] = "Muestra/oculta todas estadísticas de poder con hechizos",
-        ["esMX"] = "Muestra/oculta todas estadísticas de poder con hechizos",
-        ["ptBR"] = "Mostra/oculta todas as estatísticas de poder mágico"
-    },
     ["Shows/Hides the physical damage value."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt den physischen Schadenswert.",

@@ -48,7 +48,6 @@ Modules\Config\RangeSection.lua
 Modules\Config\DefenseSection.lua
 Modules\Config\ManaSection.lua
 Modules\Config\SpellSection.lua
-Modules\Config\SpellBonusSection.lua
 
 # i18n
 Modules\i18n\i18n.lua
