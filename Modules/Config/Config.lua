@@ -233,6 +233,7 @@ _StatsTab = function ()
             rangeGroup = _Config:LoadRangeSection(),
             defenseGroup = _Config:LoadDefenseSection(),
             mp5Group = _Config:LoadManaSection(),
+            spellSchoolGroup = _Config:SpellSchoolsSection(),
             spellGroup = _Config:LoadSpellSection(),
         }
     }

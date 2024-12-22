@@ -10,7 +10,7 @@ local i18n = ECSLoader:ImportModule("i18n")
 function _Config:LoadSpellSection()
     return {
         type = "group",
-        order = 6,
+        order = 7,
         inline = false,
         width = 2,
         name = function() return i18n("Spell") end,
@@ -192,7 +192,7 @@ function _Config:LoadSpellSection()
                 type = "group",
                 order = 6,
                 inline = true,
-                name = function() return i18n("Spell Schools") end,
+                name = function() return i18n("Spell Power") end,
                 args = {
                     bonusHealing = {
                         type = "toggle",
