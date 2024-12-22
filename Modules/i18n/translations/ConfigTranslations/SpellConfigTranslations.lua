@@ -92,26 +92,6 @@ local spellConfigTranslations = {
         ["esMX"] = "Golpear con hechizos",
         ["ptBR"] = "Acerto com feitiço"
     },
-    ["Shows/Hides all spell hit chance."] = {
-        ["enUS"] = true,
-        ["deDE"] = "Zeigt/Versteckt alle Trefferwertungen für Zauber.",
-        ["frFR"] = "Affiche/cache les chances de toucher avec les sorts.",
-        ["zhCN"] = "显示/隐藏 法术命中",
-        ["ruRU"] = "Показать/скрыть все показатели меткости",
-        ["esES"] = "Muestra/oculta la probabilidad de golpear con hechizos",
-        ["esMX"] = "Muestra/oculta la probabilidad de golpear con hechizos",
-        ["ptBR"] = "Mostra/oculta a chance de acerto com feitiços"
-    },
-    ["Spell Hit"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Zauber Trefferwertung",
-        ["frFR"] = "Valeurs de toucher sorts",
-        ["zhCN"] = "法术命中",
-        ["ruRU"] = "Меткость",
-        ["esES"] = "Probabilidad de golpear con hechizos",
-        ["esMX"] = "Probabilidad de golpear con hechizos",
-        ["ptBR"] = "Chance de acerto com feitiços"
-    },
     ["Shows/Hides the spell hit rating."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt die Zauber Trefferwertung.",

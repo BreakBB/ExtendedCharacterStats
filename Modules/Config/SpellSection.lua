@@ -92,22 +92,9 @@ function _Config:LoadSpellSection()
                     Stats:RebuildStatInfos()
                 end,
             },
-            spellHit = {
-                type = "toggle",
-                order = 5,
-                name = function() return i18n("Spell Hit") end,
-                desc = function() return i18n("Shows/Hides all spell hit chance.") end,
-                width = 1.5,
-                disabled = function() return (not ExtendedCharacterStats.profile.spell.display); end,
-                get = function () return ExtendedCharacterStats.profile.spell.hit.display; end,
-                set = function (_, value)
-                    ExtendedCharacterStats.profile.spell.hit.display = value
-                    Stats:RebuildStatInfos()
-                end,
-            },
             spellHitGroup = {
                 type = "group",
-                order = 6,
+                order = 5,
                 inline = true,
                 name = function() return i18n("Spell Hit Values") end,
                 args = {
@@ -203,7 +190,7 @@ function _Config:LoadSpellSection()
             },
             spellSchoolsGroup = {
                 type = "group",
-                order = 7,
+                order = 6,
                 inline = true,
                 name = function() return i18n("Spell Schools") end,
                 args = {
