@@ -343,6 +343,8 @@ stds.ecs = {
         "C_Debug.GetMapDebugObjects",
         "C_Debug.TeleportToMapDebugObject",
         "C_Debug.TeleportToMapLocation",
+        "C_Engraving",
+        "C_Engraving.GetRuneForEquipmentSlot",
         "C_FriendList.AddFriend",
         "C_FriendList.AddIgnore",
         "C_FriendList.AddOrDelIgnore",
