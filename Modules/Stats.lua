@@ -261,24 +261,25 @@ _CreateStatInfos = function()
         end
 
         category = profile.spellBonus
-        local spellCrit = profile.spell.crit
+        local spell = profile.spell
+        local spellCrit = spell.crit
         _CreateStatInfo(
                 category,
                 category.bonusHealing,
-                category.arcaneDmg,
-                spellCrit.arcane,
-                category.fireDmg,
-                spellCrit.fire,
-                category.frostDmg,
-                spellCrit.frost,
-                category.holyDmg,
-                spellCrit.holy,
-                category.natureDmg,
-                spellCrit.nature,
-                category.physicalDmg,
-                spellCrit.physical,
-                category.shadowDmg,
-                spellCrit.shadow
+                spell.arcane.display and category.arcaneDmg or nil,
+                spell.arcane.display and spellCrit.arcane or nil,
+                spell.fire.display and category.fireDmg or nil,
+                spell.fire.display and spellCrit.fire or nil,
+                spell.frost.display and category.frostDmg or nil,
+                spell.frost.display and spellCrit.frost or nil,
+                spell.holy.display and category.holyDmg or nil,
+                spell.holy.display and spellCrit.holy or nil,
+                spell.nature.display and category.natureDmg or nil,
+                spell.nature.display and spellCrit.nature or nil,
+                spell.physical.display and category.physicalDmg or nil,
+                spell.physical.display and spellCrit.physical or nil,
+                spell.shadow.display and category.shadowDmg or nil,
+                spell.shadow.display and spellCrit.shadow or nil
         )
     else
         local spellBonus = profile.spellBonus
