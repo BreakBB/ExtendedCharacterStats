@@ -336,6 +336,28 @@ local function GetDefaultStatsProfile()
             refName = "SpellHeader",
             text = "Spell",
 
+            arcane = {
+                display = true,
+            },
+            fire = {
+                display = true,
+            },
+            frost = {
+                display = true,
+            },
+            holy = {
+                display = true,
+            },
+            nature = {
+                display = true,
+            },
+            physical = {
+                display = true,
+            },
+            shadow = {
+                display = true,
+            },
+
             ---@type SubCategory
             hit = {
                 display = true,
