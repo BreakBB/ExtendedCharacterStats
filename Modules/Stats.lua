@@ -419,7 +419,7 @@ _UpdateStats = function(category)
                         _UpdateItem(subStat.refName, _FormatStatsText(subStat))
                     end
                 end
-            elseif stat.display then
+            elseif stat.display and stat.refName and stat.text then
                 _UpdateItem(stat.refName, _FormatStatsText(stat))
             end
         end
