@@ -195,13 +195,13 @@ _FormatStatsText = function(stat)
     local statValue = Data.GetStatInfo(stat.refName)
 
     if (not ExtendedCharacterStats.general.addColorsToStatTexts) then
-        return Utils:Colorize(statText, colors.GRAY) .. Utils:Colorize(statValue, colors.WHITE)
+        return Utils.Colorize(statText, colors.GRAY) .. Utils.Colorize(statValue, colors.WHITE)
     end
 
     local textColor = stat.textColor or colors.DEFENSE_SECONDARY
     local statColor = stat.statColor or colors.DEFENSE_PRIMARY
 
-    return Utils:Colorize(statText, textColor) .. Utils:Colorize(statValue, statColor)
+    return Utils.Colorize(statText, textColor) .. Utils.Colorize(statValue, statColor)
 end
 
 --- Creates all categories with headers and their child values

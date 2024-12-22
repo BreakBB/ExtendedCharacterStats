@@ -63,7 +63,7 @@ Utils.colors = {
     GRAY = "A8A8A8",
 }
 
-function Utils:Colorize(text, color)
+function Utils.Colorize(text, color)
     return "|cFF" .. color .. text .. "|r"
 end
 
