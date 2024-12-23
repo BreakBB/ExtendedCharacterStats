@@ -2,6 +2,8 @@
 local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
 local DataUtils = ECSLoader:ImportModule("DataUtils")
+---@type Utils
+local Utils = ECSLoader:ImportModule("Utils")
 
 local _MP5 = {}
 
@@ -10,9 +12,7 @@ local _, _, classId = UnitClass("player")
 -- Get MP5 from items
 ---@return number
 function Data:GetMP5FromItems()
-    local mp5 = _MP5:GetMP5ValueOnItems()
-    mp5 = mp5 + Data:GetSetBonusValueMP5()
-    return mp5
+    return _MP5:GetMP5ValueOnItems() + Data:GetSetBonusValueMP5() + _MP5.GetMP5FromRunes()
 end
 
 ---@return number
@@ -293,4 +293,23 @@ function _MP5:GetGemBonusMP5(gemId)
         end
     end
     return 0
+end
+
+---@param school number
+---@return number
+function _MP5.GetMP5FromRunes()
+    local mod = 0
+
+    if (not ECS.IsSoD) then
+        return mod
+    end
+
+    local finger1Rune = DataUtils.GetRuneForEquipSlot(Utils.CHAR_EQUIP_SLOTS.Finger1)
+    local finger2Rune = DataUtils.GetRuneForEquipSlot(Utils.CHAR_EQUIP_SLOTS.Finger2)
+
+    if (finger1Rune == 51509 or finger2Rune == 51509) then
+        mod = mod + 5 -- 5 MP5 from Meditation Specialization Rune
+    end
+
+    return mod
 end
