@@ -155,13 +155,6 @@ function _Config:LoadSpellSection()
                         get = function () return ExtendedCharacterStats.profile.spell.hit.bossLevel.display; end,
                         set = function (_, value)
                             ExtendedCharacterStats.profile.spell.hit.bossLevel.display = value
-                            ExtendedCharacterStats.profile.spell.hit.arcaneMissChanceBoss.display = value
-                            ExtendedCharacterStats.profile.spell.hit.fireMissChanceBoss.display = value
-                            ExtendedCharacterStats.profile.spell.hit.frostMissChanceBoss.display = value
-                            ExtendedCharacterStats.profile.spell.hit.holyMissChanceBoss.display = value
-                            ExtendedCharacterStats.profile.spell.hit.natureMissChanceBoss.display = value
-                            ExtendedCharacterStats.profile.spell.hit.physicalMissChanceBoss.display = value
-                            ExtendedCharacterStats.profile.spell.hit.shadowMissChanceBoss.display = value
                             Stats.RebuildStatInfos()
                         end,
                     },
