@@ -123,13 +123,6 @@ function _Config:LoadSpellSection()
                         get = function () return ExtendedCharacterStats.profile.spell.hit.bonus.display; end,
                         set = function (_, value)
                             ExtendedCharacterStats.profile.spell.hit.bonus.display = value
-                            ExtendedCharacterStats.profile.spell.hit.arcaneHitBonus.display = value
-                            ExtendedCharacterStats.profile.spell.hit.fireHitBonus.display = value
-                            ExtendedCharacterStats.profile.spell.hit.frostHitBonus.display = value
-                            ExtendedCharacterStats.profile.spell.hit.holyHitBonus.display = value
-                            ExtendedCharacterStats.profile.spell.hit.natureHitBonus.display = value
-                            ExtendedCharacterStats.profile.spell.hit.physicalHitBonus.display = value
-                            ExtendedCharacterStats.profile.spell.hit.shadowHitBonus.display = value
                             Stats.RebuildStatInfos()
                         end,
                     },
