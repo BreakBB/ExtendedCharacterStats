@@ -24,7 +24,7 @@ function _Config:LoadSpellSection()
                 get = function () return ExtendedCharacterStats.profile.spell.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.spell.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             spellCrit = {
@@ -44,7 +44,7 @@ function _Config:LoadSpellSection()
                     ExtendedCharacterStats.profile.spell.crit.nature.display = value
                     ExtendedCharacterStats.profile.spell.crit.physical.display = value
                     ExtendedCharacterStats.profile.spell.crit.shadow.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             hasteRating = {
@@ -60,7 +60,7 @@ function _Config:LoadSpellSection()
                 get = function () return ExtendedCharacterStats.profile.spell.hasteRating.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.spell.hasteRating.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             hasteBonus = {
@@ -76,7 +76,7 @@ function _Config:LoadSpellSection()
                 get = function () return ExtendedCharacterStats.profile.spell.hasteBonus.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.spell.hasteBonus.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             spellPenetration = {
@@ -89,7 +89,7 @@ function _Config:LoadSpellSection()
                 get = function () return ExtendedCharacterStats.profile.spell.penetration.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.spell.penetration.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             spellHitGroup = {
@@ -114,7 +114,7 @@ function _Config:LoadSpellSection()
                         get = function () return ExtendedCharacterStats.profile.spell.hit.rating.display; end,
                         set = function (_, value)
                             ExtendedCharacterStats.profile.spell.hit.rating.display = value
-                            Stats:RebuildStatInfos()
+                            Stats.RebuildStatInfos()
                         end,
                     },
                     spellHitBonus = {
@@ -137,7 +137,7 @@ function _Config:LoadSpellSection()
                             ExtendedCharacterStats.profile.spell.hit.natureHitBonus.display = value
                             ExtendedCharacterStats.profile.spell.hit.physicalHitBonus.display = value
                             ExtendedCharacterStats.profile.spell.hit.shadowHitBonus.display = value
-                            Stats:RebuildStatInfos()
+                            Stats.RebuildStatInfos()
                         end,
                     },
                     spellMiss = {
@@ -160,7 +160,7 @@ function _Config:LoadSpellSection()
                             ExtendedCharacterStats.profile.spell.hit.natureMissChance.display = value
                             ExtendedCharacterStats.profile.spell.hit.physicalMissChance.display = value
                             ExtendedCharacterStats.profile.spell.hit.shadowMissChance.display = value
-                            Stats:RebuildStatInfos()
+                            Stats.RebuildStatInfos()
                         end,
                     },
                     spellMissBoss = {
@@ -183,7 +183,7 @@ function _Config:LoadSpellSection()
                             ExtendedCharacterStats.profile.spell.hit.natureMissChanceBoss.display = value
                             ExtendedCharacterStats.profile.spell.hit.physicalMissChanceBoss.display = value
                             ExtendedCharacterStats.profile.spell.hit.shadowMissChanceBoss.display = value
-                            Stats:RebuildStatInfos()
+                            Stats.RebuildStatInfos()
                         end,
                     },
                 }
@@ -204,7 +204,7 @@ function _Config:LoadSpellSection()
                         get = function () return ExtendedCharacterStats.profile.spellBonus.bonusHealing.display; end,
                         set = function (_, value)
                             ExtendedCharacterStats.profile.spellBonus.bonusHealing.display = value
-                            Stats:RebuildStatInfos()
+                            Stats.RebuildStatInfos()
                         end,
                     },
                     arcaneDmg = {
@@ -217,7 +217,7 @@ function _Config:LoadSpellSection()
                         get = function () return ExtendedCharacterStats.profile.spellBonus.arcaneDmg.display; end,
                         set = function (_, value)
                             ExtendedCharacterStats.profile.spellBonus.arcaneDmg.display = value
-                            Stats:RebuildStatInfos()
+                            Stats.RebuildStatInfos()
                         end,
                     },
                     fireDmg = {
@@ -230,7 +230,7 @@ function _Config:LoadSpellSection()
                         get = function () return ExtendedCharacterStats.profile.spellBonus.fireDmg.display; end,
                         set = function (_, value)
                             ExtendedCharacterStats.profile.spellBonus.fireDmg.display = value
-                            Stats:RebuildStatInfos()
+                            Stats.RebuildStatInfos()
                         end,
                     },
                     frostDmg = {
@@ -243,7 +243,7 @@ function _Config:LoadSpellSection()
                         get = function () return ExtendedCharacterStats.profile.spellBonus.frostDmg.display; end,
                         set = function (_, value)
                             ExtendedCharacterStats.profile.spellBonus.frostDmg.display = value
-                            Stats:RebuildStatInfos()
+                            Stats.RebuildStatInfos()
                         end,
                     },
                     holyDmg = {
@@ -256,7 +256,7 @@ function _Config:LoadSpellSection()
                         get = function () return ExtendedCharacterStats.profile.spellBonus.holyDmg.display; end,
                         set = function (_, value)
                             ExtendedCharacterStats.profile.spellBonus.holyDmg.display = value
-                            Stats:RebuildStatInfos()
+                            Stats.RebuildStatInfos()
                         end,
                     },
                     natureDmg = {
@@ -269,7 +269,7 @@ function _Config:LoadSpellSection()
                         get = function () return ExtendedCharacterStats.profile.spellBonus.natureDmg.display; end,
                         set = function (_, value)
                             ExtendedCharacterStats.profile.spellBonus.natureDmg.display = value
-                            Stats:RebuildStatInfos()
+                            Stats.RebuildStatInfos()
                         end,
                     },
                     physicalDmg = {
@@ -282,7 +282,7 @@ function _Config:LoadSpellSection()
                         get = function () return ExtendedCharacterStats.profile.spellBonus.physicalDmg.display; end,
                         set = function (_, value)
                             ExtendedCharacterStats.profile.spellBonus.physicalDmg.display = value
-                            Stats:RebuildStatInfos()
+                            Stats.RebuildStatInfos()
                         end,
                     },
                     shadowDmg = {
@@ -295,7 +295,7 @@ function _Config:LoadSpellSection()
                         get = function () return ExtendedCharacterStats.profile.spellBonus.shadowDmg.display; end,
                         set = function (_, value)
                             ExtendedCharacterStats.profile.spellBonus.shadowDmg.display = value
-                            Stats:RebuildStatInfos()
+                            Stats.RebuildStatInfos()
                         end,
                     },
                 }

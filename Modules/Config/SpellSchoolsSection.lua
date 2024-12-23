@@ -25,7 +25,7 @@ function _Config:SpellSchoolsSection()
                 get = function () return ExtendedCharacterStats.profile.spell.arcane.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.spell.arcane.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             fire = {
@@ -38,7 +38,7 @@ function _Config:SpellSchoolsSection()
                 get = function () return ExtendedCharacterStats.profile.spell.fire.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.spell.fire.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             frost = {
@@ -51,7 +51,7 @@ function _Config:SpellSchoolsSection()
                 get = function () return ExtendedCharacterStats.profile.spell.frost.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.spell.frost.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             holy = {
@@ -64,7 +64,7 @@ function _Config:SpellSchoolsSection()
                 get = function () return ExtendedCharacterStats.profile.spell.holy.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.spell.holy.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             nature = {
@@ -77,7 +77,7 @@ function _Config:SpellSchoolsSection()
                 get = function () return ExtendedCharacterStats.profile.spell.nature.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.spell.nature.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             physical = {
@@ -90,7 +90,7 @@ function _Config:SpellSchoolsSection()
                 get = function () return ExtendedCharacterStats.profile.spell.physical.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.spell.physical.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             shadow = {
@@ -103,7 +103,7 @@ function _Config:SpellSchoolsSection()
                 get = function () return ExtendedCharacterStats.profile.spell.shadow.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.spell.shadow.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
         },

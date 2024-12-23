@@ -387,7 +387,7 @@ function Stats:RecycleFrame(frame)
 end
 
 --- Resets the Y-Offset and rebuilds the displayed frames
-function Stats:RebuildStatInfos()
+function Stats.RebuildStatInfos()
     local stats = _Stats.displayedLines
     lastYOffset = 20
 

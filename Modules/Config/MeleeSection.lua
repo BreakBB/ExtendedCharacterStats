@@ -24,7 +24,7 @@ function _Config:LoadMeleeSection()
                 get = function () return ExtendedCharacterStats.profile.melee.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.melee.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             meleeAttackPower = {
@@ -37,7 +37,7 @@ function _Config:LoadMeleeSection()
                 get = function () return ExtendedCharacterStats.profile.melee.attackPower.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.melee.attackPower.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             meleeCrit = {
@@ -50,7 +50,7 @@ function _Config:LoadMeleeSection()
                 get = function () return ExtendedCharacterStats.profile.melee.crit.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.melee.crit.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             penetration = {
@@ -66,7 +66,7 @@ function _Config:LoadMeleeSection()
                 get = function () return ExtendedCharacterStats.profile.melee.penetration.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.melee.penetration.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             penetrationRating = {
@@ -82,7 +82,7 @@ function _Config:LoadMeleeSection()
                 get = function () return ExtendedCharacterStats.profile.melee.penetrationRating.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.melee.penetrationRating.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             expertise = {
@@ -98,7 +98,7 @@ function _Config:LoadMeleeSection()
                 get = function () return ExtendedCharacterStats.profile.melee.expertise.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.melee.expertise.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             expertiseRating = {
@@ -114,7 +114,7 @@ function _Config:LoadMeleeSection()
                 get = function () return ExtendedCharacterStats.profile.melee.expertiseRating.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.melee.expertiseRating.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             hasteRating = {
@@ -130,7 +130,7 @@ function _Config:LoadMeleeSection()
                 get = function () return ExtendedCharacterStats.profile.melee.hasteRating.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.melee.hasteRating.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             hasteBonus = {
@@ -146,7 +146,7 @@ function _Config:LoadMeleeSection()
                 get = function () return ExtendedCharacterStats.profile.melee.hasteBonus.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.melee.hasteBonus.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             meleeHit = {
@@ -159,7 +159,7 @@ function _Config:LoadMeleeSection()
                 get = function () return ExtendedCharacterStats.profile.melee.hit.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.melee.hit.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             meleeHitGroup = {
@@ -184,7 +184,7 @@ function _Config:LoadMeleeSection()
                         get = function () return ExtendedCharacterStats.profile.melee.hit.rating.display; end,
                         set = function (_, value)
                             ExtendedCharacterStats.profile.melee.hit.rating.display = value
-                            Stats:RebuildStatInfos()
+                            Stats.RebuildStatInfos()
                         end,
                     },
                     meleeHitBonus = {
@@ -200,7 +200,7 @@ function _Config:LoadMeleeSection()
                         get = function () return ExtendedCharacterStats.profile.melee.hit.bonus.display; end,
                         set = function (_, value)
                             ExtendedCharacterStats.profile.melee.hit.bonus.display = value
-                            Stats:RebuildStatInfos()
+                            Stats.RebuildStatInfos()
                         end,
                     },
                     meleeMiss = {
@@ -216,7 +216,7 @@ function _Config:LoadMeleeSection()
                         get = function () return ExtendedCharacterStats.profile.melee.hit.sameLevel.display; end,
                         set = function (_, value)
                             ExtendedCharacterStats.profile.melee.hit.sameLevel.display = value
-                            Stats:RebuildStatInfos()
+                            Stats.RebuildStatInfos()
                         end,
                     },
                     meleeMissBoss = {
@@ -232,7 +232,7 @@ function _Config:LoadMeleeSection()
                         get = function () return ExtendedCharacterStats.profile.melee.hit.bossLevel.display; end,
                         set = function (_, value)
                             ExtendedCharacterStats.profile.melee.hit.bossLevel.display = value
-                            Stats:RebuildStatInfos()
+                            Stats.RebuildStatInfos()
                         end,
                     },
                 },
@@ -250,7 +250,7 @@ function _Config:LoadMeleeSection()
                 get = function () return ExtendedCharacterStats.profile.melee.glance.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.melee.glance.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             meleeGlanceGroup = {
@@ -275,7 +275,7 @@ function _Config:LoadMeleeSection()
                         get = function () return ExtendedCharacterStats.profile.melee.glance.sameLevel.display; end,
                         set = function (_, value)
                             ExtendedCharacterStats.profile.melee.glance.sameLevel.display = value
-                            Stats:RebuildStatInfos()
+                            Stats.RebuildStatInfos()
                         end,
                     },
                     meleeGlanceBoss = {
@@ -291,7 +291,7 @@ function _Config:LoadMeleeSection()
                         get = function () return ExtendedCharacterStats.profile.melee.glance.bossLevel.display; end,
                         set = function (_, value)
                             ExtendedCharacterStats.profile.melee.glance.bossLevel.display = value
-                            Stats:RebuildStatInfos()
+                            Stats.RebuildStatInfos()
                         end,
                     },
                     meleeGlanceDamage = {
@@ -307,7 +307,7 @@ function _Config:LoadMeleeSection()
                         get = function () return ExtendedCharacterStats.profile.melee.glance.damageSameLevel.display; end,
                         set = function (_, value)
                             ExtendedCharacterStats.profile.melee.glance.damageSameLevel.display = value
-                            Stats:RebuildStatInfos()
+                            Stats.RebuildStatInfos()
                         end,
                     },
                     meleeGlanceDamageBoss = {
@@ -323,7 +323,7 @@ function _Config:LoadMeleeSection()
                         get = function () return ExtendedCharacterStats.profile.melee.glance.damageBossLevel.display; end,
                         set = function (_, value)
                             ExtendedCharacterStats.profile.melee.glance.damageSameLevel.display = value
-                            Stats:RebuildStatInfos()
+                            Stats.RebuildStatInfos()
                         end,
                     },
                 }
@@ -338,7 +338,7 @@ function _Config:LoadMeleeSection()
                 get = function () return ExtendedCharacterStats.profile.melee.attackSpeed.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.melee.attackSpeed.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             meleeAttackSpeedGroup = {
@@ -360,7 +360,7 @@ function _Config:LoadMeleeSection()
                         get = function () return ExtendedCharacterStats.profile.melee.attackSpeed.mainHand.display; end,
                         set = function (_, value)
                             ExtendedCharacterStats.profile.melee.attackSpeed.mainHand.display = value
-                            Stats:RebuildStatInfos()
+                            Stats.RebuildStatInfos()
                         end,
                     },
                     offHand = {
@@ -376,7 +376,7 @@ function _Config:LoadMeleeSection()
                         get = function () return ExtendedCharacterStats.profile.melee.attackSpeed.offHand.display; end,
                         set = function (_, value)
                             ExtendedCharacterStats.profile.melee.attackSpeed.offHand.display = value
-                            Stats:RebuildStatInfos()
+                            Stats.RebuildStatInfos()
                         end,
                     },
                 }

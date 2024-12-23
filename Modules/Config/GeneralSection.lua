@@ -24,7 +24,7 @@ function _Config:LoadGeneralSection()
                 get = function () return ExtendedCharacterStats.profile.general.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.general.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             movementSpeed = {
@@ -37,7 +37,7 @@ function _Config:LoadGeneralSection()
                 get = function () return ExtendedCharacterStats.profile.general.movementSpeed.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.general.movementSpeed.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
         },
