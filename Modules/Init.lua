@@ -62,7 +62,7 @@ function _Init:LoadProfile()
     end
 
     local currentProfileVersion = ecs.general.profileVersion
-    local targetProfileVersion = Profile:GetProfileVersion()
+    local targetProfileVersion = Profile.GetProfileVersion()
 
     local isProfileVersionDifferent = ecs.general and (currentProfileVersion == nil or currentProfileVersion ~= targetProfileVersion)
 

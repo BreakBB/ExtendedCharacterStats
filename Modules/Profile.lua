@@ -5,7 +5,7 @@ local Profile = ECSLoader:CreateModule("Profile")
 local Utils = ECSLoader:ImportModule("Utils")
 
 ---@return number
-function Profile:GetProfileVersion()
+function Profile.GetProfileVersion()
     return 20
 end
 
