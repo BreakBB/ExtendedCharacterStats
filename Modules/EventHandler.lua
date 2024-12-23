@@ -33,7 +33,7 @@ function EventHandler.HandleOnEvent(_, event, ...)
     if (not shouldDebounce) and event == "GROUP_ROSTER_UPDATE" then
         -- Someone joined or left the group
         currentGroupMembers = GetNumGroupMembers()
-    elseif ((not shouldDebounce) and event == "UNIT_AURA") or event == "PLAYER_LEVEL_UP" or event == "CHARACTER_POINTS_CHANGED" then
+    elseif ((not shouldDebounce) and event == "UNIT_AURA") or event == "PLAYER_LEVEL_UP" or event == "CHARACTER_POINTS_CHANGED" or event == "RUNE_UPDATED" then
         if currentGroupMembers > 5 then
             -- When in a raid update on the next UPDATE_INTERVAL tick
             shouldUpdate = true

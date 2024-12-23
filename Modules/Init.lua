@@ -94,4 +94,7 @@ function _Init.RegisterEvents(eventFrame)
             Stats:ShowWindow()
         end)
     end
+    if ECS.IsSoD then
+        eventFrame:RegisterEvent("RUNE_UPDATED") -- Triggers whenever the player changed a rune
+    end
 end
