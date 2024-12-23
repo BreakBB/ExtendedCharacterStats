@@ -66,7 +66,7 @@ Utils.colors = {
 }
 
 ---@param text string
----@param color string
+---@param color Color
 function Utils.Colorize(text, color)
     return "|cFF" .. color .. text .. "|r"
 end

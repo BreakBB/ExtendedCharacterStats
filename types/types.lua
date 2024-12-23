@@ -5,8 +5,8 @@
 ---@field refName string
 ---@field text string
 ---@field isTbcOnly? true
----@field textColor Colors
----@field statColor Colors
+---@field textColor Color
+---@field statColor Color
 
 
 ---@class SubCategory
@@ -22,3 +22,4 @@
 
 ---@alias EquipSlot string
 ---@alias ItemLink string
+---@alias Color string
