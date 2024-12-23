@@ -169,7 +169,7 @@ end
 
 ---@param school number
 ---@return string
-function Data.SpellHitBonusBySchool(school)
+function Data.SpellHitBonus(school)
     local hit = _SpellHit:GetTalentSpellHitBonus(school)
     local mod = _SpellHit:GetSpellHitBonus(school)
     if mod then
