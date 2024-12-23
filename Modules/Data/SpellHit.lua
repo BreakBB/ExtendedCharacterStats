@@ -67,7 +67,7 @@ function _SpellHit:GetTalentSpellHitBonus(school)
         end
     end
 
-    if classId == Data.PALADIN and (not ECS.IsWotlk) then
+    if ECS.IsTBC and classId == Data.PALADIN then
         local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 3)
         bonus = points * 1 -- 0-3% Precision
     end
