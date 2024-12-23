@@ -139,13 +139,6 @@ function _Config:LoadSpellSection()
                         get = function () return ExtendedCharacterStats.profile.spell.hit.sameLevel.display; end,
                         set = function (_, value)
                             ExtendedCharacterStats.profile.spell.hit.sameLevel.display = value
-                            ExtendedCharacterStats.profile.spell.hit.arcaneMissChance.display = value
-                            ExtendedCharacterStats.profile.spell.hit.fireMissChance.display = value
-                            ExtendedCharacterStats.profile.spell.hit.frostMissChance.display = value
-                            ExtendedCharacterStats.profile.spell.hit.holyMissChance.display = value
-                            ExtendedCharacterStats.profile.spell.hit.natureMissChance.display = value
-                            ExtendedCharacterStats.profile.spell.hit.physicalMissChance.display = value
-                            ExtendedCharacterStats.profile.spell.hit.shadowMissChance.display = value
                             Stats.RebuildStatInfos()
                         end,
                     },
