@@ -53,7 +53,7 @@ function EventHandler.HandleOnEvent(_, event, ...)
         C_Timer.After(0.5, function ()
             Stats.UpdateInformation()
         end)
-    elseif event == "INSPECT_READY" then
+    elseif ((not shouldDebounce) and event == "INSPECT_READY") then
         GearInfos:UpdateInspectGearColorFrames()
     end
 end
