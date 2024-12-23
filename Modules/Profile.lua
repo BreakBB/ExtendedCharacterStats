@@ -4,6 +4,7 @@ local Profile = ECSLoader:CreateModule("Profile")
 ---@type Utils
 local Utils = ECSLoader:ImportModule("Utils")
 
+---@return number
 function Profile:GetProfileVersion()
     return 20
 end
@@ -13,7 +14,6 @@ local function GetDefaultStatsProfile()
     local colors = Utils.colors
 
     return {
-        ---@type Category
         general = {
             display = true,
             refName = "GeneralHeader",
@@ -22,13 +22,11 @@ local function GetDefaultStatsProfile()
             movementSpeed = {display = true, refName = "MovementSpeed", text = "Movement Speed"},
         },
 
-        ---@class Category
         melee = {
             display = true,
             refName = "MeleeHeader",
             text = "Melee",
 
-            ---@class SubCategory
             hit = {
                 display = true,
                 isSubGroup = true,
@@ -170,7 +168,6 @@ local function GetDefaultStatsProfile()
             },
         },
 
-        ---@type Category
         ranged = {
             display = true,
             refName = "RangedHeader",
@@ -268,7 +265,6 @@ local function GetDefaultStatsProfile()
             },
         },
 
-        ---@type Category
         defense = {
             display = true,
             refName = "DefenseHeader",
@@ -287,7 +283,6 @@ local function GetDefaultStatsProfile()
             resilience = {display = true, isTbcOnly = true, refName = "ResilienceValue", text = "Resilience"},
         },
 
-        ---@type Category
         regen = {
             display = true,
             refName = "ManaHeader",
@@ -330,7 +325,6 @@ local function GetDefaultStatsProfile()
             },
         },
 
-        ---@type Category
         spell = {
             display = true,
             refName = "SpellHeader",
@@ -614,7 +608,6 @@ local function GetDefaultStatsProfile()
             }
         },
 
-        ---@type Category
         spellBonus = {
             display = true,
             refName = "SpellBonusHeader",

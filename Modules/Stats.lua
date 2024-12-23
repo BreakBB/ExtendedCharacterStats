@@ -190,6 +190,7 @@ _CreateStatInfo = function(category, ...)
     end
 end
 
+---@param stat StatsEntry
 _FormatStatsText = function(stat)
     local statText = i18n(stat.text) .. ": "
     local statValue = Data.GetStatInfo(stat.refName)

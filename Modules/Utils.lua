@@ -23,6 +23,7 @@ Utils.CHAR_EQUIP_SLOTS = {
     ["Range"] = "RangedSlot",
 }
 
+---@class Colors
 Utils.colors = {
     ATTACK_POWER_PRIMARY = "ffa000",
     ATTACK_POWER_SECONDARY = "ffd149",
