@@ -2,6 +2,9 @@
 local DataUtils = ECSLoader:CreateModule("DataUtils")
 
 --- Rounds every number down to the given decimal places
+---@param num number
+---@param decimalPlaces number
+---@return number
 function DataUtils:Round(num, decimalPlaces)
     if (not num) then
         return 0
@@ -10,6 +13,7 @@ function DataUtils:Round(num, decimalPlaces)
     return math.floor(num * mult + 0.5) / mult
 end
 
+---@return boolean
 function DataUtils:IsShapeshifted()
     for i = 1, 40 do
         local _, _, _, _, _, _, _, _, _, spellId, _ = UnitAura("player", i, "HELPFUL", "PLAYER")
@@ -23,6 +27,9 @@ function DataUtils:IsShapeshifted()
     return false
 end
 
+---@param weaponSkill number
+---@param defenseValue number
+---@return number
 function DataUtils.GetMissChanceByDifference(weaponSkill, defenseValue)
     local delta = defenseValue - weaponSkill
     if delta <= 10 then
@@ -41,10 +48,17 @@ function DataUtils.GetMissChanceByDifference(weaponSkill, defenseValue)
     end
 end
 
+---@param level number
+---@param weaponSkill number
+---@param defenseValue number
+---@return number
 function DataUtils:GetGlancingChanceByDifference(level, weaponSkill, defenseValue)
     return 0.1 + (defenseValue - math.min(level*5, weaponSkill)) * 0.02
 end
 
+---@param weaponSkill number
+---@param defenseValue number
+---@return number
 function DataUtils:GetGlancingDamage(weaponSkill, defenseValue)
     local difference = defenseValue - weaponSkill
     local low = math.min(0.91 ,(1.3 - 0.05 * difference))
@@ -59,6 +73,8 @@ function DataUtils:GetGlancingDamage(weaponSkill, defenseValue)
     return (high + low)/2
 end
 
+---@param equipSlot EquipSlot
+---@return number|nil
 function DataUtils:GetEnchantForEquipSlot(equipSlot)
     local slotId, _ = GetInventorySlotInfo(equipSlot)
     local itemLink = GetInventoryItemLink("player", slotId)
@@ -66,6 +82,8 @@ function DataUtils:GetEnchantForEquipSlot(equipSlot)
     return DataUtils:GetEnchantFromItemLink(itemLink)
 end
 
+---@param itemLink ItemLink
+---@return number|nil
 function DataUtils:GetEnchantFromItemLink(itemLink)
     if itemLink then
         local _, itemStringLink = GetItemInfo(itemLink)
@@ -78,6 +96,7 @@ function DataUtils:GetEnchantFromItemLink(itemLink)
     return nil
 end
 
+---@param equipSlot EquipSlot
 ---@return number|nil
 function DataUtils.GetRuneForEquipSlot(equipSlot)
     local slotId, _ = GetInventorySlotInfo(equipSlot)
@@ -90,6 +109,8 @@ function DataUtils.GetRuneForEquipSlot(equipSlot)
     end
 end
 
+---@param itemLink ItemLink
+---@return (number, number, number) | nil
 function DataUtils:GetSocketedGemsFromItemLink(itemLink)
     if itemLink then
         local _, itemStringLink = GetItemInfo(itemLink)

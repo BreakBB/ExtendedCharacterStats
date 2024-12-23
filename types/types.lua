@@ -19,3 +19,6 @@
 ---@field display boolean
 ---@field refName string
 ---@field text string
+
+---@alias EquipSlot string
+---@alias ItemLink string
