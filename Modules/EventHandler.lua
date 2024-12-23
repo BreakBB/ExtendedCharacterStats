@@ -15,7 +15,7 @@ function EventHandler.Init()
 
     C_Timer.NewTicker(UPDATE_INTERVAL, function()
         if shouldUpdate then
-            Stats:UpdateInformation()
+            Stats.UpdateInformation()
             shouldUpdate = false
         end
     end)
@@ -39,16 +39,16 @@ function EventHandler.HandleOnEvent(_, event, ...)
             shouldUpdate = true
         else
             -- Otherwise update right away
-            Stats:UpdateInformation()
+            Stats.UpdateInformation()
         end
     elseif event == "PLAYER_EQUIPMENT_CHANGED" or event == "SOCKET_INFO_SUCCESS" then
         GearInfos.UpdateGearColorFrames()
         C_Timer.After(0.5, function ()
-            Stats:UpdateInformation()
+            Stats.UpdateInformation()
         end)
     elseif event == "PLAYER_MOUNT_DISPLAY_CHANGED" then
         C_Timer.After(0.5, function ()
-            Stats:UpdateInformation()
+            Stats.UpdateInformation()
         end)
     elseif event == "INSPECT_READY" then
         GearInfos:UpdateInspectGearColorFrames()
