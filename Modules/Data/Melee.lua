@@ -46,7 +46,8 @@ function _Melee:GetHitRatingBonus()
     if CR_HIT_MELEE then
         return GetCombatRatingBonus(CR_HIT_MELEE) + _Melee:GetHitTalentBonus() + _Melee:GetHitFromBuffs()
     end
-    return GetHitModifier() + _Melee.GetHitFromRunes()
+    -- GetHitModifier returns nil on dungeon entering/teleport
+    return (GetHitModifier() or 0) + _Melee.GetHitFromRunes()
 end
 
 function _Melee:GetHitTalentBonus()
@@ -151,9 +152,7 @@ function Data:MeleeHitMissChanceSameLevel()
     end
 
     local hitValue = _Melee:GetHitRatingBonus()
-    if hitValue then -- This needs to be checked because on dungeon entering it becomes nil
-        missChance = missChance - hitValue
-    end
+    missChance = missChance - hitValue
 
     if missChance < 0 then
         missChance = 0
@@ -182,9 +181,7 @@ function Data:MeleeHitMissChanceBossLevel()
     end
 
     local hitValue = _Melee:GetHitRatingBonus()
-    if hitValue then -- This needs to be checked because on dungeon entering it becomes nil
-        missChance = missChance - hitValue
-    end
+    missChance = missChance - hitValue
 
     if missChance < 0 then
         missChance = 0
