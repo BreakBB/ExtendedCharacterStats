@@ -15,9 +15,7 @@ function Data:SpellMissChanceSameLevel(school)
 
     missChance = missChance - _SpellHit:GetTalentSpellHitBonus(school)
     local mod = _SpellHit:GetSpellHitBonus(school)
-    if mod then
-        missChance = missChance - mod
-    end
+    missChance = missChance - mod
 
     if ECS.IsWotlk and missChance < 0 then
         missChance = 0
@@ -37,9 +35,7 @@ function Data:SpellMissChanceBossLevel(school)
 
     missChance = missChance - _SpellHit:GetTalentSpellHitBonus(school)
     local mod = _SpellHit:GetSpellHitBonus(school)
-    if mod then
-        missChance = missChance - mod
-    end
+    missChance = missChance - mod
 
     if ECS.IsWotlk and missChance < 0 then
         missChance = 0
@@ -108,7 +104,8 @@ function _SpellHit:GetSpellHitBonus(school)
     if CR_HIT_SPELL then
         return GetCombatRatingBonus(CR_HIT_SPELL) + _SpellHit:GetSpellHitFromBuffs()
     end
-    return GetSpellHitModifier() + _SpellHit.GetHitFromRunes(school)
+    -- GetSpellHitModifier returns nil on dungeon entering/teleport
+    return (GetSpellHitModifier() or 0) + _SpellHit.GetHitFromRunes(school)
 end
 
 function _SpellHit:GetSpellHitFromBuffs()
@@ -172,9 +169,7 @@ end
 function Data.SpellHitBonus(school)
     local hit = _SpellHit:GetTalentSpellHitBonus(school)
     local mod = _SpellHit:GetSpellHitBonus(school)
-    if mod then
-        hit = hit + mod
-    end
+    hit = hit + mod
 
     return DataUtils:Round(hit, 2) .. "%"
 end
