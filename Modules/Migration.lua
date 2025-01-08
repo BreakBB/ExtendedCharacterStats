@@ -11,7 +11,7 @@ function Migration:ToLatestProfileVersion(profileVersion)
     if profileVersion < 20 then
         ---@class ECSProfile
         Profile:Reset()
-        ECS:Print(i18n("Profile has been reset due to a major update."))
+        ECS:Print(i18n("Profile has been reset due to a major update.")) -- v4.0.0 because of major spell restructuring
         return
     end
 end
