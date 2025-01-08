@@ -24,7 +24,7 @@ function _Config:LoadManaSection()
                 get = function () return ExtendedCharacterStats.profile.regen.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.regen.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             mp5Items = {
@@ -37,7 +37,7 @@ function _Config:LoadManaSection()
                 get = function () return ExtendedCharacterStats.profile.regen.mp5Items.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.regen.mp5Items.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             mp5Spirit = {
@@ -50,7 +50,7 @@ function _Config:LoadManaSection()
                 get = function () return ExtendedCharacterStats.profile.regen.mp5Spirit.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.regen.mp5Spirit.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             mp5Buffs = {
@@ -63,7 +63,7 @@ function _Config:LoadManaSection()
                 get = function () return ExtendedCharacterStats.profile.regen.mp5Buffs.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.regen.mp5Buffs.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             mp5Casting = {
@@ -76,7 +76,7 @@ function _Config:LoadManaSection()
                 get = function () return ExtendedCharacterStats.profile.regen.mp5Casting.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.regen.mp5Casting.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             mp5NotCasting = {
@@ -89,7 +89,7 @@ function _Config:LoadManaSection()
                 get = function () return ExtendedCharacterStats.profile.regen.mp5NotCasting.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.regen.mp5NotCasting.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
         },

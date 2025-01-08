@@ -1,6 +1,7 @@
 ---@class Utils
 local Utils = ECSLoader:CreateModule("Utils")
 
+---@class table<string, EquipSlot>
 Utils.CHAR_EQUIP_SLOTS = {
     ["Head"] = "HeadSlot",
     ["Neck"] = "NeckSlot",
@@ -23,6 +24,7 @@ Utils.CHAR_EQUIP_SLOTS = {
     ["Range"] = "RangedSlot",
 }
 
+---@class Colors
 Utils.colors = {
     ATTACK_POWER_PRIMARY = "ffa000",
     ATTACK_POWER_SECONDARY = "ffd149",
@@ -63,11 +65,14 @@ Utils.colors = {
     GRAY = "A8A8A8",
 }
 
-function Utils:Colorize(text, color)
+---@param text string
+---@param color Color
+function Utils.Colorize(text, color)
     return "|cFF" .. color .. text .. "|r"
 end
 
 local cachedTitle
+---@return number, number, number
 function Utils:GetAddonVersionInfo()
     if (not cachedTitle) then
         local _, title, _, _, _ = GetAddOnInfo("ExtendedCharacterStats")
@@ -78,6 +83,7 @@ function Utils:GetAddonVersionInfo()
     return tonumber(major), tonumber(minor), tonumber(patch)
 end
 
+---@return string
 function Utils:GetAddonVersionString()
     local major, minor, patch = Utils:GetAddonVersionInfo()
     return "v" .. tostring(major) .. "." .. tostring(minor) .. "." .. tostring(patch)

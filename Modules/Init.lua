@@ -62,7 +62,7 @@ function _Init:LoadProfile()
     end
 
     local currentProfileVersion = ecs.general.profileVersion
-    local targetProfileVersion = Profile:GetProfileVersion()
+    local targetProfileVersion = Profile.GetProfileVersion()
 
     local isProfileVersionDifferent = ecs.general and (currentProfileVersion == nil or currentProfileVersion ~= targetProfileVersion)
 
@@ -93,5 +93,8 @@ function _Init.RegisterEvents(eventFrame)
         GearManagerDialog:HookScript("OnHide", function()
             Stats:ShowWindow()
         end)
+    end
+    if ECS.IsSoD then
+        eventFrame:RegisterEvent("RUNE_UPDATED") -- Triggers whenever the player changed a rune
     end
 end

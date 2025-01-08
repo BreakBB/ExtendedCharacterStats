@@ -24,7 +24,7 @@ function _Config:LoadDefenseSection()
                 get = function () return ExtendedCharacterStats.profile.defense.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.defense.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             armor = {
@@ -37,7 +37,7 @@ function _Config:LoadDefenseSection()
                 get = function () return ExtendedCharacterStats.profile.defense.armor.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.defense.armor.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             critImmunity = {
@@ -53,7 +53,7 @@ function _Config:LoadDefenseSection()
                 get = function () return ExtendedCharacterStats.profile.defense.critImmunity.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.defense.critImmunity.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             critReduction = {
@@ -69,7 +69,7 @@ function _Config:LoadDefenseSection()
                 get = function () return ExtendedCharacterStats.profile.defense.critReduction.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.defense.critReduction.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             avoidance = {
@@ -82,7 +82,7 @@ function _Config:LoadDefenseSection()
                 get = function () return ExtendedCharacterStats.profile.defense.avoidance.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.defense.avoidance.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             defenseRating = {
@@ -98,7 +98,7 @@ function _Config:LoadDefenseSection()
                 get = function () return ExtendedCharacterStats.profile.defense.defenseRating.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.defense.defenseRating.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             defense = {
@@ -111,7 +111,7 @@ function _Config:LoadDefenseSection()
                 get = function () return ExtendedCharacterStats.profile.defense.defense.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.defense.defense.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             blockChance = {
@@ -124,7 +124,7 @@ function _Config:LoadDefenseSection()
                 get = function () return ExtendedCharacterStats.profile.defense.blockChance.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.defense.blockChance.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             blockValue = {
@@ -137,7 +137,7 @@ function _Config:LoadDefenseSection()
                 get = function () return ExtendedCharacterStats.profile.defense.blockValue.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.defense.blockValue.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             parry = {
@@ -150,7 +150,7 @@ function _Config:LoadDefenseSection()
                 get = function () return ExtendedCharacterStats.profile.defense.parry.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.defense.parry.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             dodge = {
@@ -163,7 +163,7 @@ function _Config:LoadDefenseSection()
                 get = function () return ExtendedCharacterStats.profile.defense.dodge.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.defense.dodge.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             resilience = {
@@ -179,7 +179,7 @@ function _Config:LoadDefenseSection()
                 get = function () return ExtendedCharacterStats.profile.defense.resilience.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.defense.resilience.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
         },

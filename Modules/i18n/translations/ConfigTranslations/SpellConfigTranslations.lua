@@ -92,26 +92,6 @@ local spellConfigTranslations = {
         ["esMX"] = "Golpear con hechizos",
         ["ptBR"] = "Acerto com feitiço"
     },
-    ["Shows/Hides all spell hit chance."] = {
-        ["enUS"] = true,
-        ["deDE"] = "Zeigt/Versteckt alle Trefferwertungen für Zauber.",
-        ["frFR"] = "Affiche/cache les chances de toucher avec les sorts.",
-        ["zhCN"] = "显示/隐藏 法术命中",
-        ["ruRU"] = "Показать/скрыть все показатели меткости",
-        ["esES"] = "Muestra/oculta la probabilidad de golpear con hechizos",
-        ["esMX"] = "Muestra/oculta la probabilidad de golpear con hechizos",
-        ["ptBR"] = "Mostra/oculta a chance de acerto com feitiços"
-    },
-    ["Spell Hit"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Zauber Trefferwertung",
-        ["frFR"] = "Valeurs de toucher sorts",
-        ["zhCN"] = "法术命中",
-        ["ruRU"] = "Меткость",
-        ["esES"] = "Probabilidad de golpear con hechizos",
-        ["esMX"] = "Probabilidad de golpear con hechizos",
-        ["ptBR"] = "Chance de acerto com feitiços"
-    },
     ["Shows/Hides the spell hit rating."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt die Zauber Trefferwertung.",
@@ -152,25 +132,15 @@ local spellConfigTranslations = {
         ["esMX"] = "Muestra/oculta la probabilidad de fallo con hechizos contra jefes (nivel +3)",
         ["ptBR"] = "Mostra/oculta a chance de erro de feitiço contra inimigos chefes (nível +3)"
     },
-    ["Show Spell Power Stats"] = {
+    ["Spell Power"] = {
         ["enUS"] = true,
-        ["deDE"] = "Zaubermachtwerte anzeigen",
-        ["frFR"] = "Afficher la puissance des sorts",
-        ["zhCN"] = "显示法术强度属性",
+        ["deDE"] = "Zauberkraft",
+        ["frFR"] = "Puissance des sorts",
+        ["zhCN"] = "法术强度",
         ["ruRU"] = "Сила заклинаний",
-        ["esES"] = "Mostrar poder con hechizos",
-        ["esMX"] = "Mostrar poder con hechizos",
-        ["ptBR"] = "Mostrar poder mágico"
-    },
-    ["Shows/Hides all spell power stats."] = {
-        ["enUS"] = true,
-        ["deDE"] = "Zeigt/Versteckt alle Zaubermachtwerte.",
-        ["frFR"] = "Affiche/cache toutes les statistiques de puissance des sorts.",
-        ["zhCN"] = "显示/隐藏 法术强度属性",
-        ["ruRU"] = "Показать/скрыть все характеристики силы заклинаний",
-        ["esES"] = "Muestra/oculta todas estadísticas de poder con hechizos",
-        ["esMX"] = "Muestra/oculta todas estadísticas de poder con hechizos",
-        ["ptBR"] = "Mostra/oculta todas as estatísticas de poder mágico"
+        ["esES"] = "Poder con hechizos",
+        ["esMX"] = "Poder con hechizos",
+        ["ptBR"] = "Poder mágico"
     },
     ["Shows/Hides the physical damage value."] = {
         ["enUS"] = true,
@@ -182,16 +152,6 @@ local spellConfigTranslations = {
         ["esMX"] = "Muestra/oculta el valor de daño físico",
         ["ptBR"] = "Mostra/oculta o valor do dano físico"
     },
-    ["Shows/Hides the physical crit chance."] = {
-        ["enUS"] = true,
-        ["deDE"] = "Zeigt/Versteckt die Chance mit physischen Zaubern kritisch zu treffen.",
-        ["frFR"] = "Affiche/cache les chances de critique physique.",
-        ["zhCN"] = "显示/隐藏 物理暴击",
-        ["ruRU"] = "Показать/скрыть шанс критического физического урона",
-        ["esES"] = "Muestra/oculta la probabilidad de conseguir un golpe crítico físico",
-        ["esMX"] = "Muestra/oculta la probabilidad de asestar un golpe crítico físico",
-        ["ptBR"] = "Mostra/oculta a chance de acerto crítico físico"
-    },
     ["Shows/Hides the holy damage value."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt den Heiligschadenswert.",
@@ -201,16 +161,6 @@ local spellConfigTranslations = {
         ["esES"] = "Muestra/oculta el valor de daño sagrado",
         ["esMX"] = "Muestra/oculta el valor de daño sagrado",
         ["ptBR"] = "Mostra/oculta o valor de dano sagrado"
-    },
-    ["Shows/Hides the holy crit chance."] = {
-        ["enUS"] = true,
-        ["deDE"] = "Zeigt/Versteckt die Chance mit Heiligzaubern kritisch zu treffen.",
-        ["frFR"] = "Affiche/cache les chances de critique du sacré.",
-        ["zhCN"] = "显示/隐藏 神圣暴击",
-        ["ruRU"] = "Показать/скрыть шанс критического урона заклинаниями света",
-        ["esES"] = "Muestra/oculta la probabilidad de asestar un golpe crítico con hechizos sagrados",
-        ["esMX"] = "Muestra/oculta la probabilidad de asestar un golpe crítico con hechizos sagrados",
-        ["ptBR"] = "Mostra/oculta a chance de realizar acertos críticos com feitiços sagrados"
     },
     ["Shows/Hides the arcane damage value."] = {
         ["enUS"] = true,
@@ -222,16 +172,6 @@ local spellConfigTranslations = {
         ["esMX"] = "Muestra/oculta el valor de daño arcano",
         ["ptBR"] = "Mostra/oculta o valor de dano arcano"
     },
-    ["Shows/Hides the arcane crit chance."] = {
-        ["enUS"] = true,
-        ["deDE"] = "Zeigt/Versteckt die Chance mit Arkanzaubern kritisch zu treffen.",
-        ["frFR"] = "Affiche/cache les chances de critique des arcanes.",
-        ["zhCN"] = "显示/隐藏 奥术暴击",
-        ["ruRU"] = "Показать/скрыть шанс критического урона заклинаниями тайной магии",
-        ["esES"] = "Muestra/oculta la probabilidad de asestar un golpe crítico con hechizos arcanos",
-        ["esMX"] = "Muestra/oculta la probabilidad de asestar un golpe crítico con hechizos arcanos",
-        ["ptBR"] = "Mostra/oculta a chance de realizar acertos críticos com feitiços arcanos"
-    },
     ["Shows/Hides the nature damage value."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt den Naturschadenswert.",
@@ -241,16 +181,6 @@ local spellConfigTranslations = {
         ["esES"] = "Muestra/oculta el valor de daño de la naturaleza",
         ["esMX"] = "Muestra/oculta el valor de daño de la naturaleza",
         ["ptBR"] = "Mostra/oculta o valor de dano de natureza"
-    },
-    ["Shows/Hides the nature crit chance."] = {
-        ["enUS"] = true,
-        ["deDE"] = "Zeigt/Versteckt die Chance mit Naturzaubern kritisch zu treffen.",
-        ["frFR"] = "Affiche/cache les chances de critique de la nature.",
-        ["zhCN"] = "显示/隐藏 自然暴击",
-        ["ruRU"] = "Показать/скрыть шанс критического урона заклинаниями природы",
-        ["esES"] = "Muestra/oculta la probabilidad de asestar un golpe crítico con hechizos de la naturaleza",
-        ["esMX"] = "Muestra/oculta la probabilidad de asestar un golpe crítico con hechizos de la naturaleza",
-        ["ptBR"] = "Mostra/oculta a chance de realizar acertos críticos com feitiços de natureza"
     },
     ["Shows/Hides the frost damage value."] = {
         ["enUS"] = true,
@@ -262,16 +192,6 @@ local spellConfigTranslations = {
         ["esMX"] = "Muestra/oculta el valor de daño de escarcha",
         ["ptBR"] = "Mostra/oculta o valor de dano de gelo"
     },
-    ["Shows/Hides the frost crit chance."] = {
-        ["enUS"] = true,
-        ["deDE"] = "Zeigt/Versteckt die Chance mit Frostzaubern kritisch zu treffen.",
-        ["frFR"] = "Affiche/cache les chances de critique du givre.",
-        ["zhCN"] = "显示/隐藏 冰霜暴击",
-        ["ruRU"] = "Показать/скрыть шанс критического урона заклинаниями льда",
-        ["esES"] = "Muestra/oculta la probabilidad de asestar un golpe crítico con hechizos de escarcha",
-        ["esMX"] = "Muestra/oculta la probabilidad de asestar un golpe crítico con hechizos de escarcha",
-        ["ptBR"] = "Mostra/oculta a chance de realizar acertos críticos com feitiços de gelo"
-    },
     ["Shows/Hides the fire damage value."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt den Feuerschadenswert.",
@@ -281,16 +201,6 @@ local spellConfigTranslations = {
         ["esES"] = "Muestra/oculta el valor de daño de fuego",
         ["esMX"] = "Muestra/oculta el valor de daño de fuego",
         ["ptBR"] = "Mostra/oculta o valor de dano de fogo"
-    },
-    ["Shows/Hides the fire crit chance."] = {
-        ["enUS"] = true,
-        ["deDE"] = "Zeigt/Versteckt die Chance mit Feuerzaubern kritisch zu treffen.",
-        ["frFR"] = "Affiche/cache les chances de critique du feu.",
-        ["zhCN"] = "显示/隐藏 火焰暴击",
-        ["ruRU"] = "Показать/скрыть шанс критического урона заклинаниями огня",
-        ["esES"] = "Muestra/oculta la probabilidad de asestar un golpe crítico con hechizos de fuego",
-        ["esMX"] = "Muestra/oculta la probabilidad de asestar un golpe crítico con hechizos de fuego",
-        ["ptBR"] = "Mostra/oculta a chance de realizar acertos críticos com feitiços de fogo"
     },
     ["Shows/Hides the shadow damage value."] = {
         ["enUS"] = true,
@@ -302,17 +212,6 @@ local spellConfigTranslations = {
         ["esMX"] = "Muestra/oculta el valor de daño de las sombras",
         ["ptBR"] = "Mostra/oculta o valor de dano de sombra"
     },
-    ["Shows/Hides the shadow crit chance."] = {
-        ["enUS"] = true,
-        ["deDE"] = "Zeigt/Versteckt die Chance mit Schattenzaubern kritisch zu treffen.",
-        ["frFR"] = "Affiche/cache les chances de critique des ombres.",
-        ["zhCN"] = "显示/隐藏 暗影暴击",
-        ["ruRU"] = "Показать/скрыть шанс критического урона заклинаниями тьмы",
-        ["esES"] = "Muestra/oculta la probabilidad de asestar un golpe crítico con hechizos de las sombras",
-        ["esMX"] = "Muestra/oculta la probabilidad de asestar un golpe crítico con hechizos de las sombras",
-        ["ptBR"] = "Mostra/oculta a chance de realizar acertos críticos com feitiços de sombra"
-    },
-
     ["Shows/Hides the healing power value."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt den Heilungsmachtwert.",

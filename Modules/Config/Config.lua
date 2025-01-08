@@ -82,7 +82,7 @@ _GeneralTab = function()
                 get = function () return ExtendedCharacterStats.general.addColorsToStatTexts; end,
                 set = function (_, value)
                     ExtendedCharacterStats.general.addColorsToStatTexts = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             statColorSelection = {
@@ -105,7 +105,7 @@ _GeneralTab = function()
                 end,
                 set = function(_, selection)
                     ExtendedCharacterStats.general.statColorSelection = selection
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             showQualityColors = {
@@ -132,7 +132,7 @@ _GeneralTab = function()
                 get = function() return ExtendedCharacterStats.general.headerFontSize; end,
                 set = function (_, value)
                     ExtendedCharacterStats.general.headerFontSize = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             statFontSize = {
@@ -147,7 +147,7 @@ _GeneralTab = function()
                 get = function() return ExtendedCharacterStats.general.statFontSize; end,
                 set = function (_, value)
                     ExtendedCharacterStats.general.statFontSize = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             windowWidth = {
@@ -193,7 +193,7 @@ _GeneralTab = function()
                 set = function(_, lang)
                     i18n:SetLanguage(lang)
 
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                     Stats:UpdateSettingsButtonText()
                 end,
             },
@@ -233,8 +233,8 @@ _StatsTab = function ()
             rangeGroup = _Config:LoadRangeSection(),
             defenseGroup = _Config:LoadDefenseSection(),
             mp5Group = _Config:LoadManaSection(),
+            spellSchoolGroup = _Config:SpellSchoolsSection(),
             spellGroup = _Config:LoadSpellSection(),
-            spellBonusGroup = _Config:SpellBonusSection(),
         }
     }
 end

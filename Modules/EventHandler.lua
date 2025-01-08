@@ -15,7 +15,7 @@ function EventHandler.Init()
 
     C_Timer.NewTicker(UPDATE_INTERVAL, function()
         if shouldUpdate then
-            Stats:UpdateInformation()
+            Stats.UpdateInformation()
             shouldUpdate = false
         end
     end)
@@ -33,24 +33,27 @@ function EventHandler.HandleOnEvent(_, event, ...)
     if (not shouldDebounce) and event == "GROUP_ROSTER_UPDATE" then
         -- Someone joined or left the group
         currentGroupMembers = GetNumGroupMembers()
-    elseif ((not shouldDebounce) and event == "UNIT_AURA") or event == "PLAYER_LEVEL_UP" or event == "CHARACTER_POINTS_CHANGED" then
+    elseif ((not shouldDebounce) and event == "UNIT_AURA")
+            or event == "PLAYER_LEVEL_UP"
+            or event == "CHARACTER_POINTS_CHANGED"
+            or event == "RUNE_UPDATED" then
         if currentGroupMembers > 5 then
             -- When in a raid update on the next UPDATE_INTERVAL tick
             shouldUpdate = true
         else
             -- Otherwise update right away
-            Stats:UpdateInformation()
+            Stats.UpdateInformation()
         end
     elseif event == "PLAYER_EQUIPMENT_CHANGED" or event == "SOCKET_INFO_SUCCESS" then
         GearInfos.UpdateGearColorFrames()
         C_Timer.After(0.5, function ()
-            Stats:UpdateInformation()
+            Stats.UpdateInformation()
         end)
     elseif event == "PLAYER_MOUNT_DISPLAY_CHANGED" then
         C_Timer.After(0.5, function ()
-            Stats:UpdateInformation()
+            Stats.UpdateInformation()
         end)
-    elseif event == "INSPECT_READY" then
+    elseif ((not shouldDebounce) and event == "INSPECT_READY") then
         GearInfos:UpdateInspectGearColorFrames()
     end
 end

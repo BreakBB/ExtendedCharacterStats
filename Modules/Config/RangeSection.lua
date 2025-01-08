@@ -24,7 +24,7 @@ function _Config:LoadRangeSection()
                 get = function () return ExtendedCharacterStats.profile.ranged.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.ranged.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             rangedAttackPower = {
@@ -37,7 +37,7 @@ function _Config:LoadRangeSection()
                 get = function () return ExtendedCharacterStats.profile.ranged.attackPower.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.ranged.attackPower.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             rangeCrit = {
@@ -50,7 +50,7 @@ function _Config:LoadRangeSection()
                 get = function () return ExtendedCharacterStats.profile.ranged.crit.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.ranged.crit.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             penetration = {
@@ -66,7 +66,7 @@ function _Config:LoadRangeSection()
                 get = function () return ExtendedCharacterStats.profile.ranged.penetration.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.ranged.penetration.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             penetrationRating = {
@@ -82,7 +82,7 @@ function _Config:LoadRangeSection()
                 get = function () return ExtendedCharacterStats.profile.ranged.penetrationRating.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.ranged.penetrationRating.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             hasteRating = {
@@ -98,7 +98,7 @@ function _Config:LoadRangeSection()
                 get = function () return ExtendedCharacterStats.profile.ranged.hasteRating.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.ranged.hasteRating.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             hasteBonus = {
@@ -114,7 +114,7 @@ function _Config:LoadRangeSection()
                 get = function () return ExtendedCharacterStats.profile.ranged.hasteBonus.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.ranged.hasteBonus.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             rangedAttackSpeed = {
@@ -127,7 +127,7 @@ function _Config:LoadRangeSection()
                 get = function () return ExtendedCharacterStats.profile.ranged.attackSpeed.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.ranged.attackSpeed.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             rangeHit = {
@@ -140,7 +140,7 @@ function _Config:LoadRangeSection()
                 get = function () return ExtendedCharacterStats.profile.ranged.hit.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.ranged.hit.display = value
-                    Stats:RebuildStatInfos()
+                    Stats.RebuildStatInfos()
                 end,
             },
             rangeHitGroup = {
@@ -165,7 +165,7 @@ function _Config:LoadRangeSection()
                         get = function () return ExtendedCharacterStats.profile.ranged.hit.rating.display; end,
                         set = function (_, value)
                             ExtendedCharacterStats.profile.ranged.hit.rating.display = value
-                            Stats:RebuildStatInfos()
+                            Stats.RebuildStatInfos()
                         end,
                     },
                     rangeHitBonus = {
@@ -181,7 +181,7 @@ function _Config:LoadRangeSection()
                         get = function () return ExtendedCharacterStats.profile.ranged.hit.bonus.display; end,
                         set = function (_, value)
                             ExtendedCharacterStats.profile.ranged.hit.bonus.display = value
-                            Stats:RebuildStatInfos()
+                            Stats.RebuildStatInfos()
                         end,
                     },
                     rangeMiss = {
@@ -197,7 +197,7 @@ function _Config:LoadRangeSection()
                         get = function () return ExtendedCharacterStats.profile.ranged.hit.sameLevel.display; end,
                         set = function (_, value)
                             ExtendedCharacterStats.profile.ranged.hit.sameLevel.display = value
-                            Stats:RebuildStatInfos()
+                            Stats.RebuildStatInfos()
                         end,
                     },
                     rangeMissBoss = {
@@ -213,7 +213,7 @@ function _Config:LoadRangeSection()
                         get = function () return ExtendedCharacterStats.profile.ranged.hit.bossLevel.display; end,
                         set = function (_, value)
                             ExtendedCharacterStats.profile.ranged.hit.bossLevel.display = value
-                            Stats:RebuildStatInfos()
+                            Stats.RebuildStatInfos()
                         end,
                     },
                 }

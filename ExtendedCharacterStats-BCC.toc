@@ -47,8 +47,8 @@ Modules\Config\MeleeSection.lua
 Modules\Config\RangeSection.lua
 Modules\Config\DefenseSection.lua
 Modules\Config\ManaSection.lua
+Modules\Config\SpellSchoolsSection.lua
 Modules\Config\SpellSection.lua
-Modules\Config\SpellBonusSection.lua
 
 # i18n
 Modules\i18n\i18n.lua
@@ -61,6 +61,7 @@ Modules\i18n\translations\ConfigTranslations\ManaConfigTranslations.lua
 Modules\i18n\translations\ConfigTranslations\MeleeConfigTranslations.lua
 Modules\i18n\translations\ConfigTranslations\RangedConfigTranslations.lua
 Modules\i18n\translations\ConfigTranslations\SpellConfigTranslations.lua
+Modules\i18n\translations\ConfigTranslations\SpellSchoolsConfigTranslations.lua
 
 # Main
 ECS.lua

@@ -5,7 +5,7 @@ local dataFunctionRefs
 
 ---@param refName string
 ---@return number | string
-function Data:GetStatInfo(refName)
+function Data.GetStatInfo(refName)
     local dataFunction = dataFunctionRefs[refName];
     if dataFunction then
         return dataFunction()
@@ -168,10 +168,10 @@ dataFunctionRefs = {
             return 0
         end
     end,
-    ["SpellHitBonus"] = function() return Data:SpellHitBonus() end,
-    ["SpellHitSameLevel"] = function() return Data:SpellMissChanceSameLevel() end,
-    ["SpellHitBossLevel"] = function() return Data:SpellMissChanceBossLevel() end,
-    ["SpellCritChance"] = function() return Data:GetSpellCrit(2) end,
+    ["SpellHitBonus"] = function() return Data.SpellHitBonus(Data.HOLY_SCHOOL) end,
+    ["SpellHitSameLevel"] = function() return Data:SpellMissChanceSameLevel(Data.HOLY_SCHOOL) end,
+    ["SpellHitBossLevel"] = function() return Data:SpellMissChanceBossLevel(Data.HOLY_SCHOOL) end,
+    ["SpellCritChance"] = function() return Data:GetSpellCrit(Data.HOLY_SCHOOL) end,
     ["SpellHasteRating"] = function()
         if ECS.IsWotlk then
             return Data:GetSpellHasteRating()
@@ -213,4 +213,25 @@ dataFunctionRefs = {
     ["FrostCritChance"] = function() return Data:GetSpellCrit(Data.FROST_SCHOOL) end,
     ["ShadowCritChance"] = function() return Data:GetSpellCrit(Data.SHADOW_SCHOOL) end,
     ["ArcaneCritChance"] = function() return Data:GetSpellCrit(Data.ARCANE_SCHOOL) end,
+    ["ArcaneHitBonus"] = function() return Data.SpellHitBonus(Data.ARCANE_SCHOOL) end,
+    ["ArcaneMissChance"] = function() return Data:SpellMissChanceSameLevel(Data.ARCANE_SCHOOL) end,
+    ["ArcaneMissChanceBoss"] = function() return Data:SpellMissChanceBossLevel(Data.ARCANE_SCHOOL) end,
+    ["FireHitBonus"] = function() return Data.SpellHitBonus(Data.FIRE_SCHOOL) end,
+    ["FireMissChance"] = function() return Data:SpellMissChanceSameLevel(Data.FIRE_SCHOOL) end,
+    ["FireMissChanceBoss"] = function() return Data:SpellMissChanceBossLevel(Data.FIRE_SCHOOL) end,
+    ["FrostHitBonus"] = function() return Data.SpellHitBonus(Data.FROST_SCHOOL) end,
+    ["FrostMissChance"] = function() return Data:SpellMissChanceSameLevel(Data.FROST_SCHOOL) end,
+    ["FrostMissChanceBoss"] = function() return Data:SpellMissChanceBossLevel(Data.FROST_SCHOOL) end,
+    ["HolyHitBonus"] = function() return Data.SpellHitBonus(Data.HOLY_SCHOOL) end,
+    ["HolyMissChance"] = function() return Data:SpellMissChanceSameLevel(Data.HOLY_SCHOOL) end,
+    ["HolyMissChanceBoss"] = function() return Data:SpellMissChanceBossLevel(Data.HOLY_SCHOOL) end,
+    ["NatureHitBonus"] = function() return Data.SpellHitBonus(Data.NATURE_SCHOOL) end,
+    ["NatureMissChance"] = function() return Data:SpellMissChanceSameLevel(Data.NATURE_SCHOOL) end,
+    ["NatureMissChanceBoss"] = function() return Data:SpellMissChanceBossLevel(Data.NATURE_SCHOOL) end,
+    ["PhysicalHitBonus"] = function() return Data.SpellHitBonus(Data.PHYSICAL_SCHOOL) end,
+    ["PhysicalMissChance"] = function() return Data:SpellMissChanceSameLevel(Data.PHYSICAL_SCHOOL) end,
+    ["PhysicalMissChanceBoss"] = function() return Data:SpellMissChanceBossLevel(Data.PHYSICAL_SCHOOL) end,
+    ["ShadowHitBonus"] = function() return Data.SpellHitBonus(Data.SHADOW_SCHOOL) end,
+    ["ShadowMissChance"] = function() return Data:SpellMissChanceSameLevel(Data.SHADOW_SCHOOL) end,
+    ["ShadowMissChanceBoss"] = function() return Data:SpellMissChanceBossLevel(Data.SHADOW_SCHOOL) end,
 }

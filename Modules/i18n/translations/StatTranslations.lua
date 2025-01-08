@@ -442,16 +442,6 @@ local statTranslations = {
         ["esMX"] = "Penetración",
         ["ptBR"] = "Penetração"
     },
-    ["Spell Power"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Zauberkraft",
-        ["frFR"] = "Puissance des sorts",
-        ["zhCN"] = "法术强度",
-        ["ruRU"] = "Сила заклинаний",
-        ["esES"] = "Poder con hechizos",
-        ["esMX"] = "Poder con hechizos",
-        ["ptBR"] = "Poder mágico"
-    },
     ["Healing Power"] = {
         ["enUS"] = true,
         ["deDE"] = "Heilungskraft",
@@ -482,6 +472,36 @@ local statTranslations = {
         ["esMX"] = "Crítico arcano",
         ["ptBR"] = "Crítico arcano"
     },
+    ["Arcane Hit Bonus"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Arkan Trefferchancebonus",
+        ["frFR"] = "Bonus de toucher des arcanes",
+        ["zhCN"] = "奥术命中加成",
+        ["ruRU"] = "Меткость (ТМ)",
+        ["esES"] = "Bonificación de golpe arcano",
+        ["esMX"] = "Bonificación de golpe arcano",
+        ["ptBR"] = "Bônus de acerto arcano"
+    },
+    ["Arcane Miss"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Arkan Verfehlen",
+        ["frFR"] = "Rater des arcanes",
+        ["zhCN"] = "奥术未命中",
+        ["ruRU"] = "Сопротивление (ТМ)",
+        ["esES"] = "Fallo arcano",
+        ["esMX"] = "Fallo arcano",
+        ["ptBR"] = "Erro arcano"
+    },
+    ["Arcane Miss (Lvl + 3)"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Arkan Verfehlen (Lvl + 3)",
+        ["frFR"] = "Rater des arcanes (Niv. + 3)",
+        ["zhCN"] = "奥术未命中（等级 + 3）",
+        ["ruRU"] = "Сопрот. (ТМ) (+3 ур.)",
+        ["esES"] = "Fallo arcano (Niv. + 3)",
+        ["esMX"] = "Fallo arcano (Niv. + 3)",
+        ["ptBR"] = "Erro arcano (Nív. + 3)"
+    },
     ["Fire Damage"] = {
         ["enUS"] = true,
         ["deDE"] = "Feuerschaden",
@@ -501,6 +521,36 @@ local statTranslations = {
         ["esES"] = "Crítico de fuego",
         ["esMX"] = "Crítico de fuego",
         ["ptBR"] = "Crítico de fogo"
+    },
+    ["Fire Hit Bonus"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Feuer Trefferchancebonus",
+        ["frFR"] = "Bonus de toucher du feu",
+        ["zhCN"] = "火焰命中加成",
+        ["ruRU"] = "Меткость (огонь)",
+        ["esES"] = "Bonificación de golpe de fuego",
+        ["esMX"] = "Bonificación de golpe de fuego",
+        ["ptBR"] = "Bônus de acerto de fogo"
+    },
+    ["Fire Miss"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Feuer Verfehlen",
+        ["frFR"] = "Rater du feu",
+        ["zhCN"] = "火焰未命中",
+        ["ruRU"] = "Сопротивление (огонь)",
+        ["esES"] = "Fallo de fuego",
+        ["esMX"] = "Fallo de fuego",
+        ["ptBR"] = "Erro de fogo"
+    },
+    ["Fire Miss (Lvl + 3)"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Feuer Verfehlen (Lvl + 3)",
+        ["frFR"] = "Rater du feu (Niv. + 3)",
+        ["zhCN"] = "火焰未命中（等级 + 3）",
+        ["ruRU"] = "Сопрот. (огонь) (+3 ур.)",
+        ["esES"] = "Fallo de fuego (Niv. + 3)",
+        ["esMX"] = "Fallo de fuego (Niv. + 3)",
+        ["ptBR"] = "Erro de fogo (Nív. + 3)"
     },
     ["Frost Damage"] = {
         ["enUS"] = true,
@@ -522,6 +572,36 @@ local statTranslations = {
         ["esMX"] = "Crítico de escarcha",
         ["ptBR"] = "Crítico de gelo"
     },
+    ["Frost Hit Bonus"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Frost Trefferchancebonus",
+        ["frFR"] = "Bonus de toucher du givre",
+        ["zhCN"] = "冰霜命中加成",
+        ["ruRU"] = "Меткость (лед)",
+        ["esES"] = "Bonificación de golpe de escarcha",
+        ["esMX"] = "Bonificación de golpe de escarcha",
+        ["ptBR"] = "Bônus de acerto de gelo"
+    },
+    ["Frost Miss"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Frost Verfehlen",
+        ["frFR"] = "Rater du givre",
+        ["zhCN"] = "冰霜未命中",
+        ["ruRU"] = "Сопротивление (лед)",
+        ["esES"] = "Fallo de escarcha",
+        ["esMX"] = "Fallo de escarcha",
+        ["ptBR"] = "Erro de gelo"
+    },
+    ["Frost Miss (Lvl + 3)"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Frost Verfehlen (Lvl + 3)",
+        ["frFR"] = "Rater du givre (Niv. + 3)",
+        ["zhCN"] = "冰霜未命中（等级 + 3）",
+        ["ruRU"] = "Сопрот. (лед) (+3 ур.)",
+        ["esES"] = "Fallo de escarcha (Niv. + 3)",
+        ["esMX"] = "Fallo de escarcha (Niv. + 3)",
+        ["ptBR"] = "Erro de gelo (Nív. + 3)"
+    },
     ["Holy Damage"] = {
         ["enUS"] = true,
         ["deDE"] = "Heiligschaden",
@@ -541,6 +621,36 @@ local statTranslations = {
         ["esES"] = "Crítico sagrado",
         ["esMX"] = "Crítico sagrado",
         ["ptBR"] = "Crítico sagrado"
+    },
+    ["Holy Hit Bonus"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Heilig Trefferchancebonus",
+        ["frFR"] = "Bonus de toucher du sacré",
+        ["zhCN"] = "神圣命中加成",
+        ["ruRU"] = "Меткость (свет)",
+        ["esES"] = "Bonificación de golpe sagrado",
+        ["esMX"] = "Bonificación de golpe sagrado",
+        ["ptBR"] = "Bônus de acerto sagrado"
+    },
+    ["Holy Miss"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Heilig Verfehlen",
+        ["frFR"] = "Rater du sacré",
+        ["zhCN"] = "神圣未命中",
+        ["ruRU"] = "Сопротивление (свет)",
+        ["esES"] = "Fallo sagrado",
+        ["esMX"] = "Fallo sagrado",
+        ["ptBR"] = "Erro sagrado"
+    },
+    ["Holy Miss (Lvl + 3)"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Heilig Verfehlen (Lvl + 3)",
+        ["frFR"] = "Rater du sacré (Niv. + 3)",
+        ["zhCN"] = "神圣未命中（等级 + 3）",
+        ["ruRU"] = "Сопрот. (свет) (+3 ур.)",
+        ["esES"] = "Fallo sagrado (Niv. + 3)",
+        ["esMX"] = "Fallo sagrado (Niv. + 3)",
+        ["ptBR"] = "Erro sagrado (Nív. + 3)"
     },
     ["Nature Damage"] = {
         ["enUS"] = true,
@@ -562,6 +672,36 @@ local statTranslations = {
         ["esMX"] = "Crítico de la naturaleza",
         ["ptBR"] = "Crítico de natureza"
     },
+    ["Nature Hit Bonus"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Natur Trefferchancebonus",
+        ["frFR"] = "Bonus de toucher de la nature",
+        ["zhCN"] = "自然命中加成",
+        ["ruRU"] = "Меткость (природа)",
+        ["esES"] = "Bonificación de golpe de la naturaleza",
+        ["esMX"] = "Bonificación de golpe de la naturaleza",
+        ["ptBR"] = "Bônus de acerto de natureza"
+    },
+    ["Nature Miss"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Natur Verfehlen",
+        ["frFR"] = "Rater de la nature",
+        ["zhCN"] = "自然未命中",
+        ["ruRU"] = "Сопротивление (природа)",
+        ["esES"] = "Fallo de la naturaleza",
+        ["esMX"] = "Fallo de la naturaleza",
+        ["ptBR"] = "Erro de natureza"
+    },
+    ["Nature Miss (Lvl + 3)"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Natur Verfehlen (Lvl + 3)",
+        ["frFR"] = "Rater de la nature (Niv. + 3)",
+        ["zhCN"] = "自然未命中（等级 + 3）",
+        ["ruRU"] = "Сопрот. (природа) (+3 ур.)",
+        ["esES"] = "Fallo de la naturaleza (Niv. + 3)",
+        ["esMX"] = "Fallo de la naturaleza (Niv. + 3)",
+        ["ptBR"] = "Erro de natureza (Nív. + 3)"
+    },
     ["Physical Damage"] = {
         ["enUS"] = true,
         ["deDE"] = "Physischer Schaden",
@@ -582,6 +722,36 @@ local statTranslations = {
         ["esMX"] = "Crítico físico",
         ["ptBR"] = "Crítico físico"
     },
+    ["Physical Hit Bonus"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Physischer Trefferchancebonus",
+        ["frFR"] = "Bonus de toucher physique",
+        ["zhCN"] = "物理命中加成",
+        ["ruRU"] = "Меткость (физ.)",
+        ["esES"] = "Bonificación de golpe físico",
+        ["esMX"] = "Bonificación de golpe físico",
+        ["ptBR"] = "Bônus de acerto físico"
+    },
+    ["Physical Miss"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Physisch Verfehlen",
+        ["frFR"] = "Rater physique",
+        ["zhCN"] = "物理未命中",
+        ["ruRU"] = "Сопротивление (физ.)",
+        ["esES"] = "Fallo físico",
+        ["esMX"] = "Fallo físico",
+        ["ptBR"] = "Erro físico"
+    },
+    ["Physical Miss (Lvl + 3)"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Physisch Verfehlen (Lvl + 3)",
+        ["frFR"] = "Rater physique (Niv. + 3)",
+        ["zhCN"] = "物理未命中（等级 + 3）",
+        ["ruRU"] = "Сопрот. (физ.) (+3 ур.)",
+        ["esES"] = "Fallo físico (Niv. + 3)",
+        ["esMX"] = "Fallo físico (Niv. + 3)",
+        ["ptBR"] = "Erro físico (Nív. + 3)"
+    },
     ["Shadow Damage"] = {
         ["enUS"] = true,
         ["deDE"] = "Schattenschaden",
@@ -601,6 +771,36 @@ local statTranslations = {
         ["esES"] = "Crítico de las sombras",
         ["esMX"] = "Crítico de las sombras",
         ["ptBR"] = "Crítico de sombra"
+    },
+    ["Shadow Hit Bonus"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Schatten Trefferchancebonus",
+        ["frFR"] = "Bonus de toucher des ombres",
+        ["zhCN"] = "暗影命中加成",
+        ["ruRU"] = "Меткость (тьма)",
+        ["esES"] = "Bonificación de golpe de las sombras",
+        ["esMX"] = "Bonificación de golpe de las sombras",
+        ["ptBR"] = "Bônus de acerto de sombra"
+    },
+    ["Shadow Miss"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Schatten Verfehlen",
+        ["frFR"] = "Rater des ombres",
+        ["zhCN"] = "暗影未命中",
+        ["ruRU"] = "Сопротивление (тьма)",
+        ["esES"] = "Fallo de las sombras",
+        ["esMX"] = "Fallo de las sombras",
+        ["ptBR"] = "Erro de sombra"
+    },
+    ["Shadow Miss (Lvl + 3)"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Schatten Verfehlen (Lvl + 3)",
+        ["frFR"] = "Rater des ombres (Niv. + 3)",
+        ["zhCN"] = "暗影未命中（等级 + 3）",
+        ["ruRU"] = "Сопрот. (тьма) (+3 ур.)",
+        ["esES"] = "Fallo de las sombras (Niv. + 3)",
+        ["esMX"] = "Fallo de las sombras (Niv. + 3)",
+        ["ptBR"] = "Erro de sombra (Nív. + 3)"
     },
 }
 
