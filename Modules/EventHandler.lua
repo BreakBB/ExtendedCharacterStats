@@ -30,6 +30,8 @@ function EventHandler.HandleOnEvent(_, event, ...)
     local shouldDebounce = currentTime - lastEventTime < DEBOUNCE_INTERVAL
     lastEventTime = currentTime
 
+    local args = {...}
+
     if (not shouldDebounce) and event == "GROUP_ROSTER_UPDATE" then
         -- Someone joined or left the group
         currentGroupMembers = GetNumGroupMembers()
@@ -53,7 +55,7 @@ function EventHandler.HandleOnEvent(_, event, ...)
         C_Timer.After(0.5, function ()
             Stats.UpdateInformation()
         end)
-    elseif ((not shouldDebounce) and event == "INSPECT_READY") then
+    elseif ((not shouldDebounce) and event == "INSPECT_READY" and args[1] == UnitGUID("target")) then
         GearInfos:UpdateInspectGearColorFrames()
     end
 end
