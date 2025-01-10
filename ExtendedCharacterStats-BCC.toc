@@ -1,6 +1,6 @@
 ## Interface: 20504
-## Title: Extended Character Stats v4.0.0
-## Version: 4.0.0
+## Title: Extended Character Stats v4.0.1
+## Version: 4.0.1
 ## Author: BreakBB, Ethulu
 ## Notes: Displays an extra window with more information about your characters stats ( Crit/Hit/Block etc )
 ## Notes-esMX: Muestra una ventana adicional con más información sobre las estadísticas de tus personajes (Crítico/Golpe/Bloqueo, etc.)
