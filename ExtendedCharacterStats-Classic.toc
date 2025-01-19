@@ -5,6 +5,8 @@
 ## Notes: Displays an extra window with more information about your characters stats ( Crit/Hit/Block etc )
 ## Notes-esMX: Muestra una ventana adicional con más información sobre las estadísticas de tus personajes (Crítico/Golpe/Bloqueo, etc.)
 ## Notes-esES: Muestra una ventana adicional con más información sobre las estadísticas de tus personajes (Crítico/Golpe/Bloqueo, etc.)
+## Notes-ptBR: Mostra uma janela extra com mais informações sobre as estatísticas do seu personagem (Crítico/Acerto/Bloqueio, etc.)
+## Notes-frFR: Affiche une fenêtre supplémentaire avec plus d'informations sur les statistiques de votre personnage (Critique/Toucher/Blocage, etc.)
 ## OptionalDeps: Ace3, CallbackHandler-1.0, LibStub
 ## SavedVariablesPerCharacter: ExtendedCharacterStats
 ## DefaultState: enabled
