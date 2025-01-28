@@ -1,4 +1,4 @@
-max_line_length = 140
+max_line_length = 200
 exclude_files = {
     ".github/",
     ".history/",
