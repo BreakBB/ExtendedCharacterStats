@@ -168,6 +168,11 @@ function _SpellCrit:GetTalentModifierFireCrit()
         end
     end
 
+    if classId == Data.WARLOCK and ECS.IsClassic then
+        local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 11)
+        mod = points * 1 -- 0-5% Devastation (while this increases the crit chance of "Destruction spells" there are no fire spells, which are not destruction spells)
+    end
+
     return mod
 end
 
