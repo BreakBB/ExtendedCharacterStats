@@ -112,21 +112,22 @@ function _SpellHit:GetSpellHitFromBuffs()
     local mod = 0
     local otherDraeneiInGroup = false
 
-    for i = 1, 40 do
-        local _, _, _, _, _, _, _, _, _, spellId, _ = UnitAura("player", i, "HELPFUL")
-        if spellId == nil then
-            break
-        end
+    local i = 1
+    repeat
+        local aura = C_UnitAuras.GetBuffDataByIndex ("player", i)
+        i = i + 1
+        if aura and aura.spellId then
 
-        if spellId == 28878 then
-            mod = mod + 1 -- 1% from Inspiring Presence
-            otherDraeneiInGroup = true
-        end
+            if aura.spellId == 28878 then
+                mod = mod + 1 -- 1% from Inspiring Presence
+                otherDraeneiInGroup = true
+            end
 
-        if spellId == 30708 then
-            mod = mod + 3 -- 3% from Totem of Wrath
+            if aura.spellId == 30708 then
+                mod = mod + 3 -- 3% from Totem of Wrath
+            end
         end
-    end
+    until (not aura)
 
     if (not otherDraeneiInGroup) and (IsSpellKnown(28878) or IsSpellKnown(6562)) then
         mod = mod + 1

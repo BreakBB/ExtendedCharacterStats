@@ -98,17 +98,18 @@ function _Melee:GetHitFromBuffs()
     local mod = 0
     local otherDraeneiInGroup = false
 
-    for i = 1, 40 do
-        local _, _, _, _, _, _, _, _, _, spellId, _ = UnitAura("player", i, "HELPFUL")
-        if spellId == nil then
-            break
-        end
+    local i = 1
+    repeat
+        local aura = C_UnitAuras.GetBuffDataByIndex ("player", i)
+        i = i + 1
+        if aura and aura.spellId then
 
-        if spellId == 6562 then
-            mod = mod + 1 -- 1% from Heroic Presence
-            otherDraeneiInGroup = true
+            if aura.spellId == 6562 then
+                mod = mod + 1 -- 1% from Heroic Presence
+                otherDraeneiInGroup = true
+            end
         end
-    end
+    until (not aura)
 
     if (not otherDraeneiInGroup) and (IsSpellKnown(6562) or IsSpellKnown(28878)) then
         mod = mod + 1
