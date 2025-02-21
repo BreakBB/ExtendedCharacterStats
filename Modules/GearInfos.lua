@@ -57,7 +57,7 @@ _UpdateColorFrame = function (gearFrame, unit)
         if itemInfo ~= nil then
             local itemQuality = C_Item.GetItemQualityByID(itemInfo)
             local r, g, b, _ = GetItemQualityColor(itemQuality)
-            gearFrame.qualityTexture:SetVertexColor(r, g, b, 0.75)
+            gearFrame.qualityTexture:SetVertexColor(r, g, b, ExtendedCharacterStats.general.qualityColorsIntensity)
         end
     else
         C_Timer.After(0.2, function ()

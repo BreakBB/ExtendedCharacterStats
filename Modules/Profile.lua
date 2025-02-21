@@ -678,6 +678,7 @@ local function GetDefaultGeneralSettings()
         addColorsToStatTexts = true,
         statColorSelection = "full",
         showQualityColors = true,
+        qualityColorsIntensity = 0.75,
         headerFontSize = 11,
         statFontSize = 10,
         profileVersion = 0,
