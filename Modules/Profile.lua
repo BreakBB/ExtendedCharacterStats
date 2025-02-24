@@ -278,6 +278,7 @@ local function GetDefaultStatsProfile()
             defense = {display = true, refName = "DefenseValue", text = "Defense"},
             blockChance = {display = true, refName = "BlockChance", text = "Block Chance"},
             blockValue = {display = true, refName = "BlockValue", text = "Block Value"},
+            blockedDamage = {display = true, refName = "BlockedDamage", text = "Blocked Damage"},
             parry = {display = true, refName = "ParryChance", text = "Parry Chance"},
             dodge = {display = true, refName = "DodgeChance", text = "Dodge Chance"},
             resilience = {display = true, isTbcOnly = true, refName = "ResilienceValue", text = "Resilience"},

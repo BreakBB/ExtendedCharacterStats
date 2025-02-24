@@ -140,9 +140,22 @@ function _Config:LoadDefenseSection()
                     Stats.RebuildStatInfos()
                 end,
             },
-            parry = {
+            blockedDamage = {
                 type = "toggle",
                 order = 5,
+                name = function() return i18n("Blocked Damage") end,
+                desc = function() return i18n("Shows/Hides the amount of damage blocked.") end,
+                width = 1.5,
+                disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
+                get = function () return ExtendedCharacterStats.profile.defense.blockedDamage.display; end,
+                set = function (_, value)
+                    ExtendedCharacterStats.profile.defense.blockedDamage.display = value
+                    Stats.RebuildStatInfos()
+                end,
+            },
+            parry = {
+                type = "toggle",
+                order = 6,
                 name = function() return i18n("Parry Chance") end,
                 desc = function() return i18n("Shows/Hides the parry chance.") end,
                 width = 1.5,
@@ -155,7 +168,7 @@ function _Config:LoadDefenseSection()
             },
             dodge = {
                 type = "toggle",
-                order = 6,
+                order = 7,
                 name = function() return i18n("Dodge Chance") end,
                 desc = function() return i18n("Shows/Hides the dodge chance.") end,
                 width = 1.5,
@@ -168,7 +181,7 @@ function _Config:LoadDefenseSection()
             },
             resilience = {
                 type = "toggle",
-                order = 7,
+                order = 8,
                 name = function() return i18n("Resilience") end,
                 desc = function() return i18n("Shows/Hides the resilience value.") end,
                 width = 1.5,

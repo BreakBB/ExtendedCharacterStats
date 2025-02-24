@@ -153,6 +153,7 @@ dataFunctionRefs = {
     ["ParryChance"] = function() return Data:GetParryChance() end,
     ["BlockChance"] = function() return Data:GetBlockChance() end,
     ["BlockValue"] = function() return Data:GetBlockValue() end,
+    ["BlockedDamage"] = function() return Data:GetBlockedDamage() end,
     ["ResilienceValue"] = function()
         if ECS.IsWotlk then
             return Data:GetResilienceRating()

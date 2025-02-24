@@ -122,6 +122,12 @@ function Data:GetBlockValue()
 end
 
 ---@return number
+function Data:GetBlockedDamage()
+	local _, str, _, _ = UnitStat("player", 1)
+	return Data:GetBlockValue() + str/2
+end
+
+---@return number
 function Data:GetResilienceRating()
     return DataUtils:Round(GetCombatRating(15), 2)
 end
