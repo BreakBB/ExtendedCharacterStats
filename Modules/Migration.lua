@@ -14,4 +14,9 @@ function Migration:ToLatestProfileVersion(profileVersion)
         ECS:Print(i18n("Profile has been reset due to a major update.")) -- v4.0.0 because of major spell restructuring
         return
     end
+
+    local defaultProfile = Profile:GetDefaultProfile()
+    if profileVersion < 21 then
+        ExtendedCharacterStats.general.qualityColorsIntensity = defaultProfile.general.qualityColorsIntensity
+    end
 end
