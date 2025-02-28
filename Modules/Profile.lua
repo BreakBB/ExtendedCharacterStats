@@ -6,7 +6,7 @@ local Utils = ECSLoader:ImportModule("Utils")
 
 ---@return number
 function Profile.GetProfileVersion()
-    return 20
+    return 21
 end
 
 ---@return ECSProfile
@@ -679,6 +679,7 @@ local function GetDefaultGeneralSettings()
         addColorsToStatTexts = true,
         statColorSelection = "full",
         showQualityColors = true,
+        qualityColorsIntensity = 0.75,
         headerFontSize = 11,
         statFontSize = 10,
         profileVersion = 0,

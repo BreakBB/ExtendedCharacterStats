@@ -142,6 +142,26 @@ local configTranslations = {
         ["esMX"] = "Muestra/oculta los marcos coloreados alrededor de los objetos equipados",
         ["ptBR"] = "Mostra/oculta os quadros coloridos ao redor dos itens equipados"
     },
+    ["Quality Colors' Intensity"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Intensität der Qualitätsfarben",
+        ["frFR"] = "Intensité des couleurs de qualité",
+        ["zhCN"] = "優質顏色的強度",
+        ["ruRU"] = "Интенсивность качественных цветов",
+        ["esES"] = "Intensidad de los colores de calidad",
+        ["esMX"] = "Intensidad de los colores de calidad",
+        ["ptBR"] = "Intensidade das cores de qualidade"
+    },
+    ["Changes the intensity of the colored frames' glow."] = {
+        ["enUS"] = true,
+        ["deDE"] = "Ändert die Intensität des Leuchtens der farbigen Rahmen.",
+        ["frFR"] = "Modifie l'intensité de l'éclat des cadres colorés.",
+        ["zhCN"] = "改变彩色边框的发光强度。",
+        ["ruRU"] = "Изменяет интенсивность свечения цветных рамок.",
+        ["esES"] = "Cambia la intensidad del brillo de los marcos coloreados.",
+        ["esMX"] = "Cambia la intensidad del brillo de los marcos coloreados.",
+        ["ptBR"] = "Altera a intensidade do brilho dos quadros coloridos."
+    },
     ["Header Font Size"] = {
         ["enUS"] = true,
         ["deDE"] = "Überschriften Schriftgröße",

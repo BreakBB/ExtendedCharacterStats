@@ -73,14 +73,23 @@ function Data:GetAvoidance()
         local baseMissChance = 5 - (enemyAttackRating - select(1, UnitDefense("player"))) * 0.04; -- vs lvl 80
         if defense > 0 then -- avoid possible division by 0
             local enemyMissChance = baseMissChance + 1 / (0.0625 + enemyMissCoef / (defense * 0.04))
-            avoidance = enemyMissChance + GetDodgeChance() + GetParryChance() + GetBlockChance()
+            avoidance = enemyMissChance
         else
-            avoidance = baseMissChance + GetDodgeChance() + GetParryChance() + GetBlockChance()
+            avoidance = baseMissChance
         end
     else
         local defense = Data:GetDefenseValue()
         local enemyMissChance = 5 + (((defense) - enemyAttackRating) * .04)
-        avoidance = enemyMissChance + GetDodgeChance() + GetParryChance() + GetBlockChance()
+        avoidance = enemyMissChance
+    end
+    if IsPlayerSpell(107) and C_PaperDollInfo.OffhandHasShield() then
+        avoidance = avoidance + GetBlockChance()
+    end
+    if IsPlayerSpell(3127) then
+        avoidance = avoidance + GetParryChance()
+    end
+    if IsPlayerSpell(81) then
+        avoidance = avoidance + GetDodgeChance()
     end
 
     return DataUtils:Round(avoidance, 2) .. "%"
