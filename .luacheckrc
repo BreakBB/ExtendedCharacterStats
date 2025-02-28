@@ -479,6 +479,7 @@ stds.ecs = {
         "C_NewItems.ClearAll",
         "C_NewItems.IsNewItem",
         "C_NewItems.RemoveNewItem",
+        "C_PaperDollInfo",
         "C_PaperDollInfo.GetArmorEffectiveness",
         "C_PaperDollInfo.GetArmorEffectivenessAgainstTarget",
         "C_PaperDollInfo.GetMinItemLevel",
