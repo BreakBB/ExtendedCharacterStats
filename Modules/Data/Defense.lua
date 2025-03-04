@@ -85,7 +85,7 @@ function Data:GetAvoidance()
     if IsPlayerSpell(107) and C_PaperDollInfo.OffhandHasShield() then
         avoidance = avoidance + GetBlockChance()
     end
-    if IsPlayerSpell(3127) then
+    if IsPlayerSpell(3127) or IsPlayerSpell(18848) or IsPlayerSpell(3124) then
         avoidance = avoidance + GetParryChance()
     end
     if IsPlayerSpell(81) then
