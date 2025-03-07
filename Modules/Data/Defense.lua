@@ -35,6 +35,16 @@ function _Defense:GetCritReduction()
         end
     end
 
+    local buffBonus = 0
+    if ECS.IsSoD then
+        if C_UnitAuras.GetPlayerAuraBySpellID(403816) then
+            buffBonus = buffBonus + 6 -- metamorphosis
+        end
+        if C_UnitAuras.GetPlayerAuraBySpellID(428741) then
+            buffBonus = buffBonus + 5 -- molten armor
+        end
+    end
+
     -- Only the defense value above 350 counts towards crit immunity
     local critReductionFromDefense =  (defBonus - MAX_SKILL) / DEFENSE_FOR_CRIT_REDUCTION
     if critReductionFromDefense < 0 then
@@ -42,7 +52,7 @@ function _Defense:GetCritReduction()
     end
     local critReducingFromResilience = GetCombatRatingBonus(15)
 
-    return critReductionFromDefense + critReducingFromResilience + talentBonus
+    return critReductionFromDefense + critReducingFromResilience + talentBonus + buffBonus
 end
 
 ---@return string
