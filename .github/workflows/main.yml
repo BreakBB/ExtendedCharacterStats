@@ -41,7 +41,7 @@ jobs:
           luaVersion: "5.1"
 
       - name: Install Luarocks
-        uses: leafo/gh-actions-luarocks@v4
+        uses: leafo/gh-actions-luarocks@v5
 
       - name: Run Unit Tests
         run: |
