@@ -2,6 +2,7 @@
 local Data = ECSLoader:CreateModule("Data")
 
 local dataFunctionRefs
+local enemyLevel = UnitLevel("player") + 3
 
 ---@param refName string
 ---@return number | string
@@ -139,7 +140,7 @@ dataFunctionRefs = {
         end
     end,
     ["Avoidance"] = function()
-        return Data:GetAvoidance()
+        return Data:GetAvoidance(enemyLevel)
     end,
     ["DefenseRating"] = function()
         if ECS.IsWotlk then
