@@ -62,37 +62,59 @@ function Data:GetCritReduction()
     return DataUtils:Round(_Defense:GetCritReduction(), 2) .. "%"
 end
 
----@return string
-function Data:GetAvoidance()
+---@return number
+function _Defense:GetEnemyMissChance()
     local enemyAttackRating = (UnitLevel("player")) * 5
 
-    local avoidance
+    local miss
     if ECS.IsWotlk then
         local defense = math.floor(GetCombatRatingBonus(CR_DEFENSE_SKILL));
         local enemyMissCoef = classId == Data.DRUID and 0.972 or 0.956; -- 0.972 for bears
         local baseMissChance = 5 - (enemyAttackRating - select(1, UnitDefense("player"))) * 0.04; -- vs lvl 80
         if defense > 0 then -- avoid possible division by 0
             local enemyMissChance = baseMissChance + 1 / (0.0625 + enemyMissCoef / (defense * 0.04))
-            avoidance = enemyMissChance
+            miss = enemyMissChance
         else
-            avoidance = baseMissChance
+            miss = baseMissChance
         end
     else
         local defense = Data:GetDefenseValue()
         local enemyMissChance = 5 + (((defense) - enemyAttackRating) * .04)
-        avoidance = enemyMissChance
+        miss = enemyMissChance
     end
-    if IsPlayerSpell(107) and C_PaperDollInfo.OffhandHasShield() then
-        avoidance = avoidance + GetBlockChance()
-    end
-    if IsPlayerSpell(3127) then
-        avoidance = avoidance + GetParryChance()
-    end
-    if IsPlayerSpell(81) then
-        avoidance = avoidance + GetDodgeChance()
-    end
+    return miss
+end
 
-    return DataUtils:Round(avoidance, 2) .. "%"
+---@return number
+function _Defense:GetBlockChance()
+    local block = 0
+    if IsPlayerSpell(107) and C_PaperDollInfo.OffhandHasShield() then
+       block = GetBlockChance()
+    end
+    return block
+end
+
+---@return number
+function _Defense:GetParryChance()
+    local parry = 0
+    if IsPlayerSpell(3127) or IsPlayerSpell(18848) or IsPlayerSpell(3124) then
+        parry = GetParryChance()
+    end
+    return parry
+end
+
+---@return number
+function _Defense:GetDodgeChance()
+    local dodge = 0
+    if IsPlayerSpell(81) then
+        dodge = GetDodgeChance()
+    end
+    return dodge
+end
+
+---@return number
+function _Defense:GetAvoidance()
+    return _Defense:GetEnemyMissChance() + _Defense:GetBlockChance() + _Defense:GetParryChance() + _Defense:GetDodgeChance()
 end
 
 ---@return number
@@ -106,20 +128,24 @@ function Data:GetDefenseValue()
     return skillRank + skillModifier
 end
 
-
 ---@return string
 function Data:GetDodgeChance()
-    return DataUtils:Round(GetDodgeChance(), 2) .. "%"
+    return DataUtils:Round(_Defense:GetDodgeChance(), 2) .. "%"
 end
 
 ---@return string
 function Data:GetParryChance()
-    return DataUtils:Round(GetParryChance(), 2) .. "%"
+    return DataUtils:Round(_Defense:GetParryChance(), 2) .. "%"
 end
 
 ---@return string
 function Data:GetBlockChance()
-    return DataUtils:Round(GetBlockChance(), 2) .. "%"
+    return DataUtils:Round(_Defense:GetBlockChance(), 2) .. "%"
+end
+
+---@return string
+function Data:GetAvoidance()
+    return DataUtils:Round(_Defense:GetAvoidance(), 2) .. "%"
 end
 
 ---@return number
