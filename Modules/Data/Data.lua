@@ -133,11 +133,7 @@ dataFunctionRefs = {
         end
     end,
     ["CritReduction"] = function()
-        if ECS.IsWotlk then
-            return Data:GetCritReduction()
-        else
-            return 0
-        end
+        return Data:GetCritReduction()
     end,
     ["Avoidance"] = function()
         return Data:GetAvoidance(enemyLevel)

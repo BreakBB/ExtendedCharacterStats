@@ -62,9 +62,6 @@ function _Config:LoadDefenseSection()
                 name = function() return i18n("Crit Reduction") end,
                 desc = function() return i18n("Shows/Hides the reduction percentage of being critically hit.") end,
                 width = 1.5,
-                hidden = function()
-                    return (not ECS.IsWotlk)
-                end,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
                 get = function () return ExtendedCharacterStats.profile.defense.critReduction.display; end,
                 set = function (_, value)
