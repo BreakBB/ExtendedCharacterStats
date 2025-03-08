@@ -35,6 +35,19 @@ function _Defense:GetCritReduction()
         end
     end
 
+    local buffBonus = 0
+    if ECS.IsSoD then
+        if C_UnitAuras.GetPlayerAuraBySpellID(403816) then
+            buffBonus = buffBonus + 6 -- metamorphosis
+        end
+        if C_UnitAuras.GetPlayerAuraBySpellID(428741) then
+            buffBonus = buffBonus + 5 -- molten armor
+        end
+        if C_UnitAuras.GetPlayerAuraBySpellID(430432) then
+            buffBonus = buffBonus + 5 -- battle hardened
+        end
+    end
+
     -- Only the defense value above 350 counts towards crit immunity
     local critReductionFromDefense =  (defBonus - MAX_SKILL) / DEFENSE_FOR_CRIT_REDUCTION
     if critReductionFromDefense < 0 then
@@ -42,7 +55,7 @@ function _Defense:GetCritReduction()
     end
     local critReducingFromResilience = GetCombatRatingBonus(15)
 
-    return critReductionFromDefense + critReducingFromResilience + talentBonus
+    return critReductionFromDefense + critReducingFromResilience + talentBonus + buffBonus
 end
 
 ---@return string
@@ -62,9 +75,10 @@ function Data:GetCritReduction()
     return DataUtils:Round(_Defense:GetCritReduction(), 2) .. "%"
 end
 
+---@param enemyLevel number
 ---@return number
-function _Defense:GetEnemyMissChance()
-    local enemyAttackRating = (UnitLevel("player")) * 5
+function _Defense:GetEnemyMissChance(enemyLevel)
+    local enemyAttackRating = enemyLevel * 5
 
     local miss
     if ECS.IsWotlk then
@@ -112,9 +126,10 @@ function _Defense:GetDodgeChance()
     return dodge
 end
 
+---@param enemyLevel number
 ---@return number
-function _Defense:GetAvoidance()
-    return _Defense:GetEnemyMissChance() + _Defense:GetBlockChance() + _Defense:GetParryChance() + _Defense:GetDodgeChance()
+function _Defense:GetAvoidance(enemyLevel)
+    return _Defense:GetEnemyMissChance(enemyLevel) + _Defense:GetBlockChance() + _Defense:GetParryChance() + _Defense:GetDodgeChance()
 end
 
 ---@return number
@@ -143,9 +158,10 @@ function Data:GetBlockChance()
     return DataUtils:Round(_Defense:GetBlockChance(), 2) .. "%"
 end
 
+---@param enemyLevel number
 ---@return string
-function Data:GetAvoidance()
-    return DataUtils:Round(_Defense:GetAvoidance(), 2) .. "%"
+function Data:GetAvoidance(enemyLevel)
+    return DataUtils:Round(_Defense:GetAvoidance(enemyLevel), 2) .. "%"
 end
 
 ---@return number
