@@ -43,6 +43,9 @@ function _Defense:GetCritReduction()
         if C_UnitAuras.GetPlayerAuraBySpellID(428741) then
             buffBonus = buffBonus + 5 -- molten armor
         end
+        if C_UnitAuras.GetPlayerAuraBySpellID(430432) then
+            buffBonus = buffBonus + 5 -- battle hardened
+        end
     end
 
     -- Only the defense value above 350 counts towards crit immunity
