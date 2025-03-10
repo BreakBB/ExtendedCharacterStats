@@ -125,9 +125,9 @@ dataFunctionRefs = {
     ["RangedAttackSpeed"] = function() return Data:GetRangedAttackSpeed() end,
     -- Defense
     ["Armor"] = function() return Data:GetArmorValue() end,
-    ["CritReduction"] = function()
-        return Data:GetCritReduction()
-    end,
+    ["MeleeCritReduction"] = function() return Data:GetMeleeCritReduction() end,
+    ["RangedCritReduction"] = function() return Data:GetRangedCritReduction() end,
+    ["SpellCritReduction"] = function() return Data:GetSpellCritReduction() end,
     ["Avoidance"] = function()
         return Data:GetAvoidance(enemyLevel)
     end,

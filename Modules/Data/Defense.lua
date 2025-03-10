@@ -2,6 +2,8 @@
 local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
 local DataUtils = ECSLoader:ImportModule("DataUtils")
+---@type Utils
+local Utils = ECSLoader:ImportModule("Utils")
 
 local _Defense = {}
 
@@ -18,31 +20,23 @@ function Data:GetArmorValue()
     return DataUtils:Round(effectiveArmor, 2)
 end
 
----@return number
+---@return (number, number, number)
 function _Defense:GetCritReduction()
     local defBonus = Data:GetDefenseValue()
 
-    local talentBonus = 0
-    if classId == Data.DRUID then
-        if ECS.IsWotlk then
-            local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 18)
-            talentBonus = points * 2 -- 0-6% from Survival of the Fittest
-        elseif ECS.IsTBC then
-            local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 16)
-            talentBonus = points * 1 -- 0-3% from Survival of the Fittest
-        end
-    end
-
     local buffBonus = 0
     if ECS.IsSoD then
+        if C_UnitAuras.GetPlayerAuraBySpellID(430432) then
+            buffBonus = buffBonus + 5 -- battle hardened
+        end
         if C_UnitAuras.GetPlayerAuraBySpellID(403816) then
             buffBonus = buffBonus + 6 -- metamorphosis
         end
         if C_UnitAuras.GetPlayerAuraBySpellID(428741) then
             buffBonus = buffBonus + 5 -- molten armor
         end
-        if C_UnitAuras.GetPlayerAuraBySpellID(430432) then
-            buffBonus = buffBonus + 5 -- battle hardened
+        if C_UnitAuras.GetPlayerAuraBySpellID(408680) then
+            buffBonus = buffBonus + 6 -- way of earth
         end
     end
 
@@ -53,12 +47,55 @@ function _Defense:GetCritReduction()
     end
     local critReducingFromResilience = GetCombatRatingBonus(15)
 
-    return critReductionFromDefense + critReducingFromResilience + talentBonus + buffBonus
+    local meleeCritReduction = critReductionFromDefense + critReducingFromResilience + buffBonus
+    local rangedCritReduction = critReductionFromDefense + critReducingFromResilience + buffBonus
+    local spellCritReduction = critReducingFromResilience + buffBonus
+
+    if classId == Data.DRUID then
+        if ECS.IsWotlk then
+            local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 18)
+            meleeCritReduction = meleeCritReduction + points * 2 -- 0-6% from Survival of the Fittest
+        elseif ECS.IsTBC then
+            local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 16)
+            meleeCritReduction = meleeCritReduction + points * 1 -- 0-3% from Survival of the Fittest
+        end
+    end
+    if classId == Data.ROGUE then
+        if IsPlayerSpell(30892) then -- Sleight of Hand 1/2
+            meleeCritReduction = meleeCritReduction + 1
+            rangedCritReduction = rangedCritReduction + 1
+        end
+        if IsPlayerSpell(30893) then -- Sleight of Hand 2/2
+            meleeCritReduction = meleeCritReduction + 2
+            rangedCritReduction = rangedCritReduction + 2
+        end
+    end
+
+    if ECS.IsSoD then
+        local chestRune = DataUtils.GetRuneForEquipSlot(Utils.CHAR_EQUIP_SLOTS.Chest)
+        if chestRune == 2851 then
+            meleeCritReduction = meleeCritReduction + 6 -- survival of the fittest / Just a Flesh Wound
+        end
+    end
+    return meleeCritReduction, rangedCritReduction, spellCritReduction
 end
 
 ---@return string
-function Data:GetCritReduction()
-    return DataUtils:Round(_Defense:GetCritReduction(), 2) .. "%"
+function Data:GetMeleeCritReduction()
+    local melee, _, _ = _Defense:GetCritReduction()
+    return DataUtils:Round(melee, 2) .. "%"
+end
+
+---@return string
+function Data:GetRangedCritReduction()
+    local _, ranged, _ = _Defense:GetCritReduction()
+    return DataUtils:Round(ranged, 2) .. "%"
+end
+
+---@return string
+function Data:GetSpellCritReduction()
+    local _, _, spell = _Defense:GetCritReduction()
+    return DataUtils:Round(spell, 2) .. "%"
 end
 
 ---@param enemyLevel number
