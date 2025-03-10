@@ -40,22 +40,6 @@ function _Config:LoadDefenseSection()
                     Stats.RebuildStatInfos()
                 end,
             },
-            critImmunity = {
-                type = "toggle",
-                order = 1.7,
-                name = function() return i18n("Crit Immune") end,
-                desc = function() return i18n("Shows/Hides the percentage of being crit immune.") end,
-                width = 1.5,
-                hidden = function()
-                    return (not ECS.IsWotlk)
-                end,
-                disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
-                get = function () return ExtendedCharacterStats.profile.defense.critImmunity.display; end,
-                set = function (_, value)
-                    ExtendedCharacterStats.profile.defense.critImmunity.display = value
-                    Stats.RebuildStatInfos()
-                end,
-            },
             critReduction = {
                 type = "toggle",
                 order = 1.8,

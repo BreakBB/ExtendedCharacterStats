@@ -125,13 +125,6 @@ dataFunctionRefs = {
     ["RangedAttackSpeed"] = function() return Data:GetRangedAttackSpeed() end,
     -- Defense
     ["Armor"] = function() return Data:GetArmorValue() end,
-    ["CritImmunity"] = function()
-        if ECS.IsWotlk then
-            return Data:GetCritImmunity()
-        else
-            return 0
-        end
-    end,
     ["CritReduction"] = function()
         return Data:GetCritReduction()
     end,

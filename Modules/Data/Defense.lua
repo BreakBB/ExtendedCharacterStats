@@ -8,8 +8,6 @@ local _Defense = {}
 local _, _, classId = UnitClass("player")
 
 local MAX_SKILL = (UnitLevel("player")) * 5
--- A tank needs to reduce the chance to be critically hit by 5.6% to achieve crit immunity
-local CRIT_IMMUNITY_CAP = 5.6
 -- Every 25 defense reduce the chance to be critically hit by 1 %
 local DEFENSE_FOR_CRIT_REDUCTION = 25
 
@@ -56,18 +54,6 @@ function _Defense:GetCritReduction()
     local critReducingFromResilience = GetCombatRatingBonus(15)
 
     return critReductionFromDefense + critReducingFromResilience + talentBonus + buffBonus
-end
-
----@return string
-function Data:GetCritImmunity()
-    local critReduction = _Defense:GetCritReduction()
-    local critImmunity = critReduction / CRIT_IMMUNITY_CAP * 100
-
-    if critImmunity < 0 then
-        critImmunity = 0
-    end
-
-    return DataUtils:Round(critImmunity, 2) .. "%"
 end
 
 ---@return string

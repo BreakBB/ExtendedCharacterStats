@@ -32,16 +32,6 @@ local defenseConfigTranslations = {
         ["esMX"] = "Muestra/oculta el valor de armadura",
         ["ptBR"] = "Mostra/oculta o valor de armadura"
     },
-    ["Shows/Hides the percentage of being crit immune."] = {
-        ["enUS"] = true,
-        ["deDE"] = "Zeigt/Versteckt die erreichte Crit Immunität in Prozent.",
-        ["frFR"] = "Affiche/cache le pourcentage d'immunité aux critiques.",
-        ["zhCN"] = false,
-        ["ruRU"] = "Показать/скрыть шанс невосприимчивости к критическому урону",
-        ["esES"] = "Muestra/oculta el porcentaje de inmunidad a los golpes críticos",
-        ["esMX"] = "Muestra/oculta el porcentaje de inmunidad a los golpes críticos",
-        ["ptBR"] = "Mostra/oculta a porcentagem de imunidade a golpes críticos"
-    },
     ["Shows/Hides the reduction percentage of being critically hit."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt, um wie viel Prozent die Chance kritisch getroffen zu werden reduziert ist.",

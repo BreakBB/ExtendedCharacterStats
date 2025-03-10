@@ -246,7 +246,7 @@ _CreateStatInfos = function()
     end
 
     category = profile.defense
-    _CreateStatInfo(category, category.armor, category.critImmunity, category.critReduction, category.avoidance, category.defenseRating,
+    _CreateStatInfo(category, category.armor, category.critReduction, category.avoidance, category.defenseRating,
             category.defense, category.blockChance, category.blockValue, category.parry, category.dodge, category.resilience)
 
     category = profile.regen
