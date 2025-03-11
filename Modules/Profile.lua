@@ -127,7 +127,7 @@ local function GetDefaultStatsProfile()
                 textColor = colors.ATTACK_SPEED_SECONDARY,
                 statColor = colors.ATTACK_SPEED_PRIMARY,
             },
-            expertise = {display = true, isTbcOnly = true, refName = "Expertise", text = "Expertise"},
+            expertise = {display = true, refName = "Expertise", text = "Expertise"},
             expertiseRating = {display = true, isTbcOnly = true, refName = "ExpertiseRating", text = "Expertise Rating"},
             hasteRating = {
                 display = true,
