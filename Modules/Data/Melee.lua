@@ -231,6 +231,37 @@ end
 ---@return number
 function Data:GetExpertise()
     local expertise, _ = GetExpertise()
+
+	if ECS.IsSoD then
+		local increased_expertise_2 = {233640, 234985, 236300, 233614}
+		for _, itemId in pairs(increased_expertise_2) do
+			if C_Item.IsEquippedItem(itemId) then
+				expertise = expertise + 2
+			end
+		end
+
+		local increased_expertise_1 = {233585, 234650, 233397, 233693, 233692, 233401, 233689, 236130, 236056, 236022, 233635, 237512, 236034, 236032, 236030, 236023, 236039, 236038, 236036, 236035, 236037, 236026, 236031, 236033, 236029, 236040, 235888, 233651, 233658, 233376, 236051, 236055, 236052, 236050, 236054, 233634, 234984, 233659, 233662, 233663, 233661, 234748, 236020, 236012, 236005, 236010, 236019, 236007, 236016, 236006, 236008, 236009, 236011, 236021, 236209, 236201, 236206, 236215, 236205, 236204, 236203, 236208, 236211, 236212, 236218, 236202, 236210, 236171, 236172, 236175, 236174, 236170, 233637, 233582, 233711, 233412, 233413, 233415, 236222, 236309, 233579, 233618, 236339, 237275, 236260, 236319, 233992, 236139, 236207, 233642, 236304, 236262, 233612, 236125, 236133, 236141, 236137, 236138, 236129, 236128, 236136, 236135, 236140, 236124, 236134, 236013, 233600, 233442, 235005, 236216, 236176, 236311, 233699, 233700, 233668, 233665, 233666, 236306, 236341, 236293, 236263, 236255}
+		for _, itemId in pairs(increased_expertise_1) do
+			if C_Item.IsEquippedItem(itemId) then
+				expertise = expertise + 1
+			end
+		end
+
+		local timeworn_expertise = {234018, 234022, 234027, 234031, 234035}
+		for _, itemId in pairs(timeworn_expertise) do
+			if C_Item.IsEquippedItem(itemId) then
+				expertise = expertise + 1 * timeworn
+			end
+		end
+
+		if Data:HasSetBonusIncreasedExpertise() then
+			expertise = expertise + 2
+		end
+
+		if classId == Data.DRUID then
+		end
+	end
+
     return DataUtils:Round(expertise, 0)
 end
 
