@@ -292,6 +292,16 @@ local statTranslations = {
         ["esMX"] = "Eludir",
         ["ptBR"] = "Evasiva"
     },
+    ["Avoidance (Lvl +3)"] = {
+        ["enUS"] = true,
+        ["deDE"] = false,
+        ["frFR"] = "Evitement (Niv. +3)",
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = "Eludir (Niv. +3)",
+        ["esMX"] = "Eludir (Niv. +3)",
+        ["ptBR"] = "Evasiva (Nív. +3)"
+    },
     ["Defense Rating"] = {
         ["enUS"] = true,
         ["deDE"] = "Verteidigungswertung",

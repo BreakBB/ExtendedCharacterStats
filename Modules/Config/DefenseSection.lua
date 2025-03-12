@@ -92,6 +92,19 @@ function _Config:LoadDefenseSection()
                     Stats.RebuildStatInfos()
                 end,
             },
+            avoidanceBoss = {
+                type = "toggle",
+                order = 1.86,
+                name = function() return i18n("Avoidance (Lvl +3)") end,
+                desc = function() return i18n("Shows/Hides the total avoidance (Lvl +3).") end,
+                width = 1.5,
+                disabled = function() return (not ExtendedCharacterStats.profile.defenseBoss.display); end,
+                get = function () return ExtendedCharacterStats.profile.defense.avoidanceBoss.display; end,
+                set = function (_, value)
+                    ExtendedCharacterStats.profile.defense.avoidanceBoss.display = value
+                    Stats.RebuildStatInfos()
+                end,
+            },
             defenseRating = {
                 type = "toggle",
                 order = 1.9,

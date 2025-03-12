@@ -275,6 +275,7 @@ local function GetDefaultStatsProfile()
             rangedCritReduction = {display = true, refName = "RangedCritReduction", text = "Ranged Crit Reduction"},
             spellCritReduction = {display = true, refName = "SpellCritReduction", text = "Spell Crit Reduction"},
             avoidance = {display = true, refName = "Avoidance", text = "Avoidance"},
+            avoidanceBoss = {display = true, refName = "AvoidanceBoss", text = "Avoidance (Lvl +3)"},
             defenseRating = {display = true, isTbcOnly = true, refName = "DefenseRating", text = "Defense Rating"},
             defense = {display = true, refName = "DefenseValue", text = "Defense"},
             blockChance = {display = true, refName = "BlockChance", text = "Block Chance"},

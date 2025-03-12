@@ -2,7 +2,8 @@
 local Data = ECSLoader:CreateModule("Data")
 
 local dataFunctionRefs
-local enemyLevel = UnitLevel("player") + 3
+local playerLevel = UnitLevel("player")
+local enemyLevel = playerLevel + 3
 
 ---@param refName string
 ---@return number | string
@@ -128,9 +129,8 @@ dataFunctionRefs = {
     ["MeleeCritReduction"] = function() return Data:GetMeleeCritReduction() end,
     ["RangedCritReduction"] = function() return Data:GetRangedCritReduction() end,
     ["SpellCritReduction"] = function() return Data:GetSpellCritReduction() end,
-    ["Avoidance"] = function()
-        return Data:GetAvoidance(enemyLevel)
-    end,
+    ["Avoidance"] = function() return Data:GetAvoidance(playerLevel) end,
+    ["AvoidanceBoss"] = function() return Data:GetAvoidance(enemyLevel) end,
     ["DefenseRating"] = function()
         if ECS.IsWotlk then
             return Data:GetDefenseRating()

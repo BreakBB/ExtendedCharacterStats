@@ -142,6 +142,16 @@ local defenseConfigTranslations = {
         ["esMX"] = "Muestra/oculta eludir",
         ["ptBR"] = "Mostra/oculta evasiva"
     },
+    ["Shows/Hides the total avoidance (Lvl +3)."] = {
+        ["enUS"] = true,
+        ["deDE"] = false,
+        ["frFR"] = "Affiche/cache l'évitement total (Niv. +3).",
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false
+    },
 }
 
 for k, v in pairs(defenseConfigTranslations) do
