@@ -29,14 +29,18 @@ function _Defense:GetCritReduction()
         if C_UnitAuras.GetPlayerAuraBySpellID(430432) then
             buffBonus = buffBonus + 5 -- battle hardened
         end
-        if C_UnitAuras.GetPlayerAuraBySpellID(403816) then
-            buffBonus = buffBonus + 6 -- metamorphosis
-        end
-        if C_UnitAuras.GetPlayerAuraBySpellID(428741) then
-            buffBonus = buffBonus + 5 -- molten armor
-        end
-        if C_UnitAuras.GetPlayerAuraBySpellID(408680) then
-            buffBonus = buffBonus + 6 -- way of earth
+        if classId == Data.WARLOCK then
+            if C_UnitAuras.GetPlayerAuraBySpellID(403816) then
+                buffBonus = buffBonus + 6 -- metamorphosis
+            end
+        elseif classId == Data.MAGE then
+            if C_UnitAuras.GetPlayerAuraBySpellID(428741) then
+                buffBonus = buffBonus + 5 -- molten armor
+            end
+        elseif classId == Data.SHAMAN then
+            if C_UnitAuras.GetPlayerAuraBySpellID(408680) then
+                buffBonus = buffBonus + 6 -- way of earth
+            end
         end
     end
 
@@ -59,22 +63,71 @@ function _Defense:GetCritReduction()
             local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 16)
             meleeCritReduction = meleeCritReduction + points * 1 -- 0-3% from Survival of the Fittest
         end
-    end
-    if classId == Data.ROGUE then
-        if IsPlayerSpell(30892) then -- Sleight of Hand 1/2
-            meleeCritReduction = meleeCritReduction + 1
-            rangedCritReduction = rangedCritReduction + 1
+    elseif classId == Data.PRIEST then
+        if ECS.IsTBC then
+            if IsPlayerSpell(33371) then -- Shadow Resilience 2/2
+                spellCritReduction = spellCritReduction + 4
+            elseif IsPlayerSpell(14910) then -- Shadow Resilience 1/2
+                spellCritReduction = spellCritReduction + 2
+            end
         end
+    elseif classId == Data.ROGUE then
         if IsPlayerSpell(30893) then -- Sleight of Hand 2/2
             meleeCritReduction = meleeCritReduction + 2
             rangedCritReduction = rangedCritReduction + 2
+        elseif IsPlayerSpell(30892) then -- Sleight of Hand 1/2
+            meleeCritReduction = meleeCritReduction + 1
+            rangedCritReduction = rangedCritReduction + 1
+        end
+    elseif classId == Data.WARLOCK then
+        if ECS.IsTBC or ECS.IsWotlk then
+            if IsPlayerSpell(30321) then -- Demonic Resilience 3/3
+                meleeCritReduction = meleeCritReduction + 3
+                spellCritReduction = spellCritReduction + 3
+            elseif IsPlayerSpell(30320) then --  Demonic Resilience 2/3
+                meleeCritReduction = meleeCritReduction + 2
+                spellCritReduction = spellCritReduction + 2
+            elseif IsPlayerSpell(30319) then -- Demonic Resilience 1/3
+                meleeCritReduction = meleeCritReduction + 1
+                spellCritReduction = spellCritReduction + 1
+            end
+        end
+        if ECS.IsWotlk then
+            if C_UnitAuras.GetPlayerAuraBySpellID(47241) then
+                meleeCritReduction = meleeCritReduction + 6 -- metamorphosis
+            end
         end
     end
 
     if ECS.IsSoD then
-        local chestRune = DataUtils.GetRuneForEquipSlot(Utils.CHAR_EQUIP_SLOTS.Chest)
-        if chestRune == 2851 then
-            meleeCritReduction = meleeCritReduction + 6 -- survival of the fittest / Just a Flesh Wound
+        if classId == Data.DRUID or classId == Data.ROGUE then
+            local chestRune = DataUtils.GetRuneForEquipSlot(Utils.CHAR_EQUIP_SLOTS.Chest)
+            if chestRune == 2851 then
+                meleeCritReduction = meleeCritReduction + 6 -- survival of the fittest / Just a Flesh Wound
+            end
+        end
+    elseif ECS.IsWotlk then
+        local wintersChill = C_UnitAuras.GetPlayerAuraBySpellID(12579)
+        if wintersChill then
+            spellCritReduction = spellCritReduction - 1 * wintersChill.applications -- Winter's Chill
+        end
+        if C_UnitAuras.GetPlayerAuraBySpellID(22959) then
+            spellCritReduction = spellCritReduction - 5 -- Improved Scorch
+        end
+        if C_UnitAuras.GetPlayerAuraBySpellID(17800) then
+            spellCritReduction = spellCritReduction - 5 -- Shadow Mastery
+        end
+        if C_UnitAuras.GetPlayerAuraBySpellID(17799) then
+            spellCritReduction = spellCritReduction - 4 -- Shadow Mastery
+        end
+        if C_UnitAuras.GetPlayerAuraBySpellID(17798) then
+            spellCritReduction = spellCritReduction - 2 -- Shadow Mastery
+        end
+        if C_UnitAuras.GetPlayerAuraBySpellID(17797) then
+            spellCritReduction = spellCritReduction - 3 -- Shadow Mastery
+        end
+        if C_UnitAuras.GetPlayerAuraBySpellID(17794) then
+            spellCritReduction = spellCritReduction - 1 -- Shadow Mastery
         end
     end
     return meleeCritReduction, rangedCritReduction, spellCritReduction
