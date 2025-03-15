@@ -77,7 +77,95 @@ local itemSets = {
         [19827] = true,
         [19952] = true
     },
+    [setNames.DREADNOUGHTS_BATTLEGEAR] = {
+        [236005] = true,
+        [246006] = true,
+        [236007] = true,
+        [236008] = true,
+        [236009] = true,
+        [236010] = true,
+        [236011] = true,
+        [236012] = true,
+        [236013] = true
+    },
+    [setNames.BONESCYTHE_LEATHERS] = {
+        [236032] = true,
+        [236033] = true,
+        [236034] = true,
+        [236035] = true,
+        [236036] = true,
+        [236037] = true,
+        [236038] = true,
+        [236039] = true,
+        [236040] = true
+    },
+    [setNames.THE_EARTHSHATTERERS_RESOLVE] = {
+        [236160] = true,
+        [236162] = true,
+        [236163] = true,
+        [236164] = true,
+        [236165] = true,
+        [236166] = true,
+        [236167] = true,
+        [236168] = true,
+        [236169] = true
+    },
+    [setNames.REDEMPTION_BULWARK] = {
+        [236133] = true,
+        [236134] = true,
+        [236135] = true,
+        [236136] = true,
+        [236137] = true,
+        [236138] = true,
+        [236139] = true,
+        [236140] = true,
+        [236141] = true
+    },
+    [setNames.PLAGUEHEART_STITCHINGS] = {
+        [236068] = true,
+        [236069] = true,
+        [236070] = true,
+        [236071] = true,
+        [236072] = true,
+        [236073] = true,
+        [236074] = true,
+        [236075] = true,
+        [236076] = true
+    },
+    [setNames.DREAMWALKER_GUARDIAN] = {
+        [236201] = true,
+        [236202] = true,
+        [236203] = true,
+        [236204] = true,
+        [236205] = true,
+        [236206] = true,
+        [236207] = true,
+        [236208] = true,
+        [236209] = true
+    },
 }
+
+function Data:HasSetBonusIncreasedExperise()
+    if classId == Data.WARRIOR then
+        return Data:IsSetBonusActive(setNames.DREADNOUGHTS_BATTLEGEAR, 2)
+    elseif classId == Data.DRUID then
+        return Data:IsSetBonusActive(setNames.DREAMWALKER_GUARDIAN, 2)
+    elseif classId == Data.SHAMAN then
+        return Data:IsSetBonusActive(setNames.THE_EARTHSHATTERERS_RESOLVE, 2)
+    elseif classId == Data.PALADIN then
+        return Data:IsSetBonusActive(setNames.REDEMPTION_BULWARK, 2)
+    elseif classId == Data.ROGUE then
+        return Data:IsSetBonusActive(setNames.BONESCYTHE_LEATHERS, 2)
+    elseif classId == Data.WARLOCK then
+        return Data:IsSetBonusActive(setNames.PLAGUEHEART_STITCHINGS, 2)
+    end
+end
+
+function Data:HasSetBonusIncreasedSpellHit()
+    if classId == Data.WARLOCK then
+        return Data:IsSetBonusActive(setNames.PLAGUEHEART_STITCHINGS, 2)
+	end
+end
 
 function Data:HasSetBonusModifierMP5()
     if classId == Data.PRIEST then
