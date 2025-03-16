@@ -231,6 +231,52 @@ end
 ---@return number
 function Data:GetExpertise()
     local expertise, _ = GetExpertise()
+
+    if ECS.IsSoD then
+        for _, itemId in pairs(Data.itemsIds.INCREASED_EXPERTISE_2) do
+            if C_Item.IsEquippedItem(itemId) then
+                expertise = expertise + 2
+            end
+        end
+
+        for _, itemId in pairs(Data.itemsIds.INCREASED_EXPERTISE_1) do
+            if C_Item.IsEquippedItem(itemId) then
+                expertise = expertise + 1
+            end
+        end
+
+        for _, itemId in pairs(Data.itemsIds.TIMEWORN_EXPERTISE) do
+            if C_Item.IsEquippedItem(itemId) then
+                for _, t in pairs(Data.itemsIds.TIMEWORN) do
+                    if C_Item.IsEquippedItem(t) then
+                        expertise = expertise + 1
+                    end
+                end
+                break -- no need to check for other rings, you can have only one
+            end
+        end
+
+        if Data:HasSetBonusIncreasedExpertise2() then
+            expertise = expertise + 2
+        end
+
+        if Data:HasSetBonusIncreasedExpertise5() then
+            expertise = expertise + 5
+        end
+
+        if classId == Data.DRUID then
+            for i = 1, 18 do
+                local itemLink = GetInventoryItemLink("player", i)
+                if itemLink then
+                    local enchant = DataUtils:GetEnchantFromItemLink(itemLink)
+                    if enchant and enchant == Data.enchantIds.ANIMALISTIC_EXPERTISE then
+                        expertise = expertise + 5
+                    end
+                end
+            end
+        end
+    end
+
     return DataUtils:Round(expertise, 0)
 end
 
@@ -276,4 +322,3 @@ function Data:GetMeleeHasteBonus()
     local hasteBonus = GetCombatRatingBonus(CR_HASTE_MELEE)
     return DataUtils:Round(hasteBonus, 2) .. "%"
 end
-
