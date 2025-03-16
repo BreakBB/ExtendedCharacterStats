@@ -88,7 +88,7 @@ function DataUtils:GetEnchantFromItemLink(itemLink)
     if itemLink then
         local _, itemStringLink = GetItemInfo(itemLink)
         if itemStringLink then
-            local _, _, enchant, _ = string.split(":", itemStringLink, 4)
+            local _, _, enchant, _ = strsplit(":", itemStringLink, 4)
             return enchant
         end
     end
@@ -115,7 +115,7 @@ function DataUtils:GetSocketedGemsFromItemLink(itemLink)
     if itemLink then
         local _, itemStringLink = GetItemInfo(itemLink)
         if itemStringLink then
-            local _, _, gem1, gem2, gem3, _ = string.split(":", itemStringLink, 6)
+            local _, _, gem1, gem2, gem3, _ = strsplit(":", itemStringLink, 6)
             return gem1, gem2, gem3
         end
     end
