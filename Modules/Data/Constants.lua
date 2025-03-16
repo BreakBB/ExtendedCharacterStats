@@ -39,17 +39,17 @@ Data.setNames = {
 }
 
 Data.enchantIds = {
-    ANIMALISTIC_EXPERTISE = 7875, -- Your melee attacks have 5% less chance to be Dodged or Parried.
-    BIZNICK_SCOPE = 2523, -- 3% Hit from Biznicks 247x128 Accurascope
-    BRACER_MANA_REGENERATION = 2565, -- 4 MP5 on bracer
-    BRILLIANT_MANA_OIL = 2629, -- 12 MP5
-    GLYPH_OF_RENEWAL = 3001, -- 7 MP5 from Honor Hold/Thrallmar enchant
-    INSCRIPTION_OF_FAITH = 2980, -- 4 MP5 from aldor enchant
-    LESSER_MANA_OIL = 2625, -- 8 MP5
-    MINOR_MANA_OIL = 2624, -- 4 MP5
-    PROPHETIC_AURA = 2590, -- 4 MP5 for priest ZG Enchant
-    RESILIENCE_OF_THE_SCOURGE = 2715, -- 5 MP5 Sapphiron shoulder enchant
-    RESTORE_MANA_PRIME = 3150, -- 6 MP5 on chest
+    ANIMALISTIC_EXPERTISE = "7875", -- Your melee attacks have 5% less chance to be Dodged or Parried.
+    BIZNICK_SCOPE = "2523", -- 3% Hit from Biznicks 247x128 Accurascope
+    BRACER_MANA_REGENERATION = "2565", -- 4 MP5 on bracer
+    BRILLIANT_MANA_OIL = "2629", -- 12 MP5
+    GLYPH_OF_RENEWAL = "3001", -- 7 MP5 from Honor Hold/Thrallmar enchant
+    INSCRIPTION_OF_FAITH = "2980", -- 4 MP5 from aldor enchant
+    LESSER_MANA_OIL = "2625", -- 8 MP5
+    MINOR_MANA_OIL = "2624", -- 4 MP5
+    PROPHETIC_AURA = "2590", -- 4 MP5 for priest ZG Enchant
+    RESILIENCE_OF_THE_SCOURGE = "2715", -- 5 MP5 Sapphiron shoulder enchant
+    RESTORE_MANA_PRIME = "3150", -- 6 MP5 on chest
 }
 
 Data.gemIds = {

@@ -266,11 +266,12 @@ function Data:GetExpertise()
 
         if classId == Data.DRUID then
             for i = 1, 18 do
-            local itemLink = GetInventoryItemLink("player", i)
-            if itemLink then
-                local enchant = DataUtils:GetEnchantFromItemLink(itemLink)
-                if enchant and enchant == Data.enchantIds.ANIMALISTIC_EXPERTISE then
-                    expertise = expertise + 5
+                local itemLink = GetInventoryItemLink("player", i)
+                if itemLink then
+                    local enchant = DataUtils:GetEnchantFromItemLink(itemLink)
+                    if enchant and enchant == Data.enchantIds.ANIMALISTIC_EXPERTISE then
+                        expertise = expertise + 5
+                    end
                 end
             end
         end
