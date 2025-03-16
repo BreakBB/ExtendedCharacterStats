@@ -161,12 +161,6 @@ function Data:HasSetBonusIncreasedExperise()
     end
 end
 
-function Data:HasSetBonusIncreasedSpellHit()
-    if classId == Data.WARLOCK then
-        return Data:IsSetBonusActive(setNames.PLAGUEHEART_STITCHINGS, 2)
-	end
-end
-
 function Data:HasSetBonusModifierMP5()
     if classId == Data.PRIEST then
         return Data:IsSetBonusActive(setNames.VESTMENTS_OF_TRANSCENDENCE, 3)
