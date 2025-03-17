@@ -6,56 +6,70 @@ local Stats = ECSLoader:ImportModule("Stats")
 ---@type GearInfos
 local GearInfos = ECSLoader:ImportModule("GearInfos")
 
-local UPDATE_INTERVAL = 2
-local currentGroupMembers = 0
-local shouldUpdate = false
-
-function EventHandler.Init()
-    currentGroupMembers = GetNumGroupMembers()
-
-    C_Timer.NewTicker(UPDATE_INTERVAL, function()
-        if shouldUpdate then
-            Stats.UpdateInformation()
-            shouldUpdate = false
-        end
+function Stats.DelayedUpdateInformation(self)
+    self:SetScript("OnUpdate",nil)
+    -- update next frame
+    C_Timer.After(0, function ()
+        Stats.UpdateInformation()
     end)
 end
 
-local lastEventTime = 0
-local DEBOUNCE_INTERVAL = 0.5 -- 0.5 seconds debounce interval
+function GearInfos.DelayedUpdateGearColorFrames(self)
+    self:SetScript("OnUpdate",nil)
+    -- update next frame
+    C_Timer.After(0, function ()
+        GearInfos.UpdateGearColorFrames()
+    end)
+end
+
+function GearInfos.DelayedUpdateInspectGearColorFrames(self)
+    self:SetScript("OnUpdate",nil)
+    -- update next frame
+    C_Timer.After(0, function ()
+        GearInfos.UpdateInspectGearColorFrames()
+    end)
+end
 
 ---Event handler for all the events subscribed to in _Init.RegisterEvents
-function EventHandler.HandleOnEvent(_, event, ...)
-    local currentTime = GetTime()
-    local shouldDebounce = currentTime - lastEventTime < DEBOUNCE_INTERVAL
-    lastEventTime = currentTime
-
+function EventHandler.HandleOnEvent(self, event, ...)
     local args = {...}
 
-    if (not shouldDebounce) and event == "GROUP_ROSTER_UPDATE" then
-        -- Someone joined or left the group
-        currentGroupMembers = GetNumGroupMembers()
-    elseif ((not shouldDebounce) and event == "UNIT_AURA")
-            or event == "PLAYER_LEVEL_UP"
-            or event == "CHARACTER_POINTS_CHANGED"
-            or event == "RUNE_UPDATED" then
-        if currentGroupMembers > 5 then
-            -- When in a raid update on the next UPDATE_INTERVAL tick
-            shouldUpdate = true
-        else
-            -- Otherwise update right away
-            Stats.UpdateInformation()
+    if event == "PLAYER_ENTERING_WORLD" then
+        return
+    end
+
+    if event == "ACTIVE_TALENT_GROUP_CHANGED"
+        or event == "CHARACTER_POINTS_CHANGED"
+        or event == "COMBAT_RATING_UPDATE"
+        or event == "PLAYER_DAMAGE_DONE_MODS"
+        or event == "PLAYER_LEVEL_UP"
+        or event == "PLAYER_MOUNT_DISPLAY_CHANGED"
+        or event == "PLAYER_TALENT_UPDATE"
+        or event == "RUNE_UPDATED"
+        or event == "SKILL_LINES_CHANGED"
+        or event == "SPELL_POWER_CHANGED"
+        or event == "UPDATE_SHAPESHIFT_FORM"
+        or ((event == "UNIT_ATTACK"
+        or event == "UNIT_ATTACK_SPEED"
+        or event == "UNIT_AURA"
+        or event == "UNIT_DAMAGE"
+        or event == "UNIT_SPELL_HASTE"
+        or event == "UNIT_STATS"
+        or event == "UNIT_RANGEDDAMAGE"
+        or event == "UNIT_RANGED_ATTACK_POWER")
+        and args[1] == "player") then
+
+        local statsFrame = Stats:GetFrame()
+        if statsFrame:IsVisible() then
+            self:SetScript("OnUpdate", Stats.DelayedUpdateInformation)
         end
     elseif event == "PLAYER_EQUIPMENT_CHANGED" or event == "SOCKET_INFO_SUCCESS" then
-        GearInfos.UpdateGearColorFrames()
-        C_Timer.After(0.5, function ()
-            Stats.UpdateInformation()
-        end)
-    elseif event == "PLAYER_MOUNT_DISPLAY_CHANGED" then
-        C_Timer.After(0.5, function ()
-            Stats.UpdateInformation()
-        end)
-    elseif ((not shouldDebounce) and event == "INSPECT_READY" and args[1] == UnitGUID("target")) then
-        GearInfos:UpdateInspectGearColorFrames()
+        local statsFrame = Stats:GetFrame()
+        if statsFrame:IsVisible() then
+            self:SetScript("OnUpdate", GearInfos.DelayedUpdateGearColorFrames)
+            self:SetScript("OnUpdate", Stats.DelayedUpdateInformation)
+        end
+    elseif (event == "INSPECT_READY" and args[1] == UnitGUID("target")) then
+        self:SetScript("OnUpdate", GearInfos.DelayedUpdateInspectGearColorFrames)
     end
 end

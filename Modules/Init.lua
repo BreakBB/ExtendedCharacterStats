@@ -41,7 +41,6 @@ function Init:OnPlayerLogin()
         GearInfos.UpdateGearColorFrames()
     end)
 
-    EventHandler.Init()
     ECS.eventFrame = eventFrame
 end
 
@@ -76,15 +75,28 @@ end
 
 ---Subscribes to events that will trigger an update
 function _Init.RegisterEvents(eventFrame)
-    eventFrame:RegisterUnitEvent("UNIT_AURA", "player") -- Triggers whenever the player gains or loses a buff/debuff
-    eventFrame:RegisterEvent("PLAYER_LEVEL_UP") -- Triggers whenever the player levels up
+    eventFrame:RegisterEvent("ACTIVE_TALENT_GROUP_CHANGED")
+    eventFrame:RegisterEvent("CHARACTER_POINTS_CHANGED") -- Triggered whenever a player spends talent points
+    eventFrame:RegisterEvent("COMBAT_RATING_UPDATE")
+    eventFrame:RegisterEvent("INSPECT_READY") -- Triggers whenever the player inspects someone else and the inspect frame is ready
+    eventFrame:RegisterEvent("PLAYER_DAMAGE_DONE_MODS")
     eventFrame:RegisterEvent("PLAYER_ENTERING_WORLD")  -- Triggers whenever the player log in, zone in to a new zone or reloads the UI
     eventFrame:RegisterEvent("PLAYER_EQUIPMENT_CHANGED") -- Triggers whenever the player changes gear
+    eventFrame:RegisterEvent("PLAYER_LEVEL_UP") -- Triggers whenever the player levels up
     eventFrame:RegisterEvent("PLAYER_MOUNT_DISPLAY_CHANGED") -- Triggers whenever the player mounts or dismounts
-    eventFrame:RegisterEvent("INSPECT_READY") -- Triggers whenever the player inspects someone else and the inspect frame is ready
-    eventFrame:RegisterEvent("CHARACTER_POINTS_CHANGED") -- Triggered whenever a player spends talent points
-    eventFrame:RegisterEvent("GROUP_ROSTER_UPDATE") -- Triggered whenever someone joins or leaves the group (party and raid)
-    if ECS.IsWotlk then
+    eventFrame:RegisterEvent("PLAYER_TALENT_UPDATE")
+    eventFrame:RegisterEvent("SKILL_LINES_CHANGED")
+    eventFrame:RegisterEvent("SPELL_POWER_CHANGED")
+    eventFrame:RegisterUnitEvent("UNIT_ATTACK_SPEED", "player")
+    eventFrame:RegisterEvent("UNIT_ATTACK")
+    eventFrame:RegisterUnitEvent("UNIT_AURA", "player") -- Triggers whenever the player gains or loses a buff/debuff
+    eventFrame:RegisterUnitEvent("UNIT_DAMAGE", "player")
+    eventFrame:RegisterEvent("UNIT_SPELL_HASTE")
+    eventFrame:RegisterEvent("UNIT_STATS")
+    eventFrame:RegisterEvent("UNIT_RANGED_ATTACK_POWER")
+    eventFrame:RegisterEvent("UNIT_RANGEDDAMAGE")
+    eventFrame:RegisterEvent("UPDATE_SHAPESHIFT_FORM")
+   if ECS.IsTbc or ECS.IsWotlk then
         eventFrame:RegisterEvent("SOCKET_INFO_SUCCESS") -- Triggers whenever the player successfully sockets an item
 
         GearManagerDialog:HookScript("OnShow", function()

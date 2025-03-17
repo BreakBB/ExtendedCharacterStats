@@ -88,6 +88,7 @@ function Stats.CreateWindow()
         if OutfitterFrame ~= nil and OutfitterButtonFrame ~= nil then
             OutfitterFrame:SetPoint("TOPLEFT", OutfitterButtonFrame  , "TOPRIGHT", -34 + ExtendedCharacterStats.general.window.width, -38)
         end
+        Stats.UpdateInformation()
     end)
     mainFrame:SetScript("OnHide", function ()
         toggleButton:SetText("ECS >")
