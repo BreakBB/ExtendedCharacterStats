@@ -89,7 +89,7 @@ describe("DataUtils", function()
                 return 1, nil
             end
             _G.C_Engraving = {GetRuneForEquipmentSlot = function() return {
-                skillLineAbilityID = 123
+                itemEnchantmentID = 123
             } end}
             local result = DataUtils.GetRuneForEquipSlot(Utils.CHAR_EQUIP_SLOTS.Head)
 

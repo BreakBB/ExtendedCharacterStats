@@ -127,7 +127,7 @@ function _Melee.GetHitFromRunes()
     local finger1Rune = DataUtils.GetRuneForEquipSlot(Utils.CHAR_EQUIP_SLOTS.Finger1)
     local finger2Rune = DataUtils.GetRuneForEquipSlot(Utils.CHAR_EQUIP_SLOTS.Finger2)
 
-    if classId == Data.DRUID and (finger1Rune == 51245 or finger2Rune == 51245) and DataUtils:IsShapeshifted() then
+    if classId == Data.DRUID and (finger1Rune == 7520 or finger2Rune == 7520) and DataUtils:IsShapeshifted() then
         mod = mod + 3 -- 3% from Feral Combat Specialization Rune
     end
 
