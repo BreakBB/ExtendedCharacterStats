@@ -102,7 +102,7 @@ function _Defense:GetCritReduction()
     if ECS.IsSoD then
         if classId == Data.DRUID or classId == Data.ROGUE then
             local chestRune = DataUtils.GetRuneForEquipSlot(Utils.CHAR_EQUIP_SLOTS.Chest)
-            if chestRune == 2851 then
+            if chestRune == or 6710 chestRune == 6972 then
                 meleeCritReduction = meleeCritReduction + 6 -- survival of the fittest / Just a Flesh Wound
             end
         end
