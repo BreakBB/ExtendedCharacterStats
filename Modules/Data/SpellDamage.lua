@@ -92,6 +92,7 @@ function Data:GetSpellDamageVsCreature(creature)
                     elseif enchant == Data.enchantIds.INCREASED_DAMAGE_BEAST_10 then spellDmg = spellDmg + 10
                     elseif enchant == Data.enchantIds.INCREASED_DAMAGE_BEAST_12 then spellDmg = spellDmg + 12
                     elseif enchant == Data.enchantIds.INCREASED_DAMAGE_BEAST_14 then spellDmg = spellDmg + 14
+					end
                 end
             end
         end

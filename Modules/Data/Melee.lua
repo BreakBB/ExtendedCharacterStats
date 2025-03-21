@@ -162,6 +162,7 @@ function Data:GetMeleeAttackPowerVsCreature(creature)
                     elseif enchant == Data.enchantIds.INCREASED_DAMAGE_BEAST_10 then dmg = dmg + 10
                     elseif enchant == Data.enchantIds.INCREASED_DAMAGE_BEAST_12 then dmg = dmg + 12
                     elseif enchant == Data.enchantIds.INCREASED_DAMAGE_BEAST_14 then dmg = dmg + 14
+					end
                 end
             end
         end
