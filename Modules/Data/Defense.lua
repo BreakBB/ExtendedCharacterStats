@@ -42,6 +42,10 @@ function _Defense:GetCritReduction()
                 buffBonus = buffBonus + 6 -- way of earth
             end
         end
+	elseif ECS.IsWotlk then
+        if C_UnitAuras.GetPlayerAuraBySpellID(30708) then
+            buffBonus = buffBonus - 3 -- totem of wrath
+        end
     end
 
     -- Only the defense value above 350 counts towards crit immunity
