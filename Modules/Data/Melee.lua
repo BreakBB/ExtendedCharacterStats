@@ -162,7 +162,7 @@ function Data:GetMeleeAttackPowerVsCreature(creature)
                     elseif enchant == Data.enchantIds.INCREASED_DAMAGE_BEAST_10 then dmg = dmg + 10
                     elseif enchant == Data.enchantIds.INCREASED_DAMAGE_BEAST_12 then dmg = dmg + 12
                     elseif enchant == Data.enchantIds.INCREASED_DAMAGE_BEAST_14 then dmg = dmg + 14
-					end
+                    end
                 end
             end
         end
@@ -185,6 +185,7 @@ function Data:GetMeleeAttackPowerVsCreature(creature)
         for _, i in pairs(weaponsId) do
             if i then
                 if i == 11907 then dmg = dmg + 72 -- Beastslayer
+                elseif i == 1465 then dmg = dmg + 18 -- tigerbane
                 elseif i == 12709 then dmg = dmg + 45 end -- pip's skinner
             end
         end
