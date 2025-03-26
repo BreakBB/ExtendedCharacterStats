@@ -34,7 +34,7 @@ function _SpellCrit:GetSpellCritFromBuffs(school)
             break
         end
 
-        if spellId == 30708 then
+        if ECS.IsTbc and spellId == 30708 then
             mod = mod + 3 -- 3% from Totem of Wrath
         end
 
