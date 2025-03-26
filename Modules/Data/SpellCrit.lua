@@ -186,7 +186,7 @@ end
 
 function _SpellCrit:GetItemModifierHolyCrit()
     local mainHand, _ = GetInventoryItemID("player", 16)
-    if mainHand == 18608 then
+    if ECS.IsClassic and mainHand == 18608 then
         return 2 -- 2% Holy Crit from Benediction
     end
     return 0
