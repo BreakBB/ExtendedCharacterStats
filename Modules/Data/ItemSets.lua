@@ -77,6 +77,16 @@ local itemSets = {
         [19827] = true,
         [19952] = true
     },
+    [setNames.GREEN_DRAGON_MAIL] = {
+        [15045] = true,
+        [15046] = true,
+        [20296] = true,
+    },
+    [setNames.LIVING_GREEN_DRAGON_MAIL] = {
+        [227879] = true,
+        [227878] = true,
+        [227877] = true,
+    },
 }
 
 function Data:HasSetBonusModifierMP5()
@@ -85,6 +95,11 @@ function Data:HasSetBonusModifierMP5()
     elseif classId == Data.DRUID then
         return Data:IsSetBonusActive(setNames.STORMRAGE_RAIMENT, 3)
     end
+	if ECS.IsSod and Data:IsSetBonusActive(setNames.LIVING_GREEN_DRAGON_MAIL, 3) then
+		return true
+	else
+		return Data:IsSetBonusActive(setNames.GREEN_DRAGON_MAIL, 3)
+	end
 end
 
 function Data:GetSetBonusValueMP5()
@@ -92,8 +107,10 @@ function Data:GetSetBonusValueMP5()
         or (classId == Data.SHAMAN and Data:IsSetBonusActive(setNames.AUGURS_REGALIA, 2))
         or (classId == Data.PALADIN and Data:IsSetBonusActive(setNames.FREETHINKERS_ARMOR, 2)) then
         return 4
+	elseif (ECS.IsSod and Data:IsSetBonusActive(setNames.LIVING_GREEN_DRAGON_MAIL, 3))
+		or Data:IsSetBonusActive(setNames.GREEN_DRAGON_MAIL, 3) then
+		return 3
     end
-
     return 0
 end
 
