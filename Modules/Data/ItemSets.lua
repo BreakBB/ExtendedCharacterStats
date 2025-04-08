@@ -95,11 +95,11 @@ function Data:HasSetBonusModifierMP5()
     elseif classId == Data.DRUID then
         return Data:IsSetBonusActive(setNames.STORMRAGE_RAIMENT, 3)
     end
-	if ECS.IsSod and Data:IsSetBonusActive(setNames.LIVING_GREEN_DRAGON_MAIL, 3) then
-		return true
-	else
-		return Data:IsSetBonusActive(setNames.GREEN_DRAGON_MAIL, 3)
-	end
+    if ECS.IsSod and Data:IsSetBonusActive(setNames.LIVING_GREEN_DRAGON_MAIL, 3) then
+        return true
+    else
+        return Data:IsSetBonusActive(setNames.GREEN_DRAGON_MAIL, 3)
+    end
 end
 
 function Data:GetSetBonusValueMP5()
@@ -107,9 +107,9 @@ function Data:GetSetBonusValueMP5()
         or (classId == Data.SHAMAN and Data:IsSetBonusActive(setNames.AUGURS_REGALIA, 2))
         or (classId == Data.PALADIN and Data:IsSetBonusActive(setNames.FREETHINKERS_ARMOR, 2)) then
         return 4
-	elseif (ECS.IsSod and Data:IsSetBonusActive(setNames.LIVING_GREEN_DRAGON_MAIL, 3))
-		or Data:IsSetBonusActive(setNames.GREEN_DRAGON_MAIL, 3) then
-		return 3
+    elseif (ECS.IsSod and Data:IsSetBonusActive(setNames.LIVING_GREEN_DRAGON_MAIL, 3))
+        or Data:IsSetBonusActive(setNames.GREEN_DRAGON_MAIL, 3) then
+        return 3
     end
     return 0
 end

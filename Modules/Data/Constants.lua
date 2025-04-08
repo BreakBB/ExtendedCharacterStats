@@ -29,8 +29,8 @@ Data.setNames = {
     HARUSPEXS_GARB = "Haruspex's Garb",
     AUGURS_REGALIA = "Augur's Regalia",
     FREETHINKERS_ARMOR = "Freethinker's Armor",
-    GREEN_DRAGON_MAIL="Green Dragon Mail",
-    LIVING_GREEN_DRAGON_MAIL="Living Green Dragon Mail",
+    GREEN_DRAGON_MAIL = "Green Dragon Mail",
+    LIVING_GREEN_DRAGON_MAIL = "Living Green Dragon Mail",
 }
 
 Data.enchantIds = {
