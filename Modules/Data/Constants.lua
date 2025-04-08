@@ -23,17 +23,17 @@ Data.DRUID = 11
 Data.setNames = {
     AUGURS_REGALIA = "Augur's Regalia",
     BATTLEGEAR_OF_MIGHT = "Battlegear of Might",
-    BLOODSOUL_EMBRACE="Bloodsoul Embrace",
-    FEL_IRON_CHAIN="Fel Iron Chain",
+    BLOODSOUL_EMBRACE = "Bloodsoul Embrace",
+    FEL_IRON_CHAIN = "Fel Iron Chain",
     FREETHINKERS_ARMOR = "Freethinker's Armor",
-    GREEN_DRAGON_MAIL="Green Dragon Mail",
+    GREEN_DRAGON_MAIL = "Green Dragon Mail",
     HARUSPEXS_GARB = "Haruspex's Garb",
-    LIVING_GREEN_DRAGON_MAIL="Living Green Dragon Mail",
+    LIVING_GREEN_DRAGON_MAIL = "Living Green Dragon Mail",
     STORMRAGE_RAIMENT = "Stormrage Raiment",
     TEN_STORMS = "The Ten Storms",
     THE_EARTHSHATTERER = "The Earthshatterer",
     VESTMENTS_OF_TRANSCENDENCE = "Vestments of Transcendence",
-    WINDHAWK_ARMOR="Windhawk Armor",
+    WINDHAWK_ARMOR = "Windhawk Armor",
 }
 
 Data.enchantIds = {

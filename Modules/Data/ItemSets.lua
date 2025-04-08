@@ -107,12 +107,11 @@ local itemSets = {
 
 function Data:HasSetBonusModifierMP5()
     return (ECS.IsClassic and (
-                    Data:IsSetBonusActive(setNames.GREEN_DRAGON_MAIL, 3) or
-                    (classId == Data.DRUID and Data:IsSetBonusActive(setNames.STORMRAGE_RAIMENT, 3)) or
-                    (classId == Data.PRIEST and Data:IsSetBonusActive(setNames.VESTMENTS_OF_TRANSCENDENCE, 3)) or
-                    (ECS.IsSod and Data:IsSetBonusActive(setNames.LIVING_GREEN_DRAGON_MAIL, 3))
-                )
-            )
+        Data:IsSetBonusActive(setNames.GREEN_DRAGON_MAIL, 3) or
+        (classId == Data.DRUID and Data:IsSetBonusActive(setNames.STORMRAGE_RAIMENT, 3)) or
+        (classId == Data.PRIEST and Data:IsSetBonusActive(setNames.VESTMENTS_OF_TRANSCENDENCE, 3)) or
+        (ECS.IsSod and Data:IsSetBonusActive(setNames.LIVING_GREEN_DRAGON_MAIL, 3))
+    ))
 end
 
 function Data:GetSetBonusValueMP5()
