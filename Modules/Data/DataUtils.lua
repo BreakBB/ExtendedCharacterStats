@@ -104,7 +104,7 @@ function DataUtils.GetRuneForEquipSlot(equipSlot)
     local runeInfo = C_Engraving.GetRuneForEquipmentSlot(slotId)
 
     if runeInfo then
-        return runeInfo.skillLineAbilityID
+        return runeInfo.itemEnchantmentID
     else
         return nil
     end

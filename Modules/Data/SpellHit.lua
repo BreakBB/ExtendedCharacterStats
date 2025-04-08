@@ -148,17 +148,17 @@ function _SpellHit.GetHitFromRunes(school)
     local finger1Rune = DataUtils.GetRuneForEquipSlot(Utils.CHAR_EQUIP_SLOTS.Finger1)
     local finger2Rune = DataUtils.GetRuneForEquipSlot(Utils.CHAR_EQUIP_SLOTS.Finger2)
 
-    if school == Data.ARCANE_SCHOOL and (finger1Rune == 51239 or finger2Rune == 51239) then
+    if school == Data.ARCANE_SCHOOL and (finger1Rune == 7514 or finger2Rune == 7514) then
         mod = mod + 6 -- 6% from Arcane Combat Specialization Rune
-    elseif school == Data.FIRE_SCHOOL and (finger1Rune == 51240 or finger2Rune == 51240) then
+    elseif school == Data.FIRE_SCHOOL and (finger1Rune == 7515 or finger2Rune == 7515) then
         mod = mod + 6 -- 6% from Fire Specialization Rune
-    elseif school == Data.FROST_SCHOOL and (finger1Rune == 51241 or finger2Rune == 51241) then
+    elseif school == Data.FROST_SCHOOL and (finger1Rune == 7516 or finger2Rune == 7516) then
         mod = mod + 6 -- 6% from Frost Specialization Rune
-    elseif school == Data.NATURE_SCHOOL and (finger1Rune == 51242 or finger2Rune == 51242) then
+    elseif school == Data.NATURE_SCHOOL and (finger1Rune == 7517 or finger2Rune == 7517) then
         mod = mod + 6 -- 6% from Frost Specialization Rune
-    elseif school == Data.SHADOW_SCHOOL and (finger1Rune == 51243 or finger2Rune == 51243) then
+    elseif school == Data.SHADOW_SCHOOL and (finger1Rune == 7518 or finger2Rune == 7518) then
         mod = mod + 6 -- 6% from Shadow Specialization Rune
-    elseif school == Data.HOLY_SCHOOL and (finger1Rune == 51244 or finger2Rune == 51244) then
+    elseif school == Data.HOLY_SCHOOL and (finger1Rune == 7519 or finger2Rune == 7519) then
         mod = mod + 6 -- 6% from Holy Specialization Rune
     end
 
