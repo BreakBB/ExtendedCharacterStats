@@ -123,7 +123,7 @@ function _SpellHit:GetSpellHitFromBuffs()
             otherDraeneiInGroup = true
         end
 
-        if ECS.IsTbc and spellId == 30708 then
+        if spellId == 30708 then
             mod = mod + 3 -- 3% from Totem of Wrath
         end
     end
