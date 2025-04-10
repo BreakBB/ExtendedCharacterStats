@@ -38,6 +38,11 @@ function EventHandler.HandleOnEvent(self, event, ...)
         return
     end
 
+    local statsFrame = Stats:GetFrame()
+    if not (statsFrame:IsVisible()) then
+        return
+    end
+
     if event == "ACTIVE_TALENT_GROUP_CHANGED"
         or event == "CHARACTER_POINTS_CHANGED"
         or event == "COMBAT_RATING_UPDATE"
@@ -58,17 +63,10 @@ function EventHandler.HandleOnEvent(self, event, ...)
         or event == "UNIT_RANGEDDAMAGE"
         or event == "UNIT_RANGED_ATTACK_POWER")
         and args[1] == "player") then
-
-        local statsFrame = Stats:GetFrame()
-        if statsFrame:IsVisible() then
-            self:SetScript("OnUpdate", Stats.DelayedUpdateInformation)
-        end
+        self:SetScript("OnUpdate", Stats.DelayedUpdateInformation)
     elseif event == "PLAYER_EQUIPMENT_CHANGED" or event == "SOCKET_INFO_SUCCESS" then
-        local statsFrame = Stats:GetFrame()
-        if statsFrame:IsVisible() then
-            self:SetScript("OnUpdate", GearInfos.DelayedUpdateGearColorFrames)
-            self:SetScript("OnUpdate", Stats.DelayedUpdateInformation)
-        end
+        self:SetScript("OnUpdate", GearInfos.DelayedUpdateGearColorFrames)
+        self:SetScript("OnUpdate", Stats.DelayedUpdateInformation)
     elseif (event == "INSPECT_READY" and args[1] == UnitGUID("target")) then
         self:SetScript("OnUpdate", GearInfos.DelayedUpdateInspectGearColorFrames)
     end
