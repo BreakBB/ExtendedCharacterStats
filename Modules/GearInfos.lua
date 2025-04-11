@@ -60,7 +60,8 @@ _UpdateColorFrame = function (gearFrame, unit)
             gearFrame.qualityTexture:SetVertexColor(r, g, b, ExtendedCharacterStats.general.qualityColorsIntensity)
         end
     else
-        C_Timer.After(0.2, function ()
+        -- next frame
+        C_Timer.After(0, function ()
             _UpdateColorFrame(gearFrame, unit)
         end)
     end

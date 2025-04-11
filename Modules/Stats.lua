@@ -103,7 +103,8 @@ function Stats.CreateWindow()
         end
 
         if ECS.IsSoD then
-            C_Timer.After(0.3, function ()
+            -- next frame
+            C_Timer.After(0, function ()
                 if EngravingFrame then
                     if EngravingFrame:IsShown() then
                         mainFrame:ClearAllPoints()
