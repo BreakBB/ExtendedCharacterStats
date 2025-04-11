@@ -32,7 +32,7 @@ function DelayedUpdateInspectGearColorFrames()
 end
 
 ---Event handler for all the events subscribed to in _Init.RegisterEvents
-function EventHandler.HandleOnEvent(self, event, ...)
+function EventHandler.HandleOnEvent(_, event, ...)
     local args = {...}
 
     if event == "PLAYER_ENTERING_WORLD" then
