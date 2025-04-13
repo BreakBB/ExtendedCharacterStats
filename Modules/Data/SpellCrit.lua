@@ -29,7 +29,7 @@ function _SpellCrit:GetSpellCritFromBuffs(school)
     local mod = 0
     local i = 1
     repeat
-        local aura = C_UnitAuras.GetBuffDataByIndex("player", i, "HELPFUL|HARMFUL")
+        local aura = C_UnitAuras.GetAuraDataByIndex("player", i, "HELPFUL|HARMFUL")
         i = i + 1
         if aura and aura.spellId then
             if aura.spellId == 30708 then
