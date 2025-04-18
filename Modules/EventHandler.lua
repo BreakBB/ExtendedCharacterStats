@@ -6,7 +6,7 @@ local Stats = ECSLoader:ImportModule("Stats")
 ---@type GearInfos
 local GearInfos = ECSLoader:ImportModule("GearInfos")
 
-function DelayedUpdateInformation()
+local function DelayedUpdateInformation()
     local statsFrame = Stats:GetFrame()
     statsFrame:SetScript("OnUpdate",nil)
     -- update next frame
