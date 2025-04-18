@@ -15,7 +15,7 @@ function DelayedUpdateInformation()
     end)
 end
 
-function DelayedUpdateGearColorFrames()
+local function DelayedUpdateGearColorFrames()
     PaperDollFrame:SetScript("OnUpdate",nil)
     -- update next frame
     C_Timer.After(0, function ()
