@@ -68,7 +68,7 @@ function EventHandler.HandleOnEvent(_, event, ...)
             statsFrame:SetScript("OnUpdate", DelayedUpdateInformation)
         end
     end
-    if InspectPaperDollFrame and InspectPaperDollFrame:IsVisible() and event == "INSPECT_READY" and args[1] == UnitGUID("target") then
+    if InspectPaperDollFrame and event == "INSPECT_READY" and args[1] == UnitGUID("target") then
         InspectPaperDollFrame:SetScript("OnUpdate", DelayedUpdateInspectGearColorFrames)
     end
 end
