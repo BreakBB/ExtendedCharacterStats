@@ -23,7 +23,7 @@ local function DelayedUpdateGearColorFrames()
     end)
 end
 
-function DelayedUpdateInspectGearColorFrames()
+local function DelayedUpdateInspectGearColorFrames()
     InspectPaperDollFrame:SetScript("OnUpdate",nil)
     -- update next frame
     C_Timer.After(0, function ()
