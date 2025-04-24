@@ -45,7 +45,6 @@ function EventHandler.HandleOnEvent(self,event, ...)
         if event == "ACTIVE_TALENT_GROUP_CHANGED" or
             event == "CHARACTER_POINTS_CHANGED" or
             event == "COMBAT_RATING_UPDATE" or
-            event == "PLAYER_EQUIPMENT_CHANGED" or
             event == "PLAYER_LEVEL_UP" or
             event == "PLAYER_MOUNT_DISPLAY_CHANGED" or
             event == "PLAYER_TALENT_UPDATE" or
@@ -65,7 +64,7 @@ function EventHandler.HandleOnEvent(self,event, ...)
                 event == "UNIT_RANGED_ATTACK_POWER"
             ) and args[1] == "player") then
             statsFrame:SetScript("OnUpdate", DelayedUpdateInformation)
-        elseif (event == "INSPECT_READY" and args[1] == UnitGUID("player"))  or event == "SOCKET_INFO_SUCCESS" then
+        elseif (event == "INSPECT_READY" and args[1] == UnitGUID("player")) or event == "PLAYER_EQUIPMENT_CHANGED" or event == "SOCKET_INFO_SUCCESS" then
             PaperDollFrame:SetScript("OnUpdate", DelayedUpdateGearColorFrames)
             statsFrame:SetScript("OnUpdate", DelayedUpdateInformation)
         end
