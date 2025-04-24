@@ -32,20 +32,20 @@ local function DelayedUpdateInspectGearColorFrames()
 end
 
 ---Event handler for all the events subscribed to in _Init.RegisterEvents
-function EventHandler.HandleOnEvent(_, event, ...)
+function EventHandler.HandleOnEvent(self,event, ...)
     local args = {...}
 
     if event == "PLAYER_ENTERING_WORLD" then
         return
     end
-
+    
     local statsFrame = Stats:GetFrame()
 
     if statsFrame:IsVisible() then
         if event == "ACTIVE_TALENT_GROUP_CHANGED" or
             event == "CHARACTER_POINTS_CHANGED" or
             event == "COMBAT_RATING_UPDATE" or
-            event == "PLAYER_DAMAGE_DONE_MODS" or
+            event == "PLAYER_EQUIPMENT_CHANGED" or
             event == "PLAYER_LEVEL_UP" or
             event == "PLAYER_MOUNT_DISPLAY_CHANGED" or
             event == "PLAYER_TALENT_UPDATE" or
@@ -53,7 +53,9 @@ function EventHandler.HandleOnEvent(_, event, ...)
             event == "SKILL_LINES_CHANGED" or
             event == "SPELL_POWER_CHANGED" or
             event == "UPDATE_SHAPESHIFT_FORM" or ((
+                event == "PLAYER_DAMAGE_DONE_MODS" or
                 event == "UNIT_ATTACK" or
+                event == "UNIT_ATTACK_POWER" or
                 event == "UNIT_ATTACK_SPEED" or
                 event == "UNIT_AURA" or
                 event == "UNIT_DAMAGE" or
@@ -63,7 +65,7 @@ function EventHandler.HandleOnEvent(_, event, ...)
                 event == "UNIT_RANGED_ATTACK_POWER"
             ) and args[1] == "player") then
             statsFrame:SetScript("OnUpdate", DelayedUpdateInformation)
-        elseif event == "PLAYER_EQUIPMENT_CHANGED" or event == "SOCKET_INFO_SUCCESS" then
+        elseif (event == "INSPECT_READY" and args[1] == UnitGUID("player"))  or event == "SOCKET_INFO_SUCCESS" then
             PaperDollFrame:SetScript("OnUpdate", DelayedUpdateGearColorFrames)
             statsFrame:SetScript("OnUpdate", DelayedUpdateInformation)
         end
@@ -72,4 +74,3 @@ function EventHandler.HandleOnEvent(_, event, ...)
         InspectPaperDollFrame:SetScript("OnUpdate", DelayedUpdateInspectGearColorFrames)
     end
 end
-
