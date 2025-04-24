@@ -38,7 +38,7 @@ function EventHandler.HandleOnEvent(self,event, ...)
     if event == "PLAYER_ENTERING_WORLD" then
         return
     end
-    
+
     local statsFrame = Stats:GetFrame()
 
     if statsFrame:IsVisible() then
