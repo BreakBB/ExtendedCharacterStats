@@ -103,6 +103,16 @@ local itemSets = {
         [29523] = true,
         [29524] = true,
     },
+    [setNames.GREEN_DRAGON_MAIL] = {
+        [15045] = true,
+        [15046] = true,
+        [20296] = true,
+    },
+    [setNames.LIVING_GREEN_DRAGON_MAIL] = {
+        [227879] = true,
+        [227878] = true,
+        [227877] = true,
+    },
 }
 
 function Data:HasSetBonusModifierMP5()
