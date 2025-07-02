@@ -73,7 +73,6 @@ function DataUtils:GetGlancingDamage(weaponSkill, defenseValue)
     if low < 0.01 then
         low = 0.01
     end
-    
     local high = 1.2 - (0.03 * difference)
 
     if high > 0.99 then
