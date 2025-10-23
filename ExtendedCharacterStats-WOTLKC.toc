@@ -1,4 +1,4 @@
-## Interface: 30404
+## Interface: 30405
 ## Title: Extended Character Stats v4.2.1
 ## Version: 4.2.1
 ## Author: BreakBB, Ethulu
