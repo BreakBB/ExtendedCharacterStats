@@ -10,13 +10,14 @@ CHANGELOG=$(jq --slurp --raw-input '.' < "CHANGELOG.md")
 # You can do so by opening the API in your browser and manually add the X-API-TOKEN Header with an API-Token to the request (https://authors-old.curseforge.com/account/api-tokens).
 # Check the answer for the required version (e.g. name = "1.14.4") and take the "id" field for the gameVersions.
 
+# The order of the "gameVersions" below is: Era/SoD, WotLK
 CF_METADATA=$(cat <<-EOF
 {
     "displayName": "$LATEST_GIT_TAG",
     "releaseType": "release",
     "changelog": $CHANGELOG,
     "changelogType": "markdown",
-    "gameVersions": [12919, 12910],
+    "gameVersions": [14029, 12910],
     "relations": {
         "projects": [
             {slug: "Ace3", type: "embeddedLibrary"},
