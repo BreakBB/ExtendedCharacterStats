@@ -63,11 +63,14 @@ function EventHandler.HandleOnEvent(self,event, ...)
             ) and args[1] == "player") then
             statsFrame:SetScript("OnUpdate", DelayedUpdateInformation)
         elseif (event == "INSPECT_READY" and args[1] == UnitGUID("player")) or event == "PLAYER_EQUIPMENT_CHANGED" or event == "SOCKET_INFO_SUCCESS" then
-            PaperDollFrame:HookScript("OnUpdate", DelayedUpdateGearColorFrames)
             statsFrame:SetScript("OnUpdate", DelayedUpdateInformation)
         end
     end
+
+    if (event == "INSPECT_READY" and args[1] == UnitGUID("player")) or event == "PLAYER_EQUIPMENT_CHANGED" then
+        DelayedUpdateGearColorFrames()
+    end
     if InspectPaperDollFrame and event == "INSPECT_READY" and args[1] == UnitGUID("target") then
-        InspectPaperDollFrame:HookScript("OnUpdate", DelayedUpdateInspectGearColorFrames)
+        DelayedUpdateInspectGearColorFrames()
     end
 end
