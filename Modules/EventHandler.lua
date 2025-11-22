@@ -8,7 +8,7 @@ local GearInfos = ECSLoader:ImportModule("GearInfos")
 
 local function DelayedUpdateInformation()
     local statsFrame = Stats:GetFrame()
-    statsFrame:SetScript("OnUpdate",nil)
+    statsFrame:SetScript("OnUpdate", nil)
     -- update next frame
     C_Timer.After(0, function ()
         Stats.UpdateInformation()
