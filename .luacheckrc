@@ -116,6 +116,8 @@ stds.ecs = {
         "C_ActionBar.IsEnabledAutoCastPetAction",
         "C_ActionBar.IsOnBarOrSpecialBar",
         "C_ActionBar.ToggleAutoCastPetAction",
+        "C_AddOns",
+        "C_AddOns.GetAddOnInfo",
         "C_AreaPoiInfo.GetAreaPOIForMap",
         "C_AreaPoiInfo.GetAreaPOIInfo",
         "C_AreaPoiInfo.IsAreaPOITimed",
