@@ -16,7 +16,6 @@ local function DelayedUpdateInformation()
 end
 
 local function DelayedUpdateGearColorFrames()
-    PaperDollFrame:SetScript("OnUpdate",nil)
     -- update next frame
     C_Timer.After(0, function ()
         GearInfos.UpdateGearColorFrames()
@@ -24,7 +23,6 @@ local function DelayedUpdateGearColorFrames()
 end
 
 local function DelayedUpdateInspectGearColorFrames()
-    InspectPaperDollFrame:SetScript("OnUpdate",nil)
     -- update next frame
     C_Timer.After(0, function ()
         GearInfos.UpdateInspectGearColorFrames()
@@ -65,11 +63,11 @@ function EventHandler.HandleOnEvent(self,event, ...)
             ) and args[1] == "player") then
             statsFrame:SetScript("OnUpdate", DelayedUpdateInformation)
         elseif (event == "INSPECT_READY" and args[1] == UnitGUID("player")) or event == "PLAYER_EQUIPMENT_CHANGED" or event == "SOCKET_INFO_SUCCESS" then
-            PaperDollFrame:SetScript("OnUpdate", DelayedUpdateGearColorFrames)
+            PaperDollFrame:HookScript("OnUpdate", DelayedUpdateGearColorFrames)
             statsFrame:SetScript("OnUpdate", DelayedUpdateInformation)
         end
     end
     if InspectPaperDollFrame and event == "INSPECT_READY" and args[1] == UnitGUID("target") then
-        InspectPaperDollFrame:SetScript("OnUpdate", DelayedUpdateInspectGearColorFrames)
+        InspectPaperDollFrame:HookScript("OnUpdate", DelayedUpdateInspectGearColorFrames)
     end
 end
