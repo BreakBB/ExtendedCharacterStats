@@ -111,7 +111,7 @@ function _Defense:GetCritReduction()
                 meleeCritReduction = meleeCritReduction + 6 -- survival of the fittest / Just a Flesh Wound
             end
         end
-    else
+    end
 
     meleeCritReduction = meleeCritReduction + critReductionFromDefense + critReducingFromResilience + buffBonus
     rangedCritReduction = rangedCritReduction + critReductionFromDefense + critReducingFromResilience + buffBonus
