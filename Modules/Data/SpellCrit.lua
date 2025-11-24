@@ -32,40 +32,13 @@ function _SpellCrit:GetSpellCritFromBuffs(school)
         local aura = C_UnitAuras.GetAuraDataByIndex("player", i, "HELPFUL|HARMFUL")
         i = i + 1
         if aura and aura.spellId then
-            if aura.spellId == 30708 then
-                mod = mod + 3 -- 3% from Totem of Wrath
+            mod = mod + Data.BuffsSpellCrit[spellId]
+            if ECS.IsTBC or ECS.IsWotlk and spellId == 24907 then
+                mod = mod + 5 -- 5% from Moonkin Aura
             end
-            if aura.spellId == 30165 then
-                mod = mod + 3 -- 3% from Elemental Devastation Rank 1
-            end
-            if aura.spellId == 29177 then
-                mod = mod + 6 -- 6% from Elemental Devastation Rank 2
-            end
-            if aura.spellId == 29178 then
-                mod = mod + 9 -- 9% from Elemental Devastation Rank 3
-            end
-            if ECS.IsWotlk then
-                if aura.spellId == 24907 then
-                    mod = mod + 5 -- 5% from Moonkin Aura
-                end
-                if aura.spellId == 51466 then
-                    mod = mod + 3 -- 3% from Elemental Oath Rank 1
-                end
-                if aura.spellId == 51470 then
-                    mod = mod + 5 -- 5% from Elemental Oath Rank 2
-                end
-                if (school == Data.FIRE_SCHOOL and aura.spellId == 11129) then
-                    mod = mod + 50 -- 50% from Combustion
-                end
-                if (school == Data.FIRE_SCHOOL and aura.spellId == 28682) then
+            if school == Data.FIRE_SCHOOL then
+                if aura.spellId == 28682 then
                     mod = mod + (aura.applications * 10) -- 10% for each stack from Combustion
-                end
-            else
-                if (school == Data.FIRE_SCHOOL and aura.spellId == 11129) then
-                    mod = mod + 10 -- 10% from Combustion
-                end
-                if aura.spellId == 30482 then
-                    mod = mod + 3 -- 3% from Molten Armor
                 end
             end
         end
