@@ -54,7 +54,13 @@ end
 ---@param defenseValue number
 ---@return number
 function DataUtils:GetGlancingChanceByDifference(level, weaponSkill, defenseValue)
-    return 0.1 + (defenseValue - math.min(level*5, weaponSkill)) * 0.02
+    local glancingChance = 0.1 + (defenseValue - math.min(level*5, weaponSkill)) * 0.02
+
+    -- Ensure the glancing chance does not exceed 1.0 (100%)
+    if glancingChance > 1.0 then
+        glancingChance = 1.0
+    end
+    return glancingChance
 end
 
 ---@param weaponSkill number
@@ -64,6 +70,10 @@ function DataUtils:GetGlancingDamage(weaponSkill, defenseValue)
     local difference = defenseValue - weaponSkill
     local low = math.min(0.91 ,(1.3 - 0.05 * difference))
 
+    -- Ensure low does not go below 0.01
+    if low < 0.01 then
+        low = 0.01
+    end
     local high = 1.2 - (0.03 * difference)
 
     if high > 0.99 then
@@ -71,7 +81,13 @@ function DataUtils:GetGlancingDamage(weaponSkill, defenseValue)
     elseif high < 0.2 then
         high = 0.2
     end
-    return (high + low)/2
+    local averageDamageFactor = (high + low) / 2
+
+    -- Ensure the average damage factor is not negative (damage reduction is not > 100%)
+    if averageDamageFactor < 0 then
+        averageDamageFactor = 0
+    end
+    return averageDamageFactor
 end
 
 ---@param equipSlot EquipSlot
