@@ -138,8 +138,6 @@ function Data:GetMP5FromBuffs()
             end
             if aura.spellId == 6117 or aura.spellId == 22782 or aura.spellId == 22783 then
                 mod = mod + 0.3 -- 30% from Mage Armor
-            elseif aura.spellId == 25694 then
-                bonus = bonus + 3
             elseif aura.spellId == 19742 then
                 local blessingMod = _MP5:GetBlessingOfWisdomModifier() + 1
                 bonus = bonus + math.ceil(10 * blessingMod) -- Blessing of Wisdom Rank 1
@@ -184,7 +182,7 @@ function Data:GetMP5FromBuffs()
                     bonus = bonus + 6.25 -- + 0,25% for Shaman T3 2 piece bonus
                 end
             end
-            elseif ECS.IsTbc then
+            if ECS.IsTbc then
                 if aura.spellId == 33265 then
                     bonus = bonus + 8 -- well fed
                 elseif aura.spellId == 38437 then
@@ -281,6 +279,8 @@ function Data:GetMP5FromBuffs()
             else
                 if aura.spellId == 25941 then
                     bonus = bonus + 6 -- well fed
+                elseif aura.spellId == 25694 then
+                    bonus = bonus + 3
                 elseif aura.spellId == 18194 then
                     bonus = bonus + 8 -- 8 MP5 from Nightfin Soup
                 elseif aura.spellId == 28145 then
@@ -296,7 +296,7 @@ function Data:GetMP5FromBuffs()
                 end
             end
             if ECS.IsTbc or ECS.IsWotlk then
-                elseif aura.spellId == 27143 or aura.spellId == 27142 then
+                if aura.spellId == 27143 or aura.spellId == 27142 then
                     local blessingMod = _MP5:GetBlessingOfWisdomModifier() + 1
                     bonus = bonus + math.ceil(41 * blessingMod) -- Greater Blessing of Wisdom Rank 3
                 end
