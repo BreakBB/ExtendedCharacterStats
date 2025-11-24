@@ -25,28 +25,38 @@ function _Defense:GetCritReduction()
     local defBonus = Data:GetDefenseValue()
 
     local buffBonus = 0
-    if ECS.IsSoD then
-        if C_UnitAuras.GetPlayerAuraBySpellID(430432) then
-            buffBonus = buffBonus + 5 -- battle hardened
-        end
-        if classId == Data.WARLOCK then
-            if C_UnitAuras.GetPlayerAuraBySpellID(403816) then
-                buffBonus = buffBonus + 6 -- metamorphosis
+    local meleeCritReduction = 0
+    local rangedCritReduction = 0
+    local spellCritReduction = 0
+    local i = 1
+    repeat
+        local aura = C_UnitAuras.GetAuraDataByIndex("player", i, "HELPFUL|HARMFUL")
+        i = i + 1
+        if aura and aura.spellId then
+            buffBonus = buffBonus + Data.BuffsCritReductionAll[aura.spellId]
+            if ECS.IsWotlk then
+                if aura.spellId == 30708 then
+                    buffBonus = buffBonus - 3 -- totem of wrath
+                elseif aura.spellId == 12579 then
+                    spellCritReduction = spellCritReduction - 1 * aura.applications -- Winter's Chill
+                elseif aura.spellId == 22959 then
+                    spellCritReduction = spellCritReduction - 5 -- Improved Scorch
+                elseif aura.spellId == 17800 then
+                    spellCritReduction = spellCritReduction - 5 -- Shadow Mastery
+                elseif aura.spellId == 17799 then
+                    spellCritReduction = spellCritReduction - 4 -- Shadow Mastery
+                elseif aura.spellId == 17798 then
+                    spellCritReduction = spellCritReduction - 2 -- Shadow Mastery
+                elseif aura.spellId == 17797 then
+                    spellCritReduction = spellCritReduction - 3 -- Shadow Mastery
+                elseif aura.spellId == 17794 then
+                    spellCritReduction = spellCritReduction - 1 -- Shadow Mastery
+                elseif aura.spellId == 47241 then
+                    meleeCritReduction = meleeCritReduction + 6 -- metamorphosis
+                end
             end
-        elseif classId == Data.MAGE then
-            if C_UnitAuras.GetPlayerAuraBySpellID(428741) then
-                buffBonus = buffBonus + 5 -- molten armor
-            end
-        elseif classId == Data.SHAMAN then
-            if C_UnitAuras.GetPlayerAuraBySpellID(408680) then
-                buffBonus = buffBonus + 6 -- way of earth
-            end
         end
-	elseif ECS.IsWotlk then
-        if C_UnitAuras.GetPlayerAuraBySpellID(30708) then
-            buffBonus = buffBonus - 3 -- totem of wrath
-        end
-    end
+    until (not aura)
 
     -- Only the defense value above 350 counts towards crit immunity
     local critReductionFromDefense =  (defBonus - MAX_SKILL) / DEFENSE_FOR_CRIT_REDUCTION
@@ -54,10 +64,6 @@ function _Defense:GetCritReduction()
         critReductionFromDefense = 0
     end
     local critReducingFromResilience = GetCombatRatingBonus(15)
-
-    local meleeCritReduction = critReductionFromDefense + critReducingFromResilience + buffBonus
-    local rangedCritReduction = critReductionFromDefense + critReducingFromResilience + buffBonus
-    local spellCritReduction = critReducingFromResilience + buffBonus
 
     if classId == Data.DRUID then
         if ECS.IsWotlk then
@@ -96,11 +102,6 @@ function _Defense:GetCritReduction()
                 spellCritReduction = spellCritReduction + 1
             end
         end
-        if ECS.IsWotlk then
-            if C_UnitAuras.GetPlayerAuraBySpellID(47241) then
-                meleeCritReduction = meleeCritReduction + 6 -- metamorphosis
-            end
-        end
     end
 
     if ECS.IsSoD then
@@ -110,30 +111,12 @@ function _Defense:GetCritReduction()
                 meleeCritReduction = meleeCritReduction + 6 -- survival of the fittest / Just a Flesh Wound
             end
         end
-    elseif ECS.IsWotlk then
-        local wintersChill = C_UnitAuras.GetPlayerAuraBySpellID(12579)
-        if wintersChill then
-            spellCritReduction = spellCritReduction - 1 * wintersChill.applications -- Winter's Chill
-        end
-        if C_UnitAuras.GetPlayerAuraBySpellID(22959) then
-            spellCritReduction = spellCritReduction - 5 -- Improved Scorch
-        end
-        if C_UnitAuras.GetPlayerAuraBySpellID(17800) then
-            spellCritReduction = spellCritReduction - 5 -- Shadow Mastery
-        end
-        if C_UnitAuras.GetPlayerAuraBySpellID(17799) then
-            spellCritReduction = spellCritReduction - 4 -- Shadow Mastery
-        end
-        if C_UnitAuras.GetPlayerAuraBySpellID(17798) then
-            spellCritReduction = spellCritReduction - 2 -- Shadow Mastery
-        end
-        if C_UnitAuras.GetPlayerAuraBySpellID(17797) then
-            spellCritReduction = spellCritReduction - 3 -- Shadow Mastery
-        end
-        if C_UnitAuras.GetPlayerAuraBySpellID(17794) then
-            spellCritReduction = spellCritReduction - 1 -- Shadow Mastery
-        end
-    end
+    else
+
+    meleeCritReduction = meleeCritReduction + critReductionFromDefense + critReducingFromResilience + buffBonus
+    rangedCritReduction = rangedCritReduction + critReductionFromDefense + critReducingFromResilience + buffBonus
+    spellCritReduction = spellCritReduction + critReducingFromResilience + buffBonus
+
     return meleeCritReduction, rangedCritReduction, spellCritReduction
 end
 
