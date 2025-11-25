@@ -56,7 +56,7 @@ function _Defense:GetCritReduction()
                 end
             elseif ECS.IsSoD then
                 if aura.spellId == 408680 then
-                    meleeCritReduction = meleeCritReduction + 6, -- way of earth
+                    meleeCritReduction = meleeCritReduction + 6 -- way of earth
                 end
             end
         end
