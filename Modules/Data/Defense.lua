@@ -54,6 +54,10 @@ function _Defense:GetCritReduction()
                 elseif aura.spellId == 47241 then
                     meleeCritReduction = meleeCritReduction + 6 -- metamorphosis
                 end
+            elseif ECS.IsSoD then
+                if aura.spellId == 408680 then
+                    meleeCritReduction = meleeCritReduction + 6, -- way of earth
+                end
             end
         end
     until (not aura)

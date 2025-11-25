@@ -60,5 +60,4 @@ Data.BuffCritReductionAll = {
     [430432] = 5, -- battle hardened
     [403816] = 6, -- metamorphosis
     [428741] = 5, -- molten armor
-    [408680] = 6, -- way of earth
 }
