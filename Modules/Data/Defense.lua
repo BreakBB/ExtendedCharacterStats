@@ -34,7 +34,7 @@ function _Defense:GetCritReduction()
         i = i + 1
         if aura and aura.spellId then
             buffBonus = buffBonus + (Data.BuffCritReductionAll[aura.spellId] or 0)
-            if ECS.IsSoD and if aura.spellId == 408680 then
+            if ECS.IsSoD and aura.spellId == 408680 then
                 meleeCritReduction = meleeCritReduction + 6 -- way of earth
             end
         end
