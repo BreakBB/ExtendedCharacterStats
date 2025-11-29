@@ -2,6 +2,46 @@
 local i18n = ECSLoader:ImportModule("i18n")
 
 local defenseConfigTranslations = {
+    ["Melee Crit Reduction"] = {
+        ["enUS"] = true,
+        ["deDE"] = false,
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false
+    },
+    ["Ranged Crit Reduction"] = {
+        ["enUS"] = true,
+        ["deDE"] = false,
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false
+    },
+    ["Spell Crit Reduction"] = {
+        ["enUS"] = true,
+        ["deDE"] = false,
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false
+    },
+    ["Shows/Hides the reduction percentage of being critically hit by melee attacks."] = {
+        ["enUS"] = true,
+        ["deDE"] = false,
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false
+    },
     ["Show Defense Stats"] = {
         ["enUS"] = true,
         ["deDE"] = "Verteidigungswerte anzeigen",
