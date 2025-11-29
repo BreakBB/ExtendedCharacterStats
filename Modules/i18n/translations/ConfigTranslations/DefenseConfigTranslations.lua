@@ -32,16 +32,6 @@ local defenseConfigTranslations = {
         ["esMX"] = false,
         ["ptBR"] = false
     },
-    ["Shows/Hides the reduction percentage of being critically hit by melee attacks."] = {
-        ["enUS"] = true,
-        ["deDE"] = false,
-        ["frFR"] = false,
-        ["zhCN"] = false,
-        ["ruRU"] = false,
-        ["esES"] = false,
-        ["esMX"] = false,
-        ["ptBR"] = false
-    },
     ["Show Defense Stats"] = {
         ["enUS"] = true,
         ["deDE"] = "Verteidigungswerte anzeigen",
