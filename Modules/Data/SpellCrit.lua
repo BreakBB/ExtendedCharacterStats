@@ -34,7 +34,7 @@ function _SpellCrit:GetSpellCritFromBuffs(school)
             break
         end
 
-        if spellId == 30708 then
+        if ECS.IsTbc and spellId == 30708 then
             mod = mod + 3 -- 3% from Totem of Wrath
         end
 
@@ -60,14 +60,8 @@ function _SpellCrit:GetSpellCritFromBuffs(school)
         if (ECS.IsWotlk and spellId == 51470) then
             mod = mod + 5 -- 5% from Elemental Oath Rank 2
         end
-        if (ECS.IsWotlk and school == Data.FIRE_SCHOOL and spellId == 11129) then
-            mod = mod + 50 -- 50% from Combustion
-        end
-        if (ECS.IsWotlk and school == Data.FIRE_SCHOOL and spellId == 28682) then
+        if (school == Data.FIRE_SCHOOL and spellId == 28682) then
             mod = mod + (count * 10) -- 10% for each stack from Combustion
-        end
-        if ((not ECS.IsWotlk) and school == Data.FIRE_SCHOOL and spellId == 11129) then
-            mod = mod + 10 -- 10% from Combustion
         end
     end
 
@@ -192,7 +186,7 @@ end
 
 function _SpellCrit:GetItemModifierHolyCrit()
     local mainHand, _ = GetInventoryItemID("player", 16)
-    if mainHand == 18608 then
+    if ECS.IsClassic and mainHand == 18608 then
         return 2 -- 2% Holy Crit from Benediction
     end
     return 0

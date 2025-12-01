@@ -2,6 +2,36 @@
 local i18n = ECSLoader:ImportModule("i18n")
 
 local defenseConfigTranslations = {
+    ["Melee Crit Reduction"] = {
+        ["enUS"] = true,
+        ["deDE"] = false,
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false
+    },
+    ["Ranged Crit Reduction"] = {
+        ["enUS"] = true,
+        ["deDE"] = false,
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false
+    },
+    ["Spell Crit Reduction"] = {
+        ["enUS"] = true,
+        ["deDE"] = false,
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false
+    },
     ["Show Defense Stats"] = {
         ["enUS"] = true,
         ["deDE"] = "Verteidigungswerte anzeigen",
@@ -32,25 +62,35 @@ local defenseConfigTranslations = {
         ["esMX"] = "Muestra/oculta el valor de armadura",
         ["ptBR"] = "Mostra/oculta o valor de armadura"
     },
-    ["Shows/Hides the percentage of being crit immune."] = {
+    ["Shows/Hides the reduction percentage of being critically hit by melee attacks."] = {
         ["enUS"] = true,
-        ["deDE"] = "Zeigt/Versteckt die erreichte Crit Immunität in Prozent.",
-        ["frFR"] = "Affiche/cache le pourcentage d'immunité aux critiques.",
+        ["deDE"] = false,
+        ["frFR"] = false,
         ["zhCN"] = false,
-        ["ruRU"] = "Показать/скрыть шанс невосприимчивости к критическому урону",
-        ["esES"] = "Muestra/oculta el porcentaje de inmunidad a los golpes críticos",
-        ["esMX"] = "Muestra/oculta el porcentaje de inmunidad a los golpes críticos",
-        ["ptBR"] = "Mostra/oculta a porcentagem de imunidade a golpes críticos"
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false
     },
-    ["Shows/Hides the reduction percentage of being critically hit."] = {
+    ["Shows/Hides the reduction percentage of being critically hit by ranged attacks."] = {
         ["enUS"] = true,
-        ["deDE"] = "Zeigt/Versteckt, um wie viel Prozent die Chance kritisch getroffen zu werden reduziert ist.",
-        ["frFR"] = "Affiche/cache le pourcentage de réduction des coups critiques.",
+        ["deDE"] = false,
+        ["frFR"] = false,
         ["zhCN"] = false,
-        ["ruRU"] = "Показать/скрыть шанс снижения вероятности получить критический урон",
-        ["esES"] = "Muestra/oculta el porcentaje de reducción de ser golpeado críticamente",
-        ["esMX"] = "Muestra/oculta el porcentaje de reducción de ser golpeado críticamente",
-        ["ptBR"] = "Mostra/oculta a porcentagem de redução de ser golpeado criticamente"
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false
+    },
+    ["Shows/Hides the reduction percentage of being critically hit by spells."] = {
+        ["enUS"] = true,
+        ["deDE"] = false,
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false
     },
     ["Shows/Hides the defense value."] = {
         ["enUS"] = true,
@@ -131,6 +171,16 @@ local defenseConfigTranslations = {
         ["esES"] = "Muestra/oculta eludir",
         ["esMX"] = "Muestra/oculta eludir",
         ["ptBR"] = "Mostra/oculta evasiva"
+    },
+    ["Shows/Hides the total avoidance (Lvl +3)."] = {
+        ["enUS"] = true,
+        ["deDE"] = false,
+        ["frFR"] = "Affiche/cache l'évitement total (Niv. +3).",
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false
     },
 }
 

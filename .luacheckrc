@@ -558,6 +558,8 @@ stds.ecs = {
         "C_UIWidgetManager.GetTextWithStateWidgetVisualizationInfo",
         "C_UIWidgetManager.GetTextureWithStateVisualizationInfo",
         "C_UIWidgetManager.GetTopCenterWidgetSetID",
+        "C_UnitAuras",
+        "C_UnitAuras.GetPlayerAuraBySpellID",
         "C_VideoOptions.GetGxAdapterInfo",
         "C_VoiceChat.ActivateChannel",
         "C_VoiceChat.BeginLocalCapture",
