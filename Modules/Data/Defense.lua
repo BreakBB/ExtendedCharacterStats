@@ -2,14 +2,14 @@
 local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
 local DataUtils = ECSLoader:ImportModule("DataUtils")
+---@type Utils
+local Utils = ECSLoader:ImportModule("Utils")
 
 local _Defense = {}
 
 local _, _, classId = UnitClass("player")
 
 local MAX_SKILL = (UnitLevel("player")) * 5
--- A tank needs to reduce the chance to be critically hit by 5.6% to achieve crit immunity
-local CRIT_IMMUNITY_CAP = 5.6
 -- Every 25 defense reduce the chance to be critically hit by 1 %
 local DEFENSE_FOR_CRIT_REDUCTION = 25
 
@@ -20,20 +20,54 @@ function Data:GetArmorValue()
     return DataUtils:Round(effectiveArmor, 2)
 end
 
----@return number
+---@return (number, number, number)
 function _Defense:GetCritReduction()
     local defBonus = Data:GetDefenseValue()
 
-    local talentBonus = 0
-    if classId == Data.DRUID then
-        if ECS.IsWotlk then
-            local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 18)
-            talentBonus = points * 2 -- 0-6% from Survival of the Fittest
-        elseif ECS.IsTBC then
-            local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 16)
-            talentBonus = points * 1 -- 0-3% from Survival of the Fittest
+    local buffBonus = 0
+    local meleeCritReduction = 0
+    local rangedCritReduction = 0
+    local spellCritReduction = 0
+    local i = 1
+    repeat
+        local aura = C_UnitAuras.GetAuraDataByIndex("player", i, "HELPFUL")
+        i = i + 1
+        if aura and aura.spellId then
+            buffBonus = buffBonus + (Data.BuffCritReductionAll[aura.spellId] or 0)
+            if ECS.IsSoD and aura.spellId == 408680 then
+                meleeCritReduction = meleeCritReduction + 6 -- way of earth
+            end
         end
-    end
+    until (not aura)
+    i = 1
+    repeat
+        local aura = C_UnitAuras.GetAuraDataByIndex("player", i, "HARMFUL")
+        i = i + 1
+        if aura and aura.spellId then
+            buffBonus = buffBonus + (Data.BuffCritReductionAll[aura.spellId] or 0)
+            if ECS.IsWotlk then
+                if aura.spellId == 30708 then
+                    buffBonus = buffBonus - 3 -- totem of wrath
+                elseif aura.spellId == 12579 then
+                    spellCritReduction = spellCritReduction - 1 * aura.applications -- Winter's Chill
+                elseif aura.spellId == 22959 then
+                    spellCritReduction = spellCritReduction - 5 -- Improved Scorch
+                elseif aura.spellId == 17800 then
+                    spellCritReduction = spellCritReduction - 5 -- Shadow Mastery
+                elseif aura.spellId == 17799 then
+                    spellCritReduction = spellCritReduction - 4 -- Shadow Mastery
+                elseif aura.spellId == 17798 then
+                    spellCritReduction = spellCritReduction - 2 -- Shadow Mastery
+                elseif aura.spellId == 17797 then
+                    spellCritReduction = spellCritReduction - 3 -- Shadow Mastery
+                elseif aura.spellId == 17794 then
+                    spellCritReduction = spellCritReduction - 1 -- Shadow Mastery
+                elseif aura.spellId == 47241 then
+                    meleeCritReduction = meleeCritReduction + 6 -- metamorphosis
+                end
+            end
+        end
+    until (not aura)
 
     -- Only the defense value above 350 counts towards crit immunity
     local critReductionFromDefense =  (defBonus - MAX_SKILL) / DEFENSE_FOR_CRIT_REDUCTION
@@ -42,29 +76,83 @@ function _Defense:GetCritReduction()
     end
     local critReducingFromResilience = GetCombatRatingBonus(15)
 
-    return critReductionFromDefense + critReducingFromResilience + talentBonus
-end
-
----@return string
-function Data:GetCritImmunity()
-    local critReduction = _Defense:GetCritReduction()
-    local critImmunity = critReduction / CRIT_IMMUNITY_CAP * 100
-
-    if critImmunity < 0 then
-        critImmunity = 0
+    if classId == Data.DRUID then
+        if ECS.IsWotlk then
+            local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 18)
+            meleeCritReduction = meleeCritReduction + points * 2 -- 0-6% from Survival of the Fittest
+        elseif ECS.IsTBC then
+            local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 16)
+            meleeCritReduction = meleeCritReduction + points * 1 -- 0-3% from Survival of the Fittest
+        end
+    elseif classId == Data.PRIEST then
+        if ECS.IsTBC then
+            if IsPlayerSpell(33371) then -- Shadow Resilience 2/2
+                spellCritReduction = spellCritReduction + 4
+            elseif IsPlayerSpell(14910) then -- Shadow Resilience 1/2
+                spellCritReduction = spellCritReduction + 2
+            end
+        end
+    elseif classId == Data.ROGUE then
+        if IsPlayerSpell(30893) then -- Sleight of Hand 2/2
+            meleeCritReduction = meleeCritReduction + 2
+            rangedCritReduction = rangedCritReduction + 2
+        elseif IsPlayerSpell(30892) then -- Sleight of Hand 1/2
+            meleeCritReduction = meleeCritReduction + 1
+            rangedCritReduction = rangedCritReduction + 1
+        end
+    elseif classId == Data.WARLOCK then
+        if ECS.IsTBC or ECS.IsWotlk then
+            if IsPlayerSpell(30321) then -- Demonic Resilience 3/3
+                meleeCritReduction = meleeCritReduction + 3
+                spellCritReduction = spellCritReduction + 3
+            elseif IsPlayerSpell(30320) then --  Demonic Resilience 2/3
+                meleeCritReduction = meleeCritReduction + 2
+                spellCritReduction = spellCritReduction + 2
+            elseif IsPlayerSpell(30319) then -- Demonic Resilience 1/3
+                meleeCritReduction = meleeCritReduction + 1
+                spellCritReduction = spellCritReduction + 1
+            end
+        end
     end
 
-    return DataUtils:Round(critImmunity, 2) .. "%"
+    if ECS.IsSoD then
+        if classId == Data.DRUID or classId == Data.ROGUE then
+            local chestRune = DataUtils.GetRuneForEquipSlot(Utils.CHAR_EQUIP_SLOTS.Chest)
+            if chestRune and (chestRune == 6710 or chestRune == 6972) then
+                meleeCritReduction = meleeCritReduction + 6 -- survival of the fittest / Just a Flesh Wound
+            end
+        end
+    end
+
+    meleeCritReduction = meleeCritReduction + critReductionFromDefense + critReducingFromResilience + buffBonus
+    rangedCritReduction = rangedCritReduction + critReductionFromDefense + critReducingFromResilience + buffBonus
+    spellCritReduction = spellCritReduction + critReducingFromResilience + buffBonus
+
+    return meleeCritReduction, rangedCritReduction, spellCritReduction
 end
 
 ---@return string
-function Data:GetCritReduction()
-    return DataUtils:Round(_Defense:GetCritReduction(), 2) .. "%"
+function Data:GetMeleeCritReduction()
+    local melee, _, _ = _Defense:GetCritReduction()
+    return DataUtils:Round(melee, 2) .. "%"
 end
 
+---@return string
+function Data:GetRangedCritReduction()
+    local _, ranged, _ = _Defense:GetCritReduction()
+    return DataUtils:Round(ranged, 2) .. "%"
+end
+
+---@return string
+function Data:GetSpellCritReduction()
+    local _, _, spell = _Defense:GetCritReduction()
+    return DataUtils:Round(spell, 2) .. "%"
+end
+
+---@param enemyLevel number
 ---@return number
-function _Defense:GetEnemyMissChance()
-    local enemyAttackRating = (UnitLevel("player")) * 5
+function _Defense:GetEnemyMissChance(enemyLevel)
+    local enemyAttackRating = enemyLevel * 5
 
     local miss
     if ECS.IsWotlk then
@@ -112,9 +200,10 @@ function _Defense:GetDodgeChance()
     return dodge
 end
 
+---@param enemyLevel number
 ---@return number
-function _Defense:GetAvoidance()
-    return _Defense:GetEnemyMissChance() + _Defense:GetBlockChance() + _Defense:GetParryChance() + _Defense:GetDodgeChance()
+function _Defense:GetAvoidance(enemyLevel)
+    return _Defense:GetEnemyMissChance(enemyLevel) + _Defense:GetBlockChance() + _Defense:GetParryChance() + _Defense:GetDodgeChance()
 end
 
 ---@return number
@@ -143,9 +232,10 @@ function Data:GetBlockChance()
     return DataUtils:Round(_Defense:GetBlockChance(), 2) .. "%"
 end
 
+---@param enemyLevel number
 ---@return string
-function Data:GetAvoidance()
-    return DataUtils:Round(_Defense:GetAvoidance(), 2) .. "%"
+function Data:GetAvoidance(enemyLevel)
+    return DataUtils:Round(_Defense:GetAvoidance(enemyLevel), 2) .. "%"
 end
 
 ---@return number

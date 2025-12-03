@@ -19,4 +19,13 @@ function Migration:ToLatestProfileVersion(profileVersion)
     if profileVersion < 21 then
         ExtendedCharacterStats.general.qualityColorsIntensity = defaultProfile.general.qualityColorsIntensity
     end
+    if profileVersion < 22 then
+        ExtendedCharacterStats.profile.defense.meleeCritReduction = defaultProfile.profile.defense.meleeCritReduction
+        ExtendedCharacterStats.profile.defense.rangedCritReduction = defaultProfile.profile.defense.rangedCritReduction
+        ExtendedCharacterStats.profile.defense.spellCritReduction = defaultProfile.profile.defense.spellCritReduction
+        ExtendedCharacterStats.profile.defense.avoidanceBoss = defaultProfile.profile.defense.avoidanceBoss
+
+        ExtendedCharacterStats.profile.defense.critImmunity = nil
+        ExtendedCharacterStats.profile.defense.critReduction = nil
+    end
 end

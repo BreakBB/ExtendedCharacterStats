@@ -168,3 +168,8 @@ Data.BuffsSpellCrit = {
     [51470] = 5, -- 5% from Elemental Oath Rank 2
     [30482] = 3, -- 3% from Molten Armor
 }
+Data.BuffCritReductionAll = {
+    [430432] = 5, -- battle hardened
+    [403816] = 6, -- metamorphosis
+    [428741] = 5, -- molten armor
+}
