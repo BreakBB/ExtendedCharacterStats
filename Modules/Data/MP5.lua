@@ -129,7 +129,7 @@ function Data:GetMP5FromBuffs()
 
     local i = 1
     repeat
-        local aura = C_UnitAuras.GetAuraDataByIndex("player", i, "HELPFUL|HARMFUL")
+        local aura = C_UnitAuras.GetBuffDataByIndex("player", i)
         i = i + 1
         if aura and aura.spellId then
             bonus = bonus + Data.BuffsMP5[aura.spellId]
