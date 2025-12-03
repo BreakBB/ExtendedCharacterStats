@@ -38,22 +38,38 @@ Data.setNames = {
 
 Data.enchantIds = {
     BIZNICK_SCOPE = "2523", -- 3% Hit from Biznicks 247x128 Accurascope
-    BRACER_MANA_REGENERATION = "2565", -- 4 MP5 on bracer
-    PROPHETIC_AURA = "2590", -- 4 MP5 for priest ZG Enchant
-    RESILIENCE_OF_THE_SCOURGE = "2715", -- 4 MP5 for priest ZG Enchant
-    INSCRIPTION_OF_FAITH = "2980", -- 4 MP5 from aldor enchant
-    GLYPH_OF_RENEWAL = "3001", -- 7 MP5 from Honor Hold/Thrallmar enchant
-    RESTORE_MANA_PRIME = "3150", -- 6 MP5 on chest
-    BRILLIANT_MANA_OIL = "2629", -- 12 MP5
-    LESSER_MANA_OIL = "2625", -- 8 MP5
-    MINOR_MANA_OIL = "2624", -- 4 MP5
 }
-
-Data.gemIds = {
-    FOUR_MP5_GEMS = {"32202"},
-    THREE_MP5_GEMS = {"24037"},
-    TWO_MP5_GEMS = {"30589", "32225", "24065", "30594", "31865", "32214", "30606", "23121", "24057", "32216", "30603", "30560", "30550"},
-    ONE_MP5_GEMS = {"23106", "31864", "28465", "23109"}
+Data.enchantsMP5 = {
+    ["2565"] = 4, -- 4 MP5 on bracer
+    ["2590"] = 4, -- 4 MP5 for priest ZG Enchant
+    ["2715"] = 4, -- 4 MP5 for priest ZG Enchant
+    ["2980"] = 4, -- 4 MP5 from aldor enchant
+    ["3001"] = 7, -- 7 MP5 from Honor Hold/Thrallmar enchant
+    ["3150"] = 6, -- 6 MP5 on chest
+    ["2629"] = 12, -- 12 MP5
+    ["2625"] = 8, -- 8 MP5
+    ["2624"] = 4, -- 4 MP5
+}
+Data.gemsMP5 = {
+    ["32202"] = 4,
+    ["24037"] = 3,
+    ["30589"] = 2,
+    ["32225"] = 2,
+    ["24065"] = 2,
+    ["30594"] = 2,
+    ["31865"] = 2,
+    ["32214"] = 2,
+    ["30606"] = 2,
+    ["23121"] = 2,
+    ["24057"] = 2,
+    ["32216"] = 2,
+    ["30603"] = 2,
+    ["30560"] = 2,
+    ["30550"] = 2,
+    ["23106"] = 1,
+    ["31864"] = 1,
+    ["28465"] = 1,
+    ["23109"] = 1,
 }
 Data.BuffsMP5 = {
     [430] = 42, -- drink

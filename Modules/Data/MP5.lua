@@ -29,39 +29,19 @@ function _MP5:GetMP5ValueOnItems()
                 end
             end
             local enchant = DataUtils:GetEnchantFromItemLink(itemLink)
-            if enchant and enchant == Data.enchantIds.BRACER_MANA_REGENERATION then
-                mp5 = mp5 + 4
-            end
-            -- Priest ZG Enchant
-            if enchant and enchant == Data.enchantIds.PROPHETIC_AURA then
-                mp5 = mp5 + 4
-            end
-            -- Sapphiron Enchant
-            if enchant and enchant == Data.enchantIds.RESILIENCE_OF_THE_SCOURGE then
-                mp5 = mp5 + 5
-            end
-            -- Honor Hold/Thrallmar enchant
-            if enchant and enchant == Data.enchantIds.GLYPH_OF_RENEWAL then
-                mp5 = mp5 + 7
-            end
-            -- aldor enchant
-            if enchant and enchant == Data.enchantIds.INSCRIPTION_OF_FAITH then
-                mp5 = mp5 + 4
-            end
-            -- aldor enchant
-            if enchant and enchant == Data.enchantIds.RESTORE_MANA_PRIME then
-                mp5 = mp5 + 6
+            if enchant then
+                mp5 = mp5 + (Data.enchantsMP5[enchant] or 0)
             end
             -- Check for socketed gems (TODO: check for socket bonus)
             local gem1, gem2, gem3 = DataUtils:GetSocketedGemsFromItemLink(itemLink)
             if gem1 then
-                mp5 = mp5 + _MP5:GetGemBonusMP5(gem1)
+                mp5 = mp5 + (Data.gemsMP5[gem1] or 0)
             end
             if gem2 then
-                mp5 = mp5 + _MP5:GetGemBonusMP5(gem2)
+                mp5 = mp5 + (Data.gemsMP5[gem2] or 0)
             end
             if gem3 then
-                mp5 = mp5 + _MP5:GetGemBonusMP5(gem3)
+                mp5 = mp5 + (Data.gemsMP5[gem3] or 0)
             end
         end
     end
@@ -70,15 +50,7 @@ function _MP5:GetMP5ValueOnItems()
     local hasMainEnchant, _, _, mainHandEnchantID = GetWeaponEnchantInfo()
     mainHandEnchantID = tostring(mainHandEnchantID)
     if (hasMainEnchant) then
-        if mainHandEnchantID == Data.enchantIds.BRILLIANT_MANA_OIL then
-            mp5 = mp5 + 12
-        end
-        if mainHandEnchantID == Data.enchantIds.LESSER_MANA_OIL then
-            mp5 = mp5 + 8
-        end
-        if mainHandEnchantID == Data.enchantIds.MINOR_MANA_OIL then
-            mp5 = mp5 + 4
-        end
+        mp5 = mp5 + (Data.enchantsMP5[mainHandEnchantID] or 0)
     end
 
     return mp5
@@ -320,31 +292,6 @@ function _MP5:GetBlessingOfWisdomModifier()
         mod = points * 0.1 -- 0-20% from Improved Blessing of Wisdom
     end
     return mod
-end
-
----@return number
-function _MP5:GetGemBonusMP5(gemId)
-    for _, value in ipairs(Data.gemIds.FOUR_MP5_GEMS) do
-        if value == gemId then
-            return 4
-        end
-    end
-    for _, value in ipairs(Data.gemIds.THREE_MP5_GEMS) do
-        if value == gemId then
-            return 3
-        end
-    end
-    for _, value in ipairs(Data.gemIds.TWO_MP5_GEMS) do
-        if value == gemId then
-            return 2
-        end
-    end
-    for _, value in ipairs(Data.gemIds.ONE_MP5_GEMS) do
-        if value == gemId then
-            return 1
-        end
-    end
-    return 0
 end
 
 ---@param school number
