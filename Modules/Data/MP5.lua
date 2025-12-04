@@ -7,8 +7,6 @@ local Utils = ECSLoader:ImportModule("Utils")
 
 local _MP5 = {}
 
-local _, _, classId = UnitClass("player")
-
 ---@return number
 function Data:GetValueFromAuraTooltip(i,type)
     ECS.scanningTooltip:ClearLines()
@@ -106,7 +104,6 @@ end
 function Data:GetMP5FromBuffs()
     local mod = 0
     local bonus = 0
-    local has4pEarthshatterer = Data:IsSetBonusActive(Data.setNames.THE_EARTHSHATTERER, 4)
 
     local i = 1
     repeat
