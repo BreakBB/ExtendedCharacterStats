@@ -110,7 +110,7 @@ function Data:GetMP5FromBuffs()
         local aura = C_UnitAuras.GetBuffDataByIndex("player", i)
         i = i + 1
         if aura and aura.spellId then
-            bonus = bonus + Data.BuffsMP5[aura.spellId]
+            bonus = bonus + (Data.BuffsMP5[aura.spellId] or 0)
             if _MP5:HasLightningShield(aura.spellId) and Data:IsSetBonusActive(Data.setNames.THE_EARTHSHATTERER, 8) then
                 bonus = bonus + 15 -- 15 MP5 from Shaman T3 8 piece bonus when Lightning Shield is active
             end

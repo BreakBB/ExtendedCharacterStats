@@ -32,7 +32,7 @@ function _SpellCrit:GetSpellCritFromBuffs(school)
         local aura = C_UnitAuras.GetBuffDataByIndex("player", i)
         i = i + 1
         if aura and aura.spellId then
-            mod = mod + Data.BuffsSpellCrit[aura.spellId]
+            mod = mod + (Data.BuffsSpellCrit[aura.spellId] or 0)
             if ECS.IsTBC or ECS.IsWotlk and spellId == 24907 then
                 mod = mod + 5 -- 5% from Moonkin Aura
             end
