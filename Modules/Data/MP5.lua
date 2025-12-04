@@ -9,6 +9,15 @@ local _MP5 = {}
 
 local _, _, classId = UnitClass("player")
 
+---@return number
+function Data:GetValueFromAuraTooltip(i,type)
+    ECS.scanningTooltip:ClearLines()
+    ECS.scanningTooltip:SetUnitAura("player",i,type)
+    local region = select(5,ECS.scanningTooltip:GetRegions())
+    local tooltip = region:GetText()
+    return tonumber(string.match(tooltip, '%d[%d,.]*'))
+end
+
 -- Get MP5 from items
 ---@return number
 function Data:GetMP5FromItems()
@@ -110,49 +119,21 @@ function Data:GetMP5FromBuffs()
             end
             if aura.spellId == 6117 or aura.spellId == 22782 or aura.spellId == 22783 then
                 mod = mod + 0.3 -- 30% from Mage Armor
-            elseif aura.spellId == 19742 then
-                local blessingMod = _MP5:GetBlessingOfWisdomModifier() + 1
-                bonus = bonus + math.ceil(10 * blessingMod) -- Blessing of Wisdom Rank 1
-            elseif aura.spellId == 19850 then
-                local blessingMod = _MP5:GetBlessingOfWisdomModifier() + 1
-                bonus = bonus + math.ceil(15 * blessingMod) -- Blessing of Wisdom Rank 2
-            elseif aura.spellId == 19852 then
-                local blessingMod = _MP5:GetBlessingOfWisdomModifier() + 1
-                bonus = bonus + math.ceil(20 * blessingMod) -- Blessing of Wisdom Rank 3
-            elseif aura.spellId == 19853 then
-                local blessingMod = _MP5:GetBlessingOfWisdomModifier() + 1
-                bonus = bonus + math.ceil(25 * blessingMod) -- Blessing of Wisdom Rank 4
-            elseif aura.spellId == 25894 or aura.spellId == 19854 then
-                local blessingMod = _MP5:GetBlessingOfWisdomModifier() + 1
-                bonus = bonus + math.ceil(30 * blessingMod)
-            elseif aura.spellId == 25918 or aura.spellId == 25290 then
-                local blessingMod = _MP5:GetBlessingOfWisdomModifier() + 1
-                bonus = bonus + math.ceil(33 * blessingMod)
-            elseif aura.spellId == 5677 then
-                bonus = bonus + 10 -- 4 Mana per 2 seconds from Mana Spring Totem (Rank 1)
-                if has4pEarthshatterer then
-                    bonus = bonus + 2.5 -- + 0,25% for Shaman T3 2 piece bonus
-                end
-            elseif aura.spellId == 10491 then
-                bonus = bonus + 15 -- 6 Mana per 2 seconds from Mana Spring Totem (Rank 2)
-                if has4pEarthshatterer then
-                    bonus = bonus + 3.75 -- + 0,25% for Shaman T3 2 piece bonus
-                end
-            elseif aura.spellId == 10493 then
-                bonus = bonus + 20 -- 8 Mana per 2 seconds from Mana Spring Totem (Rank 3)
-                if has4pEarthshatterer then
-                    bonus = bonus + 5 -- + 0,25% for Shaman T3 2 piece bonus
-                end
-            elseif aura.spellId == 10494 then
-                bonus = bonus + 25 -- 10 Mana per 2 seconds from Mana Spring Totem (Rank 4)
-                if has4pEarthshatterer then
-                    bonus = bonus + 6.25 -- + 0,25% for Shaman T3 2 piece bonus
-                end
-            elseif aura.spellId == 25569 then
-                bonus = bonus + 50 -- 20 Mana per 2 seconds from Mana Spring Totem (Rank 5)
-                if has4pEarthshatterer then
-                    bonus = bonus + 6.25 -- + 0,25% for Shaman T3 2 piece bonus
-                end
+            elseif aura.spellId == 19742
+                or aura.spellId == 19850
+                or aura.spellId == 19851
+                or aura.spellId == 19852
+                or aura.spellId == 19853
+                or aura.spellId == 25894
+                or aura.spellId == 19854
+                or aura.spellId == 25918
+                or aura.spellId == 25290
+                or aura.spellId == 5677
+                or aura.spellId == 10491
+                or aura.spellId == 10493
+                or aura.spellId == 10494
+                or aura.spellId == 25569 then
+                bonus = bonus + Data:GetValueFromAuraTooltip(i,"HELPFUL")
             end
             if ECS.IsTbc then
                 if aura.spellId == 33265 then
@@ -222,21 +203,12 @@ function Data:GetMP5FromBuffs()
                         bonus = bonus + 12 -- Unstable Flask of the Elder
                     end
                     bonus = bonus + 85 * aura.applications -- Meteoric Inspiration
-                elseif aura.spellId == 56521 then
-                    local blessingMod = _MP5:GetBlessingOfWisdomModifier() + 1
-                    bonus = bonus + math.ceil(91 * blessingMod)
-                elseif aura.spellId == 48938 or aura.spellId == 48936 then
-                    local blessingMod = _MP5:GetBlessingOfWisdomModifier() + 1
-                    bonus = bonus + math.ceil(92 * blessingMod)
-                elseif aura.spellId == 48937 or aura.spellId == 48935 then
-                    local blessingMod = _MP5:GetBlessingOfWisdomModifier() + 1
-                    bonus = bonus + math.ceil(73 * blessingMod)
-                elseif aura.spellId == 27143 or aura.spellId == 27142 then
-                    local blessingMod = _MP5:GetBlessingOfWisdomModifier() + 1
-                    bonus = bonus + math.ceil(41 * blessingMod)
-                elseif aura.spellId == 27143 or aura.spellId == 27142 then
-                    local blessingMod = _MP5:GetBlessingOfWisdomModifier() + 1
-                    bonus = bonus + math.ceil(41 * blessingMod)
+                elseif aura.spellId == 56521
+                    or aura.spellId == 48938 or aura.spellId == 48936 then
+                    or aura.spellId == 48937 or aura.spellId == 48935 then
+                    or aura.spellId == 27143 or aura.spellId == 27142 then
+                    or aura.spellId == 27143 or aura.spellId == 27142 then
+                    bonus = bonus + Data:GetValueFromAuraTooltip(i,"HELPFUL")
                 elseif aura.spellId == 41605 or aura.spellId == 41610 then -- Only active in Tempest Keep, Serpentshrine Cavern, Caverns of Time: Mount Hyjal, Black Temple and the Sunwell Plateau.
                     local _, _, _, _, _, _, _, instanceID, _, _ = GetInstanceInfo()
                     if instanceID and (instanceID == 550 or instanceID == 548 or instanceID == 543 or instanceID == 564 or instanceID == 580) then
@@ -269,8 +241,7 @@ function Data:GetMP5FromBuffs()
             end
             if ECS.IsTbc or ECS.IsWotlk then
                 if aura.spellId == 27143 or aura.spellId == 27142 then
-                    local blessingMod = _MP5:GetBlessingOfWisdomModifier() + 1
-                    bonus = bonus + math.ceil(41 * blessingMod) -- Greater Blessing of Wisdom Rank 3
+                    bonus = bonus + Data:GetValueFromAuraTooltip(i,"HELPFUL")
                 end
             end
         end
@@ -284,17 +255,6 @@ function _MP5:HasLightningShield(spellId)
     return spellId == 324 or spellId == 325 or spellId == 905 or spellId == 945 or spellId == 8134 or spellId == 10431 or spellId == 10432
 end
 
----@return number
-function _MP5:GetBlessingOfWisdomModifier()
-    local mod = 0
-    if classId == Data.PALADIN then
-        local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 10)
-        mod = points * 0.1 -- 0-20% from Improved Blessing of Wisdom
-    end
-    return mod
-end
-
----@param school number
 ---@return number
 function _MP5.GetMP5FromRunes()
     local mod = 0

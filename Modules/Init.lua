@@ -42,6 +42,10 @@ function Init:OnPlayerLogin()
     end)
 
     ECS.eventFrame = eventFrame
+    
+    local scanningTooltip = CreateFrame("GameTooltip", "scanningTooltip", nil, "GameTooltipTemplate")
+    scanningTooltip:SetOwner(WorldFrame, "ANCHOR_NONE")
+    ECS.scanningTooltip = scanningTooltip
 end
 
 function _Init:LoadProfile()
