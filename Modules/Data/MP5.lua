@@ -204,9 +204,9 @@ function Data:GetMP5FromBuffs()
                     end
                     bonus = bonus + 85 * aura.applications -- Meteoric Inspiration
                 elseif aura.spellId == 56521
-                    or aura.spellId == 48938 or aura.spellId == 48936 then
-                    or aura.spellId == 48937 or aura.spellId == 48935 then
-                    or aura.spellId == 27143 or aura.spellId == 27142 then
+                    or aura.spellId == 48938 or aura.spellId == 48936
+                    or aura.spellId == 48937 or aura.spellId == 48935
+                    or aura.spellId == 27143 or aura.spellId == 27142
                     or aura.spellId == 27143 or aura.spellId == 27142 then
                     bonus = bonus + Data:GetValueFromAuraTooltip(i,"HELPFUL")
                 elseif aura.spellId == 41605 or aura.spellId == 41610 then -- Only active in Tempest Keep, Serpentshrine Cavern, Caverns of Time: Mount Hyjal, Black Temple and the Sunwell Plateau.
