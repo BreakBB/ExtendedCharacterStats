@@ -111,44 +111,17 @@ function Data:GetMP5FromBuffs()
         i = i + 1
         if aura and aura.spellId then
             bonus = bonus + (Data.BuffsMP5[aura.spellId] or 0)
-            if Data.BuffIsLightningShield[aura.spellId] and Data:IsSetBonusActive(Data.setNames.THE_EARTHSHATTERER, 8) then
+            if Data.BuffsIsLightningShield[aura.spellId] and Data:IsSetBonusActive(Data.setNames.THE_EARTHSHATTERER, 8) then
                 bonus = bonus + 15 -- 15 MP5 from Shaman T3 8 piece bonus when Lightning Shield is active
             end
-            if Data.BuffIsMageArmor[aura.spellId] then
+            if Data.BuffsIsMageArmor[aura.spellId] then
                 mod = mod + 0.3 -- 30% from Mage Armor
-            elseif Data.BuffRequiresTooltipScanning[aura.spellId] then
+            elseif Data.BuffsMP5Tooltip[aura.spellId] then
                 bonus = bonus + Data:GetValueFromAuraTooltip(i,"HELPFUL")
             end
-            if ECS.IsTbc then
-                if aura.spellId == 40568 or aura.spellId == 40582 then -- Only works in Blade's Edge Mountains Plateaus and Gruul's Lair.
-                    local _, _, _, _, _, _, _, instanceID, _, _ = GetInstanceInfo()
-                    if (instanceID and instanceID == 565) or C_Map.GetBestMapForUnit("player") == 1949 then
-                        bonus = bonus + 8 -- Unstable Flask of the Elder
-                    end
-                elseif aura.spellId == 41605 or aura.spellId == 41610 then -- Only active in Tempest Keep, Serpentshrine Cavern, Caverns of Time: Mount Hyjal, Black Temple and the Sunwell Plateau.
-                    local _, _, _, _, _, _, _, instanceID, _, _ = GetInstanceInfo()
-                    if instanceID and (instanceID == 550 or instanceID == 548 or instanceID == 543 or instanceID == 564 or instanceID == 580) then
-                        bonus = bonus + 25 -- Mighty Restoration of Shattrath
-                    end
-                end
-            end
             if ECS.IsWotlk then
-                if aura.spellId == 40568 or aura.spellId == 40582 then -- Only works in Blade's Edge Mountains Plateaus and Gruul's Lair.
-                    local _, _, _, _, _, _, _, instanceID, _, _ = GetInstanceInfo()
-                    if (instanceID and instanceID == 565) or C_Map.GetBestMapForUnit("player") == 1949 then
-                        bonus = bonus + 12 -- Unstable Flask of the Elder
-                    end
+                if aura.spellId == 64999 then
                     bonus = bonus + 85 * aura.applications -- Meteoric Inspiration
-                elseif aura.spellId == 41605 or aura.spellId == 41610 then -- Only active in Tempest Keep, Serpentshrine Cavern, Caverns of Time: Mount Hyjal, Black Temple and the Sunwell Plateau.
-                    local _, _, _, _, _, _, _, instanceID, _, _ = GetInstanceInfo()
-                    if instanceID and (instanceID == 550 or instanceID == 548 or instanceID == 543 or instanceID == 564 or instanceID == 580) then
-                        bonus = bonus + 31 -- Mighty Restoration of Shattrath
-                    end
-                elseif aura.spellId == 52051 then -- within Zul'Drak, Gundrak, and Drak'Tharon Keep.
-                    local _, _, _, _, _, _, _, instanceID, _, _ = GetInstanceInfo()
-                    if C_Map.GetBestMapForUnit("player") == 121 or instanceID and (instanceID == 604 or instanceID == 600) then
-                        bonus = bonus + 91 -- Blessing of Zim'Rhuk
-                    end
                 end
             end
         end
