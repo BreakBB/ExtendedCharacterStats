@@ -1,5 +1,7 @@
 ---@class DataUtils
 local DataUtils = ECSLoader:CreateModule("DataUtils")
+---@type Data
+local Data = ECSLoader:ImportModule("Data")
 
 --- Rounds every number down to the given decimal places
 ---@param num number
