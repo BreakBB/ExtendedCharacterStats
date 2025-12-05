@@ -20,7 +20,7 @@ function DataUtils:IsShapeshifted()
         local aura = C_UnitAuras.GetBuffDataByIndex("player", i)
         i = i + 1
         if aura and aura.spellId then
-            if aura.spellId == 5487 or aura.spellId == 9634 or aura.spellId == 768 then
+            if Data.BuffsIsFeralForm[aura.spellId] then
                 return true
             end
         end
