@@ -45,9 +45,8 @@ function _Defense:GetCritReduction()
             buffBonus = buffBonus + (Data.BuffsCritReductionAll[aura.spellId] or 0)
             meleeCritReduction = meleeCritReduction + (Data.BuffsCritReductionMelee[aura.spellId] or 0)
             spellCritReduction = spellCritReduction + (Data.BuffsCritReductionSpell[aura.spellId] or 0)
-                if ECS.IsWotlk and aura.spellId == 12579 then
-                    spellCritReduction = spellCritReduction - 1 * aura.applications -- Winter's Chill
-                end
+            if ECS.IsWotlk and aura.spellId == 12579 then
+                spellCritReduction = spellCritReduction - 1 * aura.applications -- Winter's Chill
             end
         end
     until (not aura)
