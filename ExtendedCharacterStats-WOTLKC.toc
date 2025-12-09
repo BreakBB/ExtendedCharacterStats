@@ -19,6 +19,9 @@ embeds.xml
 # ModuleLoader
 Modules\ModuleLoader.lua
 
+# Main
+ECS.lua
+
 # Modules
 Modules\Migration.lua
 Modules\EventHandler.lua
@@ -65,6 +68,3 @@ Modules\i18n\translations\ConfigTranslations\MeleeConfigTranslations.lua
 Modules\i18n\translations\ConfigTranslations\RangedConfigTranslations.lua
 Modules\i18n\translations\ConfigTranslations\SpellConfigTranslations.lua
 Modules\i18n\translations\ConfigTranslations\SpellSchoolsConfigTranslations.lua
-
-# Main
-ECS.lua
