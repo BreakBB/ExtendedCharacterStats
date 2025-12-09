@@ -111,12 +111,11 @@ function Data:GetMP5FromBuffs()
         i = i + 1
         if aura and aura.spellId then
             bonus = bonus + (Data.BuffsMP5[aura.spellId] or 0)
+            mod = mod + (Data.BuffsAllowCombatManaRegeneration[aura.spellId] or 0) -- assuming buffs stacking, to be investigated
             if Data.BuffsIsLightningShield[aura.spellId] and Data:IsSetBonusActive(Data.setNames.THE_EARTHSHATTERER, 8) then
                 bonus = bonus + 15 -- 15 MP5 from Shaman T3 8 piece bonus when Lightning Shield is active
             end
-            if Data.BuffsIsMageArmor[aura.spellId] then
-                mod = mod + 0.3 -- 30% from Mage Armor
-            elseif Data.BuffsMP5Tooltip[aura.spellId] then
+            if Data.BuffsMP5Tooltip[aura.spellId] then
                 bonus = bonus + Data:GetValueFromAuraTooltip(i,"HELPFUL")
             end
             if ECS.IsWotlk then
@@ -127,7 +126,7 @@ function Data:GetMP5FromBuffs()
         end
     until (not aura)
 
-    return mod, bonus
+    return min(mod,1), bonus
 end
 
 ---@return number

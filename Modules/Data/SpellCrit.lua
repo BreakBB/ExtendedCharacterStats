@@ -33,9 +33,6 @@ function _SpellCrit:GetSpellCritFromBuffs(school)
         i = i + 1
         if aura and aura.spellId then
             mod = mod + (Data.BuffsSpellCrit[aura.spellId] or 0)
-            if ECS.IsTBC or ECS.IsWotlk and aura.spellId == 24907 then
-                mod = mod + 5 -- 5% from Moonkin Aura
-            end
             if school == Data.FIRE_SCHOOL then
                 if aura.spellId == 28682 then
                     mod = mod + (aura.applications * 10) -- 10% for each stack from Combustion
