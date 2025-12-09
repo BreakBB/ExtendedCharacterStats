@@ -13,7 +13,11 @@ function Data:GetValueFromAuraTooltip(i,type)
     ECS.scanningTooltip:SetUnitAura("player",i,type)
     local region = select(5,ECS.scanningTooltip:GetRegions())
     local tooltip = region:GetText()
-    return tonumber(string.match(tooltip, '%d[%d,.]*'))
+    if tooltip then
+        return tonumber(string.match(tooltip, '%d[%d,.]*'))
+    else
+        return 0
+    end
 end
 
 -- Get MP5 from items
@@ -84,19 +88,19 @@ function Data:GetMP5WhileCasting()
         casting = 0
     end
 
-    local _, mp5BuffBonus = Data:GetMP5FromBuffs()
+    local castingModifier, mp5BuffBonus, periodicMana = Data:GetMP5FromBuffs()
     local mp5Items = Data:GetMP5FromItems()
-    casting = (casting * 5) + mp5Items + mp5BuffBonus
+    casting = (casting * 5) + mp5Items + mp5BuffBonus * castingModifier + periodicMana
 
     return DataUtils:Round(casting, 2)
 end
 
 function Data:GetMP5OutsideCasting()
     local mp5FromSpirit = Data:GetMP5FromSpirit()
-    local _, mp5BuffBonus = Data:GetMP5FromBuffs()
+    local _, mp5BuffBonus, periodicMana = Data:GetMP5FromBuffs()
     local mp5FromItems = Data:GetMP5FromItems()
 
-    local totalMP5 = mp5FromSpirit + mp5FromItems + mp5BuffBonus
+    local totalMP5 = mp5FromSpirit + mp5FromItems + mp5BuffBonus + periodicMana
     return DataUtils:Round(totalMP5, 2)
 end
 
@@ -104,6 +108,8 @@ end
 function Data:GetMP5FromBuffs()
     local mod = 0
     local bonus = 0
+    local periodic = 0
+    local maxmana = UnitPowerMax("player", Enum.PowerType.Mana)
 
     local i = 1
     repeat
@@ -111,12 +117,17 @@ function Data:GetMP5FromBuffs()
         i = i + 1
         if aura and aura.spellId then
             bonus = bonus + (Data.BuffsMP5[aura.spellId] or 0)
-            mod = mod + (Data.BuffsAllowCombatManaRegeneration[aura.spellId] or 0) -- assuming buffs stacking, to be investigated
+            bonus = bonus + (Data.BuffsPercentageMp5[aura.spellId] or 0) * maxmana
+            periodic = periodic + (Data.BuffsPeriodicallyGiveMana[aura.spellId] or 0)
+            mod = mod + (Data.BuffsAllowCastingManaRegeneration[aura.spellId] or 0) -- assuming buffs stacking, to be investigated
             if Data.BuffsIsLightningShield[aura.spellId] and Data:IsSetBonusActive(Data.setNames.THE_EARTHSHATTERER, 8) then
                 bonus = bonus + 15 -- 15 MP5 from Shaman T3 8 piece bonus when Lightning Shield is active
             end
             if Data.BuffsMP5Tooltip[aura.spellId] then
                 bonus = bonus + Data:GetValueFromAuraTooltip(i,"HELPFUL")
+            end
+            if Data.BuffsPeriodicallyGiveManaTooltip[aura.spellId] then
+                periodic = periodic + Data:GetValueFromAuraTooltip(i,"HELPFUL")
             end
             if ECS.IsWotlk then
                 if aura.spellId == 64999 then
@@ -126,7 +137,7 @@ function Data:GetMP5FromBuffs()
         end
     until (not aura)
 
-    return min(mod,1), bonus
+    return min(mod,1), bonus, periodic
 end
 
 ---@return number
