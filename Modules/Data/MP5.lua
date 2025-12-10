@@ -7,6 +7,8 @@ local Utils = ECSLoader:ImportModule("Utils")
 
 local _MP5 = {}
 
+local _, _, classId = UnitClass("player")
+
 ---@return number
 function Data:GetValueFromAuraTooltip(i,type)
     ECS.scanningTooltip:ClearLines()
@@ -89,7 +91,7 @@ function Data:GetMP5WhileCasting()
     end
 
     local castingModifier, mp5BuffBonus, periodicMana = Data:GetMP5FromBuffs()
-    castingModifier = castingModifier + _MP5:GetTalentModifier() + Data:GetSetBonusModifierMP5()
+    castingModifier = min(1,castingModifier + _MP5:GetTalentModifier() + Data:GetSetBonusModifierMP5()) -- capped at 100%
     local mp5Items = Data:GetMP5FromItems()
     casting = (casting * 5) + mp5Items + mp5BuffBonus * castingModifier + periodicMana
 
@@ -174,34 +176,34 @@ function _MP5:GetTalentModifier()
 
     if classId == Data.PRIEST then
         if IsPlayerSpell(14777) then
-            mod = (ECS.IsTbc and 0.3 or (Ecs.IsWotlk and 0.5 or 0.15))
+            mod = (ECS.IsTbc and 0.3 or (ECS.IsWotlk and 0.5 or 0.15))
         elseif IsPlayerSpell(14776) then
-            mod = (ECS.IsTbc and 0.2 or (Ecs.IsWotlk and 0.33 or 0.1))
+            mod = (ECS.IsTbc and 0.2 or (ECS.IsWotlk and 0.33 or 0.1))
         elseif IsPlayerSpell(14521) then
-            mod = (ECS.IsTbc and 0.1 or (Ecs.IsWotlk and 0.17 or 0.05))
+            mod = (ECS.IsTbc and 0.1 or (ECS.IsWotlk and 0.17 or 0.05))
         end
     elseif classId == Data.MAGE then
         if IsPlayerSpell(18464) then
-            mod = (ECS.IsTbc and 0.3 or (Ecs.IsWotlk and 0.5 or 0.15))
+            mod = (ECS.IsTbc and 0.3 or (ECS.IsWotlk and 0.5 or 0.15))
         elseif IsPlayerSpell(18463) then
-            mod = (ECS.IsTbc and 0.2 or (Ecs.IsWotlk and 0.33 or 0.1))
+            mod = (ECS.IsTbc and 0.2 or (ECS.IsWotlk and 0.33 or 0.1))
         elseif IsPlayerSpell(18462) then
-            mod = (ECS.IsTbc and 0.1 or (Ecs.IsWotlk and 0.17 or 0.05))
+            mod = (ECS.IsTbc and 0.1 or (ECS.IsWotlk and 0.17 or 0.05))
         end
         if IsPlayerSpell(34296) then
-            mod = mod + (ECS.IsTbc and 0.3 or (Ecs.IsWotlk and 0.5 or 0.15))
+            mod = mod + (ECS.IsTbc and 0.3 or (ECS.IsWotlk and 0.5 or 0.15))
         elseif IsPlayerSpell(34295) then
-            mod = mod + (ECS.IsTbc and 0.2 or (Ecs.IsWotlk and 0.33 or 0.1))
+            mod = mod + (ECS.IsTbc and 0.2 or (ECS.IsWotlk and 0.33 or 0.1))
         elseif IsPlayerSpell(34293) then
-            mod = mod + (ECS.IsTbc and 0.1 or (Ecs.IsWotlk and 0.17 or 0.05))
+            mod = mod + (ECS.IsTbc and 0.1 or (ECS.IsWotlk and 0.17 or 0.05))
         end
     elseif classId == Data.DRUID then
         if IsPlayerSpell(17108) then
-            mod = (ECS.IsTbc and 0.3 or (Ecs.IsWotlk and 0.5 or 0.15))
+            mod = (ECS.IsTbc and 0.3 or (ECS.IsWotlk and 0.5 or 0.15))
         elseif IsPlayerSpell(17107) then
-            mod = (ECS.IsTbc and 0.2 or (Ecs.IsWotlk and 0.33 or 0.1))
+            mod = (ECS.IsTbc and 0.2 or (ECS.IsWotlk and 0.33 or 0.1))
         elseif IsPlayerSpell(17106) then
-            mod = (ECS.IsTbc and 0.1 or (Ecs.IsWotlk and 0.17 or 0.05))
+            mod = (ECS.IsTbc and 0.1 or (ECS.IsWotlk and 0.17 or 0.05))
         end
     end
     return mod
