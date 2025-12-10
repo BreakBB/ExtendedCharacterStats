@@ -49,6 +49,7 @@ Data.enchantsMP5 = {
     ["2980"] = 4, -- 4 MP5 from aldor enchant
     ["3001"] = 7, -- 7 MP5 from Honor Hold/Thrallmar enchant
     ["3150"] = 6, -- 6 MP5 on chest
+    ["7099"] = 12, -- Blackfathom Mana Oil. This effect only applies within Blackfathom Deeps.
 }
 Data.gemsMP5 = {
     ["23106"] = 1,

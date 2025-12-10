@@ -34,7 +34,7 @@ local itemSets = {
         [231158] = true,
         [231159] = true,
         [231160] = true,
-        [231160] = true,
+        [231161] = true,
         [231162] = true,
     },
     [setNames.FEL_IRON_CHAIN] = {
