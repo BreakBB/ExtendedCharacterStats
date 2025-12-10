@@ -138,7 +138,7 @@ function Data:GetSetBonusModifierMP5()
     end
     if (ECS.IsClassic and (
         (classId == Data.DRUID and Data:IsSetBonusActive(setNames.STORMRAGE_RAIMENT, 3)) or
-        (classId == Data.PRIEST and Data:IsSetBonusActive(setNames.VESTMENTS_OF_TRANSCENDENCE, 3)) or
+        (classId == Data.PRIEST and Data:IsSetBonusActive(setNames.VESTMENTS_OF_TRANSCENDENCE, 3))
     )) then
         mod = mod + 0.15
     end
