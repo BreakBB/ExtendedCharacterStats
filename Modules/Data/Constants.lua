@@ -22,7 +22,6 @@ Data.DRUID = 11
 
 Data.setNames = {
     AUGURS_REGALIA = "Augur's Regalia",
-    BATTLEGEAR_OF_MIGHT = "Battlegear of Might",
     BLOODSOUL_EMBRACE = "Bloodsoul Embrace",
     FEL_IRON_CHAIN = "Fel Iron Chain",
     FREETHINKERS_ARMOR = "Freethinker's Armor",
@@ -47,6 +46,14 @@ Data.enchantIds = {
     BRILLIANT_MANA_OIL = "2629", -- 12 MP5
     LESSER_MANA_OIL = "2625", -- 8 MP5
     MINOR_MANA_OIL = "2624", -- 4 MP5
+}
+
+Data.enchantsBlockValue = {
+    ["2583"] = 15, -- Presence of Might
+    ["2653"] = 18, -- Enchant Shield - Tough Shield
+    ["2655"] = 15, -- Enchant Shield - Shield Block
+    ["3849"] = 81, -- Titanium Plating
+    ["7633"] = 15, -- Presence of Valor
 }
 
 Data.gemIds = {
