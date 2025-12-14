@@ -184,34 +184,34 @@ function _MP5:GetTalentModifier()
     local mod = 0
 
     if classId == Data.PRIEST then
-        if IsPlayerSpell(14777) then
+        if C_SpellBook.IsSpellKnown(14777) then
             mod = (ECS.IsTbc and 0.3 or (ECS.IsWotlk and 0.5 or 0.15))
-        elseif IsPlayerSpell(14776) then
+        elseif C_SpellBook.IsSpellKnown(14776) then
             mod = (ECS.IsTbc and 0.2 or (ECS.IsWotlk and 0.33 or 0.1))
-        elseif IsPlayerSpell(14521) then
+        elseif C_SpellBook.IsSpellKnown(14521) then
             mod = (ECS.IsTbc and 0.1 or (ECS.IsWotlk and 0.17 or 0.05))
         end
     elseif classId == Data.MAGE then
-        if IsPlayerSpell(18464) then
+        if C_SpellBook.IsSpellKnown(18464) then
             mod = (ECS.IsTbc and 0.3 or (ECS.IsWotlk and 0.5 or 0.15))
-        elseif IsPlayerSpell(18463) then
+        elseif C_SpellBook.IsSpellKnown(18463) then
             mod = (ECS.IsTbc and 0.2 or (ECS.IsWotlk and 0.33 or 0.1))
-        elseif IsPlayerSpell(18462) then
+        elseif C_SpellBook.IsSpellKnown(18462) then
             mod = (ECS.IsTbc and 0.1 or (ECS.IsWotlk and 0.17 or 0.05))
         end
-        if IsPlayerSpell(34296) then
+        if C_SpellBook.IsSpellKnown(34296) then
             mod = mod + (ECS.IsTbc and 0.3 or (ECS.IsWotlk and 0.5 or 0.15))
-        elseif IsPlayerSpell(34295) then
+        elseif C_SpellBook.IsSpellKnown(34295) then
             mod = mod + (ECS.IsTbc and 0.2 or (ECS.IsWotlk and 0.33 or 0.1))
-        elseif IsPlayerSpell(34293) then
+        elseif C_SpellBook.IsSpellKnown(34293) then
             mod = mod + (ECS.IsTbc and 0.1 or (ECS.IsWotlk and 0.17 or 0.05))
         end
     elseif classId == Data.DRUID then
-        if IsPlayerSpell(17108) then
+        if C_SpellBook.IsSpellKnown(17108) then
             mod = (ECS.IsTbc and 0.3 or (ECS.IsWotlk and 0.5 or 0.15))
-        elseif IsPlayerSpell(17107) then
+        elseif C_SpellBook.IsSpellKnown(17107) then
             mod = (ECS.IsTbc and 0.2 or (ECS.IsWotlk and 0.33 or 0.1))
-        elseif IsPlayerSpell(17106) then
+        elseif C_SpellBook.IsSpellKnown(17106) then
             mod = (ECS.IsTbc and 0.1 or (ECS.IsWotlk and 0.17 or 0.05))
         end
     end
