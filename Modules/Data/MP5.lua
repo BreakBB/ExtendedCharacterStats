@@ -11,15 +11,24 @@ local _, _, classId = UnitClass("player")
 
 ---@return number
 function Data:GetValueFromAuraTooltip(i,type)
+    if not ECS.scanningTooltip then
+        ECS.scanningTooltip = CreateFrame("GameTooltip", "scanningTooltip", nil, "GameTooltipTemplate")
+        ECS.scanningTooltip:SetOwner(WorldFrame, "ANCHOR_NONE")
+    end
+
     ECS.scanningTooltip:ClearLines()
     ECS.scanningTooltip:SetUnitAura("player",i,type)
     local region = select(5,ECS.scanningTooltip:GetRegions())
-    local tooltip = region:GetText()
-    if tooltip then
-        return tonumber(string.match(tooltip, '%d[%d,.]*'))
-    else
-        return 0
+    if region and region:GetObjectType() == "FontString" then
+        local tooltip = region:GetText()
+        if tooltip then
+            local n = string.match(tooltip, '%d[%d,.]*')
+            if n then
+                return tonumber(n)
+            end
+        end
     end
+    return 0
 end
 
 -- Get MP5 from items
