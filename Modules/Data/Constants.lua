@@ -191,7 +191,7 @@ Data.itemsIncreaseExpertise = {
     [236341] = 1,
     [237275] = 1,
     [237512] = 1,
-},
+}
 Data.itemsTimeworn = {
   	[233496] = true,
 	[233505] = true,
@@ -313,14 +313,14 @@ Data.itemsTimeworn = {
     [234962] = true,
     [234963] = true,
     [235047] = true,
-},
+}
 Data.itemsTimewornExpertise = {
     [234018] = 1,
     [234022] = 1,
     [234027] = 1,
     [234031] = 1,
     [234035] = 1,
-},
+}
 Data.BuffCritReductionAll = {
     [430432] = 5, -- battle hardened
     [403816] = 6, -- metamorphosis
