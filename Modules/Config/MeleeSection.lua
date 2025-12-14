@@ -92,7 +92,7 @@ function _Config:LoadMeleeSection()
                 desc = function() return i18n("Shows/Hides the expertise value.") end,
                 width = 1.5,
                 hidden = function()
-                    return (not (ECS.IsWotlk or ECS.IsSoD))
+                    return ECS.IsClassic
                 end,
                 disabled = function() return (not ExtendedCharacterStats.profile.melee.display); end,
                 get = function () return ExtendedCharacterStats.profile.melee.expertise.display; end,
