@@ -231,6 +231,33 @@ end
 ---@return number
 function Data:GetExpertise()
     local expertise, _ = GetExpertise()
+
+    if ECS.IsSoD then
+        -- count timeworn items
+        local timeworn = 0
+        for i = 1, 18 do
+            local id, _ = GetInventoryItemID("player", i)
+            if Data.itemsTimeworn[id] then
+                timeworn = timeworn + 1
+            end
+        end
+
+        for i = 1, 18 do
+            local id, _ = GetInventoryItemID("player", i)
+            expertise = expertise + (Data.itemsIncreaseExpertise[id] or 0)
+            expertise = expertise + timeworn * (Data.itemsTimewornExpertise[id] or 0)
+            if classId == Data.DRUID then
+                local itemLink = GetInventoryItemLink("player", i)
+                if itemLink then
+                    local enchant = DataUtils:GetEnchantFromItemLink(itemLink)
+                    if enchant and enchant == Data.enchantIds.ANIMALISTIC_EXPERTISE then
+                        expertise = expertise + 5
+                    end
+                end
+            end
+        end
+    end
+
     return DataUtils:Round(expertise, 0)
 end
 
@@ -276,4 +303,3 @@ function Data:GetMeleeHasteBonus()
     local hasteBonus = GetCombatRatingBonus(CR_HASTE_MELEE)
     return DataUtils:Round(hasteBonus, 2) .. "%"
 end
-
