@@ -194,7 +194,7 @@ Data.itemsIncreaseExpertise = {
 },
 Data.itemsTimeworn = {
   	[233496] = true,
-	  [233505] = true,
+	[233505] = true,
   	[233506] = true,
     [233514] = true,
     [233516] = true,
@@ -315,11 +315,11 @@ Data.itemsTimeworn = {
     [235047] = true,
 },
 Data.itemsTimewornExpertise = {
-    [234018] = true,
-    [234022] = true,
-    [234027] = true,
-    [234031] = true,
-    [234035] = true,
+    [234018] = 1,
+    [234022] = 1,
+    [234027] = 1,
+    [234031] = 1,
+    [234035] = 1,
 },
 Data.BuffCritReductionAll = {
     [430432] = 5, -- battle hardened
