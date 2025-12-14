@@ -56,6 +56,7 @@ function EventHandler.HandleOnEvent(self,event, ...)
                 event == "UNIT_ATTACK_SPEED" or
                 event == "UNIT_AURA" or
                 event == "UNIT_DAMAGE" or
+                (event == "UNIT_MAXPOWER" and args[2] == "MANA") or
                 event == "UNIT_SPELL_HASTE" or
                 event == "UNIT_STATS" or
                 event == "UNIT_RANGEDDAMAGE" or
