@@ -535,6 +535,7 @@ stds.ecs = {
         "C_Spell.DoesSpellExist",
         "C_Spell.IsSpellDataCached",
         "C_Spell.RequestLoadSpellData",
+        "C_SpellBook.IsSpellKnown",
         "C_StorePublic.DoesGroupHavePurchaseableProducts",
         "C_StorePublic.IsDisabledByParentalControls",
         "C_StorePublic.IsEnabled",
