@@ -88,6 +88,7 @@ function Stats.CreateWindow()
         if OutfitterFrame ~= nil and OutfitterButtonFrame ~= nil then
             OutfitterFrame:SetPoint("TOPLEFT", OutfitterButtonFrame  , "TOPRIGHT", -34 + ExtendedCharacterStats.general.window.width, -38)
         end
+        Stats.UpdateInformation()
     end)
     mainFrame:SetScript("OnHide", function ()
         toggleButton:SetText("ECS >")
@@ -102,7 +103,8 @@ function Stats.CreateWindow()
         end
 
         if ECS.IsSoD then
-            C_Timer.After(0.3, function ()
+            -- next frame
+            C_Timer.After(0, function ()
                 if EngravingFrame then
                     if EngravingFrame:IsShown() then
                         mainFrame:ClearAllPoints()
@@ -246,8 +248,8 @@ _CreateStatInfos = function()
     end
 
     category = profile.defense
-    _CreateStatInfo(category, category.armor, category.critImmunity, category.critReduction, category.avoidance, category.defenseRating,
-            category.defense, category.blockChance, category.blockValue, category.parry, category.dodge, category.resilience)
+    _CreateStatInfo(category, category.armor, category.meleeCritReduction, category.rangedCritReduction, category.spellCritReduction, category.avoidance, category.avoidanceBoss,
+            category.defenseRating, category.defense, category.blockChance, category.blockValue, category.parry, category.dodge, category.resilience)
 
     category = profile.regen
     _CreateStatInfo(category, category.mp5Items, category.mp5Spirit, category.mp5Buffs, category.mp5Casting, category.mp5NotCasting)
