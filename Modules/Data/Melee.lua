@@ -233,39 +233,17 @@ function Data:GetExpertise()
     local expertise, _ = GetExpertise()
 
     if ECS.IsSoD then
-        for _, itemId in pairs(Data.itemsIds.INCREASED_EXPERTISE_2) do
-            if C_Item.IsEquippedItem(itemId) then
-                expertise = expertise + 2
-            end
+        local timeworn = 0
+        for i = 1, 18 do
+            id, _ = GetInventoryItemID("player", i)
+            timeworn = timeworn + (Data.itemsTimeworn[id] or 0)
         end
 
-        for _, itemId in pairs(Data.itemsIds.INCREASED_EXPERTISE_1) do
-            if C_Item.IsEquippedItem(itemId) then
-                expertise = expertise + 1
-            end
-        end
-
-        for _, itemId in pairs(Data.itemsIds.TIMEWORN_EXPERTISE) do
-            if C_Item.IsEquippedItem(itemId) then
-                for _, t in pairs(Data.itemsIds.TIMEWORN) do
-                    if C_Item.IsEquippedItem(t) then
-                        expertise = expertise + 1
-                    end
-                end
-                break -- no need to check for other rings, you can have only one
-            end
-        end
-
-        if Data:HasSetBonusIncreasedExpertise2() then
-            expertise = expertise + 2
-        end
-
-        if Data:HasSetBonusIncreasedExpertise5() then
-            expertise = expertise + 5
-        end
-
-        if classId == Data.DRUID then
-            for i = 1, 18 do
+        for i = 1, 18 do
+            id, _ = GetInventoryItemID("player", i)
+            expertise = expertise + (Data.itemsIncreaseExpertise[id] or 0)
+            expertise = expertise + timeworn * (Data.itemsTimewornExpertise[id] or 0)
+            if classId == Data.DRUID then
                 local itemLink = GetInventoryItemLink("player", i)
                 if itemLink then
                     local enchant = DataUtils:GetEnchantFromItemLink(itemLink)
