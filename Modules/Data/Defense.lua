@@ -242,8 +242,7 @@ end
 function Data:GetBlockValue()
     local blockValue = 0
     if C_SpellBook.IsSpellKnown(107) and C_PaperDollInfo.OffhandHasShield() then
-        local enchantBonus = _Defense:GetEnchantsBlockValue()
-        local blockValue = GetShieldBlock() + enchantBonus
+        blockValue = blockValue + GetShieldBlock() + _Defense:GetEnchantsBlockValue()
     end
     return DataUtils:Round(blockValue, 2)
 end
