@@ -236,14 +236,14 @@ function Data:GetExpertise()
         -- count timeworn items
         local timeworn = 0
         for i = 1, 18 do
-            id, _ = GetInventoryItemID("player", i)
+            local id, _ = GetInventoryItemID("player", i)
             if Data.itemsTimeworn[id] then
                 timeworn = timeworn + 1
             end
         end
 
         for i = 1, 18 do
-            id, _ = GetInventoryItemID("player", i)
+            local id, _ = GetInventoryItemID("player", i)
             expertise = expertise + (Data.itemsIncreaseExpertise[id] or 0)
             expertise = expertise + timeworn * (Data.itemsTimewornExpertise[id] or 0)
             if classId == Data.DRUID then
