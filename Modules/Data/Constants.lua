@@ -193,9 +193,9 @@ Data.itemsIncreaseExpertise = {
     [237512] = 1,
 }
 Data.itemsTimeworn = {
-  	[233496] = true,
-	[233505] = true,
-  	[233506] = true,
+    [233496] = true,
+    [233505] = true,
+    [233506] = true,
     [233514] = true,
     [233516] = true,
     [233517] = true,
