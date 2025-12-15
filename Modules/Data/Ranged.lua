@@ -36,7 +36,7 @@ function Data:GetRangedAttackPowerVsCreature(creature)
                 if id == 11406 then dmg = dmg + 265 end -- Elixir of Demonslaying
             end
         end
-    end
+    until (not aura)
     for i = 1, 18 do
         -- items
         local id, _ = GetInventoryItemID("player", i)

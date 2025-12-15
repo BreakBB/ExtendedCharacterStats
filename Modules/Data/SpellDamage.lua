@@ -30,7 +30,7 @@ function Data:GetSpellDamageVsCreature(creature)
                 spellDmg = spellDmg + (Data.buffsUndeadSpellPower[aura.spellId] or 0)
             end
         end
-    end
+    until (not aura)
     for i = 1, 18 do
         -- items
         local id, _ = GetInventoryItemID("player", i)
