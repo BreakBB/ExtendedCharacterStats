@@ -57,7 +57,7 @@ function Data:GetSpellPowerVsCreature(creature)
             end
         end
     end
-    
+
     local modifier = _SpellDamage:GetGeneralTalentModifier()
     spellDmg = spellDmg * (1 + (modifier / 100))
     return DataUtils:Round(spellDmg, 0)

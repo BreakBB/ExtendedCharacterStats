@@ -30,9 +30,9 @@ function Data:GetRangedAttackPowerVsCreature(creature)
         j = j + 1
         if aura and aura.spellId then
             if creature == Data.UNDEAD then
-                if id == 58026 then dmg = dmg + 12000 end -- Blessing of the Crusade
+                if aura.spellId == 58026 then dmg = dmg + 12000 end -- Blessing of the Crusade
             elseif creature == Data.DEMON then
-                if id == 11406 then dmg = dmg + 265 end -- Elixir of Demonslaying
+                if aura.spellId == 11406 then dmg = dmg + 265 end -- Elixir of Demonslaying
             end
         end
     until (not aura)

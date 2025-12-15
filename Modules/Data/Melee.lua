@@ -27,7 +27,7 @@ function Data:GetMeleeAttackPowerVsCreature(creature)
             if creature == Data.UNDEAD then
                 dmg = dmg + (Data.buffsUndeadAttackPower[aura.spellId] or 0)
             elseif creature == Data.DEMON then
-                if id == 11406 then dmg = dmg + 265 end -- Elixir of Demonslaying
+                if aura.spellId == 11406 then dmg = dmg + 265 end -- Elixir of Demonslaying
             end
         end
     until (not aura)
