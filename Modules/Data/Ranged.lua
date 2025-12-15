@@ -24,13 +24,12 @@ end
 function Data:GetRangedAttackPowerVsCreature(creature)
     local dmg = 0
     -- auras
-    local i = 1
+    local j = 1
     repeat
-        local aura = C_UnitAuras.GetAuraDataByIndex("player", i, "HELPFUL")
-        i = i + 1
+        local aura = C_UnitAuras.GetAuraDataByIndex("player", j, "HELPFUL")
+        j = j + 1
         if aura and aura.spellId then
             if creature == Data.UNDEAD then
-                dmg = dmg + (Data.itemsUndeadSlaying[itemLink] or 0)
                 if id == 58026 then dmg = dmg + 12000 end -- Blessing of the Crusade
             elseif creature == Data.DEMON then
                 if id == 11406 then dmg = dmg + 265 end -- Elixir of Demonslaying
@@ -57,14 +56,14 @@ function Data:GetRangedAttackPowerVsCreature(creature)
             local enchant = DataUtils:GetEnchantFromItemLink(itemLink)
             if enchant then
                 if creature == Data.UNDEAD then
-                    dmg = dmg + (Data.enchantsUndeadSlayer[itemLink] or 0)
+                    dmg = dmg + (Data.enchantsUndeadSlayer[enchant] or 0)
                     if enchant and enchant == Data.enchantIds.UNDEAD_DEMON_SLAYER_150 then dmg = dmg + 150 end
                 elseif creature == Data.DEMON then
                     if enchant and enchant == Data.enchantIds.UNDEAD_DEMON_SLAYER_150 then dmg = dmg + 150 end
                 elseif creature == Data.BEAST then
-                    dmg = dmg + (Data.enchantsBeastSlayer[itemLink] or 0)
+                    dmg = dmg + (Data.enchantsBeastSlayer[enchant] or 0)
                 elseif creature == Data.ELEMENTAL then
-                    dmg = dmg + (Data.enchantsElementalSlayer[itemLink] or 0)
+                    dmg = dmg + (Data.enchantsElementalSlayer[enchant] or 0)
                     if enchant and enchant == Data.enchantIds.LESSER_ELEMENTAL_SLAYER then dmg = dmg + 6 end
                 end
             end

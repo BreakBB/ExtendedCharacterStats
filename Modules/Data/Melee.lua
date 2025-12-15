@@ -8,10 +8,6 @@ local Utils = ECSLoader:ImportModule("Utils")
 local _Melee = {}
 local _, _, classId = UnitClass("player")
 
-local w1Id, _ = GetInventoryItemID("player", 16)
-local w2Id, _ = GetInventoryItemID("player", 17)
-local weaponsId = {w1Id, w2Id}
-
 ---@return string
 function Data:GetMeleeAttackPower()
     local melee, posBuff, negBuff = UnitAttackPower("player")
@@ -23,14 +19,13 @@ end
 function Data:GetMeleeAttackPowerVsCreature(creature)
     local dmg = 0
     -- auras
-    local i = 1
+    local j = 1
     repeat
-        local aura = C_UnitAuras.GetAuraDataByIndex("player", i, "HELPFUL")
-        i = i + 1
+        local aura = C_UnitAuras.GetAuraDataByIndex("player", j, "HELPFUL")
+        j = j + 1
         if aura and aura.spellId then
             if creature == Data.UNDEAD then
-                dmg = dmg + (Data.itemsUndeadSlaying[itemLink] or 0)
-                dmg = dmg + (Data.itemsUndeadAttackPower[itemLink] or 0)
+                dmg = dmg + (Data.buffsUndeadAttackPower[aura.spellId] or 0)
             elseif creature == Data.DEMON then
                 if id == 11406 then dmg = dmg + 265 end -- Elixir of Demonslaying
             end
@@ -56,14 +51,14 @@ function Data:GetMeleeAttackPowerVsCreature(creature)
             local enchant = DataUtils:GetEnchantFromItemLink(itemLink)
             if enchant then
                 if creature == Data.UNDEAD then
-                    dmg = dmg + (Data.enchantsUndeadSlayer[itemLink] or 0)
+                    dmg = dmg + (Data.enchantsUndeadSlayer[enchant] or 0)
                     if enchant and enchant == Data.enchantIds.UNDEAD_DEMON_SLAYER_150 then dmg = dmg + 150 end
                 elseif creature == Data.DEMON then
                     if enchant and enchant == Data.enchantIds.UNDEAD_DEMON_SLAYER_150 then dmg = dmg + 150 end
                 elseif creature == Data.BEAST then
-                    dmg = dmg + (Data.enchantsBeastSlayer[itemLink] or 0)
+                    dmg = dmg + (Data.enchantsBeastSlayer[enchant] or 0)
                 elseif creature == Data.ELEMENTAL then
-                    dmg = dmg + (Data.enchantsElementalSlayer[itemLink] or 0)
+                    dmg = dmg + (Data.enchantsElementalSlayer[enchant] or 0)
                     if enchant and enchant == Data.enchantIds.LESSER_ELEMENTAL_SLAYER then dmg = dmg + 6 end
                 end
             end

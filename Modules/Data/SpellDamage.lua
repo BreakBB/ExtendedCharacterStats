@@ -18,13 +18,13 @@ end
 
 ---@param creature number
 ---@return number
-function Data:GetSpellDamageVsCreature(creature)
+function Data:GetSpellPowerVsCreature(creature)
     local spellDmg = 0
     -- auras
-    local i = 1
+    local j = 1
     repeat
-        local aura = C_UnitAuras.GetAuraDataByIndex("player", i, "HELPFUL")
-        i = i + 1
+        local aura = C_UnitAuras.GetAuraDataByIndex("player", j, "HELPFUL")
+        j = j + 1
         if aura and aura.spellId then
             if creature == Data.UNDEAD then
                 spellDmg = spellDmg + (Data.buffsUndeadSpellPower[aura.spellId] or 0)
@@ -47,12 +47,12 @@ function Data:GetSpellDamageVsCreature(creature)
             local enchant = DataUtils:GetEnchantFromItemLink(itemLink)
             if enchant then
                 if creature == Data.UNDEAD then
-                    spellDmg = spellDmg + (Data.enchantsUndeadSlayer[itemLink] or 0)
-                    spellDmg = spellDmg + (Data.enchantsIncreaseSpellDamageUndead[itemLink] or 0)
+                    spellDmg = spellDmg + (Data.enchantsUndeadSlayer[enchant] or 0)
+                    spellDmg = spellDmg + (Data.enchantsIncreaseSpellDamageUndead[enchant] or 0)
                 elseif creature == Data.BEAST then
-                    spellDmg = spellDmg + (Data.enchantsBeastSlayer[itemLink] or 0)
+                    spellDmg = spellDmg + (Data.enchantsBeastSlayer[enchant] or 0)
                 elseif creature == Data.ELEMENTAL then
-                    spellDmg = spellDmg + (Data.enchantsElementalSlayer[itemLink] or 0)
+                    spellDmg = spellDmg + (Data.enchantsElementalSlayer[enchant] or 0)
                 end
             end
         end
