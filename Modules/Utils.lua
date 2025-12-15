@@ -1,6 +1,8 @@
 ---@class Utils
 local Utils = ECSLoader:CreateModule("Utils")
 
+local GetAddOnInfo = C_AddOns and C_AddOns.GetAddOnInfo or GetAddOnInfo
+
 ---@class table<string, EquipSlot>
 Utils.CHAR_EQUIP_SLOTS = {
     ["Head"] = "HeadSlot",
@@ -12,7 +14,7 @@ Utils.CHAR_EQUIP_SLOTS = {
     ["Tabard"] = "TabardSlot",
     ["Wrist"] = "WristSlot",
     ["Hands"] = "HandsSlot",
-    ["Wairst"] = "WaistSlot",
+    ["Waist"] = "WaistSlot",
     ["Legs"] = "LegsSlot",
     ["Feet"] = "FeetSlot",
     ["Finger1"] = "Finger0Slot",

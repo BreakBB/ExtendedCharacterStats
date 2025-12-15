@@ -40,35 +40,42 @@ function _Config:LoadDefenseSection()
                     Stats.RebuildStatInfos()
                 end,
             },
-            critImmunity = {
+            meleeCritReduction = {
                 type = "toggle",
-                order = 1.7,
-                name = function() return i18n("Crit Immune") end,
-                desc = function() return i18n("Shows/Hides the percentage of being crit immune.") end,
+                order = 1.81,
+                name = function() return i18n("Melee Crit Reduction") end,
+                desc = function() return i18n("Shows/Hides the reduction percentage of being critically hit by melee attacks.") end,
                 width = 1.5,
-                hidden = function()
-                    return (not ECS.IsWotlk)
-                end,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
-                get = function () return ExtendedCharacterStats.profile.defense.critImmunity.display; end,
+                get = function () return ExtendedCharacterStats.profile.defense.meleeCritReduction.display; end,
                 set = function (_, value)
-                    ExtendedCharacterStats.profile.defense.critImmunity.display = value
+                    ExtendedCharacterStats.profile.defense.meleeCritReduction.display = value
                     Stats.RebuildStatInfos()
                 end,
             },
-            critReduction = {
+            rangedCritReduction = {
                 type = "toggle",
-                order = 1.8,
-                name = function() return i18n("Crit Reduction") end,
-                desc = function() return i18n("Shows/Hides the reduction percentage of being critically hit.") end,
+                order = 1.82,
+                name = function() return i18n("Ranged Crit Reduction") end,
+                desc = function() return i18n("Shows/Hides the reduction percentage of being critically hit by ranged attacks.") end,
                 width = 1.5,
-                hidden = function()
-                    return (not ECS.IsWotlk)
-                end,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
-                get = function () return ExtendedCharacterStats.profile.defense.critReduction.display; end,
+                get = function () return ExtendedCharacterStats.profile.defense.rangedCritReduction.display; end,
                 set = function (_, value)
-                    ExtendedCharacterStats.profile.defense.critReduction.display = value
+                    ExtendedCharacterStats.profile.defense.rangedCritReduction.display = value
+                    Stats.RebuildStatInfos()
+                end,
+            },
+            spellCritReduction = {
+                type = "toggle",
+                order = 1.83,
+                name = function() return i18n("Spell Crit Reduction") end,
+                desc = function() return i18n("Shows/Hides the reduction percentage of being critically hit by spells.") end,
+                width = 1.5,
+                disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
+                get = function () return ExtendedCharacterStats.profile.defense.spellCritReduction.display; end,
+                set = function (_, value)
+                    ExtendedCharacterStats.profile.defense.spellCritReduction.display = value
                     Stats.RebuildStatInfos()
                 end,
             },
@@ -82,6 +89,19 @@ function _Config:LoadDefenseSection()
                 get = function () return ExtendedCharacterStats.profile.defense.avoidance.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.defense.avoidance.display = value
+                    Stats.RebuildStatInfos()
+                end,
+            },
+            avoidanceBoss = {
+                type = "toggle",
+                order = 1.86,
+                name = function() return i18n("Avoidance (Lvl +3)") end,
+                desc = function() return i18n("Shows/Hides the total avoidance (Lvl +3).") end,
+                width = 1.5,
+                disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
+                get = function () return ExtendedCharacterStats.profile.defense.avoidanceBoss.display; end,
+                set = function (_, value)
+                    ExtendedCharacterStats.profile.defense.avoidanceBoss.display = value
                     Stats.RebuildStatInfos()
                 end,
             },

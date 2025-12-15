@@ -33,14 +33,19 @@ Data.UNCATEGORIZED = 10
 Data.setNames = {
     AUGURS_REGALIA = "Augur's Regalia",
     BATTLEGEAR_OF_MIGHT = "Battlegear of Might",
+    BLOODSOUL_EMBRACE = "Bloodsoul Embrace",
     CHAIN_OF_THE_SCARLET_CRUSADE = "Chain of the Scarlet Crusade",
+    FEL_IRON_CHAIN = "Fel Iron Chain",
     FREETHINKERS_ARMOR = "Freethinker's Armor",
+    GREEN_DRAGON_MAIL = "Green Dragon Mail",
     HARUSPEXS_GARB = "Haruspex's Garb",
+    LIVING_GREEN_DRAGON_MAIL = "Living Green Dragon Mail",
     STORMRAGE_RAIMENT = "Stormrage Raiment",
     TEN_STORMS = "The Ten Storms",
     THE_EARTHSHATTERER = "The Earthshatterer",
     THE_TWIN_BLADES_OF_AZZINOTH = "The Twin Blades of Azzinoth",
     VESTMENTS_OF_TRANSCENDENCE = "Vestments of Transcendence",
+    WINDHAWK_ARMOR = "Windhawk Armor",
 }
 
 Data.enchantIds = {
@@ -210,4 +215,9 @@ Data.buffsUndeadSpellPower = { -- spell
     [24833] = 400, -- holy mightstone
     [28488] = 15, -- Scourgebane Infusion
     [60597] = 12000, -- Blessing of the Crusade
+}
+Data.BuffCritReductionAll = {
+    [430432] = 5, -- battle hardened
+    [403816] = 6, -- metamorphosis
+    [428741] = 5, -- molten armor
 }

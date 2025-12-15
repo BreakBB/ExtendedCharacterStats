@@ -307,7 +307,7 @@ function _MP5.GetMP5FromRunes()
     local finger1Rune = DataUtils.GetRuneForEquipSlot(Utils.CHAR_EQUIP_SLOTS.Finger1)
     local finger2Rune = DataUtils.GetRuneForEquipSlot(Utils.CHAR_EQUIP_SLOTS.Finger2)
 
-    if (finger1Rune == 51509 or finger2Rune == 51509) then
+    if (finger1Rune == 7639 or finger2Rune == 7639) then
         mod = mod + 5 -- 5 MP5 from Meditation Specialization Rune
     end
 
