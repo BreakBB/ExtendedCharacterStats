@@ -16,6 +16,53 @@ function Data:GetSpellDamage(school)
     return DataUtils:Round(spellDmg, 0)
 end
 
+---@param creature number
+---@return number
+function Data:GetSpellPowerVsCreature(creature)
+    local spellDmg = 0
+    -- auras
+    local j = 1
+    repeat
+        local aura = C_UnitAuras.GetAuraDataByIndex("player", j, "HELPFUL")
+        j = j + 1
+        if aura and aura.spellId then
+            if creature == Data.UNDEAD then
+                spellDmg = spellDmg + (Data.buffsUndeadSpellPower[aura.spellId] or 0)
+            end
+        end
+    until (not aura)
+    for i = 1, 18 do
+        -- items
+        local id, _ = GetInventoryItemID("player", i)
+        if creature == Data.UNDEAD then
+            spellDmg = spellDmg + (Data.itemsIncreaseSpellDamageUndead[id] or 0)
+            spellDmg = spellDmg + (Data.itemsIncreaseSpellDamageUndeadDemon[id] or 0)
+        elseif creature == Data.DEMON then
+            if id == 30787 then spellDmg = spellDmg + 185 end -- Illidari-Bane Mageblade
+            spellDmg = spellDmg + (Data.itemsIncreaseSpellDamageUndeadDemon[id] or 0)
+        end
+        -- enchants
+        local itemLink = GetInventoryItemLink("player", i)
+        if itemLink then
+            local enchant = DataUtils:GetEnchantFromItemLink(itemLink)
+            if enchant then
+                if creature == Data.UNDEAD then
+                    spellDmg = spellDmg + (Data.enchantsUndeadSlayer[enchant] or 0)
+                    spellDmg = spellDmg + (Data.enchantsIncreaseSpellDamageUndead[enchant] or 0)
+                elseif creature == Data.BEAST then
+                    spellDmg = spellDmg + (Data.enchantsBeastSlayer[enchant] or 0)
+                elseif creature == Data.ELEMENTAL then
+                    spellDmg = spellDmg + (Data.enchantsElementalSlayer[enchant] or 0)
+                end
+            end
+        end
+    end
+
+    local modifier = _SpellDamage:GetGeneralTalentModifier()
+    spellDmg = spellDmg * (1 + (modifier / 100))
+    return DataUtils:Round(spellDmg, 0)
+end
+
 ---@return number
 function _SpellDamage:GetGeneralTalentModifier()
     local mod = 0
