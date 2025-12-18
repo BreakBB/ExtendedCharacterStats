@@ -10,22 +10,19 @@ local _MP5 = {}
 local _, _, classId = UnitClass("player")
 
 ---@return number
-function Data:GetValueFromAuraTooltip(i,type)
+function Data:GetValueFromAuraTooltip(index,type)
     if not ECS.scanningTooltip then
         ECS.scanningTooltip = CreateFrame("GameTooltip", "scanningTooltip", nil, "GameTooltipTemplate")
         ECS.scanningTooltip:SetOwner(WorldFrame, "ANCHOR_NONE")
     end
 
     ECS.scanningTooltip:ClearLines()
-    ECS.scanningTooltip:SetUnitAura("player",i,type)
+    ECS.scanningTooltip:SetUnitAura("player",index, type)
     local region = select(5,ECS.scanningTooltip:GetRegions())
     if region and region:GetObjectType() == "FontString" then
         local tooltip = region:GetText()
         if tooltip then
-            local n = string.match(tooltip, '%d[%d,.]*')
-            if n then
-                return tonumber(n)
-            end
+            return tonumber(string.match(tooltip, '%d[%d,.]*'))
         end
     end
     return 0
@@ -52,18 +49,18 @@ function _MP5:GetMP5ValueOnItems()
             end
             local enchant = DataUtils:GetEnchantFromItemLink(itemLink)
             if enchant then
-                mp5 = mp5 + (Data.enchantsMP5[enchant] or 0)
+                mp5 = mp5 + (Data.Enchant.MP5[enchant] or 0)
             end
             -- Check for socketed gems (TODO: check for socket bonus)
             local gem1, gem2, gem3 = DataUtils:GetSocketedGemsFromItemLink(itemLink)
             if gem1 then
-                mp5 = mp5 + (Data.gemsMP5[gem1] or 0)
+                mp5 = mp5 + (Data.Gem.MP5[gem1] or 0)
             end
             if gem2 then
-                mp5 = mp5 + (Data.gemsMP5[gem2] or 0)
+                mp5 = mp5 + (Data.Gem.MP5[gem2] or 0)
             end
             if gem3 then
-                mp5 = mp5 + (Data.gemsMP5[gem3] or 0)
+                mp5 = mp5 + (Data.Gem.MP5[gem3] or 0)
             end
         end
     end
@@ -72,7 +69,7 @@ function _MP5:GetMP5ValueOnItems()
     local hasMainEnchant, _, _, mainHandEnchantID = GetWeaponEnchantInfo()
     mainHandEnchantID = tostring(mainHandEnchantID)
     if (hasMainEnchant) then
-        mp5 = mp5 + (Data.enchantsMP5[mainHandEnchantID] or 0)
+        mp5 = mp5 + (Data.Enchant.MP5[mainHandEnchantID] or 0)
     end
 
     return mp5
@@ -127,37 +124,36 @@ function Data:GetMP5FromBuffs()
     local i = 1
     repeat
         local aura = C_UnitAuras.GetBuffDataByIndex("player", i)
-        i = i + 1
         if aura and aura.spellId then
-            bonus = bonus + (Data.BuffsMP5[aura.spellId] or 0)
-            bonus = bonus + (Data.BuffsPercentageMp5[aura.spellId] or 0) * maxmana
-            periodic = periodic + (Data.BuffsPeriodicallyGiveMana[aura.spellId] or 0)
-            mod = mod + (Data.BuffsAllowCastingManaRegeneration[aura.spellId] or 0) -- assuming buffs stacking, to be investigated
-            if Data.BuffsIsLightningShield[aura.spellId] and Data:IsSetBonusActive(Data.setNames.THE_EARTHSHATTERER, 8) then
+            bonus = bonus + (Data.Aura.MP5[aura.spellId] or 0)
+            bonus = bonus + (Data.Aura.PercentageMp5[aura.spellId] or 0) * maxmana
+            periodic = periodic + (Data.Aura.PeriodicallyGiveMana[aura.spellId] or 0)
+            mod = mod + (Data.Aura.AllowCastingManaRegeneration[aura.spellId] or 0) -- assuming buffs stacking, to be investigated
+            if Data.Aura.IsLightningShield[aura.spellId] and Data:IsSetBonusActive(Data.setNames.THE_EARTHSHATTERER, 8) then
                 bonus = bonus + 15 -- 15 MP5 from Shaman T3 8 piece bonus when Lightning Shield is active
             end
-            if Data.BuffsMP5Tooltip[aura.spellId] then
-                bonus = bonus + Data:GetValueFromAuraTooltip(i,"HELPFUL")
-            end
-            if Data.BuffsPeriodicallyGiveManaTooltip[aura.spellId] then
-                periodic = periodic + Data:GetValueFromAuraTooltip(i,"HELPFUL")
-            end
+           if Data.Aura.MP5Tooltip[aura.spellId] then
+               bonus = bonus + Data:GetValueFromAuraTooltip(i, "HELPFUL")
+           end
+           if Data.Aura.PeriodicallyGiveManaTooltip[aura.spellId] then
+               periodic = periodic + Data:GetValueFromAuraTooltip(i, "HELPFUL")
+           end
             if ECS.IsWotlk then
                 if aura.spellId == 64999 then
                     bonus = bonus + 85 * aura.applications -- Meteoric Inspiration
                 end
             end
         end
+        i = i + 1
     until (not aura)
     i = 1
     repeat
         local aura = C_UnitAuras.GetDebuffDataByIndex("player", i)
-        i = i + 1
         if aura and aura.spellId then
-            bonus = bonus + (Data.BuffsPercentageMp5[aura.spellId] or 0) * maxmana
+            bonus = bonus + (Data.Aura.PercentageMp5[aura.spellId] or 0) * maxmana
         end
+        i = i + 1
     until (not aura)
-
     return min(mod,1), bonus, periodic
 end
 

@@ -33,8 +33,8 @@ function _Defense:GetCritReduction()
         local aura = C_UnitAuras.GetAuraDataByIndex("player", i, "HELPFUL")
         i = i + 1
         if aura and aura.spellId then
-            buffBonus = buffBonus + (Data.BuffsCritReductionAll[aura.spellId] or 0)
-            meleeCritReduction = meleeCritReduction + (Data.BuffsCritReductionMelee[aura.spellId] or 0)
+            buffBonus = buffBonus + (Data.Aura.CritReductionAll[aura.spellId] or 0)
+            meleeCritReduction = meleeCritReduction + (Data.Aura.CritReductionMelee[aura.spellId] or 0)
         end
     until (not aura)
     i = 1
@@ -42,9 +42,9 @@ function _Defense:GetCritReduction()
         local aura = C_UnitAuras.GetAuraDataByIndex("player", i, "HARMFUL")
         i = i + 1
         if aura and aura.spellId then
-            buffBonus = buffBonus + (Data.BuffsCritReductionAll[aura.spellId] or 0)
-            meleeCritReduction = meleeCritReduction + (Data.BuffsCritReductionMelee[aura.spellId] or 0)
-            spellCritReduction = spellCritReduction + (Data.BuffsCritReductionSpell[aura.spellId] or 0)
+            buffBonus = buffBonus + (Data.Aura.CritReductionAll[aura.spellId] or 0)
+            meleeCritReduction = meleeCritReduction + (Data.Aura.CritReductionMelee[aura.spellId] or 0)
+            spellCritReduction = spellCritReduction + (Data.Aura.CritReductionSpell[aura.spellId] or 0)
             if ECS.IsWotlk and aura.spellId == 12579 then
                 spellCritReduction = spellCritReduction - 1 * aura.applications -- Winter's Chill
             end
