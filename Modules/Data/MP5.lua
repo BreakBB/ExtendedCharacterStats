@@ -131,12 +131,12 @@ function Data:GetMP5FromBuffs()
             if Data.Aura.IsLightningShield[aura.spellId] and Data:IsSetBonusActive(Data.setNames.THE_EARTHSHATTERER, 8) then
                 bonus = bonus + 15 -- 15 MP5 from Shaman T3 8 piece bonus when Lightning Shield is active
             end
-           if Data.Aura.MP5Tooltip[aura.spellId] then
-               bonus = bonus + Data:GetValueFromAuraTooltip(i, "HELPFUL")
-           end
-           if Data.Aura.PeriodicallyGiveManaTooltip[aura.spellId] then
-               periodic = periodic + Data:GetValueFromAuraTooltip(i, "HELPFUL")
-           end
+            if Data.Aura.MP5Tooltip[aura.spellId] then
+                bonus = bonus + Data.Aura.MP5Tooltip[aura.spellId] * Data:GetValueFromAuraTooltip(i, "HELPFUL")
+            end
+            if Data.Aura.PeriodicallyGiveManaTooltip[aura.spellId] then
+                periodic = periodic + Data.Aura.PeriodicallyGiveManaTooltip[aura.spellId] * Data:GetValueFromAuraTooltip(i, "HELPFUL")
+            end
             if ECS.IsWotlk then
                 if aura.spellId == 64999 then
                     bonus = bonus + 85 * aura.applications -- Meteoric Inspiration
