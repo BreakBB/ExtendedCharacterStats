@@ -218,7 +218,7 @@ Data.Aura.MP5 = {
     [1220685] = 28, -- Totemic Power
 }
 Data.Aura.MP5Tooltip = {
-    [5677] = (ECS.IsWotlk and 5/2 or nil) -- Mana Spring rank 1
+    [5677] = (ECS.IsWotlk and 5/2 or nil), -- Mana Spring rank 1
     [10491] = (ECS.IsWotlk and 5/2 or nil), -- Mana Spring rank 2
     [10493] = (ECS.IsWotlk and 5/2 or nil), -- Mana Spring rank 3
     [10494] = (ECS.IsWotlk and 5/2 or nil), -- Mana Spring rank 4
