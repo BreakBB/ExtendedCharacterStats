@@ -462,7 +462,7 @@ local statTranslations = {
         ["esMX"] = "Sanación",
         ["ptBR"] = "Poder de cura"
     },
-    ["Arcane Damage"] = {
+    ["Arcane Spell Damage"] = {
         ["enUS"] = true,
         ["deDE"] = "Arkanschaden",
         ["frFR"] = "Dégats des arcanes",
@@ -512,7 +512,7 @@ local statTranslations = {
         ["esMX"] = "Fallo arcano (Niv. + 3)",
         ["ptBR"] = "Erro arcano (Nív. + 3)"
     },
-    ["Fire Damage"] = {
+    ["Fire Spell Damage"] = {
         ["enUS"] = true,
         ["deDE"] = "Feuerschaden",
         ["frFR"] = "Dégats du feu",
@@ -562,7 +562,7 @@ local statTranslations = {
         ["esMX"] = "Fallo de fuego (Niv. + 3)",
         ["ptBR"] = "Erro de fogo (Nív. + 3)"
     },
-    ["Frost Damage"] = {
+    ["Frost Spell Damage"] = {
         ["enUS"] = true,
         ["deDE"] = "Frostschaden",
         ["frFR"] = "Dégats du givre",
@@ -612,7 +612,7 @@ local statTranslations = {
         ["esMX"] = "Fallo de escarcha (Niv. + 3)",
         ["ptBR"] = "Erro de gelo (Nív. + 3)"
     },
-    ["Holy Damage"] = {
+    ["Holy Spell Damage"] = {
         ["enUS"] = true,
         ["deDE"] = "Heiligschaden",
         ["frFR"] = "Dégats du sacré",
@@ -662,7 +662,7 @@ local statTranslations = {
         ["esMX"] = "Fallo sagrado (Niv. + 3)",
         ["ptBR"] = "Erro sagrado (Nív. + 3)"
     },
-    ["Nature Damage"] = {
+    ["Nature Spell Damage"] = {
         ["enUS"] = true,
         ["deDE"] = "Naturschaden",
         ["frFR"] = "Dégats de la nature",
@@ -712,7 +712,7 @@ local statTranslations = {
         ["esMX"] = "Fallo de la naturaleza (Niv. + 3)",
         ["ptBR"] = "Erro de natureza (Nív. + 3)"
     },
-    ["Physical Damage"] = {
+    ["Physical Spell Damage"] = {
         ["enUS"] = true,
         ["deDE"] = "Physischer Schaden",
         ["frFR"] = "Dégats physiques",
@@ -762,7 +762,7 @@ local statTranslations = {
         ["esMX"] = "Fallo físico (Niv. + 3)",
         ["ptBR"] = "Erro físico (Nív. + 3)"
     },
-    ["Shadow Damage"] = {
+    ["Shadow Spell Damage"] = {
         ["enUS"] = true,
         ["deDE"] = "Schattenschaden",
         ["frFR"] = "Dégats des ombres",
