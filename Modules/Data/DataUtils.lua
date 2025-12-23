@@ -108,7 +108,7 @@ function DataUtils:GetEnchantFromItemLink(itemLink)
         local _, itemStringLink = GetItemInfo(itemLink)
         if itemStringLink then
             local _, _, enchant = string.find(itemStringLink, "item:%d+:(%d*)")
-            return enchant
+            return tonumber(enchant)
         end
     end
 
