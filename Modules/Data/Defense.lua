@@ -242,7 +242,7 @@ function _Defense:GetEnchantsBlockValue()
         if itemLink then
             local enchant = DataUtils:GetEnchantFromItemLink(itemLink)
             if enchant then
-                mod = mod + (Data.enchantsBlockValue[itemLink] or 0)
+                mod = mod + (Data.Encaht.BlockValue[itemLink] or 0)
             end
         end
     end
