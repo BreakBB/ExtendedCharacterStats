@@ -203,7 +203,8 @@ function Data:HasSetBonusIncreasedExpertise5()
     end
 end
 
-function Data:HasSetBonusModifierMP5()
+---@return number
+function Data:GetSetBonusModifierMP5()
     local mod = 0
     if (ECS.IsClassic and Data:IsSetBonusActive(setNames.GREEN_DRAGON_MAIL, 3)) then
         mod = mod + 0.15
