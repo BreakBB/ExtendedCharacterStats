@@ -237,20 +237,20 @@ function Data:GetExpertise()
         local timeworn = 0
         for i = 1, 18 do
             local id, _ = GetInventoryItemID("player", i)
-            if Data.itemsTimeworn[id] then
+            if Data.Item.IsTimeworn[id] then
                 timeworn = timeworn + 1
             end
         end
 
         for i = 1, 18 do
             local id, _ = GetInventoryItemID("player", i)
-            expertise = expertise + (Data.itemsIncreaseExpertise[id] or 0)
-            expertise = expertise + timeworn * (Data.itemsTimewornExpertise[id] or 0)
+            expertise = expertise + (Data.Item.IncreaseExpertise[id] or 0)
+            expertise = expertise + timeworn * (Data.Item.TimewornExpertise[id] or 0)
             if classId == Data.DRUID then
                 local itemLink = GetInventoryItemLink("player", i)
                 if itemLink then
                     local enchant = DataUtils:GetEnchantFromItemLink(itemLink)
-                    if enchant and enchant == Data.enchantIds.ANIMALISTIC_EXPERTISE then
+                    if enchant and enchant == Data.Enchant.Ids.ANIMALISTIC_EXPERTISE then
                         expertise = expertise + 5
                     end
                 end
