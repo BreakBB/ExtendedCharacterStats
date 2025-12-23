@@ -27,44 +27,19 @@ end
 
 function _SpellCrit:GetSpellCritFromBuffs(school)
     local mod = 0
-
-    for i = 1, 40 do
-        local _, _, count, _, _, _, _, _, _, spellId, _ = UnitAura("player", i, "HELPFUL")
-        if spellId == nil then
-            break
+    local i = 1
+    repeat
+        local aura = C_UnitAuras.GetBuffDataByIndex("player", i)
+        i = i + 1
+        if aura and aura.spellId then
+            mod = mod + (Data.Aura.SpellCrit[aura.spellId] or 0)
+            if school == Data.FIRE_SCHOOL then
+                if aura.spellId == 28682 then
+                    mod = mod + (aura.applications * 10) -- 10% for each stack from Combustion
+                end
+            end
         end
-
-        if ECS.IsTbc and spellId == 30708 then
-            mod = mod + 3 -- 3% from Totem of Wrath
-        end
-
-        if ECS.IsWotlk and spellId == 24907 then
-            mod = mod + 5 -- 5% from Moonkin Aura
-        end
-
-        if spellId == 30165 then
-            mod = mod + 3 -- 3% from Elemental Devastation Rank 1
-        end
-        if spellId == 29177 then
-            mod = mod + 6 -- 6% from Elemental Devastation Rank 2
-        end
-        if spellId == 29178 then
-            mod = mod + 9 -- 9% from Elemental Devastation Rank 3
-        end
-        if (not ECS.IsWotlk) and spellId == 30482 then
-            mod = mod + 3 -- 3% from Molten Armor
-        end
-        if (ECS.IsWotlk and spellId == 51466) then
-            mod = mod + 3 -- 3% from Elemental Oath Rank 1
-        end
-        if (ECS.IsWotlk and spellId == 51470) then
-            mod = mod + 5 -- 5% from Elemental Oath Rank 2
-        end
-        if (school == Data.FIRE_SCHOOL and spellId == 28682) then
-            mod = mod + (count * 10) -- 10% for each stack from Combustion
-        end
-    end
-
+    until (not aura)
     return mod
 end
 

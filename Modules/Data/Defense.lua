@@ -33,10 +33,8 @@ function _Defense:GetCritReduction()
         local aura = C_UnitAuras.GetAuraDataByIndex("player", i, "HELPFUL")
         i = i + 1
         if aura and aura.spellId then
-            buffBonus = buffBonus + (Data.BuffCritReductionAll[aura.spellId] or 0)
-            if ECS.IsSoD and aura.spellId == 408680 then
-                meleeCritReduction = meleeCritReduction + 6 -- way of earth
-            end
+            buffBonus = buffBonus + (Data.Aura.CritReductionAll[aura.spellId] or 0)
+            meleeCritReduction = meleeCritReduction + (Data.Aura.CritReductionMelee[aura.spellId] or 0)
         end
     until (not aura)
     i = 1
@@ -44,27 +42,11 @@ function _Defense:GetCritReduction()
         local aura = C_UnitAuras.GetAuraDataByIndex("player", i, "HARMFUL")
         i = i + 1
         if aura and aura.spellId then
-            buffBonus = buffBonus + (Data.BuffCritReductionAll[aura.spellId] or 0)
-            if ECS.IsWotlk then
-                if aura.spellId == 30708 then
-                    buffBonus = buffBonus - 3 -- totem of wrath
-                elseif aura.spellId == 12579 then
-                    spellCritReduction = spellCritReduction - 1 * aura.applications -- Winter's Chill
-                elseif aura.spellId == 22959 then
-                    spellCritReduction = spellCritReduction - 5 -- Improved Scorch
-                elseif aura.spellId == 17800 then
-                    spellCritReduction = spellCritReduction - 5 -- Shadow Mastery
-                elseif aura.spellId == 17799 then
-                    spellCritReduction = spellCritReduction - 4 -- Shadow Mastery
-                elseif aura.spellId == 17798 then
-                    spellCritReduction = spellCritReduction - 2 -- Shadow Mastery
-                elseif aura.spellId == 17797 then
-                    spellCritReduction = spellCritReduction - 3 -- Shadow Mastery
-                elseif aura.spellId == 17794 then
-                    spellCritReduction = spellCritReduction - 1 -- Shadow Mastery
-                elseif aura.spellId == 47241 then
-                    meleeCritReduction = meleeCritReduction + 6 -- metamorphosis
-                end
+            buffBonus = buffBonus + (Data.Aura.CritReductionAll[aura.spellId] or 0)
+            meleeCritReduction = meleeCritReduction + (Data.Aura.CritReductionMelee[aura.spellId] or 0)
+            spellCritReduction = spellCritReduction + (Data.Aura.CritReductionSpell[aura.spellId] or 0)
+            if ECS.IsWotlk and aura.spellId == 12579 then
+                spellCritReduction = spellCritReduction - 1 * aura.applications -- Winter's Chill
             end
         end
     until (not aura)
@@ -240,9 +222,10 @@ end
 
 ---@return number
 function Data:GetBlockValue()
-    local setBonus = _Defense:GetItemModifierBlockValue()
-    local blockValue = GetShieldBlock() + setBonus
-
+    local blockValue = 0
+    if C_SpellBook.IsSpellKnown(107) and C_PaperDollInfo.OffhandHasShield() then
+        blockValue = blockValue + GetShieldBlock() + _Defense:GetEnchantsBlockValue()
+    end
     return DataUtils:Round(blockValue, 2)
 end
 
@@ -251,12 +234,17 @@ function Data:GetResilienceRating()
     return DataUtils:Round(GetCombatRating(15), 2)
 end
 
-function _Defense:GetItemModifierBlockValue()
+---@return number
+function _Defense:GetEnchantsBlockValue()
     local mod = 0
-
-    if Data:HasSetBonusModifierBlockValue() then
-        mod = mod + 30
+    for i = 1, 18 do
+        local itemLink = GetInventoryItemLink("player", i)
+        if itemLink then
+            local enchant = DataUtils:GetEnchantFromItemLink(itemLink)
+            if enchant then
+                mod = mod + (Data.Enchant.BlockValue[itemLink] or 0)
+            end
+        end
     end
-
     return mod
 end
