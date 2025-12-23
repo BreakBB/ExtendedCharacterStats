@@ -1,5 +1,7 @@
 ---@class DataUtils
 local DataUtils = ECSLoader:CreateModule("DataUtils")
+---@type Data
+local Data = ECSLoader:ImportModule("Data")
 
 --- Rounds every number down to the given decimal places
 ---@param num number
@@ -15,15 +17,16 @@ end
 
 ---@return boolean
 function DataUtils:IsShapeshifted()
-    for i = 1, 40 do
-        local _, _, _, _, _, _, _, _, _, spellId, _ = UnitAura("player", i, "HELPFUL", "PLAYER")
-        if spellId == nil then
-            break
+    local i = 1
+    repeat
+        local aura = C_UnitAuras.GetBuffDataByIndex("player", i)
+        i = i + 1
+        if aura and aura.spellId then
+            if Data.Aura.IsFeralForm[aura.spellId] then
+                return true
+            end
         end
-        if spellId == 5487 or spellId == 9634 or spellId == 768 then
-            return true
-        end
-    end
+    until (not aura)
     return false
 end
 
@@ -105,7 +108,7 @@ function DataUtils:GetEnchantFromItemLink(itemLink)
         local _, itemStringLink = GetItemInfo(itemLink)
         if itemStringLink then
             local _, _, enchant = string.find(itemStringLink, "item:%d+:(%d*)")
-            return enchant
+            return tonumber(enchant)
         end
     end
 
