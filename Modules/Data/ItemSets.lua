@@ -204,8 +204,11 @@ function Data:HasSetBonusIncreasedExpertise5()
 end
 
 function Data:HasSetBonusModifierMP5()
-    return (ECS.IsClassic and (
-        Data:IsSetBonusActive(setNames.GREEN_DRAGON_MAIL, 3) or
+    local mod = 0
+    if (ECS.IsClassic and Data:IsSetBonusActive(setNames.GREEN_DRAGON_MAIL, 3)) then
+        mod = mod + 0.15
+    end
+    if (ECS.IsClassic and (
         (classId == Data.DRUID and Data:IsSetBonusActive(setNames.STORMRAGE_RAIMENT, 3)) or
         (classId == Data.PRIEST and Data:IsSetBonusActive(setNames.VESTMENTS_OF_TRANSCENDENCE, 3))
     )) then
