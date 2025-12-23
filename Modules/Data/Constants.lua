@@ -43,28 +43,16 @@ Data.setNames = {
     WINDHAWK_ARMOR = "Windhawk Armor",
 }
 
-Data.enchantIds = {
-    ANIMALISTIC_EXPERTISE = "7875", -- Your melee attacks have 5% less chance to be Dodged or Parried.
-    BIZNICK_SCOPE = "2523", -- 3% Hit from Biznicks 247x128 Accurascope
-    BRACER_MANA_REGENERATION = "2565", -- 4 MP5 on bracer
-    BRILLIANT_MANA_OIL = "2629", -- 12 MP5
-    GLYPH_OF_RENEWAL = "3001", -- 7 MP5 from Honor Hold/Thrallmar enchant
-    INSCRIPTION_OF_FAITH = "2980", -- 4 MP5 from aldor enchant
-    LESSER_MANA_OIL = "2625", -- 8 MP5
-    MINOR_MANA_OIL = "2624", -- 4 MP5
-    PROPHETIC_AURA = "2590", -- 4 MP5 for priest ZG Enchant
-    RESILIENCE_OF_THE_SCOURGE = "2715", -- 5 MP5 Sapphiron shoulder enchant
-    RESTORE_MANA_PRIME = "3150", -- 6 MP5 on chest
+Data.Aura.CritReductionAll = {
+    [430432] = 5, -- battle hardened
+    [403816] = 6, -- metamorphosis
+    [428741] = 5, -- molten armor
 }
-
-Data.gemIds = {
-    FOUR_MP5_GEMS = {"32202"},
-    THREE_MP5_GEMS = {"24037"},
-    TWO_MP5_GEMS = {"30589", "32225", "24065", "30594", "31865", "32214", "30606", "23121", "24057", "32216", "30603", "30560", "30550"},
-    ONE_MP5_GEMS = {"23106", "31864", "28465", "23109"}
+Data.Enchant.Ids = {
+    ANIMALISTIC_EXPERTISE = 7875, -- Your melee attacks have 5% less chance to be Dodged or Parried.
+    BIZNICK_SCOPE = 2523, -- 3% Hit from Biznicks 247x128 Accurascope
 }
-
-Data.itemsIncreaseExpertise = {
+Data.Item.IncreaseExpertise = {
     [233376] = 1,
     [233397] = 1,
     [233401] = 1,
@@ -192,7 +180,7 @@ Data.itemsIncreaseExpertise = {
     [237275] = 1,
     [237512] = 1,
 }
-Data.itemsTimeworn = {
+Data.Item.IsTimeworn = {
     [233496] = true,
     [233505] = true,
     [233506] = true,
@@ -314,15 +302,10 @@ Data.itemsTimeworn = {
     [234963] = true,
     [235047] = true,
 }
-Data.itemsTimewornExpertise = {
+Data.Item.TimewornExpertise = {
     [234018] = 1,
     [234022] = 1,
     [234027] = 1,
     [234031] = 1,
     [234035] = 1,
-}
-Data.BuffCritReductionAll = {
-    [430432] = 5, -- battle hardened
-    [403816] = 6, -- metamorphosis
-    [428741] = 5, -- molten armor
 }
