@@ -20,29 +20,6 @@ Data.MAGE = 8
 Data.WARLOCK = 9
 Data.DRUID = 11
 
-Data.setNames = {
-    AUGURS_REGALIA = "Augur's Regalia",
-    BATTLEGEAR_OF_MIGHT = "Battlegear of Might",
-    BLOODSOUL_EMBRACE = "Bloodsoul Embrace",
-    BONESCYTHE_LEATHERS = "Bonescythe Leathers",
-    DREAMWALKER_GUARDIAN = "Dreamwalker Guardian",
-    DREADNOUGHTS_BATTLEGEAR = "Dreadnought's Battlegear",
-    FEL_IRON_CHAIN = "Fel Iron Chain",
-    FREETHINKERS_ARMOR = "Freethinker's Armor",
-    GREEN_DRAGON_MAIL = "Green Dragon Mail",
-    HARUSPEXS_GARB = "Haruspex's Garb",
-    LIVING_GREEN_DRAGON_MAIL = "Living Green Dragon Mail",
-    PLAGUEHEART_STITCHINGS = "Plagueheart Stitchings",
-    REDEMPTION_BULWARK = "Redemption Bulwark",
-    STORMRAGE_RAIMENT = "Stormrage Raiment",
-    SYMBOLS_OF_UNENDING_LIFE = "Symbols of Unending Life",
-    TEN_STORMS = "The Ten Storms",
-    THE_EARTHSHATTERER = "The Earthshatterer",
-    THE_EARTHSHATTERER_RESOLVE = "The Earthshatterer Resolve",
-    VESTMENTS_OF_TRANSCENDENCE = "Vestments of Transcendence",
-    WINDHAWK_ARMOR = "Windhawk Armor",
-}
-
 Data.Aura.CritReductionAll = {
     [430432] = 5, -- battle hardened
     [403816] = 6, -- metamorphosis
@@ -308,4 +285,26 @@ Data.Item.TimewornExpertise = {
     [234027] = 1,
     [234031] = 1,
     [234035] = 1,
+}
+Data.setNames = {
+    AUGURS_REGALIA = "Augur's Regalia",
+    BATTLEGEAR_OF_MIGHT = "Battlegear of Might",
+    BLOODSOUL_EMBRACE = "Bloodsoul Embrace",
+    BONESCYTHE_LEATHERS = "Bonescythe Leathers",
+    DREAMWALKER_GUARDIAN = "Dreamwalker Guardian",
+    DREADNOUGHTS_BATTLEGEAR = "Dreadnought's Battlegear",
+    FEL_IRON_CHAIN = "Fel Iron Chain",
+    FREETHINKERS_ARMOR = "Freethinker's Armor",
+    GREEN_DRAGON_MAIL = "Green Dragon Mail",
+    HARUSPEXS_GARB = "Haruspex's Garb",
+    LIVING_GREEN_DRAGON_MAIL = "Living Green Dragon Mail",
+    PLAGUEHEART_STITCHINGS = "Plagueheart Stitchings",
+    REDEMPTION_BULWARK = "Redemption Bulwark",
+    STORMRAGE_RAIMENT = "Stormrage Raiment",
+    SYMBOLS_OF_UNENDING_LIFE = "Symbols of Unending Life",
+    TEN_STORMS = "The Ten Storms",
+    THE_EARTHSHATTERER = "The Earthshatterer",
+    THE_EARTHSHATTERER_RESOLVE = "The Earthshatterer Resolve",
+    VESTMENTS_OF_TRANSCENDENCE = "Vestments of Transcendence",
+    WINDHAWK_ARMOR = "Windhawk Armor",
 }
