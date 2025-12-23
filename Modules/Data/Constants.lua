@@ -374,6 +374,13 @@ Data.Enchant.MP5 = {
     [3836] = 8, -- Master's Inscription of the Crag
     [7099] = 12, -- Blackfathom Mana Oil. This effect only applies within Blackfathom Deeps.
 }
+Data.Enchant.BlockValue = {
+    ["2583"] = 15, -- Presence of Might
+    ["2653"] = 18, -- Enchant Shield - Tough Shield
+    ["2655"] = 15, -- Enchant Shield - Shield Block
+    ["3849"] = 81, -- Titanium Plating
+    ["7633"] = 15, -- Presence of Valor
+}
 Data.Gem = {}
 Data.Gem.MP5 = {
     [23106] = 1,
@@ -398,7 +405,6 @@ Data.Gem.MP5 = {
 }
 Data.setNames = {
     AUGURS_REGALIA = "Augur's Regalia",
-    BATTLEGEAR_OF_MIGHT = "Battlegear of Might",
     BLOODSOUL_EMBRACE = "Bloodsoul Embrace",
     DAWN_OF_TRANSCENDENCE = "Dawn of Transcendence",
     FEL_IRON_CHAIN = "Fel Iron Chain",

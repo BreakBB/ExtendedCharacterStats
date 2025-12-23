@@ -12,16 +12,6 @@ local itemSets = {
         [19830] = true,
         [19956] = true
     },
-    [setNames.BATTLEGEAR_OF_MIGHT] = {
-        [16861] = true,
-        [16862] = true,
-        [16863] = true,
-        [16864] = true,
-        [16865] = true,
-        [16866] = true,
-        [16867] = true,
-        [16868] = true
-    },
     [setNames.BLOODSOUL_EMBRACE] = {
         [19690] = true,
         [19691] = true,
@@ -195,14 +185,6 @@ function Data:HasNatureCritBonusModifier()
     if classId == Data.SHAMAN then
         return Data:IsSetBonusActive(setNames.TEN_STORMS, 5)
     end
-    return false
-end
-
-function Data:HasSetBonusModifierBlockValue()
-    if classId == Data.WARRIOR then
-        return Data:IsSetBonusActive(setNames.BATTLEGEAR_OF_MIGHT, 3)
-    end
-
     return false
 end
 

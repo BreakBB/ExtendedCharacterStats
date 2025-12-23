@@ -222,9 +222,10 @@ end
 
 ---@return number
 function Data:GetBlockValue()
-    local setBonus = _Defense:GetItemModifierBlockValue()
-    local blockValue = GetShieldBlock() + setBonus
-
+    local blockValue = 0
+    if C_SpellBook.IsSpellKnown(107) and C_PaperDollInfo.OffhandHasShield() then
+        blockValue = blockValue + GetShieldBlock() + _Defense:GetEnchantsBlockValue()
+    end
     return DataUtils:Round(blockValue, 2)
 end
 
@@ -233,12 +234,17 @@ function Data:GetResilienceRating()
     return DataUtils:Round(GetCombatRating(15), 2)
 end
 
-function _Defense:GetItemModifierBlockValue()
+---@return number
+function _Defense:GetEnchantsBlockValue()
     local mod = 0
-
-    if Data:HasSetBonusModifierBlockValue() then
-        mod = mod + 30
+    for i = 1, 18 do
+        local itemLink = GetInventoryItemLink("player", i)
+        if itemLink then
+            local enchant = DataUtils:GetEnchantFromItemLink(itemLink)
+            if enchant then
+                mod = mod + (Data.Enchant.BlockValue[itemLink] or 0)
+            end
+        end
     end
-
     return mod
 end
