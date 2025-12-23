@@ -79,7 +79,7 @@ function _Init.RegisterEvents(eventFrame)
     eventFrame:RegisterEvent("CHARACTER_POINTS_CHANGED") -- Triggered whenever a player spends talent points
     eventFrame:RegisterEvent("COMBAT_RATING_UPDATE")
     eventFrame:RegisterEvent("INSPECT_READY") -- Triggers whenever the player inspects someone else and the inspect frame is ready
-    eventFrame:RegisterEvent("PLAYER_DAMAGE_DONE_MODS")
+    eventFrame:RegisterUnitEvent("PLAYER_DAMAGE_DONE_MODS", "player")
     eventFrame:RegisterEvent("PLAYER_ENTERING_WORLD")  -- Triggers whenever the player log in, zone in to a new zone or reloads the UI
     eventFrame:RegisterEvent("PLAYER_EQUIPMENT_CHANGED") -- Triggers whenever the player changes gear
     eventFrame:RegisterEvent("PLAYER_LEVEL_UP") -- Triggers whenever the player levels up
@@ -88,14 +88,15 @@ function _Init.RegisterEvents(eventFrame)
     eventFrame:RegisterEvent("SKILL_LINES_CHANGED")
     eventFrame:RegisterEvent("SPELL_POWER_CHANGED")
     eventFrame:RegisterUnitEvent("UNIT_ATTACK_SPEED", "player")
-    eventFrame:RegisterEvent("UNIT_ATTACK", "player")
-    eventFrame:RegisterEvent("UNIT_ATTACK_POWER", "player")
+    eventFrame:RegisterUnitEvent("UNIT_ATTACK", "player")
+    eventFrame:RegisterUnitEvent("UNIT_ATTACK_POWER", "player")
     eventFrame:RegisterUnitEvent("UNIT_AURA", "player") -- Triggers whenever the player gains or loses a buff/debuff
     eventFrame:RegisterUnitEvent("UNIT_DAMAGE", "player")
-    eventFrame:RegisterEvent("UNIT_SPELL_HASTE", "player")
-    eventFrame:RegisterEvent("UNIT_STATS", "player")
-    eventFrame:RegisterEvent("UNIT_RANGED_ATTACK_POWER", "player")
-    eventFrame:RegisterEvent("UNIT_RANGEDDAMAGE", "player")
+    eventFrame:RegisterUnitEvent("UNIT_MAXPOWER", "player")
+    eventFrame:RegisterUnitEvent("UNIT_SPELL_HASTE", "player")
+    eventFrame:RegisterUnitEvent("UNIT_STATS", "player")
+    eventFrame:RegisterUnitEvent("UNIT_RANGED_ATTACK_POWER", "player")
+    eventFrame:RegisterUnitEvent("UNIT_RANGEDDAMAGE", "player")
     eventFrame:RegisterEvent("UPDATE_SHAPESHIFT_FORM")
    if ECS.IsTbc or ECS.IsWotlk then
         eventFrame:RegisterEvent("SOCKET_INFO_SUCCESS") -- Triggers whenever the player successfully sockets an item

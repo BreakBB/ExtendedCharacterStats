@@ -33,10 +33,8 @@ function _Defense:GetCritReduction()
         local aura = C_UnitAuras.GetAuraDataByIndex("player", i, "HELPFUL")
         i = i + 1
         if aura and aura.spellId then
-            buffBonus = buffBonus + (Data.BuffCritReductionAll[aura.spellId] or 0)
-            if ECS.IsSoD and aura.spellId == 408680 then
-                meleeCritReduction = meleeCritReduction + 6 -- way of earth
-            end
+            buffBonus = buffBonus + (Data.Aura.CritReductionAll[aura.spellId] or 0)
+            meleeCritReduction = meleeCritReduction + (Data.Aura.CritReductionMelee[aura.spellId] or 0)
         end
     until (not aura)
     i = 1
@@ -44,27 +42,11 @@ function _Defense:GetCritReduction()
         local aura = C_UnitAuras.GetAuraDataByIndex("player", i, "HARMFUL")
         i = i + 1
         if aura and aura.spellId then
-            buffBonus = buffBonus + (Data.BuffCritReductionAll[aura.spellId] or 0)
-            if ECS.IsWotlk then
-                if aura.spellId == 30708 then
-                    buffBonus = buffBonus - 3 -- totem of wrath
-                elseif aura.spellId == 12579 then
-                    spellCritReduction = spellCritReduction - 1 * aura.applications -- Winter's Chill
-                elseif aura.spellId == 22959 then
-                    spellCritReduction = spellCritReduction - 5 -- Improved Scorch
-                elseif aura.spellId == 17800 then
-                    spellCritReduction = spellCritReduction - 5 -- Shadow Mastery
-                elseif aura.spellId == 17799 then
-                    spellCritReduction = spellCritReduction - 4 -- Shadow Mastery
-                elseif aura.spellId == 17798 then
-                    spellCritReduction = spellCritReduction - 2 -- Shadow Mastery
-                elseif aura.spellId == 17797 then
-                    spellCritReduction = spellCritReduction - 3 -- Shadow Mastery
-                elseif aura.spellId == 17794 then
-                    spellCritReduction = spellCritReduction - 1 -- Shadow Mastery
-                elseif aura.spellId == 47241 then
-                    meleeCritReduction = meleeCritReduction + 6 -- metamorphosis
-                end
+            buffBonus = buffBonus + (Data.Aura.CritReductionAll[aura.spellId] or 0)
+            meleeCritReduction = meleeCritReduction + (Data.Aura.CritReductionMelee[aura.spellId] or 0)
+            spellCritReduction = spellCritReduction + (Data.Aura.CritReductionSpell[aura.spellId] or 0)
+            if ECS.IsWotlk and aura.spellId == 12579 then
+                spellCritReduction = spellCritReduction - 1 * aura.applications -- Winter's Chill
             end
         end
     until (not aura)
