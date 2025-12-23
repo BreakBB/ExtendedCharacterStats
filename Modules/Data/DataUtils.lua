@@ -107,7 +107,7 @@ function DataUtils:GetEnchantFromItemLink(itemLink)
     if itemLink then
         local _, itemStringLink = GetItemInfo(itemLink)
         if itemStringLink then
-            local _, _, enchant = string.find(itemStringLink, "item:%d+:(%d*)")
+            local _, _, enchant, _ = strsplit(":", itemStringLink, 4)
             return tonumber(enchant)
         end
     end
@@ -129,12 +129,12 @@ function DataUtils.GetRuneForEquipSlot(equipSlot)
 end
 
 ---@param itemLink ItemLink
----@return (number, number, number) | nil
+---@return (string, string, string) | nil
 function DataUtils:GetSocketedGemsFromItemLink(itemLink)
     if itemLink then
         local _, itemStringLink = GetItemInfo(itemLink)
         if itemStringLink then
-            local _, _, gem1, gem2, gem3 = string.find(itemStringLink, "item:%d*:%d*:(%d*):(%d*):(%d*)")
+            local _, _, gem1, gem2, gem3, _ = strsplit(":", itemStringLink, 6)
             return gem1, gem2, gem3
         end
     end
