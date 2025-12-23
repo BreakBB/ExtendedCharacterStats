@@ -142,7 +142,7 @@ local spellConfigTranslations = {
         ["esMX"] = "Poder con hechizos",
         ["ptBR"] = "Poder mágico"
     },
-    ["Shows/Hides the physical spell damage value."] = {
+    ["Shows/Hides the physical damage value."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt den physischen Schadenswert.",
         ["frFR"] = "Affiche/cache les dégats physiques.",
@@ -152,7 +152,7 @@ local spellConfigTranslations = {
         ["esMX"] = "Muestra/oculta el valor de daño físico",
         ["ptBR"] = "Mostra/oculta o valor do dano físico"
     },
-    ["Shows/Hides the holy spell damage value."] = {
+    ["Shows/Hides the holy damage value."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt den Heiligschadenswert.",
         ["frFR"] = "Affiche/cache les dégats du sacré.",
@@ -162,7 +162,7 @@ local spellConfigTranslations = {
         ["esMX"] = "Muestra/oculta el valor de daño sagrado",
         ["ptBR"] = "Mostra/oculta o valor de dano sagrado"
     },
-    ["Shows/Hides the arcane spell damage value."] = {
+    ["Shows/Hides the arcane damage value."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt den Arkanschadenswert.",
         ["frFR"] = "Affiche/cache les dégats des arcanes.",
@@ -172,7 +172,7 @@ local spellConfigTranslations = {
         ["esMX"] = "Muestra/oculta el valor de daño arcano",
         ["ptBR"] = "Mostra/oculta o valor de dano arcano"
     },
-    ["Shows/Hides the nature spell damage value."] = {
+    ["Shows/Hides the nature damage value."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt den Naturschadenswert.",
         ["frFR"] = "Affiche/cache les dégats de la nature.",
@@ -182,7 +182,7 @@ local spellConfigTranslations = {
         ["esMX"] = "Muestra/oculta el valor de daño de la naturaleza",
         ["ptBR"] = "Mostra/oculta o valor de dano de natureza"
     },
-    ["Shows/Hides the frost spell damage value."] = {
+    ["Shows/Hides the frost damage value."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt den Frostschadenswert.",
         ["frFR"] = "Affiche/cache les dégats du givre.",
@@ -192,7 +192,7 @@ local spellConfigTranslations = {
         ["esMX"] = "Muestra/oculta el valor de daño de escarcha",
         ["ptBR"] = "Mostra/oculta o valor de dano de gelo"
     },
-    ["Shows/Hides the fire spell damage value."] = {
+    ["Shows/Hides the fire damage value."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt den Feuerschadenswert.",
         ["frFR"] = "Affiche/cache les dégats du feu.",
@@ -202,7 +202,7 @@ local spellConfigTranslations = {
         ["esMX"] = "Muestra/oculta el valor de daño de fuego",
         ["ptBR"] = "Mostra/oculta o valor de dano de fogo"
     },
-    ["Shows/Hides the shadow spell damage value."] = {
+    ["Shows/Hides the shadow damage value."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt den Schattenschadenswert.",
         ["frFR"] = "Affiche/cache les dégats des ombres.",
