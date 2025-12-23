@@ -374,7 +374,7 @@ Data.Enchant.MP5 = {
     [3836] = 8, -- Master's Inscription of the Crag
     [7099] = 12, -- Blackfathom Mana Oil. This effect only applies within Blackfathom Deeps.
 }
-Data.Encaht.BlockValue = {
+Data.Enchant.BlockValue = {
     ["2583"] = 15, -- Presence of Might
     ["2653"] = 18, -- Enchant Shield - Tough Shield
     ["2655"] = 15, -- Enchant Shield - Shield Block
