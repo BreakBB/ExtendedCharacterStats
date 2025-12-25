@@ -54,7 +54,7 @@ function Data:GetSpellHasteBonus()
     for i = 1, 18 do
         local id, _ = GetInventoryItemID("player", i)
         hasteBonus = hasteBonus + (Data.Item.SpellHaste[id] or 0)
-        hasteBonus = hasteBonus + hasteBonus * (Data.Item.TimewornSpellHaste[id] or 0) * timeworn
+        hasteBonus = hasteBonus + timeworn * (Data.Item.TimewornSpellHaste[id] or 0)
     end
 
     -- buffs
