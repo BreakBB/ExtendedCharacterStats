@@ -54,11 +54,11 @@ function Data:GetSpellHasteBonus()
     for i = 1, 18 do
         local id, _ = GetInventoryItemID("player", i)
         hasteBonus = hasteBonus + (Data.Item.SpellHaste[id] or 0)
-        hasteBonus = hasteBonus + hasteBonus * (Data.Item.TimewornSpellHaste[id] or 0)
+        hasteBonus = hasteBonus + hasteBonus * (Data.Item.TimewornSpellHaste[id] or 0) * timeworn
     end
 
     -- buffs
-    i = 1
+    local i = 1
     repeat
         local aura = C_UnitAuras.GetBuffDataByIndex("player", i)
         if aura and aura.spellId then
@@ -79,7 +79,7 @@ function Data:GetSpellHasteBonus()
 
     -- not stacking buffs
     if ECS.IsSod then
-        aura = C_UnitAuras.GetPlayerAuraBySpellID(1219557) -- Power of the Guardian
+        local aura = C_UnitAuras.GetPlayerAuraBySpellID(1219557) -- Power of the Guardian
         if aura then
             hasteBonus = hasteBonus + 2
         end
