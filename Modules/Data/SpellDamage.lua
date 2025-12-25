@@ -47,6 +47,15 @@ end
 
 ---@return string
 function Data:GetSpellHasteBonus()
-    local hasteBonus = GetCombatRatingBonus(CR_HASTE_SPELL)
+    local hasteBonus = GetHaste()
+
+    local timeworn = DataUtils:CountTimewornItems()
+
+    for i = 1, 18 do
+        local id, _ = GetInventoryItemID("player", i)
+        hasteBonus = hasteBonus + (Data.Item.SpellHaste[id] or 0)
+        hasteBonus = hasteBonus + hasteBonus * (Data.Item.TimewornSpellHaste[id] or 0)
+    end
+
     return DataUtils:Round(hasteBonus, 2) .. "%"
 end
