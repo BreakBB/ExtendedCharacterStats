@@ -43,6 +43,9 @@ function EventHandler.HandleOnEvent(self,event, ...)
         if event == "ACTIVE_TALENT_GROUP_CHANGED" or
             event == "CHARACTER_POINTS_CHANGED" or
             event == "COMBAT_RATING_UPDATE" or
+            event == "GLYPH_ADDED" or
+            event == "GLYPH_REMOVED" or
+            event == "GLYPH_UPDATED" or
             event == "PLAYER_LEVEL_UP" or
             event == "PLAYER_MOUNT_DISPLAY_CHANGED" or
             event == "PLAYER_TALENT_UPDATE" or
@@ -56,6 +59,7 @@ function EventHandler.HandleOnEvent(self,event, ...)
                 event == "UNIT_ATTACK_SPEED" or
                 event == "UNIT_AURA" or
                 event == "UNIT_DAMAGE" or
+                event == "UNIT_MAXHEALTH" or
                 (event == "UNIT_MAXPOWER" and args[2] == "MANA") or
                 event == "UNIT_SPELL_HASTE" or
                 event == "UNIT_STATS" or
@@ -67,7 +71,6 @@ function EventHandler.HandleOnEvent(self,event, ...)
             statsFrame:SetScript("OnUpdate", DelayedUpdateInformation)
         end
     end
-
     if (event == "INSPECT_READY" and args[1] == UnitGUID("player")) or event == "PLAYER_EQUIPMENT_CHANGED" then
         DelayedUpdateGearColorFrames()
     end

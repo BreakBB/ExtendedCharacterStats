@@ -92,23 +92,32 @@ function _Init.RegisterEvents(eventFrame)
     eventFrame:RegisterUnitEvent("UNIT_ATTACK_POWER", "player")
     eventFrame:RegisterUnitEvent("UNIT_AURA", "player") -- Triggers whenever the player gains or loses a buff/debuff
     eventFrame:RegisterUnitEvent("UNIT_DAMAGE", "player")
+    eventFrame:RegisterUnitEvent("UNIT_MAXHEALTH", "player")
     eventFrame:RegisterUnitEvent("UNIT_MAXPOWER", "player")
     eventFrame:RegisterUnitEvent("UNIT_SPELL_HASTE", "player")
     eventFrame:RegisterUnitEvent("UNIT_STATS", "player")
     eventFrame:RegisterUnitEvent("UNIT_RANGED_ATTACK_POWER", "player")
     eventFrame:RegisterUnitEvent("UNIT_RANGEDDAMAGE", "player")
     eventFrame:RegisterEvent("UPDATE_SHAPESHIFT_FORM")
-   if ECS.IsTBC or ECS.IsWotlk then
+
+    if (C_EventUtils.IsEventValid("SOCKET_INFO_SUCCESS")) then
         eventFrame:RegisterEvent("SOCKET_INFO_SUCCESS") -- Triggers whenever the player successfully sockets an item
 
-        GearManagerDialog:HookScript("OnShow", function()
-            Stats:HideWindow()
-        end)
-        GearManagerDialog:HookScript("OnHide", function()
-            Stats:ShowWindow()
-        end)
+        if GearManagerDialog then
+            GearManagerDialog:HookScript("OnShow", function()
+                Stats:HideWindow()
+            end)
+            GearManagerDialog:HookScript("OnHide", function()
+                Stats:ShowWindow()
+            end)
+        end
     end
-    if ECS.IsSoD then
+    if (C_EventUtils.IsEventValid("GLYPH_ADDED")) then
+        eventFrame:RegisterEvent("GLYPH_ADDED")
+        eventFrame:RegisterEvent("GLYPH_UPDATED")
+        eventFrame:RegisterEvent("GLYPH_REMOVED")
+    end
+    if (C_EventUtils.IsEventValid("RUNE_UPDATED")) then
         eventFrame:RegisterEvent("RUNE_UPDATED") -- Triggers whenever the player changed a rune
     end
 end
