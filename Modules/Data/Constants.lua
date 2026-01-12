@@ -723,7 +723,7 @@ Data.setNames = {
     SYMBOLS_OF_UNENDING_LIFE = "Symbols of Unending Life",
     TEN_STORMS = "The Ten Storms",
     THE_EARTHSHATTERER = "The Earthshatterer",
-    THE_EARTHSHATTERER_RESOLVE = "The Earthshatterer Resolve",
+    THE_EARTHSHATTERERS_RESOLVE = "The Earthshatterer Resolve",
     VESTMENTS_OF_TRANSCENDENCE = "Vestments of Transcendence",
     WINDHAWK_ARMOR = "Windhawk Armor",
 }
