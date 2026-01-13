@@ -176,16 +176,12 @@ end
 --- Helper function to iterate all field of a given category and create them if they should be displayed
 ---@param category Category|SubCategory
 _CreateStatInfo = function(category, ...)
-    if (not ECS.IsWotlk) and category.isTbcOnly then
-        return
-    end
-
     if category.display then
         _CreateHeader(category.refName, i18n(category.text), category.isSubGroup)
         local stats = {...}
         -- Loop through all stats
         for _, stat in pairs(stats) do
-            if type(stat) == "table" and stat.display and ((not stat.isTbcOnly) or ECS.IsWotlk) then
+            if type(stat) == "table" and stat.display then
                 _CreateText(stat.refName, _FormatStatsText(stat), category.isSubGroup)
             end
         end
