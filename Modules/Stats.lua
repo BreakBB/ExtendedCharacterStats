@@ -255,42 +255,14 @@ _CreateStatInfos = function()
     _CreateStatInfo(category, category.mp5Items, category.mp5Spirit, category.mp5Buffs, category.mp5Casting, category.mp5NotCasting)
 
     category = profile.spell
-    if ECS.IsWotlk then
-        _CreateStatInfo(category, category.hasteRating, category.hasteBonus, category.penetration)
-
-        if category.display then
-            category = category.hit
-            _CreateStatInfo(category, category.rating, category.bonus, category.sameLevel, category.bossLevel)
-        end
-
-        category = profile.spellBonus
-        local spell = profile.spell
-        local spellCrit = spell.crit
-        _CreateStatInfo(
-                category,
-                category.bonusHealing,
-                spell.arcane.display and category.arcaneDmg or nil,
-                spell.arcane.display and spellCrit.arcane or nil,
-                spell.fire.display and category.fireDmg or nil,
-                spell.fire.display and spellCrit.fire or nil,
-                spell.frost.display and category.frostDmg or nil,
-                spell.frost.display and spellCrit.frost or nil,
-                spell.holy.display and category.holyDmg or nil,
-                spell.holy.display and spellCrit.holy or nil,
-                spell.nature.display and category.natureDmg or nil,
-                spell.nature.display and spellCrit.nature or nil,
-                spell.physical.display and category.physicalDmg or nil,
-                spell.physical.display and spellCrit.physical or nil,
-                spell.shadow.display and category.shadowDmg or nil,
-                spell.shadow.display and spellCrit.shadow or nil
-        )
-    else
+    if ECS.IsClassic then
         local spellBonus = profile.spellBonus
         local spell = profile.spell
         local spellCrit = spell.crit
         local spellHit = spell.hit
         _CreateStatInfo(
                 category,
+                category.hasteBonus,
                 category.penetration,
                 spellBonus.bonusHealing,
                 spell.arcane.display and spellBonus.arcaneDmg or nil,
@@ -328,6 +300,35 @@ _CreateStatInfos = function()
                 spell.shadow.display and spellHit.bonus.display and spellHit.shadowHitBonus or nil,
                 spell.shadow.display and spellHit.sameLevel.display and spellHit.shadowMissChance or nil,
                 spell.shadow.display and spellHit.bossLevel.display and spellHit.shadowMissChanceBoss or nil
+        )
+    else
+        _CreateStatInfo(category, category.hasteRating, category.hasteBonus, category.penetration)
+
+        if category.display then
+            category = category.hit
+            _CreateStatInfo(category, category.rating, category.bonus, category.sameLevel, category.bossLevel)
+        end
+
+        category = profile.spellBonus
+        local spell = profile.spell
+        local spellCrit = spell.crit
+        _CreateStatInfo(
+                category,
+                category.bonusHealing,
+                spell.arcane.display and category.arcaneDmg or nil,
+                spell.arcane.display and spellCrit.arcane or nil,
+                spell.fire.display and category.fireDmg or nil,
+                spell.fire.display and spellCrit.fire or nil,
+                spell.frost.display and category.frostDmg or nil,
+                spell.frost.display and spellCrit.frost or nil,
+                spell.holy.display and category.holyDmg or nil,
+                spell.holy.display and spellCrit.holy or nil,
+                spell.nature.display and category.natureDmg or nil,
+                spell.nature.display and spellCrit.nature or nil,
+                spell.physical.display and category.physicalDmg or nil,
+                spell.physical.display and spellCrit.physical or nil,
+                spell.shadow.display and category.shadowDmg or nil,
+                spell.shadow.display and spellCrit.shadow or nil
         )
     end
 end
