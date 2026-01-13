@@ -28,4 +28,23 @@ function Migration:ToLatestProfileVersion(profileVersion)
         ExtendedCharacterStats.profile.defense.critImmunity = nil
         ExtendedCharacterStats.profile.defense.critReduction = nil
     end
+    if profileVersion < 23 then
+        ExtendedCharacterStats.profile.defense.defenseRating.isTbcOnly = nil
+        ExtendedCharacterStats.profile.defense.resilience.isTbcOnly = nil
+        ExtendedCharacterStats.profile.melee.expertise.isTbcOnly = nil
+        ExtendedCharacterStats.profile.melee.expertiseRating.isTbcOnly = nil
+        ExtendedCharacterStats.profile.melee.hasteBonus.isTbcOnly = nil
+        ExtendedCharacterStats.profile.melee.hasteRating.isTbcOnly = nil
+        ExtendedCharacterStats.profile.melee.hit.Rating.isTbcOnly = nil
+        ExtendedCharacterStats.profile.melee.penetration.isTbcOnly = nil
+        ExtendedCharacterStats.profile.melee.penetrationRating.isTbcOnly = nil
+        ExtendedCharacterStats.profile.ranged.hasteBonus.isTbcOnly = nil
+        ExtendedCharacterStats.profile.ranged.hasteRating.isTbcOnly = nil
+        ExtendedCharacterStats.profile.ranged.hit.rating.isTbcOnly = nil
+        ExtendedCharacterStats.profile.ranged.penetration.isTbcOnly = nil
+        ExtendedCharacterStats.profile.ranged.penetrationRating.isTbcOnly = nil
+        ExtendedCharacterStats.profile.spell.hasteBonus.isTbcOnly = nil
+        ExtendedCharacterStats.profile.spell.hasteRating.isTbcOnly = nil
+        ExtendedCharacterStats.profile.spell.hit.rating.isTbcOnly = nil
+    end
 end

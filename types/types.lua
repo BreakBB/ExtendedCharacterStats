@@ -4,7 +4,6 @@
 ---@field display boolean
 ---@field refName string
 ---@field text string
----@field isTbcOnly? true
 ---@field textColor Color
 ---@field statColor Color
 
