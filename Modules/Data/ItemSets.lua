@@ -132,10 +132,10 @@ function Data:GetSetBonusModifierMP5()
     )) then
         mod = mod + 0.15
     end
-    if (ECS.IsSod and Data:IsSetBonusActive(setNames.LIVING_GREEN_DRAGON_MAIL, 3)) then
+    if (ECS.IsSoD and Data:IsSetBonusActive(setNames.LIVING_GREEN_DRAGON_MAIL, 3)) then
         mod = mod + 0.15
     end
-    if (ECS.IsSod and Data:IsSetBonusActive(setNames.DAWN_OF_TRANSCENDENCE, 2)) then
+    if (ECS.IsSoD and Data:IsSetBonusActive(setNames.DAWN_OF_TRANSCENDENCE, 2)) then
         mod = mod + 0.15
     end
     if Data:IsSetBonusActive(setNames.PRIMAL_MOONCLOTH, 3) then
@@ -153,7 +153,7 @@ function Data:GetSetBonusValueMP5()
     ) then
         bonus = bonus + (ECS.IsWotlk and 5 or 4)
     end
-    if (ECS.IsSod and Data:IsSetBonusActive(setNames.LIVING_GREEN_DRAGON_MAIL, 2)) then
+    if (ECS.IsSoD and Data:IsSetBonusActive(setNames.LIVING_GREEN_DRAGON_MAIL, 2)) then
         bonus = bonus + 3
     end
     if Data:IsSetBonusActive(setNames.GREEN_DRAGON_MAIL, 2) then
