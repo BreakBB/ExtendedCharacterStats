@@ -60,9 +60,6 @@ function _Config:LoadSpellSection()
                 name = function() return i18n("Haste Bonus") end,
                 desc = function() return i18n("Shows/Hides the spell haste bonus value.") end,
                 width = 1.5,
-                hidden = function()
-                    return (not ECS.IsWotlk)
-                end,
                 disabled = function() return (not ExtendedCharacterStats.profile.spell.display); end,
                 get = function () return ExtendedCharacterStats.profile.spell.hasteBonus.display; end,
                 set = function (_, value)

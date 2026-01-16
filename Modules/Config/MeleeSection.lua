@@ -59,9 +59,6 @@ function _Config:LoadMeleeSection()
                 name = function() return i18n("Armor Pen.") end,
                 desc = function() return i18n("Shows/Hides the armor penetration value.") end,
                 width = 1.5,
-                hidden = function()
-                    return (not ECS.IsWotlk)
-                end,
                 disabled = function() return (not ExtendedCharacterStats.profile.melee.display); end,
                 get = function () return ExtendedCharacterStats.profile.melee.penetration.display; end,
                 set = function (_, value)
@@ -89,9 +86,7 @@ function _Config:LoadMeleeSection()
                 name = function() return i18n("Expertise") end,
                 desc = function() return i18n("Shows/Hides the expertise value.") end,
                 width = 1.5,
-                hidden = function()
-                    return (not ECS.IsWotlk)
-                end,
+                hidden = function() return ECS.IsClassic end,
                 disabled = function() return (not ExtendedCharacterStats.profile.melee.display); end,
                 get = function () return ExtendedCharacterStats.profile.melee.expertise.display; end,
                 set = function (_, value)
@@ -133,9 +128,6 @@ function _Config:LoadMeleeSection()
                 name = function() return i18n("Haste Bonus") end,
                 desc = function() return i18n("Shows/Hides the melee haste bonus value.") end,
                 width = 1.5,
-                hidden = function()
-                    return (not ECS.IsWotlk)
-                end,
                 disabled = function() return (not ExtendedCharacterStats.profile.melee.display); end,
                 get = function () return ExtendedCharacterStats.profile.melee.hasteBonus.display; end,
                 set = function (_, value)
@@ -310,7 +302,7 @@ function _Config:LoadMeleeSection()
                         end,
                         get = function () return ExtendedCharacterStats.profile.melee.glance.damageBossLevel.display; end,
                         set = function (_, value)
-                            ExtendedCharacterStats.profile.melee.glance.damageSameLevel.display = value
+                            ExtendedCharacterStats.profile.melee.glance.damageBossLevel.display = value
                             Stats.RebuildStatInfos()
                         end,
                     },

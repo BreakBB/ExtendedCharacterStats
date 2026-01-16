@@ -190,9 +190,7 @@ function _Config:LoadDefenseSection()
                 name = function() return i18n("Resilience") end,
                 desc = function() return i18n("Shows/Hides the resilience value.") end,
                 width = 1.5,
-                hidden = function()
-                    return (not ECS.IsWotlk)
-                end,
+                hidden = function() return ECS.IsClassic end,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
                 get = function () return ExtendedCharacterStats.profile.defense.resilience.display; end,
                 set = function (_, value)

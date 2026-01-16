@@ -370,14 +370,14 @@ local function GetDefaultStatsProfile()
                 rating = {
                     display = true,
                     refName = "SpellHitRating",
-                    text = "Rating",
+                    text = "Hit Rating",
                     textColor = colors.HIT_SECONDARY,
                     statColor = colors.HIT_PRIMARY
                 },
                 bonus = {
                     display = true,
                     refName = "SpellHitBonus",
-                    text = "Bonus",
+                    text = "Hit Bonus",
                     textColor = colors.HIT_SECONDARY,
                     statColor = colors.HIT_PRIMARY
                 },
