@@ -322,7 +322,7 @@ function _Config:LoadMeleeSection()
                         end,
                         get = function () return ExtendedCharacterStats.profile.melee.glance.damageBossLevel.display; end,
                         set = function (_, value)
-                            ExtendedCharacterStats.profile.melee.glance.damageSameLevel.display = value
+                            ExtendedCharacterStats.profile.melee.glance.damageBossLevel.display = value
                             Stats.RebuildStatInfos()
                         end,
                     },
