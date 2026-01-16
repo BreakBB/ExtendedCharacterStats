@@ -1,4 +1,4 @@
----@type Config
+---@class Config
 local Config = ECSLoader:ImportModule("Config")
 local _Config = Config.private
 
