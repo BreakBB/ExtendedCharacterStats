@@ -214,8 +214,17 @@ _CreateStatInfos = function()
     if ECS.IsClassic then
         _CreateStatInfo(category, category.attackPower, category.crit)
     else
-        _CreateStatInfo(category, category.attackPower, category.crit, category.penetration, category.penetrationRating, category.expertise,
-                category.expertiseRating, category.hasteRating, category.hasteBonus)
+        _CreateStatInfo(
+            category,
+            category.attackPower,
+            category.crit,
+            category.penetration,
+            category.penetrationRating,
+            category.expertise,
+            category.expertiseRating,
+            category.hasteRating,
+            category.hasteBonus
+        )
     end
     if category.display then
         category = category.hit
@@ -223,7 +232,7 @@ _CreateStatInfos = function()
 
         if (not ECS.IsWotlk) then
             category = profile.melee.glance
-            _CreateStatInfo(category, category.sameLevel, category.damageSameLevel, category.bossLevel,  category.damageBossLevel)
+            _CreateStatInfo(category, category.sameLevel, category.damageSameLevel, category.bossLevel, category.damageBossLevel)
         end
 
         category = profile.melee.attackSpeed
@@ -234,8 +243,16 @@ _CreateStatInfos = function()
     if ECS.IsClassic then
         _CreateStatInfo(category, category.attackPower, category.crit, category.attackSpeed)
     else
-        _CreateStatInfo(category, category.attackPower, category.crit, category.penetration, category.penetrationRating,
-                category.hasteRating, category.hasteBonus, category.attackSpeed)
+        _CreateStatInfo(
+            category,
+            category.attackPower,
+            category.crit,
+            category.penetration,
+            category.penetrationRating,
+            category.hasteRating,
+            category.hasteBonus,
+            category.attackSpeed
+        )
     end
 
     if category.display then
@@ -244,8 +261,39 @@ _CreateStatInfos = function()
     end
 
     category = profile.defense
-    _CreateStatInfo(category, category.armor, category.meleeCritReduction, category.rangedCritReduction, category.spellCritReduction, category.avoidance, category.avoidanceBoss,
-            category.defenseRating, category.defense, category.blockChance, category.blockValue, category.parry, category.dodge, category.resilience)
+    if ECS.IsClassic then
+        _CreateStatInfo(
+            category,
+            category.armor,
+            category.meleeCritReduction,
+            category.rangedCritReduction,
+            category.spellCritReduction,
+            category.avoidance,
+            category.avoidanceBoss,
+            category.defense,
+            category.blockChance,
+            category.blockValue,
+            category.parry,
+            category.dodge
+        )
+    else
+        _CreateStatInfo(
+            category,
+            category.armor,
+            category.meleeCritReduction,
+            category.rangedCritReduction,
+            category.spellCritReduction,
+            category.avoidance,
+            category.avoidanceBoss,
+            category.defenseRating,
+            category.defense,
+            category.blockChance,
+            category.blockValue,
+            category.parry,
+            category.dodge,
+            category.resilience
+        )
+    end
 
     category = profile.regen
     _CreateStatInfo(category, category.mp5Items, category.mp5Spirit, category.mp5Buffs, category.mp5Casting, category.mp5NotCasting)
@@ -257,45 +305,44 @@ _CreateStatInfos = function()
     local spellHit = spell.hit
     if ECS.IsClassic then
         _CreateStatInfo(
-                category,
-                category.hasteBonus,
-                category.penetration,
-                spellBonus.bonusHealing,
-                spell.arcane.display and spellBonus.arcaneDmg or nil,
-                spell.arcane.display and spellCrit.display and spellCrit.arcane or nil,
-                spell.arcane.display and spellHit.bonus.display and spellHit.arcaneHitBonus or nil,
-                spell.arcane.display and spellHit.sameLevel.display and spellHit.arcaneMissChance or nil,
-                spell.arcane.display and spellHit.bossLevel.display and spellHit.arcaneMissChanceBoss or nil,
-                spell.fire.display and spellBonus.fireDmg or nil,
-                spell.fire.display and spellCrit.display and spellCrit.fire or nil,
-                spell.fire.display and spellHit.bonus.display and spellHit.fireHitBonus or nil,
-                spell.fire.display and spellHit.sameLevel.display and spellHit.fireMissChance or nil,
-                spell.fire.display and spellHit.bossLevel.display and spellHit.fireMissChanceBoss or nil,
-                spell.frost.display and spellBonus.frostDmg or nil,
-                spell.frost.display and spellCrit.display and spellCrit.frost or nil,
-                spell.frost.display and spellHit.bonus.display and spellHit.frostHitBonus or nil,
-                spell.frost.display and spellHit.sameLevel.display and spellHit.frostMissChance or nil,
-                spell.frost.display and spellHit.bossLevel.display and spellHit.frostMissChanceBoss or nil,
-                spell.holy.display and spellBonus.holyDmg or nil,
-                spell.holy.display and spellCrit.display and spellCrit.holy or nil,
-                spell.holy.display and spellHit.bonus.display and spellHit.holyHitBonus or nil,
-                spell.holy.display and spellHit.sameLevel.display and spellHit.holyMissChance or nil,
-                spell.holy.display and spellHit.bossLevel.display and spellHit.holyMissChanceBoss or nil,
-                spell.nature.display and spellBonus.natureDmg or nil,
-                spell.nature.display and spellCrit.display and spellCrit.nature or nil,
-                spell.nature.display and spellHit.bonus.display and spellHit.natureHitBonus or nil,
-                spell.nature.display and spellHit.sameLevel.display and spellHit.natureMissChance or nil,
-                spell.nature.display and spellHit.bossLevel.display and spellHit.natureMissChanceBoss or nil,
-                spell.physical.display and spellBonus.physicalDmg or nil,
-                spell.physical.display and spellCrit.display and spellCrit.physical or nil,
-                spell.physical.display and spellHit.bonus.display and spellHit.physicalHitBonus or nil,
-                spell.physical.display and spellHit.sameLevel.display and spellHit.physicalMissChance or nil,
-                spell.physical.display and spellHit.bossLevel.display and spellHit.physicalMissChanceBoss or nil,
-                spell.shadow.display and spellBonus.shadowDmg or nil,
-                spell.shadow.display and spellCrit.display and spellCrit.shadow or nil,
-                spell.shadow.display and spellHit.bonus.display and spellHit.shadowHitBonus or nil,
-                spell.shadow.display and spellHit.sameLevel.display and spellHit.shadowMissChance or nil,
-                spell.shadow.display and spellHit.bossLevel.display and spellHit.shadowMissChanceBoss or nil
+            category,
+            category.penetration,
+            spellBonus.bonusHealing,
+            spell.arcane.display and spellBonus.arcaneDmg or nil,
+            spell.arcane.display and spellCrit.display and spellCrit.arcane or nil,
+            spell.arcane.display and spellHit.bonus.display and spellHit.arcaneHitBonus or nil,
+            spell.arcane.display and spellHit.sameLevel.display and spellHit.arcaneMissChance or nil,
+            spell.arcane.display and spellHit.bossLevel.display and spellHit.arcaneMissChanceBoss or nil,
+            spell.fire.display and spellBonus.fireDmg or nil,
+            spell.fire.display and spellCrit.display and spellCrit.fire or nil,
+            spell.fire.display and spellHit.bonus.display and spellHit.fireHitBonus or nil,
+            spell.fire.display and spellHit.sameLevel.display and spellHit.fireMissChance or nil,
+            spell.fire.display and spellHit.bossLevel.display and spellHit.fireMissChanceBoss or nil,
+            spell.frost.display and spellBonus.frostDmg or nil,
+            spell.frost.display and spellCrit.display and spellCrit.frost or nil,
+            spell.frost.display and spellHit.bonus.display and spellHit.frostHitBonus or nil,
+            spell.frost.display and spellHit.sameLevel.display and spellHit.frostMissChance or nil,
+            spell.frost.display and spellHit.bossLevel.display and spellHit.frostMissChanceBoss or nil,
+            spell.holy.display and spellBonus.holyDmg or nil,
+            spell.holy.display and spellCrit.display and spellCrit.holy or nil,
+            spell.holy.display and spellHit.bonus.display and spellHit.holyHitBonus or nil,
+            spell.holy.display and spellHit.sameLevel.display and spellHit.holyMissChance or nil,
+            spell.holy.display and spellHit.bossLevel.display and spellHit.holyMissChanceBoss or nil,
+            spell.nature.display and spellBonus.natureDmg or nil,
+            spell.nature.display and spellCrit.display and spellCrit.nature or nil,
+            spell.nature.display and spellHit.bonus.display and spellHit.natureHitBonus or nil,
+            spell.nature.display and spellHit.sameLevel.display and spellHit.natureMissChance or nil,
+            spell.nature.display and spellHit.bossLevel.display and spellHit.natureMissChanceBoss or nil,
+            spell.physical.display and spellBonus.physicalDmg or nil,
+            spell.physical.display and spellCrit.display and spellCrit.physical or nil,
+            spell.physical.display and spellHit.bonus.display and spellHit.physicalHitBonus or nil,
+            spell.physical.display and spellHit.sameLevel.display and spellHit.physicalMissChance or nil,
+            spell.physical.display and spellHit.bossLevel.display and spellHit.physicalMissChanceBoss or nil,
+            spell.shadow.display and spellBonus.shadowDmg or nil,
+            spell.shadow.display and spellCrit.display and spellCrit.shadow or nil,
+            spell.shadow.display and spellHit.bonus.display and spellHit.shadowHitBonus or nil,
+            spell.shadow.display and spellHit.sameLevel.display and spellHit.shadowMissChance or nil,
+            spell.shadow.display and spellHit.bossLevel.display and spellHit.shadowMissChanceBoss or nil
         )
     else
         _CreateStatInfo(
