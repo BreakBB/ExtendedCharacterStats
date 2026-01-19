@@ -88,7 +88,7 @@ function _SpellHit:GetTalentSpellHitBonus(school)
             bonus = bonus + (ECS.IsWotlk and 2 or 4)
         elseif C_SpellBook.IsSpellKnown(30672) -- Elemental Precision Rank 1
             bonus = bonus + (ECS.IsWotlk and 1 or 2)
-								end
+        end
     end
 
     if ECS.IsWotlk and classId == Data.DRUID then
