@@ -53,52 +53,116 @@ end
 function _SpellHit:GetTalentSpellHitBonus(school)
     local bonus = 0
 
-    if classId == Data.PRIEST then
+    if classId == Data.DRUID then
+        if C_SpellBook.IsSpellKnown(33596) then
+            bonus = bonus + 4 -- Balance of Power Rank 2
+        elseif C_SpellBook.IsSpellKnown(33592) then
+            bonus = bonus + 2 -- Balance of Power Rank 1
+        end
+    elseif classId == Data.DEATHKNIGHT then
         if ECS.IsWotlk then
-            local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 3)
-            bonus = points -- 0-3% from Shadow Focus
-        elseif school == Data.SHADOW_SCHOOL then
-            local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 3)
-            bonus = points * 2 -- 0-10% from Shadow Focus
+            if C_SpellBook.IsSpellKnown(49568) then
+                bonus = bonus + 3 --Virulence Rank 3
+            elseif C_SpellBook.IsSpellKnown(49567) then
+                bonus = bonus + 2 -- Virulence Rank 2
+            elseif C_SpellBook.IsSpellKnown(48962) then
+                bonus = bonus + 1 -- Virulence Rank 1
+            end
         end
-    end
-
-    if ECS.IsTBC and classId == Data.PALADIN then
-        local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 3)
-        bonus = points * 1 -- 0-3% Precision
-    end
-
-    if classId == Data.MAGE then
+    elseif classId == Data.MAGE then
         if ECS.IsWotlk then
-            local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 17)
-            bonus = points * 1 -- 0-3% from Elemental Precision
-        elseif school == Data.FIRE_SCHOOL or school == Data.FROST_SCHOOL then
-            local _, _, _, _, points, _, _, _ = GetTalentInfo(3, 17)
-            bonus = points * 2 -- 0-6% from Elemental Precision
-        elseif school == Data.ARCANE_SCHOOL then
-            local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 3)
-            bonus = points * 2 -- 0-10% from Arcane Focus
+            if C_SpellBook.IsSpellKnown(29440) then
+                bonus = bonus + 3 -- Elemental Precision Rank 3
+            elseif C_SpellBook.IsSpellKnown(29439) then
+                bonus = bonus + 2 -- Elemental Precision Rank 2
+            elseif C_SpellBook.IsSpellKnown(29438) then
+                bonus = bonus + 1 -- Elemental Precision Rank 1
+            end
+            if C_SpellBook.IsSpellKnown(12840) then
+                bonus = bonus + 3 -- Arcane Focus Rank 3
+            elseif C_SpellBook.IsSpellKnown(12839) then
+                bonus = bonus + 2 -- Arcane Focus Rank 2
+            elseif C_SpellBook.IsSpellKnown(11222) then
+                bonus = bonus + 1 -- Arcane Focus Rank 1
+            end
+        else
+            if (school == Data.FIRE_SCHOOL or school == Data.FROST_SCHOOL) then
+                if C_SpellBook.IsSpellKnown(29440) then
+                    bonus = bonus + 6 -- Elemental Precision Rank 3
+                elseif C_SpellBook.IsSpellKnown(29439) then
+                    bonus = bonus + 4 -- Elemental Precision Rank 2
+                elseif C_SpellBook.IsSpellKnown(29438) then
+                    bonus = bonus + 2 -- Elemental Precision Rank 1
+                end
+            elseif school == Data.ARCANE_SCHOOL then
+                if C_SpellBook.IsSpellKnown(12842) then
+                    bonus = bonus + 10 -- Arcane Focus Rank 5
+                elseif C_SpellBook.IsSpellKnown(12841) then
+                    bonus = bonus + 8 -- Arcane Focus Rank 4
+                elseif C_SpellBook.IsSpellKnown(12840) then
+                    bonus = bonus + 6 -- Arcane Focus Rank 3
+                elseif C_SpellBook.IsSpellKnown(12839) then
+                    bonus = bonus + 4 -- Arcane Focus Rank 2
+                elseif C_SpellBook.IsSpellKnown(11222) then
+                    bonus = bonus + 2 -- Arcane Focus Rank 1
+                end
+            end
         end
-    end
-
-    if classId == Data.SHAMAN and (school == Data.FIRE_SCHOOL or school == Data.FROST_SCHOOL or school == Data.NATURE_SCHOOL) then
-        if C_SpellBook.IsSpellKnown(30674) then
-            bonus = bonus + (ECS.IsWotlk and 3 or 6) -- Elemental Precision Rank 3
-        elseif C_SpellBook.IsSpellKnown(30673) then
-            bonus = bonus + (ECS.IsWotlk and 2 or 4) -- Elemental Precision Rank 2
-        elseif C_SpellBook.IsSpellKnown(30672) then
-            bonus = bonus + (ECS.IsWotlk and 1 or 2) -- Elemental Precision Rank 1
+    elseif classId == Data.PALADIN then
+        if ECS.IsTBC then
+            if C_SpellBook.IsSpellKnown(20193) then
+                bonus = bonus + 3 -- Precision Rank 3
+            elseif C_SpellBook.IsSpellKnown(20192) then
+                bonus = bonus + 2 -- Precision Rank 2
+            elseif C_SpellBook.IsSpellKnown(20189) then
+                bonus = bonus + 1 -- Precision Rank 1
+            end
+        elseif ECS.IsWotlk then
+            if C_SpellBook.IsSpellKnown(53557) then
+                bonus = bonus + 4 -- Enlightened Judgements Rank 2
+            elseif C_SpellBook.IsSpellKnown(53556) then
+                bonus = bonus + 2 -- Enlightened Judgements Rank 1
+            end
         end
-    end
-
-    if ECS.IsWotlk and classId == Data.DRUID then
-        local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 13)
-        bonus = points * 2 -- 0-4% from Balance of Power
-    end
-
-    if ECS.IsWotlk and classId == Data.WARLOCK then
-        local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 5)
-        bonus = points -- 0-3% from Suppression
+    elseif classId == Data.PRIEST then
+        if school == Data.SHADOW_SCHOOL then
+            if C_SpellBook.IsSpellKnown(15328) then
+                bonus = bonus + (ECS.IsWotlk and 3 or 6) -- Shadow Focus Rank 3
+            elseif C_SpellBook.IsSpellKnown(15327) then
+                bonus = bonus + (ECS.IsWotlk and 2 or 4) -- Shadow Focus Rank 2
+            elseif C_SpellBook.IsSpellKnown(15260) then
+                bonus = bonus + (ECS.IsWotlk and 1 or 2) -- Shadow Focus Rank 1
+            end
+        end
+    elseif classId == Data.SHAMAN then
+        if (school == Data.FIRE_SCHOOL or school == Data.FROST_SCHOOL or school == Data.NATURE_SCHOOL) then
+            if C_SpellBook.IsSpellKnown(30674) then
+                bonus = bonus + (ECS.IsWotlk and 3 or 6) -- Elemental Precision Rank 3
+            elseif C_SpellBook.IsSpellKnown(30673) then
+                bonus = bonus + (ECS.IsWotlk and 2 or 4) -- Elemental Precision Rank 2
+            elseif C_SpellBook.IsSpellKnown(30672) then
+                bonus = bonus + (ECS.IsWotlk and 1 or 2) -- Elemental Precision Rank 1
+            end
+        end
+        if ECS.IsTBC then
+            if C_SpellBook.IsSpellKnown(16198) then
+                bonus = bonus + 3 -- Nature's Guidance Rank 3
+            elseif C_SpellBook.IsSpellKnown(16196) then
+                bonus = bonus + 2 -- Nature's Guidance Rank 2
+            elseif C_SpellBook.IsSpellKnown(16180) then
+                bonus = bonus + 1 -- Nature's Guidance Rank 1
+            end
+        end
+    elseif classId == Data.WARLOCK then
+        if ECS.IsWotlk then
+            if C_SpellBook.IsSpellKnown(18176) then
+                bonus = bonus + 3 --Suppression Rank 3
+            elseif C_SpellBook.IsSpellKnown(18175) then
+                bonus = bonus + 2 -- Suppression Rank 2
+            elseif C_SpellBook.IsSpellKnown(18174) then
+                bonus = bonus + 1 -- Suppression Rank 1
+            end
+        end
     end
 
     return bonus
@@ -106,36 +170,32 @@ end
 
 ---@return number
 function _SpellHit:GetSpellHitBonus(school)
+    local hit = _SpellHit:GetTalentSpellHitBonus(school) + _SpellHit:GetSpellHitFromBuffs() +_SpellHit.GetSpellHitFromRunes(school)
     if CR_HIT_SPELL then
-        return GetCombatRatingBonus(CR_HIT_SPELL) + _SpellHit:GetSpellHitFromBuffs()
+        hit = hit + GetCombatRatingBonus(CR_HIT_SPELL)
     end
     -- GetSpellHitModifier returns nil on dungeon entering/teleport
-    return (GetSpellHitModifier() or 0) + _SpellHit.GetHitFromRunes(school)
+    return hit + (GetSpellHitModifier() or 0)
 end
 
 ---@return number
 function _SpellHit:GetSpellHitFromBuffs()
     local mod = 0
-    local otherDraeneiInGroup = false
 
     local i = 1
     repeat
         local aura = C_UnitAuras.GetBuffDataByIndex ("player", i)
         i = i + 1
         if aura and aura.spellId then
-
-            if aura.spellId == 28878 then
-                mod = mod + 1 -- 1% from Inspiring Presence
-                otherDraeneiInGroup = true
-            end
-
             if aura.spellId == 30708 then
-                mod = mod + 3 -- 3% from Totem of Wrath
+                mod = mod + (ECS.IsTBC and 3 or 0) -- Totem of Wrath
             end
         end
     until (not aura)
 
-    if (not otherDraeneiInGroup) and (IsSpellKnown(28878) or IsSpellKnown(6562)) then
+    if C_UnitAuras.GetPlayerAuraBySpellID(28878) or C_SpellBook.IsSpellKnown(28878) or ( -- Inspiring Presence
+        (C_SpellBook.IsSpellKnown(6562) or C_UnitAuras.GetPlayerAuraBySpellID(6562)) and ECS.IsWotlk -- Heroic Presence
+    ) then
         mod = mod + 1
     end
 
@@ -144,7 +204,7 @@ end
 
 ---@param school number
 ---@return number
-function _SpellHit.GetHitFromRunes(school)
+function _SpellHit.GetSpellHitFromRunes(school)
     local mod = 0
 
     if (not ECS.IsSoD) then
@@ -174,10 +234,7 @@ end
 ---@param school number
 ---@return string
 function Data.SpellHitBonus(school)
-    local hit = _SpellHit:GetTalentSpellHitBonus(school)
-    local mod = _SpellHit:GetSpellHitBonus(school)
-    hit = hit + mod
-
+    local hit = _SpellHit:GetSpellHitBonus(school)
     return DataUtils:Round(hit, 2) .. "%"
 end
 
