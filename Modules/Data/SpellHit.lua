@@ -88,11 +88,11 @@ function _SpellHit:GetTalentSpellHitBonus(school)
         else
             if (school == Data.FIRE_SCHOOL or school == Data.FROST_SCHOOL) then
                 if C_SpellBook.IsSpellKnown(29440) then
-                    bonus = bonus + 6 -- Elemental Precision Rank 3
+                    bonus = bonus + (ECS.IsClassic and 6 or 3) -- Elemental Precision Rank 3
                 elseif C_SpellBook.IsSpellKnown(29439) then
-                    bonus = bonus + 4 -- Elemental Precision Rank 2
+                    bonus = bonus + (ECS.IsClassic and 4 or 2) -- Elemental Precision Rank 2
                 elseif C_SpellBook.IsSpellKnown(29438) then
-                    bonus = bonus + 2 -- Elemental Precision Rank 1
+                    bonus = bonus + (ECS.IsClassic and 2 or 1) -- Elemental Precision Rank 1
                 end
             elseif school == Data.ARCANE_SCHOOL then
                 if C_SpellBook.IsSpellKnown(12842) then
