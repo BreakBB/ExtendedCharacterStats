@@ -130,7 +130,7 @@ function _SpellHit:GetSpellHitFromBuffs()
         end
     until (not aura)
 
-    if (not otherDraeneiInGroup) and (IsSpellKnown(28878) or IsSpellKnown(6562)) then
+    if (not otherDraeneiInGroup) and (C_SpellBook.IsSpellKnown(28878) or C_SpellBook.IsSpellKnown(6562)) then
         mod = mod + 1
     end
 
