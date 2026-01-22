@@ -50,6 +50,7 @@ function _Melee:GetHitRatingBonus()
     return (GetHitModifier() or 0) + _Melee.GetHitFromRunes()
 end
 
+---@return number
 function _Melee:GetHitTalentBonus()
     local mod = 0
 
@@ -94,6 +95,7 @@ function _Melee:GetHitTalentBonus()
     return mod
 end
 
+---@return number
 function _Melee:GetHitFromBuffs()
     local mod = 0
     local otherDraeneiInGroup = false
@@ -118,6 +120,7 @@ function _Melee:GetHitFromBuffs()
     return mod
 end
 
+---@return number
 function _Melee.GetHitFromRunes()
     local mod = 0
 
@@ -212,10 +215,12 @@ function Data:GlanceHitChanceByLevel(level)
     return DataUtils:Round(glancingChance*100, 2) .. "%"
 end
 
+---@return string
 function Data:GlanceDamageSameLevel()
     return Data:GlanceDamageByLevel(0)
 end
 
+---@return string
 function Data:GlanceDamageBossLevel()
     return Data:GlanceDamageByLevel(3)
 end
