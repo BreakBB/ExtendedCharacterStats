@@ -1,4 +1,4 @@
----@type Data
+---@class Data
 local Data = ECSLoader:ImportModule("Data")
 
 Data.PHYSICAL_SCHOOL = 1

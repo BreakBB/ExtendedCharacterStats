@@ -1,4 +1,4 @@
----@type Data
+---@class Data
 local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
 local DataUtils = ECSLoader:ImportModule("DataUtils")
@@ -10,7 +10,7 @@ function Data:GetSpellDamage(school)
     return DataUtils:Round(spellDmg, 0)
 end
 
----@return number
+---@return string
 function Data:SpellPenetration()
     return DataUtils:Round(GetSpellPenetration(), 2) .. "%"
 end

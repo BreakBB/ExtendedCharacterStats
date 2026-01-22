@@ -1,4 +1,4 @@
----@type Data
+---@class Data
 local Data = ECSLoader:ImportModule("Data")
 ---@type Utils
 local Utils = ECSLoader:ImportModule("Utils")
@@ -9,7 +9,7 @@ local _Ranged = {}
 
 local _, _, classId = UnitClass("player")
 
----@return string
+---@return number
 function Data:GetRangeAttackPower()
     if not _Ranged:IsRangeAttackClass() then
         return 0
@@ -36,7 +36,7 @@ function Data:GetRangedHasteBonus()
     return DataUtils:Round(hasteBonus, 2) .. "%"
 end
 
----@return string
+---@return number
 function Data:GetRangedAttackSpeed()
     local speed, _ = UnitRangedDamage("player")
     return DataUtils:Round(speed, 2)
@@ -83,6 +83,7 @@ function _Ranged:GetHitBonus()
     return hitValue
 end
 
+---@return number
 function _Ranged:GetHitTalentBonus()
     local bonus = 0
 
