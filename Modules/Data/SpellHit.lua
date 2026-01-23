@@ -1,4 +1,4 @@
----@type Data
+---@class Data
 local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
 local DataUtils = ECSLoader:ImportModule("DataUtils")
@@ -108,6 +108,7 @@ function _SpellHit:GetSpellHitBonus(school)
     return (GetSpellHitModifier() or 0) + _SpellHit.GetHitFromRunes(school)
 end
 
+---@return number
 function _SpellHit:GetSpellHitFromBuffs()
     local mod = 0
     local otherDraeneiInGroup = false

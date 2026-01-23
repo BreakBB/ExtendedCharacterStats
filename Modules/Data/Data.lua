@@ -13,6 +13,7 @@ function Data.GetStatInfo(refName)
         return dataFunction()
     else
         ECS:Print("Invalid data refName: " .. refName)
+        return ""
     end
 end
 
