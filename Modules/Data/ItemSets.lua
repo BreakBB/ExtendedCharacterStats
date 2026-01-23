@@ -1,4 +1,4 @@
----@type Data
+---@class Data
 local Data = ECSLoader:ImportModule("Data")
 
 local _, _, classId = UnitClass("player")
@@ -181,6 +181,7 @@ function Data:GetSetBonusValueMP5()
     return bonus
 end
 
+---@return boolean
 function Data:HasNatureCritBonusModifier()
     if classId == Data.SHAMAN then
         return Data:IsSetBonusActive(setNames.TEN_STORMS, 5)
@@ -188,6 +189,9 @@ function Data:HasNatureCritBonusModifier()
     return false
 end
 
+---@param setName string
+---@param bonusLevel number
+---@return boolean
 function Data:IsSetBonusActive(setName, bonusLevel)
     local setItems = itemSets[setName]
     if (not setItems) then

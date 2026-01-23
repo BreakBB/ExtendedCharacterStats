@@ -129,7 +129,7 @@ function DataUtils.GetRuneForEquipSlot(equipSlot)
 end
 
 ---@param itemLink ItemLink
----@return (number, number, number) | nil
+---@return number | nil, number | nil, number | nil
 function DataUtils:GetSocketedGemsFromItemLink(itemLink)
     if itemLink then
         local _, itemStringLink = GetItemInfo(itemLink)
