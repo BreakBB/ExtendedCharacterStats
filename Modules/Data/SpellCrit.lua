@@ -1,4 +1,4 @@
----@type Data
+---@class Data
 local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
 local DataUtils = ECSLoader:ImportModule("DataUtils")
@@ -25,6 +25,7 @@ function Data:GetSpellCrit(school)
     return DataUtils:Round(crit, 2) .. "%"
 end
 
+---@return number
 function _SpellCrit:GetSpellCritFromBuffs(school)
     local mod = 0
     local i = 1
@@ -151,6 +152,7 @@ function _SpellCrit:GetTalentModifierFireCrit()
     return mod
 end
 
+---@return number
 function _SpellCrit:GetItemModifierBySchool(school)
     if school == Data.HOLY_SCHOOL then
         return _SpellCrit:GetItemModifierHolyCrit()
@@ -159,6 +161,7 @@ function _SpellCrit:GetItemModifierBySchool(school)
     return 0
 end
 
+---@return number
 function _SpellCrit:GetItemModifierHolyCrit()
     local mainHand, _ = GetInventoryItemID("player", 16)
     if ECS.IsClassic and mainHand == 18608 then
@@ -167,6 +170,7 @@ function _SpellCrit:GetItemModifierHolyCrit()
     return 0
 end
 
+---@return number
 function _SpellCrit:GetSetBonus(school)
     local bonus = 0
 
@@ -177,6 +181,7 @@ function _SpellCrit:GetSetBonus(school)
     return bonus
 end
 
+---@return number
 function Data:GetSpellPenetration()
     return DataUtils:Round(GetSpellPenetration(), 2)
 end
