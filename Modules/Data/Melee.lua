@@ -1,4 +1,4 @@
----@type Data
+---@class Data
 local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
 local DataUtils = ECSLoader:ImportModule("DataUtils")
@@ -8,19 +8,19 @@ local Utils = ECSLoader:ImportModule("Utils")
 local _Melee = {}
 local _, _, classId = UnitClass("player")
 
----@return string
+---@return number
 function Data:GetMeleeAttackPower()
     local melee, posBuff, negBuff = UnitAttackPower("player")
     return melee + posBuff + negBuff
 end
 
----@return string
+---@return number
 function Data:GetMeleeAttackSpeedMainHand()
     local mainHand, _ = UnitAttackSpeed("player")
     return DataUtils:Round(mainHand, 2)
 end
 
----@return string
+---@return number
 function Data:GetMeleeAttackSpeedOffHand()
     local _, offHand = UnitAttackSpeed("player")
     return DataUtils:Round(offHand, 2)
@@ -50,6 +50,7 @@ function _Melee:GetHitRatingBonus()
     return (GetHitModifier() or 0) + _Melee.GetHitFromRunes()
 end
 
+---@return number
 function _Melee:GetHitTalentBonus()
     local mod = 0
 
@@ -94,6 +95,7 @@ function _Melee:GetHitTalentBonus()
     return mod
 end
 
+---@return number
 function _Melee:GetHitFromBuffs()
     local mod = 0
     local otherDraeneiInGroup = false
@@ -118,6 +120,7 @@ function _Melee:GetHitFromBuffs()
     return mod
 end
 
+---@return number
 function _Melee.GetHitFromRunes()
     local mod = 0
 
@@ -212,10 +215,12 @@ function Data:GlanceHitChanceByLevel(level)
     return DataUtils:Round(glancingChance*100, 2) .. "%"
 end
 
+---@return string
 function Data:GlanceDamageSameLevel()
     return Data:GlanceDamageByLevel(0)
 end
 
+---@return string
 function Data:GlanceDamageBossLevel()
     return Data:GlanceDamageByLevel(3)
 end
@@ -260,7 +265,7 @@ function Data:GetArmorPenetration()
     return DataUtils:Round(armorPenetration, 2) .. "%"
 end
 
----@return string
+---@return number
 function Data:GetArmorPenetrationRating()
     local armorPenetrationRating = GetCombatRating(CR_ARMOR_PENETRATION)
     return DataUtils:Round(armorPenetrationRating, 0)

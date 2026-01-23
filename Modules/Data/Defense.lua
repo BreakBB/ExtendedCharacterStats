@@ -1,4 +1,4 @@
----@type Data
+---@class Data
 local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
 local DataUtils = ECSLoader:ImportModule("DataUtils")
@@ -20,7 +20,7 @@ function Data:GetArmorValue()
     return DataUtils:Round(effectiveArmor, 2)
 end
 
----@return (number, number, number)
+---@return number, number, number
 function _Defense:GetCritReduction()
     local defBonus = Data:GetDefenseValue()
 

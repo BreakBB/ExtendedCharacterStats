@@ -1,4 +1,4 @@
----@type Data
+---@class Data
 local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
 local DataUtils = ECSLoader:ImportModule("DataUtils")
@@ -180,34 +180,34 @@ function _MP5:GetTalentModifier()
 
     if classId == Data.PRIEST then
         if C_SpellBook.IsSpellKnown(14777) then
-            mod = (ECS.IsTbc and 0.3 or (ECS.IsWotlk and 0.5 or 0.15))
+            mod = (ECS.IsTBC and 0.3 or (ECS.IsWotlk and 0.5 or 0.15))
         elseif C_SpellBook.IsSpellKnown(14776) then
-            mod = (ECS.IsTbc and 0.2 or (ECS.IsWotlk and 0.33 or 0.1))
+            mod = (ECS.IsTBC and 0.2 or (ECS.IsWotlk and 0.33 or 0.1))
         elseif C_SpellBook.IsSpellKnown(14521) then
-            mod = (ECS.IsTbc and 0.1 or (ECS.IsWotlk and 0.17 or 0.05))
+            mod = (ECS.IsTBC and 0.1 or (ECS.IsWotlk and 0.17 or 0.05))
         end
     elseif classId == Data.MAGE then
         if C_SpellBook.IsSpellKnown(18464) then
-            mod = (ECS.IsTbc and 0.3 or (ECS.IsWotlk and 0.5 or 0.15))
+            mod = (ECS.IsTBC and 0.3 or (ECS.IsWotlk and 0.5 or 0.15))
         elseif C_SpellBook.IsSpellKnown(18463) then
-            mod = (ECS.IsTbc and 0.2 or (ECS.IsWotlk and 0.33 or 0.1))
+            mod = (ECS.IsTBC and 0.2 or (ECS.IsWotlk and 0.33 or 0.1))
         elseif C_SpellBook.IsSpellKnown(18462) then
-            mod = (ECS.IsTbc and 0.1 or (ECS.IsWotlk and 0.17 or 0.05))
+            mod = (ECS.IsTBC and 0.1 or (ECS.IsWotlk and 0.17 or 0.05))
         end
         if C_SpellBook.IsSpellKnown(34296) then
-            mod = mod + (ECS.IsTbc and 0.3 or (ECS.IsWotlk and 0.5 or 0.15))
+            mod = mod + (ECS.IsTBC and 0.3 or (ECS.IsWotlk and 0.5 or 0.15))
         elseif C_SpellBook.IsSpellKnown(34295) then
-            mod = mod + (ECS.IsTbc and 0.2 or (ECS.IsWotlk and 0.33 or 0.1))
+            mod = mod + (ECS.IsTBC and 0.2 or (ECS.IsWotlk and 0.33 or 0.1))
         elseif C_SpellBook.IsSpellKnown(34293) then
-            mod = mod + (ECS.IsTbc and 0.1 or (ECS.IsWotlk and 0.17 or 0.05))
+            mod = mod + (ECS.IsTBC and 0.1 or (ECS.IsWotlk and 0.17 or 0.05))
         end
     elseif classId == Data.DRUID then
         if C_SpellBook.IsSpellKnown(17108) then
-            mod = (ECS.IsTbc and 0.3 or (ECS.IsWotlk and 0.5 or 0.15))
+            mod = (ECS.IsTBC and 0.3 or (ECS.IsWotlk and 0.5 or 0.15))
         elseif C_SpellBook.IsSpellKnown(17107) then
-            mod = (ECS.IsTbc and 0.2 or (ECS.IsWotlk and 0.33 or 0.1))
+            mod = (ECS.IsTBC and 0.2 or (ECS.IsWotlk and 0.33 or 0.1))
         elseif C_SpellBook.IsSpellKnown(17106) then
-            mod = (ECS.IsTbc and 0.1 or (ECS.IsWotlk and 0.17 or 0.05))
+            mod = (ECS.IsTBC and 0.1 or (ECS.IsWotlk and 0.17 or 0.05))
         end
     end
     return mod
