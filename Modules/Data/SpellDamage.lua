@@ -3,6 +3,9 @@ local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
 local DataUtils = ECSLoader:ImportModule("DataUtils")
 
+local _SpellDamage = {}
+local _, _, classId = UnitClass("player")
+
 ---@param school number
 ---@return number
 function Data:GetSpellDamage(school)
