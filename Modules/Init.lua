@@ -98,9 +98,10 @@ function _Init.RegisterEvents(eventFrame)
     eventFrame:RegisterUnitEvent("UNIT_RANGED_ATTACK_POWER", "player")
     eventFrame:RegisterUnitEvent("UNIT_RANGEDDAMAGE", "player")
     eventFrame:RegisterEvent("UPDATE_SHAPESHIFT_FORM")
-   if not ECS.IsClassic then
+    if not ECS.IsClassic then
         eventFrame:RegisterEvent("SOCKET_INFO_SUCCESS") -- Triggers whenever the player successfully sockets an item
-
+    end
+    if ECS.IsWotlk then
         GearManagerDialog:HookScript("OnShow", function()
             Stats:HideWindow()
         end)
