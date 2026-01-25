@@ -100,14 +100,15 @@ function _Init.RegisterEvents(eventFrame)
     eventFrame:RegisterEvent("UPDATE_SHAPESHIFT_FORM")
     if ECS.IsTBC or ECS.IsWotlk then
         eventFrame:RegisterEvent("SOCKET_INFO_SUCCESS") -- Triggers whenever the player successfully sockets an item
-    end
-    if ECS.IsWotlk then
-        GearManagerDialog:HookScript("OnShow", function()
-            Stats:HideWindow()
-        end)
-        GearManagerDialog:HookScript("OnHide", function()
-            Stats:ShowWindow()
-        end)
+
+        if GearManagerDialog then
+            GearManagerDialog:HookScript("OnShow", function()
+                Stats:HideWindow()
+            end)
+            GearManagerDialog:HookScript("OnHide", function()
+                Stats:ShowWindow()
+            end)
+        end
     end
     if ECS.IsSoD then
         eventFrame:RegisterEvent("RUNE_UPDATED") -- Triggers whenever the player changed a rune
