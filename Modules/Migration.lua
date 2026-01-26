@@ -30,7 +30,7 @@ function Migration:ToLatestProfileVersion(profileVersion)
     end
     if profileVersion < 23 then
         Profile:Reset()
-         ECS:Print(i18n("Profile has been reset due to a major update.")) -- because of TBC prepatch
+        ECS:Print(i18n("Profile has been reset due to a major update.")) -- because of TBC prepatch
         return
     end
 end
