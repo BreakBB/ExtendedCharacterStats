@@ -9,43 +9,38 @@ local _SpellHit = {}
 local _, _, classId = UnitClass("player")
 
 ---@param school number
----@return string
-function Data:SpellMissChanceSameLevel(school)
-    local missChance = ECS.IsWotlk and 3 or 4
+---@param levelDifference number
+---@param IsPvP boolean
+---@return number
+function Data:SpellMissChance(school,levelDifference,IsPvP)
+    -- https://royalgiraffe.github.io/resist-guide
+    local missChance = 0
+    local minimumMissChance = ECS.IsWotlk and 0 or 1
+    local maximumMissChance = 90 -- uncertain, may be different for PvP
 
-    missChance = missChance - _SpellHit:GetTalentSpellHitBonus(school)
-    local mod = _SpellHit:GetSpellHitBonus(school)
-    missChance = missChance - mod
-
-    if ECS.IsWotlk and missChance < 0 then
-        missChance = 0
-    elseif (not ECS.IsWotlk) and missChance < 1 then
-        missChance = 1
-    elseif missChance > 100 then
-        missChance = 100
+    if levelDifference >= -3 and levelDifference <= 2 then
+        missChance = 4 + levelDifference
+    elseif levelDifference >= 3 then
+        missChance = 6 + (IsPvP and 7 or 11)*(levelDifference - 2)
     end
 
-    return DataUtils:Round(missChance, 2) .. "%"
+    missChance = missChance - _SpellHit:GetSpellHitBonus(school)
+    missChance = max(missChance,minimumMissChance)
+    missChance = min(missChance,maximumMissChance)
+
+    return missChance
+end
+
+---@param school number
+---@return string
+function Data:SpellMissChanceSameLevel(school)
+    return DataUtils:Round(Data:SpellMissChance(school,0,false), 2) .. "%"
 end
 
 ---@param school number
 ---@return string
 function Data:SpellMissChanceBossLevel(school)
-    local missChance = 17
-
-    missChance = missChance - _SpellHit:GetTalentSpellHitBonus(school)
-    local mod = _SpellHit:GetSpellHitBonus(school)
-    missChance = missChance - mod
-
-    if ECS.IsWotlk and missChance < 0 then
-        missChance = 0
-    elseif (not ECS.IsWotlk) and missChance < 1 then
-        missChance = 1
-    elseif missChance > 100 then
-        missChance = 100
-    end
-
-    return DataUtils:Round(missChance, 2) .. "%"
+    return DataUtils:Round(Data:SpellMissChance(school,3,false), 2) .. "%"
 end
 
 ---@param school number
