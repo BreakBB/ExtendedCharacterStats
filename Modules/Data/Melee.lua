@@ -239,14 +239,7 @@ function Data:GetExpertise()
     local expertise, _ = GetExpertise()
 
     if ECS.IsSoD then
-        -- count timeworn items
-        local timeworn = 0
-        for i = 1, 18 do
-            local id, _ = GetInventoryItemID("player", i)
-            if Data.Item.IsTimeworn[id] then
-                timeworn = timeworn + 1
-            end
-        end
+        local timeworn = DataUtils:CountTimewornItems()
 
         for i = 1, 18 do
             local id, _ = GetInventoryItemID("player", i)
