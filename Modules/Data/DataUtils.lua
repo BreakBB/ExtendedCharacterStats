@@ -105,7 +105,7 @@ end
 ---@return number|nil
 function DataUtils:GetEnchantFromItemLink(itemLink)
     if itemLink then
-        local _, itemStringLink = GetItemInfo(itemLink)
+        local _, itemStringLink = C_Item.GetItemInfo(itemLink)
         if itemStringLink then
             local _, _, enchant, _ = strsplit(":", itemStringLink, 4)
             return tonumber(enchant)
@@ -132,7 +132,7 @@ end
 ---@return (string, string, string) | nil
 function DataUtils:GetSocketedGemsFromItemLink(itemLink)
     if itemLink then
-        local _, itemStringLink = GetItemInfo(itemLink)
+        local _, itemStringLink = C_Item.GetItemInfo(itemLink)
         if itemStringLink then
             local _, _, gem1, gem2, gem3, _ = strsplit(":", itemStringLink, 6)
             return gem1, gem2, gem3
