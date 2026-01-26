@@ -84,7 +84,7 @@ function _Defense:GetCritReduction()
         end
     elseif classId == Data.WARLOCK then
         if (not ECS.IsClassic) then
-            if IsPlayerSpell(30321) then -- Demonic Resilience 3/3
+            if C_SpellBook.IsSpellKnown(30321) then -- Demonic Resilience 3/3
                 meleeCritReduction = meleeCritReduction + 3
                 spellCritReduction = spellCritReduction + 3
             elseif C_SpellBook.IsSpellKnown(30320) then --  Demonic Resilience 2/3
