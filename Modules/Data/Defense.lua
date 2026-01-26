@@ -68,17 +68,17 @@ function _Defense:GetCritReduction()
         end
     elseif classId == Data.PRIEST then
         if ECS.IsTBC then
-            if IsPlayerSpell(33371) then -- Shadow Resilience 2/2
+            if C_SpellBook.IsSpellKnown(33371) then -- Shadow Resilience 2/2
                 spellCritReduction = spellCritReduction + 4
-            elseif IsPlayerSpell(14910) then -- Shadow Resilience 1/2
+            elseif C_SpellBook.IsSpellKnown(14910) then -- Shadow Resilience 1/2
                 spellCritReduction = spellCritReduction + 2
             end
         end
     elseif classId == Data.ROGUE then
-        if IsPlayerSpell(30893) then -- Sleight of Hand 2/2
+        if C_SpellBook.IsSpellKnown(30893) then -- Sleight of Hand 2/2
             meleeCritReduction = meleeCritReduction + 2
             rangedCritReduction = rangedCritReduction + 2
-        elseif IsPlayerSpell(30892) then -- Sleight of Hand 1/2
+        elseif C_SpellBook.IsSpellKnown(30892) then -- Sleight of Hand 1/2
             meleeCritReduction = meleeCritReduction + 1
             rangedCritReduction = rangedCritReduction + 1
         end
@@ -87,10 +87,10 @@ function _Defense:GetCritReduction()
             if IsPlayerSpell(30321) then -- Demonic Resilience 3/3
                 meleeCritReduction = meleeCritReduction + 3
                 spellCritReduction = spellCritReduction + 3
-            elseif IsPlayerSpell(30320) then --  Demonic Resilience 2/3
+            elseif C_SpellBook.IsSpellKnown(30320) then --  Demonic Resilience 2/3
                 meleeCritReduction = meleeCritReduction + 2
                 spellCritReduction = spellCritReduction + 2
-            elseif IsPlayerSpell(30319) then -- Demonic Resilience 1/3
+            elseif C_SpellBook.IsSpellKnown(30319) then -- Demonic Resilience 1/3
                 meleeCritReduction = meleeCritReduction + 1
                 spellCritReduction = spellCritReduction + 1
             end
@@ -158,7 +158,7 @@ end
 ---@return number
 function _Defense:GetBlockChance()
     local block = 0
-    if IsPlayerSpell(107) and C_PaperDollInfo.OffhandHasShield() then
+    if C_SpellBook.IsSpellKnown(107) and C_PaperDollInfo.OffhandHasShield() then
        block = GetBlockChance()
     end
     return block
@@ -167,7 +167,7 @@ end
 ---@return number
 function _Defense:GetParryChance()
     local parry = 0
-    if IsPlayerSpell(3127) or IsPlayerSpell(18848) or IsPlayerSpell(3124) then
+    if C_SpellBook.IsSpellKnown(3127) or C_SpellBook.IsSpellKnown(18848) or C_SpellBook.IsSpellKnown(3124) then
         parry = GetParryChance()
     end
     return parry
@@ -176,7 +176,7 @@ end
 ---@return number
 function _Defense:GetDodgeChance()
     local dodge = 0
-    if IsPlayerSpell(81) then
+    if C_SpellBook.IsSpellKnown(81) then
         dodge = GetDodgeChance()
     end
     return dodge
