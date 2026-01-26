@@ -113,7 +113,7 @@ function _Melee:GetHitFromBuffs()
         end
     until (not aura)
 
-    if (not otherDraeneiInGroup) and (IsSpellKnown(6562) or IsSpellKnown(28878)) then
+    if (not otherDraeneiInGroup) and (C_SpellBook.IsSpellKnown(6562) or C_SpellBook.IsSpellKnown(28878)) then
         mod = mod + 1
     end
 
