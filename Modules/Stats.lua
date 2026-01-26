@@ -185,7 +185,7 @@ _CreateStatInfo = function(category, ...)
         local stats = {...}
         -- Loop through all stats
         for _, stat in pairs(stats) do
-            if type(stat) == "table" and stat.display and ((not stat.isTbcOnly) or ECS.IsWotlk) then
+            if type(stat) == "table" and stat.display then
                 _CreateText(stat.refName, _FormatStatsText(stat), category.isSubGroup)
             end
         end

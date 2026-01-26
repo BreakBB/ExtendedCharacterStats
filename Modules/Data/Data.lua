@@ -37,7 +37,7 @@ dataFunctionRefs = {
             return 0
         end
     end,
-    ["MeleeArmorPenetrationRating"] = function() return ECS.IsClassic and 0 or Data:GetArmorPenetrationRating() end,
+    ["MeleeArmorPenetrationRating"] = function() return ECS.IsWotlk and Data:GetArmorPenetrationRating() or 0 end,
     ["MeleeHitRating"] = function() return ECS.IsClassic and 0 or Data:MeleeHitRating() end,
     ["MeleeHitBonus"] = function() return Data:MeleeHitBonus() end,
     ["MeleeHitSameLevel"] = function() return Data:MeleeHitMissChanceSameLevel() end,
@@ -72,7 +72,7 @@ dataFunctionRefs = {
             return 0
         end
     end,
-    ["RangedArmorPenetrationRating"] = function() return ECS.IsClassic and 0 or Data:GetArmorPenetrationRating() end,
+    ["RangedArmorPenetrationRating"] = function() return ECS.IsWotlk and Data:GetArmorPenetrationRating() or 0 end,
     ["RangedHitBossLevel"] = function() return Data.RangeMissChanceBossLevel() end,
     ["RangedHasteRating"] = function() return ECS.IsClassic and 0 or Data:GetRangedHasteRating() end,
     ["RangedHasteBonus"] = function()
