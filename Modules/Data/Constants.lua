@@ -321,6 +321,10 @@ Data.Aura = {
         [462858] = 750, -- Circle of Flame
     },
     PeriodicallyGiveManaTooltip = {
+        [5677] = (ECS.IsWotlk and nil or 5/2), -- Mana Spring rank 1
+        [10491] = (ECS.IsWotlk and nil or 5/2), -- Mana Spring rank 2
+        [10493] = (ECS.IsWotlk and nil or 5/2), -- Mana Spring rank 3
+        [10494] = (ECS.IsWotlk and nil or 5/2), -- Mana Spring rank 4
         [19742] = (ECS.IsClassic and 1 or nil), -- Blessing of Wisdom rank 1
         [19850] = (ECS.IsClassic and 1 or nil), -- Blessing of Wisdom rank 2
         [19852] = (ECS.IsClassic and 1 or nil), -- Blessing of Wisdom rank 3
