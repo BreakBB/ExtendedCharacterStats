@@ -25,7 +25,7 @@ end
 local function DelayedUpdateInspectGearColorFrames()
     -- update next frame
     C_Timer.After(0, function ()
-        GearInfos.UpdateInspectGearColorFrames()
+        GearInfos:UpdateInspectGearColorFrames()
     end)
 end
 
