@@ -235,6 +235,21 @@ function Data:GetResilienceRating()
 end
 
 ---@return number
+function Data:GetParryRating()
+    return DataUtils:Round(GetCombatRating(CR_PARRY), 2)
+end
+
+---@return number
+function Data:GetDodgeRating()
+    return DataUtils:Round(GetCombatRating(CR_DODGE), 2)
+end
+
+---@return number
+function Data:GetBlockRating()
+    return DataUtils:Round(GetCombatRating(CR_BLOCK), 2)
+end
+
+---@return number
 function _Defense:GetEnchantsBlockValue()
     local mod = 0
     for i = 1, 18 do

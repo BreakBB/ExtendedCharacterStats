@@ -277,6 +277,12 @@ function Data:GetMeleeHasteRating()
     return DataUtils:Round(hasteRating, 0)
 end
 
+---@return number
+function Data:GetMeleeCritRating()
+    local critRating = GetCombatRating(CR_CRIT_MELEE)
+    return DataUtils:Round(critRating, 0)
+end
+
 ---@return string
 function Data:GetMeleeHasteBonus()
     local hasteBonus = GetCombatRatingBonus(CR_HASTE_MELEE)

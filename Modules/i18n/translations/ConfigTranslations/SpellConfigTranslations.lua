@@ -222,6 +222,26 @@ local spellConfigTranslations = {
         ["esMX"] = "Muestra/oculta el valor de poder de sanación",
         ["ptBR"] = "Mostra/oculta o valor de poder de cura"
     },
+    ["Spell Crit Rating."] = {
+        ["enUS"] = true,
+        ["deDE"] = true,
+        ["frFR"] = true,
+        ["zhCN"] = true,
+        ["ruRU"] = true,
+        ["esES"] = true,
+        ["esMX"] = true,
+        ["ptBR"] = true,
+    },
+    ["Shows/Hides the spell crit rating."] = {
+        ["enUS"] = true,
+        ["deDE"] = true,
+        ["frFR"] = true,
+        ["zhCN"] = true,
+        ["ruRU"] = true,
+        ["esES"] = true,
+        ["esMX"] = true,
+        ["ptBR"] = true,
+    },
 }
 
 for k, v in pairs(spellConfigTranslations) do

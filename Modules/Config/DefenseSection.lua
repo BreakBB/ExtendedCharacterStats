@@ -42,7 +42,7 @@ function _Config:LoadDefenseSection()
             },
             meleeCritReduction = {
                 type = "toggle",
-                order = 1.81,
+                order = 2,
                 name = function() return i18n("Melee Crit Reduction") end,
                 desc = function() return i18n("Shows/Hides the reduction percentage of being critically hit by melee attacks.") end,
                 width = 1.5,
@@ -55,7 +55,7 @@ function _Config:LoadDefenseSection()
             },
             rangedCritReduction = {
                 type = "toggle",
-                order = 1.82,
+                order = 2.1,
                 name = function() return i18n("Ranged Crit Reduction") end,
                 desc = function() return i18n("Shows/Hides the reduction percentage of being critically hit by ranged attacks.") end,
                 width = 1.5,
@@ -68,7 +68,7 @@ function _Config:LoadDefenseSection()
             },
             spellCritReduction = {
                 type = "toggle",
-                order = 1.83,
+                order = 2.2,
                 name = function() return i18n("Spell Crit Reduction") end,
                 desc = function() return i18n("Shows/Hides the reduction percentage of being critically hit by spells.") end,
                 width = 1.5,
@@ -81,7 +81,7 @@ function _Config:LoadDefenseSection()
             },
             avoidance = {
                 type = "toggle",
-                order = 1.85,
+                order = 3,
                 name = function() return i18n("Avoidance") end,
                 desc = function() return i18n("Shows/Hides the total avoidance.") end,
                 width = 1.5,
@@ -94,7 +94,7 @@ function _Config:LoadDefenseSection()
             },
             avoidanceBoss = {
                 type = "toggle",
-                order = 1.86,
+                order = 3.1,
                 name = function() return i18n("Avoidance (Lvl +3)") end,
                 desc = function() return i18n("Shows/Hides the total avoidance (Lvl +3).") end,
                 width = 1.5,
@@ -107,7 +107,7 @@ function _Config:LoadDefenseSection()
             },
             defenseRating = {
                 type = "toggle",
-                order = 1.9,
+                order = 4,
                 name = function() return i18n("Defense Rating") end,
                 desc = function() return i18n("Shows/Hides the defense rating.") end,
                 width = 1.5,
@@ -123,7 +123,7 @@ function _Config:LoadDefenseSection()
             },
             defense = {
                 type = "toggle",
-                order = 2,
+                order = 4.1,
                 name = function() return i18n("Defense") end,
                 desc = function() return i18n("Shows/Hides the defense value.") end,
                 width = 1.5,
@@ -134,9 +134,23 @@ function _Config:LoadDefenseSection()
                     Stats.RebuildStatInfos()
                 end,
             },
+            blockRating = {
+                type = "toggle",
+                order = 5,
+                name = function() return i18n("Block Rating") end,
+                desc = function() return i18n("Shows/Hides the block rating.") end,
+                width = 1.5,
+                hidden = function() return ECS.IsClassic end,
+                disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
+                get = function () return ExtendedCharacterStats.profile.defense.blockRating.display; end,
+                set = function (_, value)
+                    ExtendedCharacterStats.profile.defense.blockRating.display = value
+                    Stats.RebuildStatInfos()
+                end,
+            },
             blockChance = {
                 type = "toggle",
-                order = 3,
+                order = 5.1,
                 name = function() return i18n("Block Chance") end,
                 desc = function() return i18n("Shows/Hides the block chance.") end,
                 width = 1.5,
@@ -149,7 +163,7 @@ function _Config:LoadDefenseSection()
             },
             blockValue = {
                 type = "toggle",
-                order = 4,
+                order = 5.2,
                 name = function() return i18n("Block Value") end,
                 desc = function() return i18n("Shows/Hides the block value.") end,
                 width = 1.5,
@@ -160,9 +174,23 @@ function _Config:LoadDefenseSection()
                     Stats.RebuildStatInfos()
                 end,
             },
+            parryRating = {
+                type = "toggle",
+                order = 6,
+                name = function() return i18n("Parry Rating") end,
+                desc = function() return i18n("Shows/Hides the parry rating.") end,
+                width = 1.5,
+                hidden = function() return ECS.IsClassic end,
+                disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
+                get = function () return ExtendedCharacterStats.profile.defense.parryRating.display; end,
+                set = function (_, value)
+                    ExtendedCharacterStats.profile.defense.parryRating.display = value
+                    Stats.RebuildStatInfos()
+                end,
+            },
             parry = {
                 type = "toggle",
-                order = 5,
+                order = 6.1,
                 name = function() return i18n("Parry Chance") end,
                 desc = function() return i18n("Shows/Hides the parry chance.") end,
                 width = 1.5,
@@ -173,9 +201,23 @@ function _Config:LoadDefenseSection()
                     Stats.RebuildStatInfos()
                 end,
             },
+            dodgeRating = {
+                type = "toggle",
+                order = 7,
+                name = function() return i18n("Dodge Rating") end,
+                desc = function() return i18n("Shows/Hides the dodge rating.") end,
+                width = 1.5,
+                hidden = function() return ECS.IsClassic end,
+                disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
+                get = function () return ExtendedCharacterStats.profile.defense.dodgeRating.display; end,
+                set = function (_, value)
+                    ExtendedCharacterStats.profile.defense.dodgeRating.display = value
+                    Stats.RebuildStatInfos()
+                end,
+            },
             dodge = {
                 type = "toggle",
-                order = 6,
+                order = 7.1,
                 name = function() return i18n("Dodge Chance") end,
                 desc = function() return i18n("Shows/Hides the dodge chance.") end,
                 width = 1.5,
@@ -188,17 +230,15 @@ function _Config:LoadDefenseSection()
             },
             resilience = {
                 type = "toggle",
-                order = 7,
-                name = function() return i18n("Resilience") end,
-                desc = function() return i18n("Shows/Hides the resilience value.") end,
+                order = 8,
+                name = function() return i18n("Resilience Rating") end,
+                desc = function() return i18n("Shows/Hides the resilience rating.") end,
                 width = 1.5,
-                hidden = function()
-                    return (not ECS.IsWotlk)
-                end,
+                hidden = function() return ECS.IsClassic end,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
-                get = function () return ExtendedCharacterStats.profile.defense.resilience.display; end,
+                get = function () return ExtendedCharacterStats.profile.defense.resilienceRating.display; end,
                 set = function (_, value)
-                    ExtendedCharacterStats.profile.defense.resilience.display = value
+                    ExtendedCharacterStats.profile.defense.resilienceRating.display = value
                     Stats.RebuildStatInfos()
                 end,
             },

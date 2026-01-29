@@ -361,7 +361,27 @@ local meleeConfigTranslations = {
         ["esES"] = "Muestra/oculta todas las estadísticas de golpes de refilón",
         ["esMX"] = "Muestra/oculta todas las estadísticas de golpes de refilón",
         ["ptBR"] = "Mostra/oculta todas as estatísticas de pancada de relance"
-    }
+    },
+    ["Melee Crit Rating."] = {
+        ["enUS"] = true,
+        ["deDE"] = true,
+        ["frFR"] = true,
+        ["zhCN"] = true,
+        ["ruRU"] = true,
+        ["esES"] = true,
+        ["esMX"] = true,
+        ["ptBR"] = true,
+    },
+    ["Shows/Hides the melee crit rating."] = {
+        ["enUS"] = true,
+        ["deDE"] = true,
+        ["frFR"] = true,
+        ["zhCN"] = true,
+        ["ruRU"] = true,
+        ["esES"] = true,
+        ["esMX"] = true,
+        ["ptBR"] = true,
+    },
 }
 
 for k, v in pairs(meleeConfigTranslations) do
