@@ -215,11 +215,15 @@ _CreateStatInfos = function()
     _CreateStatInfo(category, category.movementSpeed)
 
     category = profile.melee
-    if ECS.IsWotlk then
+    if ECS.IsClassic then
+        if ECS.IsSod then
+            _CreateStatInfo(category, category.attackPower, category.crit, category.expertise)
+        else
+            _CreateStatInfo(category, category.attackPower, category.crit)
+        end
+    else
         _CreateStatInfo(category, category.attackPower, category.crit, category.penetration, category.penetrationRating, category.expertise,
                 category.expertiseRating, category.hasteRating, category.hasteBonus)
-    else
-        _CreateStatInfo(category, category.attackPower, category.crit)
     end
     if category.display then
         category = category.hit
