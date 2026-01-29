@@ -53,7 +53,7 @@ _UpdateColorFrame = function (gearFrame, unit)
 
     local itemLink = GetInventoryItemLink(unit, gearFrame:GetID())
     if itemLink ~= nil then
-        local _, itemInfo = GetItemInfo(itemLink)
+        local _, itemInfo = C_Item.GetItemInfo(itemLink)
         if itemInfo ~= nil then
             local itemQuality = C_Item.GetItemQualityByID(itemInfo)
             local r, g, b, _ = C_Item.GetItemQualityColor(itemQuality)
