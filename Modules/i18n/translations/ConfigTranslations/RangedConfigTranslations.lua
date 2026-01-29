@@ -161,6 +161,26 @@ local rangedConfigTranslations = {
         ["esMX"] = "Muestra/oculta la probabilidad de fallo contra jefes (nivel +3)",
         ["ptBR"] = "Mostra/oculta a chance de erro contra chefes (nível +3)"
     },
+    ["Ranged Crit Rating."] = {
+        ["enUS"] = true,
+        ["deDE"] = true,
+        ["frFR"] = true,
+        ["zhCN"] = true,
+        ["ruRU"] = true,
+        ["esES"] = true,
+        ["esMX"] = true,
+        ["ptBR"] = true,
+    },
+    ["Shows/Hides the ranged crit rating."] = {
+        ["enUS"] = true,
+        ["deDE"] = true,
+        ["frFR"] = true,
+        ["zhCN"] = true,
+        ["ruRU"] = true,
+        ["esES"] = true,
+        ["esMX"] = true,
+        ["ptBR"] = true,
+    },
 }
 
 for k, v in pairs(rangedConfigTranslations) do
