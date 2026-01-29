@@ -10,7 +10,7 @@ function Data:GetMovementSpeed()
 
     local currentSpeed
 
-    if ECS.IsWotlk and IsFlying() then
+    if (not ECS.IsClassic) and IsFlying() then
         currentSpeed = flightSpeed
     elseif IsSwimming() then
         currentSpeed = swimSpeed
