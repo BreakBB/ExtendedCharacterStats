@@ -42,8 +42,8 @@ function _Config:LoadGeneralSection()
             },
             healthRegeneration = {
                 type = "toggle",
-                order = 1,
-                name = function() return i18n("Show Health Regeneration") end,
+                order = 2,
+                name = function() return i18n("Health Regeneration") end,
                 desc = function() return i18n("Shows/Hides the health regeneration value.") end,
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.general.display); end,
@@ -55,8 +55,8 @@ function _Config:LoadGeneralSection()
             },
             healthRegenerationCombat = {
                 type = "toggle",
-                order = 1,
-                name = function() return i18n("Show Combat Health Regeneration") end,
+                order = 2.1,
+                name = function() return i18n("Combat Health Regeneration") end,
                 desc = function() return i18n("Shows/Hides the combat health regeneration value.") end,
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.general.display); end,
