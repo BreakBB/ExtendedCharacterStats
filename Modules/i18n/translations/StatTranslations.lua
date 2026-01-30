@@ -322,6 +322,36 @@ local statTranslations = {
         ["esMX"] = "Defensa",
         ["ptBR"] = "Defesa"
     },
+    ["Parry Rating."] = {
+        ["enUS"] = true,
+        ["deDE"] = true,
+        ["frFR"] = true,
+        ["zhCN"] = true,
+        ["ruRU"] = true,
+        ["esES"] = true,
+        ["esMX"] = true,
+        ["ptBR"] = true,
+    },
+    ["Dodge Rating."] = {
+        ["enUS"] = true,
+        ["deDE"] = true,
+        ["frFR"] = true,
+        ["zhCN"] = true,
+        ["ruRU"] = true,
+        ["esES"] = true,
+        ["esMX"] = true,
+        ["ptBR"] = true,
+    },
+    ["Block Rating."] = {
+        ["enUS"] = true,
+        ["deDE"] = true,
+        ["frFR"] = true,
+        ["zhCN"] = true,
+        ["ruRU"] = true,
+        ["esES"] = true,
+        ["esMX"] = true,
+        ["ptBR"] = true,
+    },
     ["Block Chance"] = {
         ["enUS"] = true,
         ["deDE"] = "Blockchance",
@@ -361,6 +391,16 @@ local statTranslations = {
         ["esES"] = "Probabilidad de esquivar",
         ["esMX"] = "Probabilidad de esquivar",
         ["ptBR"] = "Chance de esquivar"
+    },
+    ["Resilience Rating."] = {
+        ["enUS"] = true,
+        ["deDE"] = true,
+        ["frFR"] = true,
+        ["zhCN"] = true,
+        ["ruRU"] = true,
+        ["esES"] = true,
+        ["esMX"] = true,
+        ["ptBR"] = true,
     },
     ["Resilience"] = {
         ["enUS"] = true,
