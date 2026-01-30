@@ -161,7 +161,7 @@ local rangedConfigTranslations = {
         ["esMX"] = "Muestra/oculta la probabilidad de fallo contra jefes (nivel +3)",
         ["ptBR"] = "Mostra/oculta a chance de erro contra chefes (nível +3)"
     },
-    ["Ranged Crit Rating."] = {
+    ["Ranged Crit Rating"] = {
         ["enUS"] = true,
         ["deDE"] = true,
         ["frFR"] = true,

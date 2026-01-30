@@ -2,6 +2,46 @@
 local i18n = ECSLoader:ImportModule("i18n")
 
 local defenseConfigTranslations = {
+    ["Parry Rating"] = {
+        ["enUS"] = true,
+        ["deDE"] = true,
+        ["frFR"] = true,
+        ["zhCN"] = true,
+        ["ruRU"] = true,
+        ["esES"] = true,
+        ["esMX"] = true,
+        ["ptBR"] = true,
+    },
+    ["Dodge Rating"] = {
+        ["enUS"] = true,
+        ["deDE"] = true,
+        ["frFR"] = true,
+        ["zhCN"] = true,
+        ["ruRU"] = true,
+        ["esES"] = true,
+        ["esMX"] = true,
+        ["ptBR"] = true,
+    },
+    ["Block Rating"] = {
+        ["enUS"] = true,
+        ["deDE"] = true,
+        ["frFR"] = true,
+        ["zhCN"] = true,
+        ["ruRU"] = true,
+        ["esES"] = true,
+        ["esMX"] = true,
+        ["ptBR"] = true,
+    },
+    ["Resilience Rating"] = {
+        ["enUS"] = true,
+        ["deDE"] = true,
+        ["frFR"] = true,
+        ["zhCN"] = true,
+        ["ruRU"] = true,
+        ["esES"] = true,
+        ["esMX"] = true,
+        ["ptBR"] = true,
+    },
     ["Melee Crit Reduction"] = {
         ["enUS"] = true,
         ["deDE"] = false,

@@ -42,6 +42,16 @@ local statTranslations = {
         ["esMX"] = "Poder de ataque",
         ["ptBR"] = "Poder de ataque"
     },
+    ["Melee Crit Rating"] = {
+        ["enUS"] = true,
+        ["deDE"] = true,
+        ["frFR"] = true,
+        ["zhCN"] = true,
+        ["ruRU"] = true,
+        ["esES"] = true,
+        ["esMX"] = true,
+        ["ptBR"] = true,
+    },
     ["Crit Chance"] = {
         ["enUS"] = true,
         ["deDE"] = "Kritische Chance",
@@ -252,6 +262,16 @@ local statTranslations = {
         ["esMX"] = "A distancia",
         ["ptBR"] = "Longo alcance"
     },
+    ["Ranged Crit Rating"] = {
+        ["enUS"] = true,
+        ["deDE"] = true,
+        ["frFR"] = true,
+        ["zhCN"] = true,
+        ["ruRU"] = true,
+        ["esES"] = true,
+        ["esMX"] = true,
+        ["ptBR"] = true,
+    },
     ["Armor"] = {
         ["enUS"] = true,
         ["deDE"] = "Rüstung",
@@ -392,7 +412,7 @@ local statTranslations = {
         ["esMX"] = "Probabilidad de esquivar",
         ["ptBR"] = "Chance de esquivar"
     },
-    ["Resilience Rating."] = {
+    ["Resilience Rating"] = {
         ["enUS"] = true,
         ["deDE"] = true,
         ["frFR"] = true,
@@ -481,6 +501,16 @@ local statTranslations = {
         ["esES"] = "Hechizo",
         ["esMX"] = "Hechizo",
         ["ptBR"] = "Feitiço"
+    },
+    ["Spell Crit Rating"] = {
+        ["enUS"] = true,
+        ["deDE"] = true,
+        ["frFR"] = true,
+        ["zhCN"] = true,
+        ["ruRU"] = true,
+        ["esES"] = true,
+        ["esMX"] = true,
+        ["ptBR"] = true,
     },
     ["Penetration"] = {
         ["enUS"] = true,
