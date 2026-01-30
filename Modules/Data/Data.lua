@@ -4,7 +4,6 @@ local Data = ECSLoader:CreateModule("Data")
 local dataFunctionRefs
 local playerLevel = UnitLevel("player")
 local enemyLevel = playerLevel + 3
-local hp5, hp5Combat = Data:GetHP5()
 
 ---@param refName string
 ---@return number | string
@@ -20,8 +19,14 @@ end
 
 dataFunctionRefs = {
     ["MovementSpeed"] = function() return Data:GetMovementSpeed() end,
-    ["HealthRegen"] = function() return hp5 end,
-    ["HealthRegenCombat"] = function() return hp5Combat end,
+    ["HealthRegen"] = function()
+        local hp5, _ = Data:GetHP5()
+        return hp5
+    end,
+    ["HealthRegenCombat"] = function()
+        local _, hp5 = Data:GetHP5()
+        return hp5
+    end,
     -- Melee
     ["MeleeAttackPower"] = function() return Data:GetMeleeAttackPower() end,
     ["MeleeCritChance"] = function() return Data:MeleeCrit() end,
