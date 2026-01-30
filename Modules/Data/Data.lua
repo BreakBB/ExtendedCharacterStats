@@ -21,6 +21,7 @@ dataFunctionRefs = {
     ["MovementSpeed"] = function() return Data:GetMovementSpeed() end,
     -- Melee
     ["MeleeAttackPower"] = function() return Data:GetMeleeAttackPower() end,
+    ["MeleeCritRating"] = function() return ECS.IsClassic and 0 or Data:GetMeleeCritRating() end,
     ["MeleeCritChance"] = function() return Data:MeleeCrit() end,
     ["Expertise"] = function()
         if ECS.IsWotlk then
@@ -85,6 +86,7 @@ dataFunctionRefs = {
     ["MeleeAttackSpeedOffHand"] = function() return Data:GetMeleeAttackSpeedOffHand() end,
     -- Ranged
     ["RangeAttackpower"] = function() return Data:GetRangeAttackPower() end,
+    ["RangedCritRating"] = function() return ECS.IsClassic and 0 or Data:GetRangedCritRating() end,
     ["RangedCritChance"] = function() return Data:RangedCrit() end,
     ["RangedHitRating"] = function()
         if ECS.IsWotlk then
@@ -140,17 +142,14 @@ dataFunctionRefs = {
         end
     end,
     ["DefenseValue"] = function() return Data:GetDefenseValue() end,
+    ["DodgeRating"] = function() return ECS.IsClassic and 0 or Data:GetDodgeRating() end,
     ["DodgeChance"] = function() return Data:GetDodgeChance() end,
+    ["ParryRating"] = function() return ECS.IsClassic and 0 or Data:GetParryRating() end,
     ["ParryChance"] = function() return Data:GetParryChance() end,
+    ["BlockRating"] = function() return ECS.IsClassic and 0 or Data:GetBlockRating() end,
     ["BlockChance"] = function() return Data:GetBlockChance() end,
     ["BlockValue"] = function() return Data:GetBlockValue() end,
-    ["ResilienceValue"] = function()
-        if ECS.IsWotlk then
-            return Data:GetResilienceRating()
-        else
-            return 0
-        end
-    end,
+    ["ResilienceRating"] = function() return ECS.IsClassic and 0 or Data:GetResilienceRating() end,
     -- Spell
     ["SpellHitRating"] = function()
         if ECS.IsWotlk then
@@ -162,6 +161,7 @@ dataFunctionRefs = {
     ["SpellHitBonus"] = function() return Data.SpellHitBonus(Data.HOLY_SCHOOL) end,
     ["SpellHitSameLevel"] = function() return Data:SpellMissChanceSameLevel(Data.HOLY_SCHOOL) end,
     ["SpellHitBossLevel"] = function() return Data:SpellMissChanceBossLevel(Data.HOLY_SCHOOL) end,
+    ["SpellCritRating"] = function() return ECS.IsClassic and 0 or Data:GetSpellCritRating() end,
     ["SpellCritChance"] = function() return Data:GetSpellCrit(Data.HOLY_SCHOOL) end,
     ["SpellHasteRating"] = function()
         if ECS.IsWotlk then

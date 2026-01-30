@@ -128,12 +128,12 @@ local function GetDefaultStatsProfile()
                 statColor = colors.ATTACK_SPEED_PRIMARY,
             },
             expertise = {display = true, isTbcOnly = true, refName = "Expertise", text = "Expertise"},
-            expertiseRating = {display = true, isTbcOnly = true, refName = "ExpertiseRating", text = "Expertise Rating"},
+            expertiseRating = {display = true, isTbcOnly = true, refName = "ExpertiseRating", text = "Expertise rating"},
             hasteRating = {
                 display = true,
                 isTbcOnly = true,
                 refName = "MeleeHasteRating",
-                text = "Haste Rating",
+                text = "Haste rating",
                 textColor = colors.HASTE_RATING_SECONDARY,
                 statColor = colors.HASTE_RATING_PRIMARY
             },
@@ -236,7 +236,7 @@ local function GetDefaultStatsProfile()
                 display = true,
                 isTbcOnly = true,
                 refName = "RangedArmorPenetrationRating",
-                text = "Armor Pen. Rating",
+                text = "Armor pen. rating",
                 textColor = colors.ATTACK_SPEED_SECONDARY,
                 statColor = colors.ATTACK_SPEED_PRIMARY,
             },
@@ -244,7 +244,7 @@ local function GetDefaultStatsProfile()
                 display = true,
                 isTbcOnly = true,
                 refName = "RangedHasteRating",
-                text = "Haste Rating",
+                text = "Haste rating",
                 textColor = colors.HASTE_RATING_SECONDARY,
                 statColor = colors.HASTE_RATING_PRIMARY
             },
@@ -542,7 +542,7 @@ local function GetDefaultStatsProfile()
                 display = true,
                 isTbcOnly = true,
                 refName = "SpellHasteRating",
-                text = "Haste Rating",
+                text = "Haste rating",
                 textColor = colors.HASTE_RATING_SECONDARY,
                 statColor = colors.HASTE_RATING_PRIMARY
             },

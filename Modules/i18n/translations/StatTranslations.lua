@@ -42,6 +42,16 @@ local statTranslations = {
         ["esMX"] = "Poder de ataque",
         ["ptBR"] = "Poder de ataque"
     },
+    ["Melee crit. rating"] = {
+        ["enUS"] = true,
+        ["deDE"] = true,
+        ["frFR"] = true,
+        ["zhCN"] = true,
+        ["ruRU"] = true,
+        ["esES"] = true,
+        ["esMX"] = true,
+        ["ptBR"] = true,
+    },
     ["Crit Chance"] = {
         ["enUS"] = true,
         ["deDE"] = "Kritische Chance",
@@ -62,7 +72,7 @@ local statTranslations = {
         ["esMX"] = "Penetración de armadura",
         ["ptBR"] = "Penetração em Armadura"
     },
-    ["Armor Pen. Rating"] = {
+    ["Armor pen. rating"] = {
         ["enUS"] = true,
         ["deDE"] = "Rüstungsdurchschlagwertung",
         ["frFR"] = "Score de pénétration d'armure",
@@ -82,7 +92,7 @@ local statTranslations = {
         ["esMX"] = "Pericia",
         ["ptBR"] = "Aptidão"
     },
-    ["Expertise Rating"] = {
+    ["Expertise rating"] = {
         ["enUS"] = true,
         ["deDE"] = "Waffenkundewertung",
         ["frFR"] = "Score d'expertise",
@@ -192,7 +202,7 @@ local statTranslations = {
         ["esMX"] = "Daño (Niv. + 3)",
         ["ptBR"] = "Dano (Nív. + 3)"
     },
-    ["Haste Rating"] = {
+    ["Haste rating"] = {
         ["enUS"] = true,
         ["deDE"] = "Tempowertung",
         ["frFR"] = "Score de hâte",
@@ -252,6 +262,16 @@ local statTranslations = {
         ["esMX"] = "A distancia",
         ["ptBR"] = "Longo alcance"
     },
+    ["Ranged crit. rating"] = {
+        ["enUS"] = true,
+        ["deDE"] = true,
+        ["frFR"] = true,
+        ["zhCN"] = true,
+        ["ruRU"] = true,
+        ["esES"] = true,
+        ["esMX"] = true,
+        ["ptBR"] = true,
+    },
     ["Armor"] = {
         ["enUS"] = true,
         ["deDE"] = "Rüstung",
@@ -302,7 +322,7 @@ local statTranslations = {
         ["esMX"] = "Eludir (Niv. +3)",
         ["ptBR"] = "Evasiva (Nív. +3)"
     },
-    ["Defense Rating"] = {
+    ["Defense rating"] = {
         ["enUS"] = true,
         ["deDE"] = "Verteidigungswertung",
         ["frFR"] = "Score de défense",
@@ -321,6 +341,36 @@ local statTranslations = {
         ["esES"] = "Defensa",
         ["esMX"] = "Defensa",
         ["ptBR"] = "Defesa"
+    },
+    ["Parry rating"] = {
+        ["enUS"] = true,
+        ["deDE"] = true,
+        ["frFR"] = true,
+        ["zhCN"] = true,
+        ["ruRU"] = true,
+        ["esES"] = true,
+        ["esMX"] = true,
+        ["ptBR"] = true,
+    },
+    ["Dodge rating."] = {
+        ["enUS"] = true,
+        ["deDE"] = true,
+        ["frFR"] = true,
+        ["zhCN"] = true,
+        ["ruRU"] = true,
+        ["esES"] = true,
+        ["esMX"] = true,
+        ["ptBR"] = true,
+    },
+    ["Block rating"] = {
+        ["enUS"] = true,
+        ["deDE"] = true,
+        ["frFR"] = true,
+        ["zhCN"] = true,
+        ["ruRU"] = true,
+        ["esES"] = true,
+        ["esMX"] = true,
+        ["ptBR"] = true,
     },
     ["Block Chance"] = {
         ["enUS"] = true,
@@ -361,6 +411,16 @@ local statTranslations = {
         ["esES"] = "Probabilidad de esquivar",
         ["esMX"] = "Probabilidad de esquivar",
         ["ptBR"] = "Chance de esquivar"
+    },
+    ["Resilience rating"] = {
+        ["enUS"] = true,
+        ["deDE"] = true,
+        ["frFR"] = true,
+        ["zhCN"] = true,
+        ["ruRU"] = true,
+        ["esES"] = true,
+        ["esMX"] = true,
+        ["ptBR"] = true,
     },
     ["Resilience"] = {
         ["enUS"] = true,
@@ -441,6 +501,16 @@ local statTranslations = {
         ["esES"] = "Hechizo",
         ["esMX"] = "Hechizo",
         ["ptBR"] = "Feitiço"
+    },
+    ["Spell crit. rating"] = {
+        ["enUS"] = true,
+        ["deDE"] = true,
+        ["frFR"] = true,
+        ["zhCN"] = true,
+        ["ruRU"] = true,
+        ["esES"] = true,
+        ["esMX"] = true,
+        ["ptBR"] = true,
     },
     ["Penetration"] = {
         ["enUS"] = true,
