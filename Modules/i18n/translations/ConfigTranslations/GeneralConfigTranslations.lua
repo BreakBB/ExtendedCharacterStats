@@ -62,6 +62,26 @@ local generalConfigTranslations = {
         ["esMX"] = true,
         ["ptBR"] = true,
     },
+    ["Health Regeneration"] = {
+        ["enUS"] = true,
+        ["deDE"] = true,
+        ["frFR"] = true,
+        ["zhCN"] = true,
+        ["ruRU"] = true,
+        ["esES"] = true,
+        ["esMX"] = true,
+        ["ptBR"] = true,
+    },
+    ["Combat Health Regeneration"] = {
+        ["enUS"] = true,
+        ["deDE"] = true,
+        ["frFR"] = true,
+        ["zhCN"] = true,
+        ["ruRU"] = true,
+        ["esES"] = true,
+        ["esMX"] = true,
+        ["ptBR"] = true,
+    },
 }
 
 for k, v in pairs(generalConfigTranslations) do

@@ -22,7 +22,7 @@ local statTranslations = {
         ["esMX"] = "Velocidad de movimiento",
         ["ptBR"] = "Velocidade de movimento"
     },
-    ["Health Regeneration"] = {
+    ["Health regeneration"] = {
         ["enUS"] = true,
         ["deDE"] = true,
         ["frFR"] = true,
@@ -32,7 +32,7 @@ local statTranslations = {
         ["esMX"] = true,
         ["ptBR"] = true,
     },
-    ["Combat Health Regeneration"] = {
+    ["Combat health regeneration"] = {
         ["enUS"] = true,
         ["deDE"] = true,
         ["frFR"] = true,
