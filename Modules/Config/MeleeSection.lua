@@ -43,8 +43,8 @@ function _Config:LoadMeleeSection()
             meleeCritRating = {
                 type = "toggle",
                 order = 2,
-                name = function() return i18n("Melee Crit Rating") end,
-                desc = function() return i18n("Shows/Hides the melee crit rating.") end,
+                name = function() return i18n("Melee Crit. Rating") end,
+                desc = function() return i18n("Shows/Hides the melee crit. rating.") end,
                 width = 1.5,
                 hidden = function() return ECS.IsClassic end,
                 disabled = function() return (not ExtendedCharacterStats.profile.melee.display); end,

@@ -42,7 +42,7 @@ local statTranslations = {
         ["esMX"] = "Poder de ataque",
         ["ptBR"] = "Poder de ataque"
     },
-    ["Melee Crit Rating"] = {
+    ["Melee crit. rating"] = {
         ["enUS"] = true,
         ["deDE"] = true,
         ["frFR"] = true,
@@ -72,7 +72,7 @@ local statTranslations = {
         ["esMX"] = "Penetración de armadura",
         ["ptBR"] = "Penetração em Armadura"
     },
-    ["Armor Pen. Rating"] = {
+    ["Armor pen. rating"] = {
         ["enUS"] = true,
         ["deDE"] = "Rüstungsdurchschlagwertung",
         ["frFR"] = "Score de pénétration d'armure",
@@ -92,7 +92,7 @@ local statTranslations = {
         ["esMX"] = "Pericia",
         ["ptBR"] = "Aptidão"
     },
-    ["Expertise Rating"] = {
+    ["Expertise rating"] = {
         ["enUS"] = true,
         ["deDE"] = "Waffenkundewertung",
         ["frFR"] = "Score d'expertise",
@@ -202,7 +202,7 @@ local statTranslations = {
         ["esMX"] = "Daño (Niv. + 3)",
         ["ptBR"] = "Dano (Nív. + 3)"
     },
-    ["Haste Rating"] = {
+    ["Haste rating"] = {
         ["enUS"] = true,
         ["deDE"] = "Tempowertung",
         ["frFR"] = "Score de hâte",
@@ -262,7 +262,7 @@ local statTranslations = {
         ["esMX"] = "A distancia",
         ["ptBR"] = "Longo alcance"
     },
-    ["Ranged Crit Rating"] = {
+    ["Ranged crit. rating"] = {
         ["enUS"] = true,
         ["deDE"] = true,
         ["frFR"] = true,
@@ -322,7 +322,7 @@ local statTranslations = {
         ["esMX"] = "Eludir (Niv. +3)",
         ["ptBR"] = "Evasiva (Nív. +3)"
     },
-    ["Defense Rating"] = {
+    ["Defense rating"] = {
         ["enUS"] = true,
         ["deDE"] = "Verteidigungswertung",
         ["frFR"] = "Score de défense",
@@ -342,7 +342,7 @@ local statTranslations = {
         ["esMX"] = "Defensa",
         ["ptBR"] = "Defesa"
     },
-    ["Parry Rating."] = {
+    ["Parry rating"] = {
         ["enUS"] = true,
         ["deDE"] = true,
         ["frFR"] = true,
@@ -352,7 +352,7 @@ local statTranslations = {
         ["esMX"] = true,
         ["ptBR"] = true,
     },
-    ["Dodge Rating."] = {
+    ["Dodge rating."] = {
         ["enUS"] = true,
         ["deDE"] = true,
         ["frFR"] = true,
@@ -362,7 +362,7 @@ local statTranslations = {
         ["esMX"] = true,
         ["ptBR"] = true,
     },
-    ["Block Rating."] = {
+    ["Block rating"] = {
         ["enUS"] = true,
         ["deDE"] = true,
         ["frFR"] = true,
@@ -412,7 +412,7 @@ local statTranslations = {
         ["esMX"] = "Probabilidad de esquivar",
         ["ptBR"] = "Chance de esquivar"
     },
-    ["Resilience Rating"] = {
+    ["Resilience rating"] = {
         ["enUS"] = true,
         ["deDE"] = true,
         ["frFR"] = true,
@@ -502,7 +502,7 @@ local statTranslations = {
         ["esMX"] = "Hechizo",
         ["ptBR"] = "Feitiço"
     },
-    ["Spell Crit Rating"] = {
+    ["Spell crit. rating"] = {
         ["enUS"] = true,
         ["deDE"] = true,
         ["frFR"] = true,

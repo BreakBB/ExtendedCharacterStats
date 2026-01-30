@@ -222,7 +222,7 @@ local spellConfigTranslations = {
         ["esMX"] = "Muestra/oculta el valor de poder de sanación",
         ["ptBR"] = "Mostra/oculta o valor de poder de cura"
     },
-    ["Spell Crit Rating"] = {
+    ["Spell Crit. Rating"] = {
         ["enUS"] = true,
         ["deDE"] = true,
         ["frFR"] = true,
@@ -232,7 +232,7 @@ local spellConfigTranslations = {
         ["esMX"] = true,
         ["ptBR"] = true,
     },
-    ["Shows/Hides the spell crit rating."] = {
+    ["Shows/Hides the spell crit. rating."] = {
         ["enUS"] = true,
         ["deDE"] = true,
         ["frFR"] = true,

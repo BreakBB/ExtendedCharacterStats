@@ -30,8 +30,8 @@ function _Config:LoadSpellSection()
             spellCritRating = {
                 type = "toggle",
                 order = 1,
-                name = function() return i18n("Spell Crit Rating") end,
-                desc = function() return i18n("Shows/Hides the spell crit rating.") end,
+                name = function() return i18n("Spell Crit. Rating") end,
+                desc = function() return i18n("Shows/Hides the spell crit. rating.") end,
                 width = 1.5,
                 hidden = function() return ECS.IsClassic end,
                 disabled = function() return (not ExtendedCharacterStats.profile.spell.display); end,

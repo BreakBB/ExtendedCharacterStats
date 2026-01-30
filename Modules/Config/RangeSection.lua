@@ -43,8 +43,8 @@ function _Config:LoadRangeSection()
             rangedCritRating = {
                 type = "toggle",
                 order = 2,
-                name = function() return i18n("Ranged Crit Rating") end,
-                desc = function() return i18n("Shows/Hides the ranged crit rating.") end,
+                name = function() return i18n("Ranged Crit. Rating") end,
+                desc = function() return i18n("Shows/Hides the ranged crit. rating.") end,
                 width = 1.5,
                 hidden = function() return ECS.IsClassic end,
                 disabled = function() return (not ExtendedCharacterStats.profile.ranged.display); end,
