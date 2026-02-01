@@ -336,6 +336,18 @@ Data.Aura = {
         [25894] = ((ECS.IsTBC or ECS.IsWotlk) and nil or 1), -- Greater Blessing of Wisdom rank 1
         [25918] = ((ECS.IsTBC or ECS.IsWotlk) and nil or 1), -- Greater Blessing of Wisdom rank 2
     },
+    ReduceTargetArmor = {
+        [37174] = (ECS.IsTBC and 1000 or nil), -- Perceived Weakness
+        [37482] = (ECS.IsTBC and 600 or nil), -- Exploited Weakness
+        [40477] = (ECS.IsTBC and 300 or nil), -- Forceful Strike
+        [42976] = (ECS.IsTBC and 400 or nil), -- Executioner
+        [43817] = (ECS.IsTBC and 1000 or nil), -- Focused Assault
+        [47216] = 1092, -- Piercing Fangs
+        [54678] = 50000, -- Brute Force
+        [461252] = 2000, -- Shadowflame Fury
+        [1231894] = 1000, -- Ferocity of the Crocolisk
+        [1231896] = 500, -- Brilliance of Mr. Bigglesworth
+    },
     SpellCrit = {
         [24907] = ((ECS.IsTBC or ECS.IsWotlk) and 5 or nil), -- Moonkin Aura
         [29177] = 6, -- Elemental Devastation Rank 2

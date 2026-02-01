@@ -246,31 +246,6 @@ function Data:GetExpertiseRating()
     return DataUtils:Round(expertiseRating, 0)
 end
 
----@return string
-function Data:GetArmorPenetration()
-    local armorPenetration = GetArmorPenetration()
-
-    if ECS.IsWotlk and classId == Data.WARRIOR then
-        local _, isActive = GetShapeshiftFormInfo(1)
-        if isActive then
-            armorPenetration = armorPenetration + 10 -- 10% from Battle Stance
-        end
-    end
-
-    if classId == Data.DEATHKNIGHT then
-        local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 24)
-        armorPenetration = armorPenetration + points * 2 -- 0-10% Blood Gorged
-    end
-
-    return DataUtils:Round(armorPenetration, 2) .. "%"
-end
-
----@return number
-function Data:GetArmorPenetrationRating()
-    local armorPenetrationRating = GetCombatRating(CR_ARMOR_PENETRATION)
-    return DataUtils:Round(armorPenetrationRating, 0)
-end
-
 ---@return number
 function Data:GetMeleeHasteRating()
     local hasteRating = GetCombatRating(CR_HASTE_MELEE)
