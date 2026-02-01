@@ -27,7 +27,7 @@ end
 
 ---@return number, number
 function Data:GetHP5()
-    local bonusHp5 = _HP5:GetHP5FromSpirit()
+    local bonusHp5 = ECS.IsClassic and _HP5:GetHP5FromSpirit() or 5 * GetUnitHealthRegenRateFromSpirit("player")
     local bonusCombatHp5 = 0
     local mod = 1
     local talentMod = _HP5:GetDemonicAegisTalentModifier() + 1
