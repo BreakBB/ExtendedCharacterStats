@@ -2160,6 +2160,7 @@ stds.ecs = {
         "UnitGUID",
         "UnitHPPerStamina",
         "UnitHasIncomingResurrection",
+        "UnitHasMana",
         "UnitHasRelicSlot",
         "UnitHealth",
         "UnitHealthMax",
