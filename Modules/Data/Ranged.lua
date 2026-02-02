@@ -11,17 +11,12 @@ local _, _, classId = UnitClass("player")
 
 ---@return number
 function Data:GetRangeAttackPower()
-    if not _Ranged:IsRangeAttackClass() then
+    if UnitHasRelicSlot("player") then
         return 0
     end
 
     local melee, posBuff, negBuff = UnitRangedAttackPower("player")
     return melee + posBuff + negBuff
-end
-
----@return boolean
-function _Ranged:IsRangeAttackClass()
-    return classId == Data.WARRIOR or classId == Data.ROGUE or classId == Data.HUNTER
 end
 
 ---@return number
