@@ -14,6 +14,7 @@ function _Config:LoadRangeSection()
         inline = false,
         width = 2,
         name = function() return i18n("Ranged") end,
+        hidden = function() return UnitHasRelicSlot("player") end,
         args = {
             showRangeStats = {
                 type = "toggle",
