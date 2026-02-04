@@ -251,8 +251,10 @@ _CreateStatInfos = function()
     _CreateStatInfo(category, category.armor, category.meleeCritReduction, category.rangedCritReduction, category.spellCritReduction, category.avoidance, category.avoidanceBoss,
             category.defenseRating, category.defense, category.blockChance, category.blockValue, category.parry, category.dodge, category.resilience)
 
-    category = profile.regen
-    _CreateStatInfo(category, category.mp5Items, category.mp5Spirit, category.mp5Buffs, category.mp5Casting, category.mp5NotCasting)
+    if UnitHasMana("player") then
+        category = profile.regen
+        _CreateStatInfo(category, category.mp5Items, category.mp5Spirit, category.mp5Buffs, category.mp5Casting, category.mp5NotCasting)
+    end
 
     category = profile.spell
     if ECS.IsWotlk then
