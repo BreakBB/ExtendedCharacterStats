@@ -3,6 +3,8 @@ local DataUtils = ECSLoader:CreateModule("DataUtils")
 ---@type Data
 local Data = ECSLoader:ImportModule("Data")
 
+local IsSpellKnown = C_SpellBook.IsSpellKnown
+
 --- Rounds every number down to the given decimal places
 ---@param num number
 ---@param decimalPlaces number
@@ -140,6 +142,21 @@ function DataUtils:GetSocketedGemsFromItemLink(itemLink)
     end
 
     return nil
+end
+
+---@return boolean
+function DataUtils:CanParry()
+    return (IsSpellKnown(3127) or IsSpellKnown(18848) or IsSpellKnown(3124))
+end
+
+---@return boolean
+function DataUtils:CanDodge()
+    return IsSpellKnown(81)
+end
+
+---@return boolean
+function DataUtils:CanBlock()
+    return IsSpellKnown(107)
 end
 
 return DataUtils

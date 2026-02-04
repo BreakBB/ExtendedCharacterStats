@@ -15,6 +15,8 @@ local Config = ECSLoader:ImportModule("Config")
 local Utils = ECSLoader:ImportModule("Utils")
 ---@type Data
 local Data = ECSLoader:ImportModule("Data")
+---@type DataUtils
+local DataUtils = ECSLoader:ImportModule("DataUtils")
 
 ------------------------------------------------------------------
 -- Defaults
@@ -231,7 +233,11 @@ _CreateStatInfos = function()
         end
 
         category = profile.melee.attackSpeed
-        _CreateStatInfo(category, category.mainHand, category.offHand)
+        _CreateStatInfo(
+            category,
+            category.mainHand,
+            CanDualWield() and category.offHand or nil
+        )
     end
 
     category = profile.ranged
@@ -248,8 +254,25 @@ _CreateStatInfos = function()
     end
 
     category = profile.defense
-    _CreateStatInfo(category, category.armor, category.meleeCritReduction, category.rangedCritReduction, category.spellCritReduction, category.avoidance, category.avoidanceBoss,
-            category.defenseRating, category.defense, category.blockChance, category.blockValue, category.parry, category.dodge, category.resilience)
+    _CreateStatInfo(
+        category,
+        category.armor,
+        category.meleeCritReduction,
+        category.rangedCritReduction,
+        category.spellCritReduction,
+        category.avoidance,
+        category.avoidanceBoss,
+        ECS.IsClassic and nil or category.defenseRating,
+        category.defense,
+        (ECS.IsClassic or not DataUtils:CanBlock()) and nil or category.blockRating,
+        DataUtils:CanBlock() and category.blockChance or nil,
+        DataUtils:CanBlock() and category.blockValue or nil,
+        (ECS.IsClassic or not DataUtils:CanParry()) and nil or category.parryRating,
+        DataUtils:CanParry() and category.parry or nil,
+        (ECS.IsClassic or not DataUtils:CanDodge()) and nil or category.dodgeRating,
+        DataUtils:CanDodge() and category.dodge or nil,
+        ECS.IsClassic and nil or category.resilienceRating
+    )
 
     category = profile.regen
     _CreateStatInfo(category, category.mp5Items, category.mp5Spirit, category.mp5Buffs, category.mp5Casting, category.mp5NotCasting)

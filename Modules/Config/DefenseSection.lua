@@ -6,8 +6,8 @@ local _Config = Config.private
 local Stats = ECSLoader:ImportModule("Stats")
 ---@type i18n
 local i18n = ECSLoader:ImportModule("i18n")
-
-local IsSpellKnown = C_SpellBook.IsSpellKnown
+---@type DataUtils
+local DataUtils = ECSLoader:ImportModule("DataUtils")
 
 function _Config:LoadDefenseSection()
     return {
@@ -156,7 +156,7 @@ function _Config:LoadDefenseSection()
                 name = function() return i18n("Block Value") end,
                 desc = function() return i18n("Shows/Hides the block value.") end,
                 width = 1.5,
-                hidden = function() return not IsSpellKnown(107) end,
+                hidden = function() return not DataUtils:CanBlock() end,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
                 get = function () return ExtendedCharacterStats.profile.defense.blockValue.display; end,
                 set = function (_, value)
@@ -170,7 +170,7 @@ function _Config:LoadDefenseSection()
                 name = function() return i18n("Parry Chance") end,
                 desc = function() return i18n("Shows/Hides the parry chance.") end,
                 width = 1.5,
-                hidden = function() return not (IsSpellKnown(3127) or IsSpellKnown(18848) or IsSpellKnown(3124)) end,
+                hidden = function() return not DataUtils:CanParry() end,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
                 get = function () return ExtendedCharacterStats.profile.defense.parry.display; end,
                 set = function (_, value)
@@ -184,7 +184,7 @@ function _Config:LoadDefenseSection()
                 name = function() return i18n("Dodge Chance") end,
                 desc = function() return i18n("Shows/Hides the dodge chance.") end,
                 width = 1.5,
-                hidden = function() return not IsSpellKnown(81) end,
+                hidden = function() return not DataUtils:CanDodge() end,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
                 get = function () return ExtendedCharacterStats.profile.defense.dodge.display; end,
                 set = function (_, value)
