@@ -179,36 +179,19 @@ function _MP5:GetTalentModifier()
     local mod = 0
 
     if classId == Data.PRIEST then
-        if C_SpellBook.IsSpellKnown(14777) then
-            mod = (ECS.IsTBC and 0.3 or (ECS.IsWotlk and 0.5 or 0.15))
-        elseif C_SpellBook.IsSpellKnown(14776) then
-            mod = (ECS.IsTBC and 0.2 or (ECS.IsWotlk and 0.33 or 0.1))
-        elseif C_SpellBook.IsSpellKnown(14521) then
-            mod = (ECS.IsTBC and 0.1 or (ECS.IsWotlk and 0.17 or 0.05))
-        end
+        local talentBonus = ECS.IsTBC and {0.3,0.2,0.1} or (ECS.IsWotlk and {0.5,0.33,0.17} or {0.15,0.1,0.05})
+        mod = mod + DataUtils:GetTalentBonus({14777,14776,14521},talentBonus) -- meditation
     elseif classId == Data.MAGE then
-        if C_SpellBook.IsSpellKnown(18464) then
-            mod = (ECS.IsTBC and 0.3 or (ECS.IsWotlk and 0.5 or 0.15))
-        elseif C_SpellBook.IsSpellKnown(18463) then
-            mod = (ECS.IsTBC and 0.2 or (ECS.IsWotlk and 0.33 or 0.1))
-        elseif C_SpellBook.IsSpellKnown(18462) then
-            mod = (ECS.IsTBC and 0.1 or (ECS.IsWotlk and 0.17 or 0.05))
-        end
-        if C_SpellBook.IsSpellKnown(34296) then
-            mod = mod + (ECS.IsTBC and 0.3 or (ECS.IsWotlk and 0.5 or 0.15))
-        elseif C_SpellBook.IsSpellKnown(34295) then
-            mod = mod + (ECS.IsTBC and 0.2 or (ECS.IsWotlk and 0.33 or 0.1))
-        elseif C_SpellBook.IsSpellKnown(34293) then
-            mod = mod + (ECS.IsTBC and 0.1 or (ECS.IsWotlk and 0.17 or 0.05))
+        local talentBonus = ECS.IsTBC and {0.3,0.2,0.1} or (ECS.IsWotlk and {0.5,0.33,0.17} or {0.15,0.1,0.05})
+        mod = mod + DataUtils:GetTalentBonus({18464,18463,14521},talentBonus) -- arcane meditation
+
+        if ECS.IsWotlk then
+            talentBonus = {0.5,0.33,0.17}
+            mod = mod + DataUtils:GetTalentBonus({34296,34295,34293},talentBonus) -- pyromaniac
         end
     elseif classId == Data.DRUID then
-        if C_SpellBook.IsSpellKnown(17108) then
-            mod = (ECS.IsTBC and 0.3 or (ECS.IsWotlk and 0.5 or 0.15))
-        elseif C_SpellBook.IsSpellKnown(17107) then
-            mod = (ECS.IsTBC and 0.2 or (ECS.IsWotlk and 0.33 or 0.1))
-        elseif C_SpellBook.IsSpellKnown(17106) then
-            mod = (ECS.IsTBC and 0.1 or (ECS.IsWotlk and 0.17 or 0.05))
-        end
+        local talentBonus = ECS.IsTBC and {0.3,0.2,0.1} or (ECS.IsWotlk and {0.5,0.33,0.17} or {0.15,0.1,0.05})
+        mod = mod + DataUtils:GetTalentBonus({17108,17107,17106},talentBonus) -- intensity/reflection
     end
     return mod
 end

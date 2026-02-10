@@ -142,4 +142,16 @@ function DataUtils:GetSocketedGemsFromItemLink(itemLink)
     return nil
 end
 
+---@param talentList table<number>
+---@param bonusList table<number>
+---@return number
+function DataUtils:GetTalentBonus(talentList,bonusList)
+    for i = 1,#talentList do
+        if C_SpellBook.IsSpellKnown(talentList[i]) then
+            return bonusList[i]
+        end
+    end
+    return 0
+end
+
 return DataUtils

@@ -53,43 +53,54 @@ end
 ---@return number
 function _Melee:GetHitTalentBonus()
     local mod = 0
+    local talents = nil
+    local talentBonus = nil
 
-    if classId == Data.WARRIOR and ECS.IsWotlk then
-        local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 18)
-        mod = points * 1 -- 0-3% Precision
-    end
-
-    if ECS.IsWotlk and classId == Data.HUNTER then
-        local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 27)
-        mod = points * 1 -- 0-3% Focused Aim
-    end
-
-    if classId == Data.SHAMAN then
+    if classId == Data.WARRIOR then
         if ECS.IsWotlk then
+            -- precision
+            talents = {29592,29591,29590}
+            talentBonus = {3,2,1}
+        end
+    elseif classId == Data.HUNTER then
+        if ECS.IsWotlk then
+            -- focused aim
+            talents = {53622,53621,53620}
+            talentBonus = {3,2,1}
+        end
+    elseif classId == Data.SHAMAN then
+        if ECS.IsWotlk then
+            -- Dual Wield Specialization
             if Data:GetMeleeAttackSpeedOffHand() > 0 then
-                local _, _, _, _, dualWielding, _, _, _ = GetTalentInfo(2, 19)
-                mod = mod + dualWielding * 2 -- 0-6% Dual Wielding Specialization
+                talents = {30819,30818,30816}
+                talentBonus = {6,4,2}
             end
         else
-            local _, _, _, _, naturesGuidance, _, _, _ = GetTalentInfo(3, 3)
-            mod = naturesGuidance * 1 -- 0-3% Nature's Guidance
+            -- Nature's Guidance
+            talents = {16198,16196,16180}
+            talentBonus = {3,2,1}
+        end
+    elseif classId == Data.PALADIN then
+        if ECS.IsTBC then
+            -- precision
+            talents = {20193,20192,20189}
+            talentBonus = {3,2,1}
+        end
+    elseif classId == Data.ROGUE then
+        -- precision
+        talents = {13845,13844,13843,13832,13705}
+        talentBonus = {5,4,3,2,1}
+    elseif classId == Data.DEATHKNIGHT then
+        -- Nerves of Cold Steel
+        -- This assumes a DK is dual wielding and not only using a one-hand main hand weapon
+        if Data:GetMeleeAttackSpeedOffHand() > 0 then
+            talents = {50138,50137,49226}
+            talentBonus = {3,2,1}
         end
     end
 
-    if ECS.IsTBC and classId == Data.PALADIN then
-        local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 15)
-        mod = points * 1 -- 0-3% Precision
-    end
-
-    if classId == Data.ROGUE then
-        local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 1)
-        mod = points * 1 -- 0-5% Precision
-    end
-
-    -- This assumes a DK is dual wielding and not only using a one-hand main hand weapon
-    if classId == Data.DEATHKNIGHT and Data:GetMeleeAttackSpeedOffHand() > 0 then
-        local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 16)
-        mod = points * 1 -- 0-3% Nerves of Cold Steel
+    if talents and talentBonus then
+        mod = DataUtils:GetTalentBonus(talents,talentBonus)
     end
 
     return mod
@@ -258,8 +269,7 @@ function Data:GetArmorPenetration()
     end
 
     if classId == Data.DEATHKNIGHT then
-        local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 24)
-        armorPenetration = armorPenetration + points * 2 -- 0-10% Blood Gorged
+        armorPenetration = armorPenetration + DataUtils:GetTalentBonus({61278,61277,61276,61275,61274},{10,8,6,4,2}) -- Blood Gorged
     end
 
     return DataUtils:Round(armorPenetration, 2) .. "%"
