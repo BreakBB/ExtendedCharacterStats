@@ -30,13 +30,7 @@ dataFunctionRefs = {
             return 0
         end
     end,
-    ["ExpertiseRating"] = function()
-        if ECS.IsWotlk then
-            return Data:GetExpertiseRating()
-        else
-            return 0
-        end
-    end,
+    ["ExpertiseRating"] = function() return ECS.IsClassic and 0 or Data:GetExpertiseRating() end,
     ["MeleeArmorPenetration"] = function()
         if ECS.IsWotlk then
             return Data:GetArmorPenetration()
@@ -44,20 +38,8 @@ dataFunctionRefs = {
             return 0
         end
     end,
-    ["MeleeArmorPenetrationRating"] = function()
-        if ECS.IsWotlk then
-            return Data:GetArmorPenetrationRating()
-        else
-            return 0
-        end
-    end,
-    ["MeleeHitRating"] = function()
-        if ECS.IsWotlk then
-            return Data:MeleeHitRating()
-        else
-            return 0
-        end
-    end,
+    ["MeleeArmorPenetrationRating"] = function() return ECS.IsWotlk and Data:GetArmorPenetrationRating() or 0 end,
+    ["MeleeHitRating"] = function() return ECS.IsClassic and 0 or Data:MeleeHitRating() end,
     ["MeleeHitBonus"] = function() return Data:MeleeHitBonus() end,
     ["MeleeHitSameLevel"] = function() return Data:MeleeHitMissChanceSameLevel() end,
     ["MeleeHitBossLevel"] = function() return Data:MeleeHitMissChanceBossLevel() end,
@@ -68,13 +50,7 @@ dataFunctionRefs = {
     ["GlanceDamageSameLevel"] = function() return Data:GlanceDamageSameLevel() end,
     ["GlanceDamageBossLevel"] = function() return Data:GlanceDamageBossLevel() end,
 
-    ["MeleeHasteRating"] = function()
-        if ECS.IsWotlk then
-            return Data:GetMeleeHasteRating()
-        else
-            return 0
-        end
-    end,
+    ["MeleeHasteRating"] = function() return ECS.IsClassic and 0 or Data:GetMeleeHasteRating() end,
     ["MeleeHasteBonus"] = function()
         if ECS.IsWotlk then
             return Data:GetMeleeHasteBonus()
@@ -88,13 +64,7 @@ dataFunctionRefs = {
     ["RangeAttackpower"] = function() return Data:GetRangeAttackPower() end,
     ["RangedCritRating"] = function() return ECS.IsClassic and 0 or Data:GetRangedCritRating() end,
     ["RangedCritChance"] = function() return Data:RangedCrit() end,
-    ["RangedHitRating"] = function()
-        if ECS.IsWotlk then
-            return Data:RangeHitRating()
-        else
-            return 0
-        end
-    end,
+    ["RangedHitRating"] = function() return ECS.IsClassic and 0 or Data:RangeHitRating() end,
     ["RangedHitBonus"] = function() return Data:RangeHitBonus() end,
     ["RangedHitSameLevel"] = function() return Data:RangeMissChanceSameLevel() end,
     ["RangedArmorPenetration"] = function()
@@ -104,21 +74,9 @@ dataFunctionRefs = {
             return 0
         end
     end,
-    ["RangedArmorPenetrationRating"] = function()
-        if ECS.IsWotlk then
-            return Data:GetArmorPenetrationRating()
-        else
-            return 0
-        end
-    end,
+    ["RangedArmorPenetrationRating"] = function() return ECS.IsWotlk and Data:GetArmorPenetrationRating() or 0 end,
     ["RangedHitBossLevel"] = function() return Data.RangeMissChanceBossLevel() end,
-    ["RangedHasteRating"] = function()
-        if ECS.IsWotlk then
-            return Data:GetRangedHasteRating()
-        else
-            return 0
-        end
-    end,
+    ["RangedHasteRating"] = function() return ECS.IsClassic and 0 or Data:GetRangedHasteRating() end,
     ["RangedHasteBonus"] = function()
         if ECS.IsWotlk then
             return Data:GetRangedHasteBonus()
@@ -134,13 +92,7 @@ dataFunctionRefs = {
     ["SpellCritReduction"] = function() return Data:GetSpellCritReduction() end,
     ["Avoidance"] = function() return Data:GetAvoidance(playerLevel) end,
     ["AvoidanceBoss"] = function() return Data:GetAvoidance(enemyLevel) end,
-    ["DefenseRating"] = function()
-        if ECS.IsWotlk then
-            return Data:GetDefenseRating()
-        else
-            return 0
-        end
-    end,
+    ["DefenseRating"] = function() return ECS.IsClassic and 0 or Data:GetDefenseRating() end,
     ["DefenseValue"] = function() return Data:GetDefenseValue() end,
     ["DodgeRating"] = function() return ECS.IsClassic and 0 or Data:GetDodgeRating() end,
     ["DodgeChance"] = function() return Data:GetDodgeChance() end,
@@ -151,25 +103,13 @@ dataFunctionRefs = {
     ["BlockValue"] = function() return Data:GetBlockValue() end,
     ["ResilienceRating"] = function() return ECS.IsClassic and 0 or Data:GetResilienceRating() end,
     -- Spell
-    ["SpellHitRating"] = function()
-        if ECS.IsWotlk then
-            return Data:SpellHitRating()
-        else
-            return 0
-        end
-    end,
+    ["SpellHitRating"] = function() return ECS.IsClassic and 0 or Data:SpellHitRating() end,
     ["SpellHitBonus"] = function() return Data.SpellHitBonus(Data.HOLY_SCHOOL) end,
     ["SpellHitSameLevel"] = function() return Data:SpellMissChanceSameLevel(Data.HOLY_SCHOOL) end,
     ["SpellHitBossLevel"] = function() return Data:SpellMissChanceBossLevel(Data.HOLY_SCHOOL) end,
     ["SpellCritRating"] = function() return ECS.IsClassic and 0 or Data:GetSpellCritRating() end,
     ["SpellCritChance"] = function() return Data:GetSpellCrit(Data.HOLY_SCHOOL) end,
-    ["SpellHasteRating"] = function()
-        if ECS.IsWotlk then
-            return Data:GetSpellHasteRating()
-        else
-            return 0
-        end
-    end,
+    ["SpellHasteRating"] = function() return ECS.IsClassic and 0 or Data:GetSpellHasteRating() end,
     ["SpellHasteBonus"] = function()
         if ECS.IsWotlk then
             return Data:GetSpellHasteBonus()

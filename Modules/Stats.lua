@@ -176,7 +176,7 @@ end
 --- Helper function to iterate all field of a given category and create them if they should be displayed
 ---@param category Category|SubCategory
 _CreateStatInfo = function(category, ...)
-    if (not ECS.IsWotlk) and category.isTbcOnly then
+    if ECS.IsClassic and category.isTbcOnly then
         return
     end
 
@@ -185,7 +185,7 @@ _CreateStatInfo = function(category, ...)
         local stats = {...}
         -- Loop through all stats
         for _, stat in pairs(stats) do
-            if type(stat) == "table" and stat.display and ((not stat.isTbcOnly) or ECS.IsWotlk) then
+            if type(stat) == "table" and stat.display then
                 _CreateText(stat.refName, _FormatStatsText(stat), category.isSubGroup)
             end
         end
@@ -225,14 +225,13 @@ _CreateStatInfos = function()
         ECS.IsClassic and nil or category.expertiseRating,
         ECS.IsClassic and nil or category.expertise,
         ECS.IsClassic and nil or category.hasteRating,
-        category.hasteBonus
+        ECS.IsClassic and nil or category.hasteBonus
     )
-
     if category.display then
         category = category.hit
         _CreateStatInfo(category, category.rating, category.bonus, category.sameLevel, category.bossLevel)
 
-        if(ECS.IsClassic) then
+        if (not ECS.IsWotlk) then
             category = profile.melee.glance
             _CreateStatInfo(category, category.sameLevel, category.damageSameLevel, category.bossLevel,  category.damageBossLevel)
         end
@@ -250,13 +249,18 @@ _CreateStatInfos = function()
         ECS.IsWotlk and category.penetrationRating or nil,
         ECS.IsClassic and nil or category.penetration,
         ECS.IsClassic and nil or category.hasteRating,
-        category.hasteBonus,
+        ECS.IsClassic and nil or category.hasteBonus,
         category.attackSpeed
     )
-
     if category.display then
         category = category.hit
-        _CreateStatInfo(category, category.rating, category.bonus, category.sameLevel, category.bossLevel)
+        _CreateStatInfo(
+            category,
+            ECS.IsClassic and nil or category.rating,
+            category.bonus,
+            category.sameLevel,
+            category.bossLevel
+        )
     end
 
     category = profile.defense
@@ -283,6 +287,7 @@ _CreateStatInfos = function()
     category = profile.regen
     _CreateStatInfo(category, category.mp5Items, category.mp5Spirit, category.mp5Buffs, category.mp5Casting, category.mp5NotCasting)
 
+    category = profile.spell
     local spellBonus = profile.spellBonus
     local spell = profile.spell
     local spellCrit = spell.crit
