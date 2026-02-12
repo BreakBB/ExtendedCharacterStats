@@ -58,26 +58,26 @@ function _SpellCrit:GetGeneralTalentModifier()
     local mod = 0
 
     if classId == Data.MAGE then
-        mod = mod + DataUtils:GetTalentBonus({15060,15059,15058},{3,2,1}) -- Arcane Instability
+        mod = mod + 1 * DataUtils:GetActiveTalentSpell({15058,15059,15060}) -- Arcane Instability
     elseif classId == Data.DRUID then
         if ECS.IsWotlk then
-            mod = mod + DataUtils:GetTalentBonus({33883,33882,33881},{3,2,1}) -- Natural Perfection
+            mod = mod + 1 * DataUtils:GetActiveTalentSpell({33881,33882,33883}) -- Natural Perfection
         end
     elseif classId == Data.WARLOCK then
         if ECS.IsWotlk then
-            mod = mod + DataUtils:GetTalentBonus({30248,30247,30246,30245,30242},{10,8,6,4,2}) -- Demonic Tactics
-            mod = mod + DataUtils:GetTalentBonus({34939,34938,34935},{3,2,1}) -- Backlash
+            mod = mod + 2 * DataUtils:GetActiveTalentSpell({30242,30245,30246,30247,30248}) -- Demonic Tactics
+            mod = mod + 1 * DataUtils:GetActiveTalentSpell({34935,34938,34939}) -- Backlash
         end
 
-        mod = mod + DataUtils:GetTalentBonus({18134,18133,18132,18131,18130},{5,4,3,2,1}) -- Devastation
+        mod = mod + 1 * DataUtils:GetActiveTalentSpell({18130,18131,18132,18133,18134}) -- Devastation
     elseif classId == Data.SHAMAN then
         if ECS.IsWotlk then
-            mod = mod + DataUtils:GetTalentBonus({16305,16304,16303,16302,16255},{5,4,3,2,1}) -- Thundering Strikes
+            mod = mod + 1 * DataUtils:GetActiveTalentSpell({16255,16302,16303,16304,16305}) -- Thundering Strikes
         end
     elseif classId == Data.PALADIN then
         if ECS.IsWotlk then
-            mod = mod + DataUtils:GetTalentBonus({20121,20120,20119,20118,20117},{5,4,3,2,1}) -- Conviction
-            mod = mod + DataUtils:GetTalentBonus({35397,35396,32043},{3,2,1}) -- Sanctity of Battle
+            mod = mod + 1 * DataUtils:GetActiveTalentSpell({20117,20118,20119,20120,20121}) -- Conviction
+            mod = mod + 1 * DataUtils:GetActiveTalentSpell({32043,35396,35397}) -- Sanctity of Battle
         end
     end
 
@@ -104,18 +104,11 @@ function _SpellCrit:GetTalentModifierHolyCrit()
 
     if classId == Data.PRIEST then
         -- Holy Specialization
-        talents = {15011,15010,15009,15008,14889}
-        talentBonus = {5,4,3,2,1}
+        mod = 1 * DataUtils:GetActiveTalentSpell({14889,15008,15009,15010,15011})
     elseif classId == Data.PALADIN then
         -- Holy Power
-        talents = {25829,5926,5925,5924,5923}
-        talentBonus = {5,4,3,2,1}
+        mod = 1 * DataUtils:GetActiveTalentSpell({5923,5924,5925,5926,25829})
     end
-
-    if talents and talentBonus then
-        mod = DataUtils:GetTalentBonus(talents,talentBonus)
-    end
-
     return mod
 end
 
@@ -124,15 +117,15 @@ function _SpellCrit:GetTalentModifierFireCrit()
     local mod = 0
 
     if classId == Data.MAGE then
-        mod = mod + DataUtils:GetTalentBonus({11368,11367,11115},{6,4,2}) -- Critical Mass
+        mod = mod + 2 * DataUtils:GetActiveTalentSpell({11115,11367,11368}) -- Critical Mass
 
         if ECS.IsWotlk then
-            mod = mod + DataUtils:GetTalentBonus({34296,34295,34293},{3,2,1}) -- Pyromaniac
+            mod = mod + 1 * DataUtils:GetActiveTalentSpell({34293,34295,34296}) -- Pyromaniac
         end
     elseif classId == Data.WARLOCK then
         if ECS.IsClassic then
             -- Devastation (while this increases the crit chance of "Destruction spells" there are no fire spells, which are not destruction spells)
-            mod = mod + DataUtils:GetTalentBonus({18134,18133,18132,18131,18130},{5,4,3,2,1})
+            mod = mod + 1 * DataUtils:GetActiveTalentSpell({18130,18131,18132,18133,18134})
         end
     end
 

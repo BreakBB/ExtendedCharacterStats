@@ -49,45 +49,42 @@ function _SpellHit:GetTalentSpellHitBonus(school)
     local bonus = 0
 
     if classId == Data.DRUID then
-            bonus = bonus + DataUtils:GetTalentBonus({33596,33592},{4,2}) -- Balance of Power
+            bonus = bonus + 2 * DataUtils:GetActiveTalentSpell({33592,33596}) -- Balance of Power
     elseif classId == Data.DEATHKNIGHT then
         if ECS.IsWotlk then
-            bonus = bonus + DataUtils:GetTalentBonus({49568,49567,48962},{3,2,1}) -- Virulence
+            bonus = bonus + 1 * DataUtils:GetActiveTalentSpell({48962,49567,49568}) -- Virulence
         end
     elseif classId == Data.MAGE then
         if ECS.IsWotlk then
-            bonus = bonus + DataUtils:GetTalentBonus({29440,29439,29438},{3,2,1}) -- Elemental Precision
-            bonus = bonus + DataUtils:GetTalentBonus({12840,12839,11222},{3,2,1}) -- Arcane Focus
+            bonus = bonus + 1 * DataUtils:GetActiveTalentSpell({29438,29439,29440}) -- Elemental Precision
+            bonus = bonus + 1 * DataUtils:GetActiveTalentSpell({11222,12839,12840}) -- Arcane Focus
         else
             if (school == Data.FIRE_SCHOOL or school == Data.FROST_SCHOOL) then
-                local talentBonus = ECS.IsClassic and {6,4,2} or {3,2,1}
-                bonus = bonus + DataUtils:GetTalentBonus({29440,30673,29438},talentBonus) -- Elemental Precision
+                bonus = bonus + (ECS.IsClassic and 2 or 1) * DataUtils:GetActiveTalentSpell({29438,29440,30673}) -- Elemental Precision
             elseif school == Data.ARCANE_SCHOOL then
-                bonus = bonus + DataUtils:GetTalentBonus({12842,12841,12840,12839,11222},{10,8,6,4,2}) -- Arcane Focus
+                bonus = bonus + 2 * DataUtils:GetActiveTalentSpell({11222,12839,12840,12841,12842}) -- Arcane Focus
             end
         end
     elseif classId == Data.PALADIN then
         if ECS.IsTBC then
-            bonus = bonus + DataUtils:GetTalentBonus({20193,20192,20189},{3,2,1}) -- precision
+            bonus = bonus + 1 * DataUtils:GetActiveTalentSpell({20189,20192,20193}) -- precision
         elseif ECS.IsWotlk then
-            bonus = bonus + DataUtils:GetTalentBonus({53557,53556},{4,2}) -- Enlightened Judgements
+            bonus = bonus + 2 * DataUtils:GetActiveTalentSpell({53556,53557}) -- Enlightened Judgements
         end
     elseif classId == Data.PRIEST then
         if school == Data.SHADOW_SCHOOL then
-            local talentBonus = ECS.IsWotlk and {3,2,1} or {6,4,2}
-            bonus = bonus + DataUtils:GetTalentBonus({15328,15327,15260},talentBonus) -- Shadow Focus
+            bonus = bonus + (ECS.IsWotlk and 1 or 2) * DataUtils:GetActiveTalentSpell({15260,15327,15328}) -- Shadow Focus
         end
     elseif classId == Data.SHAMAN then
         if (school == Data.FIRE_SCHOOL or school == Data.FROST_SCHOOL or school == Data.NATURE_SCHOOL) then
-            local talentBonus = ECS.IsWotlk and {3,2,1} or {6,4,2}
-            bonus = bonus + DataUtils:GetTalentBonus({30674,30673,30672},talentBonus) -- Elemental Precision
+            bonus = bonus + (ECS.IsWotlk and 1 or 2) * DataUtils:GetActiveTalentSpell({30672,30673,30674}) -- Elemental Precision
         end
         if ECS.IsTBC then
-            bonus = bonus + DataUtils:GetTalentBonus({16198,16196,16180},{3,2,1}) -- Nature's Guidance
+            bonus = bonus + 1 * DataUtils:GetActiveTalentSpell({16180,16196,16198}) -- Nature's Guidance
         end
     elseif classId == Data.WARLOCK then
         if ECS.IsWotlk then
-            bonus = bonus + DataUtils:GetTalentBonus({18176,18175,18174},{3,2,1}) -- Suppression
+            bonus = bonus + 1 * DataUtils:GetActiveTalentSpell({18174,18175,18176}) -- Suppression
         end
     end
 

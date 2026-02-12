@@ -59,48 +59,37 @@ function _Melee:GetHitTalentBonus()
     if classId == Data.WARRIOR then
         if ECS.IsWotlk then
             -- precision
-            talents = {29592,29591,29590}
-            talentBonus = {3,2,1}
+            mod = 1 * DataUtils:GetActiveTalentSpell({29590,29591,29592})
         end
     elseif classId == Data.HUNTER then
         if ECS.IsWotlk then
             -- focused aim
-            talents = {53622,53621,53620}
-            talentBonus = {3,2,1}
+            mod = 1 * DataUtils:GetActiveTalentSpell({53620,53621,53622})
         end
     elseif classId == Data.SHAMAN then
         if ECS.IsWotlk then
             -- Dual Wield Specialization
             if Data:GetMeleeAttackSpeedOffHand() > 0 then
-                talents = {30819,30818,30816}
-                talentBonus = {6,4,2}
+                mod = 2 * DataUtils:GetActiveTalentSpell({30816,30818,30819})
             end
         else
             -- Nature's Guidance
-            talents = {16198,16196,16180}
-            talentBonus = {3,2,1}
+            mod = 1 * DataUtils:GetActiveTalentSpell({16180,16196,16198})
         end
     elseif classId == Data.PALADIN then
         if ECS.IsTBC then
             -- precision
-            talents = {20193,20192,20189}
-            talentBonus = {3,2,1}
+            mod = 1 * DataUtils:GetActiveTalentSpell({20189,20192,20193})
         end
     elseif classId == Data.ROGUE then
         -- precision
-        talents = {13845,13844,13843,13832,13705}
-        talentBonus = {5,4,3,2,1}
+        mod = 1 * DataUtils:GetActiveTalentSpell({13705,13832,13843,13844,13845})
     elseif classId == Data.DEATHKNIGHT then
         -- Nerves of Cold Steel
         -- This assumes a DK is dual wielding and not only using a one-hand main hand weapon
         if Data:GetMeleeAttackSpeedOffHand() > 0 then
-            talents = {50138,50137,49226}
-            talentBonus = {3,2,1}
+            mod = 1 * DataUtils:GetActiveTalentSpell({49226,50137,50138})
         end
-    end
-
-    if talents and talentBonus then
-        mod = DataUtils:GetTalentBonus(talents,talentBonus)
     end
 
     return mod
@@ -269,7 +258,7 @@ function Data:GetArmorPenetration()
     end
 
     if classId == Data.DEATHKNIGHT then
-        armorPenetration = armorPenetration + DataUtils:GetTalentBonus({61278,61277,61276,61275,61274},{10,8,6,4,2}) -- Blood Gorged
+        armorPenetration = armorPenetration + 2 * DataUtils:GetActiveTalentSpell({61274,61275,61276,61277,61278}) -- Blood Gorged
     end
 
     return DataUtils:Round(armorPenetration, 2) .. "%"

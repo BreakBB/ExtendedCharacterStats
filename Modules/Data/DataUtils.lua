@@ -143,12 +143,11 @@ function DataUtils:GetSocketedGemsFromItemLink(itemLink)
 end
 
 ---@param talentList table<number>
----@param bonusList table<number>
 ---@return number
-function DataUtils:GetTalentBonus(talentList,bonusList)
-    for i = 1,#talentList do
+function DataUtils:GetActiveTalentSpell(talentList)
+    for i = #talentList,1,-1 do
         if C_SpellBook.IsSpellKnown(talentList[i]) then
-            return bonusList[i]
+            return i
         end
     end
     return 0

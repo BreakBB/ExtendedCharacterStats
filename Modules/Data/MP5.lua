@@ -179,19 +179,15 @@ function _MP5:GetTalentModifier()
     local mod = 0
 
     if classId == Data.PRIEST then
-        local talentBonus = ECS.IsTBC and {0.3,0.2,0.1} or (ECS.IsWotlk and {0.5,0.33,0.17} or {0.15,0.1,0.05})
-        mod = mod + DataUtils:GetTalentBonus({14777,14776,14521},talentBonus) -- meditation
+        mod = mod + (ECS.IsTBC and 0.1 or (ECS.IsWotlk and 0.5/3 or 0.05)) * DataUtils:GetActiveTalentSpell({14521,14776,14777}) -- meditation
     elseif classId == Data.MAGE then
-        local talentBonus = ECS.IsTBC and {0.3,0.2,0.1} or (ECS.IsWotlk and {0.5,0.33,0.17} or {0.15,0.1,0.05})
-        mod = mod + DataUtils:GetTalentBonus({18464,18463,14521},talentBonus) -- arcane meditation
+        mod = mod + (ECS.IsTBC and 0.1 or (ECS.IsWotlk and 0.5/3 or 0.05)) * DataUtils:GetActiveTalentSpell({14521,18463,18464}) -- arcane meditation
 
         if ECS.IsWotlk then
-            talentBonus = {0.5,0.33,0.17}
-            mod = mod + DataUtils:GetTalentBonus({34296,34295,34293},talentBonus) -- pyromaniac
+            mod = mod + 0.5/3 * DataUtils:GetActiveTalentSpell({34293,34295,34296}) -- pyromaniac
         end
     elseif classId == Data.DRUID then
-        local talentBonus = ECS.IsTBC and {0.3,0.2,0.1} or (ECS.IsWotlk and {0.5,0.33,0.17} or {0.15,0.1,0.05})
-        mod = mod + DataUtils:GetTalentBonus({17108,17107,17106},talentBonus) -- intensity/reflection
+        mod = mod + (ECS.IsTBC and 0.1 or (ECS.IsWotlk and 0.5/3 or 0.05)) * DataUtils:GetActiveTalentSpell({17106,17107,17108}) -- intensity/reflection
     end
     return mod
 end

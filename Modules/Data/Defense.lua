@@ -59,19 +59,18 @@ function _Defense:GetCritReduction()
     local critReducingFromResilience = GetCombatRatingBonus(15)
 
     if classId == Data.DRUID then
-        local bonus = ECS.IsWotlk and {6,4,2} or {3,2,1}
-        meleeCritReduction = meleeCritReduction + DataUtils:GetTalentBonus({33856,33855,33853},bonus) -- Survival of the Fittest
+        meleeCritReduction = meleeCritReduction + (ECS.IsWotlk and 2 or 1) * DataUtils:GetActiveTalentSpell({33853,33855,33856}) -- Survival of the Fittest
     elseif classId == Data.PRIEST then
         if ECS.IsTBC then
-            spellCritReduction = spellCritReduction + DataUtils:GetTalentBonus({33371,14910},{4,2})  -- shadow resilience
+            spellCritReduction = spellCritReduction + 2 * DataUtils:GetActiveTalentSpell({14910,33371})  -- shadow resilience
         end
     elseif classId == Data.ROGUE then
-        local mod = DataUtils:GetTalentBonus({30893,30892},{2,1}) -- Sleight of Hand
+        local mod = 1 * DataUtils:GetActiveTalentSpell({30892,30893}) -- Sleight of Hand
         meleeCritReduction = meleeCritReduction + mod
         rangedCritReduction = rangedCritReduction + mod
     elseif classId == Data.WARLOCK then
         if not ECS.IsClassic then
-            local mod = DataUtils:GetTalentBonus({30321,30320,30319},{3,2,1}) -- Demonic Resilience
+            local mod = 1 * DataUtils:GetActiveTalentSpell({30319,30320,30321}) -- Demonic Resilience
             meleeCritReduction = meleeCritReduction + mod
             rangedCritReduction = rangedCritReduction + mod
         end
