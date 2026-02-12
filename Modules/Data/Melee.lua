@@ -53,8 +53,6 @@ end
 ---@return number
 function _Melee:GetHitTalentBonus()
     local mod = 0
-    local talents = nil
-    local talentBonus = nil
 
     if classId == Data.WARRIOR then
         if ECS.IsWotlk then

@@ -99,8 +99,6 @@ end
 ---@return number
 function _SpellCrit:GetTalentModifierHolyCrit()
     local mod = 0
-    local talents = nil
-    local talentBonus = nil
 
     if classId == Data.PRIEST then
         -- Holy Specialization
