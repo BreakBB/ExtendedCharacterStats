@@ -164,7 +164,6 @@ function _Config:LoadRangeSection()
                         name = function() return i18n("Hit Bonus") end,
                         desc = function() return i18n("Shows/Hides the ranged hit bonus.") end,
                         width = 1.5,
-                        hidden = function() return UnitHasRelicSlot("player") end,
                         disabled = function()
                             return ((not ExtendedCharacterStats.profile.ranged.display) or
                                     (not ExtendedCharacterStats.profile.ranged.hit.display))
