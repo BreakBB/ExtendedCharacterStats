@@ -59,7 +59,8 @@ function _Defense:GetCritReduction()
     local critReducingFromResilience = GetCombatRatingBonus(15)
 
     if classId == Data.DRUID then
-        meleeCritReduction = meleeCritReduction + (ECS.IsWotlk and 2 or 1) * DataUtils:GetActiveTalentSpell({33853,33855,33856}) -- Survival of the Fittest
+        local coeff = ECS.IsWotlk and 2 or 1
+        meleeCritReduction = meleeCritReduction + coeff * DataUtils:GetActiveTalentSpell({33853,33855,33856}) -- Survival of the Fittest
     elseif classId == Data.PRIEST then
         if ECS.IsTBC then
             spellCritReduction = spellCritReduction + 2 * DataUtils:GetActiveTalentSpell({14910,33371})  -- shadow resilience

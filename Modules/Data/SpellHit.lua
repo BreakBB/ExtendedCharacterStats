@@ -60,7 +60,8 @@ function _SpellHit:GetTalentSpellHitBonus(school)
             bonus = bonus + 1 * DataUtils:GetActiveTalentSpell({11222,12839,12840}) -- Arcane Focus
         else
             if (school == Data.FIRE_SCHOOL or school == Data.FROST_SCHOOL) then
-                bonus = bonus + (ECS.IsClassic and 2 or 1) * DataUtils:GetActiveTalentSpell({29438,29439,29440}) -- Elemental Precision
+                local coeff = ECS.IsClassic and 2 or 1
+                bonus = bonus + coeff * DataUtils:GetActiveTalentSpell({29438,29439,29440}) -- Elemental Precision
             elseif school == Data.ARCANE_SCHOOL then
                 bonus = bonus + 2 * DataUtils:GetActiveTalentSpell({11222,12839,12840,12841,12842}) -- Arcane Focus
             end
@@ -73,11 +74,13 @@ function _SpellHit:GetTalentSpellHitBonus(school)
         end
     elseif classId == Data.PRIEST then
         if school == Data.SHADOW_SCHOOL then
-            bonus = bonus + (ECS.IsWotlk and 1 or 2) * DataUtils:GetActiveTalentSpell({15260,15327,15328}) -- Shadow Focus
+            local coeff = ECS.IsWotlk and 1 or 2
+            bonus = bonus + coeff * DataUtils:GetActiveTalentSpell({15260,15327,15328}) -- Shadow Focus
         end
     elseif classId == Data.SHAMAN then
         if (school == Data.FIRE_SCHOOL or school == Data.FROST_SCHOOL or school == Data.NATURE_SCHOOL) then
-            bonus = bonus + (ECS.IsWotlk and 1 or 2) * DataUtils:GetActiveTalentSpell({30672,30673,30674}) -- Elemental Precision
+            local coeff = ECS.IsWotlk and 1 or 2
+            bonus = bonus + coeff * DataUtils:GetActiveTalentSpell({30672,30673,30674}) -- Elemental Precision
         end
         if ECS.IsTBC then
             bonus = bonus + 1 * DataUtils:GetActiveTalentSpell({16180,16196,16198}) -- Nature's Guidance

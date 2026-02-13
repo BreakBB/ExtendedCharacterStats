@@ -179,15 +179,18 @@ function _MP5:GetTalentModifier()
     local mod = 0
 
     if classId == Data.PRIEST then
-        mod = mod + (ECS.IsTBC and 0.1 or (ECS.IsWotlk and 0.5/3 or 0.05)) * DataUtils:GetActiveTalentSpell({14521,14776,14777}) -- meditation
+        local coeff = ECS.IsTBC and 0.1 or (ECS.IsWotlk and 0.5/3 or 0.05)
+        mod = mod + coeff * DataUtils:GetActiveTalentSpell({14521,14776,14777}) -- meditation
     elseif classId == Data.MAGE then
-        mod = mod + (ECS.IsTBC and 0.1 or (ECS.IsWotlk and 0.5/3 or 0.05)) * DataUtils:GetActiveTalentSpell({14521,18463,18464}) -- arcane meditation
+        local coeff = ECS.IsTBC and 0.1 or (ECS.IsWotlk and 0.5/3 or 0.05)
+        mod = mod + coeff * DataUtils:GetActiveTalentSpell({14521,18463,18464}) -- arcane meditation
 
         if ECS.IsWotlk then
             mod = mod + 0.5/3 * DataUtils:GetActiveTalentSpell({34293,34295,34296}) -- pyromaniac
         end
     elseif classId == Data.DRUID then
-        mod = mod + (ECS.IsTBC and 0.1 or (ECS.IsWotlk and 0.5/3 or 0.05)) * DataUtils:GetActiveTalentSpell({17106,17107,17108}) -- intensity/reflection
+        local coeff = ECS.IsTBC and 0.1 or (ECS.IsWotlk and 0.5/3 or 0.05)
+        mod = mod + coeff * DataUtils:GetActiveTalentSpell({17106,17107,17108}) -- intensity/reflection
     end
     return mod
 end
