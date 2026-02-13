@@ -152,6 +152,20 @@ function DataUtils:GetActiveTalentSpell(talentList)
         end
     end
     return 0
+  end
+
+---@return number
+function DataUtils:CountTimewornItems()
+    local timeworn = 0
+     if ECS.IsSoD then
+        for i = 1, 18 do
+            local id, _ = GetInventoryItemID("player", i)
+            if Data.Item.IsTimeworn[id] then
+                timeworn = timeworn + 1
+            end
+        end
+    end
+    return timeworn
 end
 
 return DataUtils
