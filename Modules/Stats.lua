@@ -252,17 +252,17 @@ _CreateStatInfos = function()
             category.hasteBonus,
             category.attackSpeed
         )
-    end
 
-    if category.display then
-        category = category.hit
-        _CreateStatInfo(
-            category,
-            ECS.IsClassic and nil or category.rating,
-            category.bonus,
-            category.sameLevel,
-            category.bossLevel
-        )
+        if category.display then
+            category = category.hit
+            _CreateStatInfo(
+                category,
+                ECS.IsClassic and nil or category.rating,
+                category.bonus,
+                category.sameLevel,
+                category.bossLevel
+            )
+        end
     end
 
     category = profile.defense
