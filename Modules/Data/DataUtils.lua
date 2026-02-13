@@ -142,7 +142,8 @@ function DataUtils:GetSocketedGemsFromItemLink(itemLink)
     return nil
 end
 
----@param talentList table<number>
+--- Search for the first known spell of the talentList and return the index of it, as that will be used as multiplier
+---@param talentList table<number> the order of these spells matter. Starting with the lowest rank and ending with the highest.
 ---@return number
 function DataUtils:GetActiveTalentSpell(talentList)
     for i = #talentList,1,-1 do
