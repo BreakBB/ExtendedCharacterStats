@@ -60,7 +60,7 @@ function _SpellHit:GetTalentSpellHitBonus(school)
             bonus = bonus + 1 * DataUtils:GetActiveTalentSpell({11222,12839,12840}) -- Arcane Focus
         else
             if (school == Data.FIRE_SCHOOL or school == Data.FROST_SCHOOL) then
-                bonus = bonus + (ECS.IsClassic and 2 or 1) * DataUtils:GetActiveTalentSpell({29438,29440,30673}) -- Elemental Precision
+                bonus = bonus + (ECS.IsClassic and 2 or 1) * DataUtils:GetActiveTalentSpell({29438,29439,29440}) -- Elemental Precision
             elseif school == Data.ARCANE_SCHOOL then
                 bonus = bonus + 2 * DataUtils:GetActiveTalentSpell({11222,12839,12840,12841,12842}) -- Arcane Focus
             end
