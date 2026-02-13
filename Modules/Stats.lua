@@ -299,7 +299,7 @@ _CreateStatInfos = function()
     _CreateStatInfo(
         category,
         ECS.IsClassic and nil or category.hasteRating,
-        ECS.IsClassic and nil or category.hasteBonus,
+        category.hasteBonus,
         ECS.IsClassic and nil or category.penetrationRating,
         ECS.IsClassic and nil or category.penetration,
         spellBonus.bonusHealing,
