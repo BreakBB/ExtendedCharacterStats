@@ -48,7 +48,6 @@ function _Config:LoadRangeSection()
                 name = function() return i18n("Ranged Crit") end,
                 desc = function() return i18n("Shows/Hides the ranged crit chance.") end,
                 width = 1.5,
-                hidden = function() return UnitHasRelicSlot("player") end,
                 disabled = function() return (not ExtendedCharacterStats.profile.ranged.display); end,
                 get = function () return ExtendedCharacterStats.profile.ranged.crit.display; end,
                 set = function (_, value)
