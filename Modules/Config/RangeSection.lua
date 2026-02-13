@@ -22,7 +22,6 @@ function _Config:LoadRangeSection()
                 name = function() return i18n("Show Ranged Stats") end,
                 desc = function() return i18n("Shows/Hides all ranged stats.") end,
                 width = 1.5,
-                hidden = function() return UnitHasRelicSlot("player") end,
                 get = function () return ExtendedCharacterStats.profile.ranged.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.ranged.display = value
