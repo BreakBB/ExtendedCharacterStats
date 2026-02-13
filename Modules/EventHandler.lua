@@ -43,6 +43,9 @@ function EventHandler.HandleOnEvent(self,event, ...)
         if event == "ACTIVE_TALENT_GROUP_CHANGED" or
             event == "CHARACTER_POINTS_CHANGED" or
             event == "COMBAT_RATING_UPDATE" or
+            event == "GLYPH_ADDED" or
+            event == "GLYPH_REMOVED" or
+            event == "GLYPH_UPDATED" or
             event == "PLAYER_LEVEL_UP" or
             event == "PLAYER_MOUNT_DISPLAY_CHANGED" or
             event == "PLAYER_TALENT_UPDATE" or
