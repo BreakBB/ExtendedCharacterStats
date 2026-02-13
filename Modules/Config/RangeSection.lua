@@ -203,7 +203,6 @@ function _Config:LoadRangeSection()
                         name = function() return i18n("Miss Chance Boss") end,
                         desc = function() return i18n("Shows/Hides the ranged miss chance against boss enemies (+3 Level).") end,
                         width = 1.5,
-                        hidden = function() return UnitHasRelicSlot("player") end,
                         disabled = function()
                             return ((not ExtendedCharacterStats.profile.ranged.display) or
                                     (not ExtendedCharacterStats.profile.ranged.hit.display))
