@@ -6,7 +6,7 @@ local playerLevel = UnitLevel("player")
 local enemyLevel = playerLevel + 3
 
 ---@param refName string
----@return number | nil
+---@return number | string
 function Data.GetStatInfo(refName)
     local dataFunction = dataFunctionRefs[refName];
     if dataFunction then
