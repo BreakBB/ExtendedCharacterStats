@@ -239,26 +239,29 @@ _CreateStatInfos = function()
         _CreateStatInfo(category, category.mainHand, category.offHand)
     end
 
-    category = profile.ranged
-    _CreateStatInfo(
-        category,
-        category.attackPower,
-        category.crit,
-        ECS.IsWotlk and category.penetrationRating or nil,
-        ECS.IsClassic and nil or category.penetration,
-        ECS.IsClassic and nil or category.hasteRating,
-        ECS.IsClassic and nil or category.hasteBonus,
-        category.attackSpeed
-    )
-    if category.display then
-        category = category.hit
+    if not UnitHasRelicSlot("player") then
+        category = profile.ranged
         _CreateStatInfo(
             category,
-            ECS.IsClassic and nil or category.rating,
-            category.bonus,
-            category.sameLevel,
-            category.bossLevel
+            category.attackPower,
+            category.crit,
+            ECS.IsWotlk and category.penetrationRating or nil,
+            ECS.IsClassic and nil or category.penetration,
+            ECS.IsClassic and nil or category.hasteRating,
+            ECS.IsClassic and nil or category.hasteBonus,
+            category.attackSpeed
         )
+
+        if category.display then
+            category = category.hit
+            _CreateStatInfo(
+                category,
+                ECS.IsClassic and nil or category.rating,
+                category.bonus,
+                category.sameLevel,
+                category.bossLevel
+            )
+        end
     end
 
     category = profile.defense
