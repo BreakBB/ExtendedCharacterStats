@@ -375,7 +375,7 @@ local function GetDefaultStatsProfile()
                     display = true,
                     isTbcOnly = true,
                     refName = "SpellHitRating",
-                    text = "Rating",
+                    text = "Hit Rating",
                     textColor = colors.HIT_SECONDARY,
                     statColor = colors.HIT_PRIMARY
                 },
