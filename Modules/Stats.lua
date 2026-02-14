@@ -220,7 +220,7 @@ _CreateStatInfos = function()
         ECS.IsWotlk and category.penetrationRating or nil,
         ECS.IsClassic and nil or category.penetration,
         ECS.IsClassic and nil or category.expertiseRating,
-        ECS.IsClassic and nil or category.expertise,
+        (ECS.IsClassic and not ECS.IsSoD) and nil or category.expertise,
         ECS.IsClassic and nil or category.hasteRating,
         ECS.IsClassic and nil or category.hasteBonus
     )
