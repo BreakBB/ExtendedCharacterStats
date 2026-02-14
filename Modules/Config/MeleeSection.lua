@@ -363,6 +363,7 @@ function _Config:LoadMeleeSection()
                         type = "toggle",
                         order = 2,
                         name = function() return i18n("Off Hand") end,
+                        hidden = function() return not CanDualWield() end,
                         desc = function() return i18n("Shows/Hides the attack speed of the off hand.") end,
                         width = 1.5,
                         disabled = function()

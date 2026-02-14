@@ -15,6 +15,8 @@ local Config = ECSLoader:ImportModule("Config")
 local Utils = ECSLoader:ImportModule("Utils")
 ---@type Data
 local Data = ECSLoader:ImportModule("Data")
+---@type DataUtils
+local DataUtils = ECSLoader:ImportModule("DataUtils")
 
 ------------------------------------------------------------------
 -- Defaults
@@ -176,10 +178,6 @@ end
 --- Helper function to iterate all field of a given category and create them if they should be displayed
 ---@param category Category|SubCategory
 _CreateStatInfo = function(category, ...)
-    if ECS.IsClassic and category.isTbcOnly then
-        return
-    end
-
     if category.display then
         _CreateHeader(category.refName, i18n(category.text), category.isSubGroup)
         local stats = {...}
@@ -233,11 +231,15 @@ _CreateStatInfos = function()
 
         if (not ECS.IsWotlk) then
             category = profile.melee.glance
-            _CreateStatInfo(category, category.sameLevel, category.damageSameLevel, category.bossLevel,  category.damageBossLevel)
+            _CreateStatInfo(category, category.sameLevel, category.damageSameLevel, category.bossLevel, category.damageBossLevel)
         end
 
         category = profile.melee.attackSpeed
-        _CreateStatInfo(category, category.mainHand, category.offHand)
+        _CreateStatInfo(
+            category,
+            category.mainHand,
+            CanDualWield() and category.offHand or nil
+        )
     end
 
     if not UnitHasRelicSlot("player") then
@@ -277,13 +279,13 @@ _CreateStatInfos = function()
         category.avoidanceBoss,
         ECS.IsClassic and nil or category.defenseRating,
         category.defense,
-        ECS.IsClassic and nil or category.blockRating,
-        category.blockChance,
-        category.blockValue,
-        ECS.IsClassic and nil or category.parryRating,
-        category.parry,
+        (ECS.IsClassic or not DataUtils:CanBlock()) and nil or category.blockRating,
+        DataUtils:CanBlock() and category.blockChance or nil,
+        DataUtils:CanBlock() and category.blockValue or nil,
+        (ECS.IsClassic or not DataUtils:CanParry()) and nil or category.parryRating,
+        DataUtils:CanParry() and category.parry or nil,
         ECS.IsClassic and nil or category.dodgeRating,
-        category.dodge,
+        category.dodge or nil,
         ECS.IsClassic and nil or category.resilienceRating
     )
 
