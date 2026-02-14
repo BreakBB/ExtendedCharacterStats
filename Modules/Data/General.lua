@@ -4,7 +4,7 @@ local Data = ECSLoader:ImportModule("Data")
 local DataUtils = ECSLoader:ImportModule("DataUtils")
 
 local _HP5 = {}
-
+local IsSpellKnown = C_SpellBook.IsSpellKnown
 local _, _, classId = UnitClass("player")
 
 ---@return string
@@ -34,7 +34,7 @@ function Data:GetHP5()
     local combatModifier = 0
     local maxhealth = UnitHealthMax("player")
 
-    if C_SpellBook.IsSpellKnown(20555) then -- Troll passive
+    if IsSpellKnown(20555) then -- Troll passive
         mod = mod + 0.1
         combatModifier = combatModifier + 0.1
     end
@@ -61,7 +61,7 @@ function Data:GetHP5()
         local aura = C_UnitAuras.GetBuffDataByIndex("player", i)
         if aura and aura.spellId then
             local DemonicAegis = (Data.Aura.IsFelOrDemonArmor[aura.spellId] and talentMod or 1)
-            if aura.spellId == 2645 and C_SpellBook.IsSpellKnown(59289) then
+            if aura.spellId == 2645 and IsSpellKnown(59289) then
                 bonusHp5 = bonusHp5 + 0.01 * 5 * maxhealth -- Glyph of Ghost Wolf
             end
             mod = mod + (Data.Aura.HealthRegenModifier[aura.spellId] or 0)
@@ -101,15 +101,5 @@ end
 
 ---@return number
 function _HP5:GetDemonicAegisTalentModifier()
-    local mod = 0
-    if classId == Data.WARLOCK then
-        if C_SpellBook.IsSpellKnown(30145) then
-            mod = 0.3 -- Demonic Aegis Rank 3
-        elseif C_SpellBook.IsSpellKnown(30144) then
-            mod = 0.2 -- Demonic Aegis Rank 2
-        elseif C_SpellBook.IsSpellKnown(30143) then
-            mod = 0.1 -- Demonic Aegis Rank 1
-        end
-    end
-    return mod
+    return 0.1 * DataUtils:GetActiveTalentSpell({30143,30144,30145}) -- Demonic Aegis
 end
