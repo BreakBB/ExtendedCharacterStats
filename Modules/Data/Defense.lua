@@ -63,41 +63,21 @@ function _Defense:GetCritReduction()
     local critReducingFromResilience = GetCombatRatingBonus(15)
 
     if classId == Data.DRUID then
-        if ECS.IsWotlk then
-            local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 18)
-            meleeCritReduction = meleeCritReduction + points * 2 -- 0-6% from Survival of the Fittest
-        elseif ECS.IsTBC then
-            local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 16)
-            meleeCritReduction = meleeCritReduction + points * 1 -- 0-3% from Survival of the Fittest
-        end
+        local coeff = ECS.IsWotlk and 2 or 1
+        meleeCritReduction = meleeCritReduction + coeff * DataUtils:GetActiveTalentSpell({33853,33855,33856}) -- Survival of the Fittest
     elseif classId == Data.PRIEST then
         if ECS.IsTBC then
-            if C_SpellBook.IsSpellKnown(33371) then -- Shadow Resilience 2/2
-                spellCritReduction = spellCritReduction + 4
-            elseif C_SpellBook.IsSpellKnown(14910) then -- Shadow Resilience 1/2
-                spellCritReduction = spellCritReduction + 2
-            end
+            spellCritReduction = spellCritReduction + 2 * DataUtils:GetActiveTalentSpell({14910,33371})  -- shadow resilience
         end
     elseif classId == Data.ROGUE then
-        if C_SpellBook.IsSpellKnown(30893) then -- Sleight of Hand 2/2
-            meleeCritReduction = meleeCritReduction + 2
-            rangedCritReduction = rangedCritReduction + 2
-        elseif C_SpellBook.IsSpellKnown(30892) then -- Sleight of Hand 1/2
-            meleeCritReduction = meleeCritReduction + 1
-            rangedCritReduction = rangedCritReduction + 1
-        end
+        local mod = 1 * DataUtils:GetActiveTalentSpell({30892,30893}) -- Sleight of Hand
+        meleeCritReduction = meleeCritReduction + mod
+        rangedCritReduction = rangedCritReduction + mod
     elseif classId == Data.WARLOCK then
-        if ECS.IsTBC or ECS.IsWotlk then
-            if C_SpellBook.IsSpellKnown(30321) then -- Demonic Resilience 3/3
-                meleeCritReduction = meleeCritReduction + 3
-                spellCritReduction = spellCritReduction + 3
-            elseif C_SpellBook.IsSpellKnown(30320) then --  Demonic Resilience 2/3
-                meleeCritReduction = meleeCritReduction + 2
-                spellCritReduction = spellCritReduction + 2
-            elseif C_SpellBook.IsSpellKnown(30319) then -- Demonic Resilience 1/3
-                meleeCritReduction = meleeCritReduction + 1
-                spellCritReduction = spellCritReduction + 1
-            end
+        if not ECS.IsClassic then
+            local mod = 1 * DataUtils:GetActiveTalentSpell({30319,30320,30321}) -- Demonic Resilience
+            meleeCritReduction = meleeCritReduction + mod
+            rangedCritReduction = rangedCritReduction + mod
         end
     end
 

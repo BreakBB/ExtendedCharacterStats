@@ -14,6 +14,7 @@ function _Config:LoadRangeSection()
         inline = false,
         width = 2,
         name = function() return i18n("Ranged") end,
+        hidden = function() return UnitHasRelicSlot("player") end,
         args = {
             showRangeStats = {
                 type = "toggle",
@@ -59,9 +60,7 @@ function _Config:LoadRangeSection()
                 name = function() return i18n("Armor Pen.") end,
                 desc = function() return i18n("Shows/Hides the armor penetration value.") end,
                 width = 1.5,
-                hidden = function()
-                    return (not ECS.IsWotlk)
-                end,
+                hidden = function() return (not ECS.IsWotlk) end,
                 disabled = function() return (not ExtendedCharacterStats.profile.ranged.display); end,
                 get = function () return ExtendedCharacterStats.profile.ranged.penetration.display; end,
                 set = function (_, value)
@@ -75,9 +74,7 @@ function _Config:LoadRangeSection()
                 name = function() return i18n("Armor Pen. Rating") end,
                 desc = function() return i18n("Shows/Hides the armor penetration rating value.") end,
                 width = 1.5,
-                hidden = function()
-                    return (not ECS.IsWotlk)
-                end,
+                hidden = function() return (not ECS.IsWotlk) end,
                 disabled = function() return (not ExtendedCharacterStats.profile.ranged.display); end,
                 get = function () return ExtendedCharacterStats.profile.ranged.penetrationRating.display; end,
                 set = function (_, value)
@@ -91,9 +88,7 @@ function _Config:LoadRangeSection()
                 name = function() return i18n("Haste Rating") end,
                 desc = function() return i18n("Shows/Hides the ranged haste rating.") end,
                 width = 1.5,
-                hidden = function()
-                    return (not ECS.IsWotlk)
-                end,
+                hidden = function() return ECS.IsClassic end,
                 disabled = function() return (not ExtendedCharacterStats.profile.ranged.display); end,
                 get = function () return ExtendedCharacterStats.profile.ranged.hasteRating.display; end,
                 set = function (_, value)
@@ -107,9 +102,7 @@ function _Config:LoadRangeSection()
                 name = function() return i18n("Haste Bonus") end,
                 desc = function() return i18n("Shows/Hides the ranged haste bonus value.") end,
                 width = 1.5,
-                hidden = function()
-                    return (not ECS.IsWotlk)
-                end,
+                hidden = function() return ECS.IsClassic end,
                 disabled = function() return (not ExtendedCharacterStats.profile.ranged.display); end,
                 get = function () return ExtendedCharacterStats.profile.ranged.hasteBonus.display; end,
                 set = function (_, value)
@@ -155,9 +148,7 @@ function _Config:LoadRangeSection()
                         name = function() return i18n("Hit Rating") end,
                         desc = function() return i18n("Shows/Hides the ranged hit rating.") end,
                         width = 1.5,
-                        hidden = function()
-                            return (not ECS.IsWotlk)
-                        end,
+                        hidden = function() return ECS.IsClassic end,
                         disabled = function()
                             return ((not ExtendedCharacterStats.profile.ranged.display) or
                                     (not ExtendedCharacterStats.profile.ranged.hit.display))
