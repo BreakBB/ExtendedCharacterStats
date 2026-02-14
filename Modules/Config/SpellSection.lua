@@ -13,7 +13,7 @@ function _Config:LoadSpellSection()
         order = 7,
         inline = false,
         width = 2,
-        name = function() return i18n("Spell") end,
+        name = function() return STAT_CATEGORY_SPELL end,
         args = {
             showSpellStats = {
                 type = "toggle",
@@ -43,7 +43,7 @@ function _Config:LoadSpellSection()
             hasteRating = {
                 type = "toggle",
                 order = 2,
-                name = function() return i18n("Haste Rating") end,
+                name = function() return SPELL_HASTE end,
                 desc = function() return i18n("Shows/Hides the spell haste rating value.") end,
                 width = 1.5,
                 hidden = function()
@@ -75,7 +75,7 @@ function _Config:LoadSpellSection()
             spellPenetration = {
                 type = "toggle",
                 order = 4,
-                name = function() return i18n("Spell Penetration") end,
+                name = function() return ITEM_MOD_SPELL_PENETRATION_SHORT end,
                 desc = function() return i18n("Shows/Hides the spell penetration value.") end,
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.spell.display); end,
@@ -94,7 +94,7 @@ function _Config:LoadSpellSection()
                     spellHitRating = {
                         type = "toggle",
                         order = 1,
-                        name = function() return i18n("Hit Rating") end,
+                        name = function() return COMBAT_RATING_NAME8 end,
                         desc = function() return i18n("Shows/Hides the spell hit rating.") end,
                         width = 1.5,
                         hidden = function()
@@ -129,7 +129,7 @@ function _Config:LoadSpellSection()
                     spellMiss = {
                         type = "toggle",
                         order = 3,
-                        name = function() return i18n("Miss Chance") end,
+                        name = function() return MISS_CHANCE end,
                         desc = function() return i18n("Shows/Hides the spell miss chance against enemies on the same level.") end,
                         width = 1.5,
                         disabled = function()
@@ -145,7 +145,7 @@ function _Config:LoadSpellSection()
                     spellMissBoss = {
                         type = "toggle",
                         order = 4,
-                        name = function() return i18n("Miss Chance Boss") end,
+                        name = function() return MISS_CHANCE .. BOSS end,
                         desc = function() return i18n("Shows/Hides the spell miss chance against boss enemies (+3 Level).") end,
                         width = 1.5,
                         disabled = function()
@@ -164,7 +164,7 @@ function _Config:LoadSpellSection()
                 type = "group",
                 order = 6,
                 inline = true,
-                name = function() return i18n("Spell Power") end,
+                name = function() return STAT_SPELLPOWER end,
                 args = {
                     bonusHealing = {
                         type = "toggle",

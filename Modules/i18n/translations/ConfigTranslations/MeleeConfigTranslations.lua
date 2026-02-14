@@ -22,16 +22,6 @@ local meleeConfigTranslations = {
         ["esMX"] = "Muestra/oculta todas estadísticas cuerpo a cuerpo",
         ["ptBR"] = "Mostra/oculta todas as estatísticas corpo a corpo"
     },
-    ["Melee Attack Power"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Nahkampf Angriffskraft",
-        ["frFR"] = "Puissance d'attaque en mêlée",
-        ["zhCN"] = "近战攻击强度",
-        ["ruRU"] = "Сила атаки",
-        ["esES"] = "Poder de ataque",
-        ["esMX"] = "Poder de ataque",
-        ["ptBR"] = "Poder de ataque"
-    },
     ["Shows/Hides the melee attack power value."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt den Nahkampf Angriffskraftwert.",
@@ -182,16 +172,6 @@ local meleeConfigTranslations = {
         ["esMX"] = "Muestra/oculta la probabilidad de golpear",
         ["ptBR"] = "Mostra/oculta a chance de acerto"
     },
-    ["Hit Rating"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Trefferwertung",
-        ["frFR"] = "Score de toucher",
-        ["zhCN"] = false,
-        ["ruRU"] = "Меткость",
-        ["esES"] = "Índice de golpear",
-        ["esMX"] = "Índice de golpear",
-        ["ptBR"] = "Taxa de acerto"
-    },
     ["Shows/Hides the melee hit rating."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt die Nahkampf Trefferwertung.",
@@ -222,16 +202,6 @@ local meleeConfigTranslations = {
         ["esMX"] = "Muestra/oculta el bonus de golpear",
         ["ptBR"] = "Mostra/oculta o bônus de acerto"
     },
-    ["Miss Chance"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Chance zu verfehlen",
-        ["frFR"] = "Chances de rater",
-        ["zhCN"] = "未命中几率",
-        ["ruRU"] = "Сопротивление",
-        ["esES"] = "Probabilidad de fallo",
-        ["esMX"] = "Probabilidad de fallo",
-        ["ptBR"] = "Chance de erro"
-    },
     ["Shows/Hides the melee miss chance against enemies on the same level."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt die Chance einen Gegner des gleichen Levels im Nahkampf zu verfehlen.",
@@ -241,16 +211,6 @@ local meleeConfigTranslations = {
         ["esES"] = "Muestra/oculta la probabilidad de fallo contra enemigos del mismo nivel",
         ["esMX"] = "Muestra/oculta la probabilidad de fallo contra enemigos del mismo nivel",
         ["ptBR"] = "Mostra/oculta a chance de erro contra inimigos do mesmo nível"
-    },
-    ["Miss Chance Boss"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Chance zu verfehlen (Boss)",
-        ["frFR"] = "Chances de rater (Boss)",
-        ["zhCN"] = "未命中 Boss",
-        ["ruRU"] = "Сопрот. (+3 ур.)",
-        ["esES"] = "Probabilidad de fallo (Jefe)",
-        ["esMX"] = "Probabilidad de fallo (Jefe)",
-        ["ptBR"] = "Chance de erro (chefe)"
     },
     ["Shows/Hides the melee miss chance against boss enemies (+3 Level)."] = {
         ["enUS"] = true,

@@ -12,16 +12,6 @@ local configTranslations = {
         ["esMX"] = "Configuración",
         ["ptBR"] = "Configurações"
     },
-    ["General"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Allgemein",
-        ["frFR"] = "Général",
-        ["zhCN"] = "一般",
-        ["ruRU"] = "Основные",
-        ["esES"] = true,
-        ["esMX"] = true,
-        ["ptBR"] = "Geral"
-    },
     ["Stats"] = {
         ["enUS"] = true,
         ["deDE"] = "Werte",

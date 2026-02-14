@@ -17,27 +17,27 @@ local function GetDefaultStatsProfile()
         general = {
             display = true,
             refName = "GeneralHeader",
-            text = "General",
+            text = STAT_CATEGORY_GENERAL,
 
-            movementSpeed = {display = true, refName = "MovementSpeed", text = "Movement Speed"},
+            movementSpeed = {display = true, refName = "MovementSpeed", text = STAT_MOVEMENT_SPEED},
         },
 
         melee = {
             display = true,
             refName = "MeleeHeader",
-            text = "Melee",
+            text = PLAYERSTAT_MELEE_COMBAT,
 
             hit = {
                 display = true,
                 isSubGroup = true,
                 refName = "MeleeHitHeader",
-                text = "Hit",
+                text = HIT,
 
                 rating = {
                     display = true,
                     isTbcOnly = true,
                     refName = "MeleeHitRating",
-                    text = "Rating",
+                    text = RATING,
                     textColor = colors.HIT_SECONDARY,
                     statColor = colors.HIT_PRIMARY
                 },
@@ -51,7 +51,7 @@ local function GetDefaultStatsProfile()
                 sameLevel = {
                     display = true,
                     refName = "MeleeHitSameLevel",
-                    text = "Miss",
+                    text = MISS,
                     textColor = colors.HIT_SECONDARY,
                     statColor = colors.HIT_PRIMARY
                 },
@@ -85,7 +85,7 @@ local function GetDefaultStatsProfile()
                 damageSameLevel = {
                     display = true,
                     refName = "GlanceDamageSameLevel",
-                    text = "Damage",
+                    text = DAMAGE,
                     textColor = colors.GRAY,
                     statColor = colors.WHITE
                 },
@@ -100,14 +100,14 @@ local function GetDefaultStatsProfile()
             attackPower = {
                 display = true,
                 refName = "MeleeAttackPower",
-                text = "Attack Power",
+                text = ITEM_MOD_ATTACK_POWER_SHORT,
                 textColor = colors.ATTACK_POWER_SECONDARY,
                 statColor = colors.ATTACK_POWER_PRIMARY
             },
             crit = {
                 display = true,
                 refName = "MeleeCritChance",
-                text = "Crit Chance",
+                text = MELEE_CRIT_CHANCE,
                 textColor = colors.CRIT_SECONDARY,
                 statColor = colors.CRIT_PRIMARY
             },
@@ -123,17 +123,17 @@ local function GetDefaultStatsProfile()
                 display = true,
                 isTbcOnly = true,
                 refName = "MeleeArmorPenetrationRating",
-                text = "Armor Pen. Rating",
+                text = ITEM_MOD_ARMOR_PENETRATION_RATING_SHORT,
                 textColor = colors.ATTACK_SPEED_SECONDARY,
                 statColor = colors.ATTACK_SPEED_PRIMARY,
             },
-            expertise = {display = true, isTbcOnly = true, refName = "Expertise", text = "Expertise"},
-            expertiseRating = {display = true, isTbcOnly = true, refName = "ExpertiseRating", text = "Expertise Rating"},
+            expertise = {display = true, isTbcOnly = true, refName = "Expertise", text = STAT_EXPERTISE},
+            expertiseRating = {display = true, isTbcOnly = true, refName = "ExpertiseRating", text = ITEM_MOD_EXPERTISE_RATING_SHORT},
             hasteRating = {
                 display = true,
                 isTbcOnly = true,
                 refName = "MeleeHasteRating",
-                text = "Haste Rating",
+                text = SPELL_HASTE,
                 textColor = colors.HASTE_RATING_SECONDARY,
                 statColor = colors.HASTE_RATING_PRIMARY
             },
@@ -149,19 +149,19 @@ local function GetDefaultStatsProfile()
                 display = true,
                 isSubGroup = true,
                 refName = "MeleeAttackSpeedHeader",
-                text = "Attack Speed",
+                text = ATTACK_SPEED,
 
                 mainHand = {
                     display = true,
                     refName = "MeleeAttackSpeedMainHand",
-                    text = "Main Hand",
+                    text = INVTYPE_WEAPONMAINHAND,
                     textColor = colors.ATTACK_SPEED_SECONDARY,
                     statColor = colors.ATTACK_SPEED_PRIMARY
                 },
                 offHand = {
                     display = true,
                     refName = "MeleeAttackSpeedOffHand",
-                    text = "Off Hand",
+                    text = INVTYPE_WEAPONOFFHAND,
                     textColor = colors.ATTACK_SPEED_SECONDARY,
                     statColor = colors.ATTACK_SPEED_PRIMARY
                 },
@@ -171,20 +171,20 @@ local function GetDefaultStatsProfile()
         ranged = {
             display = true,
             refName = "RangedHeader",
-            text = "Ranged",
+            text = STAT_CATEGORY_RANGED,
 
             ---@type SubCategory
             hit = {
                 display = true,
                 isSubGroup = true,
                 refName = "RangedHitHeader",
-                text = "Hit",
+                text = HIT,
 
                 rating = {
                     display = true,
                     isTbcOnly = true,
                     refName = "RangedHitRating",
-                    text = "Rating",
+                    text = RATING,
                     textColor = colors.HIT_SECONDARY,
                     statColor = colors.HIT_PRIMARY
                 },
@@ -198,7 +198,7 @@ local function GetDefaultStatsProfile()
                 sameLevel = {
                     display = true,
                     refName = "RangedHitSameLevel",
-                    text = "Miss",
+                    text = MISS,
                     textColor = colors.HIT_SECONDARY,
                     statColor = colors.HIT_PRIMARY
                 },
@@ -213,14 +213,14 @@ local function GetDefaultStatsProfile()
             attackPower = {
                 display = true,
                 refName = "RangeAttackpower",
-                text = "Attack Power",
+                text = STAT_ATTACK_POWER,
                 textColor = colors.ATTACK_POWER_SECONDARY,
                 statColor = colors.ATTACK_POWER_PRIMARY
             },
             crit = {
                 display = true,
                 refName = "RangedCritChance",
-                text = "Crit Chance",
+                text = RANGED_CRIT_CHANCE,
                 textColor = colors.CRIT_SECONDARY,
                 statColor = colors.CRIT_PRIMARY
             },
@@ -236,7 +236,7 @@ local function GetDefaultStatsProfile()
                 display = true,
                 isTbcOnly = true,
                 refName = "RangedArmorPenetrationRating",
-                text = "Armor Pen. Rating",
+                text = ITEM_MOD_ARMOR_PENETRATION_RATING_SHORT,
                 textColor = colors.ATTACK_SPEED_SECONDARY,
                 statColor = colors.ATTACK_SPEED_PRIMARY,
             },
@@ -244,7 +244,7 @@ local function GetDefaultStatsProfile()
                 display = true,
                 isTbcOnly = true,
                 refName = "RangedHasteRating",
-                text = "Haste Rating",
+                text = SPELL_HASTE,
                 textColor = colors.HASTE_RATING_SECONDARY,
                 statColor = colors.HASTE_RATING_PRIMARY
             },
@@ -259,7 +259,7 @@ local function GetDefaultStatsProfile()
             attackSpeed = {
                 display = true,
                 refName = "RangedAttackSpeed",
-                text = "Attack Speed",
+                text = ATTACK_SPEED,
                 textColor = colors.ATTACK_SPEED_SECONDARY,
                 statColor = colors.ATTACK_SPEED_PRIMARY
             },
@@ -268,27 +268,27 @@ local function GetDefaultStatsProfile()
         defense = {
             display = true,
             refName = "DefenseHeader",
-            text = "Defense",
+            text = STAT_CATEGORY_DEFENSE,
 
-            armor = {display = true, refName = "Armor", text = "Armor"},
+            armor = {display = true, refName = "Armor", text = STAT_ARMOR},
             meleeCritReduction = {display = true, refName = "MeleeCritReduction", text = "Melee Crit Reduction"},
             rangedCritReduction = {display = true, refName = "RangedCritReduction", text = "Ranged Crit Reduction"},
             spellCritReduction = {display = true, refName = "SpellCritReduction", text = "Spell Crit Reduction"},
-            avoidance = {display = true, refName = "Avoidance", text = "Avoidance"},
+            avoidance = {display = true, refName = "Avoidance", text = STAT_AVOIDANCE},
             avoidanceBoss = {display = true, refName = "AvoidanceBoss", text = "Avoidance (Lvl +3)"},
-            defenseRating = {display = true, isTbcOnly = true, refName = "DefenseRating", text = "Defense Rating"},
-            defense = {display = true, refName = "DefenseValue", text = "Defense"},
-            blockChance = {display = true, refName = "BlockChance", text = "Block Chance"},
-            blockValue = {display = true, refName = "BlockValue", text = "Block Value"},
-            parry = {display = true, refName = "ParryChance", text = "Parry Chance"},
-            dodge = {display = true, refName = "DodgeChance", text = "Dodge Chance"},
-            resilience = {display = true, isTbcOnly = true, refName = "ResilienceValue", text = "Resilience"},
+            defenseRating = {display = true, isTbcOnly = true, refName = "DefenseRating", text = ITEM_MOD_DEFENSE_SKILL_RATING_SHORT},
+            defense = {display = true, refName = "DefenseValue", text = DEFENSE},
+            blockChance = {display = true, refName = "BlockChance", text = BLOCK_CHANCE},
+            blockValue = {display = true, refName = "BlockValue", text = ITEM_MOD_BLOCK_VALUE_SHORT},
+            parry = {display = true, refName = "ParryChance", text = PARRY_CHANCE},
+            dodge = {display = true, refName = "DodgeChance", text = DODGE_CHANCE},
+            resilience = {display = true, isTbcOnly = true, refName = "ResilienceValue", text = RESILIENCE},
         },
 
         regen = {
             display = true,
             refName = "ManaHeader",
-            text = "Mana",
+            text = MANA,
 
             mp5Items = {
                 display = true,
@@ -330,7 +330,7 @@ local function GetDefaultStatsProfile()
         spell = {
             display = true,
             refName = "SpellHeader",
-            text = "Spell",
+            text = STAT_CATEGORY_SPELL,
 
             arcane = {
                 display = true,
@@ -359,13 +359,13 @@ local function GetDefaultStatsProfile()
                 display = true,
                 isSubGroup = true,
                 refName = "SpellHitHeader",
-                text = "Hit",
+                text = HIT,
 
                 rating = {
                     display = true,
                     isTbcOnly = true,
                     refName = "SpellHitRating",
-                    text = "Rating",
+                    text = RATING,
                     textColor = colors.HIT_SECONDARY,
                     statColor = colors.HIT_PRIMARY
                 },
@@ -379,7 +379,7 @@ local function GetDefaultStatsProfile()
                 sameLevel = {
                     display = true,
                     refName = "SpellHitSameLevel",
-                    text = "Miss",
+                    text = MISS,
                     textColor = colors.HIT_SECONDARY,
                     statColor = colors.HIT_PRIMARY
                 },
@@ -542,7 +542,7 @@ local function GetDefaultStatsProfile()
                 display = true,
                 isTbcOnly = true,
                 refName = "SpellHasteRating",
-                text = "Haste Rating",
+                text = SPELL_HASTE,
                 textColor = colors.HASTE_RATING_SECONDARY,
                 statColor = colors.HASTE_RATING_PRIMARY
             },
@@ -554,7 +554,7 @@ local function GetDefaultStatsProfile()
                 textColor = colors.HASTE_RATING_SECONDARY,
                 statColor = colors.HASTE_RATING_PRIMARY
             },
-            penetration = {display = true, refName = "SpellPenetration", text = "Penetration"},
+            penetration = {display = true, refName = "SpellPenetration", text = SPELL_PENETRATION},
 
             crit = {
                 display = true,

@@ -13,7 +13,7 @@ function _Config:LoadRangeSection()
         order = 3,
         inline = false,
         width = 2,
-        name = function() return i18n("Ranged") end,
+        name = function() return STAT_CATEGORY_RANGED end,
         args = {
             showRangeStats = {
                 type = "toggle",
@@ -30,7 +30,7 @@ function _Config:LoadRangeSection()
             rangedAttackPower = {
                 type = "toggle",
                 order = 1,
-                name = function() return i18n("Ranged Attack Power") end,
+                name = function() return ITEM_MOD_RANGED_ATTACK_POWER_SHORT end,
                 desc = function() return i18n("Shows/Hides the ranged attack power value.") end,
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.ranged.display); end,
@@ -72,7 +72,7 @@ function _Config:LoadRangeSection()
             penetrationRating = {
                 type = "toggle",
                 order = 2.4,
-                name = function() return i18n("Armor Pen. Rating") end,
+                name = function() return ITEM_MOD_ARMOR_PENETRATION_RATING_SHORT end,
                 desc = function() return i18n("Shows/Hides the armor penetration rating value.") end,
                 width = 1.5,
                 hidden = function()
@@ -88,7 +88,7 @@ function _Config:LoadRangeSection()
             hasteRating = {
                 type = "toggle",
                 order = 2.6,
-                name = function() return i18n("Haste Rating") end,
+                name = function() return SPELL_HASTE end,
                 desc = function() return i18n("Shows/Hides the ranged haste rating.") end,
                 width = 1.5,
                 hidden = function()
@@ -120,7 +120,7 @@ function _Config:LoadRangeSection()
             rangedAttackSpeed = {
                 type = "toggle",
                 order = 3,
-                name = function() return i18n("Attack Speed") end,
+                name = function() return ATTACK_SPEED end,
                 desc = function() return i18n("Shows/Hides the ranged attack speed.") end,
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.ranged.display); end,
@@ -152,7 +152,7 @@ function _Config:LoadRangeSection()
                     rangeHitRating = {
                         type = "toggle",
                         order = 1,
-                        name = function() return i18n("Hit Rating") end,
+                        name = function() return COMBAT_RATING_NAME7 end,
                         desc = function() return i18n("Shows/Hides the ranged hit rating.") end,
                         width = 1.5,
                         hidden = function()
@@ -187,7 +187,7 @@ function _Config:LoadRangeSection()
                     rangeMiss = {
                         type = "toggle",
                         order = 3,
-                        name = function() return i18n("Miss Chance") end,
+                        name = function() return MISS_CHANCE end,
                         desc = function() return i18n("Shows/Hides the ranged miss chance against enemies on the same level.") end,
                         width = 1.5,
                         disabled = function()
@@ -203,7 +203,7 @@ function _Config:LoadRangeSection()
                     rangeMissBoss = {
                         type = "toggle",
                         order = 4,
-                        name = function() return i18n("Miss Chance Boss") end,
+                        name = function() return MISS_CHANCE .. BOSS end,
                         desc = function() return i18n("Shows/Hides the ranged miss chance against boss enemies (+3 Level).") end,
                         width = 1.5,
                         disabled = function()
