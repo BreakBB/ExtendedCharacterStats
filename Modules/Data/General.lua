@@ -24,18 +24,12 @@ function Data:GetMovementSpeed()
     return DataUtils:Round(currentSpeed, 0) .. "%"
 end
 
----@return string
+---@return number
 function Data:GetArmorPenetrationFlat()
     local armorPenetration = 0
 
     if classId == Data.ROGUE and not ECS.IsWotlk then
-        if C_SpellBook.IsSpellKnown(14173) then -- Serrated Blades 3/3
-            armorPenetration = armorPenetration + playerLevel * 5
-        elseif C_SpellBook.IsSpellKnown(14172) then -- Serrated Blades 2/3
-            armorPenetration = armorPenetration + playerLevel * 3.4
-        elseif C_SpellBook.IsSpellKnown(14171) then -- Serrated Blades 1/3
-            armorPenetration = armorPenetration + playerLevel * 1.6
-        end
+        armorPenetration = armorPenetration + playerLevel * 5/3 * DataUtils:GetActiveTalentSpell({14171,14172,14173}) -- Serrated Blades
     end
 
     local i = 1
@@ -56,14 +50,15 @@ function Data:GetArmorPenetrationFlat()
         i = i + 1
     until (not aura)
 
-    return DataUtils:Round(armorPenetration, 2) .. "%"
+    return DataUtils:Round(armorPenetration, 2)
 end
 
 ---@return string
 function Data:GetArmorPenetrationPercentage()
-    local armorPenetration = GetArmorPenetration()
+    local armorPenetration = 0
 
     if ECS.IsWotlk then
+        armorPenetration = GetArmorPenetration()
         if classId == Data.WARRIOR then
             local _, isActive = GetShapeshiftFormInfo(1)
             if isActive then
@@ -71,26 +66,10 @@ function Data:GetArmorPenetrationPercentage()
             end
             -- TODO: mace specialization
         elseif classId == Data.ROGUE then
-            if C_SpellBook.IsSpellKnown(14173) then -- Serrated Blades 3/3
-                armorPenetration = armorPenetration + 9
-            elseif C_SpellBook.IsSpellKnown(14172) then -- Serrated Blades 2/3
-                armorPenetration = armorPenetration + 6
-            elseif C_SpellBook.IsSpellKnown(14171) then -- Serrated Blades 1/3
-                armorPenetration = armorPenetration + 3
-            end
+            armorPenetration = armorPenetration + 3 * DataUtils:GetActiveTalentSpell({14171,14172,14173}) -- Serrated Blades
             -- TODO: mace specialization
         elseif classId == Data.DEATHKNIGHT then
-            if C_SpellBook.IsSpellKnown(61278) then -- Blood Gorged 5/5
-                armorPenetration = armorPenetration + 10
-            elseif C_SpellBook.IsSpellKnown(61277) then -- Blood Gorged 4/5
-                armorPenetration = armorPenetration + 8
-            elseif C_SpellBook.IsSpellKnown(61276) then -- Blood Gorged 3/5
-                armorPenetration = armorPenetration + 6
-            elseif C_SpellBook.IsSpellKnown(61275) then -- Blood Gorged 2/5
-                armorPenetration = armorPenetration + 4
-            elseif C_SpellBook.IsSpellKnown(61274) then -- Blood Gorged 1/5
-                armorPenetration = armorPenetration + 2
-            end
+            armorPenetration = armorPenetration + 2 * DataUtils:GetActiveTalentSpell({61274,61275,61276,61277,61278}) -- Blood Gorged
         end
     end
 
@@ -99,6 +78,9 @@ end
 
 ---@return number
 function Data:GetArmorPenetrationRating()
-    local armorPenetrationRating = GetCombatRating(CR_ARMOR_PENETRATION)
-    return DataUtils:Round(armorPenetrationRating, 0)
+    local arpen = 0
+    if ECS.IsWotlk then
+        arpen = GetCombatRating(CR_ARMOR_PENETRATION)
+    end
+    return arpen
 end

@@ -113,7 +113,6 @@ local function GetDefaultStatsProfile()
             },
             penetration = {
                 display = true,
-                isTbcOnly = true,
                 refName = "MeleeArmorPenetration",
                 text = "Armor Pen.",
                 textColor = colors.ATTACK_SPEED_SECONDARY,
@@ -121,7 +120,6 @@ local function GetDefaultStatsProfile()
             },
             penetrationRating = {
                 display = true,
-                isTbcOnly = true,
                 refName = "MeleeArmorPenetrationRating",
                 text = "Armor Pen. Rating",
                 textColor = colors.ATTACK_SPEED_SECONDARY,
@@ -226,7 +224,6 @@ local function GetDefaultStatsProfile()
             },
             penetration = {
                 display = true,
-                isTbcOnly = true,
                 refName = "RangedArmorPenetration",
                 text = "Armor Pen.",
                 textColor = colors.ATTACK_SPEED_SECONDARY,
@@ -234,7 +231,6 @@ local function GetDefaultStatsProfile()
             },
             penetrationRating = {
                 display = true,
-                isTbcOnly = true,
                 refName = "RangedArmorPenetrationRating",
                 text = "Armor Pen. Rating",
                 textColor = colors.ATTACK_SPEED_SECONDARY,
