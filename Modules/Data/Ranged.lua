@@ -11,17 +11,12 @@ local _, _, classId = UnitClass("player")
 
 ---@return number
 function Data:GetRangeAttackPower()
-    if not _Ranged:IsRangeAttackClass() then
+    if UnitHasRelicSlot("player") then
         return 0
     end
 
     local melee, posBuff, negBuff = UnitRangedAttackPower("player")
     return melee + posBuff + negBuff
-end
-
----@return boolean
-function _Ranged:IsRangeAttackClass()
-    return classId == Data.WARRIOR or classId == Data.ROGUE or classId == Data.HUNTER
 end
 
 ---@return number
@@ -88,8 +83,7 @@ function _Ranged:GetHitTalentBonus()
     local bonus = 0
 
     if ECS.IsWotlk and classId == Data.HUNTER then
-        local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 27)
-        bonus = points * 1 -- 0-3% Focused Aim
+        bonus = bonus + 1 * DataUtils:GetActiveTalentSpell({53620,53621,53622}) -- Focused Aim
     end
 
     return bonus

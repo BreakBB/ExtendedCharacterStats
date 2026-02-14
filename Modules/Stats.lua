@@ -245,26 +245,29 @@ _CreateStatInfos = function()
         )
     end
 
-    category = profile.ranged
-    _CreateStatInfo(
-        category,
-        category.attackPower,
-        category.crit,
-        ECS.IsWotlk and category.penetrationRating or nil,
-        ECS.IsClassic and nil or category.penetration,
-        ECS.IsClassic and nil or category.hasteRating,
-        ECS.IsClassic and nil or category.hasteBonus,
-        category.attackSpeed
-    )
-    if category.display then
-        category = category.hit
+    if not UnitHasRelicSlot("player") then
+        category = profile.ranged
         _CreateStatInfo(
             category,
-            ECS.IsClassic and nil or category.rating,
-            category.bonus,
-            category.sameLevel,
-            category.bossLevel
+            category.attackPower,
+            category.crit,
+            ECS.IsWotlk and category.penetrationRating or nil,
+            ECS.IsClassic and nil or category.penetration,
+            ECS.IsClassic and nil or category.hasteRating,
+            ECS.IsClassic and nil or category.hasteBonus,
+            category.attackSpeed
         )
+
+        if category.display then
+            category = category.hit
+            _CreateStatInfo(
+                category,
+                ECS.IsClassic and nil or category.rating,
+                category.bonus,
+                category.sameLevel,
+                category.bossLevel
+            )
+        end
     end
 
     category = profile.defense
@@ -288,8 +291,10 @@ _CreateStatInfos = function()
         ECS.IsClassic and nil or category.resilienceRating
     )
 
-    category = profile.regen
-    _CreateStatInfo(category, category.mp5Items, category.mp5Spirit, category.mp5Buffs, category.mp5Casting, category.mp5NotCasting)
+    if UnitHasMana("player") then
+        category = profile.regen
+        _CreateStatInfo(category, category.mp5Items, category.mp5Spirit, category.mp5Buffs, category.mp5Casting, category.mp5NotCasting)
+    end
 
     category = profile.spell
     local spellBonus = profile.spellBonus
