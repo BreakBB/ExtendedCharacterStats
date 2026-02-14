@@ -210,7 +210,7 @@ _CreateStatInfos = function()
     local profile = ExtendedCharacterStats.profile
 
     local category = profile.general
-    _CreateStatInfo(category, category.movementSpeed)
+    _CreateStatInfo(category, category.movementSpeed, category.healthRegeneration, category.healthRegenerationCombat)
 
     category = profile.melee
     _CreateStatInfo(
