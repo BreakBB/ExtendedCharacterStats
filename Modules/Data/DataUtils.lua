@@ -111,7 +111,6 @@ function DataUtils:GetEnchantFromItemLink(itemLink)
             return tonumber(enchant)
         end
     end
-
     return nil
 end
 
@@ -129,7 +128,7 @@ function DataUtils.GetRuneForEquipSlot(equipSlot)
 end
 
 ---@param itemLink ItemLink
----@return (string, string, string) | nil
+---@return string | nil, string | nil, string | nil
 function DataUtils:GetSocketedGemsFromItemLink(itemLink)
     if itemLink then
         local _, itemStringLink = C_Item.GetItemInfo(itemLink)
@@ -138,9 +137,20 @@ function DataUtils:GetSocketedGemsFromItemLink(itemLink)
             return gem1, gem2, gem3
         end
     end
-
     return nil
 end
+
+--- Search for the first known spell of the talentList and return the index of it, as that will be used as multiplier
+---@param talentList table<number> the order of these spells matter. Starting with the lowest rank and ending with the highest.
+---@return number
+function DataUtils:GetActiveTalentSpell(talentList)
+    for i = #talentList,1,-1 do
+        if C_SpellBook.IsSpellKnown(talentList[i]) then
+            return i
+        end
+    end
+    return 0
+  end
 
 ---@return number
 function DataUtils:CountTimewornItems()

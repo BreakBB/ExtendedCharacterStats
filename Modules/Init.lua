@@ -110,6 +110,11 @@ function _Init.RegisterEvents(eventFrame)
             end)
         end
     end
+    if (C_EventUtils.IsEventValid("GLYPH_ADDED")) then
+        eventFrame:RegisterEvent("GLYPH_ADDED")
+        eventFrame:RegisterEvent("GLYPH_UPDATED")
+        eventFrame:RegisterEvent("GLYPH_REMOVED")
+    end
     if ECS.IsSoD then
         eventFrame:RegisterEvent("RUNE_UPDATED") -- Triggers whenever the player changed a rune
     end
