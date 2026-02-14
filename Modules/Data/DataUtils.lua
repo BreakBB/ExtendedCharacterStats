@@ -148,11 +148,6 @@ function DataUtils:CanParry()
 end
 
 ---@return boolean
-function DataUtils:CanDodge()
-    return IsSpellKnown(81)
-end
-
----@return boolean
 function DataUtils:CanBlock()
     return IsSpellKnown(107)
 end

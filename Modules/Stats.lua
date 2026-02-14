@@ -286,8 +286,8 @@ _CreateStatInfos = function()
         DataUtils:CanBlock() and category.blockValue or nil,
         (ECS.IsClassic or not DataUtils:CanParry()) and nil or category.parryRating,
         DataUtils:CanParry() and category.parry or nil,
-        (ECS.IsClassic or not DataUtils:CanDodge()) and nil or category.dodgeRating,
-        DataUtils:CanDodge() and category.dodge or nil,
+        ECS.IsClassic and nil or category.dodgeRating,
+        category.dodge or nil,
         ECS.IsClassic and nil or category.resilienceRating
     )
 

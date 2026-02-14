@@ -182,7 +182,6 @@ function _Config:LoadDefenseSection()
                 name = function() return i18n("Dodge Chance") end,
                 desc = function() return i18n("Shows/Hides the dodge chance.") end,
                 width = 1.5,
-                hidden = function() return not DataUtils:CanDodge() end,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
                 get = function () return ExtendedCharacterStats.profile.defense.dodge.display; end,
                 set = function (_, value)
