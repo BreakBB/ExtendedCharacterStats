@@ -72,7 +72,7 @@ function _Ranged:GetHitBonus()
     end
 
     if hitFromItems then -- This needs to be checked because on dungeon entering it becomes nil
-        hitValue = hitValue + hitFromItems + _Ranged:GetHitTalentBonus() + _Ranged:GetHitFromBuffs()
+        hitValue = hitValue + hitFromItems + _Ranged:GetHitTalentBonus()
     end
 
     return hitValue
@@ -87,17 +87,6 @@ function _Ranged:GetHitTalentBonus()
     end
 
     return bonus
-end
-
----@return number
-function _Ranged:GetHitFromBuffs()
-    local mod = 0
-    if C_UnitAuras.GetPlayerAuraBySpellID(6562) or C_SpellBook.IsSpellKnown(6562) or ( -- Heroic Presence
-        (C_SpellBook.IsSpellKnown(28878) or C_UnitAuras.GetPlayerAuraBySpellID(28878)) and ECS.IsWotlk -- Inspiring Presence
-    ) then
-        mod = mod + 1
-    end
-    return mod
 end
 
 ---@return string
