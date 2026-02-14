@@ -244,12 +244,11 @@ _CreateStatInfos = function()
         _CreateStatInfo(
             category,
             category.attackPower,
-            ECS.IsClassic and nil or category.critRating,
             category.crit,
             ECS.IsWotlk and category.penetrationRating or nil,
             ECS.IsClassic and nil or category.penetration,
             ECS.IsClassic and nil or category.hasteRating,
-            category.hasteBonus,
+            ECS.IsClassic and nil or category.hasteBonus,
             category.attackSpeed
         )
 
