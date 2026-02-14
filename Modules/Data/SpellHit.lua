@@ -96,36 +96,12 @@ end
 
 ---@return number
 function _SpellHit:GetSpellHitBonus(school)
-    local hit = _SpellHit:GetTalentSpellHitBonus(school) + _SpellHit:GetSpellHitFromBuffs() +_SpellHit.GetSpellHitFromRunes(school)
+    local hit = _SpellHit:GetTalentSpellHitBonus(school) +_SpellHit.GetSpellHitFromRunes(school)
     if CR_HIT_SPELL then
         hit = hit + GetCombatRatingBonus(CR_HIT_SPELL)
     end
     -- GetSpellHitModifier returns nil on dungeon entering/teleport
     return hit + (GetSpellHitModifier() or 0)
-end
-
----@return number
-function _SpellHit:GetSpellHitFromBuffs()
-    local mod = 0
-
-    local i = 1
-    repeat
-        local aura = C_UnitAuras.GetBuffDataByIndex ("player", i)
-        i = i + 1
-        if aura and aura.spellId then
-            if aura.spellId == 30708 then
-                mod = mod + (ECS.IsTBC and 3 or 0) -- Totem of Wrath
-            end
-        end
-    until (not aura)
-
-    if C_UnitAuras.GetPlayerAuraBySpellID(28878) or C_SpellBook.IsSpellKnown(28878) or ( -- Inspiring Presence
-        (C_SpellBook.IsSpellKnown(6562) or C_UnitAuras.GetPlayerAuraBySpellID(6562)) and ECS.IsWotlk -- Heroic Presence
-    ) then
-        mod = mod + 1
-    end
-
-    return mod
 end
 
 ---@param school number

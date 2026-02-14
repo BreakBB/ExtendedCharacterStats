@@ -43,11 +43,12 @@ end
 
 ---@return number
 function _Melee:GetHitRatingBonus()
+    local hit = _Melee:GetHitTalentBonus() + _Melee.GetHitFromRunes()
     if CR_HIT_MELEE then
-        return GetCombatRatingBonus(CR_HIT_MELEE) + _Melee:GetHitTalentBonus() + _Melee:GetHitFromBuffs()
+        hit = hit + GetCombatRatingBonus(CR_HIT_MELEE)
     end
     -- GetHitModifier returns nil on dungeon entering/teleport
-    return (GetHitModifier() or 0) + _Melee.GetHitFromRunes()
+    return hit + (GetHitModifier() or 0)
 end
 
 ---@return number
@@ -88,31 +89,6 @@ function _Melee:GetHitTalentBonus()
         if Data:GetMeleeAttackSpeedOffHand() > 0 then
             mod = 1 * DataUtils:GetActiveTalentSpell({49226,50137,50138})
         end
-    end
-
-    return mod
-end
-
----@return number
-function _Melee:GetHitFromBuffs()
-    local mod = 0
-    local otherDraeneiInGroup = false
-
-    local i = 1
-    repeat
-        local aura = C_UnitAuras.GetBuffDataByIndex ("player", i)
-        i = i + 1
-        if aura and aura.spellId then
-
-            if aura.spellId == 6562 then
-                mod = mod + 1 -- 1% from Heroic Presence
-                otherDraeneiInGroup = true
-            end
-        end
-    until (not aura)
-
-    if (not otherDraeneiInGroup) and (C_SpellBook.IsSpellKnown(6562) or C_SpellBook.IsSpellKnown(28878)) then
-        mod = mod + 1
     end
 
     return mod
