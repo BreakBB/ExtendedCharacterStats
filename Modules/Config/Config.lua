@@ -53,7 +53,7 @@ end
 
 _GeneralTab = function()
     return {
-        name = function() return i18n("General") end,
+        name = function() return STAT_CATEGORY_GENERAL end,
         type = "group",
         order = 1,
         args = {

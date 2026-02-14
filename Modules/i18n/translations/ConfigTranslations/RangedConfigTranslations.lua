@@ -21,16 +21,6 @@ local rangedConfigTranslations = {
         ["esES"] = "Muestra/oculta todas estadísticas a distancia",
         ["esMX"] = "Muestra/oculta todas estadísticas a distancia"
     },
-    ["Ranged Attack Power"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Fernkampf Angriffskraft",
-        ["frFR"] = "Puissance d'attaque à distance",
-        ["zhCN"] = "远程攻击强度",
-        ["ruRU"] = "Сила атаки",
-        ["esES"] = "Poder de ataque",
-        ["esMX"] = "Poder de ataque",
-        ["ptBR"] = "Poder de ataque"
-    },
     ["Shows/Hides the ranged attack power value."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt den Fernkampf Angriffskraftwert.",

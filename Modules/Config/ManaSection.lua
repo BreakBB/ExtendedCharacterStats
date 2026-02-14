@@ -13,7 +13,7 @@ function _Config:LoadManaSection()
         order = 5,
         inline = false,
         width = 2,
-        name = function() return i18n("Mana") end,
+        name = function() return MANA end,
         args = {
             showManaStats = {
                 type = "toggle",

@@ -13,7 +13,7 @@ function _Config:LoadGeneralSection()
         order = 1.5,
         inline = false,
         width = 2,
-        name = function() return i18n("General") end,
+        name = function() return STAT_CATEGORY_GENERAL end,
         args = {
             showGeneralStats = {
                 type = "toggle",
