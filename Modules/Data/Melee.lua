@@ -43,11 +43,12 @@ end
 
 ---@return number
 function _Melee:GetHitRatingBonus()
+    local hit = _Melee:GetHitTalentBonus() + _Melee.GetHitFromRunes()
     if CR_HIT_MELEE then
-        return GetCombatRatingBonus(CR_HIT_MELEE) + _Melee:GetHitTalentBonus()
+        hit = hit + GetCombatRatingBonus(CR_HIT_MELEE)
     end
     -- GetHitModifier returns nil on dungeon entering/teleport
-    return (GetHitModifier() or 0) + _Melee.GetHitFromRunes()
+    return hit + (GetHitModifier() or 0)
 end
 
 ---@return number

@@ -64,15 +64,11 @@ function _Ranged:GetHitBonus()
         end
     end
 
-    local hitFromItems
     if CR_HIT_RANGED then
-        hitFromItems = GetCombatRatingBonus(CR_HIT_RANGED)
-    else
-        -- GetHitModifier returns nil on dungeon entering/teleport
-        hitFromItems = GetHitModifier() or 0
+        hitValue = hitValue + GetCombatRatingBonus(CR_HIT_RANGED)
     end
 
-    return hitValue + hitFromItems + _Ranged:GetHitTalentBonus()
+    return hitValue + (GetHitModifier() or 0) + _Ranged:GetHitTalentBonus()
 end
 
 ---@return number
