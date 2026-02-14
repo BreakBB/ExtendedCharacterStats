@@ -216,6 +216,7 @@ _CreateStatInfos = function()
     _CreateStatInfo(
         category,
         category.attackPower,
+        ECS.IsClassic and nil or category.critRating,
         category.crit,
         ECS.IsWotlk and category.penetrationRating or nil,
         ECS.IsClassic and nil or category.penetration,
@@ -246,6 +247,7 @@ _CreateStatInfos = function()
         _CreateStatInfo(
             category,
             category.attackPower,
+            ECS.IsClassic and nil or category.critRating,
             category.crit,
             ECS.IsWotlk and category.penetrationRating or nil,
             ECS.IsClassic and nil or category.penetration,
@@ -305,6 +307,7 @@ _CreateStatInfos = function()
         ECS.IsClassic and nil or category.penetration,
         spellBonus.bonusHealing,
         ECS.IsClassic and nil or spellHit.rating,
+        ECS.IsClassic and nil or spellCrit.rating,
         spell.arcane.display and spellBonus.arcaneDmg or nil,
         spell.arcane.display and spellCrit.display and spellCrit.arcane or nil,
         spell.arcane.display and spellHit.bonus.display and spellHit.arcaneHitBonus or nil,

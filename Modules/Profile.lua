@@ -137,7 +137,7 @@ local function GetDefaultStatsProfile()
             hasteRating = {
                 display = true,
                 refName = "MeleeHasteRating",
-                text = "Haste Rating",
+                text = "Haste rating",
                 textColor = colors.HASTE_RATING_SECONDARY,
                 statColor = colors.HASTE_RATING_PRIMARY
             },
@@ -236,14 +236,14 @@ local function GetDefaultStatsProfile()
             penetrationRating = {
                 display = true,
                 refName = "RangedArmorPenetrationRating",
-                text = "Armor Pen. Rating",
+                text = "Armor pen. rating",
                 textColor = colors.ATTACK_SPEED_SECONDARY,
                 statColor = colors.ATTACK_SPEED_PRIMARY,
             },
             hasteRating = {
                 display = true,
                 refName = "RangedHasteRating",
-                text = "Haste Rating",
+                text = "Haste rating",
                 textColor = colors.HASTE_RATING_SECONDARY,
                 statColor = colors.HASTE_RATING_PRIMARY
             },
@@ -546,7 +546,7 @@ local function GetDefaultStatsProfile()
             hasteRating = {
                 display = true,
                 refName = "SpellHasteRating",
-                text = "Haste Rating",
+                text = "Haste rating",
                 textColor = colors.HASTE_RATING_SECONDARY,
                 statColor = colors.HASTE_RATING_PRIMARY
             },
