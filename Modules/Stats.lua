@@ -176,10 +176,6 @@ end
 --- Helper function to iterate all field of a given category and create them if they should be displayed
 ---@param category Category|SubCategory
 _CreateStatInfo = function(category, ...)
-    if ECS.IsClassic and category.isTbcOnly then
-        return
-    end
-
     if category.display then
         _CreateHeader(category.refName, i18n(category.text), category.isSubGroup)
         local stats = {...}
@@ -232,7 +228,7 @@ _CreateStatInfos = function()
 
         if (not ECS.IsWotlk) then
             category = profile.melee.glance
-            _CreateStatInfo(category, category.sameLevel, category.damageSameLevel, category.bossLevel,  category.damageBossLevel)
+            _CreateStatInfo(category, category.sameLevel, category.damageSameLevel, category.bossLevel, category.damageBossLevel)
         end
 
         category = profile.melee.attackSpeed
