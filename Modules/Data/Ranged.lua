@@ -26,7 +26,7 @@ function Data:GetRangedAttackPowerVsCreature(creature)
     -- auras
     local j = 1
     repeat
-        local aura = C_UnitAuras.GetAuraDataByIndex("player", j, "HELPFUL")
+        local aura = C_UnitAuras.GetBuffDataByIndex("player", j)
         j = j + 1
         if aura and aura.spellId then
             if creature == Data.UNDEAD then
