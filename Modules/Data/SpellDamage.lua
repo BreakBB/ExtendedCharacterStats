@@ -54,23 +54,7 @@ function Data:GetSpellPowerVsCreature(creature)
             end
         end
     end
-
-    local modifier = _SpellDamage:GetGeneralTalentModifier()
-    spellDmg = spellDmg * (1 + (modifier / 100))
-    return DataUtils:Round(spellDmg, 0)
-end
-
----@return number
-function _SpellDamage:GetGeneralTalentModifier()
-    local mod = 0
-
-    if classId == Data.MAGE then
-        local talentSlot = ECS.IsWotlk and 17 or 14
-        local _, _, _, _, points, _, _, _ = GetTalentInfo(1, talentSlot)
-        mod = points * 1 -- 0-3% Arcane Instability
-    end
-
-    return mod
+    return spellDmg
 end
 
 ---@return number
