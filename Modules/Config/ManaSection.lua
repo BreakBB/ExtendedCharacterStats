@@ -14,6 +14,7 @@ function _Config:LoadManaSection()
         inline = false,
         width = 2,
         name = function() return i18n("Mana") end,
+        hidden = function() return not UnitHasMana("player") end,
         args = {
             showManaStats = {
                 type = "toggle",
