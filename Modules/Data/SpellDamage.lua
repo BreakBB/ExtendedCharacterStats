@@ -3,8 +3,7 @@ local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
 local DataUtils = ECSLoader:ImportModule("DataUtils")
 
-local _SpellDamage = {}
-local _, _, classId = UnitClass("player")
+local GetBuffDataByIndex = C_UnitAuras.GetBuffDataByIndex
 
 ---@param school number
 ---@return number
@@ -20,7 +19,7 @@ function Data:GetSpellPowerVsCreature(creature)
     -- auras
     local j = 1
     repeat
-        local aura = C_UnitAuras.GetAuraDataByIndex("player", j, "HELPFUL")
+        local aura = GetBuffDataByIndex("player", j)
         j = j + 1
         if aura and aura.spellId then
             if creature == Data.UNDEAD then
@@ -90,7 +89,7 @@ function Data:GetSpellHasteBonus()
     -- buffs
     local i = 1
     repeat
-        local aura = C_UnitAuras.GetBuffDataByIndex("player", i)
+        local aura = GetBuffDataByIndex("player", i)
         if aura and aura.spellId then
             hasteBonus = hasteBonus + (Data.Aura.SpellHaste[aura.spellId] or 0)
         end
