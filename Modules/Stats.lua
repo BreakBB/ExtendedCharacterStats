@@ -279,8 +279,10 @@ _CreateStatInfos = function()
         ECS.IsClassic and nil or category.resilience
     )
 
-    category = profile.regen
-    _CreateStatInfo(category, category.mp5Items, category.mp5Spirit, category.mp5Buffs, category.mp5Casting, category.mp5NotCasting)
+    if UnitHasMana("player") then
+        category = profile.regen
+        _CreateStatInfo(category, category.mp5Items, category.mp5Spirit, category.mp5Buffs, category.mp5Casting, category.mp5NotCasting)
+    end
 
     category = profile.spell
     local spellBonus = profile.spellBonus
