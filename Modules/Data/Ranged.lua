@@ -78,11 +78,6 @@ function Data:GetRangedAttackPowerVsCreature(creature)
     return dmg
 end
 
----@return boolean
-function _Ranged:IsRangeAttackClass()
-    return classId == Data.WARRIOR or classId == Data.ROGUE or classId == Data.HUNTER
-end
-
 ---@return number
 function Data:GetRangedHasteRating()
     local hasteRating = GetCombatRating(CR_HASTE_RANGED)
