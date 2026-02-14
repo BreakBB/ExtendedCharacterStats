@@ -118,6 +118,18 @@ local itemSets = {
         [227878] = true,
         [227879] = true,
     },
+    [setNames.CHAIN_OF_THE_SCARLET_CRUSADE] = {
+        [10328] = true,
+        [10329] = true,
+        [10330] = true,
+        [10331] = true,
+        [10332] = true,
+        [10333] = true
+    },
+    [setNames.THE_TWIN_BLADES_OF_AZZINOTH] = {
+        [32837] = true,
+        [32838] = true
+    },
 }
 
 ---@return number
@@ -142,6 +154,19 @@ function Data:GetSetBonusModifierMP5()
         mod = mod + 0.05
     end
     return mod
+end
+
+---@return bool
+function Data:HasDemonSlaying200()
+    if classId == Data.ROGUE or classId == Data.WARRIOR then
+        return Data:IsSetBonusActive(setNames.THE_TWIN_BLADES_OF_AZZINOTH, 2)
+    end
+    return false
+end
+
+---@return bool
+function Data:HasUndeadSlayer15()
+    return Data:IsSetBonusActive(setNames.CHAIN_OF_THE_SCARLET_CRUSADE, 5)
 end
 
 ---@return number
