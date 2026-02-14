@@ -15,6 +15,8 @@ local Config = ECSLoader:ImportModule("Config")
 local Utils = ECSLoader:ImportModule("Utils")
 ---@type Data
 local Data = ECSLoader:ImportModule("Data")
+---@type DataUtils
+local DataUtils = ECSLoader:ImportModule("DataUtils")
 
 ------------------------------------------------------------------
 -- Defaults
@@ -232,7 +234,11 @@ _CreateStatInfos = function()
         end
 
         category = profile.melee.attackSpeed
-        _CreateStatInfo(category, category.mainHand, category.offHand)
+        _CreateStatInfo(
+            category,
+            category.mainHand,
+            CanDualWield() and category.offHand or nil
+        )
     end
 
     if not UnitHasRelicSlot("player") then
@@ -271,11 +277,14 @@ _CreateStatInfos = function()
         category.avoidanceBoss,
         ECS.IsClassic and nil or category.defenseRating,
         category.defense,
-        category.blockChance,
-        category.blockValue,
-        category.parry,
-        category.dodge,
-        ECS.IsClassic and nil or category.resilience
+        (ECS.IsClassic or not DataUtils:CanBlock()) and nil or category.blockRating,
+        DataUtils:CanBlock() and category.blockChance or nil,
+        DataUtils:CanBlock() and category.blockValue or nil,
+        (ECS.IsClassic or not DataUtils:CanParry()) and nil or category.parryRating,
+        DataUtils:CanParry() and category.parry or nil,
+        ECS.IsClassic and nil or category.dodgeRating,
+        category.dodge or nil,
+        ECS.IsClassic and nil or category.resilienceRating
     )
 
     if UnitHasMana("player") then
