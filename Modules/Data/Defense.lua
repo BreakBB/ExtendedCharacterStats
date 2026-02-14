@@ -13,7 +13,6 @@ local MAX_SKILL = (UnitLevel("player")) * 5
 -- Every 25 defense reduce the chance to be critically hit by 1 %
 local DEFENSE_FOR_CRIT_REDUCTION = 25
 
-
 ---@return number
 function Data:GetArmorValue()
     local _, effectiveArmor = UnitArmor("player")
@@ -35,6 +34,9 @@ function _Defense:GetCritReduction()
         if aura and aura.spellId then
             buffBonus = buffBonus + (Data.Aura.CritReductionAll[aura.spellId] or 0)
             meleeCritReduction = meleeCritReduction + (Data.Aura.CritReductionMelee[aura.spellId] or 0)
+            if ECS.IsWotlk and aura.spellId == 22812 and C_SpellBook.IsSpellKnown(63058) then
+                buffBonus = buffBonus + 25 -- Glyph of Barkskin
+            end
         end
     until (not aura)
     i = 1
@@ -47,6 +49,8 @@ function _Defense:GetCritReduction()
             spellCritReduction = spellCritReduction + (Data.Aura.CritReductionSpell[aura.spellId] or 0)
             if ECS.IsWotlk and aura.spellId == 12579 then
                 spellCritReduction = spellCritReduction - 1 * aura.applications -- Winter's Chill
+            elseif ECS.IsSoD and aura.spellId == 1231399 then -- Legislate
+                buffBonus = buffBonus - 3 * aura.applications
             end
         end
     until (not aura)
