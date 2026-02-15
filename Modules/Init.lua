@@ -98,7 +98,7 @@ function _Init.RegisterEvents(eventFrame)
     eventFrame:RegisterUnitEvent("UNIT_RANGED_ATTACK_POWER", "player")
     eventFrame:RegisterUnitEvent("UNIT_RANGEDDAMAGE", "player")
     eventFrame:RegisterEvent("UPDATE_SHAPESHIFT_FORM")
-   if ECS.IsTBC or ECS.IsWotlk then
+    if not ECS.IsClassic then
         eventFrame:RegisterEvent("SOCKET_INFO_SUCCESS") -- Triggers whenever the player successfully sockets an item
 
         if GearManagerDialog then
@@ -109,6 +109,11 @@ function _Init.RegisterEvents(eventFrame)
                 Stats:ShowWindow()
             end)
         end
+    end
+    if (C_EventUtils.IsEventValid("GLYPH_ADDED")) then
+        eventFrame:RegisterEvent("GLYPH_ADDED")
+        eventFrame:RegisterEvent("GLYPH_UPDATED")
+        eventFrame:RegisterEvent("GLYPH_REMOVED")
     end
     if ECS.IsSoD then
         eventFrame:RegisterEvent("RUNE_UPDATED") -- Triggers whenever the player changed a rune
