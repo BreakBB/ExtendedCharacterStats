@@ -142,5 +142,9 @@ end
 
 ---@return number
 function Data:SpellHitRating()
+    if (not CR_HIT_SPELL) then
+        return 0
+    end
+
     return GetCombatRating(CR_HIT_SPELL)
 end

@@ -21,12 +21,20 @@ end
 
 ---@return number
 function Data:GetRangedHasteRating()
+    if (not CR_HASTE_RANGED) then
+        return 0
+    end
+
     local hasteRating = GetCombatRating(CR_HASTE_RANGED)
     return DataUtils:Round(hasteRating, 0)
 end
 
 ---@return string
 function Data:GetRangedHasteBonus()
+    if (not CR_HASTE_RANGED) then
+        return "0%"
+    end
+
     local hasteBonus = GetCombatRatingBonus(CR_HASTE_RANGED)
     return DataUtils:Round(hasteBonus, 2) .. "%"
 end
@@ -44,6 +52,10 @@ end
 
 ---@return number
 function Data:RangeHitRating()
+    if (not CR_HIT_RANGED) then
+        return 0
+    end
+
     return GetCombatRating(CR_HIT_RANGED)
 end
 
