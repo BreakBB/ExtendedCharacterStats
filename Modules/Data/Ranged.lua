@@ -134,7 +134,10 @@ end
 
 ---@return number
 function Data:GetRangedCritRating()
-    local critRating = GetCombatRating(CR_CRIT_RANGED)
+    local critRating = 0
+    if CR_CRIT_RANGED then
+        critRating = GetCombatRating(CR_CRIT_RANGED)
+    end
     return DataUtils:Round(critRating, 0)
 end
 

@@ -219,22 +219,38 @@ end
 
 ---@return number
 function Data:GetResilienceRating()
-    return DataUtils:Round(GetCombatRating(15), 2)
+    local rating = 0
+    if CR_RESILIENCE_CRIT_TAKEN then
+        rating = GetCombatRating(CR_RESILIENCE_CRIT_TAKEN)
+    end
+    return DataUtils:Round(rating, 2)
 end
 
 ---@return number
 function Data:GetParryRating()
-    return DataUtils:Round(GetCombatRating(CR_PARRY), 2)
+    local rating = 0
+    if CR_PARRY then
+        rating = GetCombatRating(CR_PARRY)
+    end
+    return DataUtils:Round(rating, 2)
 end
 
 ---@return number
 function Data:GetDodgeRating()
-    return DataUtils:Round(GetCombatRating(CR_DODGE), 2)
+    local rating = 0
+    if CR_DODGE then
+        rating = GetCombatRating(CR_DODGE)
+    end
+    return DataUtils:Round(rating, 2)
 end
 
 ---@return number
 function Data:GetBlockRating()
-    return DataUtils:Round(GetCombatRating(CR_BLOCK), 2)
+    local rating = 0
+    if CR_BLOCK then
+        rating = GetCombatRating(CR_BLOCK)
+    end
+    return DataUtils:Round(rating, 2)
 end
 
 ---@return number

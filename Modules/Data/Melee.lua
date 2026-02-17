@@ -268,7 +268,10 @@ end
 
 ---@return number
 function Data:GetMeleeCritRating()
-    local critRating = GetCombatRating(CR_CRIT_MELEE)
+    local critRating = 0
+    if CR_CRIT_MELEE then
+        critRating = GetCombatRating(CR_CRIT_MELEE)
+    end
     return DataUtils:Round(critRating, 0)
 end
 
