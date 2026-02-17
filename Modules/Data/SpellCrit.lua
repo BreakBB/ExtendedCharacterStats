@@ -11,15 +11,9 @@ local _, _, classId = UnitClass("player")
 ---@return string
 function Data:GetSpellCrit(school)
     local crit = _SpellCrit:GetTalentModifier(school)
-    local itemBonus = _SpellCrit:GetItemModifierBySchool(school)
-    local setBonus = _SpellCrit:GetSetBonus(school)
-
-    if ECS.IsWotlk then
-        crit = crit + GetCombatRatingBonus(CR_CRIT_SPELL) + GetSpellCritChanceFromIntellect("player") + itemBonus + setBonus
-    else
-        crit = crit + GetSpellCritChance(school) + itemBonus + setBonus
-    end
-
+    crit = crit + _SpellCrit:GetItemModifierBySchool(school)
+    crit = crit + _SpellCrit:GetSetBonus(school)
+    crit = crit + GetSpellCritChance(school)
     crit = crit + _SpellCrit:GetSpellCritFromBuffs(school)
 
     return DataUtils:Round(crit, 2) .. "%"
@@ -37,6 +31,8 @@ function _SpellCrit:GetSpellCritFromBuffs(school)
             if school == Data.FIRE_SCHOOL then
                 if aura.spellId == 28682 then
                     mod = mod + (aura.applications * 10) -- 10% for each stack from Combustion
+                elseif aura.spellId == 1213317 then
+                    mod = mod + 50 -- Fire Blast
                 end
             end
         end
@@ -58,7 +54,9 @@ function _SpellCrit:GetGeneralTalentModifier()
     local mod = 0
 
     if classId == Data.MAGE then
-        mod = mod + 1 * DataUtils:GetActiveTalentSpell({15058,15059,15060}) -- Arcane Instability
+        if not ECS.IsClassic then
+            mod = mod + 1 * DataUtils:GetActiveTalentSpell({15058,15059,15060}) -- Arcane Instability
+        end
     elseif classId == Data.DRUID then
         if ECS.IsWotlk then
             mod = mod + 1 * DataUtils:GetActiveTalentSpell({33881,33882,33883}) -- Natural Perfection
