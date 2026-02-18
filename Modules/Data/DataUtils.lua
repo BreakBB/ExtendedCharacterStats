@@ -3,6 +3,8 @@ local DataUtils = ECSLoader:CreateModule("DataUtils")
 ---@type Data
 local Data = ECSLoader:ImportModule("Data")
 
+local IsSpellKnown = C_SpellBook.IsSpellKnown
+
 --- Rounds every number down to the given decimal places
 ---@param num number
 ---@param decimalPlaces number
@@ -107,11 +109,10 @@ function DataUtils:GetEnchantFromItemLink(itemLink)
     if itemLink then
         local _, itemStringLink = C_Item.GetItemInfo(itemLink)
         if itemStringLink then
-            local _, _, enchant = string.find(itemStringLink, "item:%d+:(%d*)")
+            local _, _, enchant, _ = strsplit(":", itemStringLink, 4)
             return tonumber(enchant)
         end
     end
-
     return nil
 end
 
@@ -129,17 +130,52 @@ function DataUtils.GetRuneForEquipSlot(equipSlot)
 end
 
 ---@param itemLink ItemLink
----@return number | nil, number | nil, number | nil
+---@return string | nil, string | nil, string | nil
 function DataUtils:GetSocketedGemsFromItemLink(itemLink)
     if itemLink then
         local _, itemStringLink = C_Item.GetItemInfo(itemLink)
         if itemStringLink then
-            local _, _, gem1, gem2, gem3 = string.find(itemStringLink, "item:%d*:%d*:(%d*):(%d*):(%d*)")
+            local _, _, gem1, gem2, gem3, _ = strsplit(":", itemStringLink, 6)
             return gem1, gem2, gem3
         end
     end
-
     return nil
+end
+
+---@return boolean
+function DataUtils:CanParry()
+    return (IsSpellKnown(3127) or IsSpellKnown(18848) or IsSpellKnown(3124))
+end
+
+---@return boolean
+function DataUtils:CanBlock()
+    return IsSpellKnown(107)
+end
+
+--- Search for the first known spell of the talentList and return the index of it, as that will be used as multiplier
+---@param talentList table<number> the order of these spells matter. Starting with the lowest rank and ending with the highest.
+---@return number
+function DataUtils:GetActiveTalentSpell(talentList)
+    for i = #talentList,1,-1 do
+        if C_SpellBook.IsSpellKnown(talentList[i]) then
+            return i
+        end
+    end
+    return 0
+  end
+
+---@return number
+function DataUtils:CountTimewornItems()
+    local timeworn = 0
+     if ECS.IsSoD then
+        for i = 1, 18 do
+            local id, _ = GetInventoryItemID("player", i)
+            if Data.Item.IsTimeworn[id] then
+                timeworn = timeworn + 1
+            end
+        end
+    end
+    return timeworn
 end
 
 return DataUtils

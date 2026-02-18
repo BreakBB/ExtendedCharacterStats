@@ -6,7 +6,7 @@ local Utils = ECSLoader:ImportModule("Utils")
 
 ---@return number
 function Profile.GetProfileVersion()
-    return 22
+    return 23
 end
 
 ---@return ECSProfile
@@ -35,7 +35,6 @@ local function GetDefaultStatsProfile()
 
                 rating = {
                     display = true,
-                    isTbcOnly = true,
                     refName = "MeleeHitRating",
                     text = RATING,
                     textColor = colors.HIT_SECONDARY,
@@ -113,7 +112,6 @@ local function GetDefaultStatsProfile()
             },
             penetration = {
                 display = true,
-                isTbcOnly = true,
                 refName = "MeleeArmorPenetration",
                 text = "Armor Pen.",
                 textColor = colors.ATTACK_SPEED_SECONDARY,
@@ -121,17 +119,15 @@ local function GetDefaultStatsProfile()
             },
             penetrationRating = {
                 display = true,
-                isTbcOnly = true,
                 refName = "MeleeArmorPenetrationRating",
                 text = ITEM_MOD_ARMOR_PENETRATION_RATING_SHORT,
                 textColor = colors.ATTACK_SPEED_SECONDARY,
                 statColor = colors.ATTACK_SPEED_PRIMARY,
             },
-            expertise = {display = true, isTbcOnly = true, refName = "Expertise", text = STAT_EXPERTISE},
-            expertiseRating = {display = true, isTbcOnly = true, refName = "ExpertiseRating", text = ITEM_MOD_EXPERTISE_RATING_SHORT},
+            expertise = {display = true, refName = "Expertise", text = STAT_EXPERTISE},
+            expertiseRating = {display = true, refName = "ExpertiseRating", text = ITEM_MOD_EXPERTISE_RATING_SHORT},
             hasteRating = {
                 display = true,
-                isTbcOnly = true,
                 refName = "MeleeHasteRating",
                 text = SPELL_HASTE,
                 textColor = colors.HASTE_RATING_SECONDARY,
@@ -139,7 +135,6 @@ local function GetDefaultStatsProfile()
             },
             hasteBonus = {
                 display = true,
-                isTbcOnly = true,
                 refName = "MeleeHasteBonus",
                 text = "Haste Bonus",
                 textColor = colors.HASTE_RATING_SECONDARY,
@@ -182,7 +177,6 @@ local function GetDefaultStatsProfile()
 
                 rating = {
                     display = true,
-                    isTbcOnly = true,
                     refName = "RangedHitRating",
                     text = RATING,
                     textColor = colors.HIT_SECONDARY,
@@ -226,7 +220,6 @@ local function GetDefaultStatsProfile()
             },
             penetration = {
                 display = true,
-                isTbcOnly = true,
                 refName = "RangedArmorPenetration",
                 text = "Armor Pen.",
                 textColor = colors.ATTACK_SPEED_SECONDARY,
@@ -234,7 +227,6 @@ local function GetDefaultStatsProfile()
             },
             penetrationRating = {
                 display = true,
-                isTbcOnly = true,
                 refName = "RangedArmorPenetrationRating",
                 text = ITEM_MOD_ARMOR_PENETRATION_RATING_SHORT,
                 textColor = colors.ATTACK_SPEED_SECONDARY,
@@ -242,7 +234,6 @@ local function GetDefaultStatsProfile()
             },
             hasteRating = {
                 display = true,
-                isTbcOnly = true,
                 refName = "RangedHasteRating",
                 text = SPELL_HASTE,
                 textColor = colors.HASTE_RATING_SECONDARY,
@@ -250,7 +241,6 @@ local function GetDefaultStatsProfile()
             },
             hasteBonus = {
                 display = true,
-                isTbcOnly = true,
                 refName = "RangedHasteBonus",
                 text = "Haste Bonus",
                 textColor = colors.HASTE_RATING_SECONDARY,
@@ -276,7 +266,7 @@ local function GetDefaultStatsProfile()
             spellCritReduction = {display = true, refName = "SpellCritReduction", text = "Spell Crit Reduction"},
             avoidance = {display = true, refName = "Avoidance", text = STAT_AVOIDANCE},
             avoidanceBoss = {display = true, refName = "AvoidanceBoss", text = "Avoidance (Lvl +3)"},
-            defenseRating = {display = true, isTbcOnly = true, refName = "DefenseRating", text = ITEM_MOD_DEFENSE_SKILL_RATING_SHORT},
+            defenseRating = {display = true, refName = "DefenseRating", text = ITEM_MOD_DEFENSE_SKILL_RATING_SHORT},
             defense = {display = true, refName = "DefenseValue", text = DEFENSE},
             blockChance = {display = true, refName = "BlockChance", text = BLOCK_CHANCE},
             blockValue = {display = true, refName = "BlockValue", text = ITEM_MOD_BLOCK_VALUE_SHORT},
@@ -363,16 +353,15 @@ local function GetDefaultStatsProfile()
 
                 rating = {
                     display = true,
-                    isTbcOnly = true,
                     refName = "SpellHitRating",
-                    text = RATING,
+                    text = COMBAT_RATING_NAME8,
                     textColor = colors.HIT_SECONDARY,
                     statColor = colors.HIT_PRIMARY
                 },
                 bonus = {
                     display = true,
                     refName = "SpellHitBonus",
-                    text = "Bonus",
+                    text = "Hit Bonus",
                     textColor = colors.HIT_SECONDARY,
                     statColor = colors.HIT_PRIMARY
                 },
@@ -540,7 +529,6 @@ local function GetDefaultStatsProfile()
             },
             hasteRating = {
                 display = true,
-                isTbcOnly = true,
                 refName = "SpellHasteRating",
                 text = SPELL_HASTE,
                 textColor = colors.HASTE_RATING_SECONDARY,
@@ -548,7 +536,6 @@ local function GetDefaultStatsProfile()
             },
             hasteBonus = {
                 display = true,
-                isTbcOnly = true,
                 refName = "SpellHasteBonus",
                 text = "Haste Bonus",
                 textColor = colors.HASTE_RATING_SECONDARY,

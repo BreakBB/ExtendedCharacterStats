@@ -38,83 +38,58 @@ end
 
 ---@return number
 function Data:MeleeHitRating()
+    if (not CR_HIT_MELEE) then
+        return 0
+    end
+
     return GetCombatRating(CR_HIT_MELEE)
 end
 
 ---@return number
 function _Melee:GetHitRatingBonus()
+    local hit = _Melee:GetHitTalentBonus() + _Melee.GetHitFromRunes()
     if CR_HIT_MELEE then
-        return GetCombatRatingBonus(CR_HIT_MELEE) + _Melee:GetHitTalentBonus() + _Melee:GetHitFromBuffs()
+        hit = hit + GetCombatRatingBonus(CR_HIT_MELEE)
     end
     -- GetHitModifier returns nil on dungeon entering/teleport
-    return (GetHitModifier() or 0) + _Melee.GetHitFromRunes()
+    return hit + (GetHitModifier() or 0)
 end
 
 ---@return number
 function _Melee:GetHitTalentBonus()
     local mod = 0
 
-    if classId == Data.WARRIOR and ECS.IsWotlk then
-        local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 18)
-        mod = points * 1 -- 0-3% Precision
-    end
-
-    if ECS.IsWotlk and classId == Data.HUNTER then
-        local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 27)
-        mod = points * 1 -- 0-3% Focused Aim
-    end
-
-    if classId == Data.SHAMAN then
+    if classId == Data.WARRIOR then
         if ECS.IsWotlk then
+            -- precision
+            mod = 1 * DataUtils:GetActiveTalentSpell({29590,29591,29592})
+        end
+    elseif classId == Data.HUNTER then
+        if ECS.IsWotlk then
+            -- focused aim
+            mod = 1 * DataUtils:GetActiveTalentSpell({53620,53621,53622})
+        end
+    elseif classId == Data.SHAMAN then
+        if ECS.IsWotlk then
+            -- Dual Wield Specialization
             if Data:GetMeleeAttackSpeedOffHand() > 0 then
-                local _, _, _, _, dualWielding, _, _, _ = GetTalentInfo(2, 19)
-                mod = mod + dualWielding * 2 -- 0-6% Dual Wielding Specialization
+                mod = 2 * DataUtils:GetActiveTalentSpell({30816,30818,30819})
             end
-        else
-            local _, _, _, _, naturesGuidance, _, _, _ = GetTalentInfo(3, 3)
-            mod = naturesGuidance * 1 -- 0-3% Nature's Guidance
+        elseif ECS.IsClassic then
+            -- Nature's Guidance
+            mod = 1 * DataUtils:GetActiveTalentSpell({16180,16196,16198})
         end
-    end
-
-    if ECS.IsTBC and classId == Data.PALADIN then
-        local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 15)
-        mod = points * 1 -- 0-3% Precision
-    end
-
-    if classId == Data.ROGUE then
-        local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 1)
-        mod = points * 1 -- 0-5% Precision
-    end
-
-    -- This assumes a DK is dual wielding and not only using a one-hand main hand weapon
-    if classId == Data.DEATHKNIGHT and Data:GetMeleeAttackSpeedOffHand() > 0 then
-        local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 16)
-        mod = points * 1 -- 0-3% Nerves of Cold Steel
-    end
-
-    return mod
-end
-
----@return number
-function _Melee:GetHitFromBuffs()
-    local mod = 0
-    local otherDraeneiInGroup = false
-
-    local i = 1
-    repeat
-        local aura = C_UnitAuras.GetBuffDataByIndex ("player", i)
-        i = i + 1
-        if aura and aura.spellId then
-
-            if aura.spellId == 6562 then
-                mod = mod + 1 -- 1% from Heroic Presence
-                otherDraeneiInGroup = true
-            end
+    elseif classId == Data.ROGUE then
+        if ECS.IsClassic then
+            -- precision
+            mod = 1 * DataUtils:GetActiveTalentSpell({13705,13832,13843,13844,13845})
         end
-    until (not aura)
-
-    if (not otherDraeneiInGroup) and (C_SpellBook.IsSpellKnown(6562) or C_SpellBook.IsSpellKnown(28878)) then
-        mod = mod + 1
+    elseif classId == Data.DEATHKNIGHT then
+        -- Nerves of Cold Steel
+        -- This assumes a DK is dual wielding and not only using a one-hand main hand weapon
+        if Data:GetMeleeAttackSpeedOffHand() > 0 then
+            mod = 1 * DataUtils:GetActiveTalentSpell({49226,50137,50138})
+        end
     end
 
     return mod
@@ -242,6 +217,10 @@ end
 
 ---@return number
 function Data:GetExpertiseRating()
+    if (not CR_EXPERTISE) then
+        return 0
+    end
+
     local expertiseRating = GetCombatRating(CR_EXPERTISE)
     return DataUtils:Round(expertiseRating, 0)
 end
@@ -258,8 +237,7 @@ function Data:GetArmorPenetration()
     end
 
     if classId == Data.DEATHKNIGHT then
-        local _, _, _, _, points, _, _, _ = GetTalentInfo(1, 24)
-        armorPenetration = armorPenetration + points * 2 -- 0-10% Blood Gorged
+        armorPenetration = armorPenetration + 2 * DataUtils:GetActiveTalentSpell({61274,61275,61276,61277,61278}) -- Blood Gorged
     end
 
     return DataUtils:Round(armorPenetration, 2) .. "%"
@@ -267,18 +245,30 @@ end
 
 ---@return number
 function Data:GetArmorPenetrationRating()
+    if (not CR_ARMOR_PENETRATION) then
+        return 0
+    end
+
     local armorPenetrationRating = GetCombatRating(CR_ARMOR_PENETRATION)
     return DataUtils:Round(armorPenetrationRating, 0)
 end
 
 ---@return number
 function Data:GetMeleeHasteRating()
+    if (not CR_HASTE_MELEE) then
+        return 0
+    end
+
     local hasteRating = GetCombatRating(CR_HASTE_MELEE)
     return DataUtils:Round(hasteRating, 0)
 end
 
 ---@return string
 function Data:GetMeleeHasteBonus()
+    if (not CR_HASTE_MELEE) then
+        return "0%"
+    end
+
     local hasteBonus = GetCombatRatingBonus(CR_HASTE_MELEE)
     return DataUtils:Round(hasteBonus, 2) .. "%"
 end

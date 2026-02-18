@@ -11,7 +11,7 @@ local _, _, classId = UnitClass("player")
 
 ---@return number
 function Data:GetRangeAttackPower()
-    if not _Ranged:IsRangeAttackClass() then
+    if UnitHasRelicSlot("player") then
         return 0
     end
 
@@ -19,19 +19,22 @@ function Data:GetRangeAttackPower()
     return melee + posBuff + negBuff
 end
 
----@return boolean
-function _Ranged:IsRangeAttackClass()
-    return classId == Data.WARRIOR or classId == Data.ROGUE or classId == Data.HUNTER
-end
-
 ---@return number
 function Data:GetRangedHasteRating()
+    if (not CR_HASTE_RANGED) then
+        return 0
+    end
+
     local hasteRating = GetCombatRating(CR_HASTE_RANGED)
     return DataUtils:Round(hasteRating, 0)
 end
 
 ---@return string
 function Data:GetRangedHasteBonus()
+    if (not CR_HASTE_RANGED) then
+        return "0%"
+    end
+
     local hasteBonus = GetCombatRatingBonus(CR_HASTE_RANGED)
     return DataUtils:Round(hasteBonus, 2) .. "%"
 end
@@ -49,6 +52,10 @@ end
 
 ---@return number
 function Data:RangeHitRating()
+    if (not CR_HIT_RANGED) then
+        return 0
+    end
+
     return GetCombatRating(CR_HIT_RANGED)
 end
 
@@ -69,18 +76,11 @@ function _Ranged:GetHitBonus()
         end
     end
 
-    local hitFromItems
     if CR_HIT_RANGED then
-        hitFromItems = GetCombatRatingBonus(CR_HIT_RANGED)
-    else
-        hitFromItems = GetHitModifier()
+        hitValue = hitValue + GetCombatRatingBonus(CR_HIT_RANGED)
     end
 
-    if hitFromItems then -- This needs to be checked because on dungeon entering it becomes nil
-        hitValue = hitValue + hitFromItems + _Ranged:GetHitTalentBonus() + _Ranged:GetHitFromBuffs()
-    end
-
-    return hitValue
+    return hitValue + (GetHitModifier() or 0) + _Ranged:GetHitTalentBonus()
 end
 
 ---@return number
@@ -88,22 +88,10 @@ function _Ranged:GetHitTalentBonus()
     local bonus = 0
 
     if ECS.IsWotlk and classId == Data.HUNTER then
-        local _, _, _, _, points, _, _, _ = GetTalentInfo(2, 27)
-        bonus = points * 1 -- 0-3% Focused Aim
+        bonus = bonus + 1 * DataUtils:GetActiveTalentSpell({53620,53621,53622}) -- Focused Aim
     end
 
     return bonus
-end
-
----@return number
-function _Ranged:GetHitFromBuffs()
-    local mod = 0
-    if C_UnitAuras.GetPlayerAuraBySpellID(6562) or C_SpellBook.IsSpellKnown(6562) or ( -- Heroic Presence
-        (C_SpellBook.IsSpellKnown(28878) or C_UnitAuras.GetPlayerAuraBySpellID(28878)) and ECS.IsWotlk -- Inspiring Presence
-    ) then
-        mod = mod + 1
-    end
-    return mod
 end
 
 ---@return string

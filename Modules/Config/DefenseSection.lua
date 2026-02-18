@@ -6,6 +6,8 @@ local _Config = Config.private
 local Stats = ECSLoader:ImportModule("Stats")
 ---@type i18n
 local i18n = ECSLoader:ImportModule("i18n")
+---@type DataUtils
+local DataUtils = ECSLoader:ImportModule("DataUtils")
 
 function _Config:LoadDefenseSection()
     return {
@@ -111,9 +113,7 @@ function _Config:LoadDefenseSection()
                 name = function() return ITEM_MOD_DEFENSE_SKILL_RATING_SHORT end,
                 desc = function() return i18n("Shows/Hides the defense rating.") end,
                 width = 1.5,
-                hidden = function()
-                    return (not ECS.IsWotlk)
-                end,
+                hidden = function() return ECS.IsClassic end,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
                 get = function () return ExtendedCharacterStats.profile.defense.defenseRating.display; end,
                 set = function (_, value)
@@ -140,6 +140,7 @@ function _Config:LoadDefenseSection()
                 name = function() return BLOCK_CHANCE end,
                 desc = function() return i18n("Shows/Hides the block chance.") end,
                 width = 1.5,
+                hidden = function() return not IsSpellKnown(107) end,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
                 get = function () return ExtendedCharacterStats.profile.defense.blockChance.display; end,
                 set = function (_, value)
@@ -153,6 +154,7 @@ function _Config:LoadDefenseSection()
                 name = function() return ITEM_MOD_BLOCK_VALUE_SHORT end,
                 desc = function() return i18n("Shows/Hides the block value.") end,
                 width = 1.5,
+                hidden = function() return not DataUtils:CanBlock() end,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
                 get = function () return ExtendedCharacterStats.profile.defense.blockValue.display; end,
                 set = function (_, value)
@@ -166,6 +168,7 @@ function _Config:LoadDefenseSection()
                 name = function() return PARRY_CHANCE end,
                 desc = function() return i18n("Shows/Hides the parry chance.") end,
                 width = 1.5,
+                hidden = function() return not DataUtils:CanParry() end,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
                 get = function () return ExtendedCharacterStats.profile.defense.parry.display; end,
                 set = function (_, value)
@@ -192,9 +195,7 @@ function _Config:LoadDefenseSection()
                 name = function() return RESILIENCE end,
                 desc = function() return i18n("Shows/Hides the resilience value.") end,
                 width = 1.5,
-                hidden = function()
-                    return (not ECS.IsWotlk)
-                end,
+                hidden = function() return ECS.IsClassic end,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
                 get = function () return ExtendedCharacterStats.profile.defense.resilience.display; end,
                 set = function (_, value)

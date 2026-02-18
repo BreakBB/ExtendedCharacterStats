@@ -10,6 +10,9 @@ describe("DataUtils", function()
 
     before_each(function()
         _G.ECS = {IsWotlk = false}
+        _G.C_SpellBook = {
+            IsSpellKnown = function() return false end
+        }
         Utils = require("Modules.Utils")
         DataUtils = require("Modules.Data.DataUtils")
     end)
