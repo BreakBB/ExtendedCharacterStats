@@ -192,7 +192,7 @@ local defenseConfigTranslations = {
         ["esMX"] = "Muestra/oculta la probabilidad de esquivar",
         ["ptBR"] = "Mostra/oculta a chance de esquivar"
     },
-    ["Shows/Hides the resilience value."] = {
+    ["Shows/Hides the resilience damage reduction."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt den Abhärtungswert.",
         ["frFR"] = "Affiche/cache la valeur de résilience.",

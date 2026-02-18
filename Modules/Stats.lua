@@ -287,7 +287,7 @@ _CreateStatInfos = function()
         (not ECS.IsClassic) and category.dodgeRating or nil,
         category.dodge or nil,
         (not ECS.IsClassic) and category.resilienceRating or nil,
-        ECS.IsClassic and nil or category.resilienceValue
+        ECS.IsClassic and nil or category.resilience
     )
 
     if UnitHasMana("player") then
