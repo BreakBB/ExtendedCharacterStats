@@ -230,7 +230,7 @@ function Data:GetResilienceRating()
 end
 
 ---@return number
-function Data:GetResilienceValue()
+function Data:GetResilience()
     return DataUtils:Round(GetModResilienceDamageReduction(), 2)
 end
 

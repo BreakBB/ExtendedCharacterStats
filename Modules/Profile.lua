@@ -286,7 +286,7 @@ local function GetDefaultStatsProfile()
             dodge = {display = true, refName = "DodgeChance", text = "Dodge chance"},
             resilience = {
                 display = true,
-                refName = "ResilienceValue",
+                refName = "Resilience",
                 text = "Resilience"
             },
         },
