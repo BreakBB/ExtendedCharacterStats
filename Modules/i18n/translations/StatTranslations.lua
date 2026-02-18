@@ -70,7 +70,7 @@ local statTranslations = {
         ["ruRU"] = "Проник. способ. броня",
         ["esES"] = "Penetración de armadura",
         ["esMX"] = "Penetración de armadura",
-        ["ptBR"] = "Penetração em Armadura"
+        ["ptBR"] = "Penetração em armadura"
     },
     ["Armor pen. rating"] = {
         ["enUS"] = true,
@@ -288,8 +288,8 @@ local statTranslations = {
         ["frFR"] = "Réduction des critiques",
         ["zhCN"] = false,
         ["ruRU"] = "Снижение крита",
-        ["esES"] = "Reducción de crít",
-        ["esMX"] = "Reducción de crít",
+        ["esES"] = "Reducción de crít.",
+        ["esMX"] = "Reducción de crít.",
         ["ptBR"] = "Redução de crítico"
     },
     ["Avoidance"] = {
