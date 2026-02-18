@@ -2,55 +2,15 @@
 local i18n = ECSLoader:ImportModule("i18n")
 
 local statTranslations = {
-    ["General"] = {
+    ["Melee crit. rating"] = {
         ["enUS"] = true,
-        ["deDE"] = "Allgemein",
-        ["frFR"] = "Général",
-        ["zhCN"] = "一般",
-        ["ruRU"] = "Основные",
-        ["esES"] = true,
-        ["esMX"] = true,
-        ["ptBR"] = "Geral"
-    },
-    ["Movement Speed"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Geschwindigkeit",
-        ["frFR"] = "Vitesse de déplacement",
-        ["zhCN"] = "移动速度",
-        ["ruRU"] = "Скорость движения",
-        ["esES"] = "Velocidad de movimiento",
-        ["esMX"] = "Velocidad de movimiento",
-        ["ptBR"] = "Velocidade de movimento"
-    },
-    ["Melee"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Nahkampf",
-        ["frFR"] = "Mêlée",
-        ["zhCN"] = "近战",
-        ["ruRU"] = "Ближний бой",
-        ["esES"] = "Cuerpo a cuerpo",
-        ["esMX"] = "Cuerpo a cuerpo",
-        ["ptBR"] = "Corpo a corpo"
-    },
-    ["Attack Power"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Angriffskraft",
-        ["frFR"] = "Puissance d'attaque",
-        ["zhCN"] = "攻击强度",
-        ["ruRU"] = "Сила атаки",
-        ["esES"] = "Poder de ataque",
-        ["esMX"] = "Poder de ataque",
-        ["ptBR"] = "Poder de ataque"
-    },
-    ["Crit Chance"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Kritische Chance",
-        ["frFR"] = "Chances de critique",
-        ["zhCN"] = "暴击几率",
-        ["ruRU"] = "Крит",
-        ["esES"] = "Probabilidad de golpe crítico",
-        ["esMX"] = "Probabilidad de golpe crítico",
-        ["ptBR"] = "Chance de acerto crítico"
+        ["deDE"] = false,
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false,
     },
     ["Armor Pen."] = {
         ["enUS"] = true,
@@ -62,57 +22,7 @@ local statTranslations = {
         ["esMX"] = "Penetración de armadura",
         ["ptBR"] = "Penetração em Armadura"
     },
-    ["Armor Pen. Rating"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Rüstungsdurchschlagwertung",
-        ["frFR"] = "Score de pénétration d'armure",
-        ["zhCN"] = false,
-        ["ruRU"] = false,
-        ["esES"] = "Índice de penetración de armadura",
-        ["esMX"] = "Índice de penetración de armadura",
-        ["ptBR"] = "Taxa de penetração em armadura"
-    },
-    ["Expertise"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Waffenkunde",
-        ["frFR"] = "Expertise",
-        ["zhCN"] = false,
-        ["ruRU"] = "Мастерство",
-        ["esES"] = "Pericia",
-        ["esMX"] = "Pericia",
-        ["ptBR"] = "Aptidão"
-    },
-    ["Expertise Rating"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Waffenkundewertung",
-        ["frFR"] = "Score d'expertise",
-        ["zhCN"] = false,
-        ["ruRU"] = "Рейтинг мастерства",
-        ["esES"] = "Índice de pericia",
-        ["esMX"] = "Índice de pericia",
-        ["ptBR"] = "Taxa de aptidão"
-    },
-    ["Hit"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Trefferchance",
-        ["frFR"] = "Toucher",
-        ["zhCN"] = "命中",
-        ["ruRU"] = "Меткость",
-        ["esES"] = "Probabilidad de golpear",
-        ["esMX"] = "Probabilidad de golpear",
-        ["ptBR"] = "Chance de acerto"
-    },
-    ["Rating"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Wertung",
-        ["frFR"] = "Score",
-        ["zhCN"] = false,
-        ["ruRU"] = "Меткость",
-        ["esES"] = "Índice",
-        ["esMX"] = "Índice",
-        ["ptBR"] = "Taxa"
-    },
-    ["Bonus"] = {
+     ["Bonus"] = {
         ["enUS"] = true,
         ["deDE"] = true,
         ["frFR"] = true,
@@ -121,16 +31,6 @@ local statTranslations = {
         ["esES"] = true,
         ["esMX"] = true,
         ["ptBR"] = "Bônus"
-    },
-    ["Miss"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Verfehlen",
-        ["frFR"] = "Rater",
-        ["zhCN"] = "未命中",
-        ["ruRU"] = "Сопротивление",
-        ["esES"] = "Fallo",
-        ["esMX"] = "Fallo",
-        ["ptBR"] = "Erro"
     },
     ["Miss (Lvl + 3)"] = {
         ["enUS"] = true,
@@ -172,16 +72,6 @@ local statTranslations = {
         ["esMX"] = "Probabilidad (Niv. + 3)",
         ["ptBR"] = "Chance (Nív. + 3)"
     },
-    ["Damage"] = {
-        ["enUS"] = "Damage",
-        ["deDE"] = "Schaden",
-        ["frFR"] = "Dégâts",
-        ["zhCN"] = "伤害",
-        ["ruRU"] = "Урон",
-        ["esES"] = "Daño",
-        ["esMX"] = "Daño",
-        ["ptBR"] = "Dano"
-    },
     ["Damage (Lvl + 3)"] = {
         ["enUS"] = true,
         ["deDE"] = "Schaden (Lvl + 3)",
@@ -191,16 +81,6 @@ local statTranslations = {
         ["esES"] = "Daño (Niv. + 3)",
         ["esMX"] = "Daño (Niv. + 3)",
         ["ptBR"] = "Dano (Nív. + 3)"
-    },
-    ["Haste Rating"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Tempowertung",
-        ["frFR"] = "Score de hâte",
-        ["zhCN"] = false,
-        ["ruRU"] = "Рейтинг скорости",
-        ["esES"] = "Índice de celeridad",
-        ["esMX"] = "Índice de celeridad",
-        ["ptBR"] = "Taxa de aceleração"
     },
     ["Haste Bonus"] = {
         ["enUS"] = true,
@@ -212,55 +92,15 @@ local statTranslations = {
         ["esMX"] = "Bonus de celeridad",
         ["ptBR"] = "Bônus de aceleração"
     },
-    ["Attack Speed"] = {
+    ["Ranged crit. rating"] = {
         ["enUS"] = true,
-        ["deDE"] = "Angriffstempo",
-        ["frFR"] = "Vitesse d'attaque",
+        ["deDE"] = false,
+        ["frFR"] = false,
         ["zhCN"] = false,
-        ["ruRU"] = "Скорость атаки",
-        ["esES"] = "Velocidad de ataque",
-        ["esMX"] = "Velocidad de ataque",
-        ["ptBR"] = "Velocidade de ataque"
-    },
-    ["Main Hand"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Waffenhand",
-        ["frFR"] = "Main droite",
-        ["zhCN"] = false,
-        ["ruRU"] = "Правая рука",
-        ["esES"] = "Mano derecha",
-        ["esMX"] = "Mano derecha",
-        ["ptBR"] = "Mão principal"
-    },
-    ["Off Hand"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Schildhand",
-        ["frFR"] = "Main gauche",
-        ["zhCN"] = false,
-        ["ruRU"] = "Левая рука",
-        ["esES"] = "Mano izquierda",
-        ["esMX"] = "Mano izquierda",
-        ["ptBR"] = "Mão secundária"
-    },
-    ["Ranged"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Fernkampf",
-        ["frFR"] = "À distance",
-        ["zhCN"] = "远程",
-        ["ruRU"] = "Дальний бой",
-        ["esES"] = "A distancia",
-        ["esMX"] = "A distancia",
-        ["ptBR"] = "Longo alcance"
-    },
-    ["Armor"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Rüstung",
-        ["frFR"] = "Armure",
-        ["zhCN"] = "护甲",
-        ["ruRU"] = "Броня",
-        ["esES"] = "Armadura",
-        ["esMX"] = "Armadura",
-        ["ptBR"] = "Armadura"
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false,
     },
     ["Crit Immune"] = {
         ["enUS"] = true,
@@ -282,16 +122,6 @@ local statTranslations = {
         ["esMX"] = "Reducción de Crít",
         ["ptBR"] = "Redução de crítico"
     },
-    ["Avoidance"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Vermeidung",
-        ["frFR"] = "Évitement",
-        ["zhCN"] = false,
-        ["ruRU"] = "Избежание",
-        ["esES"] = "Eludir",
-        ["esMX"] = "Eludir",
-        ["ptBR"] = "Evasiva"
-    },
     ["Avoidance (Lvl +3)"] = {
         ["enUS"] = true,
         ["deDE"] = false,
@@ -301,86 +131,6 @@ local statTranslations = {
         ["esES"] = "Eludir (Niv. +3)",
         ["esMX"] = "Eludir (Niv. +3)",
         ["ptBR"] = "Evasiva (Nív. +3)"
-    },
-    ["Defense Rating"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Verteidigungswertung",
-        ["frFR"] = "Score de défense",
-        ["zhCN"] = false,
-        ["ruRU"] = "Доп. защита",
-        ["esES"] = "Índice de defensa",
-        ["esMX"] = "Índice de defensa",
-        ["ptBR"] = "Taxa de defesa"
-    },
-    ["Defense"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Verteidigung",
-        ["frFR"] = "Défense",
-        ["zhCN"] = "防御",
-        ["ruRU"] = "Защита",
-        ["esES"] = "Defensa",
-        ["esMX"] = "Defensa",
-        ["ptBR"] = "Defesa"
-    },
-    ["Block Chance"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Blockchance",
-        ["frFR"] = "Chances de bloquer",
-        ["zhCN"] = "格挡几率",
-        ["ruRU"] = "Шанс блока",
-        ["esES"] = "Probabilidad de bloquear",
-        ["esMX"] = "Probabilidad de bloquear",
-        ["ptBR"] = "Chance de bloquear"
-    },
-    ["Block Value"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Blockwertung",
-        ["frFR"] = "Bloquer",
-        ["zhCN"] = "格挡值",
-        ["ruRU"] = "Блок",
-        ["esES"] = "Bloqueo",
-        ["esMX"] = "Bloqueo",
-        ["ptBR"] = "Bloqueio"
-    },
-    ["Parry Chance"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Parrierchance",
-        ["frFR"] = "Chances de parer",
-        ["zhCN"] = "招架几率",
-        ["ruRU"] = "Парирование",
-        ["esES"] = "Probabilidad de parar",
-        ["esMX"] = "Probabilidad de parar",
-        ["ptBR"] = "Chance de aparar"
-    },
-    ["Dodge Chance"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Ausweichchance",
-        ["frFR"] = "Chances d'esquiver",
-        ["zhCN"] = "躲闪几率",
-        ["ruRU"] = "Уклонение",
-        ["esES"] = "Probabilidad de esquivar",
-        ["esMX"] = "Probabilidad de esquivar",
-        ["ptBR"] = "Chance de esquivar"
-    },
-    ["Resilience"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Abhärtung",
-        ["frFR"] = "Résilience",
-        ["zhCN"] = false,
-        ["ruRU"] = "Устойчивость",
-        ["esES"] = "Temple",
-        ["esMX"] = "Temple",
-        ["ptBR"] = "Resiliência"
-    },
-    ["Mana"] = {
-        ["enUS"] = true,
-        ["deDE"] = true,
-        ["frFR"] = true,
-        ["zhCN"] = "法力回复",
-        ["ruRU"] = "Мана",
-        ["esES"] = "Maná",
-        ["esMX"] = "Maná",
-        ["ptBR"] = true
     },
     ["MP5 (Items)"] = {
         ["enUS"] = true,
@@ -431,26 +181,6 @@ local statTranslations = {
         ["esES"] = "MP5 (Sin lanzar)",
         ["esMX"] = "MP5 (Sin lanzar)",
         ["ptBR"] = "MP5 (Sem lançar)"
-    },
-    ["Spell"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Zauber",
-        ["frFR"] = "Sorts",
-        ["zhCN"] = "法术强度",
-        ["ruRU"] = "Заклинания",
-        ["esES"] = "Hechizo",
-        ["esMX"] = "Hechizo",
-        ["ptBR"] = "Feitiço"
-    },
-    ["Penetration"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Durchschlagskraft",
-        ["frFR"] = "Pénétration",
-        ["zhCN"] = false,
-        ["ruRU"] = "Проник. способ.",
-        ["esES"] = "Penetración",
-        ["esMX"] = "Penetración",
-        ["ptBR"] = "Penetração"
     },
     ["Healing Power"] = {
         ["enUS"] = true,

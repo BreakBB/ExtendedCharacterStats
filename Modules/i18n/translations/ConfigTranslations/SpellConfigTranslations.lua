@@ -42,16 +42,6 @@ local spellConfigTranslations = {
         ["esMX"] = "Muestra/oculta la probabilidad de asestar un golpe crítico con hechizos",
         ["ptBR"] = "Mostra/oculta a chance de realizar acertos críticos com feitiços"
     },
-    ["Spell Penetration"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Zauberdurchschlagskraft",
-        ["frFR"] = "Pénétration des sorts",
-        ["zhCN"] = false,
-        ["ruRU"] = "Проник. способ.",
-        ["esES"] = "Penetración de hechizos",
-        ["esMX"] = "Penetración de hechizos",
-        ["ptBR"] = "Penetração de feitiço"
-    },
     ["Shows/Hides the spell penetration value."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt die Zauberdurchschlagskraft.",
@@ -131,16 +121,6 @@ local spellConfigTranslations = {
         ["esES"] = "Muestra/oculta la probabilidad de fallo con hechizos contra jefes (nivel +3)",
         ["esMX"] = "Muestra/oculta la probabilidad de fallo con hechizos contra jefes (nivel +3)",
         ["ptBR"] = "Mostra/oculta a chance de erro de feitiço contra inimigos chefes (nível +3)"
-    },
-    ["Spell Power"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Zauberkraft",
-        ["frFR"] = "Puissance des sorts",
-        ["zhCN"] = "法术强度",
-        ["ruRU"] = "Сила заклинаний",
-        ["esES"] = "Poder con hechizos",
-        ["esMX"] = "Poder con hechizos",
-        ["ptBR"] = "Poder mágico"
     },
     ["Shows/Hides the physical damage value."] = {
         ["enUS"] = true,

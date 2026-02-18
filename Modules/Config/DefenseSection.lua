@@ -15,7 +15,7 @@ function _Config:LoadDefenseSection()
         order = 4,
         inline = false,
         width = 2,
-        name = function() return i18n("Defense") end,
+        name = function() return STAT_CATEGORY_DEFENSE end,
         args = {
             showDefenseStats = {
                 type = "toggle",
@@ -32,7 +32,7 @@ function _Config:LoadDefenseSection()
             armor = {
                 type = "toggle",
                 order = 1,
-                name = function() return i18n("Armor") end,
+                name = function() return STAT_ARMOR end,
                 desc = function() return i18n("Shows/Hides the armor value.") end,
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
@@ -84,7 +84,7 @@ function _Config:LoadDefenseSection()
             avoidance = {
                 type = "toggle",
                 order = 1.85,
-                name = function() return i18n("Avoidance") end,
+                name = function() return STAT_AVOIDANCE end,
                 desc = function() return i18n("Shows/Hides the total avoidance.") end,
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
@@ -110,7 +110,7 @@ function _Config:LoadDefenseSection()
             defenseRating = {
                 type = "toggle",
                 order = 1.9,
-                name = function() return i18n("Defense Rating") end,
+                name = function() return ITEM_MOD_DEFENSE_SKILL_RATING_SHORT end,
                 desc = function() return i18n("Shows/Hides the defense rating.") end,
                 width = 1.5,
                 hidden = function() return ECS.IsClassic end,
@@ -124,7 +124,7 @@ function _Config:LoadDefenseSection()
             defense = {
                 type = "toggle",
                 order = 2,
-                name = function() return i18n("Defense") end,
+                name = function() return DEFENSE end,
                 desc = function() return i18n("Shows/Hides the defense value.") end,
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
@@ -137,7 +137,7 @@ function _Config:LoadDefenseSection()
             blockChance = {
                 type = "toggle",
                 order = 3,
-                name = function() return i18n("Block Chance") end,
+                name = function() return BLOCK_CHANCE end,
                 desc = function() return i18n("Shows/Hides the block chance.") end,
                 width = 1.5,
                 hidden = function() return not IsSpellKnown(107) end,
@@ -151,7 +151,7 @@ function _Config:LoadDefenseSection()
             blockValue = {
                 type = "toggle",
                 order = 4,
-                name = function() return i18n("Block Value") end,
+                name = function() return ITEM_MOD_BLOCK_VALUE_SHORT end,
                 desc = function() return i18n("Shows/Hides the block value.") end,
                 width = 1.5,
                 hidden = function() return not DataUtils:CanBlock() end,
@@ -165,7 +165,7 @@ function _Config:LoadDefenseSection()
             parry = {
                 type = "toggle",
                 order = 5,
-                name = function() return i18n("Parry Chance") end,
+                name = function() return PARRY_CHANCE end,
                 desc = function() return i18n("Shows/Hides the parry chance.") end,
                 width = 1.5,
                 hidden = function() return not DataUtils:CanParry() end,
@@ -179,7 +179,7 @@ function _Config:LoadDefenseSection()
             dodge = {
                 type = "toggle",
                 order = 6,
-                name = function() return i18n("Dodge Chance") end,
+                name = function() return DODGE_CHANCE end,
                 desc = function() return i18n("Shows/Hides the dodge chance.") end,
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
@@ -192,7 +192,7 @@ function _Config:LoadDefenseSection()
             resilience = {
                 type = "toggle",
                 order = 7,
-                name = function() return i18n("Resilience") end,
+                name = function() return RESILIENCE end,
                 desc = function() return i18n("Shows/Hides the resilience value.") end,
                 width = 1.5,
                 hidden = function() return ECS.IsClassic end,
