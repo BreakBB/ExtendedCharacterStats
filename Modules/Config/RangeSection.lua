@@ -55,7 +55,7 @@ function _Config:LoadRangeSection()
                     Stats.RebuildStatInfos()
                 end,
             },
-            rangeCrit. = {
+            rangeCrit = {
                 type = "toggle",
                 order = 2.1,
                 name = function() return i18n("Ranged Crit") end,
