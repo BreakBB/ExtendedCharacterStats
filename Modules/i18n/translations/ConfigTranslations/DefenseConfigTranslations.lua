@@ -42,7 +42,7 @@ local defenseConfigTranslations = {
         ["esMX"] = false,
         ["ptBR"] = false,
     },
-    ["Melee Crit Reduction"] = {
+    ["Melee Crit. Reduction"] = {
         ["enUS"] = true,
         ["deDE"] = false,
         ["frFR"] = false,
@@ -52,7 +52,7 @@ local defenseConfigTranslations = {
         ["esMX"] = false,
         ["ptBR"] = false
     },
-    ["Ranged Crit Reduction"] = {
+    ["Ranged Crit. Reduction"] = {
         ["enUS"] = true,
         ["deDE"] = false,
         ["frFR"] = false,
@@ -62,7 +62,7 @@ local defenseConfigTranslations = {
         ["esMX"] = false,
         ["ptBR"] = false
     },
-    ["Spell Crit Reduction"] = {
+    ["Spell Crit. Reduction"] = {
         ["enUS"] = true,
         ["deDE"] = false,
         ["frFR"] = false,

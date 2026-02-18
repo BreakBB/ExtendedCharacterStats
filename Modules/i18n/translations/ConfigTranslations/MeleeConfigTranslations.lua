@@ -52,7 +52,7 @@ local meleeConfigTranslations = {
         ["esMX"] = "Probabilidad de golpe crítico",
         ["ptBR"] = "Chance de acerto crítico"
     },
-    ["Shows/Hides the melee crit chance."] = {
+    ["Shows/Hides the melee crit. chance."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt die Chance im Nahkampf kritisch zu treffen.",
         ["frFR"] = "Affiche/cache les chances d'infliger un coup critique en mêlée.",

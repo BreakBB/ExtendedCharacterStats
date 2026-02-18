@@ -32,7 +32,7 @@ local spellConfigTranslations = {
         ["esMX"] = "Crítico con hechizos",
         ["ptBR"] = "Crítico com feitiços",
     },
-    ["Shows/Hides the spell crit chance."] = {
+    ["Shows/Hides the spell crit. chance."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt die Chance mit einem Zauber kritisch zu treffen.",
         ["frFR"] = "Affiche/cache les chances d'infliger un coup critique avec les sorts.",

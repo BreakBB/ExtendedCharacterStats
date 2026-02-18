@@ -55,11 +55,11 @@ function _Config:LoadRangeSection()
                     Stats.RebuildStatInfos()
                 end,
             },
-            rangeCrit = {
+            rangeCrit. = {
                 type = "toggle",
                 order = 2.1,
                 name = function() return i18n("Ranged Crit") end,
-                desc = function() return i18n("Shows/Hides the ranged crit chance.") end,
+                desc = function() return i18n("Shows/Hides the ranged crit. chance.") end,
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.ranged.display); end,
                 get = function () return ExtendedCharacterStats.profile.ranged.crit.display; end,

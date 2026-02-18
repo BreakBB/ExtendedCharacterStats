@@ -51,7 +51,7 @@ local rangedConfigTranslations = {
         ["esMX"] = "Crítico a distancia",
         ["ptBR"] = "Crítico de longo alcance"
     },
-    ["Shows/Hides the ranged crit chance."] = {
+    ["Shows/Hides the ranged crit. chance."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt die Chance im Fernkampf kritisch zu treffen.",
         ["frFR"] = "Affiche/cache les chances de coup critique à distance.",
