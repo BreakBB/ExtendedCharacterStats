@@ -2,7 +2,7 @@
 local i18n = ECSLoader:ImportModule("i18n")
 
 local defenseConfigTranslations = {
-    ["Parry Rating"] = {
+    ["Parry rating"] = {
         ["enUS"] = true,
         ["deDE"] = false,
         ["frFR"] = false,
@@ -12,7 +12,7 @@ local defenseConfigTranslations = {
         ["esMX"] = false,
         ["ptBR"] = false,
     },
-    ["Dodge Rating"] = {
+    ["Dodge rating"] = {
         ["enUS"] = true,
         ["deDE"] = false,
         ["frFR"] = false,
@@ -22,7 +22,7 @@ local defenseConfigTranslations = {
         ["esMX"] = false,
         ["ptBR"] = false,
     },
-    ["Block Rating"] = {
+    ["Block rating"] = {
         ["enUS"] = true,
         ["deDE"] = false,
         ["frFR"] = false,
@@ -32,7 +32,7 @@ local defenseConfigTranslations = {
         ["esMX"] = false,
         ["ptBR"] = false,
     },
-    ["Resilience Rating"] = {
+    ["Resilience rating"] = {
         ["enUS"] = true,
         ["deDE"] = false,
         ["frFR"] = false,
@@ -42,7 +42,7 @@ local defenseConfigTranslations = {
         ["esMX"] = false,
         ["ptBR"] = false,
     },
-    ["Melee Crit. Reduction"] = {
+    ["Melee crit. reduction"] = {
         ["enUS"] = true,
         ["deDE"] = false,
         ["frFR"] = false,
@@ -52,7 +52,7 @@ local defenseConfigTranslations = {
         ["esMX"] = false,
         ["ptBR"] = false
     },
-    ["Ranged Crit. Reduction"] = {
+    ["Ranged crit. reduction"] = {
         ["enUS"] = true,
         ["deDE"] = false,
         ["frFR"] = false,
@@ -62,7 +62,7 @@ local defenseConfigTranslations = {
         ["esMX"] = false,
         ["ptBR"] = false
     },
-    ["Spell Crit. Reduction"] = {
+    ["Spell crit. reduction"] = {
         ["enUS"] = true,
         ["deDE"] = false,
         ["frFR"] = false,
@@ -72,7 +72,7 @@ local defenseConfigTranslations = {
         ["esMX"] = false,
         ["ptBR"] = false
     },
-    ["Show Defense Stats"] = {
+    ["Show defense stats"] = {
         ["enUS"] = true,
         ["deDE"] = "Verteidigungswerte anzeigen",
         ["frFR"] = "Afficher défense",

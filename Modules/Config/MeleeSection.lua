@@ -18,7 +18,7 @@ function _Config:LoadMeleeSection()
             showMeleeStats = {
                 type = "toggle",
                 order = 0,
-                name = function() return i18n("Show Melee Stats") end,
+                name = function() return i18n("Show melee stats") end,
                 desc = function() return i18n("Shows/Hides all melee stats.") end,
                 width = 1.5,
                 get = function () return ExtendedCharacterStats.profile.melee.display; end,
@@ -30,7 +30,7 @@ function _Config:LoadMeleeSection()
             meleeAttackPower = {
                 type = "toggle",
                 order = 1,
-                name = function() return i18n("Melee Attack Power") end,
+                name = function() return i18n("Melee attack power") end,
                 desc = function() return i18n("Shows/Hides the melee attack power value.") end,
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.melee.display); end,
@@ -43,7 +43,7 @@ function _Config:LoadMeleeSection()
             meleeCritRating = {
                 type = "toggle",
                 order = 2,
-                name = function() return i18n("Melee Crit. Rating") end,
+                name = function() return i18n("Melee crit. rating") end,
                 desc = function() return i18n("Shows/Hides the melee crit. rating.") end,
                 width = 1.5,
                 hidden = function() return ECS.IsClassic end,
@@ -57,7 +57,7 @@ function _Config:LoadMeleeSection()
             meleeCrit = {
                 type = "toggle",
                 order = 2.1,
-                name = function() return i18n("Melee Crit") end,
+                name = function() return i18n("Melee crit.") end,
                 desc = function() return i18n("Shows/Hides the melee crit. chance.") end,
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.melee.display); end,
@@ -70,7 +70,7 @@ function _Config:LoadMeleeSection()
             penetration = {
                 type = "toggle",
                 order = 2.3,
-                name = function() return i18n("Armor Pen.") end,
+                name = function() return i18n("Armor pen.") end,
                 desc = function() return i18n("Shows/Hides the armor penetration value.") end,
                 width = 1.5,
                 hidden = function() return ECS.IsClassic end,
@@ -84,7 +84,7 @@ function _Config:LoadMeleeSection()
             penetrationRating = {
                 type = "toggle",
                 order = 2.4,
-                name = function() return i18n("Armor Pen. Rating") end,
+                name = function() return i18n("Armor pen. rating") end,
                 desc = function() return i18n("Shows/Hides the armor penetration rating value.") end,
                 width = 1.5,
                 hidden = function() return not ECS.IsWotlk end,
@@ -112,7 +112,7 @@ function _Config:LoadMeleeSection()
             expertiseRating = {
                 type = "toggle",
                 order = 2.6,
-                name = function() return i18n("Expertise Rating") end,
+                name = function() return i18n("Expertise rating") end,
                 desc = function() return i18n("Shows/Hides the expertise rating.") end,
                 width = 1.5,
                 hidden = function() return ECS.IsClassic end,
@@ -126,7 +126,7 @@ function _Config:LoadMeleeSection()
             hasteRating = {
                 type = "toggle",
                 order = 2.6,
-                name = function() return i18n("Haste Rating") end,
+                name = function() return i18n("Haste rating") end,
                 desc = function() return i18n("Shows/Hides the melee haste rating.") end,
                 width = 1.5,
                 hidden = function() return ECS.IsClassic end,
@@ -140,7 +140,7 @@ function _Config:LoadMeleeSection()
             hasteBonus = {
                 type = "toggle",
                 order = 2.7,
-                name = function() return i18n("Haste Bonus") end,
+                name = function() return i18n("Haste bonus") end,
                 desc = function() return i18n("Shows/Hides the melee haste bonus value.") end,
                 width = 1.5,
                 hidden = function() return ECS.IsClassic end,
@@ -154,7 +154,7 @@ function _Config:LoadMeleeSection()
             meleeHit = {
                 type = "toggle",
                 order = 3,
-                name = function() return i18n("Melee Hit") end,
+                name = function() return i18n("Melee hit") end,
                 desc = function() return i18n("Shows/Hides all melee hit chance.") end,
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.melee.display); end,
@@ -168,12 +168,12 @@ function _Config:LoadMeleeSection()
                 type = "group",
                 order = 4,
                 inline = true,
-                name = function() return i18n("Melee Hit Values") end,
+                name = function() return i18n("Melee hit values") end,
                 args = {
                     meleeHitRating = {
                         type = "toggle",
                         order = 1,
-                        name = function() return i18n("Hit Rating") end,
+                        name = function() return i18n("Hit rating") end,
                         desc = function() return i18n("Shows/Hides the melee hit rating.") end,
                         width = 1.5,
                         hidden = function() return ECS.IsClassic end,
@@ -190,7 +190,7 @@ function _Config:LoadMeleeSection()
                     meleeHitBonus = {
                         type = "toggle",
                         order = 2,
-                        name = function() return i18n("Hit Bonus") end,
+                        name = function() return i18n("Hit bonus") end,
                         desc = function() return i18n("Shows/Hides the melee hit bonus.") end,
                         width = 1.5,
                         disabled = function()
@@ -206,7 +206,7 @@ function _Config:LoadMeleeSection()
                     meleeMiss = {
                         type = "toggle",
                         order = 3,
-                        name = function() return i18n("Miss Chance") end,
+                        name = function() return i18n("Miss chance") end,
                         desc = function() return i18n("Shows/Hides the melee miss chance against enemies on the same level.") end,
                         width = 1.5,
                         disabled = function()
@@ -222,7 +222,7 @@ function _Config:LoadMeleeSection()
                     meleeMissBoss = {
                         type = "toggle",
                         order = 4,
-                        name = function() return i18n("Miss Chance Boss") end,
+                        name = function() return i18n("Miss chance boss") end,
                         desc = function() return i18n("Shows/Hides the melee miss chance against boss enemies (+3 Level).") end,
                         width = 1.5,
                         disabled = function()
@@ -240,7 +240,7 @@ function _Config:LoadMeleeSection()
             glancingBlow = {
                 type = "toggle",
                 order = 5,
-                name = function() return i18n("Glancing Blow") end,
+                name = function() return i18n("Glancing blow") end,
                 desc = function() return i18n("Shows/Hides all glancing blow stats") end,
                 width = 1.5,
                 hidden = function() return ECS.IsWotlk end,
@@ -255,13 +255,13 @@ function _Config:LoadMeleeSection()
                 type = "group",
                 order = 6,
                 inline = true,
-                name = function() return i18n("Melee Glance Values") end,
+                name = function() return i18n("Melee glance values") end,
                 hidden = function() return ECS.IsWotlk end,
                 args = {
                     meleeGlance = {
                         type = "toggle",
                         order = 1,
-                        name = function() return i18n("Glancing Blow Chance") end,
+                        name = function() return i18n("Glancing blow chance") end,
                         desc = function() return i18n("Shows/Hides the glancing chance against enemies on same level.") end,
                         width = 1.5,
                         disabled = function()
@@ -277,7 +277,7 @@ function _Config:LoadMeleeSection()
                     meleeGlanceBoss = {
                         type = "toggle",
                         order = 2,
-                        name = function() return i18n("Glancing Blow Chance Boss") end,
+                        name = function() return i18n("Glancing blow chance boss") end,
                         desc = function() return i18n("Shows/Hides the glancing chance against boss enemies (+3 Level).") end,
                         width = 1.5,
                         disabled = function()
@@ -293,7 +293,7 @@ function _Config:LoadMeleeSection()
                     meleeGlanceDamage = {
                         type = "toggle",
                         order = 3,
-                        name = function() return i18n("Glancing Blow Damage") end,
+                        name = function() return i18n("Glancing blow damage") end,
                         desc = function() return i18n("Shows/Hides the damage reduction against enemies on the same level.") end,
                         width = 1.5,
                         disabled = function()
@@ -309,7 +309,7 @@ function _Config:LoadMeleeSection()
                     meleeGlanceDamageBoss = {
                         type = "toggle",
                         order = 4,
-                        name = function() return i18n("Glancing Blow Damage Boss") end,
+                        name = function() return i18n("Glancing blow damage boss") end,
                         desc = function() return i18n("Shows/Hides the damage reduction against boss enemies (+3 Level).") end,
                         width = 1.5,
                         disabled = function()
@@ -327,7 +327,7 @@ function _Config:LoadMeleeSection()
             meleeAttackSpeed = {
                 type = "toggle",
                 order = 7,
-                name = function() return i18n("Attack Speed") end,
+                name = function() return i18n("Attack speed") end,
                 desc = function() return i18n("Shows/Hides the melee attack speed.") end,
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.melee.display); end,
@@ -341,12 +341,12 @@ function _Config:LoadMeleeSection()
                 type = "group",
                 order = 8,
                 inline = true,
-                name = function() return i18n("Attack Speed") end,
+                name = function() return i18n("Attack speed") end,
                 args = {
                     mainHand = {
                         type = "toggle",
                         order = 1,
-                        name = function() return i18n("Main Hand") end,
+                        name = function() return i18n("Main hand") end,
                         desc = function() return i18n("Shows/Hides the attack speed of the main hand.") end,
                         width = 1.5,
                         disabled = function()
@@ -362,7 +362,7 @@ function _Config:LoadMeleeSection()
                     offHand = {
                         type = "toggle",
                         order = 2,
-                        name = function() return i18n("Off Hand") end,
+                        name = function() return i18n("Off hand") end,
                         hidden = function() return not CanDualWield() end,
                         desc = function() return i18n("Shows/Hides the attack speed of the off hand.") end,
                         width = 1.5,

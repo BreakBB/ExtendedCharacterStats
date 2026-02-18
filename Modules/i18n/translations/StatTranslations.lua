@@ -52,6 +52,16 @@ local statTranslations = {
         ["esMX"] = false,
         ["ptBR"] = false,
     },
+    ["Crit. rating"] = {
+        ["enUS"] = true,
+        ["deDE"] = false,
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false,
+    },
     ["Crit. chance"] = {
         ["enUS"] = true,
         ["deDE"] = "Kritische Chance",
@@ -672,7 +682,7 @@ local statTranslations = {
         ["esMX"] = "Fallo de escarcha (Niv. + 3)",
         ["ptBR"] = "Erro de gelo (Nív. + 3)"
     },
-    ["Holy Damage"] = {
+    ["Holy damage"] = {
         ["enUS"] = true,
         ["deDE"] = "Heiligschaden",
         ["frFR"] = "Dégats du sacré",
@@ -722,7 +732,7 @@ local statTranslations = {
         ["esMX"] = "Fallo sagrado (Niv. + 3)",
         ["ptBR"] = "Erro sagrado (Nív. + 3)"
     },
-    ["Nature Damage"] = {
+    ["Nature damage"] = {
         ["enUS"] = true,
         ["deDE"] = "Naturschaden",
         ["frFR"] = "Dégats de la nature",
@@ -772,7 +782,7 @@ local statTranslations = {
         ["esMX"] = "Fallo de la naturaleza (Niv. + 3)",
         ["ptBR"] = "Erro de natureza (Nív. + 3)"
     },
-    ["Physical Damage"] = {
+    ["Physical damage"] = {
         ["enUS"] = true,
         ["deDE"] = "Physischer Schaden",
         ["frFR"] = "Dégats physiques",
@@ -822,7 +832,7 @@ local statTranslations = {
         ["esMX"] = "Fallo físico (Niv. + 3)",
         ["ptBR"] = "Erro físico (Nív. + 3)"
     },
-    ["Shadow Damage"] = {
+    ["Shadow damage"] = {
         ["enUS"] = true,
         ["deDE"] = "Schattenschaden",
         ["frFR"] = "Dégats des ombres",

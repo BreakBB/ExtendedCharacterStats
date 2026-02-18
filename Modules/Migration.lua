@@ -14,4 +14,19 @@ function Migration:ToLatestProfileVersion(profileVersion)
         ECS:Print(i18n("Profile has been reset due to a major update.")) -- because of TBC anniversary
         return
     end
+
+    local defaultProfile = Profile:GetDefaultProfile()
+    if profileVersion < 24 then
+        ExtendedCharacterStats.profile.defense.blockRating = defaultProfile.profile.defense.blockRating
+        ExtendedCharacterStats.profile.defense.resilience = defaultProfile.profile.defense.resilience
+        ExtendedCharacterStats.profile.melee.critRating = defaultProfile.profile.melee.critRating
+        ExtendedCharacterStats.profile.melee.penetration = defaultProfile.profile.melee.penetration
+        ExtendedCharacterStats.profile.melee.penetrationRating = defaultProfile.profile.melee.penetrationRating
+        ExtendedCharacterStats.profile.ranged.critRating = defaultProfile.profile.ranged.critRating
+        ExtendedCharacterStats.profile.ranged.penetration = defaultProfile.profile.ranged.penetration
+        ExtendedCharacterStats.profile.ranged.penetrationRating = defaultProfile.profile.ranged.penetrationRating
+        ExtendedCharacterStats.profile.spell.crit.rating = defaultProfile.profile.spell.crit.rating
+        ExtendedCharacterStats.profile.spell.penetration = defaultProfile.profile.spell.penetration
+        ExtendedCharacterStats.profile.spell.penetrationRating = defaultProfile.profile.spell.penetrationRating
+    end
 end

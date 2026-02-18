@@ -6,7 +6,7 @@ local Utils = ECSLoader:ImportModule("Utils")
 
 ---@return number
 function Profile.GetProfileVersion()
-    return 23
+    return 24
 end
 
 ---@return ECSProfile
@@ -66,7 +66,7 @@ local function GetDefaultStatsProfile()
                 display = true,
                 isSubGroup = true,
                 refName = "GlanceChanceHeader",
-                text = "Glancing Blow",
+                text = "Glancing blow",
                 sameLevel = {
                     display = true,
                     refName = "GlanceHitChanceSameLevel",
@@ -102,6 +102,13 @@ local function GetDefaultStatsProfile()
                 text = "Attack power",
                 textColor = colors.ATTACK_POWER_SECONDARY,
                 statColor = colors.ATTACK_POWER_PRIMARY
+            },
+            critRating = {
+                display = true,
+                refName = "RangedCritRating",
+                text = "Crit. rating",
+                textColor = colors.CRIT_SECONDARY,
+                statColor = colors.CRIT_PRIMARY
             },
             crit = {
                 display = true,
@@ -157,14 +164,14 @@ local function GetDefaultStatsProfile()
                 mainHand = {
                     display = true,
                     refName = "MeleeAttackSpeedMainHand",
-                    text = "Main Hand",
+                    text = "Main hand",
                     textColor = colors.ATTACK_SPEED_SECONDARY,
                     statColor = colors.ATTACK_SPEED_PRIMARY
                 },
                 offHand = {
                     display = true,
                     refName = "MeleeAttackSpeedOffHand",
-                    text = "Off Hand",
+                    text = "Off hand",
                     textColor = colors.ATTACK_SPEED_SECONDARY,
                     statColor = colors.ATTACK_SPEED_PRIMARY
                 },
@@ -218,6 +225,13 @@ local function GetDefaultStatsProfile()
                 text = "Attack power",
                 textColor = colors.ATTACK_POWER_SECONDARY,
                 statColor = colors.ATTACK_POWER_PRIMARY
+            },
+            critRating = {
+                display = true,
+                refName = "RangedCritRating",
+                text = "Crit. rating",
+                textColor = colors.CRIT_SECONDARY,
+                statColor = colors.CRIT_PRIMARY
             },
             crit = {
                 display = true,
@@ -280,10 +294,14 @@ local function GetDefaultStatsProfile()
                 text = "Defense rating"
             },
             defense = {display = true, refName = "DefenseValue", text = "Defense"},
+            blockRating = {display = true, refName = "BlockRating", text = "Block rating"},
             blockChance = {display = true, refName = "BlockChance", text = "Block chance"},
             blockValue = {display = true, refName = "BlockValue", text = "Block value"},
+            parryRating = {display = true, refName = "ParryRating", text = "Parry rating"},
             parry = {display = true, refName = "ParryChance", text = "Parry chance"},
+            dodgeRating = {display = true, refName = "DodgeRating", text = "Dodge rating"},
             dodge = {display = true, refName = "DodgeChance", text = "Dodge chance"},
+            resilienceRating = {display = true,refName = "ResilienceRating", text = "Resilience rating"},
             resilience = {
                 display = true,
                 refName = "Resilience",
@@ -561,6 +579,13 @@ local function GetDefaultStatsProfile()
 
             crit = {
                 display = true,
+                rating = {
+                    display = true,
+                    refName = "SpellCritRating",
+                    text = "Crit. rating",
+                    textColor = colors.CRIT_SECONDARY,
+                    statColor = colors.CRIT_PRIMARY
+                },
                 arcane = {
                     display = true,
                     refName = "ArcaneCritChance",
