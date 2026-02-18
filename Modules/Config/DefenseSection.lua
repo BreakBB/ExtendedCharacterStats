@@ -231,7 +231,7 @@ function _Config:LoadDefenseSection()
                     Stats.RebuildStatInfos()
                 end,
             },
-            resilience = {
+            resilienceRating = {
                 type = "toggle",
                 order = 8,
                 name = function() return i18n("Resilience Rating") end,
@@ -242,6 +242,20 @@ function _Config:LoadDefenseSection()
                 get = function () return ExtendedCharacterStats.profile.defense.resilienceRating.display; end,
                 set = function (_, value)
                     ExtendedCharacterStats.profile.defense.resilienceRating.display = value
+                    Stats.RebuildStatInfos()
+                end,
+            },
+            resilience = {
+                type = "toggle",
+                order = 8.1,
+                name = function() return i18n("Resilience") end,
+                desc = function() return i18n("Shows/Hides the resilience value.") end,
+                width = 1.5,
+                hidden = function() return ECS.IsClassic end,
+                disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
+                get = function () return ExtendedCharacterStats.profile.defense.resilienceValue.display; end,
+                set = function (_, value)
+                    ExtendedCharacterStats.profile.defense.resilienceValue.display = value
                     Stats.RebuildStatInfos()
                 end,
             },

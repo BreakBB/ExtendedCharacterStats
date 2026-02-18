@@ -819,6 +819,8 @@ stds.ecs = {
         "CR_HIT_RANGED",
         "CR_HIT_SPELL",
         "CR_PARRY",
+        "CR_RESILIENCE_CRIT_TAKEN",
+        "CR_RESILIENCE_PLAYER_DAMAGE_TAKEN",
         "CR_WEAPON_SKILL",
         "CreateFont",
         "CreateFrame",

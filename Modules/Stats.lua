@@ -286,7 +286,8 @@ _CreateStatInfos = function()
         DataUtils:CanParry() and category.parry or nil,
         (not ECS.IsClassic) and category.dodgeRating or nil,
         category.dodge or nil,
-        (not ECS.IsClassic) and category.resilienceRating or nil
+        (not ECS.IsClassic) and category.resilienceRating or nil,
+        ECS.IsClassic and nil or category.resilienceValue
     )
 
     if UnitHasMana("player") then
