@@ -75,7 +75,7 @@ function _Melee:GetHitTalentBonus()
             if Data:GetMeleeAttackSpeedOffHand() > 0 then
                 mod = 2 * DataUtils:GetActiveTalentSpell({30816,30818,30819})
             end
-        else ECS.IsClassic then
+        elseif ECS.IsClassic then
             -- Nature's Guidance
             mod = 1 * DataUtils:GetActiveTalentSpell({16180,16196,16198})
         end
