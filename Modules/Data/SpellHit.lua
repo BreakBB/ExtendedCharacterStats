@@ -82,7 +82,7 @@ function _SpellHit:GetTalentSpellHitBonus(school)
             local coeff = ECS.IsWotlk and 1 or 2
             bonus = bonus + coeff * DataUtils:GetActiveTalentSpell({30672,30673,30674}) -- Elemental Precision
         end
-        if ECS.IsTBC then
+        if ECS.IsClassic then
             bonus = bonus + 1 * DataUtils:GetActiveTalentSpell({16180,16196,16198}) -- Nature's Guidance
         end
     elseif classId == Data.WARLOCK then
