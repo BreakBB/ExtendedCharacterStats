@@ -43,6 +43,8 @@ function Data:SpellMissChanceBossLevel(school)
     return DataUtils:Round(Data:SpellMissChance(school,3,false), 2) .. "%"
 end
 
+---If a talent spell has the "Apply Aura: Modifies Hit Chance" effect, then we need to handle it here.
+---If the effect is "Apply Aura: Mod Spell Hit Chance %", then GetSpellHitModifier() already accounts for it and we don't need to handle it here.
 ---@param school number
 ---@return number
 function _SpellHit:GetTalentSpellHitBonus(school)

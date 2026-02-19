@@ -55,6 +55,8 @@ function _Melee:GetHitRatingBonus()
     return hit + (GetHitModifier() or 0)
 end
 
+---If a talent spell has the "Apply Aura: Modifies Hit Chance" effect, then we need to handle it here.
+---If the effect is "Apply Aura: Mod Spell Hit Chance %", then GetHitModifier() already accounts for it and we don't need to handle it here.
 ---@return number
 function _Melee:GetHitTalentBonus()
     local mod = 0
