@@ -71,7 +71,7 @@ function _Config:LoadSpellSection()
                 type = "group",
                 order = 5,
                 inline = true,
-                name = function() return i18n("Spell crit values") end,
+                name = function() return i18n("Spell crit. values") end,
                 args = {
                     spellCritRating = {
                         type = "toggle",

@@ -340,6 +340,7 @@ local function GetDefaultStatsProfile()
                 refName = "ParryChance",
                 text = "Parry chance"
             },
+            ---@type SubCategory
             block = {
                 display = true,
                 isSubGroup = true,
@@ -361,6 +362,7 @@ local function GetDefaultStatsProfile()
                     text = "Amount"
                 },
             },
+            ---@type SubCategory
             critReduction = {
                 display = true,
                 isSubGroup = true,
@@ -657,6 +659,9 @@ local function GetDefaultStatsProfile()
             },
             crit = {
                 display = true,
+                isSubGroup = true,
+                refName = "SpellCritHeader",
+                text = "Crit.",
                 rating = {
                     display = true,
                     refName = "SpellCritRating",
@@ -709,7 +714,7 @@ local function GetDefaultStatsProfile()
                 shadow = {
                     display = true,
                     refName = "ShadowCritChance",
-                    text = "Shadow.",
+                    text = "Shadow",
                     textColor = colors.SHADOW_SECONDARY,
                     statColor = colors.SHADOW_PRIMARY
                 },

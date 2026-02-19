@@ -183,10 +183,11 @@ function _Config:LoadDefenseSection()
                 order = 7,
                 inline = true,
                 name = function() return i18n("Block values") end,
+                hidden = function() return not DataUtils:CanBlock() end,
                 args = {
                     rating = {
                         type = "toggle",
-                        order = 5,
+                        order = 1,
                         name = function() return i18n("Block rating") end,
                         desc = function() return i18n("Shows/Hides the block rating.") end,
                         width = 1.5,
@@ -200,11 +201,10 @@ function _Config:LoadDefenseSection()
                     },
                     chance = {
                         type = "toggle",
-                        order = 5.1,
+                        order = 1.1,
                         name = function() return i18n("Block chance") end,
                         desc = function() return i18n("Shows/Hides the block chance.") end,
                         width = 1.5,
-                        hidden = function() return not IsSpellKnown(107) end,
                         disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
                         get = function () return ExtendedCharacterStats.profile.defense.blockChance.display; end,
                         set = function (_, value)
@@ -214,11 +214,10 @@ function _Config:LoadDefenseSection()
                     },
                     amount = {
                         type = "toggle",
-                        order = 5.2,
+                        order = 1.2,
                         name = function() return i18n("Blocked amount") end,
                         desc = function() return i18n("Shows/Hides the blocked amount.") end,
                         width = 1.5,
-                        hidden = function() return not DataUtils:CanBlock() end,
                         disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
                         get = function () return ExtendedCharacterStats.profile.defense.blockValue.display; end,
                         set = function (_, value)
@@ -236,7 +235,7 @@ function _Config:LoadDefenseSection()
                 args = {
                     melee = {
                         type = "toggle",
-                        order = 2,
+                        order = 1,
                         name = function() return i18n("Melee crit. reduction") end,
                         desc = function() return i18n("Shows/Hides the reduction percentage of being critically hit by melee attacks.") end,
                         width = 1.5,
@@ -249,7 +248,7 @@ function _Config:LoadDefenseSection()
                     },
                     ranged = {
                         type = "toggle",
-                        order = 2.1,
+                        order = 1.1,
                         name = function() return i18n("Ranged crit. reduction") end,
                         desc = function() return i18n("Shows/Hides the reduction percentage of being critically hit by ranged attacks.") end,
                         width = 1.5,
@@ -262,7 +261,7 @@ function _Config:LoadDefenseSection()
                     },
                     spell = {
                         type = "toggle",
-                        order = 2.2,
+                        order = 1.2,
                         name = function() return i18n("Spell crit. reduction") end,
                         desc = function() return i18n("Shows/Hides the reduction percentage of being critically hit by spells.") end,
                         width = 1.5,
