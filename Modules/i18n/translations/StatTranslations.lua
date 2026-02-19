@@ -292,16 +292,6 @@ local statTranslations = {
         ["esMX"] = "Armadura",
         ["ptBR"] = "Armadura"
     },
-    ["Crit. reduction"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Krit. Reduzierung",
-        ["frFR"] = "Réduction des critiques",
-        ["zhCN"] = false,
-        ["ruRU"] = "Снижение крита",
-        ["esES"] = "Reducción de crít.",
-        ["esMX"] = "Reducción de crít.",
-        ["ptBR"] = "Redução de crítico"
-    },
     ["Avoidance"] = {
         ["enUS"] = true,
         ["deDE"] = "Vermeidung",
@@ -362,7 +352,7 @@ local statTranslations = {
         ["esMX"] = false,
         ["ptBR"] = false,
     },
-    ["Block rating"] = {
+    ["Amount"] = {
         ["enUS"] = true,
         ["deDE"] = false,
         ["frFR"] = false,
@@ -371,26 +361,6 @@ local statTranslations = {
         ["esES"] = false,
         ["esMX"] = false,
         ["ptBR"] = false,
-    },
-    ["Block chance"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Blockchance",
-        ["frFR"] = "Chances de bloquer",
-        ["zhCN"] = "格挡几率",
-        ["ruRU"] = "Шанс блока",
-        ["esES"] = "Probabilidad de bloquear",
-        ["esMX"] = "Probabilidad de bloquear",
-        ["ptBR"] = "Chance de bloquear"
-    },
-    ["Block value"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Blockwertung",
-        ["frFR"] = "Bloquer",
-        ["zhCN"] = "格挡值",
-        ["ruRU"] = "Блок",
-        ["esES"] = "Bloqueo",
-        ["esMX"] = "Bloqueo",
-        ["ptBR"] = "Bloqueio"
     },
     ["Parry chance"] = {
         ["enUS"] = true,
@@ -592,16 +562,6 @@ local statTranslations = {
         ["esMX"] = "Daño de fuego",
         ["ptBR"] = "Dano de fogo"
     },
-    ["Fire crit."] = {
-        ["enUS"] = true,
-        ["deDE"] = "Feuer Kritisch",
-        ["frFR"] = "Critique du feu",
-        ["zhCN"] = "火焰暴击",
-        ["ruRU"] = "Крит (огонь)",
-        ["esES"] = "Crítico de fuego",
-        ["esMX"] = "Crítico de fuego",
-        ["ptBR"] = "Crítico de fogo"
-    },
     ["Fire hit bonus"] = {
         ["enUS"] = true,
         ["deDE"] = "Feuer Trefferchancebonus",
@@ -641,16 +601,6 @@ local statTranslations = {
         ["esES"] = "Daño de escarcha",
         ["esMX"] = "Daño de escarcha",
         ["ptBR"] = "Dano de gelo"
-    },
-    ["Frost crit."] = {
-        ["enUS"] = true,
-        ["deDE"] = "Frost Kritisch",
-        ["frFR"] = "Critique du givre",
-        ["zhCN"] = "冰霜暴击",
-        ["ruRU"] = "Крит (лед)",
-        ["esES"] = "Crítico de escarcha",
-        ["esMX"] = "Crítico de escarcha",
-        ["ptBR"] = "Crítico de gelo"
     },
     ["Frost hit bonus"] = {
         ["enUS"] = true,
@@ -692,16 +642,6 @@ local statTranslations = {
         ["esMX"] = "Daño sagrado",
         ["ptBR"] = "Dano sagrado"
     },
-    ["Holy crit."] = {
-        ["enUS"] = true,
-        ["deDE"] = "Heilig Kritisch",
-        ["frFR"] = "Critique du sacré",
-        ["zhCN"] = "神圣暴击",
-        ["ruRU"] = "Крит (свет)",
-        ["esES"] = "Crítico sagrado",
-        ["esMX"] = "Crítico sagrado",
-        ["ptBR"] = "Crítico sagrado"
-    },
     ["Holy hit bonus"] = {
         ["enUS"] = true,
         ["deDE"] = "Heilig Trefferchancebonus",
@@ -741,16 +681,6 @@ local statTranslations = {
         ["esES"] = "Daño de la naturaleza",
         ["esMX"] = "Daño de la naturaleza",
         ["ptBR"] = "Dano de natureza"
-    },
-    ["Nature crit."] = {
-        ["enUS"] = true,
-        ["deDE"] = "Natur Kritisch",
-        ["frFR"] = "Critique de la nature",
-        ["zhCN"] = "自然暴击",
-        ["ruRU"] = "Крит (природа)",
-        ["esES"] = "Crítico de la naturaleza",
-        ["esMX"] = "Crítico de la naturaleza",
-        ["ptBR"] = "Crítico de natureza"
     },
     ["Nature hit bonus"] = {
         ["enUS"] = true,
@@ -792,16 +722,6 @@ local statTranslations = {
         ["esMX"] = "Daño físico",
         ["ptBR"] = "Dano físico"
     },
-    ["Physical crit."] = {
-        ["enUS"] = true,
-        ["deDE"] = "Physisch Kritisch",
-        ["frFR"] = "Critique physique",
-        ["zhCN"] = "物理暴击",
-        ["ruRU"] = "Крит (физ.)",
-        ["esES"] = "Crítico físico",
-        ["esMX"] = "Crítico físico",
-        ["ptBR"] = "Crítico físico"
-    },
     ["Physical hit bonus"] = {
         ["enUS"] = true,
         ["deDE"] = "Physischer Trefferchancebonus",
@@ -841,16 +761,6 @@ local statTranslations = {
         ["esES"] = "Daño de las sombras",
         ["esMX"] = "Daño de las sombras",
         ["ptBR"] = "Dano de sombra"
-    },
-    ["Shadow crit."] = {
-        ["enUS"] = true,
-        ["deDE"] = "Schatten Kritisch",
-        ["frFR"] = "Critique des ombres",
-        ["zhCN"] = "暗影暴击",
-        ["ruRU"] = "Крит (тьма)",
-        ["esES"] = "Crítico de las sombras",
-        ["esMX"] = "Crítico de las sombras",
-        ["ptBR"] = "Crítico de sombra"
     },
     ["Shadow hit bonus"] = {
         ["enUS"] = true,

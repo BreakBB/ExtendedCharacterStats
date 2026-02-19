@@ -162,15 +162,15 @@ local defenseConfigTranslations = {
         ["esMX"] = "Muestra/oculta la probababilidad de bloquear",
         ["ptBR"] = "Mostra/oculta a chance de bloquear"
     },
-    ["Shows/Hides the block value."] = {
+    ["Shows/Hides the blocked amount."] = {
         ["enUS"] = true,
-        ["deDE"] = "Zeigt/Versteckt die Blockwertung.",
-        ["frFR"] = "Affiche/cache le score de blocage.",
-        ["zhCN"] = "显示/隐藏 格挡值",
-        ["ruRU"] = "Показать/скрыть значение рейтинга блокирования",
-        ["esES"] = "Muestra/oculta el valor de bloqueo",
-        ["esMX"] = "Muestra/oculta el valor de bloqueo",
-        ["ptBR"] = "Muestra/oculta o valor de bloqueio"
+        ["deDE"] = false,
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false,
     },
     ["Shows/Hides the parry chance."] = {
         ["enUS"] = true,

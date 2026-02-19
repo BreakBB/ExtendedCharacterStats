@@ -27,33 +27,6 @@ function _Config:LoadSpellSection()
                     Stats.RebuildStatInfos()
                 end,
             },
-            spellCritRating = {
-                type = "toggle",
-                order = 1,
-                name = function() return i18n("Spell crit. rating") end,
-                desc = function() return i18n("Shows/Hides the spell crit. rating.") end,
-                width = 1.5,
-                hidden = function() return ECS.IsClassic end,
-                disabled = function() return (not ExtendedCharacterStats.profile.spell.display); end,
-                get = function () return ExtendedCharacterStats.profile.spell.crit.rating.display; end,
-                set = function (_, value)
-                    ExtendedCharacterStats.profile.spell.crit.rating.display = value
-                    Stats.RebuildStatInfos()
-                end,
-            },
-            spellCrit = {
-                type = "toggle",
-                order = 1.1,
-                name = function() return i18n("Spell crit.") end,
-                desc = function() return i18n("Shows/Hides the spell crit. chance.") end,
-                width = 1.5,
-                disabled = function() return (not ExtendedCharacterStats.profile.spell.display); end,
-                get = function () return ExtendedCharacterStats.profile.spell.crit.display; end,
-                set = function (_, value)
-                    ExtendedCharacterStats.profile.spell.crit.display = value
-                    Stats.RebuildStatInfos()
-                end,
-            },
             hasteRating = {
                 type = "toggle",
                 order = 2,
@@ -94,9 +67,44 @@ function _Config:LoadSpellSection()
                     Stats.RebuildStatInfos()
                 end,
             },
-            spellHitGroup = {
+            spellCritGroup = {
                 type = "group",
                 order = 5,
+                inline = true,
+                name = function() return i18n("Spell crit values") end,
+                args = {
+                    spellCritRating = {
+                        type = "toggle",
+                        order = 1,
+                        name = function() return i18n("Spell crit. rating") end,
+                        desc = function() return i18n("Shows/Hides the spell crit. rating.") end,
+                        width = 1.5,
+                        hidden = function() return ECS.IsClassic end,
+                        disabled = function() return (not ExtendedCharacterStats.profile.spell.display); end,
+                        get = function () return ExtendedCharacterStats.profile.spell.crit.rating.display; end,
+                        set = function (_, value)
+                            ExtendedCharacterStats.profile.spell.crit.rating.display = value
+                            Stats.RebuildStatInfos()
+                        end,
+                    },
+                    spellCrit = {
+                        type = "toggle",
+                        order = 1.1,
+                        name = function() return i18n("Spell crit.") end,
+                        desc = function() return i18n("Shows/Hides the spell crit. chance.") end,
+                        width = 1.5,
+                        disabled = function() return (not ExtendedCharacterStats.profile.spell.display); end,
+                        get = function () return ExtendedCharacterStats.profile.spell.crit.display; end,
+                        set = function (_, value)
+                            ExtendedCharacterStats.profile.spell.crit.display = value
+                            Stats.RebuildStatInfos()
+                        end,
+                    },
+                }
+            },
+            spellHitGroup = {
+                type = "group",
+                order = 6,
                 inline = true,
                 name = function() return i18n("Spell hit values") end,
                 args = {
