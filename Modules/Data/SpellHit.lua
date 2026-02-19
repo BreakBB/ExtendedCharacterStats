@@ -67,9 +67,7 @@ function _SpellHit:GetTalentSpellHitBonus(school)
             end
         end
     elseif classId == Data.PALADIN then
-        if ECS.IsTBC then
-            bonus = bonus + 1 * DataUtils:GetActiveTalentSpell({20189,20192,20193}) -- precision
-        elseif ECS.IsWotlk then
+        if ECS.IsWotlk then
             bonus = bonus + 2 * DataUtils:GetActiveTalentSpell({53556,53557}) -- Enlightened Judgements
         end
     elseif classId == Data.PRIEST then
