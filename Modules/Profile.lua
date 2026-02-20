@@ -472,168 +472,170 @@ local function GetDefaultStatsProfile()
                 bonus = {
                     display = true,
                     refName = "SpellHitBonus",
-                    text = "Hit bonus",
-                    textColor = colors.HIT_SECONDARY,
-                    statColor = colors.HIT_PRIMARY
-                },
-                sameLevel = {
-                    display = true,
-                    refName = "SpellHitSameLevel",
-                    text = "Miss",
-                    textColor = colors.HIT_SECONDARY,
-                    statColor = colors.HIT_PRIMARY
-                },
-                bossLevel = {
-                    display = true,
-                    refName = "SpellHitBossLevel",
-                    text = "Miss (Lvl + 3)",
+                    text = "Bonus",
                     textColor = colors.HIT_SECONDARY,
                     statColor = colors.HIT_PRIMARY
                 },
                 arcaneHitBonus = {
                     display = true,
                     refName = "ArcaneHitBonus",
-                    text = "Arcane hit bonus",
-                    textColor = colors.ARCANE_SECONDARY,
-                    statColor = colors.ARCANE_PRIMARY
-                },
-                arcaneMissChance = {
-                    display = true,
-                    refName = "ArcaneMissChance",
-                    text = "Arcane miss",
-                    textColor = colors.ARCANE_SECONDARY,
-                    statColor = colors.ARCANE_PRIMARY
-                },
-                arcaneMissChanceBoss = {
-                    display = true,
-                    refName = "ArcaneMissChanceBoss",
-                    text = "Arcane miss (Lvl + 3)",
+                    text = "Arcane",
                     textColor = colors.ARCANE_SECONDARY,
                     statColor = colors.ARCANE_PRIMARY
                 },
                 fireHitBonus = {
                     display = true,
                     refName = "FireHitBonus",
-                    text = "Fire hit bonus",
-                    textColor = colors.FIRE_SECONDARY,
-                    statColor = colors.FIRE_PRIMARY
-                },
-                fireMissChance = {
-                    display = true,
-                    refName = "FireMissChance",
-                    text = "Fire miss",
-                    textColor = colors.FIRE_SECONDARY,
-                    statColor = colors.FIRE_PRIMARY
-                },
-                fireMissChanceBoss = {
-                    display = true,
-                    refName = "FireMissChanceBoss",
-                    text = "Fire miss (Lvl + 3)",
+                    text = "Fire",
                     textColor = colors.FIRE_SECONDARY,
                     statColor = colors.FIRE_PRIMARY
                 },
                 frostHitBonus = {
                     display = true,
                     refName = "FrostHitBonus",
-                    text = "Frost hit bonus",
-                    textColor = colors.FROST_SECONDARY,
-                    statColor = colors.FROST_PRIMARY
-                },
-                frostMissChance = {
-                    display = true,
-                    refName = "FrostMissChance",
-                    text = "Frost miss",
-                    textColor = colors.FROST_SECONDARY,
-                    statColor = colors.FROST_PRIMARY
-                },
-                frostMissChanceBoss = {
-                    display = true,
-                    refName = "FrostMissChanceBoss",
-                    text = "Frost miss (Lvl + 3)",
+                    text = "Frost",
                     textColor = colors.FROST_SECONDARY,
                     statColor = colors.FROST_PRIMARY
                 },
                 holyHitBonus = {
                     display = true,
                     refName = "HolyHitBonus",
-                    text = "Holy hit bonus",
-                    textColor = colors.HOLY_SECONDARY,
-                    statColor = colors.HOLY_PRIMARY
-                },
-                holyMissChance = {
-                    display = true,
-                    refName = "HolyMissChance",
-                    text = "Holy miss",
-                    textColor = colors.HOLY_SECONDARY,
-                    statColor = colors.HOLY_PRIMARY
-                },
-                holyMissChanceBoss = {
-                    display = true,
-                    refName = "HolyMissChanceBoss",
-                    text = "Holy miss (Lvl + 3)",
+                    text = "Holy",
                     textColor = colors.HOLY_SECONDARY,
                     statColor = colors.HOLY_PRIMARY
                 },
                 natureHitBonus = {
                     display = true,
                     refName = "NatureHitBonus",
-                    text = "Nature hit bonus",
-                    textColor = colors.NATURE_SECONDARY,
-                    statColor = colors.NATURE_PRIMARY
-                },
-                natureMissChance = {
-                    display = true,
-                    refName = "NatureMissChance",
-                    text = "Nature miss",
-                    textColor = colors.NATURE_SECONDARY,
-                    statColor = colors.NATURE_PRIMARY
-                },
-                natureMissChanceBoss = {
-                    display = true,
-                    refName = "NatureMissChanceBoss",
-                    text = "Nature miss (Lvl + 3)",
+                    text = "Nature",
                     textColor = colors.NATURE_SECONDARY,
                     statColor = colors.NATURE_PRIMARY
                 },
                 physicalHitBonus = {
                     display = true,
                     refName = "PhysicalHitBonus",
-                    text = "Physical hit bonus",
-                    textColor = colors.PHYSICAL_SECONDARY,
-                    statColor = colors.PHYSICAL_PRIMARY
-                },
-                physicalMissChance = {
-                    display = true,
-                    refName = "PhysicalMissChance",
-                    text = "Physical miss",
-                    textColor = colors.PHYSICAL_SECONDARY,
-                    statColor = colors.PHYSICAL_PRIMARY
-                },
-                physicalMissChanceBoss = {
-                    display = true,
-                    refName = "PhysicalMissChanceBoss",
-                    text = "Physical miss (Lvl + 3)",
+                    text = "Physical",
                     textColor = colors.PHYSICAL_SECONDARY,
                     statColor = colors.PHYSICAL_PRIMARY
                 },
                 shadowHitBonus = {
                     display = true,
                     refName = "ShadowHitBonus",
-                    text = "Shadow hit bonus",
+                    text = "Shadow",
                     textColor = colors.SHADOW_SECONDARY,
                     statColor = colors.SHADOW_PRIMARY
                 },
-                shadowMissChance = {
+            },
+            ---@type SubCategory
+            miss = {
+                display = true,
+                isSubGroup = true,
+                refName = "SpellMissHeader",
+                text = "Miss",
+
+                arcane  = {
+                    display = true,
+                    refName = "ArcaneMissChance",
+                    text = "Arcane",
+                    textColor = colors.ARCANE_SECONDARY,
+                    statColor = colors.ARCANE_PRIMARY
+                },
+                fire  = {
+                    display = true,
+                    refName = "FireMissChance",
+                    text = "Fire",
+                    textColor = colors.FIRE_SECONDARY,
+                    statColor = colors.FIRE_PRIMARY
+                },
+                frost  = {
+                    display = true,
+                    refName = "FrostMissChance",
+                    text = "Frost",
+                    textColor = colors.FROST_SECONDARY,
+                    statColor = colors.FROST_PRIMARY
+                },
+                holy  = {
+                    display = true,
+                    refName = "HolyMissChance",
+                    text = "Holy",
+                    textColor = colors.HOLY_SECONDARY,
+                    statColor = colors.HOLY_PRIMARY
+                },
+                nature  = {
+                    display = true,
+                    refName = "NatureMissChance",
+                    text = "Nature",
+                    textColor = colors.NATURE_SECONDARY,
+                    statColor = colors.NATURE_PRIMARY
+                },
+                physical  = {
+                    display = true,
+                    refName = "PhysicalMissChance",
+                    text = "Physical",
+                    textColor = colors.PHYSICAL_SECONDARY,
+                    statColor = colors.PHYSICAL_PRIMARY
+                },
+                shadow  = {
                     display = true,
                     refName = "ShadowMissChance",
-                    text = "Shadow miss",
+                    text = "Shadow",
                     textColor = colors.SHADOW_SECONDARY,
                     statColor = colors.SHADOW_PRIMARY
                 },
-                shadowMissChanceBoss = {
+            },
+            ---@type SubCategory
+            missBoss = {
+                display = true,
+                isSubGroup = true,
+                refName = "SpellMissBossHeader",
+                text = "Miss (Lvl + 3)",
+
+                arcane = {
+                    display = true,
+                    refName = "ArcaneMissChanceBoss",
+                    text = "Arcane",
+                    textColor = colors.ARCANE_SECONDARY,
+                    statColor = colors.ARCANE_PRIMARY
+                },
+                fire = {
+                    display = true,
+                    refName = "FireMissChanceBoss",
+                    text = "Fire",
+                    textColor = colors.FIRE_SECONDARY,
+                    statColor = colors.FIRE_PRIMARY
+                },
+                frost = {
+                    display = true,
+                    refName = "FrostMissChanceBoss",
+                    text = "Frost",
+                    textColor = colors.FROST_SECONDARY,
+                    statColor = colors.FROST_PRIMARY
+                },
+                holy = {
+                    display = true,
+                    refName = "HolyMissChanceBoss",
+                    text = "Holy",
+                    textColor = colors.HOLY_SECONDARY,
+                    statColor = colors.HOLY_PRIMARY
+                },
+                nature = {
+                    display = true,
+                    refName = "NatureMissChanceBoss",
+                    text = "Nature",
+                    textColor = colors.NATURE_SECONDARY,
+                    statColor = colors.NATURE_PRIMARY
+                },
+                physical = {
+                    display = true,
+                    refName = "PhysicalMissChanceBoss",
+                    text = "Physical",
+                    textColor = colors.PHYSICAL_SECONDARY,
+                    statColor = colors.PHYSICAL_PRIMARY
+                },
+                shadow = {
                     display = true,
                     refName = "ShadowMissChanceBoss",
-                    text = "Shadow miss (Lvl + 3)",
+                    text = "Shadow",
                     textColor = colors.SHADOW_SECONDARY,
                     statColor = colors.SHADOW_PRIMARY
                 },
@@ -732,52 +734,52 @@ local function GetDefaultStatsProfile()
                 textColor = colors.HEALING_SECONDARY,
                 statColor = colors.HEALING_PRIMARY
             },
-            arcaneDmg = {
+            arcane = {
                 display = true,
                 refName = "ArcaneDmg",
-                text = "Arcane damage",
+                text = "Arcane",
                 textColor = colors.ARCANE_SECONDARY,
                 statColor = colors.ARCANE_PRIMARY
             },
-            fireDmg = {
+            fire = {
                 display = true,
                 refName = "FireDmg",
-                text = "Fire damage",
+                text = "Fire",
                 textColor = colors.FIRE_SECONDARY,
                 statColor = colors.FIRE_PRIMARY
             },
-            frostDmg = {
+            frost = {
                 display = true,
                 refName = "FrostDmg",
-                text = "Frost damage",
+                text = "Frost",
                 textColor = colors.FROST_SECONDARY,
                 statColor = colors.FROST_PRIMARY
             },
-            holyDmg = {
+            holy = {
                 display = true,
                 refName = "HolyDmg",
-                text = "Holy damage",
+                text = "Holy",
                 textColor = colors.HOLY_SECONDARY,
                 statColor = colors.HOLY_PRIMARY
             },
-            natureDmg = {
+            nature = {
                 display = true,
                 refName = "NatureDmg",
-                text = "Nature damage",
+                text = "Nature",
                 textColor = colors.NATURE_SECONDARY,
                 statColor = colors.NATURE_PRIMARY
             },
-            physicalDmg = {
+            physical = {
                 display = true,
                 refName = "PhysicalDmg",
-                text = "Physical damage",
+                text = "Physical",
                 textColor = colors.PHYSICAL_SECONDARY,
                 statColor = colors.PHYSICAL_PRIMARY
             },
-            shadowDmg = {
+            shadow = {
                 display = true,
                 refName = "ShadowDmg",
-                text = "Shadow damage",
+                text = "Shadow",
                 textColor = colors.SHADOW_SECONDARY,
                 statColor = colors.SHADOW_PRIMARY
             },

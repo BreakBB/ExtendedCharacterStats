@@ -67,9 +67,121 @@ function _Config:LoadSpellSection()
                     Stats.RebuildStatInfos()
                 end,
             },
-            spellCritGroup = {
+            spellPower = {
                 type = "group",
                 order = 5,
+                inline = true,
+                name = function() return i18n("Spell power") end,
+                args = {
+                    bonusHealing = {
+                        type = "toggle",
+                        order = 1,
+                        name = function() return i18n("Healing power") end,
+                        desc = function() return i18n("Shows/Hides the healing power value.") end,
+                        width = 1.5,
+                        disabled = function() return (not ExtendedCharacterStats.profile.spell.display); end,
+                        get = function () return ExtendedCharacterStats.profile.spellBonus.bonusHealing.display; end,
+                        set = function (_, value)
+                            ExtendedCharacterStats.profile.spellBonus.bonusHealing.display = value
+                            Stats.RebuildStatInfos()
+                        end,
+                    },
+                    arcane = {
+                        type = "toggle",
+                        order = 2,
+                        name = function() return i18n("Arcane") end,
+                        desc = function() return i18n("Shows/Hides the arcane damage value.") end,
+                        width = 1.5,
+                        disabled = function() return (not ExtendedCharacterStats.profile.spell.display); end,
+                        get = function () return ExtendedCharacterStats.profile.spellBonus.arcane.display; end,
+                        set = function (_, value)
+                            ExtendedCharacterStats.profile.spellBonus.arcane.display = value
+                            Stats.RebuildStatInfos()
+                        end,
+                    },
+                    fire = {
+                        type = "toggle",
+                        order = 3,
+                        name = function() return i18n("Fire") end,
+                        desc = function() return i18n("Shows/Hides the fire damage value.") end,
+                        width = 1.5,
+                        disabled = function() return (not ExtendedCharacterStats.profile.spell.display); end,
+                        get = function () return ExtendedCharacterStats.profile.spellBonus.fire.display; end,
+                        set = function (_, value)
+                            ExtendedCharacterStats.profile.spellBonus.fire.display = value
+                            Stats.RebuildStatInfos()
+                        end,
+                    },
+                    frost = {
+                        type = "toggle",
+                        order = 4,
+                        name = function() return i18n("Frost") end,
+                        desc = function() return i18n("Shows/Hides the frost damage value.") end,
+                        width = 1.5,
+                        disabled = function() return (not ExtendedCharacterStats.profile.spell.display); end,
+                        get = function () return ExtendedCharacterStats.profile.spellBonus.frost.display; end,
+                        set = function (_, value)
+                            ExtendedCharacterStats.profile.spellBonus.frost.display = value
+                            Stats.RebuildStatInfos()
+                        end,
+                    },
+                    holy = {
+                        type = "toggle",
+                        order = 5,
+                        name = function() return i18n("Holy") end,
+                        desc = function() return i18n("Shows/Hides the holy damage value.") end,
+                        width = 1.5,
+                        disabled = function() return (not ExtendedCharacterStats.profile.spell.display); end,
+                        get = function () return ExtendedCharacterStats.profile.spellBonus.holy.display; end,
+                        set = function (_, value)
+                            ExtendedCharacterStats.profile.spellBonus.holy.display = value
+                            Stats.RebuildStatInfos()
+                        end,
+                    },
+                    nature = {
+                        type = "toggle",
+                        order = 6,
+                        name = function() return i18n("Nature") end,
+                        desc = function() return i18n("Shows/Hides the nature damage value.") end,
+                        width = 1.5,
+                        disabled = function() return (not ExtendedCharacterStats.profile.spell.display); end,
+                        get = function () return ExtendedCharacterStats.profile.spellBonus.nature.display; end,
+                        set = function (_, value)
+                            ExtendedCharacterStats.profile.spellBonus.nature.display = value
+                            Stats.RebuildStatInfos()
+                        end,
+                    },
+                    physical = {
+                        type = "toggle",
+                        order = 7,
+                        name = function() return i18n("Physical") end,
+                        desc = function() return i18n("Shows/Hides the physical damage value.") end,
+                        width = 1.5,
+                        disabled = function() return (not ExtendedCharacterStats.profile.spell.display); end,
+                        get = function () return ExtendedCharacterStats.profile.spellBonus.physical.display; end,
+                        set = function (_, value)
+                            ExtendedCharacterStats.profile.spellBonus.physical.display = value
+                            Stats.RebuildStatInfos()
+                        end,
+                    },
+                    shadow = {
+                        type = "toggle",
+                        order = 8,
+                        name = function() return i18n("Shadow") end,
+                        desc = function() return i18n("Shows/Hides the shadow damage value.") end,
+                        width = 1.5,
+                        disabled = function() return (not ExtendedCharacterStats.profile.spell.display); end,
+                        get = function () return ExtendedCharacterStats.profile.spellBonus.shadow.display; end,
+                        set = function (_, value)
+                            ExtendedCharacterStats.profile.spellBonus.shadow.display = value
+                            Stats.RebuildStatInfos()
+                        end,
+                    },
+                }
+            },
+            spellCritGroup = {
+                type = "group",
+                order = 6,
                 inline = true,
                 name = function() return i18n("Spell crit. values") end,
                 args = {
@@ -104,7 +216,7 @@ function _Config:LoadSpellSection()
             },
             spellHitGroup = {
                 type = "group",
-                order = 6,
+                order = 7,
                 inline = true,
                 name = function() return i18n("Spell hit values") end,
                 args = {
@@ -149,11 +261,11 @@ function _Config:LoadSpellSection()
                         width = 1.5,
                         disabled = function()
                             return ((not ExtendedCharacterStats.profile.spell.display) or
-                                    (not ExtendedCharacterStats.profile.spell.hit.display))
+                                    (not ExtendedCharacterStats.profile.spell.miss.display))
                         end,
-                        get = function () return ExtendedCharacterStats.profile.spell.hit.sameLevel.display; end,
+                        get = function () return ExtendedCharacterStats.profile.spell.miss.display; end,
                         set = function (_, value)
-                            ExtendedCharacterStats.profile.spell.hit.sameLevel.display = value
+                            ExtendedCharacterStats.profile.spell.miss.display = value
                             Stats.RebuildStatInfos()
                         end,
                     },
@@ -165,128 +277,17 @@ function _Config:LoadSpellSection()
                         width = 1.5,
                         disabled = function()
                             return ((not ExtendedCharacterStats.profile.spell.display) or
-                                    (not ExtendedCharacterStats.profile.spell.hit.display))
+                                    (not ExtendedCharacterStats.profile.spell.missBoss.display))
                         end,
-                        get = function () return ExtendedCharacterStats.profile.spell.hit.bossLevel.display; end,
+                        get = function () return ExtendedCharacterStats.profile.spell.missBoss.display; end,
                         set = function (_, value)
-                            ExtendedCharacterStats.profile.spell.hit.bossLevel.display = value
+                            ExtendedCharacterStats.profile.spell.missBoss.display = value
                             Stats.RebuildStatInfos()
                         end,
                     },
                 }
             },
-            spellPower = {
-                type = "group",
-                order = 6,
-                inline = true,
-                name = function() return i18n("Spell power") end,
-                args = {
-                    bonusHealing = {
-                        type = "toggle",
-                        order = 1,
-                        name = function() return i18n("Healing power") end,
-                        desc = function() return i18n("Shows/Hides the healing power value.") end,
-                        width = 1.5,
-                        disabled = function() return (not ExtendedCharacterStats.profile.spell.display); end,
-                        get = function () return ExtendedCharacterStats.profile.spellBonus.bonusHealing.display; end,
-                        set = function (_, value)
-                            ExtendedCharacterStats.profile.spellBonus.bonusHealing.display = value
-                            Stats.RebuildStatInfos()
-                        end,
-                    },
-                    arcaneDmg = {
-                        type = "toggle",
-                        order = 2,
-                        name = function() return i18n("Arcane damage") end,
-                        desc = function() return i18n("Shows/Hides the arcane damage value.") end,
-                        width = 1.5,
-                        disabled = function() return (not ExtendedCharacterStats.profile.spell.display); end,
-                        get = function () return ExtendedCharacterStats.profile.spellBonus.arcaneDmg.display; end,
-                        set = function (_, value)
-                            ExtendedCharacterStats.profile.spellBonus.arcaneDmg.display = value
-                            Stats.RebuildStatInfos()
-                        end,
-                    },
-                    fireDmg = {
-                        type = "toggle",
-                        order = 3,
-                        name = function() return i18n("Fire damage") end,
-                        desc = function() return i18n("Shows/Hides the fire damage value.") end,
-                        width = 1.5,
-                        disabled = function() return (not ExtendedCharacterStats.profile.spell.display); end,
-                        get = function () return ExtendedCharacterStats.profile.spellBonus.fireDmg.display; end,
-                        set = function (_, value)
-                            ExtendedCharacterStats.profile.spellBonus.fireDmg.display = value
-                            Stats.RebuildStatInfos()
-                        end,
-                    },
-                    frostDmg = {
-                        type = "toggle",
-                        order = 4,
-                        name = function() return i18n("Frost damage") end,
-                        desc = function() return i18n("Shows/Hides the frost damage value.") end,
-                        width = 1.5,
-                        disabled = function() return (not ExtendedCharacterStats.profile.spell.display); end,
-                        get = function () return ExtendedCharacterStats.profile.spellBonus.frostDmg.display; end,
-                        set = function (_, value)
-                            ExtendedCharacterStats.profile.spellBonus.frostDmg.display = value
-                            Stats.RebuildStatInfos()
-                        end,
-                    },
-                    holyDmg = {
-                        type = "toggle",
-                        order = 5,
-                        name = function() return i18n("Holy damage") end,
-                        desc = function() return i18n("Shows/Hides the holy damage value.") end,
-                        width = 1.5,
-                        disabled = function() return (not ExtendedCharacterStats.profile.spell.display); end,
-                        get = function () return ExtendedCharacterStats.profile.spellBonus.holyDmg.display; end,
-                        set = function (_, value)
-                            ExtendedCharacterStats.profile.spellBonus.holyDmg.display = value
-                            Stats.RebuildStatInfos()
-                        end,
-                    },
-                    natureDmg = {
-                        type = "toggle",
-                        order = 6,
-                        name = function() return i18n("Nature damage") end,
-                        desc = function() return i18n("Shows/Hides the nature damage value.") end,
-                        width = 1.5,
-                        disabled = function() return (not ExtendedCharacterStats.profile.spell.display); end,
-                        get = function () return ExtendedCharacterStats.profile.spellBonus.natureDmg.display; end,
-                        set = function (_, value)
-                            ExtendedCharacterStats.profile.spellBonus.natureDmg.display = value
-                            Stats.RebuildStatInfos()
-                        end,
-                    },
-                    physicalDmg = {
-                        type = "toggle",
-                        order = 7,
-                        name = function() return i18n("Physical damage") end,
-                        desc = function() return i18n("Shows/Hides the physical damage value.") end,
-                        width = 1.5,
-                        disabled = function() return (not ExtendedCharacterStats.profile.spell.display); end,
-                        get = function () return ExtendedCharacterStats.profile.spellBonus.physicalDmg.display; end,
-                        set = function (_, value)
-                            ExtendedCharacterStats.profile.spellBonus.physicalDmg.display = value
-                            Stats.RebuildStatInfos()
-                        end,
-                    },
-                    shadowDmg = {
-                        type = "toggle",
-                        order = 8,
-                        name = function() return i18n("Shadow damage") end,
-                        desc = function() return i18n("Shows/Hides the shadow damage value.") end,
-                        width = 1.5,
-                        disabled = function() return (not ExtendedCharacterStats.profile.spell.display); end,
-                        get = function () return ExtendedCharacterStats.profile.spellBonus.shadowDmg.display; end,
-                        set = function (_, value)
-                            ExtendedCharacterStats.profile.spellBonus.shadowDmg.display = value
-                            Stats.RebuildStatInfos()
-                        end,
-                    },
-                }
-            }
+
         },
     }
 end

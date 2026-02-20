@@ -192,10 +192,13 @@ function _Config:LoadDefenseSection()
                         desc = function() return i18n("Shows/Hides the block rating.") end,
                         width = 1.5,
                         hidden = function() return ECS.IsClassic end,
-                        disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
-                        get = function () return ExtendedCharacterStats.profile.defense.blockRating.display; end,
+                        disabled = function()
+                            return  (not ExtendedCharacterStats.profile.defense.display) or
+                                    (not ExtendedCharacterStats.profile.block.display)
+                        end,
+                        get = function () return ExtendedCharacterStats.profile.defense.block.rating.display; end,
                         set = function (_, value)
-                            ExtendedCharacterStats.profile.defense.blockRating.display = value
+                            ExtendedCharacterStats.profile.defense.block.rating.display = value
                             Stats.RebuildStatInfos()
                         end,
                     },
@@ -205,10 +208,13 @@ function _Config:LoadDefenseSection()
                         name = function() return i18n("Block chance") end,
                         desc = function() return i18n("Shows/Hides the block chance.") end,
                         width = 1.5,
-                        disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
-                        get = function () return ExtendedCharacterStats.profile.defense.blockChance.display; end,
+                        disabled = function()
+                            return  (not ExtendedCharacterStats.profile.defense.display) or
+                                    (not ExtendedCharacterStats.profile.block.display)
+                        end,
+                        get = function () return ExtendedCharacterStats.profile.defense.block.chance.display; end,
                         set = function (_, value)
-                            ExtendedCharacterStats.profile.defense.blockChance.display = value
+                            ExtendedCharacterStats.profile.defense.block.chance.display = value
                             Stats.RebuildStatInfos()
                         end,
                     },
@@ -218,10 +224,13 @@ function _Config:LoadDefenseSection()
                         name = function() return i18n("Blocked amount") end,
                         desc = function() return i18n("Shows/Hides the blocked amount.") end,
                         width = 1.5,
-                        disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
-                        get = function () return ExtendedCharacterStats.profile.defense.blockValue.display; end,
+                        disabled = function()
+                            return  (not ExtendedCharacterStats.profile.defense.display) or
+                                    (not ExtendedCharacterStats.profile.block.display)
+                        end,
+                        get = function () return ExtendedCharacterStats.profile.defense.block.amount.display; end,
                         set = function (_, value)
-                            ExtendedCharacterStats.profile.defense.blockValue.display = value
+                            ExtendedCharacterStats.profile.defense.block.amount.display = value
                             Stats.RebuildStatInfos()
                         end,
                     },
@@ -239,10 +248,13 @@ function _Config:LoadDefenseSection()
                         name = function() return i18n("Melee crit. reduction") end,
                         desc = function() return i18n("Shows/Hides the reduction percentage of being critically hit by melee attacks.") end,
                         width = 1.5,
-                        disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
-                        get = function () return ExtendedCharacterStats.profile.defense.meleeCritReduction.display; end,
+                        disabled = function()
+                            return  (not ExtendedCharacterStats.profile.defense.display) or
+                                    (not ExtendedCharacterStats.profile.critReduction.display)
+                        end,
+                        get = function () return ExtendedCharacterStats.profile.defense.critReduction.melee.display; end,
                         set = function (_, value)
-                            ExtendedCharacterStats.profile.defense.meleeCritReduction.display = value
+                            ExtendedCharacterStats.profile.defense.critReduction.melee.display = value
                             Stats.RebuildStatInfos()
                         end,
                     },
@@ -252,10 +264,13 @@ function _Config:LoadDefenseSection()
                         name = function() return i18n("Ranged crit. reduction") end,
                         desc = function() return i18n("Shows/Hides the reduction percentage of being critically hit by ranged attacks.") end,
                         width = 1.5,
-                        disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
-                        get = function () return ExtendedCharacterStats.profile.defense.rangedCritReduction.display; end,
+                        disabled = function()
+                            return  (not ExtendedCharacterStats.profile.defense.display) or
+                                    (not ExtendedCharacterStats.profile.critReduction.display)
+                        end,
+                        get = function () return ExtendedCharacterStats.profile.defense.critReduction.ranged.display; end,
                         set = function (_, value)
-                            ExtendedCharacterStats.profile.defense.rangedCritReduction.display = value
+                            ExtendedCharacterStats.profile.defense.critReduction.ranged.display = value
                             Stats.RebuildStatInfos()
                         end,
                     },
@@ -265,10 +280,13 @@ function _Config:LoadDefenseSection()
                         name = function() return i18n("Spell crit. reduction") end,
                         desc = function() return i18n("Shows/Hides the reduction percentage of being critically hit by spells.") end,
                         width = 1.5,
-                        disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
-                        get = function () return ExtendedCharacterStats.profile.defense.spellCritReduction.display; end,
+                        disabled = function()
+                            return  (not ExtendedCharacterStats.profile.defense.display) or
+                                    (not ExtendedCharacterStats.profile.critReduction.display)
+                        end,
+                        get = function () return ExtendedCharacterStats.profile.defense.critReduction.spell.display; end,
                         set = function (_, value)
-                            ExtendedCharacterStats.profile.defense.spellCritReduction.display = value
+                            ExtendedCharacterStats.profile.defense.critReduction.spell.display = value
                             Stats.RebuildStatInfos()
                         end,
                     },

@@ -317,13 +317,13 @@ _CreateStatInfos = function()
         (not ECS.IsClassic) and category.penetrationRating or nil,
         category.penetration,
         spellBonus.bonusHealing,
-        spell.arcane.display and spellBonus.arcaneDmg or nil,
-        spell.fire.display and spellBonus.fireDmg or nil,
-        spell.frost.display and spellBonus.frostDmg or nil,
-        spell.holy.display and spellBonus.holyDmg or nil,
-        spell.nature.display and spellBonus.natureDmg or nil,
-        spell.physical.display and spellBonus.physicalDmg or nil,
-        spell.shadow.display and spellBonus.shadowDmg or nil
+        spell.arcane.display and spellBonus.arcane or nil,
+        spell.fire.display and spellBonus.fire or nil,
+        spell.frost.display and spellBonus.frost or nil,
+        spell.holy.display and spellBonus.holy or nil,
+        spell.nature.display and spellBonus.nature or nil,
+        spell.physical.display and spellBonus.physical or nil,
+        spell.shadow.display and spellBonus.shadow or nil
     )
     if category.display then
         local spellCrit = spell.crit
@@ -343,28 +343,42 @@ _CreateStatInfos = function()
         _CreateStatInfo(
             category,
             ECS.IsClassic and nil or spellHit.rating,
-            spell.arcane.display and spellHit.bonus.display and spellHit.arcaneHitBonus or nil,
-            spell.fire.display and spellHit.bonus.display and spellHit.fireHitBonus or nil,
-            spell.frost.display and spellHit.bonus.display and spellHit.frostHitBonus or nil,
-            spell.holy.display and spellHit.bonus.display and spellHit.holyHitBonus or nil,
-            spell.nature.display and spellHit.bonus.display and spellHit.natureHitBonus or nil,
-            spell.physical.display and spellHit.bonus.display and spellHit.physicalHitBonus or nil,
-            spell.shadow.display and spellHit.bonus.display and spellHit.shadowHitBonus or nil,
-            spell.arcane.display and spellHit.sameLevel.display and spellHit.arcaneMissChance or nil,
-            spell.fire.display and spellHit.sameLevel.display and spellHit.fireMissChance or nil,
-            spell.frost.display and spellHit.sameLevel.display and spellHit.frostMissChance or nil,
-            spell.holy.display and spellHit.sameLevel.display and spellHit.holyMissChance or nil,
-            spell.nature.display and spellHit.sameLevel.display and spellHit.natureMissChance or nil,
-            spell.physical.display and spellHit.sameLevel.display and spellHit.physicalMissChance or nil,
-            spell.shadow.display and spellHit.sameLevel.display and spellHit.shadowMissChance or nil,
-            spell.arcane.display and spellHit.bossLevel.display and spellHit.arcaneMissChanceBoss or nil,
-            spell.fire.display and spellHit.bossLevel.display and spellHit.fireMissChanceBoss or nil,
-            spell.frost.display and spellHit.bossLevel.display and spellHit.frostMissChanceBoss or nil,
-            spell.holy.display and spellHit.bossLevel.display and spellHit.holyMissChanceBoss or nil,
-            spell.nature.display and spellHit.bossLevel.display and spellHit.natureMissChanceBoss or nil,
-            spell.physical.display and spellHit.bossLevel.display and spellHit.physicalMissChanceBoss or nil,
-            spell.shadow.display and spellHit.bossLevel.display and spellHit.shadowMissChanceBoss or nil
+            spell.arcane.display and spellHit.bonus.display and spellHit.arcane or nil,
+            spell.fire.display and spellHit.bonus.display and spellHit.fire or nil,
+            spell.frost.display and spellHit.bonus.display and spellHit.frost or nil,
+            spell.holy.display and spellHit.bonus.display and spellHit.holy or nil,
+            spell.nature.display and spellHit.bonus.display and spellHit.nature or nil,
+            spell.physical.display and spellHit.bonus.display and spellHit.physical or nil,
+            spell.shadow.display and spellHit.bonus.display and spellHit.shadow or nil
         )
+        local spellMiss = spell.miss
+        if spellMiss.display then
+            category = spellMiss
+            _CreateStatInfo(
+                category,
+                spell.arcane.display and category.arcane or nil,
+                spell.fire.display and category.fire or nil,
+                spell.frost.display and category.frost or nil,
+                spell.holy.display and category.holy or nil,
+                spell.nature.display and category.nature or nil,
+                spell.physical.display and category.physical or nil,
+                spell.shadow.display and category.shadow or nil
+            )
+        end
+        local spellMissBoss = spell.missBoss
+        if spellMissBoss.display then
+            category = spellMissBoss
+            _CreateStatInfo(
+                category,
+                spell.arcane.display and category.arcane or nil,
+                spell.fire.display and category.fire or nil,
+                spell.frost.display and category.frost or nil,
+                spell.holy.display and category.holy or nil,
+                spell.nature.display and category.nature or nil,
+                spell.physical.display and category.physical or nil,
+                spell.shadow.display and category.shadow or nil
+            )
+        end
     end
 end
 
