@@ -21,6 +21,8 @@ function Migration:ToLatestProfileVersion(profileVersion)
         ExtendedCharacterStats.profile.defense.resilienceRating = ExtendedCharacterStats.profile.defense.resilience
     end
     if profileVersion < 25 then
+        ExtendedCharacterStats.profile.defense.resilience = ExtendedCharacterStats.profile.defense.resilience
+        ExtendedCharacterStats.profile.defense.resilienceRating = ExtendedCharacterStats.profile.defense.resilienceRating
         ExtendedCharacterStats.profile.spell.miss = defaultProfile.profile.spell.miss
         ExtendedCharacterStats.profile.defense.critReduction = defaultProfile.profile.defense.critReduction
         ExtendedCharacterStats.profile.defense.blockRating = defaultProfile.profile.defense.blockRating

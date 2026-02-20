@@ -22,36 +22,6 @@ local defenseConfigTranslations = {
         ["esMX"] = false,
         ["ptBR"] = false,
     },
-    ["Block rating"] = {
-        ["enUS"] = true,
-        ["deDE"] = false,
-        ["frFR"] = false,
-        ["zhCN"] = false,
-        ["ruRU"] = false,
-        ["esES"] = false,
-        ["esMX"] = false,
-        ["ptBR"] = false,
-    },
-    ["Block chance"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Blockchance",
-        ["frFR"] = "Chances de bloquer",
-        ["zhCN"] = "格挡几率",
-        ["ruRU"] = "Шанс блока",
-        ["esES"] = "Probabilidad de bloquear",
-        ["esMX"] = "Probabilidad de bloquear",
-        ["ptBR"] = "Chance de bloquear"
-    },
-    ["Block values"] = {
-        ["enUS"] = true,
-        ["deDE"] = false,
-        ["frFR"] = false,
-        ["zhCN"] = false,
-        ["ruRU"] = false,
-        ["esES"] = false,
-        ["esMX"] = false,
-        ["ptBR"] = false,
-    },
     ["Blocked amount"] = {
         ["enUS"] = true,
         ["deDE"] = false,
@@ -73,36 +43,6 @@ local defenseConfigTranslations = {
         ["ptBR"] = false,
     },
     ["Crit. reduction values"] = {
-        ["enUS"] = true,
-        ["deDE"] = false,
-        ["frFR"] = false,
-        ["zhCN"] = false,
-        ["ruRU"] = false,
-        ["esES"] = false,
-        ["esMX"] = false,
-        ["ptBR"] = false
-    },
-    ["Melee crit. reduction"] = {
-        ["enUS"] = true,
-        ["deDE"] = false,
-        ["frFR"] = false,
-        ["zhCN"] = false,
-        ["ruRU"] = false,
-        ["esES"] = false,
-        ["esMX"] = false,
-        ["ptBR"] = false
-    },
-    ["Ranged crit. reduction"] = {
-        ["enUS"] = true,
-        ["deDE"] = false,
-        ["frFR"] = false,
-        ["zhCN"] = false,
-        ["ruRU"] = false,
-        ["esES"] = false,
-        ["esMX"] = false,
-        ["ptBR"] = false
-    },
-    ["Spell crit. reduction"] = {
         ["enUS"] = true,
         ["deDE"] = false,
         ["frFR"] = false,

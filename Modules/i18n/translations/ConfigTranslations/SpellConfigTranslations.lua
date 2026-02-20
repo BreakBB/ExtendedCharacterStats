@@ -232,16 +232,6 @@ local spellConfigTranslations = {
         ["esMX"] = false,
         ["ptBR"] = false,
     },
-    ["Spell crit. rating"] = {
-        ["enUS"] = true,
-        ["deDE"] = false,
-        ["frFR"] = false,
-        ["zhCN"] = false,
-        ["ruRU"] = false,
-        ["esES"] = false,
-        ["esMX"] = false,
-        ["ptBR"] = false,
-    },
     ["Shows/Hides the spell crit. rating."] = {
         ["enUS"] = true,
         ["deDE"] = false,
