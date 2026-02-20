@@ -55,6 +55,8 @@ function _Melee:GetHitRatingBonus()
     return hit + (GetHitModifier() or 0)
 end
 
+---If a talent spell has the "Apply Aura: Modifies Hit Chance" effect, then we need to handle it here.
+---If the effect is "Apply Aura: Mod Spell Hit Chance %", then GetHitModifier() already accounts for it and we don't need to handle it here.
 ---@return number
 function _Melee:GetHitTalentBonus()
     local mod = 0
@@ -75,18 +77,15 @@ function _Melee:GetHitTalentBonus()
             if Data:GetMeleeAttackSpeedOffHand() > 0 then
                 mod = 2 * DataUtils:GetActiveTalentSpell({30816,30818,30819})
             end
-        else
+        elseif ECS.IsClassic then
             -- Nature's Guidance
             mod = 1 * DataUtils:GetActiveTalentSpell({16180,16196,16198})
         end
-    elseif classId == Data.PALADIN then
-        if ECS.IsTBC then
-            -- precision
-            mod = 1 * DataUtils:GetActiveTalentSpell({20189,20192,20193})
-        end
     elseif classId == Data.ROGUE then
-        -- precision
-        mod = 1 * DataUtils:GetActiveTalentSpell({13705,13832,13843,13844,13845})
+        if ECS.IsClassic then
+            -- precision
+            mod = 1 * DataUtils:GetActiveTalentSpell({13705,13832,13843,13844,13845})
+        end
     elseif classId == Data.DEATHKNIGHT then
         -- Nerves of Cold Steel
         -- This assumes a DK is dual wielding and not only using a one-hand main hand weapon

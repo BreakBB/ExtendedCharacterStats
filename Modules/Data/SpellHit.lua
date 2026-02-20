@@ -43,6 +43,8 @@ function Data:SpellMissChanceBossLevel(school)
     return DataUtils:Round(Data:SpellMissChance(school,3,false), 2) .. "%"
 end
 
+---If a talent spell has the "Apply Aura: Modifies Hit Chance" effect, then we need to handle it here.
+---If the effect is "Apply Aura: Mod Spell Hit Chance %", then GetSpellHitModifier() already accounts for it and we don't need to handle it here.
 ---@param school number
 ---@return number
 function _SpellHit:GetTalentSpellHitBonus(school)
@@ -67,9 +69,7 @@ function _SpellHit:GetTalentSpellHitBonus(school)
             end
         end
     elseif classId == Data.PALADIN then
-        if ECS.IsTBC then
-            bonus = bonus + 1 * DataUtils:GetActiveTalentSpell({20189,20192,20193}) -- precision
-        elseif ECS.IsWotlk then
+        if ECS.IsWotlk then
             bonus = bonus + 2 * DataUtils:GetActiveTalentSpell({53556,53557}) -- Enlightened Judgements
         end
     elseif classId == Data.PRIEST then
@@ -82,7 +82,7 @@ function _SpellHit:GetTalentSpellHitBonus(school)
             local coeff = ECS.IsWotlk and 1 or 2
             bonus = bonus + coeff * DataUtils:GetActiveTalentSpell({30672,30673,30674}) -- Elemental Precision
         end
-        if ECS.IsTBC then
+        if ECS.IsClassic then
             bonus = bonus + 1 * DataUtils:GetActiveTalentSpell({16180,16196,16198}) -- Nature's Guidance
         end
     elseif classId == Data.WARLOCK then

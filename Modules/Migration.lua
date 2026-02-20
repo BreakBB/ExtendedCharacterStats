@@ -16,12 +16,14 @@ function Migration:ToLatestProfileVersion(profileVersion)
     end
 
     local defaultProfile = Profile:GetDefaultProfile()
+
     if profileVersion < 24 then
+        ExtendedCharacterStats.profile.defense.resilienceRating = ExtendedCharacterStats.profile.defense.resilience
+    end
+    if profileVersion < 25 then
         ExtendedCharacterStats.profile.spell.miss = defaultProfile.profile.spell.miss
         ExtendedCharacterStats.profile.defense.critReduction = defaultProfile.profile.defense.critReduction
-
         ExtendedCharacterStats.profile.defense.blockRating = defaultProfile.profile.defense.blockRating
-        ExtendedCharacterStats.profile.defense.resilience = defaultProfile.profile.defense.resilience
         ExtendedCharacterStats.profile.melee.critRating = defaultProfile.profile.melee.critRating
         ExtendedCharacterStats.profile.melee.penetration = defaultProfile.profile.melee.penetration
         ExtendedCharacterStats.profile.melee.penetrationRating = defaultProfile.profile.melee.penetrationRating

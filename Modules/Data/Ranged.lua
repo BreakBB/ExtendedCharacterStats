@@ -83,6 +83,8 @@ function _Ranged:GetHitBonus()
     return hitValue + (GetHitModifier() or 0) + _Ranged:GetHitTalentBonus()
 end
 
+---If a talent spell has the "Apply Aura: Modifies Hit Chance" effect, then we need to handle it here.
+---If the effect is "Apply Aura: Mod Spell Hit Chance %", then GetHitModifier() already accounts for it and we don't need to handle it here.
 ---@return number
 function _Ranged:GetHitTalentBonus()
     local bonus = 0

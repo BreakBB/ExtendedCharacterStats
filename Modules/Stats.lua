@@ -227,7 +227,13 @@ _CreateStatInfos = function()
     )
     if category.display then
         category = category.hit
-        _CreateStatInfo(category, category.rating, category.bonus, category.sameLevel, category.bossLevel)
+        _CreateStatInfo(
+            category,
+            (not ECS.IsClassic) and category.rating or nil,
+            category.bonus,
+            category.sameLevel,
+            category.bossLevel
+        )
 
         if (not ECS.IsWotlk) then
             category = profile.melee.glance
