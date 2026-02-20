@@ -38,6 +38,10 @@ end
 
 ---@return number
 function Data:MeleeHitRating()
+    if (not CR_HIT_MELEE) then
+        return 0
+    end
+
     return GetCombatRating(CR_HIT_MELEE)
 end
 
@@ -51,6 +55,8 @@ function _Melee:GetHitRatingBonus()
     return hit + (GetHitModifier() or 0)
 end
 
+---If a talent spell has the "Apply Aura: Modifies Hit Chance" effect, then we need to handle it here.
+---If the effect is "Apply Aura: Mod Spell Hit Chance %", then GetHitModifier() already accounts for it and we don't need to handle it here.
 ---@return number
 function _Melee:GetHitTalentBonus()
     local mod = 0
@@ -71,18 +77,15 @@ function _Melee:GetHitTalentBonus()
             if Data:GetMeleeAttackSpeedOffHand() > 0 then
                 mod = 2 * DataUtils:GetActiveTalentSpell({30816,30818,30819})
             end
-        else
+        elseif ECS.IsClassic then
             -- Nature's Guidance
             mod = 1 * DataUtils:GetActiveTalentSpell({16180,16196,16198})
         end
-    elseif classId == Data.PALADIN then
-        if ECS.IsTBC then
-            -- precision
-            mod = 1 * DataUtils:GetActiveTalentSpell({20189,20192,20193})
-        end
     elseif classId == Data.ROGUE then
-        -- precision
-        mod = 1 * DataUtils:GetActiveTalentSpell({13705,13832,13843,13844,13845})
+        if ECS.IsClassic then
+            -- precision
+            mod = 1 * DataUtils:GetActiveTalentSpell({13705,13832,13843,13844,13845})
+        end
     elseif classId == Data.DEATHKNIGHT then
         -- Nerves of Cold Steel
         -- This assumes a DK is dual wielding and not only using a one-hand main hand weapon
@@ -216,18 +219,58 @@ end
 
 ---@return number
 function Data:GetExpertiseRating()
+    if (not CR_EXPERTISE) then
+        return 0
+    end
+
     local expertiseRating = GetCombatRating(CR_EXPERTISE)
     return DataUtils:Round(expertiseRating, 0)
 end
 
+---@return string
+function Data:GetArmorPenetration()
+    local armorPenetration = GetArmorPenetration()
+
+    if ECS.IsWotlk and classId == Data.WARRIOR then
+        local _, isActive = GetShapeshiftFormInfo(1)
+        if isActive then
+            armorPenetration = armorPenetration + 10 -- 10% from Battle Stance
+        end
+    end
+
+    if classId == Data.DEATHKNIGHT then
+        armorPenetration = armorPenetration + 2 * DataUtils:GetActiveTalentSpell({61274,61275,61276,61277,61278}) -- Blood Gorged
+    end
+
+    return DataUtils:Round(armorPenetration, 2) .. "%"
+end
+
+---@return number
+function Data:GetArmorPenetrationRating()
+    if (not CR_ARMOR_PENETRATION) then
+        return 0
+    end
+
+    local armorPenetrationRating = GetCombatRating(CR_ARMOR_PENETRATION)
+    return DataUtils:Round(armorPenetrationRating, 0)
+end
+
 ---@return number
 function Data:GetMeleeHasteRating()
+    if (not CR_HASTE_MELEE) then
+        return 0
+    end
+
     local hasteRating = GetCombatRating(CR_HASTE_MELEE)
     return DataUtils:Round(hasteRating, 0)
 end
 
 ---@return string
 function Data:GetMeleeHasteBonus()
+    if (not CR_HASTE_MELEE) then
+        return "0%"
+    end
+
     local hasteBonus = GetCombatRatingBonus(CR_HASTE_MELEE)
     return DataUtils:Round(hasteBonus, 2) .. "%"
 end

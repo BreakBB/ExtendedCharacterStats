@@ -174,6 +174,10 @@ end
 
 ---@return number
 function Data:GetDefenseRating()
+    if (not CR_DEFENSE_SKILL) then
+        return 0
+    end
+
     return DataUtils:Round(GetCombatRating(CR_DEFENSE_SKILL), 2)
 end
 

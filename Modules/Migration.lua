@@ -14,4 +14,8 @@ function Migration:ToLatestProfileVersion(profileVersion)
         ECS:Print(i18n("Profile has been reset due to a major update.")) -- because of TBC anniversary
         return
     end
+
+    if profileVersion < 24 then
+        ExtendedCharacterStats.profile.defense.resilienceRating = ExtendedCharacterStats.profile.defense.resilience
+    end
 end
