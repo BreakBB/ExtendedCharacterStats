@@ -218,15 +218,21 @@ _CreateStatInfos = function()
         category.attackPower,
         category.crit,
         ECS.IsWotlk and category.penetrationRating or nil,
-        ECS.IsClassic and nil or category.penetration,
-        ECS.IsClassic and nil or category.expertiseRating,
+        (not ECS.IsClassic) and category.penetration or nil,
+        (not ECS.IsClassic) and category.expertiseRating or nil,
         (ECS.IsClassic and not ECS.IsSoD) and nil or category.expertise,
-        ECS.IsClassic and nil or category.hasteRating,
-        ECS.IsClassic and nil or category.hasteBonus
+        (not ECS.IsClassic) and category.hasteRating or nil,
+        (not ECS.IsClassic) and category.hasteBonus or nil
     )
     if category.display then
         category = category.hit
-        _CreateStatInfo(category, category.rating, category.bonus, category.sameLevel, category.bossLevel)
+        _CreateStatInfo(
+            category,
+            (not ECS.IsClassic) and category.rating or nil,
+            category.bonus,
+            category.sameLevel,
+            category.bossLevel
+        )
 
         if (not ECS.IsWotlk) then
             category = profile.melee.glance
@@ -248,9 +254,9 @@ _CreateStatInfos = function()
             category.attackPower,
             category.crit,
             ECS.IsWotlk and category.penetrationRating or nil,
-            ECS.IsClassic and nil or category.penetration,
-            ECS.IsClassic and nil or category.hasteRating,
-            ECS.IsClassic and nil or category.hasteBonus,
+            (not ECS.IsClassic) and category.penetration or nil,
+            (not ECS.IsClassic) and category.hasteRating or nil,
+            (not ECS.IsClassic) and category.hasteBonus or nil,
             category.attackSpeed
         )
 
@@ -258,7 +264,7 @@ _CreateStatInfos = function()
             category = category.hit
             _CreateStatInfo(
                 category,
-                ECS.IsClassic and nil or category.rating,
+                (not ECS.IsClassic) and category.rating or nil,
                 category.bonus,
                 category.sameLevel,
                 category.bossLevel
@@ -275,16 +281,16 @@ _CreateStatInfos = function()
         category.spellCritReduction,
         category.avoidance,
         category.avoidanceBoss,
-        ECS.IsClassic and nil or category.defenseRating,
+        (not ECS.IsClassic) and category.defenseRating or nil,
         category.defense,
-        (ECS.IsClassic or not DataUtils:CanBlock()) and nil or category.blockRating,
+        (not ECS.IsClassic and DataUtils:CanBlock()) and category.blockRating or nil,
         DataUtils:CanBlock() and category.blockChance or nil,
         DataUtils:CanBlock() and category.blockValue or nil,
-        (ECS.IsClassic or not DataUtils:CanParry()) and nil or category.parryRating,
+        (not ECS.IsClassic and DataUtils:CanParry()) and category.parryRating or nil,
         DataUtils:CanParry() and category.parry or nil,
-        ECS.IsClassic and nil or category.dodgeRating,
+        (not ECS.IsClassic) and category.dodgeRating or nil,
         category.dodge or nil,
-        ECS.IsClassic and nil or category.resilienceRating
+        (not ECS.IsClassic) and category.resilienceRating or nil
     )
 
     if UnitHasMana("player") then
@@ -299,12 +305,12 @@ _CreateStatInfos = function()
     local spellHit = spell.hit
     _CreateStatInfo(
         category,
-        ECS.IsClassic and nil or category.hasteRating,
+        (not ECS.IsClassic) and category.hasteRating or nil,
         category.hasteBonus,
-        ECS.IsClassic and nil or category.penetrationRating,
-        ECS.IsClassic and nil or category.penetration,
+        (not ECS.IsClassic) and category.penetrationRating or nil,
+        (not ECS.IsClassic) and category.penetration or nil,
         spellBonus.bonusHealing,
-        ECS.IsClassic and nil or spellHit.rating,
+        (not ECS.IsClassic) and spellHit.rating or nil,
         spell.arcane.display and spellBonus.arcaneDmg or nil,
         spell.arcane.display and spellCrit.display and spellCrit.arcane or nil,
         spell.arcane.display and spellHit.bonus.display and spellHit.arcaneHitBonus or nil,
