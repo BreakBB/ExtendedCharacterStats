@@ -6,7 +6,7 @@ local Utils = ECSLoader:ImportModule("Utils")
 
 ---@return number
 function Profile.GetProfileVersion()
-    return 22
+    return 24
 end
 
 ---@return ECSProfile
@@ -39,7 +39,6 @@ local function GetDefaultStatsProfile()
 
                 rating = {
                     display = true,
-                    isTbcOnly = true,
                     refName = "MeleeHitRating",
                     text = "Rating",
                     textColor = colors.HIT_SECONDARY,
@@ -117,7 +116,6 @@ local function GetDefaultStatsProfile()
             },
             penetration = {
                 display = true,
-                isTbcOnly = true,
                 refName = "MeleeArmorPenetration",
                 text = "Armor pen.",
                 textColor = colors.ATTACK_SPEED_SECONDARY,
@@ -125,22 +123,23 @@ local function GetDefaultStatsProfile()
             },
             penetrationRating = {
                 display = true,
-                isTbcOnly = true,
                 refName = "MeleeArmorPenetrationRating",
                 text = "Armor pen. rating",
                 textColor = colors.ATTACK_SPEED_SECONDARY,
                 statColor = colors.ATTACK_SPEED_PRIMARY,
             },
-            expertise = {display = true, isTbcOnly = true, refName = "Expertise", text = "Expertise"},
+            expertise = {
+                display = true,
+                refName = "Expertise",
+                text = "Expertise"
+            },
             expertiseRating = {
                 display = true,
-                isTbcOnly = true,
                 refName = "ExpertiseRating",
                 text = "Expertise rating"
             },
             hasteRating = {
                 display = true,
-                isTbcOnly = true,
                 refName = "MeleeHasteRating",
                 text = "Haste rating",
                 textColor = colors.HASTE_RATING_SECONDARY,
@@ -148,7 +147,6 @@ local function GetDefaultStatsProfile()
             },
             hasteBonus = {
                 display = true,
-                isTbcOnly = true,
                 refName = "MeleeHasteBonus",
                 text = "Haste bonus",
                 textColor = colors.HASTE_RATING_SECONDARY,
@@ -191,7 +189,6 @@ local function GetDefaultStatsProfile()
 
                 rating = {
                     display = true,
-                    isTbcOnly = true,
                     refName = "RangedHitRating",
                     text = "Rating",
                     textColor = colors.HIT_SECONDARY,
@@ -235,7 +232,6 @@ local function GetDefaultStatsProfile()
             },
             penetration = {
                 display = true,
-                isTbcOnly = true,
                 refName = "RangedArmorPenetration",
                 text = "Armor pen.",
                 textColor = colors.ATTACK_SPEED_SECONDARY,
@@ -243,7 +239,6 @@ local function GetDefaultStatsProfile()
             },
             penetrationRating = {
                 display = true,
-                isTbcOnly = true,
                 refName = "RangedArmorPenetrationRating",
                 text = "Armor pen. rating",
                 textColor = colors.ATTACK_SPEED_SECONDARY,
@@ -251,7 +246,6 @@ local function GetDefaultStatsProfile()
             },
             hasteRating = {
                 display = true,
-                isTbcOnly = true,
                 refName = "RangedHasteRating",
                 text = "Haste rating",
                 textColor = colors.HASTE_RATING_SECONDARY,
@@ -259,7 +253,6 @@ local function GetDefaultStatsProfile()
             },
             hasteBonus = {
                 display = true,
-                isTbcOnly = true,
                 refName = "RangedHasteBonus",
                 text = "Haste bonus",
                 textColor = colors.HASTE_RATING_SECONDARY,
@@ -336,9 +329,8 @@ local function GetDefaultStatsProfile()
                 refName = "DodgeChance",
                 text = "Dodge chance"
             },
-            resilience = {
+            resilienceRating = {
                 display = true,
-                isTbcOnly = true,
                 refName = "ResilienceValue",
                 text = "Resilience"
             },
@@ -422,7 +414,6 @@ local function GetDefaultStatsProfile()
 
                 rating = {
                     display = true,
-                    isTbcOnly = true,
                     refName = "SpellHitRating",
                     text = "Hit rating",
                     textColor = colors.HIT_SECONDARY,
@@ -431,7 +422,7 @@ local function GetDefaultStatsProfile()
                 bonus = {
                     display = true,
                     refName = "SpellHitBonus",
-                    text = "Bonus",
+                    text = "Hit Bonus",
                     textColor = colors.HIT_SECONDARY,
                     statColor = colors.HIT_PRIMARY
                 },
@@ -599,7 +590,6 @@ local function GetDefaultStatsProfile()
             },
             hasteRating = {
                 display = true,
-                isTbcOnly = true,
                 refName = "SpellHasteRating",
                 text = "Haste rating",
                 textColor = colors.HASTE_RATING_SECONDARY,
@@ -607,7 +597,6 @@ local function GetDefaultStatsProfile()
             },
             hasteBonus = {
                 display = true,
-                isTbcOnly = true,
                 refName = "SpellHasteBonus",
                 text = "Haste bonus",
                 textColor = colors.HASTE_RATING_SECONDARY,

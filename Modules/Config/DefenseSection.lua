@@ -6,6 +6,8 @@ local _Config = Config.private
 local Stats = ECSLoader:ImportModule("Stats")
 ---@type i18n
 local i18n = ECSLoader:ImportModule("i18n")
+---@type DataUtils
+local DataUtils = ECSLoader:ImportModule("DataUtils")
 
 function _Config:LoadDefenseSection()
     return {
@@ -138,6 +140,7 @@ function _Config:LoadDefenseSection()
                 name = function() return i18n("Block chance") end,
                 desc = function() return i18n("Shows/Hides the block chance.") end,
                 width = 1.5,
+                hidden = function() return not IsSpellKnown(107) end,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
                 get = function () return ExtendedCharacterStats.profile.defense.blockChance.display; end,
                 set = function (_, value)
@@ -151,6 +154,7 @@ function _Config:LoadDefenseSection()
                 name = function() return i18n("Block value") end,
                 desc = function() return i18n("Shows/Hides the block value.") end,
                 width = 1.5,
+                hidden = function() return not DataUtils:CanBlock() end,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
                 get = function () return ExtendedCharacterStats.profile.defense.blockValue.display; end,
                 set = function (_, value)
@@ -164,6 +168,7 @@ function _Config:LoadDefenseSection()
                 name = function() return i18n("Parry chance") end,
                 desc = function() return i18n("Shows/Hides the parry chance.") end,
                 width = 1.5,
+                hidden = function() return not DataUtils:CanParry() end,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
                 get = function () return ExtendedCharacterStats.profile.defense.parry.display; end,
                 set = function (_, value)
