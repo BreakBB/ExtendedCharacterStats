@@ -2,7 +2,7 @@
 local i18n = ECSLoader:ImportModule("i18n")
 
 local generalConfigTranslations = {
-    ["Show General Stats"] = {
+    ["Show General stats"] = {
         ["enUS"] = true,
         ["deDE"] = "Allgemeine Werte anzeigen",
         ["frFR"] = "Afficher les statistiques",
@@ -22,7 +22,7 @@ local generalConfigTranslations = {
         ["esMX"] = "Muestra/oculta todas estadísticas generales",
         ["ptBR"] = "Mostra/oculta todas as estatísticas gerais"
     },
-    ["Show Movement Speed"] = {
+    ["Show Movement speed"] = {
         ["enUS"] = true,
         ["deDE"] = "Bewegungsgeschwindigkeit anzeigen",
         ["frFR"] = "Afficher la vitesse de déplacement",
