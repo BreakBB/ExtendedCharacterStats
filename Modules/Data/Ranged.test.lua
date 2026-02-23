@@ -13,15 +13,15 @@ describe("Ranged", function()
         _G.UnitClass = function()
             return "HUNTER", "HUNTER", 3
         end
-        DataUtils = require("Modules.Data.DataUtils")
-        Data = require("Modules.Data.Ranged")
-
         _G.C_UnitAuras = {
             GetPlayerAuraBySpellID = function() return nil end
         }
         _G.C_SpellBook = {
             IsSpellKnown = function() return false end
         }
+
+        DataUtils = require("Modules.Data.DataUtils")
+        Data = require("Modules.Data.Ranged")
     end)
 
     describe("RangeMissChanceBossLevel", function()
