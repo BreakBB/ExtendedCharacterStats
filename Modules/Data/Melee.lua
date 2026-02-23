@@ -274,4 +274,3 @@ function Data:GetMeleeHasteBonus()
     local hasteBonus = GetCombatRatingBonus(CR_HASTE_MELEE)
     return DataUtils:Round(hasteBonus, 2) .. "%"
 end
-
