@@ -19,6 +19,65 @@ function Data:GetRangeAttackPower()
     return melee + posBuff + negBuff
 end
 
+---@param creature number
+---@return string
+function Data:GetRangedAttackPowerVsCreature(creature)
+    local dmg = 0
+    -- auras
+    local j = 1
+    repeat
+        local aura = C_UnitAuras.GetBuffDataByIndex("player", j)
+        j = j + 1
+        if aura and aura.spellId then
+            if creature == Data.UNDEAD then
+                if aura.spellId == 58026 then dmg = dmg + 12000 end -- Blessing of the Crusade
+            elseif creature == Data.DEMON then
+                if aura.spellId == 11406 then dmg = dmg + 265 end -- Elixir of Demonslaying
+            end
+        end
+    until (not aura)
+    for i = 1, 18 do
+        -- items
+        local id, _ = GetInventoryItemID("player", i)
+        if creature == Data.UNDEAD then
+            dmg = dmg + (Data.itemsUndeadSlaying[id] or 0)
+            dmg = dmg + (Data.itemsUndeadDeamonSlaying[id] or 0)
+        elseif creature == Data.DEMON then
+            dmg = dmg + (Data.itemsDemonSlaying[id] or 0)
+            dmg = dmg + (Data.itemsUndeadDeamonSlaying[id] or 0)
+        elseif creature == Data.DRAGONKIN then
+            dmg = dmg + (Data.itemsDragonSlaying[id] or 0)
+        elseif creature == Data.MECHANICAL then
+             if id == 213319 then dmg = dmg + 30 end -- Machinist's Gloves
+        end
+        -- enchants
+        local itemLink = GetInventoryItemLink("player", i)
+        if itemLink then
+            local enchant = DataUtils:GetEnchantFromItemLink(itemLink)
+            if enchant then
+                if creature == Data.UNDEAD then
+                    dmg = dmg + (Data.enchantsUndeadSlayer[enchant] or 0)
+                    if enchant and enchant == Data.enchantIds.UNDEAD_DEMON_SLAYER_150 then dmg = dmg + 150 end
+                elseif creature == Data.DEMON then
+                    if enchant and enchant == Data.enchantIds.UNDEAD_DEMON_SLAYER_150 then dmg = dmg + 150 end
+                elseif creature == Data.BEAST then
+                    dmg = dmg + (Data.enchantsBeastSlayer[enchant] or 0)
+                elseif creature == Data.ELEMENTAL then
+                    dmg = dmg + (Data.enchantsElementalSlayer[enchant] or 0)
+                    if enchant and enchant == Data.enchantIds.LESSER_ELEMENTAL_SLAYER then dmg = dmg + 6 end
+                end
+            end
+        end
+    end
+    -- sets
+    if creature == Data.UNDEAD then
+        if Data:HasUndeadSlayer15() then dmg = dmg + 15 end
+    elseif creature == Data.DEMON then
+        if Data:HasDemonSlaying200() then dmg = dmg + 200 end
+    end
+    return dmg
+end
+
 ---@return number
 function Data:GetRangedHasteRating()
     if (not CR_HASTE_RANGED) then
