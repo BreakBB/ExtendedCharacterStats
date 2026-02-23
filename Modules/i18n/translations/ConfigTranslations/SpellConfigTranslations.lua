@@ -2,7 +2,7 @@
 local i18n = ECSLoader:ImportModule("i18n")
 
 local spellConfigTranslations = {
-    ["Show Spell Stats"] = {
+    ["Show spell stats"] = {
         ["enUS"] = true,
         ["deDE"] = "Zauberwerte anzeigen",
         ["frFR"] = "Afficher sorts",
@@ -22,7 +22,7 @@ local spellConfigTranslations = {
         ["esMX"] = "Muestra/oculta todas estadísticas de hechizos",
         ["ptBR"] = "Mostra/oculta todas as estatísticas de feitiços"
     },
-    ["Spell Crit"] = {
+    ["Spell crit."] = {
         ["enUS"] = true,
         ["deDE"] = "Zauber Kritisch",
         ["frFR"] = "Critique des sorts",
@@ -32,7 +32,7 @@ local spellConfigTranslations = {
         ["esMX"] = "Crítico con hechizos",
         ["ptBR"] = "Crítico com feitiços",
     },
-    ["Shows/Hides the spell crit chance."] = {
+    ["Shows/Hides the spell crit. chance."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt die Chance mit einem Zauber kritisch zu treffen.",
         ["frFR"] = "Affiche/cache les chances d'infliger un coup critique avec les sorts.",
@@ -42,7 +42,7 @@ local spellConfigTranslations = {
         ["esMX"] = "Muestra/oculta la probabilidad de asestar un golpe crítico con hechizos",
         ["ptBR"] = "Mostra/oculta a chance de realizar acertos críticos com feitiços"
     },
-    ["Spell Penetration"] = {
+    ["Spell penetration"] = {
         ["enUS"] = true,
         ["deDE"] = "Zauberdurchschlagskraft",
         ["frFR"] = "Pénétration des sorts",
@@ -82,7 +82,7 @@ local spellConfigTranslations = {
         ["esMX"] = "Muestra/oculta el bonus de celeridad con hechizos",
         ["ptBR"] = "Mostra/oculta o bônus de de aceleração de feitiço"
     },
-    ["Spell Hit Values"] = {
+    ["Spell hit values"] = {
         ["enUS"] = true,
         ["deDE"] = "Zauber Trefferwertung",
         ["frFR"] = "Toucher des sorts",
@@ -132,7 +132,7 @@ local spellConfigTranslations = {
         ["esMX"] = "Muestra/oculta la probabilidad de fallo con hechizos contra jefes (nivel +3)",
         ["ptBR"] = "Mostra/oculta a chance de erro de feitiço contra inimigos chefes (nível +3)"
     },
-    ["Spell Power"] = {
+    ["Spell power"] = {
         ["enUS"] = true,
         ["deDE"] = "Zauberkraft",
         ["frFR"] = "Puissance des sorts",
@@ -221,6 +221,26 @@ local spellConfigTranslations = {
         ["esES"] = "Muestra/oculta el valor de poder de curación",
         ["esMX"] = "Muestra/oculta el valor de poder de sanación",
         ["ptBR"] = "Mostra/oculta o valor de poder de cura"
+    },
+    ["Spell crit. values"] = {
+        ["enUS"] = true,
+        ["deDE"] = false,
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false,
+    },
+    ["Shows/Hides the spell crit. rating."] = {
+        ["enUS"] = true,
+        ["deDE"] = false,
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false,
     },
 }
 

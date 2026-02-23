@@ -27,6 +27,7 @@ function _Defense:GetCritReduction()
     local meleeCritReduction = 0
     local rangedCritReduction = 0
     local spellCritReduction = 0
+    local critReducingFromResilience = 0
     local i = 1
     repeat
         local aura = C_UnitAuras.GetAuraDataByIndex("player", i, "HELPFUL")
@@ -60,7 +61,9 @@ function _Defense:GetCritReduction()
     if critReductionFromDefense < 0 then
         critReductionFromDefense = 0
     end
-    local critReducingFromResilience = GetCombatRatingBonus(15)
+    if CR_RESILIENCE_CRIT_TAKEN then
+        critReducingFromResilience = GetCombatRatingBonus(CR_RESILIENCE_CRIT_TAKEN)
+    end
 
     if classId == Data.DRUID then
         local coeff = ECS.IsWotlk and 2 or 1
@@ -219,7 +222,43 @@ end
 
 ---@return number
 function Data:GetResilienceRating()
-    return DataUtils:Round(GetCombatRating(15), 2)
+    local rating = 0
+    if CR_RESILIENCE_PLAYER_DAMAGE_TAKEN then
+        rating = GetCombatRating(CR_RESILIENCE_PLAYER_DAMAGE_TAKEN)
+    end
+    return DataUtils:Round(rating, 2)
+end
+
+---@return number
+function Data:GetResilience()
+    return DataUtils:Round(GetModResilienceDamageReduction(), 2)
+end
+
+---@return number
+function Data:GetParryRating()
+    local rating = 0
+    if CR_PARRY then
+        rating = GetCombatRating(CR_PARRY)
+    end
+    return DataUtils:Round(rating, 2)
+end
+
+---@return number
+function Data:GetDodgeRating()
+    local rating = 0
+    if CR_DODGE then
+        rating = GetCombatRating(CR_DODGE)
+    end
+    return DataUtils:Round(rating, 2)
+end
+
+---@return number
+function Data:GetBlockRating()
+    local rating = 0
+    if CR_BLOCK then
+        rating = GetCombatRating(CR_BLOCK)
+    end
+    return DataUtils:Round(rating, 2)
 end
 
 ---@return number

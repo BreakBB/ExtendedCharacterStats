@@ -216,9 +216,10 @@ _CreateStatInfos = function()
     _CreateStatInfo(
         category,
         category.attackPower,
+        ECS.IsClassic and nil or category.critRating,
         category.crit,
         ECS.IsWotlk and category.penetrationRating or nil,
-        (not ECS.IsClassic) and category.penetration or nil,
+        ECS.IsWotlk and category.penetration or nil,
         (not ECS.IsClassic) and category.expertiseRating or nil,
         (not ECS.IsClassic) and category.expertise or nil,
         (not ECS.IsClassic) and category.hasteRating or nil,
@@ -252,9 +253,10 @@ _CreateStatInfos = function()
         _CreateStatInfo(
             category,
             category.attackPower,
+            ECS.IsClassic and nil or category.critRating,
             category.crit,
             ECS.IsWotlk and category.penetrationRating or nil,
-            (not ECS.IsClassic) and category.penetration or nil,
+            ECS.IsWotlk and category.penetration or nil,
             (not ECS.IsClassic) and category.hasteRating or nil,
             (not ECS.IsClassic) and category.hasteBonus or nil,
             category.attackSpeed
@@ -276,22 +278,35 @@ _CreateStatInfos = function()
     _CreateStatInfo(
         category,
         category.armor,
-        category.meleeCritReduction,
-        category.rangedCritReduction,
-        category.spellCritReduction,
-        category.avoidance,
-        category.avoidanceBoss,
+        ECS.IsClassic and nil or category.resilienceRating,
+        ECS.IsClassic and nil or category.resilience,
         (not ECS.IsClassic) and category.defenseRating or nil,
         category.defense,
-        (not ECS.IsClassic and DataUtils:CanBlock()) and category.blockRating or nil,
-        DataUtils:CanBlock() and category.blockChance or nil,
-        DataUtils:CanBlock() and category.blockValue or nil,
-        (not ECS.IsClassic and DataUtils:CanParry()) and category.parryRating or nil,
-        DataUtils:CanParry() and category.parry or nil,
+        category.avoidance,
+        category.avoidanceBoss,
         (not ECS.IsClassic) and category.dodgeRating or nil,
         category.dodge or nil,
-        (not ECS.IsClassic) and category.resilienceRating or nil
+        (not ECS.IsClassic and DataUtils:CanParry()) and category.parryRating or nil,
+        DataUtils:CanParry() and category.parry or nil
     )
+    if category.display then
+        if DataUtils:CanBlock() then
+            category = category.block
+            _CreateStatInfo(
+                category,
+                ECS.IsClassic and nil or category.rating,
+                category.chance,
+                category.value
+            )
+        end
+        category = category.critReduction
+        _CreateStatInfo(
+            category,
+            category.melee,
+            category.ranged,
+            category.spell
+        )
+    end
 
     if UnitHasMana("player") then
         category = profile.regen
@@ -301,52 +316,76 @@ _CreateStatInfos = function()
     category = profile.spell
     local spellBonus = profile.spellBonus
     local spell = profile.spell
-    local spellCrit = spell.crit
-    local spellHit = spell.hit
     _CreateStatInfo(
         category,
         (not ECS.IsClassic) and category.hasteRating or nil,
         category.hasteBonus,
         (not ECS.IsClassic) and category.penetrationRating or nil,
-        (not ECS.IsClassic) and category.penetration or nil,
+        category.penetration,
         spellBonus.bonusHealing,
-        (not ECS.IsClassic) and spellHit.rating or nil,
-        spell.arcane.display and spellBonus.arcaneDmg or nil,
-        spell.arcane.display and spellCrit.display and spellCrit.arcane or nil,
-        spell.arcane.display and spellHit.bonus.display and spellHit.arcaneHitBonus or nil,
-        spell.arcane.display and spellHit.sameLevel.display and spellHit.arcaneMissChance or nil,
-        spell.arcane.display and spellHit.bossLevel.display and spellHit.arcaneMissChanceBoss or nil,
-        spell.fire.display and spellBonus.fireDmg or nil,
-        spell.fire.display and spellCrit.display and spellCrit.fire or nil,
-        spell.fire.display and spellHit.bonus.display and spellHit.fireHitBonus or nil,
-        spell.fire.display and spellHit.sameLevel.display and spellHit.fireMissChance or nil,
-        spell.fire.display and spellHit.bossLevel.display and spellHit.fireMissChanceBoss or nil,
-        spell.frost.display and spellBonus.frostDmg or nil,
-        spell.frost.display and spellCrit.display and spellCrit.frost or nil,
-        spell.frost.display and spellHit.bonus.display and spellHit.frostHitBonus or nil,
-        spell.frost.display and spellHit.sameLevel.display and spellHit.frostMissChance or nil,
-        spell.frost.display and spellHit.bossLevel.display and spellHit.frostMissChanceBoss or nil,
-        spell.holy.display and spellBonus.holyDmg or nil,
-        spell.holy.display and spellCrit.display and spellCrit.holy or nil,
-        spell.holy.display and spellHit.bonus.display and spellHit.holyHitBonus or nil,
-        spell.holy.display and spellHit.sameLevel.display and spellHit.holyMissChance or nil,
-        spell.holy.display and spellHit.bossLevel.display and spellHit.holyMissChanceBoss or nil,
-        spell.nature.display and spellBonus.natureDmg or nil,
-        spell.nature.display and spellCrit.display and spellCrit.nature or nil,
-        spell.nature.display and spellHit.bonus.display and spellHit.natureHitBonus or nil,
-        spell.nature.display and spellHit.sameLevel.display and spellHit.natureMissChance or nil,
-        spell.nature.display and spellHit.bossLevel.display and spellHit.natureMissChanceBoss or nil,
-        spell.physical.display and spellBonus.physicalDmg or nil,
-        spell.physical.display and spellCrit.display and spellCrit.physical or nil,
-        spell.physical.display and spellHit.bonus.display and spellHit.physicalHitBonus or nil,
-        spell.physical.display and spellHit.sameLevel.display and spellHit.physicalMissChance or nil,
-        spell.physical.display and spellHit.bossLevel.display and spellHit.physicalMissChanceBoss or nil,
-        spell.shadow.display and spellBonus.shadowDmg or nil,
-        spell.shadow.display and spellCrit.display and spellCrit.shadow or nil,
-        spell.shadow.display and spellHit.bonus.display and spellHit.shadowHitBonus or nil,
-        spell.shadow.display and spellHit.sameLevel.display and spellHit.shadowMissChance or nil,
-        spell.shadow.display and spellHit.bossLevel.display and spellHit.shadowMissChanceBoss or nil
+        spell.arcane.display and spellBonus.arcane or nil,
+        spell.fire.display and spellBonus.fire or nil,
+        spell.frost.display and spellBonus.frost or nil,
+        spell.holy.display and spellBonus.holy or nil,
+        spell.nature.display and spellBonus.nature or nil,
+        spell.physical.display and spellBonus.physical or nil,
+        spell.shadow.display and spellBonus.shadow or nil
     )
+    if category.display then
+        local spellCrit = spell.crit
+        _CreateStatInfo(
+            category,
+            ECS.IsClassic and nil or spellCrit.rating,
+            spell.arcane.display and spellCrit.display and spellCrit.arcane or nil,
+            spell.fire.display and spellCrit.display and spellCrit.fire or nil,
+            spell.frost.display and spellCrit.display and spellCrit.frost or nil,
+            spell.holy.display and spellCrit.display and spellCrit.holy or nil,
+            spell.nature.display and spellCrit.display and spellCrit.nature or nil,
+            spell.physical.display and spellCrit.display and spellCrit.physical or nil,
+            spell.shadow.display and spellCrit.display and spellCrit.shadow or nil
+        )
+        local spellHit = spell.hit
+        category = spellHit
+        _CreateStatInfo(
+            category,
+            ECS.IsClassic and nil or spellHit.rating,
+            spell.arcane.display and spellHit.bonus.display and spellHit.arcane or nil,
+            spell.fire.display and spellHit.bonus.display and spellHit.fire or nil,
+            spell.frost.display and spellHit.bonus.display and spellHit.frost or nil,
+            spell.holy.display and spellHit.bonus.display and spellHit.holy or nil,
+            spell.nature.display and spellHit.bonus.display and spellHit.nature or nil,
+            spell.physical.display and spellHit.bonus.display and spellHit.physical or nil,
+            spell.shadow.display and spellHit.bonus.display and spellHit.shadow or nil
+        )
+        local spellMiss = spell.miss
+        if spellMiss.display then
+            category = spellMiss
+            _CreateStatInfo(
+                category,
+                spell.arcane.display and category.arcane or nil,
+                spell.fire.display and category.fire or nil,
+                spell.frost.display and category.frost or nil,
+                spell.holy.display and category.holy or nil,
+                spell.nature.display and category.nature or nil,
+                spell.physical.display and category.physical or nil,
+                spell.shadow.display and category.shadow or nil
+            )
+        end
+        local spellMissBoss = spell.missBoss
+        if spellMissBoss.display then
+            category = spellMissBoss
+            _CreateStatInfo(
+                category,
+                spell.arcane.display and category.arcane or nil,
+                spell.fire.display and category.fire or nil,
+                spell.frost.display and category.frost or nil,
+                spell.holy.display and category.holy or nil,
+                spell.nature.display and category.nature or nil,
+                spell.physical.display and category.physical or nil,
+                spell.shadow.display and category.shadow or nil
+            )
+        end
+    end
 end
 
 --- Creates a new header in the stats UI

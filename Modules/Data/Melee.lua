@@ -265,6 +265,15 @@ function Data:GetMeleeHasteRating()
     return DataUtils:Round(hasteRating, 0)
 end
 
+---@return number
+function Data:GetMeleeCritRating()
+    local critRating = 0
+    if CR_CRIT_MELEE then
+        critRating = GetCombatRating(CR_CRIT_MELEE)
+    end
+    return DataUtils:Round(critRating, 0)
+end
+
 ---@return string
 function Data:GetMeleeHasteBonus()
     if (not CR_HASTE_MELEE) then

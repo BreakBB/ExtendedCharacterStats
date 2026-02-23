@@ -161,3 +161,12 @@ end
 function Data:GetSpellPenetration()
     return DataUtils:Round(GetSpellPenetration(), 2)
 end
+
+---@return number
+function Data:GetSpellCritRating()
+    local critRating = 0
+    if CR_CRIT_SPELL then
+        critRating = GetCombatRating(CR_CRIT_SPELL)
+    end
+    return DataUtils:Round(critRating, 0)
+end

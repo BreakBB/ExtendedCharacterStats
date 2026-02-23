@@ -13,7 +13,7 @@ function _Config:SpellSchoolsSection()
         order = 6,
         inline = false,
         width = 2,
-        name = function() return i18n("Spell Schools") end,
+        name = function() return i18n("Spell schools") end,
         args = {
             arcane = {
                 type = "toggle",

@@ -134,4 +134,13 @@ function Data.RangeMissChanceBossLevel()
     return DataUtils:Round(missChance, 2) .. "%"
 end
 
+---@return number
+function Data:GetRangedCritRating()
+    local critRating = 0
+    if CR_CRIT_RANGED then
+        critRating = GetCombatRating(CR_CRIT_RANGED)
+    end
+    return DataUtils:Round(critRating, 0)
+end
+
 return Data

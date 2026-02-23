@@ -2,7 +2,7 @@
 local i18n = ECSLoader:ImportModule("i18n")
 
 local rangedConfigTranslations = {
-    ["Show Ranged Stats"] = {
+    ["Show ranged stats"] = {
         ["enUS"] = true,
         ["deDE"] = "Fernkampfwerte anzeigen",
         ["frFR"] = "Afficher à distance",
@@ -21,7 +21,7 @@ local rangedConfigTranslations = {
         ["esES"] = "Muestra/oculta todas estadísticas a distancia",
         ["esMX"] = "Muestra/oculta todas estadísticas a distancia"
     },
-    ["Ranged Attack Power"] = {
+    ["Ranged attack power"] = {
         ["enUS"] = true,
         ["deDE"] = "Fernkampf Angriffskraft",
         ["frFR"] = "Puissance d'attaque à distance",
@@ -41,7 +41,7 @@ local rangedConfigTranslations = {
         ["esMX"] = "Muestra/oculta el valor de poder de ataque a distancia",
         ["ptBR"] = "Mostra/oculta o valor de poder de ataque de longo alcance"
     },
-    ["Ranged Crit"] = {
+    ["Ranged crit."] = {
         ["enUS"] = true,
         ["deDE"] = "Fernkampf Kritisch",
         ["frFR"] = "Critique à distance",
@@ -51,7 +51,7 @@ local rangedConfigTranslations = {
         ["esMX"] = "Crítico a distancia",
         ["ptBR"] = "Crítico de longo alcance"
     },
-    ["Shows/Hides the ranged crit chance."] = {
+    ["Shows/Hides the ranged crit. chance."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt die Chance im Fernkampf kritisch zu treffen.",
         ["frFR"] = "Affiche/cache les chances de coup critique à distance.",
@@ -91,7 +91,7 @@ local rangedConfigTranslations = {
         ["esMX"] = "Muestra/oculta la velocidad de ataque a distancia",
         ["ptBR"] = "Mostra/oculta a velocidade de ataque de longo alcance"
     },
-    ["Ranged Hit"] = {
+    ["Ranged hit"] = {
         ["enUS"] = true,
         ["deDE"] = "Fernkampf Trefferwertung",
         ["frFR"] = "Toucher à distance",
@@ -101,7 +101,7 @@ local rangedConfigTranslations = {
         ["esMX"] = "Probabilidad de golpear",
         ["ptBR"] = "Chance de acerto"
     },
-    ["Ranged Hit Values"] = {
+    ["Ranged hit values"] = {
         ["enUS"] = true,
         ["deDE"] = "Fernkampf Trefferwertung",
         ["frFR"] = "Valeurs de toucher à distance",
@@ -160,6 +160,26 @@ local rangedConfigTranslations = {
         ["esES"] = "Muestra/oculta la probabilidad de fallo contra jefes (nivel +3)",
         ["esMX"] = "Muestra/oculta la probabilidad de fallo contra jefes (nivel +3)",
         ["ptBR"] = "Mostra/oculta a chance de erro contra chefes (nível +3)"
+    },
+    ["Ranged crit. rating"] = {
+        ["enUS"] = true,
+        ["deDE"] = false,
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false,
+    },
+    ["Shows/Hides the ranged crit. rating."] = {
+        ["enUS"] = true,
+        ["deDE"] = false,
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false,
     },
 }
 
