@@ -17,5 +17,9 @@ function Migration:ToLatestProfileVersion(profileVersion)
 
     if profileVersion < 24 then
         ExtendedCharacterStats.profile.defense.resilienceRating = ExtendedCharacterStats.profile.defense.resilience
+        ExtendedCharacterStats.profile.defense.resilience = nil
+    end
+    if profileVersion < 25 then
+        ExtendedCharacterStats.profile.defense.resilience = nil
     end
 end
