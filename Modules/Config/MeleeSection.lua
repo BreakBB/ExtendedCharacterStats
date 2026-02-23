@@ -18,7 +18,7 @@ function _Config:LoadMeleeSection()
             showMeleeStats = {
                 type = "toggle",
                 order = 0,
-                name = function() return i18n("Show melee mtats") end,
+                name = function() return i18n("Show melee stats") end,
                 desc = function() return i18n("Shows/Hides all melee stats.") end,
                 width = 1.5,
                 get = function () return ExtendedCharacterStats.profile.melee.display; end,
@@ -349,7 +349,6 @@ function _Config:LoadMeleeSection()
                         type = "toggle",
                         order = 2,
                         name = function() return i18n("Off hand") end,
-                        hidden = function() return not CanDualWield() end,
                         desc = function() return i18n("Shows/Hides the attack speed of the off hand.") end,
                         width = 1.5,
                         disabled = function()
