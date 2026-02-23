@@ -2,7 +2,7 @@
 local i18n = ECSLoader:ImportModule("i18n")
 
 local meleeConfigTranslations = {
-    ["Show Melee stats"] = {
+    ["Show melee stats"] = {
         ["enUS"] = true,
         ["deDE"] = "Nahkampfwerte anzeigen",
         ["frFR"] = "Afficher mêlée",

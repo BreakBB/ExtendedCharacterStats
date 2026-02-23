@@ -421,7 +421,7 @@ local function GetDefaultStatsProfile()
                 bonus = {
                     display = true,
                     refName = "SpellHitBonus",
-                    text = "Hit Bonus",
+                    text = "Hit bonus",
                     textColor = colors.HIT_SECONDARY,
                     statColor = colors.HIT_PRIMARY
                 },
