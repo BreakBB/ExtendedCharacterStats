@@ -3,6 +3,9 @@ local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
 local DataUtils = ECSLoader:ImportModule("DataUtils")
 
+local _SpellHaste = {}
+local _, _, classId = UnitClass("player")
+
 ---@param school number
 ---@return number
 function Data:GetSpellDamage(school)
@@ -33,6 +36,7 @@ end
 ---@return string
 function Data:GetSpellHasteBonus()
     local hasteBonus = GetHaste()
+    hasteBonus = hasteBonus + _SpellHaste:GetTalentSpellHaste()
 
     -- items
     if ECS.IsSoD then
@@ -73,4 +77,20 @@ function Data:GetSpellHasteBonus()
     end
 
     return DataUtils:Round(hasteBonus, 2) .. "%"
+end
+
+---@return number
+function _SpellHaste:GetTalentSpellHaste()
+    local bonus = 0
+    if ECS.IsWotlk then
+        if classId == Data.DRUID then
+            bonus = bonus + 1 * DataUtils:GetActiveTalentSpell({16850,16923,16924}) -- Celestial Focus
+            bonus = bonus + 2 * DataUtils:GetActiveTalentSpell({51179,51180,51181,51182,51183}) -- Gift of the Earthmother
+        elseif classId == Data.PRIEST then
+            bonus = bonus + 2 * DataUtils:GetActiveTalentSpell({34908,34909,34910}) -- Enlightenment
+        elseif classId == Data.MAGE then
+            bonus = bonus + 2 * DataUtils:GetActiveTalentSpell({44400,44402,44403}) -- Netherwind Presence
+        end
+    end
+    return bonus
 end
