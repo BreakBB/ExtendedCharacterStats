@@ -80,12 +80,20 @@ end
 
 ---@return number
 function Data:GetRangedHasteRating()
+    if (not CR_HASTE_RANGED) then
+        return 0
+    end
+
     local hasteRating = GetCombatRating(CR_HASTE_RANGED)
     return DataUtils:Round(hasteRating, 0)
 end
 
 ---@return string
 function Data:GetRangedHasteBonus()
+    if (not CR_HASTE_RANGED) then
+        return "0%"
+    end
+
     local hasteBonus = GetCombatRatingBonus(CR_HASTE_RANGED)
     return DataUtils:Round(hasteBonus, 2) .. "%"
 end
@@ -103,6 +111,10 @@ end
 
 ---@return number
 function Data:RangeHitRating()
+    if (not CR_HIT_RANGED) then
+        return 0
+    end
+
     return GetCombatRating(CR_HIT_RANGED)
 end
 
@@ -130,6 +142,8 @@ function _Ranged:GetHitBonus()
     return hitValue + (GetHitModifier() or 0) + _Ranged:GetHitTalentBonus()
 end
 
+---If a talent spell has the "Apply Aura: Modifies Hit Chance" effect, then we need to handle it here.
+---If the effect is "Apply Aura: Mod Spell Hit Chance %", then GetHitModifier() already accounts for it and we don't need to handle it here.
 ---@return number
 function _Ranged:GetHitTalentBonus()
     local bonus = 0
