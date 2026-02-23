@@ -25,6 +25,10 @@ end
 
 ---@return number
 function Data:GetSpellHasteRating()
+    if (not CR_HASTE_SPELL) then
+        return 0
+    end
+
     local hasteRating = GetCombatRating(CR_HASTE_SPELL)
     return DataUtils:Round(hasteRating, 0)
 end
