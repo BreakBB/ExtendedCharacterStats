@@ -300,7 +300,6 @@ local function GetDefaultStatsProfile()
             },
             defenseRating = {
                 display = true,
-                isTbcOnly = true,
                 refName = "DefenseRating",
                 text = "Defense rating"
             },
