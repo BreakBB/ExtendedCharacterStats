@@ -20,6 +20,16 @@ local function GetDefaultStatsProfile()
             text = "General",
 
             movementSpeed = {display = true, refName = "MovementSpeed", text = "Movement Speed"},
+            healthRegeneration = {
+                display = true,
+                refName = "HealthRegen",
+                text = "Health Regeneration"
+            },
+            healthRegenerationCombat = {
+                display = true,
+                refName = "HealthRegenCombat",
+                text = "Combat Health Regeneration"
+            },
         },
 
         melee = {

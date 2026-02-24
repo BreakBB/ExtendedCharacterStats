@@ -22,6 +22,26 @@ local statTranslations = {
         ["esMX"] = "Velocidad de movimiento",
         ["ptBR"] = "Velocidade de movimento"
     },
+    ["Health regeneration"] = {
+        ["enUS"] = true,
+        ["deDE"] = true,
+        ["frFR"] = true,
+        ["zhCN"] = true,
+        ["ruRU"] = true,
+        ["esES"] = true,
+        ["esMX"] = true,
+        ["ptBR"] = true,
+    },
+    ["Combat health regeneration"] = {
+        ["enUS"] = true,
+        ["deDE"] = true,
+        ["frFR"] = true,
+        ["zhCN"] = true,
+        ["ruRU"] = true,
+        ["esES"] = true,
+        ["esMX"] = true,
+        ["ptBR"] = true,
+    },
     ["Melee"] = {
         ["enUS"] = true,
         ["deDE"] = "Nahkampf",

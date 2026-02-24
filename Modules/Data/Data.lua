@@ -19,6 +19,14 @@ end
 
 dataFunctionRefs = {
     ["MovementSpeed"] = function() return Data:GetMovementSpeed() end,
+    ["HealthRegen"] = function()
+        local hp5, _ = Data:GetHP5()
+        return hp5
+    end,
+    ["HealthRegenCombat"] = function()
+        local _, hp5 = Data:GetHP5()
+        return hp5
+    end,
     -- Melee
     ["MeleeAttackPower"] = function() return Data:GetMeleeAttackPower() end,
     ["MeleeCritChance"] = function() return Data:MeleeCrit() end,
