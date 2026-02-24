@@ -87,7 +87,7 @@ function _Config:LoadMeleeSection()
                 name = function() return i18n("Expertise") end,
                 desc = function() return i18n("Shows/Hides the expertise value.") end,
                 width = 1.5,
-                hidden = function() return ECS.IsClassic end,
+                hidden = function() return ECS.IsClassic and (not ECS.IsSoD) end,
                 disabled = function() return (not ExtendedCharacterStats.profile.melee.display); end,
                 get = function () return ExtendedCharacterStats.profile.melee.expertise.display; end,
                 set = function (_, value)
