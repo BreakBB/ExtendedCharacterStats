@@ -211,9 +211,9 @@ function _Config:LoadDefenseSection()
                 width = 1.5,
                 hidden = function() return ECS.IsClassic end,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
-                get = function () return ExtendedCharacterStats.profile.defense.resilience.display; end,
+                get = function () return ExtendedCharacterStats.profile.defense.resilienceRating.display; end,
                 set = function (_, value)
-                    ExtendedCharacterStats.profile.defense.resilience.display = value
+                    ExtendedCharacterStats.profile.defense.resilienceRating.display = value
                     Stats.RebuildStatInfos()
                 end,
             },
