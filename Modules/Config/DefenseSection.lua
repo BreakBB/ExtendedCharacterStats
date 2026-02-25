@@ -20,7 +20,7 @@ function _Config:LoadDefenseSection()
             showDefenseStats = {
                 type = "toggle",
                 order = 0,
-                name = function() return i18n("Show Defense Stats") end,
+                name = function() return i18n("Show defense stats") end,
                 desc = function() return i18n("Shows/Hides all defense stats.") end,
                 width = 1.5,
                 get = function () return ExtendedCharacterStats.profile.defense.display; end,
@@ -45,7 +45,7 @@ function _Config:LoadDefenseSection()
             meleeCritReduction = {
                 type = "toggle",
                 order = 1.81,
-                name = function() return i18n("Melee Crit Reduction") end,
+                name = function() return i18n("Melee crit. reduction") end,
                 desc = function() return i18n("Shows/Hides the reduction percentage of being critically hit by melee attacks.") end,
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
@@ -58,7 +58,7 @@ function _Config:LoadDefenseSection()
             rangedCritReduction = {
                 type = "toggle",
                 order = 1.82,
-                name = function() return i18n("Ranged Crit Reduction") end,
+                name = function() return i18n("Ranged crit. reduction") end,
                 desc = function() return i18n("Shows/Hides the reduction percentage of being critically hit by ranged attacks.") end,
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
@@ -71,7 +71,7 @@ function _Config:LoadDefenseSection()
             spellCritReduction = {
                 type = "toggle",
                 order = 1.83,
-                name = function() return i18n("Spell Crit Reduction") end,
+                name = function() return i18n("Spell crit. reduction") end,
                 desc = function() return i18n("Shows/Hides the reduction percentage of being critically hit by spells.") end,
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
@@ -110,7 +110,7 @@ function _Config:LoadDefenseSection()
             defenseRating = {
                 type = "toggle",
                 order = 1.9,
-                name = function() return i18n("Defense Rating") end,
+                name = function() return i18n("Defense rating") end,
                 desc = function() return i18n("Shows/Hides the defense rating.") end,
                 width = 1.5,
                 hidden = function() return ECS.IsClassic end,
@@ -137,7 +137,7 @@ function _Config:LoadDefenseSection()
             blockChance = {
                 type = "toggle",
                 order = 3,
-                name = function() return i18n("Block Chance") end,
+                name = function() return i18n("Block chance") end,
                 desc = function() return i18n("Shows/Hides the block chance.") end,
                 width = 1.5,
                 hidden = function() return not IsSpellKnown(107) end,
@@ -151,7 +151,7 @@ function _Config:LoadDefenseSection()
             blockValue = {
                 type = "toggle",
                 order = 4,
-                name = function() return i18n("Block Value") end,
+                name = function() return i18n("Block value") end,
                 desc = function() return i18n("Shows/Hides the block value.") end,
                 width = 1.5,
                 hidden = function() return not DataUtils:CanBlock() end,
@@ -165,7 +165,7 @@ function _Config:LoadDefenseSection()
             parry = {
                 type = "toggle",
                 order = 5,
-                name = function() return i18n("Parry Chance") end,
+                name = function() return i18n("Parry chance") end,
                 desc = function() return i18n("Shows/Hides the parry chance.") end,
                 width = 1.5,
                 hidden = function() return not DataUtils:CanParry() end,
@@ -179,7 +179,7 @@ function _Config:LoadDefenseSection()
             dodge = {
                 type = "toggle",
                 order = 6,
-                name = function() return i18n("Dodge Chance") end,
+                name = function() return i18n("Dodge chance") end,
                 desc = function() return i18n("Shows/Hides the dodge chance.") end,
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
