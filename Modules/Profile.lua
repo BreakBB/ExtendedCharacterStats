@@ -6,7 +6,7 @@ local Utils = ECSLoader:ImportModule("Utils")
 
 ---@return number
 function Profile.GetProfileVersion()
-    return 24
+    return 26
 end
 
 ---@return ECSProfile
@@ -286,7 +286,12 @@ local function GetDefaultStatsProfile()
             dodge = {display = true, refName = "DodgeChance", text = "Dodge Chance"},
             resilienceRating = {
                 display = true,
-                refName = "ResilienceValue",
+                refName = "ResilienceRating",
+                text = "Resilience rating"
+            },
+            resilience = {
+                display = true,
+                refName = "Resilience",
                 text = "Resilience"
             },
         },
