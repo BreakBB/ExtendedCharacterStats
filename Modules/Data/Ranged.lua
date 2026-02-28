@@ -1,3 +1,17 @@
+local ECSLoader = ECSLoader
+local GetCombatRating = GetCombatRating
+local GetCombatRatingBonus = GetCombatRatingBonus
+local GetHitModifier = GetHitModifier
+local GetRangedCritChance = GetRangedCritChance
+local IsClassic = ECS.IsClassic
+local IsWotlk = ECS.IsWotlk
+local UnitClass = UnitClass
+local UnitHasRelicSlot = UnitHasRelicSlot
+local UnitLevel = UnitLevel
+local UnitRangedAttack = UnitRangedAttack
+local UnitRangedAttackPower = UnitRangedAttackPower
+local UnitRangedDamage = UnitRangedDamage
+
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
 ---@type Utils
@@ -8,6 +22,7 @@ local DataUtils = ECSLoader:ImportModule("DataUtils")
 local _Ranged = {}
 
 local _, _, classId = UnitClass("player")
+local playerLevel = UnitLevel("player")
 
 ---@return number
 function Data:GetRangeAttackPower()
@@ -69,7 +84,7 @@ function _Ranged:GetHitBonus()
     local hitValue = 0
 
     -- Biznick Scope awards Hit rating in TBC and is part of CR_HIT_RANGED
-    if ECS.IsClassic then
+    if IsClassic then
         local rangedEnchant = DataUtils:GetEnchantForEquipSlot(Utils.CHAR_EQUIP_SLOTS["Range"])
         if rangedEnchant and rangedEnchant == Data.Enchant.Ids.BIZNICK_SCOPE then
             hitValue = hitValue + 3
@@ -89,7 +104,7 @@ end
 function _Ranged:GetHitTalentBonus()
     local bonus = 0
 
-    if ECS.IsWotlk and classId == Data.HUNTER then
+    if IsWotlk and classId == Data.HUNTER then
         bonus = bonus + 1 * DataUtils:GetActiveTalentSpell({53620,53621,53622}) -- Focused Aim
     end
 
@@ -99,7 +114,6 @@ end
 ---@return string
 function Data:RangeMissChanceSameLevel()
     local rangedAttackBase, rangedAttackMod = UnitRangedAttack("player")
-    local playerLevel = UnitLevel("player")
     local enemyDefenseValue = playerLevel * 5
 
     local missChance = DataUtils.GetMissChanceByDifference(rangedAttackBase + rangedAttackMod, enemyDefenseValue)
@@ -118,7 +132,6 @@ end
 function Data.RangeMissChanceBossLevel()
     local rangedAttackBase, rangedAttackMod = UnitRangedAttack("player")
     local rangedWeaponSkill = rangedAttackBase + rangedAttackMod
-    local playerLevel = UnitLevel("player")
     local enemyDefenseValue = (playerLevel + 3) * 5
 
     local missChance = DataUtils.GetMissChanceByDifference(rangedWeaponSkill, enemyDefenseValue)

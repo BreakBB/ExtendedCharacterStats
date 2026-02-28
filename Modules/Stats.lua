@@ -1,3 +1,20 @@
+local After = C_Timer.After
+local CanDualWield = CanDualWield
+local CharacterModelFrame = CharacterModelFrame
+local ECSLoader = ECSLoader
+local error = error
+local insert = table.insert
+local IsClassic = ECS.IsClassic
+local IsSoD = ECS.IsSoD
+local IsWotlk = ECS.IsWotlk
+local PaperDollItemsFrame = PaperDollItemsFrame
+local pairs = pairs
+local type = type
+local remove = table.remove
+local STANDARD_TEXT_FONT = STANDARD_TEXT_FONT
+local UnitHasMana = UnitHasMana
+local UnitHasRelicSlot = UnitHasRelicSlot
+
 ------------------------------------------------------------------
 -- Modules
 ------------------------------------------------------------------
@@ -72,14 +89,17 @@ function Stats.CreateWindow()
     toggleButton:SetText("< ECS")
     toggleButton:SetSize(44, 18)
     -- Move to old position if Leatrix Plus durability button is active. See #20
-    if (LeaPlusDB and LeaPlusDB["DurabilityStatus"] == "On") or PawnInitialize then
-        if OutfitterButton then -- See #89
-            toggleButton:SetPoint("TOPRIGHT", PaperDollItemsFrame, "TOPRIGHT", -55, -16)
+    if LeaPlusDB then
+        local LeaPlusDB = LeaPlusDB
+        if (LeaPlusDB["DurabilityStatus"] == "On") or PawnInitialize then
+            if OutfitterButton then -- See #89
+                toggleButton:SetPoint("TOPRIGHT", PaperDollItemsFrame, "TOPRIGHT", -55, -16)
+            else
+                toggleButton:SetPoint("TOPRIGHT", PaperDollItemsFrame, "TOPRIGHT", -57, -16)
+            end
         else
-            toggleButton:SetPoint("TOPRIGHT", PaperDollItemsFrame, "TOPRIGHT", -57, -16)
+            toggleButton:SetPoint("BOTTOMRIGHT", PaperDollItemsFrame, "BOTTOMRIGHT", -38, 87)
         end
-    else
-        toggleButton:SetPoint("BOTTOMRIGHT", PaperDollItemsFrame, "BOTTOMRIGHT", -38, 87)
     end
     toggleButton:SetScript("OnClick", function ()
         Stats:ToggleWindow()
@@ -88,6 +108,8 @@ function Stats.CreateWindow()
     mainFrame:SetScript("OnShow", function ()
         toggleButton:SetText("< ECS")
         if OutfitterFrame ~= nil and OutfitterButtonFrame ~= nil then
+            local OutfitterButtonFrame = OutfitterButtonFrame
+            local OutfitterFrame = OutfitterFrame
             OutfitterFrame:SetPoint("TOPLEFT", OutfitterButtonFrame  , "TOPRIGHT", -34 + ExtendedCharacterStats.general.window.width, -38)
         end
         Stats.UpdateInformation()
@@ -95,6 +117,8 @@ function Stats.CreateWindow()
     mainFrame:SetScript("OnHide", function ()
         toggleButton:SetText("ECS >")
         if OutfitterFrame ~= nil and OutfitterButtonFrame ~= nil then
+            local OutfitterButtonFrame = OutfitterButtonFrame
+            local OutfitterFrame = OutfitterFrame
             OutfitterFrame:SetPoint("TOPLEFT", OutfitterButtonFrame  , "TOPRIGHT", -34, -38)
         end
     end)
@@ -104,10 +128,11 @@ function Stats.CreateWindow()
             Stats:HideWindow()
         end
 
-        if ECS.IsSoD then
+        if IsSoD then
             -- next frame
-            C_Timer.After(0, function ()
+            After(0, function ()
                 if EngravingFrame then
+                    local EngravingFrame = EngravingFrame
                     if EngravingFrame:IsShown() then
                         mainFrame:ClearAllPoints()
                         mainFrame:SetPoint("LEFT", EngravingFrame, "RIGHT", 10, 19)
@@ -217,24 +242,24 @@ _CreateStatInfos = function()
         category,
         category.attackPower,
         category.crit,
-        ECS.IsWotlk and category.penetrationRating or nil,
-        (not ECS.IsClassic) and category.penetration or nil,
-        (not ECS.IsClassic) and category.expertiseRating or nil,
-        (not ECS.IsClassic) and category.expertise or nil,
-        (not ECS.IsClassic) and category.hasteRating or nil,
-        (not ECS.IsClassic) and category.hasteBonus or nil
+        IsWotlk and category.penetrationRating or nil,
+        IsClassic and nil or category.penetration,
+        IsClassic and nil or category.expertiseRating,
+        IsClassic and nil or category.expertise,
+        IsClassic and nil or category.hasteRating,
+        IsClassic and nil or category.hasteBonus
     )
     if category.display then
         category = category.hit
         _CreateStatInfo(
             category,
-            (not ECS.IsClassic) and category.rating or nil,
+            IsClassic and nil or category.rating,
             category.bonus,
             category.sameLevel,
             category.bossLevel
         )
 
-        if (not ECS.IsWotlk) then
+        if (not IsWotlk) then
             category = profile.melee.glance
             _CreateStatInfo(category, category.sameLevel, category.damageSameLevel, category.bossLevel, category.damageBossLevel)
         end
@@ -253,10 +278,10 @@ _CreateStatInfos = function()
             category,
             category.attackPower,
             category.crit,
-            ECS.IsWotlk and category.penetrationRating or nil,
-            (not ECS.IsClassic) and category.penetration or nil,
-            (not ECS.IsClassic) and category.hasteRating or nil,
-            (not ECS.IsClassic) and category.hasteBonus or nil,
+            IsWotlk and category.penetrationRating or nil,
+            IsClassic and nil or category.penetration,
+            IsClassic and nil or category.hasteRating,
+            IsClassic and nil or category.hasteBonus,
             category.attackSpeed
         )
 
@@ -264,7 +289,7 @@ _CreateStatInfos = function()
             category = category.hit
             _CreateStatInfo(
                 category,
-                (not ECS.IsClassic) and category.rating or nil,
+                IsClassic and nil or category.rating,
                 category.bonus,
                 category.sameLevel,
                 category.bossLevel
@@ -281,16 +306,16 @@ _CreateStatInfos = function()
         category.spellCritReduction,
         category.avoidance,
         category.avoidanceBoss,
-        (not ECS.IsClassic) and category.defenseRating or nil,
+        IsClassic and nil or category.defenseRating,
         category.defense,
-        (not ECS.IsClassic and DataUtils:CanBlock()) and category.blockRating or nil,
+        (not IsClassic and DataUtils:CanBlock()) and category.blockRating or nil,
         DataUtils:CanBlock() and category.blockChance or nil,
         DataUtils:CanBlock() and category.blockValue or nil,
-        (not ECS.IsClassic and DataUtils:CanParry()) and category.parryRating or nil,
+        (not IsClassic and DataUtils:CanParry()) and category.parryRating or nil,
         DataUtils:CanParry() and category.parry or nil,
-        (not ECS.IsClassic) and category.dodgeRating or nil,
+        IsClassic and nil or category.dodgeRating,
         category.dodge or nil,
-        (not ECS.IsClassic) and category.resilienceRating or nil
+        IsClassic and nil or category.resilienceRating
     )
 
     if UnitHasMana("player") then
@@ -305,12 +330,12 @@ _CreateStatInfos = function()
     local spellHit = spell.hit
     _CreateStatInfo(
         category,
-        (not ECS.IsClassic) and category.hasteRating or nil,
+        IsClassic and nil or category.hasteRating,
         category.hasteBonus,
-        (not ECS.IsClassic) and category.penetrationRating or nil,
-        (not ECS.IsClassic) and category.penetration or nil,
+        IsClassic and nil or category.penetrationRating,
+        IsClassic and nil or category.penetration,
         spellBonus.bonusHealing,
-        (not ECS.IsClassic) and spellHit.rating or nil,
+        IsClassic and nil or spellHit.rating,
         spell.arcane.display and spellBonus.arcaneDmg or nil,
         spell.arcane.display and spellCrit.display and spellCrit.arcane or nil,
         spell.arcane.display and spellHit.bonus.display and spellHit.arcaneHitBonus or nil,
@@ -360,7 +385,7 @@ _CreateHeader = function(name, displayText, isSubHeader)
     end
     lastYOffset = lastYOffset - 20
     ---@class StatsHeader
-    local header = table.remove(framePool)
+    local header = remove(framePool)
     if not header then
         header = _Stats.frame.ScrollChild:CreateFontString(name, "OVERLAY", headerFont)
     else
@@ -385,7 +410,7 @@ _CreateText = function(name, displayText, isSubText)
 
     lastYOffset = lastYOffset - 15
     ---@class StatsText
-    local stat = table.remove(framePool)
+    local stat = remove(framePool)
     if not stat then
         stat = _Stats.frame.ScrollChild:CreateFontString(name, "OVERLAY", statFont)
     else
@@ -393,7 +418,7 @@ _CreateText = function(name, displayText, isSubText)
     end
     stat:SetPoint("TOPLEFT", xOffSet,  lastYOffset)
     stat:SetText(displayText)
-    stat:SetFont(STANDARD_TEXT_FONT,  ExtendedCharacterStats.general.statFontSize)
+    stat:SetFont(STANDARD_TEXT_FONT, ExtendedCharacterStats.general.statFontSize)
     stat:Show()
     _Stats.displayedLines[name] = stat
 end
@@ -402,7 +427,7 @@ end
 ---@param frame StatsHeader|StatsText
 function Stats:RecycleFrame(frame)
     frame:Hide()
-    table.insert(framePool, frame)
+    insert(framePool, frame)
 end
 
 --- Resets the Y-Offset and rebuilds the displayed frames

@@ -1,3 +1,19 @@
+local ECSLoader = ECSLoader
+local GetCombatRating = GetCombatRating
+local GetCombatRatingBonus = GetCombatRatingBonus
+local GetCritChance = GetCritChance
+local GetExpertise = GetExpertise
+local GetHitModifier = GetHitModifier
+local GetShapeshiftFormInfo = GetShapeshiftFormInfo
+local IsClassic = ECS.IsClassic
+local IsSoD = ECS.IsSoD
+local IsWotlk = ECS.IsWotlk
+local UnitAttackBothHands = UnitAttackBothHands
+local UnitAttackPower = UnitAttackPower
+local UnitAttackSpeed = UnitAttackSpeed
+local UnitClass = UnitClass
+local UnitLevel = UnitLevel
+
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
@@ -7,6 +23,7 @@ local Utils = ECSLoader:ImportModule("Utils")
 
 local _Melee = {}
 local _, _, classId = UnitClass("player")
+local playerLevel = UnitLevel("player")
 
 ---@return number
 function Data:GetMeleeAttackPower()
@@ -62,27 +79,27 @@ function _Melee:GetHitTalentBonus()
     local mod = 0
 
     if classId == Data.WARRIOR then
-        if ECS.IsWotlk then
+        if IsWotlk then
             -- precision
             mod = 1 * DataUtils:GetActiveTalentSpell({29590,29591,29592})
         end
     elseif classId == Data.HUNTER then
-        if ECS.IsWotlk then
+        if IsWotlk then
             -- focused aim
             mod = 1 * DataUtils:GetActiveTalentSpell({53620,53621,53622})
         end
     elseif classId == Data.SHAMAN then
-        if ECS.IsWotlk then
+        if IsWotlk then
             -- Dual Wield Specialization
             if Data:GetMeleeAttackSpeedOffHand() > 0 then
                 mod = 2 * DataUtils:GetActiveTalentSpell({30816,30818,30819})
             end
-        elseif ECS.IsClassic then
+        elseif IsClassic then
             -- Nature's Guidance
             mod = 1 * DataUtils:GetActiveTalentSpell({16180,16196,16198})
         end
     elseif classId == Data.ROGUE then
-        if ECS.IsClassic then
+        if IsClassic then
             -- precision
             mod = 1 * DataUtils:GetActiveTalentSpell({13705,13832,13843,13844,13845})
         end
@@ -101,7 +118,7 @@ end
 function _Melee.GetHitFromRunes()
     local mod = 0
 
-    if (not ECS.IsSoD) then
+    if (not IsSoD) then
         return mod
     end
 
@@ -118,7 +135,6 @@ end
 ---@return string
 function Data:MeleeHitMissChanceSameLevel()
     local mainBase, mainMod, _, _ = UnitAttackBothHands("player")
-    local playerLevel = UnitLevel("player")
     local enemyDefenseValue = playerLevel * 5
 
     local missChance
@@ -147,12 +163,11 @@ end
 ---@return string
 function Data:MeleeHitMissChanceBossLevel()
     local mainBase, mainMod, _, _ = UnitAttackBothHands("player")
-    local playerLevel = UnitLevel("player")
     local enemyDefenseValue = (playerLevel + 3) * 5
 
     local missChance
     if DataUtils:IsShapeshifted() then
-        missChance = ECS.IsWotlk and 8 or 9
+        missChance = IsWotlk and 8 or 9
     else
         missChance = DataUtils.GetMissChanceByDifference(mainBase + mainMod, enemyDefenseValue)
     end
@@ -184,7 +199,6 @@ end
 ---@return string
 function Data:GlanceHitChanceByLevel(level)
     local mainBase, mainMod, _, _ = UnitAttackBothHands("player")
-    local playerLevel = UnitLevel("player")
     local enemyDefenseValue = (playerLevel + level) * 5
 
     local glancingChance = DataUtils:GetGlancingChanceByDifference(playerLevel, mainBase + mainMod, enemyDefenseValue)
@@ -204,7 +218,6 @@ end
 ---@return string
 function Data:GlanceDamageByLevel(level)
     local mainBase, mainMod, _, _ = UnitAttackBothHands("player")
-    local playerLevel = UnitLevel("player")
     local enemyDefenseValue = (playerLevel + level) * 5
 
     local glancePenalty = DataUtils:GetGlancingDamage(mainBase + mainMod, enemyDefenseValue)
@@ -231,7 +244,7 @@ end
 function Data:GetArmorPenetration()
     local armorPenetration = GetArmorPenetration()
 
-    if ECS.IsWotlk and classId == Data.WARRIOR then
+    if IsWotlk and classId == Data.WARRIOR then
         local _, isActive = GetShapeshiftFormInfo(1)
         if isActive then
             armorPenetration = armorPenetration + 10 -- 10% from Battle Stance

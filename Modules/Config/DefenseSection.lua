@@ -1,3 +1,7 @@
+local ECSLoader = ECSLoader
+local IsClassic = ECS.IsClassic
+local IsSpellKnown = C_SpellBook.IsSpellKnown
+
 ---@class Config
 local Config = ECSLoader:ImportModule("Config")
 local _Config = Config.private
@@ -113,7 +117,7 @@ function _Config:LoadDefenseSection()
                 name = function() return i18n("Defense Rating") end,
                 desc = function() return i18n("Shows/Hides the defense rating.") end,
                 width = 1.5,
-                hidden = function() return ECS.IsClassic end,
+                hidden = function() return IsClassic end,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
                 get = function () return ExtendedCharacterStats.profile.defense.defenseRating.display; end,
                 set = function (_, value)
@@ -195,7 +199,7 @@ function _Config:LoadDefenseSection()
                 name = function() return i18n("Resilience") end,
                 desc = function() return i18n("Shows/Hides the resilience value.") end,
                 width = 1.5,
-                hidden = function() return ECS.IsClassic end,
+                hidden = function() return IsClassic end,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
                 get = function () return ExtendedCharacterStats.profile.defense.resilienceRating.display; end,
                 set = function (_, value)

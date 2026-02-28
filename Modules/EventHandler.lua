@@ -1,3 +1,7 @@
+local After = C_Timer.After
+local ECSLoader = ECSLoader
+local UnitGUID = UnitGUID
+
 ---@class EventHandler
 local EventHandler = ECSLoader:CreateModule("EventHandler")
 
@@ -6,25 +10,27 @@ local Stats = ECSLoader:ImportModule("Stats")
 ---@type GearInfos
 local GearInfos = ECSLoader:ImportModule("GearInfos")
 
+local playerGUID = UnitGUID("player")
+
 local function DelayedUpdateInformation()
     local statsFrame = Stats:GetFrame()
     statsFrame:SetScript("OnUpdate", nil)
     -- update next frame
-    C_Timer.After(0, function ()
+    After(0, function ()
         Stats.UpdateInformation()
     end)
 end
 
 local function DelayedUpdateGearColorFrames()
     -- update next frame
-    C_Timer.After(0, function ()
+    After(0, function ()
         GearInfos.UpdateGearColorFrames()
     end)
 end
 
 local function DelayedUpdateInspectGearColorFrames()
     -- update next frame
-    C_Timer.After(0, function ()
+    After(0, function ()
         GearInfos:UpdateInspectGearColorFrames()
     end)
 end
@@ -66,12 +72,12 @@ function EventHandler.HandleOnEvent(self,event, ...)
                 event == "UNIT_RANGED_ATTACK_POWER"
             ) and args[1] == "player") then
             statsFrame:SetScript("OnUpdate", DelayedUpdateInformation)
-        elseif (event == "INSPECT_READY" and args[1] == UnitGUID("player")) or event == "PLAYER_EQUIPMENT_CHANGED" or event == "SOCKET_INFO_SUCCESS" then
+        elseif (event == "INSPECT_READY" and args[1] == playerGUID) or event == "PLAYER_EQUIPMENT_CHANGED" or event == "SOCKET_INFO_SUCCESS" then
             statsFrame:SetScript("OnUpdate", DelayedUpdateInformation)
         end
     end
 
-    if (event == "INSPECT_READY" and args[1] == UnitGUID("player")) or event == "PLAYER_EQUIPMENT_CHANGED" then
+    if (event == "INSPECT_READY" and args[1] == playerGUID) or event == "PLAYER_EQUIPMENT_CHANGED" then
         DelayedUpdateGearColorFrames()
     end
     if InspectPaperDollFrame and event == "INSPECT_READY" and args[1] == UnitGUID("target") then
