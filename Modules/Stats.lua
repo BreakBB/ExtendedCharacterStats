@@ -323,8 +323,8 @@ _CreateStatInfos = function()
         _CreateStatInfo(
             category,
             category.stun,
-            (IsWotlk or (not (classId == Data.WARRIOR))) and nil or category.charm,
-            (IsClassic and not (classId == Data.PALADIN)) and nil or category.disorient,
+            (IsWotlk or (classId ~= Data.WARRIOR)) and nil or category.charm,
+            (IsClassic and (classId ~= Data.PALADIN)) and nil or category.disorient,
             (IsWotlk or not (IsClassic and classId == Data.HUNTER)) and nil or category.root,
             (IsWotlk or not (IsClassic and classId == Data.HUNTER)) and nil or category.snare,
             (IsClassic or (classId == Data.PRIEST or classId == Data.MAGE or classId == Data.WARLOCK)) and category.silence or nil,

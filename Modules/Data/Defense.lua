@@ -257,7 +257,7 @@ function _Defense:GetEnchantsBlockValue()
 end
 
 ---@return table<number>
-function _Defense:GetMechanicResistance()
+function Data:GetMechanicResistance()
     local resistance = {
         ["charm"] = 0,
         ["curse"] = 0,

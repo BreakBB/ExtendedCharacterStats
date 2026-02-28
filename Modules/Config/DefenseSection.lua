@@ -256,7 +256,7 @@ function _Config:LoadDefenseSection()
                         end,
                         width = 1.5,
                         hidden = function()
-                            return (IsWotlk or (not (classId == Data.WARRIOR)))
+                            return (IsWotlk or (classId ~= Data.WARRIOR))
                         end,
                         disabled = function()
                             return (
@@ -283,7 +283,7 @@ function _Config:LoadDefenseSection()
                         end,
                         width = 1.5,
                         hidden = function()
-                            return (IsClassic and not (classId == Data.PALADIN))
+                            return (IsClassic and (classId ~= Data.PALADIN))
                         end,
                         disabled = function()
                             return (
