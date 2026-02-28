@@ -4,6 +4,7 @@ local Data = ECSLoader:CreateModule("Data")
 local dataFunctionRefs
 local playerLevel = UnitLevel("player")
 local enemyLevel = playerLevel + 3
+local mechanicResistance = Data:GetMechanicResistance()
 
 ---@param refName string
 ---@return number | string
@@ -67,6 +68,18 @@ dataFunctionRefs = {
     ["BlockChance"] = function() return Data:GetBlockChance() end,
     ["BlockValue"] = function() return Data:GetBlockValue() end,
     ["ResilienceValue"] = function() return ECS.IsClassic and 0 or Data:GetResilienceRating() end,
+    ["StunResistance"] = function() return mechanicResistance.stun end,
+    ["CharmResistance"] = function() return mechanicResistance.charm end,
+    ["DisorientResistance"] = function() return mechanicResistance.disorient end,
+    ["RootResistance"] = function() return mechanicResistance.root end,
+    ["SnareResistance"] = function() return mechanicResistance.snare end,
+    ["InterruptResistance"] = function() return mechanicResistance.interrupt end,
+    ["SilenceResistance"] = function() return mechanicResistance.silence end,
+    ["FleeingResistance"] = function() return mechanicResistance.fleeing end,
+    ["HorrorResistance"] = function() return mechanicResistance.horror end,
+    ["DiseaseResistance"] = function() return mechanicResistance.disease end,
+    ["CurseResistance"] = function() return mechanicResistance.curse end,
+    ["PoisonResistance"] = function() return mechanicResistance.poison end,
     -- Spell
     ["SpellHitRating"] = function() return ECS.IsClassic and 0 or Data:SpellHitRating() end,
     ["SpellHitBonus"] = function() return Data.SpellHitBonus(Data.HOLY_SCHOOL) end,
