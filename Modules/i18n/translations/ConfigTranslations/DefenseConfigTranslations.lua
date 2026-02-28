@@ -182,6 +182,16 @@ local defenseConfigTranslations = {
         ["esMX"] = false,
         ["ptBR"] = false
     },
+    ["Shows/Hides the resilience rating."] = {
+        ["enUS"] = true,
+        ["deDE"] = false,
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false,
+    },
 }
 
 for k, v in pairs(defenseConfigTranslations) do
