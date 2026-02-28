@@ -1,3 +1,7 @@
+local ECSLoader = ECSLoader
+local IsClassic = ECS.IsClassic
+local IsWotlk = ECS.IsWotlk
+
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
 
@@ -351,6 +355,10 @@ Data.Aura = {
         [25894] = (ECS.IsClassic and 1 or nil), -- Greater Blessing of Wisdom rank 1
         [25918] = (ECS.IsClassic and 1 or nil), -- Greater Blessing of Wisdom rank 2
     },
+    ResistanceInterrupt = {
+        [14743] = IsWotlk and nil or 10, -- Focused Casting
+        [27828] = IsWotlk and nil or 20, -- Focused Casting
+    },
     SpellCrit = {
         [24907] = ((not ECS.IsClassic) and 5 or nil), -- Moonkin Aura
         [29177] = 6, -- Elemental Devastation Rank 2
@@ -519,6 +527,18 @@ Data.Gem = {
         [41477] = 4, -- Perfect Sundered Dark Jade
         [42146] = 17, -- Lustrous Dragon's Eye
     },
+    ResistRoot = {
+        [32195] = (IsWotlk and nil or 5), -- Enigmatic Skyfire Diamond
+    },
+    ResistSnare = {
+        [32195] = (IsWotlk and nil or 5), -- Enigmatic Skyfire Diamond
+    },
+    ResistStun = {
+        [25896] = (IsWotlk and nil or 5), -- Powerful Earthstorm Diamond
+        [32195] = (IsWotlk and nil or 5), -- Enigmatic Skyfire Diamond
+        [32641] = 5, -- Imbued Unstable Diamond
+        [32640] = 5, -- Potent Unstable Diamond
+    }
 }
 Data.Item = {
     IsTimeworn = {
@@ -642,6 +662,26 @@ Data.Item = {
         [234962] = true,
         [234963] = true,
         [235047] = true,
+    },
+    ResistDisorient = {
+        [30519] = 10, -- Foreman's Reinforced Helmet
+    },
+    ResistFleeing = {
+        [17759] = (IsWotlk and nil or 1), -- Mark of Resolution
+        [28428] = 8, -- Lionheart Blade
+        [28429] = 8, -- Lionheart Champion
+        [28430] = 8, -- Lionheart Executioner
+    },
+    ResistSilence = {
+        [18345] = (IsClassic and 5 or nil), -- Murmuring Ring
+        [19786] = (IsClassic and 7 or nil), -- Voice Amplification Modulator
+        [21517] = (IsClassic and 10 or nil), -- Gnomish Turban of Psychic Might
+        [234134] = 10, -- Gnomish Turban of Psychic Might
+    },
+    ResistStun = {
+        [17759] = (IsWotlk and nil or 1), -- Mark of Resolution
+        [23838] = 10, -- Foreman's Enchanted Helmet
+        [30519] = 10, -- Foreman's Reinforced Helmet
     },
     SpellHaste = {
         [235874] = 2,
@@ -788,12 +828,15 @@ Data.Item = {
 }
 Data.setNames = {
     AUGURS_REGALIA = "Augur's Regalia",
+    BATTLECAST_GARB = "Battlecast Garb",
     BLOODSOUL_EMBRACE = "Bloodsoul Embrace",
     DAWN_OF_TRANSCENDENCE = "Dawn of Transcendence",
     FEL_IRON_CHAIN = "Fel Iron Chain",
     FREETHINKERS_ARMOR = "Freethinker's Armor",
     GREEN_DRAGON_MAIL = "Green Dragon Mail",
     HARUSPEXS_GARB = "Haruspex's Garb",
+    IRONWEAVE_BATTLESUIT = "Ironweave Battlesuit",
+    IRONWEAVE_BATTLESUIT_SOD = "Ironweave Battlesuit SoD",
     LIVING_GREEN_DRAGON_MAIL = "Living Green Dragon Mail",
     PRIMAL_MOONCLOTH = "Primal Mooncloth",
     STORMRAGE_RAIMENT = "Stormrage Raiment",

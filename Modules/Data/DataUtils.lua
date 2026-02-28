@@ -1,9 +1,21 @@
+local ECSLoader = ECSLoader
+local floor = math.floor
+local GetBuffDataByIndex = C_UnitAuras.GetBuffDataByIndex
+local GetInventoryItemLink = GetInventoryItemLink
+local GetItemInfo = C_Item.GetItemInfo
+local GetRuneForEquipmentSlot = C_Engraving.GetRuneForEquipmentSlot
+local IsSoD = ECS.IsSoD
+local IsSpellKnown = C_SpellBook.IsSpellKnown
+local IsWotlk = ECS.IsWotlk
+local match = string.match
+local min = math.min
+local strsplit = strsplit
+local tonumber = tonumber
+
 ---@class DataUtils
 local DataUtils = ECSLoader:CreateModule("DataUtils")
 ---@type Data
 local Data = ECSLoader:ImportModule("Data")
-
-local IsSpellKnown = C_SpellBook.IsSpellKnown
 
 --- Rounds every number down to the given decimal places
 ---@param num number
@@ -14,14 +26,14 @@ function DataUtils:Round(num, decimalPlaces)
         return 0
     end
     local mult = 10^(decimalPlaces)
-    return math.floor(num * mult + 0.5) / mult
+    return floor(num * mult + 0.5) / mult
 end
 
 ---@return boolean
 function DataUtils:IsShapeshifted()
     local i = 1
     repeat
-        local aura = C_UnitAuras.GetBuffDataByIndex("player", i)
+        local aura = GetBuffDataByIndex("player", i)
         i = i + 1
         if aura and aura.spellId then
             if Data.Aura.IsFeralForm[aura.spellId] then
@@ -44,7 +56,7 @@ function DataUtils.GetMissChanceByDifference(weaponSkill, defenseValue)
         -- For a difference of 11-14 each point in weapon skill is worth 0.4% miss chance reduction
         local extraWeaponSkillDifference = ((15 - delta) * 0.2)
         return DataUtils:Round(6 + delta * 0.2 - extraWeaponSkillDifference, 2)
-    elseif ECS.IsWotlk then
+    elseif IsWotlk then
         -- For a difference of 15+ each point in weapon skill is worth 0.2% miss chance reduction
         return 5 + delta * 0.2
     else
@@ -58,7 +70,7 @@ end
 ---@param defenseValue number
 ---@return number
 function DataUtils:GetGlancingChanceByDifference(level, weaponSkill, defenseValue)
-    local glancingChance = 0.1 + (defenseValue - math.min(level*5, weaponSkill)) * 0.02
+    local glancingChance = 0.1 + (defenseValue - min(level*5, weaponSkill)) * 0.02
 
     -- Ensure the glancing chance does not exceed 1.0 (100%)
     if glancingChance > 1.0 then
@@ -72,7 +84,7 @@ end
 ---@return number
 function DataUtils:GetGlancingDamage(weaponSkill, defenseValue)
     local difference = defenseValue - weaponSkill
-    local low = math.min(0.91 ,(1.3 - 0.05 * difference))
+    local low = min(0.91 ,(1.3 - 0.05 * difference))
 
     -- Ensure low does not go below 0.01
     if low < 0.01 then
@@ -107,7 +119,7 @@ end
 ---@return number|nil
 function DataUtils:GetEnchantFromItemLink(itemLink)
     if itemLink then
-        local _, itemStringLink = C_Item.GetItemInfo(itemLink)
+        local _, itemStringLink = GetItemInfo(itemLink)
         if itemStringLink then
             local _, _, enchant, _ = strsplit(":", itemStringLink, 4)
             return tonumber(enchant)
@@ -120,7 +132,7 @@ end
 ---@return number|nil
 function DataUtils.GetRuneForEquipSlot(equipSlot)
     local slotId, _ = GetInventorySlotInfo(equipSlot)
-    local runeInfo = C_Engraving.GetRuneForEquipmentSlot(slotId)
+    local runeInfo = GetRuneForEquipmentSlot(slotId)
 
     if runeInfo then
         return runeInfo.itemEnchantmentID
@@ -130,13 +142,13 @@ function DataUtils.GetRuneForEquipSlot(equipSlot)
 end
 
 ---@param itemLink ItemLink
----@return string | nil, string | nil, string | nil
+---@return table<number | nil> | nil
 function DataUtils:GetSocketedGemsFromItemLink(itemLink)
     if itemLink then
-        local _, itemStringLink = C_Item.GetItemInfo(itemLink)
+        local _, itemStringLink = GetItemInfo(itemLink)
         if itemStringLink then
             local _, _, gem1, gem2, gem3, _ = strsplit(":", itemStringLink, 6)
-            return gem1, gem2, gem3
+            return {gem1 and tonumber(gem1) or nil, gem2 and tonumber(gem2) or nil, gem3 and tonumber(gem3) or nil}
         end
     end
     return nil
@@ -157,7 +169,7 @@ end
 ---@return number
 function DataUtils:GetActiveTalentSpell(talentList)
     for i = #talentList,1,-1 do
-        if C_SpellBook.IsSpellKnown(talentList[i]) then
+        if IsSpellKnown(talentList[i]) then
             return i
         end
     end
@@ -167,7 +179,7 @@ function DataUtils:GetActiveTalentSpell(talentList)
 ---@return number
 function DataUtils:CountTimewornItems()
     local timeworn = 0
-     if ECS.IsSoD then
+     if IsSoD then
         for i = 1, 18 do
             local id, _ = GetInventoryItemID("player", i)
             if Data.Item.IsTimeworn[id] then
@@ -176,6 +188,25 @@ function DataUtils:CountTimewornItems()
         end
     end
     return timeworn
+end
+
+---@return number
+function DataUtils:GetValueFromAuraTooltip(index, type)
+    if not ECS.scanningTooltip then
+        ECS.scanningTooltip = CreateFrame("GameTooltip", "scanningTooltip", nil, "GameTooltipTemplate")
+        ECS.scanningTooltip:SetOwner(WorldFrame, "ANCHOR_NONE")
+    end
+
+    ECS.scanningTooltip:ClearLines()
+    ECS.scanningTooltip:SetUnitAura("player", index, type)
+    local region = select(5, ECS.scanningTooltip:GetRegions())
+    if region and region:GetObjectType() == "FontString" then
+        local tooltip = region:GetText()
+        if tooltip then
+            return tonumber(match(tooltip, "%d[%d,.]*"))
+        end
+    end
+    return 0
 end
 
 return DataUtils

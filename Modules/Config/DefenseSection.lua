@@ -1,3 +1,9 @@
+local ECSLoader = ECSLoader
+local IsClassic = ECS.IsClassic
+local IsTBC = ECS.IsTBC
+local IsWotlk = ECS.IsWotlk
+local UnitClass = UnitClass
+
 ---@class Config
 local Config = ECSLoader:ImportModule("Config")
 local _Config = Config.private
@@ -8,6 +14,10 @@ local Stats = ECSLoader:ImportModule("Stats")
 local i18n = ECSLoader:ImportModule("i18n")
 ---@type DataUtils
 local DataUtils = ECSLoader:ImportModule("DataUtils")
+---@class Data
+local Data = ECSLoader:ImportModule("Data")
+
+local _, _, classId = UnitClass("player")
 
 function _Config:LoadDefenseSection()
     return {
@@ -202,6 +212,333 @@ function _Config:LoadDefenseSection()
                     ExtendedCharacterStats.profile.defense.resilienceRating.display = value
                     Stats.RebuildStatInfos()
                 end,
+            },
+            mechanicResistanceGroup = {
+                type = "group",
+                order = 8,
+                inline = true,
+                name = function()
+                    return i18n("Mechanic resistance")
+                end,
+                args = {
+                    stun = {
+                        type = "toggle",
+                        order = 1,
+                        name = function()
+                            return i18n("Stun")
+                        end,
+                        desc = function()
+                            return i18n("Shows/Hides the resistance to stun mechanics.")
+                        end,
+                        width = 1.5,
+                        disabled = function()
+                            return (
+                                not ExtendedCharacterStats.profile.defense.display
+                                or not ExtendedCharacterStats.profile.defense.mechanicResistance.display
+                            )
+                        end,
+                        get = function()
+                            return ExtendedCharacterStats.profile.defense.mechanicResistance.stun.display
+                        end,
+                        set = function(_, value)
+                            ExtendedCharacterStats.profile.defense.mechanicResistance.stun.display = value
+                            Stats.RebuildStatInfos()
+                        end,
+                    },
+                    charm = {
+                        type = "toggle",
+                        order = 2,
+                        name = function()
+                            return i18n("Charm")
+                        end,
+                        desc = function()
+                            return i18n("Shows/Hides the resistance to charm mechanics.")
+                        end,
+                        width = 1.5,
+                        hidden = function()
+                            return (IsWotlk or (not classId == Data.WARRIOR))
+                        end,
+                        disabled = function()
+                            return (
+                                not ExtendedCharacterStats.profile.defense.display
+                                or not ExtendedCharacterStats.profile.defense.mechanicResistance.display
+                            )
+                        end,
+                        get = function()
+                            return ExtendedCharacterStats.profile.defense.mechanicResistance.charm.display
+                        end,
+                        set = function(_, value)
+                            ExtendedCharacterStats.profile.defense.mechanicResistance.charm.display = value
+                            Stats.RebuildStatInfos()
+                        end,
+                    },
+                    disorient = {
+                        type = "toggle",
+                        order = 3,
+                        name = function()
+                            return i18n("Disorient")
+                        end,
+                        desc = function()
+                            return i18n("Shows/Hides the resistance to disorient mechanics.")
+                        end,
+                        width = 1.5,
+                        hidden = function()
+                            return (IsClassic and not classId == Data.PALADIN)
+                        end,
+                        disabled = function()
+                            return (
+                                not ExtendedCharacterStats.profile.defense.display
+                                or not ExtendedCharacterStats.profile.defense.mechanicResistance.display
+                            )
+                        end,
+                        get = function()
+                            return ExtendedCharacterStats.profile.defense.mechanicResistance.disorient.display
+                        end,
+                        set = function(_, value)
+                            ExtendedCharacterStats.profile.defense.mechanicResistance.disorient.display = value
+                            Stats.RebuildStatInfos()
+                        end,
+                    },
+                    root = {
+                        type = "toggle",
+                        order = 4,
+                        name = function()
+                            return i18n("Root")
+                        end,
+                        desc = function()
+                            return i18n("Shows/Hides the resistance to root mechanics.")
+                        end,
+                        width = 1.5,
+                        hidden = function()
+                            return IsWotlk or not (IsClassic and classId == Data.HUNTER)
+                        end,
+                        disabled = function()
+                            return (
+                                not ExtendedCharacterStats.profile.defense.display
+                                or not ExtendedCharacterStats.profile.defense.mechanicResistance.display
+                            )
+                        end,
+                        get = function()
+                            return ExtendedCharacterStats.profile.defense.mechanicResistance.root.display
+                        end,
+                        set = function(_, value)
+                            ExtendedCharacterStats.profile.defense.mechanicResistance.root.display = value
+                            Stats.RebuildStatInfos()
+                        end,
+                    },
+                    snare = {
+                        type = "toggle",
+                        order = 5,
+                        name = function()
+                            return i18n("snare")
+                        end,
+                        desc = function()
+                            return i18n("Shows/Hides the resistance to snare mechanics.")
+                        end,
+                        width = 1.5,
+                        hidden = function()
+                            return IsWotlk or not (IsClassic and classId == Data.HUNTER)
+                        end,
+                        disabled = function()
+                            return (
+                                not ExtendedCharacterStats.profile.defense.display
+                                or not ExtendedCharacterStats.profile.defense.mechanicResistance.display
+                            )
+                        end,
+                        get = function()
+                            return ExtendedCharacterStats.profile.defense.mechanicResistance.snare.display
+                        end,
+                        set = function(_, value)
+                            ExtendedCharacterStats.profile.defense.mechanicResistance.snare.display = value
+                            Stats.RebuildStatInfos()
+                        end,
+                    },
+                    silence = {
+                        type = "toggle",
+                        order = 6,
+                        name = function()
+                            return i18n("Silence")
+                        end,
+                        desc = function()
+                            return i18n("Shows/Hides the resistance to silence mechanics.")
+                        end,
+                        width = 1.5,
+                        hidden = function()
+                            return not (
+                                IsClassic or (classId == Data.PRIEST or classId == Data.MAGE or classId == Data.WARLOCK)
+                            )
+                        end,
+                        disabled = function()
+                            return (
+                                not ExtendedCharacterStats.profile.defense.display
+                                or not ExtendedCharacterStats.profile.defense.mechanicResistance.display
+                            )
+                        end,
+                        get = function()
+                            return ExtendedCharacterStats.profile.defense.mechanicResistance.silence.display
+                        end,
+                        set = function(_, value)
+                            ExtendedCharacterStats.profile.defense.mechanicResistance.silence.display = value
+                            Stats.RebuildStatInfos()
+                        end,
+                    },
+                    interrupt = {
+                        type = "toggle",
+                        order = 7,
+                        name = function()
+                            return i18n("Interrupt")
+                        end,
+                        desc = function()
+                            return i18n("Shows/Hides the resistance to interrupt mechanics.")
+                        end,
+                        width = 1.5,
+                        disabled = function()
+                            return (
+                                not ExtendedCharacterStats.profile.defense.display
+                                or not ExtendedCharacterStats.profile.defense.mechanicResistance.display
+                            )
+                        end,
+                        get = function()
+                            return ExtendedCharacterStats.profile.defense.mechanicResistance.interrupt.display
+                        end,
+                        set = function(_, value)
+                            ExtendedCharacterStats.profile.defense.mechanicResistance.interrupt.display = value
+                            Stats.RebuildStatInfos()
+                        end,
+                    },
+                    fleeing = {
+                        type = "toggle",
+                        order = 8,
+                        name = function()
+                            return i18n("Fear")
+                        end,
+                        desc = function()
+                            return i18n("Shows/Hides the resistance to fear.")
+                        end,
+                        width = 1.5,
+                        disabled = function()
+                            return (
+                                not ExtendedCharacterStats.profile.defense.display
+                                or not ExtendedCharacterStats.profile.defense.mechanicResistance.display
+                            )
+                        end,
+                        get = function()
+                            return ExtendedCharacterStats.profile.defense.mechanicResistance.fleeing.display
+                        end,
+                        set = function(_, value)
+                            ExtendedCharacterStats.profile.defense.mechanicResistance.fleeing.display = value
+                            Stats.RebuildStatInfos()
+                        end,
+                    },
+                    horror = {
+                        type = "toggle",
+                        order = 9,
+                        name = function()
+                            return i18n("Horror")
+                        end,
+                        desc = function()
+                            return i18n("Shows/Hides the resistance to horror mechanics.")
+                        end,
+                        width = 1.5,
+                        hidden = function()
+                            return not IsTBC
+                        end,
+                        disabled = function()
+                            return (
+                                not ExtendedCharacterStats.profile.defense.display
+                                or not ExtendedCharacterStats.profile.defense.mechanicResistance.display
+                            )
+                        end,
+                        get = function()
+                            return ExtendedCharacterStats.profile.defense.mechanicResistance.horror.display
+                        end,
+                        set = function(_, value)
+                            ExtendedCharacterStats.profile.defense.mechanicResistance.horror.display = value
+                            Stats.RebuildStatInfos()
+                        end,
+                    },
+                    curse = {
+                        type = "toggle",
+                        order = 10,
+                        name = function()
+                            return i18n("Curse")
+                        end,
+                        desc = function()
+                            return i18n("Shows/Hides the resistance to curses.")
+                        end,
+                        width = 1.5,
+                        hidden = function()
+                            return not (IsTBC and classId == Data.PALADIN)
+                        end,
+                        disabled = function()
+                            return (
+                                not ExtendedCharacterStats.profile.defense.display
+                                or not ExtendedCharacterStats.profile.defense.mechanicResistance.display
+                            )
+                        end,
+                        get = function()
+                            return ExtendedCharacterStats.profile.defense.mechanicResistance.curse.display
+                        end,
+                        set = function(_, value)
+                            ExtendedCharacterStats.profile.defense.mechanicResistance.curse.display = value
+                            Stats.RebuildStatInfos()
+                        end,
+                    },
+                    disease = {
+                        type = "toggle",
+                        order = 11,
+                        name = function()
+                            return i18n("Disease")
+                        end,
+                        desc = function()
+                            return i18n("Shows/Hides the resistance to diseases.")
+                        end,
+                        width = 1.5,
+                        hidden = function()
+                            return not (IsTBC and classId == Data.PALADIN)
+                        end,
+                        disabled = function()
+                            return (
+                                not ExtendedCharacterStats.profile.defense.display
+                                or not ExtendedCharacterStats.profile.defense.mechanicResistance.display
+                            )
+                        end,
+                        get = function()
+                            return ExtendedCharacterStats.profile.defense.mechanicResistance.disease.display
+                        end,
+                        set = function(_, value)
+                            ExtendedCharacterStats.profile.defense.mechanicResistance.disease.display = value
+                            Stats.RebuildStatInfos()
+                        end,
+                    },
+                    poison = {
+                        type = "toggle",
+                        order = 12,
+                        name = function()
+                            return i18n("Poison")
+                        end,
+                        desc = function()
+                            return i18n("Shows/Hides the resistance to poisons.")
+                        end,
+                        width = 1.5,
+                        hidden = function()
+                            return not (IsTBC and classId == Data.ROGUE)
+                        end,
+                        disabled = function()
+                            return (
+                                not ExtendedCharacterStats.profile.defense.display
+                                or not ExtendedCharacterStats.profile.defense.mechanicResistance.display
+                            )
+                        end,
+                        get = function()
+                            return ExtendedCharacterStats.profile.defense.mechanicResistance.poison.display
+                        end,
+                        set = function(_, value)
+                            ExtendedCharacterStats.profile.defense.mechanicResistance.poison.display = value
+                            Stats.RebuildStatInfos()
+                        end,
+                    },
+                },
             },
         },
     }
