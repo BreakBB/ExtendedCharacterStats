@@ -1,3 +1,10 @@
+local ECSLoader = ECSLoader
+local GearManagerDialog = GearManagerDialog
+local IsClassic = ECS.IsClassic
+local IsEventValid = C_EventUtils.IsEventValid
+local IsSoD = ECS.IsSoD
+local PaperDollItemsFrame = PaperDollItemsFrame
+
 ---@class Init
 local Init = ECSLoader:CreateModule("Init")
 local _Init = {}
@@ -14,8 +21,6 @@ local Stats = ECSLoader:ImportModule("Stats")
 local GearInfos = ECSLoader:ImportModule("GearInfos")
 ---@type Profile
 local Profile = ECSLoader:ImportModule("Profile")
-
-
 
 function Init:OnAddonLoaded()
     if (not ExtendedCharacterStats) then
@@ -98,7 +103,7 @@ function _Init.RegisterEvents(eventFrame)
     eventFrame:RegisterUnitEvent("UNIT_RANGED_ATTACK_POWER", "player")
     eventFrame:RegisterUnitEvent("UNIT_RANGEDDAMAGE", "player")
     eventFrame:RegisterEvent("UPDATE_SHAPESHIFT_FORM")
-    if not ECS.IsClassic then
+    if not IsClassic then
         eventFrame:RegisterEvent("SOCKET_INFO_SUCCESS") -- Triggers whenever the player successfully sockets an item
 
         if GearManagerDialog then
@@ -110,12 +115,12 @@ function _Init.RegisterEvents(eventFrame)
             end)
         end
     end
-    if (C_EventUtils.IsEventValid("GLYPH_ADDED")) then
+    if (IsEventValid("GLYPH_ADDED")) then
         eventFrame:RegisterEvent("GLYPH_ADDED")
         eventFrame:RegisterEvent("GLYPH_UPDATED")
         eventFrame:RegisterEvent("GLYPH_REMOVED")
     end
-    if ECS.IsSoD then
+    if IsSoD then
         eventFrame:RegisterEvent("RUNE_UPDATED") -- Triggers whenever the player changed a rune
     end
 end

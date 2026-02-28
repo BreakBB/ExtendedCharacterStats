@@ -1,9 +1,11 @@
-
----@class GearInfos
-local GearInfos = ECSLoader:CreateModule("GearInfos")
-
--- Forward declaration
-local _CreateGearColorFrames, _UpdateColorFrame, _GetInspectGearSlots
+local After = C_Timer.After
+local ECSLoader = ECSLoader
+local ExtendedCharacterStats = ExtendedCharacterStats
+local GetInventoryItemLink = GetInventoryItemLink
+local GetItemInfo = C_Item.GetItemInfo
+local GetItemQualityByID = C_Item.GetItemQualityByID
+local GetItemQualityColor = C_Item.GetItemQualityColor
+local ipairs = ipairs
 
 local GEAR_SLOT_FRAMES = {
     CharacterHeadSlot,
@@ -24,6 +26,12 @@ local GEAR_SLOT_FRAMES = {
     CharacterSecondaryHandSlot,
     CharacterRangedSlot,
 }
+
+---@class GearInfos
+local GearInfos = ECSLoader:CreateModule("GearInfos")
+
+-- Forward declaration
+local _CreateGearColorFrames, _UpdateColorFrame, _GetInspectGearSlots
 
 function GearInfos.Init()
     _CreateGearColorFrames()
@@ -53,15 +61,15 @@ _UpdateColorFrame = function (gearFrame, unit)
 
     local itemLink = GetInventoryItemLink(unit, gearFrame:GetID())
     if itemLink ~= nil then
-        local _, itemInfo = C_Item.GetItemInfo(itemLink)
+        local _, itemInfo = GetItemInfo(itemLink)
         if itemInfo ~= nil then
-            local itemQuality = C_Item.GetItemQualityByID(itemInfo)
-            local r, g, b, _ = C_Item.GetItemQualityColor(itemQuality)
+            local itemQuality = GetItemQualityByID(itemInfo)
+            local r, g, b, _ = GetItemQualityColor(itemQuality)
             gearFrame.qualityTexture:SetVertexColor(r, g, b, ExtendedCharacterStats.general.qualityColorsIntensity)
         end
     else
         -- next frame
-        C_Timer.After(0, function ()
+        After(0, function ()
             _UpdateColorFrame(gearFrame, unit)
         end)
     end

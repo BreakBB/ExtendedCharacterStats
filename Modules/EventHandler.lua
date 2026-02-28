@@ -1,3 +1,8 @@
+local After = C_Timer.After
+local ECSLoader = ECSLoader
+local InspectPaperDollFrame = InspectPaperDollFrame
+local UnitGUID = UnitGUID
+
 ---@class EventHandler
 local EventHandler = ECSLoader:CreateModule("EventHandler")
 
@@ -10,21 +15,21 @@ local function DelayedUpdateInformation()
     local statsFrame = Stats:GetFrame()
     statsFrame:SetScript("OnUpdate", nil)
     -- update next frame
-    C_Timer.After(0, function ()
+    After(0, function ()
         Stats.UpdateInformation()
     end)
 end
 
 local function DelayedUpdateGearColorFrames()
     -- update next frame
-    C_Timer.After(0, function ()
+    After(0, function ()
         GearInfos.UpdateGearColorFrames()
     end)
 end
 
 local function DelayedUpdateInspectGearColorFrames()
     -- update next frame
-    C_Timer.After(0, function ()
+    After(0, function ()
         GearInfos:UpdateInspectGearColorFrames()
     end)
 end

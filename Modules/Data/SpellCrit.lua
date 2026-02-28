@@ -1,3 +1,10 @@
+local ECSLoader = ECSLoader
+local GetBuffDataByIndex = C_UnitAuras.GetBuffDataByIndex
+local GetInventoryItemID = GetInventoryItemID
+local GetSpellCritChance = GetSpellCritChance
+local IsClassic = ECS.IsClassic
+local IsWotlk = ECS.IsWotlk
+
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
@@ -24,7 +31,7 @@ function _SpellCrit:GetSpellCritFromBuffs(school)
     local mod = 0
     local i = 1
     repeat
-        local aura = C_UnitAuras.GetBuffDataByIndex("player", i)
+        local aura = GetBuffDataByIndex("player", i)
         i = i + 1
         if aura and aura.spellId then
             mod = mod + (Data.Aura.SpellCrit[aura.spellId] or 0)
@@ -54,26 +61,26 @@ function _SpellCrit:GetGeneralTalentModifier()
     local mod = 0
 
     if classId == Data.MAGE then
-        if not ECS.IsClassic then
+        if not IsClassic then
             mod = mod + 1 * DataUtils:GetActiveTalentSpell({15058,15059,15060}) -- Arcane Instability
         end
     elseif classId == Data.DRUID then
-        if ECS.IsWotlk then
+        if IsWotlk then
             mod = mod + 1 * DataUtils:GetActiveTalentSpell({33881,33882,33883}) -- Natural Perfection
         end
     elseif classId == Data.WARLOCK then
-        if ECS.IsWotlk then
+        if IsWotlk then
             mod = mod + 2 * DataUtils:GetActiveTalentSpell({30242,30245,30246,30247,30248}) -- Demonic Tactics
             mod = mod + 1 * DataUtils:GetActiveTalentSpell({34935,34938,34939}) -- Backlash
         end
 
         mod = mod + 1 * DataUtils:GetActiveTalentSpell({18130,18131,18132,18133,18134}) -- Devastation
     elseif classId == Data.SHAMAN then
-        if ECS.IsWotlk then
+        if IsWotlk then
             mod = mod + 1 * DataUtils:GetActiveTalentSpell({16255,16302,16303,16304,16305}) -- Thundering Strikes
         end
     elseif classId == Data.PALADIN then
-        if ECS.IsWotlk then
+        if IsWotlk then
             mod = mod + 1 * DataUtils:GetActiveTalentSpell({20117,20118,20119,20120,20121}) -- Conviction
             mod = mod + 1 * DataUtils:GetActiveTalentSpell({32043,35396,35397}) -- Sanctity of Battle
         end
@@ -115,11 +122,11 @@ function _SpellCrit:GetTalentModifierFireCrit()
     if classId == Data.MAGE then
         mod = mod + 2 * DataUtils:GetActiveTalentSpell({11115,11367,11368}) -- Critical Mass
 
-        if ECS.IsWotlk then
+        if IsWotlk then
             mod = mod + 1 * DataUtils:GetActiveTalentSpell({34293,34295,34296}) -- Pyromaniac
         end
     elseif classId == Data.WARLOCK then
-        if ECS.IsClassic then
+        if IsClassic then
             -- Devastation (while this increases the crit chance of "Destruction spells" there are no fire spells, which are not destruction spells)
             mod = mod + 1 * DataUtils:GetActiveTalentSpell({18130,18131,18132,18133,18134})
         end
@@ -140,7 +147,7 @@ end
 ---@return number
 function _SpellCrit:GetItemModifierHolyCrit()
     local mainHand, _ = GetInventoryItemID("player", 16)
-    if ECS.IsClassic and mainHand == 18608 then
+    if IsClassic and mainHand == 18608 then
         return 2 -- 2% Holy Crit from Benediction
     end
     return 0
@@ -155,9 +162,4 @@ function _SpellCrit:GetSetBonus(school)
     end
 
     return bonus
-end
-
----@return number
-function Data:GetSpellPenetration()
-    return DataUtils:Round(GetSpellPenetration(), 2)
 end

@@ -1,3 +1,7 @@
+local ECS = ECS
+local ECSLoader = ECSLoader
+local ExtendedCharacterStats = ExtendedCharacterStats
+
 ---@class Migration
 local Migration = ECSLoader:CreateModule("Migration")
 

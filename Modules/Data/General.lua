@@ -1,3 +1,9 @@
+local ECSLoader = ECSLoader
+local GetUnitSpeed = GetUnitSpeed
+local IsClassic = ECS.IsClassic
+local IsFlying = IsFlying
+local IsSwimming = IsSwimming
+
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
@@ -10,7 +16,7 @@ function Data:GetMovementSpeed()
 
     local currentSpeed
 
-    if (not ECS.IsClassic) and IsFlying() then
+    if (not IsClassic) and IsFlying() then
         currentSpeed = flightSpeed
     elseif IsSwimming() then
         currentSpeed = swimSpeed

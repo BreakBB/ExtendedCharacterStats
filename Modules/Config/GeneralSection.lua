@@ -1,3 +1,6 @@
+local ECSLoader = ECSLoader
+local ExtendedCharacterStats = ExtendedCharacterStats
+
 ---@class Config
 local Config = ECSLoader:ImportModule("Config")
 local _Config = Config.private
