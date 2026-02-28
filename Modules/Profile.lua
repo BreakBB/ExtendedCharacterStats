@@ -289,6 +289,73 @@ local function GetDefaultStatsProfile()
                 refName = "ResilienceValue",
                 text = "Resilience"
             },
+             ---@type SubCategory
+            mechanicResistance = {
+                display = true,
+                refName = "MechanicResistanceHeader",
+                text = "Mechanic resistance",
+                isSubGroup = true,
+                stun = {
+                    display = true,
+                    refName = "StunResistance",
+                    text = "Stun",
+                },
+                charm = {
+                    display = true,
+                    refName = "CharmResistance",
+                    text = "Charm",
+                },
+                disorient = {
+                    display = true,
+                    refName = "DisorientResistance",
+                    text = "Disorient",
+                },
+                snare = {
+                    display = true,
+                    refName = "SnareResistance",
+                    text = "Snare",
+                },
+                root = {
+                    display = true,
+                    refName = "RootResistance",
+                    text = "Root",
+                },
+                interrupt = {
+                    display = true,
+                    refName = "InterruptResistance",
+                    text = "Interrupt",
+                },
+                silence = {
+                    display = true,
+                    refName = "SilenceResistance",
+                    text = "Silence",
+                },
+                horror = {
+                    display = true,
+                    refName = "HorrorResistance",
+                    text = "Horror",
+                },
+                fleeing = {
+                    display = true,
+                    refName = "FleeingResistance",
+                    text = "Fear",
+                },
+                curse = {
+                    display = true,
+                    refName = "CurseResistance",
+                    text = "Curse",
+                },
+                disease = {
+                    display = true,
+                    refName = "DiseaseResistance",
+                    text = "Disease",
+                },
+                poison = {
+                    display = true,
+                    refName = "PoisonResistance",
+                    text = "Poison",
+                },
+            },
         },
 
         regen = {

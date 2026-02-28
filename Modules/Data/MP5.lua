@@ -1,3 +1,18 @@
+local ECSLoader = ECSLoader
+local GetBuffDataByIndex = C_UnitAuras.GetBuffDataByIndex
+local GetDebuffDataByIndex = C_UnitAuras.GetDebuffDataByIndex
+local GetInventoryItemLink = GetInventoryItemLink
+local GetItemStats = GetItemStats
+local GetManaRegen = GetManaRegen
+local GetWeaponEnchantInfo = GetWeaponEnchantInfo
+local IsSoD = ECS.IsSoD
+local IsTBC = ECS.IsTBC
+local IsWotlk = ECS.IsWotlk
+local min = math.min
+local PowerType = Enum.PowerType
+local UnitClass = UnitClass
+local UnitPowerMax = UnitPowerMax
+
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
@@ -8,25 +23,6 @@ local Utils = ECSLoader:ImportModule("Utils")
 local _MP5 = {}
 
 local _, _, classId = UnitClass("player")
-
----@return number
-function Data:GetValueFromAuraTooltip(index,type)
-    if not ECS.scanningTooltip then
-        ECS.scanningTooltip = CreateFrame("GameTooltip", "scanningTooltip", nil, "GameTooltipTemplate")
-        ECS.scanningTooltip:SetOwner(WorldFrame, "ANCHOR_NONE")
-    end
-
-    ECS.scanningTooltip:ClearLines()
-    ECS.scanningTooltip:SetUnitAura("player",index, type)
-    local region = select(5,ECS.scanningTooltip:GetRegions())
-    if region and region:GetObjectType() == "FontString" then
-        local tooltip = region:GetText()
-        if tooltip then
-            return tonumber(string.match(tooltip, '%d[%d,.]*'))
-        end
-    end
-    return 0
-end
 
 -- Get MP5 from items
 ---@return number
@@ -52,15 +48,13 @@ function _MP5:GetMP5ValueOnItems()
                 mp5 = mp5 + (Data.Enchant.MP5[enchant] or 0)
             end
             -- Check for socketed gems (TODO: check for socket bonus)
-            local gem1, gem2, gem3 = DataUtils:GetSocketedGemsFromItemLink(itemLink)
-            if gem1 then
-                mp5 = mp5 + (Data.Gem.MP5[tonumber(gem1)] or 0)
-            end
-            if gem2 then
-                mp5 = mp5 + (Data.Gem.MP5[tonumber(gem2)] or 0)
-            end
-            if gem3 then
-                mp5 = mp5 + (Data.Gem.MP5[tonumber(gem3)] or 0)
+            local gems = DataUtils:GetSocketedGemsFromItemLink(itemLink)
+            if gems then
+                for j=1,3 do
+                    if gems[j] then
+                        mp5 = mp5 + (Data.Gem.MP5[gems[j]] or 0)
+                    end
+                end
             end
         end
     end
@@ -118,11 +112,11 @@ function Data:GetMP5FromBuffs()
     local mod = 0
     local bonus = 0
     local periodic = 0
-    local maxmana = UnitPowerMax("player", Enum.PowerType.Mana)
+    local maxmana = UnitPowerMax("player", PowerType.Mana)
 
     local i = 1
     repeat
-        local aura = C_UnitAuras.GetBuffDataByIndex("player", i)
+        local aura = GetBuffDataByIndex("player", i)
         if aura and aura.spellId then
             bonus = bonus + (Data.Aura.MP5[aura.spellId] or 0)
             bonus = bonus + (Data.Aura.PercentageMp5[aura.spellId] or 0) * maxmana
@@ -132,12 +126,12 @@ function Data:GetMP5FromBuffs()
                 bonus = bonus + 15 -- 15 MP5 from Shaman T3 8 piece bonus when Lightning Shield is active
             end
             if Data.Aura.MP5Tooltip[aura.spellId] then
-                bonus = bonus + Data.Aura.MP5Tooltip[aura.spellId] * Data:GetValueFromAuraTooltip(i, "HELPFUL")
+                bonus = bonus + Data.Aura.MP5Tooltip[aura.spellId] * DataUtils:GetValueFromAuraTooltip(i, "HELPFUL")
             end
             if Data.Aura.PeriodicallyGiveManaTooltip[aura.spellId] then
-                periodic = periodic + Data.Aura.PeriodicallyGiveManaTooltip[aura.spellId] * Data:GetValueFromAuraTooltip(i, "HELPFUL")
+                periodic = periodic + Data.Aura.PeriodicallyGiveManaTooltip[aura.spellId] * DataUtils:GetValueFromAuraTooltip(i, "HELPFUL")
             end
-            if ECS.IsWotlk then
+            if IsWotlk then
                 if aura.spellId == 64999 then
                     bonus = bonus + 85 * aura.applications -- Meteoric Inspiration
                 end
@@ -147,7 +141,7 @@ function Data:GetMP5FromBuffs()
     until (not aura)
     i = 1
     repeat
-        local aura = C_UnitAuras.GetDebuffDataByIndex("player", i)
+        local aura = GetDebuffDataByIndex("player", i)
         if aura and aura.spellId then
             bonus = bonus + (Data.Aura.PercentageMp5[aura.spellId] or 0) * maxmana
         end
@@ -160,7 +154,7 @@ end
 function _MP5.GetMP5FromRunes()
     local mod = 0
 
-    if (not ECS.IsSoD) then
+    if (not IsSoD) then
         return mod
     end
 
@@ -179,17 +173,17 @@ function _MP5:GetTalentModifier()
     local mod = 0
 
     if classId == Data.PRIEST then
-        local coeff = ECS.IsTBC and 0.1 or (ECS.IsWotlk and 0.5/3 or 0.05)
+        local coeff = IsTBC and 0.1 or (IsWotlk and 0.5/3 or 0.05)
         mod = mod + coeff * DataUtils:GetActiveTalentSpell({14521,14776,14777}) -- meditation
     elseif classId == Data.MAGE then
-        local coeff = ECS.IsTBC and 0.1 or (ECS.IsWotlk and 0.5/3 or 0.05)
+        local coeff = IsTBC and 0.1 or (IsWotlk and 0.5/3 or 0.05)
         mod = mod + coeff * DataUtils:GetActiveTalentSpell({14521,18463,18464}) -- arcane meditation
 
-        if ECS.IsWotlk then
+        if IsWotlk then
             mod = mod + 0.5/3 * DataUtils:GetActiveTalentSpell({34293,34295,34296}) -- pyromaniac
         end
     elseif classId == Data.DRUID then
-        local coeff = ECS.IsTBC and 0.1 or (ECS.IsWotlk and 0.5/3 or 0.05)
+        local coeff = IsTBC and 0.1 or (IsWotlk and 0.5/3 or 0.05)
         mod = mod + coeff * DataUtils:GetActiveTalentSpell({17106,17107,17108}) -- intensity/reflection
     end
     return mod
