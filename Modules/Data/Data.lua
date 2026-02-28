@@ -79,7 +79,7 @@ dataFunctionRefs = {
     ["SpellCritChance"] = function() return Data:GetSpellCrit(Data.HOLY_SCHOOL) end,
     ["SpellHasteRating"] = function() return IsClassic and 0 or Data:GetSpellHasteRating() end,
     ["SpellHasteBonus"] = function() return Data:GetSpellHasteBonus() end,
-    ["SpellPenetration"] = function() return Data:GetSpellPenetration() end,
+    ["SpellPenetration"] = function() return Data:SpellPenetration() end,
     -- MP5
     ["MP5Items"] = function() return Data:GetMP5FromItems() end,
     ["MP5Spirit"] = function() return Data:GetMP5FromSpirit() end,

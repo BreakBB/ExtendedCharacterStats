@@ -1,6 +1,5 @@
 local ECS = ECS
 local ECSLoader = ECSLoader
-local ExtendedCharacterStats = ExtendedCharacterStats
 local format = string.format
 local GetLocale = GetLocale
 local ipairs = ipairs

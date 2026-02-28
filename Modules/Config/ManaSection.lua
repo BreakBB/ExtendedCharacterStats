@@ -1,5 +1,4 @@
 local ECSLoader = ECSLoader
-local ExtendedCharacterStats = ExtendedCharacterStats
 local UnitHasMana = UnitHasMana
 
 ---@class Config

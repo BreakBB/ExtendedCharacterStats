@@ -1,6 +1,5 @@
 local CanDualWield = CanDualWield
 local ECSLoader = ECSLoader
-local ExtendedCharacterStats = ExtendedCharacterStats
 local IsClassic = ECS.IsClassic
 local IsWotlk = ECS.IsWotlk
 

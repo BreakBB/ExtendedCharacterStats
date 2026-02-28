@@ -1,5 +1,4 @@
 local ECSLoader = ECSLoader
-local ExtendedCharacterStats = ExtendedCharacterStats
 
 ---@class Profile
 local Profile = ECSLoader:CreateModule("Profile")

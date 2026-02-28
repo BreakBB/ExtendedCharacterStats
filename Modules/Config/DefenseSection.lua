@@ -1,5 +1,4 @@
 local ECSLoader = ECSLoader
-local ExtendedCharacterStats = ExtendedCharacterStats
 local IsClassic = ECS.IsClassic
 local IsSpellKnown = C_SpellBook.IsSpellKnown
 

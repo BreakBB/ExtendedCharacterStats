@@ -1,6 +1,5 @@
 local After = C_Timer.After
 local ECSLoader = ECSLoader
-local ExtendedCharacterStats = ExtendedCharacterStats
 local GetInventoryItemLink = GetInventoryItemLink
 local GetItemInfo = C_Item.GetItemInfo
 local GetItemQualityByID = C_Item.GetItemQualityByID

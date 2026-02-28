@@ -1,7 +1,5 @@
 local ECS = ECS
-local ECSConfigFrame = ECSConfigFrame
 local ECSLoader = ECSLoader
-local ExtendedCharacterStats = ExtendedCharacterStats
 local insert = table.insert
 local LibStub = LibStub
 local ReloadUI = ReloadUI
