@@ -1,4 +1,3 @@
-local CR_HASTE_SPELL = CR_HASTE_SPELL
 local ECSLoader = ECSLoader
 local GetBuffDataByIndex = C_UnitAuras.GetBuffDataByIndex
 local GetCombatRating = GetCombatRating

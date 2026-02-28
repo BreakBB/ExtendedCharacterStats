@@ -1,4 +1,3 @@
-local CR_HIT_SPELL = CR_HIT_SPELL
 local ECSLoader = ECSLoader
 local GetCombatRating = GetCombatRating
 local GetCombatRatingBonus = GetCombatRatingBonus

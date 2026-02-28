@@ -1,5 +1,3 @@
-local CR_HASTE_RANGED = CR_HASTE_RANGED
-local CR_HIT_RANGED = CR_HIT_RANGED
 local ECSLoader = ECSLoader
 local GetCombatRating = GetCombatRating
 local GetCombatRatingBonus = GetCombatRatingBonus

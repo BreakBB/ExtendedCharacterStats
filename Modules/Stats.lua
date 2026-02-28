@@ -2,18 +2,12 @@ local After = C_Timer.After
 local CanDualWield = CanDualWield
 local CharacterModelFrame = CharacterModelFrame
 local ECSLoader = ECSLoader
-local EngravingFrame = EngravingFrame
 local error = error
 local insert = table.insert
 local IsClassic = ECS.IsClassic
 local IsSoD = ECS.IsSoD
 local IsWotlk = ECS.IsWotlk
-local LeaPlusDB = LeaPlusDB
-local OutfitterButton = OutfitterButton
-local OutfitterButtonFrame = OutfitterButtonFrame
-local OutfitterFrame = OutfitterFrame
 local PaperDollItemsFrame = PaperDollItemsFrame
-local PawnInitialize = PawnInitialize
 local pairs = pairs
 local type = type
 local remove = table.remove
@@ -95,14 +89,17 @@ function Stats.CreateWindow()
     toggleButton:SetText("< ECS")
     toggleButton:SetSize(44, 18)
     -- Move to old position if Leatrix Plus durability button is active. See #20
-    if (LeaPlusDB and LeaPlusDB["DurabilityStatus"] == "On") or PawnInitialize then
-        if OutfitterButton then -- See #89
-            toggleButton:SetPoint("TOPRIGHT", PaperDollItemsFrame, "TOPRIGHT", -55, -16)
+    if LeaPlusDB then
+        local LeaPlusDB = LeaPlusDB
+        if (LeaPlusDB["DurabilityStatus"] == "On") or PawnInitialize then
+            if OutfitterButton then -- See #89
+                toggleButton:SetPoint("TOPRIGHT", PaperDollItemsFrame, "TOPRIGHT", -55, -16)
+            else
+                toggleButton:SetPoint("TOPRIGHT", PaperDollItemsFrame, "TOPRIGHT", -57, -16)
+            end
         else
-            toggleButton:SetPoint("TOPRIGHT", PaperDollItemsFrame, "TOPRIGHT", -57, -16)
+            toggleButton:SetPoint("BOTTOMRIGHT", PaperDollItemsFrame, "BOTTOMRIGHT", -38, 87)
         end
-    else
-        toggleButton:SetPoint("BOTTOMRIGHT", PaperDollItemsFrame, "BOTTOMRIGHT", -38, 87)
     end
     toggleButton:SetScript("OnClick", function ()
         Stats:ToggleWindow()
@@ -111,6 +108,8 @@ function Stats.CreateWindow()
     mainFrame:SetScript("OnShow", function ()
         toggleButton:SetText("< ECS")
         if OutfitterFrame ~= nil and OutfitterButtonFrame ~= nil then
+            local OutfitterButtonFrame = OutfitterButtonFrame
+            local OutfitterFrame = OutfitterFrame
             OutfitterFrame:SetPoint("TOPLEFT", OutfitterButtonFrame  , "TOPRIGHT", -34 + ExtendedCharacterStats.general.window.width, -38)
         end
         Stats.UpdateInformation()
@@ -118,6 +117,8 @@ function Stats.CreateWindow()
     mainFrame:SetScript("OnHide", function ()
         toggleButton:SetText("ECS >")
         if OutfitterFrame ~= nil and OutfitterButtonFrame ~= nil then
+            local OutfitterButtonFrame = OutfitterButtonFrame
+            local OutfitterFrame = OutfitterFrame
             OutfitterFrame:SetPoint("TOPLEFT", OutfitterButtonFrame  , "TOPRIGHT", -34, -38)
         end
     end)
@@ -131,6 +132,7 @@ function Stats.CreateWindow()
             -- next frame
             After(0, function ()
                 if EngravingFrame then
+                    local EngravingFrame = EngravingFrame
                     if EngravingFrame:IsShown() then
                         mainFrame:ClearAllPoints()
                         mainFrame:SetPoint("LEFT", EngravingFrame, "RIGHT", 10, 19)

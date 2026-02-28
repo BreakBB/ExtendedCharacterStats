@@ -1,5 +1,4 @@
 local ECSLoader = ECSLoader
-local GearManagerDialog = GearManagerDialog
 local IsClassic = ECS.IsClassic
 local IsEventValid = C_EventUtils.IsEventValid
 local IsSoD = ECS.IsSoD
@@ -107,6 +106,7 @@ function _Init.RegisterEvents(eventFrame)
         eventFrame:RegisterEvent("SOCKET_INFO_SUCCESS") -- Triggers whenever the player successfully sockets an item
 
         if GearManagerDialog then
+            local GearManagerDialog = GearManagerDialog
             GearManagerDialog:HookScript("OnShow", function()
                 Stats:HideWindow()
             end)
@@ -115,7 +115,7 @@ function _Init.RegisterEvents(eventFrame)
             end)
         end
     end
-    if (IsEventValid("GLYPH_ADDED")) then
+    if IsEventValid("GLYPH_ADDED") then
         eventFrame:RegisterEvent("GLYPH_ADDED")
         eventFrame:RegisterEvent("GLYPH_UPDATED")
         eventFrame:RegisterEvent("GLYPH_REMOVED")

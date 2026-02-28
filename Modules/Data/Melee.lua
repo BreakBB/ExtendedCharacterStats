@@ -1,7 +1,3 @@
-local CR_ARMOR_PENETRATION = CR_ARMOR_PENETRATION
-local CR_EXPERTISE = CR_EXPERTISE
-local CR_HASTE_MELEE = CR_HASTE_MELEE
-local CR_HIT_MELEE = CR_HIT_MELEE
 local ECSLoader = ECSLoader
 local GetCombatRating = GetCombatRating
 local GetCombatRatingBonus = GetCombatRatingBonus
