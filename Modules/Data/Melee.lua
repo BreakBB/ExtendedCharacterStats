@@ -60,7 +60,7 @@ end
 function _Melee:GetHitTalentBonus()
     local mod = 0
     if ECS.IsClassic then
-        if classId == Data.SHAMAN then            
+        if classId == Data.SHAMAN then
             -- Nature's Guidance
             mod = 1 * DataUtils:GetActiveTalentSpell({16180,16196,16198})
         elseif classId == Data.ROGUE then
