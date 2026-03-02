@@ -146,7 +146,7 @@ end
 function Stats:ToggleWindow()
     local toggleButton = _G["ECS_ToggleButton"]
     if (not toggleButton) then
-        error("ECS Toggle Button could not be found")
+        error("ECS Toggle Button could not be found.")
         return
     end
 
@@ -156,7 +156,7 @@ end
 function Stats:HideWindow()
     local toggleButton = _G["ECS_ToggleButton"]
     if (not toggleButton) then
-        error("ECS Toggle Button could not be found")
+        error("ECS Toggle Button could not be found.")
         return
     end
     _Stats.frame:SetShown(false)
@@ -290,7 +290,8 @@ _CreateStatInfos = function()
         DataUtils:CanParry() and category.parry or nil,
         (not ECS.IsClassic) and category.dodgeRating or nil,
         category.dodge or nil,
-        (not ECS.IsClassic) and category.resilienceRating or nil
+        (not ECS.IsClassic) and category.resilienceRating or nil,
+        (not ECS.IsClassic) and category.resilience or nil
     )
 
     if UnitHasMana("player") then

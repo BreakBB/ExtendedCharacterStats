@@ -20,7 +20,7 @@ function _Config:LoadDefenseSection()
             showDefenseStats = {
                 type = "toggle",
                 order = 0,
-                name = function() return i18n("Show defense stats") end,
+                name = function() return i18n("Show defense stats.") end,
                 desc = function() return i18n("Shows/Hides all defense stats.") end,
                 width = 1.5,
                 get = function () return ExtendedCharacterStats.profile.defense.display; end,

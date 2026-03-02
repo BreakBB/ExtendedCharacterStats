@@ -227,7 +227,7 @@ function _Config:LoadMeleeSection()
                 type = "toggle",
                 order = 5,
                 name = function() return i18n("Glancing blow") end,
-                desc = function() return i18n("Shows/Hides all glancing blow stats") end,
+                desc = function() return i18n("Shows/Hides all glancing blow stats.") end,
                 width = 1.5,
                 hidden = function() return ECS.IsWotlk end,
                 disabled = function() return (not ExtendedCharacterStats.profile.melee.display); end,
