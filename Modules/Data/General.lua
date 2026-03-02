@@ -35,7 +35,7 @@ function Data:GetInvisibility()
     repeat
         local aura = GetBuffDataByIndex("player", i)
         if aura and aura.spellId then
-            for invisibilityType, Id in pairs(Data.Aura.Invisibility) do
+            for _, Id in pairs(Data.Aura.Invisibility) do
                 inv = inv + (Id[aura.spellId] or 0)
             end
         end
@@ -47,7 +47,7 @@ function Data:GetInvisibility()
     repeat
         local aura = GetDebuffDataByIndex("player", i)
         if aura and aura.spellId then
-            for invisibilityType, Id in pairs(Data.Aura.Invisibility) do
+            for _, Id in pairs(Data.Aura.Invisibility) do
                 inv = inv + (Id[aura.spellId] or 0)
             end
         end
