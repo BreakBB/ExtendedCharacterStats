@@ -25,7 +25,7 @@ function Migration:ToLatestProfileVersion(profileVersion)
         ExtendedCharacterStats.profile.defense.resilience = nil
     end
     if profileVersion < 26 then
-        ExtendedCharacterStats.profile.melee.expertise = (ECS.IsClassic and not ECS.IsSoD) and nil or defaultProfile.profile.melee.expertise
-        ExtendedCharacterStats.profile.melee.expertiseRating = ECS.IsClassic and nil or defaultProfile.profile.melee.expertiseRating
+        ExtendedCharacterStats.profile.melee.expertise = defaultProfile.profile.melee.expertise
+        ExtendedCharacterStats.profile.melee.expertiseRating = defaultProfile.profile.melee.expertiseRating
     end
 end
