@@ -244,17 +244,17 @@ _CreateStatInfos = function()
         category.attackPower,
         category.crit,
         IsWotlk and category.penetrationRating or nil,
-        IsClassic and nil or category.penetration,
-        IsClassic and nil or category.expertiseRating,
-        IsClassic and nil or category.expertise,
-        IsClassic and nil or category.hasteRating,
-        IsClassic and nil or category.hasteBonus
+        (not IsClassic) and category.penetration or nil,
+        (not IsClassic) and category.expertiseRating or nil,
+        (not IsClassic) and category.expertise or nil,
+        (not IsClassic) and category.hasteRating or nil,
+        (not IsClassic) and category.hasteBonus or nil
     )
     if category.display then
         category = category.hit
         _CreateStatInfo(
             category,
-            IsClassic and nil or category.rating,
+            (not IsClassic) and category.rating or nil,
             category.bonus,
             category.sameLevel,
             category.bossLevel
@@ -280,9 +280,9 @@ _CreateStatInfos = function()
             category.attackPower,
             category.crit,
             IsWotlk and category.penetrationRating or nil,
-            IsClassic and nil or category.penetration,
-            IsClassic and nil or category.hasteRating,
-            IsClassic and nil or category.hasteBonus,
+            (not IsClassic) and category.penetration or nil,
+            (not IsClassic) and category.hasteRating or nil,
+            (not IsClassic) and category.hasteBonus or nil,
             category.attackSpeed
         )
 
@@ -290,7 +290,7 @@ _CreateStatInfos = function()
             category = category.hit
             _CreateStatInfo(
                 category,
-                IsClassic and nil or category.rating,
+                (not IsClassic) and category.rating or nil,
                 category.bonus,
                 category.sameLevel,
                 category.bossLevel
@@ -307,33 +307,33 @@ _CreateStatInfos = function()
         category.spellCritReduction,
         category.avoidance,
         category.avoidanceBoss,
-        IsClassic and nil or category.defenseRating,
+        (not IsClassic) and category.defenseRating or nil,
         category.defense,
         (not IsClassic and DataUtils:CanBlock()) and category.blockRating or nil,
         DataUtils:CanBlock() and category.blockChance or nil,
         DataUtils:CanBlock() and category.blockValue or nil,
         (not IsClassic and DataUtils:CanParry()) and category.parryRating or nil,
         DataUtils:CanParry() and category.parry or nil,
-        IsClassic and nil or category.dodgeRating,
+        (not IsClassic) and category.dodgeRating or nil,
         category.dodge or nil,
-        IsClassic and nil or category.resilienceRating
+        (not IsClassic) and category.resilienceRating or nil
     )
     if category.display then
         category = category.mechanicResistance
         _CreateStatInfo(
             category,
             category.stun,
-            (IsWotlk or (classId ~= Data.WARRIOR)) and nil or category.charm,
-            (IsClassic and (classId ~= Data.PALADIN)) and nil or category.disorient,
-            (IsWotlk or not (IsClassic and classId == Data.HUNTER)) and nil or category.root,
-            (IsWotlk or not (IsClassic and classId == Data.HUNTER)) and nil or category.snare,
+            ((not IsWotlk) and (classId == Data.WARRIOR)) and category.charm or nil,
+            ((not IsClassic) or (classId == Data.PALADIN)) and category.disorient or nil,
+            ((not IsWotlk) and IsClassic and (classId == Data.HUNTER)) and category.root or nil,
+            ((not IsWotlk) and IsClassic and (classId == Data.HUNTER)) and category.snare or nil,
             (IsClassic or (classId == Data.PRIEST or classId == Data.MAGE or classId == Data.WARLOCK)) and category.silence or nil,
             category.interrupt,
             category.fleeing,
             IsTBC and category.horror or nil,
-            (IsTBC and classId == Data.PALADIN) and nil or category.curse,
-            (IsTBC and classId == Data.PALADIN) and nil or category.disease,
-            (IsTBC and classId == Data.ROGUE) and nil or category.poison
+            (not IsTBC) or (classId ~= Data.PALADIN) and category.curse or nil,
+            (not IsTBC) or (classId ~= Data.PALADIN) and category.disease or nil,
+            (not IsTBC) or (classId ~= Data.ROGUE) and category.poison or nil
         )
     end
 
@@ -349,12 +349,12 @@ _CreateStatInfos = function()
     local spellHit = spell.hit
     _CreateStatInfo(
         category,
-        IsClassic and nil or category.hasteRating,
+        (not IsClassic) and category.hasteRating or nil,
         category.hasteBonus,
-        IsClassic and nil or category.penetrationRating,
-        IsClassic and nil or category.penetration,
+        (not IsClassic) and category.penetrationRating or nil,
+        (not IsClassic) and category.penetration or nil,
         spellBonus.bonusHealing,
-        IsClassic and nil or spellHit.rating,
+        (not IsClassic) and spellHit.rating or nil,
         spell.arcane.display and spellBonus.arcaneDmg or nil,
         spell.arcane.display and spellCrit.display and spellCrit.arcane or nil,
         spell.arcane.display and spellHit.bonus.display and spellHit.arcaneHitBonus or nil,

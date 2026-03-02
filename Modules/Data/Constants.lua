@@ -356,8 +356,8 @@ Data.Aura = {
         [25918] = (ECS.IsClassic and 1 or nil), -- Greater Blessing of Wisdom rank 2
     },
     ResistanceInterrupt = {
-        [14743] = IsWotlk and nil or 10, -- Focused Casting
-        [27828] = IsWotlk and nil or 20, -- Focused Casting
+        [14743] = (not IsWotlk) and 10 or nil, -- Focused Casting
+        [27828] = (not IsWotlk) and 20 or nil, -- Focused Casting
     },
     SpellCrit = {
         [24907] = ((not ECS.IsClassic) and 5 or nil), -- Moonkin Aura
@@ -528,14 +528,14 @@ Data.Gem = {
         [42146] = 17, -- Lustrous Dragon's Eye
     },
     ResistRoot = {
-        [32195] = (IsWotlk and nil or 5), -- Enigmatic Skyfire Diamond
+        [32195] = (not IsWotlk) and 5 or nil, -- Enigmatic Skyfire Diamond
     },
     ResistSnare = {
-        [32195] = (IsWotlk and nil or 5), -- Enigmatic Skyfire Diamond
+        [32195] = (not IsWotlk) and 5 or nil, -- Enigmatic Skyfire Diamond
     },
     ResistStun = {
-        [25896] = (IsWotlk and nil or 5), -- Powerful Earthstorm Diamond
-        [32195] = (IsWotlk and nil or 5), -- Enigmatic Skyfire Diamond
+        [25896] = (not IsWotlk) and 5 or nil, -- Powerful Earthstorm Diamond
+        [32195] = (not IsWotlk) and 5 or nil, -- Enigmatic Skyfire Diamond
         [32641] = 5, -- Imbued Unstable Diamond
         [32640] = 5, -- Potent Unstable Diamond
     }
@@ -667,7 +667,7 @@ Data.Item = {
         [30519] = 10, -- Foreman's Reinforced Helmet
     },
     ResistFleeing = {
-        [17759] = (IsWotlk and nil or 1), -- Mark of Resolution
+        [17759] = (not IsWotlk) and 1 or nil, -- Mark of Resolution
         [28428] = 8, -- Lionheart Blade
         [28429] = 8, -- Lionheart Champion
         [28430] = 8, -- Lionheart Executioner
@@ -679,7 +679,7 @@ Data.Item = {
         [234134] = 10, -- Gnomish Turban of Psychic Might
     },
     ResistStun = {
-        [17759] = (IsWotlk and nil or 1), -- Mark of Resolution
+        [17759] = (not IsWotlk) and 1 or nil, -- Mark of Resolution
         [23838] = 10, -- Foreman's Enchanted Helmet
         [30519] = 10, -- Foreman's Reinforced Helmet
     },
