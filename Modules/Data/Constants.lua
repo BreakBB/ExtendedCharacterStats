@@ -340,10 +340,10 @@ Data.Aura = {
         [462858] = 750, -- Circle of Flame
     },
     PeriodicallyGiveManaTooltip = {
-        [5677] = ((not IsWotlk) and 5/2 nil), -- Mana Spring rank 1
-        [10491] = ((not IsWotlk) and 5/2 nil), -- Mana Spring rank 2
-        [10493] = ((not IsWotlk) and 5/2 nil), -- Mana Spring rank 3
-        [10494] = ((not IsWotlk) and 5/2 nil), -- Mana Spring rank 4
+        [5677] = ((not IsWotlk) and 5/2 or nil), -- Mana Spring rank 1
+        [10491] = ((not IsWotlk) and 5/2 or nil), -- Mana Spring rank 2
+        [10493] = ((not IsWotlk) and 5/2 or nil), -- Mana Spring rank 3
+        [10494] = ((not IsWotlk) and 5/2 or nil), -- Mana Spring rank 4
         [19742] = (IsClassic and 1 or nil), -- Blessing of Wisdom rank 1
         [19850] = (IsClassic and 1 or nil), -- Blessing of Wisdom rank 2
         [19852] = (IsClassic and 1 or nil), -- Blessing of Wisdom rank 3
@@ -351,7 +351,7 @@ Data.Aura = {
         [19854] = (IsClassic and 1 or nil), -- Blessing of Wisdom rank 5
         [24853] = 5/2, -- Mana Spring
         [25290] = (IsClassic and 1 or nil), -- Blessing of Wisdom rank 6
-        [25569] = ((not IsWotlk) and 5/2 nil), -- Mana Spring rank 5
+        [25569] = ((not IsWotlk) and 5/2 or nil), -- Mana Spring rank 5
         [25894] = (IsClassic and 1 or nil), -- Greater Blessing of Wisdom rank 1
         [25918] = (IsClassic and 1 or nil), -- Greater Blessing of Wisdom rank 2
     },
