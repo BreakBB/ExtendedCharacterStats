@@ -1,3 +1,7 @@
+local GetBuffDataByIndex = C_UnitAuras.GetBuffDataByIndex
+local GetDebuffDataByIndex = C_UnitAuras.GetDebuffDataByIndex
+local pairs = pairs
+
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
@@ -20,4 +24,35 @@ function Data:GetMovementSpeed()
 
     currentSpeed = currentSpeed / 7 * 100
     return DataUtils:Round(currentSpeed, 0) .. "%"
+end
+
+---@return number
+function Data:GetInvisibility()
+    local inv = 0
+
+    -- buffs
+    local i = 1
+    repeat
+        local aura = GetBuffDataByIndex("player", i)
+        if aura and aura.spellId then
+            for invisibilityType, Id in pairs(Data.Aura.Invisibility) do
+                inv = inv + (Id[aura.spellId] or 0)
+            end
+        end
+        i = i + 1
+    until (not aura)
+
+    -- debuffs
+    i = 1
+    repeat
+        local aura = GetDebuffDataByIndex("player", i)
+        if aura and aura.spellId then
+            for invisibilityType, Id in pairs(Data.Aura.Invisibility) do
+                inv = inv + (Id[aura.spellId] or 0)
+            end
+        end
+        i = i + 1
+    until (not aura)
+
+    return DataUtils:Round(inv, 2)
 end

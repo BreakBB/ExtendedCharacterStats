@@ -1,3 +1,6 @@
+local IsClassic = ECS.IsClassic
+local IsWotlk = ECS.IsWotlk
+
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
 
@@ -78,6 +81,154 @@ Data.Aura = {
         [17799] = (ECS.IsWotlk and -4 or nil), -- Shadow Mastery 4/5
         [17800] = (ECS.IsWotlk and -5 or nil), -- Shadow Mastery 5/5
         [22959] = (ECS.IsWotlk and -5 or nil), -- Improved Scorch
+    },
+    --- index 0 is for "Apply Aura: Invisibility"
+    --- index n is for "Apply Aura: Invisibility (n)"
+    --- auras with attributes "Passive spell" or "Aura is hidden" aren't listed here
+    Invisibility = {
+        [0] = {
+            [66] = IsClassic and 100 or nil, -- Lesser Invisibility
+            [3680] = 100, -- Lesser Invisibility
+            [4079] = 200, -- Cloaking
+            [4952] = 200, -- Helcular's War
+            [5543] = 500, -- Fade Out
+            [6298] = 200, -- Form of the Moonstalker
+            [7870] = IsWotlk and 200 or 100, -- Lesser Invisibility
+            [8611] = 5000, -- Phase Shift
+            [885] = 200, -- Invisibility
+            [9095] = -1000, -- Cantation of Manifestation
+            [9587] = 200, -- Magic Potion
+            [9738] = -1000, -- Rift Spawn Becomes Visible
+            [10228] = 300, -- Greater Invisibility
+            [11392] = 200, -- Invisibility
+            [12332] = 10000, -- Lathoric the Black
+            [12845] = 100, -- Lesser Invisibility
+            [16380] = 300, -- Greater Invisibility
+            [17651] = 5000, -- Image Projection
+            [20672] = 500, -- Fade
+            [23452] = 300, -- Invisibility
+            [24235] = 10000, -- Super Invis
+            [25905] = 10000, -- Invis Self
+            [26222] = 10000, -- Super Invis
+            [28500] = 200, -- Invisibility
+            [29309] = 5000, -- Phase Shift
+            [32943] = 300, -- Phasing Invisibility
+            [29627] = 200, -- Nether Step
+            [29921] = 150, -- Phasing Invisibility
+            [30447] = 50, -- Shadow of the Forest
+            [30448] = 100, -- Shadow of the Forest
+            [32612] = 340, -- Invisibility
+            [32811] = 300, -- Greater Invisibility
+            [41253] = 300, -- Greater Invisibility
+            [44312] = 9999, -- Head of the Horseman Invisible
+            [46021] = 350, -- Spectral Realm
+            [49399] = 100, -- Skeleton Invis
+            [50700] = 350, -- Copy of Spectral Realm (Test)
+            [54436] = 600, -- Demonic Empowerment
+            [55848] = 1000, -- Invisibility
+            [69107] = 300, -- Killing Spree Invis Aura
+            [72343] = 400, -- Hallucination
+            [440505] = 200, -- Invisibility
+            [441785] = 101, -- Drained of Blood
+            [1221579] = 201, -- Super Invis
+            [1227700] = 201, -- Invisibility
+            [1231389] = 10000, -- Vanish
+        },
+        [1] = {
+            [8203] = 1000, -- Elemental Spirit Invisibility
+        },
+        [2] = {
+            [17680] = 1, -- Spirit Spawn-out
+            [24221] = 1, -- Quest - Teleport Spawn-out
+            [24699] = 10000, -- Vanish
+            [36748] = 1, -- Smoke Spawn-out
+            [448779] = 5001, -- Wake Up Dead
+            [459280] = 101, -- Transiting Realities
+            [1234595] = 10000, -- Vanish
+        },
+        [4] = {
+            [12495] = 1000, -- Eranikus the Chained Invisibility
+            [29448] = 9999, -- Vanish
+            [32727] = 100, -- Arena Preparation
+            [32754] = 100, -- Invisibility
+            [34341] = 9999, -- Ember Blast
+            [38544] = 300, -- Coax Marmot
+            [39667] = 9999, -- Vanish
+            [41476] = 9999, -- Vanish
+            [44036] = 340, -- Fade
+            [44199] = 9999, -- Ember Blast
+            [49337] = 1000, -- Racer Slam death scene: car flip Parent
+            [50008] = 1, -- BOTM - Jungle Brew - Jungle Invisibility Aura
+            [50015] = 9999, -- You're a ...! (NPC) Death Scene
+            [55964] = 9999, -- Vanish
+            [74069] = 100, -- Spawn Invisibility Aura
+        },
+        [5] = {
+            [56783] = 50, -- Quest Invis Tier 4
+        },
+        [7] = {
+            [23303] = 100, -- Vaelen the Flayed [The Shadow Vault] - Invisibility
+            [27622] = 100, -- Get the Key: Vaelen's Invisibility & See Invisibility
+            [37754] = 5000, -- Through The Eyes of Gorefiend
+            [38012] = 5000, -- Garm Wolfbrother: Invisibility
+            [43890] = 1000, -- Flying Machine Invisibility
+            [45636] = 100, -- Mist of the Kvaldir
+            [50734] = 1000, -- Frenzyheart Chicken: Invisibility
+            [52060] = 300, -- Invisibility
+            [54500] = 1000, -- Quest Invisibility 1
+            [56304] = 350, -- Hodir's Helm Bunny: Invisibility
+            [56768] = 50, -- Quest Invis Tier 1
+            [56779] = 50, -- Quest Invis Tier 1
+            [57744] = 1000, -- Quest Invisibility 1
+            [59649] = 99, -- Icecrown Bomber - Cloak Dome Bunny
+            [60190] = 1000, -- Invisibility
+            [60464] = 9, -- Cloaked Alliance Peeps
+            [70693] = 1000, -- Uther Despawn
+            [74980] = 1000, -- Spy Frog Invisibility
+            [75779] = 1000, -- [DND] Marker
+            [1221135] = 101, -- Torment's Illusion
+        },
+        [8] = {
+            [34840] = 1000, -- Triangulation Point One Invisibility
+            [34858] = 2000, -- Triangulation Point Two Invisibility
+            [40194] = 1000, -- Bombing Run: Invisibility
+            [51113] = 500, -- Monte Muzzleshot's Invisibility (Mangal)
+            [51114] = 250, -- Monte Muzzleshot's Invisibility (Camp)
+            [54503] = 1000, -- Quest Invisibility 2
+            [56058] = 100, -- Get the Key: Instructor Hroegar's Invisibility
+            [59660] = 999, -- Inside Cloak Dome Individual
+            [60191] = 1000, -- Invisibility
+            [60481] = 9, -- Cloaked Horde Peeps
+            [73973] = 1000, -- Poster Location Marker
+            [75433] = 100, -- Spawn Invisibility Aura (QZS 2)
+        },
+        [9] = {
+            [39596] = 1000, -- Ethereum Relay
+            [39680] = 5000, -- Sai'kkal Invisibility
+            [42175] = 5000, -- Evidence Marker Invis
+            [52213] = 1000, -- Rainspeaker Treasures: Invisibility
+            [61208] = 300, -- Fjorn's Anvil - Quest Invisibility 3
+            [74144] = 1000, -- Poster Location Marker
+            [74466] = 1000, -- Raging Fire Elemental Invisibility
+            [75165] = 1000, -- Spirit of the Tiger Aura
+            [75166] = 1000, -- Spirit of the Tiger Aura (Rider)
+            [75179] = 1000, -- Matriarch's Shroud
+        },
+        [10] = {
+            [44856] = 100, -- Bash'ir Phasing Device
+            [45614] = 300, -- Shroud of the Scourge
+            [48809] = 48812, -- Binding Life
+            [49097] = 100, -- Out of Body Experience
+            [52215] = 1000, -- Kartak and Sparktouched: Invisibility
+            [75513] = 1000, --  Spawn Invisibility Aura (QZM)                                
+            [364459] = 1000, -- Shroud of Death
+            [426062] = 101, -- Quest Invisibility
+            [462593] = 101, -- Quest Invisibility
+            [468882] = 101, -- Quest Invisibility
+        },
+        [28] = {
+           [425147] = 101, -- Quest Invisibility
+        },
     },
     IsFeralForm = {
         [768] = true, -- Cat Form

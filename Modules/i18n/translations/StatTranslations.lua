@@ -812,6 +812,16 @@ local statTranslations = {
         ["esMX"] = "Fallo de las sombras (Niv. + 3)",
         ["ptBR"] = "Erro de sombra (Nív. + 3)"
     },
+    ["Invisibility"] = {
+        ["enUS"] = true,
+        ["deDE"] = false,
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false
+    },
 }
 
 for k, v in pairs(statTranslations) do

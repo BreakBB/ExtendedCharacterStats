@@ -40,6 +40,19 @@ function _Config:LoadGeneralSection()
                     Stats.RebuildStatInfos()
                 end,
             },
+            invisibility = {
+                type = "toggle",
+                order = 1,
+                name = function() return i18n("Show invisibility") end,
+                desc = function() return i18n("Shows/Hides the invisibility value.") end,
+                width = 1.5,
+                disabled = function() return (not ExtendedCharacterStats.profile.general.display); end,
+                get = function () return ExtendedCharacterStats.profile.general.invisibility.display; end,
+                set = function (_, value)
+                    ExtendedCharacterStats.profile.general.invisibility.display = value
+                    Stats.RebuildStatInfos()
+                end,
+            },
         },
     }
 end
