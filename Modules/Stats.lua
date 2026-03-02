@@ -216,7 +216,7 @@ _CreateStatInfos = function()
     _CreateStatInfo(
         category,
         category.attackPower,
-        ECS.IsClassic and nil or category.critRating,
+        (not ECS.IsClassic) and category.critRating or nil,
         category.crit,
         ECS.IsWotlk and category.penetrationRating or nil,
         ECS.IsWotlk and category.penetration or nil,
@@ -253,7 +253,7 @@ _CreateStatInfos = function()
         _CreateStatInfo(
             category,
             category.attackPower,
-            ECS.IsClassic and nil or category.critRating,
+            (not ECS.IsClassic) and category.critRating or nil,
             category.crit,
             ECS.IsWotlk and category.penetrationRating or nil,
             ECS.IsWotlk and category.penetration or nil,
@@ -278,8 +278,8 @@ _CreateStatInfos = function()
     _CreateStatInfo(
         category,
         category.armor,
-        ECS.IsClassic and nil or category.resilienceRating,
-        ECS.IsClassic and nil or category.resilience,
+        (not ECS.IsClassic) and category.resilienceRating or nil,
+        (not ECS.IsClassic) and category.resilience or nil,
         (not ECS.IsClassic) and category.defenseRating or nil,
         category.defense,
         category.avoidance,
@@ -294,7 +294,7 @@ _CreateStatInfos = function()
             category = category.block
             _CreateStatInfo(
                 category,
-                ECS.IsClassic and nil or category.rating,
+                (not ECS.IsClassic) and category.rating or nil,
                 category.chance,
                 category.value
             )
@@ -335,7 +335,7 @@ _CreateStatInfos = function()
         local spellCrit = spell.crit
         _CreateStatInfo(
             category,
-            ECS.IsClassic and nil or spellCrit.rating,
+            (not ECS.IsClassic) and spellCrit.rating or nil,
             spell.arcane.display and spellCrit.display and spellCrit.arcane or nil,
             spell.fire.display and spellCrit.display and spellCrit.fire or nil,
             spell.frost.display and spellCrit.display and spellCrit.frost or nil,
@@ -348,7 +348,7 @@ _CreateStatInfos = function()
         category = spellHit
         _CreateStatInfo(
             category,
-            ECS.IsClassic and nil or spellHit.rating,
+            (not ECS.IsClassic) and spellHit.rating or nil,
             spell.arcane.display and spellHit.bonus.display and spellHit.arcane or nil,
             spell.fire.display and spellHit.bonus.display and spellHit.fire or nil,
             spell.frost.display and spellHit.bonus.display and spellHit.frost or nil,
