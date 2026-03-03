@@ -1,10 +1,19 @@
+local GetBuffDataByIndex = C_UnitAuras.GetBuffDataByIndex
+local GetDebuffDataByIndex = C_UnitAuras.GetDebuffDataByIndex
+local GetInventoryItemLink = GetInventoryItemLink
+local GetItemStats = GetItemStats
+local GetUnitHealthRegenRateFromSpirit = GetUnitHealthRegenRateFromSpirit
+local IsClassic = ECS.IsClassic
+local IsSpellKnown = C_SpellBook.IsSpellKnown
+local UnitHealthMax = UnitHealthMax
+local UnitStat = UnitStat
+
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
 local DataUtils = ECSLoader:ImportModule("DataUtils")
 
 local _HP5 = {}
-local IsSpellKnown = C_SpellBook.IsSpellKnown
 local _, _, classId = UnitClass("player")
 
 ---@return string
@@ -27,7 +36,7 @@ end
 
 ---@return number, number
 function Data:GetHP5()
-    local bonusHp5 = ECS.IsClassic and _HP5:GetHP5FromSpirit() or 5 * GetUnitHealthRegenRateFromSpirit("player")
+    local bonusHp5 = IsClassic and _HP5:GetHP5FromSpirit() or 5 * GetUnitHealthRegenRateFromSpirit("player")
     local bonusCombatHp5 = 0
     local mod = 1
     local talentMod = _HP5:GetDemonicAegisTalentModifier() + 1
@@ -58,7 +67,7 @@ function Data:GetHP5()
 
     local i = 1
     repeat
-        local aura = C_UnitAuras.GetBuffDataByIndex("player", i)
+        local aura = GetBuffDataByIndex("player", i)
         if aura and aura.spellId then
             local DemonicAegis = (Data.Aura.IsFelOrDemonArmor[aura.spellId] and talentMod or 1)
             if aura.spellId == 2645 and IsSpellKnown(59289) then
@@ -73,7 +82,7 @@ function Data:GetHP5()
 
     i = 1
     repeat
-        local aura = C_UnitAuras.GetDebuffDataByIndex("player", i)
+        local aura = GetDebuffDataByIndex("player", i)
         if aura and aura.spellId then
             bonusHp5 = bonusHp5 + (Data.Aura.PercentageHealthRegen[aura.spellId] or 0) * maxhealth
             mod = mod + (Data.Aura.HealthRegenModifier[aura.spellId] or 0)

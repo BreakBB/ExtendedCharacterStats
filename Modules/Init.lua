@@ -1,3 +1,5 @@
+local IsEventValid = C_EventUtils.IsEventValid
+
 ---@class Init
 local Init = ECSLoader:CreateModule("Init")
 local _Init = {}
@@ -100,7 +102,7 @@ function _Init.RegisterEvents(eventFrame)
     eventFrame:RegisterUnitEvent("UNIT_RANGEDDAMAGE", "player")
     eventFrame:RegisterEvent("UPDATE_SHAPESHIFT_FORM")
 
-    if (C_EventUtils.IsEventValid("SOCKET_INFO_SUCCESS")) then
+    if (IsEventValid("SOCKET_INFO_SUCCESS")) then
         eventFrame:RegisterEvent("SOCKET_INFO_SUCCESS") -- Triggers whenever the player successfully sockets an item
     end
     if GearManagerDialog then
@@ -116,7 +118,7 @@ function _Init.RegisterEvents(eventFrame)
         eventFrame:RegisterEvent("GLYPH_UPDATED")
         eventFrame:RegisterEvent("GLYPH_REMOVED")
     end
-    if (C_EventUtils.IsEventValid("RUNE_UPDATED")) then
+    if (IsEventValid("RUNE_UPDATED")) then
         eventFrame:RegisterEvent("RUNE_UPDATED") -- Triggers whenever the player changed a rune
     end
 end

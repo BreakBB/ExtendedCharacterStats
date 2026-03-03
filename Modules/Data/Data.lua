@@ -1,3 +1,6 @@
+local IsClassic = ECS.IsClassic
+local IsWotlk = ECS.IsWotlk
+
 ---@class Data
 local Data = ECSLoader:CreateModule("Data")
 
