@@ -1,3 +1,11 @@
+local GetArmorPenetration = GetArmorPenetration
+local GetBuffDataByIndex = C_UnitAuras.GetBuffDataByIndex
+local GetShapeshiftFormInfo = GetShapeshiftFormInfo
+local GetCombatRating = GetCombatRating
+local IsWotlk = ECS.IsWotlk
+local UnitClass = UnitClass
+local UnitLevel = UnitLevel
+
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
@@ -28,13 +36,13 @@ end
 function Data:GetArmorPenetrationFlat()
     local armorPenetration = 0
 
-    if classId == Data.ROGUE and not ECS.IsWotlk then
+    if classId == Data.ROGUE and not IsWotlk then
         armorPenetration = armorPenetration + playerLevel * 5/3 * DataUtils:GetActiveTalentSpell({14171,14172,14173}) -- Serrated Blades
     end
 
     local i = 1
     repeat
-        local aura = C_UnitAuras.GetBuffDataByIndex("player", i)
+        local aura = GetBuffDataByIndex("player", i)
         if aura and aura.spellId then
             armorPenetration = armorPenetration + (Data.Aura.ReduceTargetArmor[aura.spellId] or 0)
             if not ECS.IsWotlk then
