@@ -20,6 +20,16 @@ Data.MAGE = 8
 Data.WARLOCK = 9
 Data.DRUID = 11
 
+--- same as wowhead
+Data.BEAST = 1
+Data.DRAGONKIN = 2
+Data.DEMON = 3
+Data.ELEMENTAL = 4
+Data.GIANT = 5
+Data.UNDEAD = 6
+Data.HUMANOID = 7
+Data.MECHANICAL = 9
+
 Data.Aura = {
     AllowCastingManaRegeneration = {
         [6117] = (ECS.IsWotlk and 0.5 or 0.3), -- Mage Armor rank 1

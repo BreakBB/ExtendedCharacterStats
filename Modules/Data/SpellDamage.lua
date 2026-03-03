@@ -1,9 +1,11 @@
+local GetBuffDataByIndex = C_UnitAuras.GetBuffDataByIndex
+local GetInventoryItemID = GetInventoryItemID
+local GetInventoryItemLink = GetInventoryItemLink
+
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
 local DataUtils = ECSLoader:ImportModule("DataUtils")
-
-local GetBuffDataByIndex = C_UnitAuras.GetBuffDataByIndex
 
 ---@param school number
 ---@return number
@@ -23,7 +25,7 @@ function Data:GetSpellPowerVsCreature(creature)
         j = j + 1
         if aura and aura.spellId then
             if creature == Data.UNDEAD then
-                spellDmg = spellDmg + (Data.buffsUndeadSpellPower[aura.spellId] or 0)
+                spellDmg = spellDmg + (Data.Aura.UndeadSpellPower[aura.spellId] or 0)
             end
         end
     until (not aura)
@@ -31,11 +33,11 @@ function Data:GetSpellPowerVsCreature(creature)
         -- items
         local id, _ = GetInventoryItemID("player", i)
         if creature == Data.UNDEAD then
-            spellDmg = spellDmg + (Data.itemsIncreaseSpellDamageUndead[id] or 0)
-            spellDmg = spellDmg + (Data.itemsIncreaseSpellDamageUndeadDemon[id] or 0)
+            spellDmg = spellDmg + (Data.Item.IncreaseSpellDamageUndead[id] or 0)
+            spellDmg = spellDmg + (Data.Item.IncreaseSpellDamageUndeadDemon[id] or 0)
         elseif creature == Data.DEMON then
             if id == 30787 then spellDmg = spellDmg + 185 end -- Illidari-Bane Mageblade
-            spellDmg = spellDmg + (Data.itemsIncreaseSpellDamageUndeadDemon[id] or 0)
+            spellDmg = spellDmg + (Data.Item.IncreaseSpellDamageUndeadDemon[id] or 0)
         end
         -- enchants
         local itemLink = GetInventoryItemLink("player", i)
@@ -43,12 +45,12 @@ function Data:GetSpellPowerVsCreature(creature)
             local enchant = DataUtils:GetEnchantFromItemLink(itemLink)
             if enchant then
                 if creature == Data.UNDEAD then
-                    spellDmg = spellDmg + (Data.enchantsUndeadSlayer[enchant] or 0)
-                    spellDmg = spellDmg + (Data.enchantsIncreaseSpellDamageUndead[enchant] or 0)
+                    spellDmg = spellDmg + (Data.Enchant.UndeadSlayer[enchant] or 0)
+                    spellDmg = spellDmg + (Data.Enchant.IncreaseSpellDamageUndead[enchant] or 0)
                 elseif creature == Data.BEAST then
-                    spellDmg = spellDmg + (Data.enchantsBeastSlayer[enchant] or 0)
+                    spellDmg = spellDmg + (Data.Enchant.BeastSlayer[enchant] or 0)
                 elseif creature == Data.ELEMENTAL then
-                    spellDmg = spellDmg + (Data.enchantsElementalSlayer[enchant] or 0)
+                    spellDmg = spellDmg + (Data.Enchant.ElementalSlayer[enchant] or 0)
                 end
             end
         end

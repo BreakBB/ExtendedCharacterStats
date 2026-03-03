@@ -156,7 +156,7 @@ function Data:GetSetBonusModifierMP5()
     return mod
 end
 
----@return bool
+---@return boolean
 function Data:HasDemonSlaying200()
     if classId == Data.ROGUE or classId == Data.WARRIOR then
         return Data:IsSetBonusActive(setNames.THE_TWIN_BLADES_OF_AZZINOTH, 2)
@@ -164,7 +164,7 @@ function Data:HasDemonSlaying200()
     return false
 end
 
----@return bool
+---@return boolean
 function Data:HasUndeadSlayer15()
     return Data:IsSetBonusActive(setNames.CHAIN_OF_THE_SCARLET_CRUSADE, 5)
 end

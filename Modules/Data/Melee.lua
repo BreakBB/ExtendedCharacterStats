@@ -1,3 +1,7 @@
+local GetBuffDataByIndex = C_UnitAuras.GetBuffDataByIndex
+local GetInventoryItemID = GetInventoryItemID
+local GetInventoryItemLink = GetInventoryItemLink
+
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
@@ -21,11 +25,11 @@ function Data:GetMeleeAttackPowerVsCreature(creature)
     -- auras
     local j = 1
     repeat
-        local aura = C_UnitAuras.GetBuffDataByIndex("player", j)
+        local aura = GetBuffDataByIndex("player", j)
         j = j + 1
         if aura and aura.spellId then
             if creature == Data.UNDEAD then
-                dmg = dmg + (Data.buffsUndeadAttackPower[aura.spellId] or 0)
+                dmg = dmg + (Data.Aura.UndeadAttackPower[aura.spellId] or 0)
             elseif creature == Data.DEMON then
                 if aura.spellId == 11406 then dmg = dmg + 265 end -- Elixir of Demonslaying
             end
@@ -35,13 +39,13 @@ function Data:GetMeleeAttackPowerVsCreature(creature)
         -- items
         local id, _ = GetInventoryItemID("player", i)
         if creature == Data.UNDEAD then
-            dmg = dmg + (Data.itemsUndeadSlaying[id] or 0)
-            dmg = dmg + (Data.itemsUndeadDeamonSlaying[id] or 0)
+            dmg = dmg + (Data.Item.UndeadSlaying[id] or 0)
+            dmg = dmg + (Data.Item.UndeadDeamonSlaying[id] or 0)
         elseif creature == Data.DEMON then
-            dmg = dmg + (Data.itemsDemonSlaying[id] or 0)
-            dmg = dmg + (Data.itemsUndeadDeamonSlaying[id] or 0)
+            dmg = dmg + (Data.Item.DemonSlaying[id] or 0)
+            dmg = dmg + (Data.Item.UndeadDeamonSlaying[id] or 0)
         elseif creature == Data.DRAGONKIN then
-            dmg = dmg + (Data.itemsDragonSlaying[id] or 0)
+            dmg = dmg + (Data.Item.DragonSlaying[id] or 0)
         elseif creature == Data.MECHANICAL then
              if id == 213319 then dmg = dmg + 30 end -- Machinist's Gloves
         end
@@ -51,15 +55,15 @@ function Data:GetMeleeAttackPowerVsCreature(creature)
             local enchant = DataUtils:GetEnchantFromItemLink(itemLink)
             if enchant then
                 if creature == Data.UNDEAD then
-                    dmg = dmg + (Data.enchantsUndeadSlayer[enchant] or 0)
-                    if enchant and enchant == Data.enchantIds.UNDEAD_DEMON_SLAYER_150 then dmg = dmg + 150 end
+                    dmg = dmg + (Data.Enchant.UndeadSlayer[enchant] or 0)
+                    if enchant and enchant == Data.Enchant.Ids.UNDEAD_DEMON_SLAYER_150 then dmg = dmg + 150 end
                 elseif creature == Data.DEMON then
-                    if enchant and enchant == Data.enchantIds.UNDEAD_DEMON_SLAYER_150 then dmg = dmg + 150 end
+                    if enchant and enchant == Data.Enchant.Ids.UNDEAD_DEMON_SLAYER_150 then dmg = dmg + 150 end
                 elseif creature == Data.BEAST then
-                    dmg = dmg + (Data.enchantsBeastSlayer[enchant] or 0)
+                    dmg = dmg + (Data.Enchant.BeastSlayer[enchant] or 0)
                 elseif creature == Data.ELEMENTAL then
-                    dmg = dmg + (Data.enchantsElementalSlayer[enchant] or 0)
-                    if enchant and enchant == Data.enchantIds.LESSER_ELEMENTAL_SLAYER then dmg = dmg + 6 end
+                    dmg = dmg + (Data.Enchant.ElementalSlayer[enchant] or 0)
+                    if enchant and enchant == Data.Enchant.Ids.LESSER_ELEMENTAL_SLAYER then dmg = dmg + 6 end
                 end
             end
         end
