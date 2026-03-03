@@ -1,3 +1,5 @@
+local IsClassic = ECS.IsClassic
+
 ------------------------------------------------------------------
 -- Modules
 ------------------------------------------------------------------
@@ -290,8 +292,8 @@ _CreateStatInfos = function()
         DataUtils:CanParry() and category.parry or nil,
         (not ECS.IsClassic) and category.dodgeRating or nil,
         category.dodge or nil,
-        (not ECS.IsClassic) and category.resilienceRating or nil,
-        (not ECS.IsClassic) and category.resilience or nil
+        (not IsClassic) and category.resilienceRating or nil,
+        (not IsClassic) and category.resilience or nil
     )
 
     if UnitHasMana("player") then
