@@ -1,5 +1,4 @@
 local IsTBC = ECS.IsTBC
-local IsWotlk = ECS.IsWotlk
 
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
