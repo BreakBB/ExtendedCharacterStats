@@ -1,3 +1,6 @@
+local IsWotlk = ECS.IsWotlk
+local UnitClass = UnitClass
+
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
@@ -82,7 +85,7 @@ end
 ---@return number
 function _SpellHaste:GetTalentSpellHaste()
     local bonus = 0
-    if ECS.IsWotlk then
+    if IsWotlk then
         if classId == Data.DRUID then
             bonus = bonus + 1 * DataUtils:GetActiveTalentSpell({16850,16923,16924}) -- Celestial Focus
             bonus = bonus + 2 * DataUtils:GetActiveTalentSpell({51179,51180,51181,51182,51183}) -- Gift of the Earthmother

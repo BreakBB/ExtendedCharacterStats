@@ -1,3 +1,6 @@
+local IsClassic = ECS.IsClassic
+local IsWotlk = ECS.IsWotlk
+
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
 
@@ -363,7 +366,7 @@ Data.Aura = {
         [1098] = -30, -- Subjugate Demon
         [1714] = -50, -- Curse of Tongues Rank 1
         [2825] = 30, -- Bloodlust
-        [2895] = (ECS.IsWotlk and 5 or nil), -- Wrath of Air Totem
+        [2895] = (IsWotlk and 5 or nil), -- Wrath of Air Totem
         [3603] = -35, -- Distracting Pain
         [5760] = -40, -- Mind-numbing Poison Rank 1
         [7102] = -25, -- Contagion of Rot
@@ -373,21 +376,21 @@ Data.Aura = {
         [8215] = 100, -- Rapid Cast
         [8272] = -20, -- Mind Tremor
         [8692] = -50, -- Mind-numbing Poison II Rank 2
-        [10060] = ((not ECS.IsClassic) and 20 or nil), -- Power Infusion
+        [10060] = ((not IsClassic) and 20 or nil), -- Power Infusion
         [10348] = 100, -- Tune Up
         [10651] = -20, -- Curse of the Eye
         [10653] = -20, -- Curse of the Eye
         [11398] = -60, -- Mind-numbing Poison III Rank 3
         [11719] = -60, -- Curse of Tongues Rank 2
         [11725] = -30, -- Subjugate Demon
-        [11726] = (ECS.IsWotlk and -20 or -30), -- Subjugate Demon
+        [11726] = (IsWotlk and -20 or -30), -- Subjugate Demon
         [12255] = -15, -- Curse of Tuten'kash
-        [12472] = ((not ECS.IsClassic) and 20 or nil), -- Icy Veins
+        [12472] = ((not IsClassic) and 20 or nil), -- Icy Veins
         [12889] = -50, -- Curse of Tongues
         [13338] = -50, -- Curse of Tongues
         [14538] = -35, -- Aural Shock
         [15470] = -50, -- Curse of Tongues
-        [16886] = (ECS.IsWotlk and 20 or nil), -- Nature's Grace (holy,nature)
+        [16886] = (IsWotlk and 20 or nil), -- Nature's Grace (holy,nature)
         [17331] = -10, -- Fang of the Crystal Spider
         [17633] = 66, -- Arcane Focus
         [18173] = 100000, -- Burning Adrenaline
