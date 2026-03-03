@@ -1,3 +1,6 @@
+IsClassic = ECS.IsClassic
+IsWotlk = ECS.IsWotlk
+
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
 
