@@ -4,7 +4,6 @@ local GetCombatRatingBonus = GetCombatRatingBonus
 local GetHitModifier = GetHitModifier
 local GetRangedCritChance = GetRangedCritChance
 local IsClassic = ECS.IsClassic
-local IsWotlk = ECS.IsWotlk
 local UnitClass = UnitClass
 local UnitHasRelicSlot = UnitHasRelicSlot
 local UnitLevel = UnitLevel
@@ -20,8 +19,6 @@ local Utils = ECSLoader:ImportModule("Utils")
 local DataUtils = ECSLoader:ImportModule("DataUtils")
 
 local _Ranged = {}
-
-local _, _, classId = UnitClass("player")
 
 ---@return number
 function Data:GetRangeAttackPower()
