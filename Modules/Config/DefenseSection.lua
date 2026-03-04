@@ -1,3 +1,5 @@
+local IsClassic = ECS.IsClassic
+
 ---@class Config
 local Config = ECSLoader:ImportModule("Config")
 local _Config = Config.private
@@ -195,7 +197,7 @@ function _Config:LoadDefenseSection()
                 name = function() return i18n("Resilience rating") end,
                 desc = function() return i18n("Shows/Hides the resilience rating.") end,
                 width = 1.5,
-                hidden = function() return ECS.IsClassic end,
+                hidden = function() return IsClassic end,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
                 get = function () return ExtendedCharacterStats.profile.defense.resilienceRating.display; end,
                 set = function (_, value)
