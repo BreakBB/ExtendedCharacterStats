@@ -1057,3 +1057,12 @@ Data.setNames = {
     VESTMENTS_OF_TRANSCENDENCE = "Vestments of Transcendence",
     WINDHAWK_ARMOR = "Windhawk Armor",
 }
+Data.Talent = {
+    [Data.DRUID] = {
+        FERAL_INSTINCT = (IsClassic and {16947,16948,16949,16950,16951} or {16947,16948,16949})
+    },
+    [Data.ROGUE] ={
+        MASTER_OF_DECEPTION = (IsWotlk and {13958,13970,13971} or {13958,13970,13971,13972,13973})
+    },
+}
+

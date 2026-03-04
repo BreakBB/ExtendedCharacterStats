@@ -26,5 +26,6 @@ function Migration:ToLatestProfileVersion(profileVersion)
     end
     if profileVersion < 26 then
         ExtendedCharacterStats.profile.general.invisibility = defaultProfile.profile.general.invisibility
+        ExtendedCharacterStats.profile.general.stealth = defaultProfile.profile.general.stealth
     end
 end

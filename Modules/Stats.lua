@@ -213,6 +213,7 @@ _CreateStatInfos = function()
     _CreateStatInfo(
         category,
         category.movementSpeed,
+        category.stealth,
         category.invisibility
     )
 

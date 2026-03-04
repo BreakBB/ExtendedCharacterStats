@@ -19,6 +19,7 @@ end
 
 dataFunctionRefs = {
     ["MovementSpeed"] = function() return Data:GetMovementSpeed() end,
+    ["Stealth"] = function() return Data:GetStealthValue() end,
     ["Invisibility"] = function() return Data:GetInvisibility() end,
     -- Melee
     ["MeleeAttackPower"] = function() return Data:GetMeleeAttackPower() end,

@@ -20,6 +20,11 @@ local function GetDefaultStatsProfile()
             text = "General",
 
             movementSpeed = {display = true, refName = "MovementSpeed", text = "Movement Speed"},
+            stealth = {
+                display = true,
+                refName = "Stealth",
+                text = "Stealth",
+            },
             invisibility = {
                 display = true,
                 refName = "Invisibility",

@@ -1,5 +1,6 @@
 local GetBuffDataByIndex = C_UnitAuras.GetBuffDataByIndex
 local GetDebuffDataByIndex = C_UnitAuras.GetDebuffDataByIndex
+local IsClassic = ECS.IsClassic
 local IsWotlk = ECS.IsWotlk
 local max = math.max
 local pairs = pairs
@@ -12,7 +13,11 @@ local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
 local DataUtils = ECSLoader:ImportModule("DataUtils")
 
+local _General = {}
+
 local _, _, classId = UnitClass("player")
+local DRUID = Data.DRUID
+local ROGUE = Data.ROGUE
 
 ---@return string
 function Data:GetMovementSpeed()
@@ -42,7 +47,7 @@ function Data:GetInvisibility()
         local aura = GetBuffDataByIndex("player", i)
         if aura and aura.spellId then
             for _, Id in pairs(Data.Aura.Invisibility) do
-                inv = inv + (Id[aura.spellId] or 0)
+                inv = max(inv, (Id[aura.spellId] or 0))
             end
         end
         i = i + 1
@@ -54,7 +59,7 @@ function Data:GetInvisibility()
         local aura = GetDebuffDataByIndex("player", i)
         if aura and aura.spellId then
             for _, Id in pairs(Data.Aura.Invisibility) do
-                inv = inv + (Id[aura.spellId] or 0)
+                inv = max(inv, (Id[aura.spellId] or 0))
             end
         end
         i = i + 1
@@ -64,7 +69,12 @@ function Data:GetInvisibility()
 end
 
 ---@return number
-function Data:GetStealth()
+function Data:GetStealthValue()
+    return _General:GetStealth() + _General:GetModStealthEffectiveness()
+end
+
+---@return number
+function _General:GetStealth()
     local stealth = 0
     local prowlOrStealth = false
 
@@ -85,7 +95,7 @@ function Data:GetStealth()
     repeat
         local aura = GetBuffDataByIndex("player", i)
         if aura and aura.spellId then
-            if classId == Data.ROGUE or classId == Data.DRUID then
+            if classId == ROGUE or classId == DRUID then
                 -- check if character is prowling or stealthing
                 prowlOrStealth = prowlOrStealth or Data.Aura.IsProwlOrStealth[aura.spellId]
             end
@@ -116,8 +126,9 @@ function Data:GetStealth()
 end
 
 ---@return number
-function Data:GetModStealthEffectiveness()
+function _General:GetModStealthEffectiveness()
     local stealth = 0
+    local prowlOrStealth = false
     local hasShadowmeldBonus = false
 
     -- buffs
@@ -127,7 +138,7 @@ function Data:GetModStealthEffectiveness()
         if aura and aura.spellId then
             if classId == Data.ROGUE or classId == Data.DRUID then
                 -- check if character is prowling or stealthing
-                hasShadowmeldBonus = hasShadowmeldBonus or Data.Aura.IsProwlOrStealth[aura.spellId]
+                prowlOrStealth = prowlOrStealth or Data.Aura.IsProwlOrStealth[aura.spellId]
             end
             stealth = stealth + (Data.Aura.StealthEffectiveness[aura.spellId] or 0)
             if aura.spellId == 58984 then -- Shadowmeld
@@ -147,9 +158,19 @@ function Data:GetModStealthEffectiveness()
         i = i + 1
     until (not aura)
 
-    if hasShadowmeldBonus and IsPlayerSpell(21009) then
+    if (prowlOrStealth or hasShadowmeldBonus) and IsPlayerSpell(21009) then
         stealth = stealth + 5 -- Shadowmeld passive / elusiveness
     end
 
+    -- talents
+    if prowlOrStealth then
+        if classId == DRUID then
+            local coeff = (IsClassic and 3 or 5)
+            stealth = stealth + coeff * DataUtils:GetActiveTalentSpell(Data.Talent[DRUID].FERAL_INSTINCT) -- Feral Instinct
+        elseif classId == ROGUE then
+            local coeff = (IsWotlk and 5 or 3)
+            stealth = stealth + coeff * DataUtils:GetActiveTalentSpell(Data.Talent[ROGUE].MASTER_OF_DECEPTION) -- Master of Deception
+        end
+    end
     return stealth
 end
