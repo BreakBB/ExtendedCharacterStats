@@ -4,7 +4,6 @@ local GetCombatRatingBonus = GetCombatRatingBonus
 local GetHitModifier = GetHitModifier
 local GetRangedCritChance = GetRangedCritChance
 local IsClassic = ECS.IsClassic
-local UnitClass = UnitClass
 local UnitHasRelicSlot = UnitHasRelicSlot
 local UnitLevel = UnitLevel
 local UnitRangedAttack = UnitRangedAttack
