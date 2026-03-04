@@ -1,4 +1,5 @@
 local IsClassic = ECS.IsClassic
+local IsTBC = ECS.IsTBC
 local IsWotlk = ECS.IsWotlk
 
 ---@class Data
@@ -23,6 +24,7 @@ Data.MAGE = 8
 Data.WARLOCK = 9
 Data.DRUID = 11
 
+--- auras with attributes "Passive spell" or "Aura is hidden" should not be listed here
 Data.Aura = {
     AllowCastingManaRegeneration = {
         [6117] = (ECS.IsWotlk and 0.5 or 0.3), -- Mage Armor rank 1
@@ -84,7 +86,6 @@ Data.Aura = {
     },
     --- index 0 is for "Apply Aura: Invisibility"
     --- index n is for "Apply Aura: Invisibility (n)"
-    --- auras with attributes "Passive spell" or "Aura is hidden" aren't listed here
     Invisibility = {
         [0] = {
             [66] = IsClassic and 100 or nil, -- Lesser Invisibility
@@ -262,6 +263,15 @@ Data.Aura = {
         [49279] = true, -- Lightning Shield
         [49280] = true, -- Lightning Shield rank 10
         [49281] = true, -- Lightning Shield rank 11
+    },
+    IsProwlOrStealth = {
+        [1784] = true, -- Stealth
+        [1785] = true, -- Stealth
+        [1786] = true, -- Stealth
+        [1787] = true, -- Stealth
+        [5215] = true, -- Prowl
+        [6783] = true, -- Prowl
+        [9913] = true, -- Prowl
     },
     MP5 = {
         [430] = 42, -- drink
@@ -573,6 +583,77 @@ Data.Aura = {
         [1227200] = 20, -- Wickedness
         [1236220] = -50, -- Slow
     },
+    Stealth = {
+        [1784] = 5, -- Stealth
+        [1785] = 100, -- Stealth
+        [1786] = 200, -- Stealth
+        [1787] = 300, -- Stealth
+        [2425] = -100, -- Spotted
+        [3648] = 5, -- Phase Out
+        [5215] = 100, -- Prowl
+        [5916] = 1, -- Shadowstalker Stealth
+        [6408] = 1, -- Faded
+        [6538] = 140, -- Dig Trap
+        [6634] = (IsClassic and 6 or 300), -- Phasing Stealth
+        [6783] = 200, -- Prowl
+        [6920] = 100, -- Hide
+        [8152] = 5, -- Prowl
+        [8218] = 5, -- Sneak
+        [8822] = 9999, -- Stealth
+        [9736] = 180, -- Arantir's Deception
+        [9740] = 180, -- Arantir's Deception
+        [9913] = 300, -- Prowl
+        [10032] = 9999, -- Uber Stealth
+        [11327] = 170, -- Vanish
+        [11329] = 270, -- Vanish
+        [16122] = 99999, -- Phasing
+        [20540] = 5, -- Ashenvale Outrunner Sneak
+        [20580] = 50, -- Shadowmeld
+        [22766] = 1, -- Sneak
+        [24450] = 150, -- Prowl
+        [24452] = 200, -- Prowl
+        [24453] = 250, -- Prowl
+        [24690] = 1000, -- Aspect of Arlokk
+        [26381] = 10000, -- Burrow
+        [26888] = 370, -- Vanish
+        [29448] = 9999, -- Vanish
+        [30831] = 1, -- Stealth
+        [30991] = 1, -- Stealth
+        [31526] = 9999, -- Stealth
+        [31621] = 9999, -- Stealth
+        [32199] = 65, -- Stealth
+        [32615] = 1, -- Stealth
+        [34189] = -50, -- Stealth
+        [35205] = 9999, -- Vanish
+        [39581] = 10000, -- Storm Blink
+        [42347] = 1, -- Stealth
+        [42866] = 9999, -- Stealth
+        [42932] = 1, -- Prowl
+        [42943] = 9999, -- Stealth
+        [47521] = 9999, -- Mole Machine Player Hide and Root
+        [51755] = 600, -- Camouflage
+        [52006] = 5000, -- Shroud
+        [53061] = 1000, -- Cover
+        [58548] = 4200, -- Ethereal
+        [59045] = 300, -- Camoflogue
+        [61704] = 1, -- Sneaky Walk
+        [66296] = 350, -- Shadow Veil
+        [66305] = 300, -- Shadow Veil
+        [67340] = 100, -- Hide
+        [448471] = 101, -- Lledra's Vehicle Test [DNT]
+        [460631] = 251, -- (DNT) Pyranis Add Fog Stealth
+        [467049] = 301, -- Blessing of Bethekk
+        [469182] = 11, -- Lying Low
+        [473544] = 5, -- Sneaking
+        [1220930] = 10000, -- Phantom's Veil
+        [1221341] = 6, -- Poorly Camouflaged
+        [1231389] = 10000, -- Vanish
+    },
+    StealthEffectiveness = {
+        [28492] = 30, -- Sneaking
+        [38552] = 8, -- Improved Stealth
+        [1220708] = 8, -- Displaced
+    },
 }
 Data.Enchant = {
     BlockValue = {
@@ -608,6 +689,10 @@ Data.Enchant = {
         [3819] = 10, -- Arcanum of Blissful Mending
         [3836] = 8, -- Master's Inscription of the Crag
         [7099] = 12, -- Blackfathom Mana Oil. This effect only applies within Blackfathom Deeps.
+    },
+    StealthEffectiveness = {
+        [910] = 5, -- Enchant Cloak - Stealth
+        [3256] = 5, -- Enchant Cloak - Shadow Armor
     },
 }
 Data.Gem = {
@@ -928,6 +1013,25 @@ Data.Item = {
         [241183] = 3,
         [242315] = 3,
         [242317] = 3,
+    },
+    StealthEffectiveness = {
+        [8197] = 5, -- Nightscape Boots
+        [20255] = 5, -- Whisperwalk Boots
+        [21758] = 3, -- Figurine - Black Pearl Panther
+        [22003] = 8, -- Darkmantle Boots
+        [23073] = 8, -- Boots of Displacement
+        [24128] = (IsTBC and 5 or nil), -- Figurine - Nightseye Panther
+        [27467] = 5, -- Silent-Strider Kneeboots
+        [31228] = 5, -- The Master's Treads
+        [35702] = (IsTBC and 5 or nil), -- Figurine - Shadowsong Panther
+        [213341] = 5, -- Insulated Workboots
+        [219343] = 3, -- Filcher's Cowl
+        [220860] = 5, -- Sergeant Major's Leather Boots
+        [220861] = 5, -- First Sergeant's Leather Boots
+        [221409] = 5, -- Emerald Leather Sabatons
+        [226831] = 8, -- Darkmantle Footpads
+        [226851] = 8, -- Darkmantle Boots
+        [236314] = 8, -- Boots of Displacement
     },
     TimewornSpellHaste = {
         [234016] = 2,
