@@ -1,3 +1,7 @@
+local GetCombatRating = GetCombatRating
+local GetCombatRatingBonus = GetCombatRatingBonus
+local GetModResilienceDamageReduction = GetModResilienceDamageReduction
+
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
