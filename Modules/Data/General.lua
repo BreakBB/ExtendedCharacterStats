@@ -118,7 +118,6 @@ end
 ---@return number
 function Data:GetModStealthEffectiveness()
     local stealth = 0
-    local prowlOrStealth = false
     local hasShadowmeldBonus = false
 
     -- buffs
