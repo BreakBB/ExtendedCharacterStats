@@ -22,7 +22,6 @@ local DataUtils = ECSLoader:ImportModule("DataUtils")
 local _Ranged = {}
 
 local _, _, classId = UnitClass("player")
-local playerLevel = UnitLevel("player")
 
 ---@return number
 function Data:GetRangeAttackPower()
@@ -101,6 +100,7 @@ end
 ---@return string
 function Data:RangeMissChanceSameLevel()
     local rangedAttackBase, rangedAttackMod = UnitRangedAttack("player")
+    local playerLevel = UnitLevel("player")
     local enemyDefenseValue = playerLevel * 5
 
     local missChance = DataUtils.GetMissChanceByDifference(rangedAttackBase + rangedAttackMod, enemyDefenseValue)
@@ -119,6 +119,7 @@ end
 function Data.RangeMissChanceBossLevel()
     local rangedAttackBase, rangedAttackMod = UnitRangedAttack("player")
     local rangedWeaponSkill = rangedAttackBase + rangedAttackMod
+    local playerLevel = UnitLevel("player")
     local enemyDefenseValue = (playerLevel + 3) * 5
 
     local missChance = DataUtils.GetMissChanceByDifference(rangedWeaponSkill, enemyDefenseValue)

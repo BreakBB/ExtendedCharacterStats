@@ -23,7 +23,6 @@ local Utils = ECSLoader:ImportModule("Utils")
 
 local _Melee = {}
 local _, _, classId = UnitClass("player")
-local playerLevel = UnitLevel("player")
 
 ---@return number
 function Data:GetMeleeAttackPower()
@@ -110,6 +109,7 @@ end
 ---@return string
 function Data:MeleeHitMissChanceSameLevel()
     local mainBase, mainMod, _, _ = UnitAttackBothHands("player")
+    local playerLevel = UnitLevel("player")
     local enemyDefenseValue = playerLevel * 5
 
     local missChance
@@ -138,6 +138,7 @@ end
 ---@return string
 function Data:MeleeHitMissChanceBossLevel()
     local mainBase, mainMod, _, _ = UnitAttackBothHands("player")
+    local playerLevel = UnitLevel("player")
     local enemyDefenseValue = (playerLevel + 3) * 5
 
     local missChance
@@ -174,6 +175,7 @@ end
 ---@return string
 function Data:GlanceHitChanceByLevel(level)
     local mainBase, mainMod, _, _ = UnitAttackBothHands("player")
+    local playerLevel = UnitLevel("player")
     local enemyDefenseValue = (playerLevel + level) * 5
 
     local glancingChance = DataUtils:GetGlancingChanceByDifference(playerLevel, mainBase + mainMod, enemyDefenseValue)
@@ -193,6 +195,7 @@ end
 ---@return string
 function Data:GlanceDamageByLevel(level)
     local mainBase, mainMod, _, _ = UnitAttackBothHands("player")
+    local playerLevel = UnitLevel("player")
     local enemyDefenseValue = (playerLevel + level) * 5
 
     local glancePenalty = DataUtils:GetGlancingDamage(mainBase + mainMod, enemyDefenseValue)
