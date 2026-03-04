@@ -256,21 +256,22 @@ function _Defense:GetEnchantsBlockValue()
     return mod
 end
 
----@return table<number>
+---@return MechanicResistance
 function Data:GetMechanicResistance()
+    ---@class MechanicResistance
     local resistance = {
-        ["charm"] = 0,
-        ["curse"] = 0,
-        ["disease"] = 0,
-        ["disorient"] = 0,
-        ["fleeing"] = 0,
-        ["horror"] = 0,
-        ["interrupt"] = 0,
-        ["poison"] = 0,
-        ["root"] = 0,
-        ["silence"] = 0,
-        ["snare"] = 0,
-        ["stun"] = 0,
+        charm = 0,
+        curse = 0,
+        disease = 0,
+        disorient = 0,
+        fleeing = 0,
+        horror = 0,
+        interrupt = 0,
+        poison = 0,
+        root = 0,
+        silence = 0,
+        snare = 0,
+        stun = 0,
     }
 
     if IsSpellKnown(20573) then -- Hardiness
