@@ -6,7 +6,15 @@ local DataUtils = ECSLoader:ImportModule("DataUtils")
 local Utils = ECSLoader:ImportModule("Utils")
 
 local _SpellHit = {}
+
 local _, _, classId = UnitClass("player")
+local DEATHKNIGHT = Data.DEATHKNIGHT
+local DRUID = Data.DRUID
+local MAGE = Data.MAGE
+local PALADIN = Data.PALADIN
+local PRIEST = Data.PRIEST
+local SHAMAN = Data.SHAMAN
+local WARLOCK = Data.WARLOCK
 
 ---@param school number
 ---@param levelDifference number
@@ -50,44 +58,44 @@ end
 function _SpellHit:GetTalentSpellHitBonus(school)
     local bonus = 0
 
-    if classId == Data.DRUID then
-            bonus = bonus + 2 * DataUtils:GetActiveTalentSpell({33592,33596}) -- Balance of Power
-    elseif classId == Data.DEATHKNIGHT then
+    if classId == DRUID then
+            bonus = bonus + 2 * DataUtils:GetActiveTalentSpell(Data.Talent[DRUID].BALANCE_OF_POWER)
+    elseif classId == DEATHKNIGHT then
         if ECS.IsWotlk then
-            bonus = bonus + 1 * DataUtils:GetActiveTalentSpell({48962,49567,49568}) -- Virulence
+            bonus = bonus + 1 * DataUtils:GetActiveTalentSpell(Data.Talent[DEATHKNIGHT].VIRULENCE)
         end
-    elseif classId == Data.MAGE then
+    elseif classId == MAGE then
         if ECS.IsWotlk then
-            bonus = bonus + 1 * DataUtils:GetActiveTalentSpell({29438,29439,29440}) -- Elemental Precision
-            bonus = bonus + 1 * DataUtils:GetActiveTalentSpell({11222,12839,12840}) -- Arcane Focus
+            bonus = bonus + 1 * DataUtils:GetActiveTalentSpell(Data.Talent[MAGE].ELEMENTAL_PRECISION)
+            bonus = bonus + 1 * DataUtils:GetActiveTalentSpell(Data.Talent[MAGE].ARCANE_FOCUS)
         else
             if (school == Data.FIRE_SCHOOL or school == Data.FROST_SCHOOL) then
                 local coeff = ECS.IsClassic and 2 or 1
-                bonus = bonus + coeff * DataUtils:GetActiveTalentSpell({29438,29439,29440}) -- Elemental Precision
+                bonus = bonus + coeff * DataUtils:GetActiveTalentSpell(Data.Talent[MAGE].ELEMENTAL_PRECISION)
             elseif school == Data.ARCANE_SCHOOL then
-                bonus = bonus + 2 * DataUtils:GetActiveTalentSpell({11222,12839,12840,12841,12842}) -- Arcane Focus
+                bonus = bonus + 2 * DataUtils:GetActiveTalentSpell(Data.Talent[MAGE].ARCANE_FOCUS)
             end
         end
-    elseif classId == Data.PALADIN then
+    elseif classId == PALADIN then
         if ECS.IsWotlk then
-            bonus = bonus + 2 * DataUtils:GetActiveTalentSpell({53556,53557}) -- Enlightened Judgements
+            bonus = bonus + 2 * DataUtils:GetActiveTalentSpell(Data.Talent[PALADIN].ENLIGHTENED_JUDGEMENTS)
         end
-    elseif classId == Data.PRIEST then
+    elseif classId == PRIEST then
         if school == Data.SHADOW_SCHOOL then
             local coeff = ECS.IsWotlk and 1 or 2
-            bonus = bonus + coeff * DataUtils:GetActiveTalentSpell({15260,15327,15328}) -- Shadow Focus
+            bonus = bonus + coeff * DataUtils:GetActiveTalentSpell(Data.Talent[PRIEST].SHADOW_FOCUS)
         end
-    elseif classId == Data.SHAMAN then
+    elseif classId == SHAMAN then
         if (school == Data.FIRE_SCHOOL or school == Data.FROST_SCHOOL or school == Data.NATURE_SCHOOL) then
             local coeff = ECS.IsWotlk and 1 or 2
-            bonus = bonus + coeff * DataUtils:GetActiveTalentSpell({30672,30673,30674}) -- Elemental Precision
+            bonus = bonus + coeff * DataUtils:GetActiveTalentSpell(Data.Talent[SHAMAN].ELEMENTAL_PRECISION)
         end
         if ECS.IsClassic then
-            bonus = bonus + 1 * DataUtils:GetActiveTalentSpell({16180,16196,16198}) -- Nature's Guidance
+            bonus = bonus + 1 * DataUtils:GetActiveTalentSpell(Data.Talent[SHAMAN].NATURES_GUIDANCE)
         end
-    elseif classId == Data.WARLOCK then
+    elseif classId == WARLOCK then
         if ECS.IsWotlk then
-            bonus = bonus + 1 * DataUtils:GetActiveTalentSpell({18174,18175,18176}) -- Suppression
+            bonus = bonus + 1 * DataUtils:GetActiveTalentSpell(Data.Talent[WARLOCK].SUPPRESSION)
         end
     end
 

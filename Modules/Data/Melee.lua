@@ -6,7 +6,14 @@ local DataUtils = ECSLoader:ImportModule("DataUtils")
 local Utils = ECSLoader:ImportModule("Utils")
 
 local _Melee = {}
+
 local _, _, classId = UnitClass("player")
+local DEATHKNIGHT = Data.DEATHKNIGHT
+local DRUID = Data.DRUID
+local HUNTER = Data.HUNTER
+local ROGUE = Data.ROGUE
+local SHAMAN = Data.SHAMAN
+local WARRIOR = Data.WARRIOR
 
 ---@return number
 function Data:GetMeleeAttackPower()
@@ -61,36 +68,30 @@ end
 function _Melee:GetHitTalentBonus()
     local mod = 0
 
-    if classId == Data.WARRIOR then
+    if classId == WARRIOR then
         if ECS.IsWotlk then
-            -- precision
-            mod = 1 * DataUtils:GetActiveTalentSpell({29590,29591,29592})
+            mod = 1 * DataUtils:GetActiveTalentSpell(Data.Talent[WARRIOR].PRECISION)
         end
-    elseif classId == Data.HUNTER then
+    elseif classId == HUNTER then
         if ECS.IsWotlk then
-            -- focused aim
-            mod = 1 * DataUtils:GetActiveTalentSpell({53620,53621,53622})
+            mod = 1 * DataUtils:GetActiveTalentSpell(Data.Talent[HUNTER].FOCUSED_AIM)
         end
-    elseif classId == Data.SHAMAN then
+    elseif classId == SHAMAN then
         if ECS.IsWotlk then
-            -- Dual Wield Specialization
             if Data:GetMeleeAttackSpeedOffHand() > 0 then
-                mod = 2 * DataUtils:GetActiveTalentSpell({30816,30818,30819})
+                mod = 2 * DataUtils:GetActiveTalentSpell(Data.Talent[SHAMAN].DUAL_WIELD_SPECIALIZATION)
             end
         elseif ECS.IsClassic then
-            -- Nature's Guidance
-            mod = 1 * DataUtils:GetActiveTalentSpell({16180,16196,16198})
+            mod = 1 * DataUtils:GetActiveTalentSpell(Data.Talent[SHAMAN].NATURES_GUIDANCE)
         end
-    elseif classId == Data.ROGUE then
+    elseif classId == ROGUE then
         if ECS.IsClassic then
-            -- precision
-            mod = 1 * DataUtils:GetActiveTalentSpell({13705,13832,13843,13844,13845})
+            mod = 1 * DataUtils:GetActiveTalentSpell(Data.Talent[ROGUE].PRECISION)
         end
-    elseif classId == Data.DEATHKNIGHT then
-        -- Nerves of Cold Steel
+    elseif classId == DEATHKNIGHT then
         -- This assumes a DK is dual wielding and not only using a one-hand main hand weapon
         if Data:GetMeleeAttackSpeedOffHand() > 0 then
-            mod = 1 * DataUtils:GetActiveTalentSpell({49226,50137,50138})
+            mod = 1 * DataUtils:GetActiveTalentSpell(Data.Talent[DEATHKNIGHT].NERVES_OF_COLD_STEEL)
         end
     end
 
@@ -108,7 +109,7 @@ function _Melee.GetHitFromRunes()
     local finger1Rune = DataUtils.GetRuneForEquipSlot(Utils.CHAR_EQUIP_SLOTS.Finger1)
     local finger2Rune = DataUtils.GetRuneForEquipSlot(Utils.CHAR_EQUIP_SLOTS.Finger2)
 
-    if classId == Data.DRUID and (finger1Rune == 7520 or finger2Rune == 7520) and DataUtils:IsShapeshifted() then
+    if classId == DRUID and (finger1Rune == 7520 or finger2Rune == 7520) and DataUtils:IsShapeshifted() then
         mod = mod + 3 -- 3% from Feral Combat Specialization Rune
     end
 
@@ -231,15 +232,15 @@ end
 function Data:GetArmorPenetration()
     local armorPenetration = GetArmorPenetration()
 
-    if ECS.IsWotlk and classId == Data.WARRIOR then
+    if ECS.IsWotlk and classId == WARRIOR then
         local _, isActive = GetShapeshiftFormInfo(1)
         if isActive then
             armorPenetration = armorPenetration + 10 -- 10% from Battle Stance
         end
     end
 
-    if classId == Data.DEATHKNIGHT then
-        armorPenetration = armorPenetration + 2 * DataUtils:GetActiveTalentSpell({61274,61275,61276,61277,61278}) -- Blood Gorged
+    if classId == DEATHKNIGHT then
+        armorPenetration = armorPenetration + 2 * DataUtils:GetActiveTalentSpell(Data.Talent[DEATHKNIGHT].BLOOD_GORGED)
     end
 
     return DataUtils:Round(armorPenetration, 2) .. "%"

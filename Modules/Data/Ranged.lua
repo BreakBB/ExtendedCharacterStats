@@ -8,6 +8,7 @@ local DataUtils = ECSLoader:ImportModule("DataUtils")
 local _Ranged = {}
 
 local _, _, classId = UnitClass("player")
+local HUNTER = Data.HUNTER
 
 ---@return number
 function Data:GetRangeAttackPower()
@@ -89,8 +90,8 @@ end
 function _Ranged:GetHitTalentBonus()
     local bonus = 0
 
-    if ECS.IsWotlk and classId == Data.HUNTER then
-        bonus = bonus + 1 * DataUtils:GetActiveTalentSpell({53620,53621,53622}) -- Focused Aim
+    if ECS.IsWotlk and classId == HUNTER then
+        bonus = bonus + 1 * DataUtils:GetActiveTalentSpell(Data.Talent[HUNTER].FOCUSED_AIM)
     end
 
     return bonus
