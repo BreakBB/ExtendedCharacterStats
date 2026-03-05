@@ -10,7 +10,6 @@ local _Melee = {}
 local _, _, classId = UnitClass("player")
 local DEATHKNIGHT = Data.DEATHKNIGHT
 local DRUID = Data.DRUID
-local HUNTER = Data.HUNTER
 local ROGUE = Data.ROGUE
 local SHAMAN = Data.SHAMAN
 local WARRIOR = Data.WARRIOR
