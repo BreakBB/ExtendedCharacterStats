@@ -62,36 +62,15 @@ function _Melee:GetHitRatingBonus()
     return hit + (GetHitModifier() or 0)
 end
 
----If a talent spell has the "Apply Aura: Modifies Hit Chance" effect, then we need to handle it here.
----If the effect is "Apply Aura: Mod Spell Hit Chance %", then GetHitModifier() already accounts for it and we don't need to handle it here.
+---In TBC and WotLK clients, if a talent spell has the "Apply Aura: Mod Melee & Ranged Hit Chance %", then GetHitModifier() already accounts for it and we don't need to handle it here.
 ---@return number
 function _Melee:GetHitTalentBonus()
     local mod = 0
-
-    if classId == WARRIOR then
-        if ECS.IsWotlk then
-            mod = 1 * DataUtils:GetActiveTalentSpell(Data.Talent[WARRIOR].PRECISION)
-        end
-    elseif classId == HUNTER then
-        if ECS.IsWotlk then
-            mod = 1 * DataUtils:GetActiveTalentSpell(Data.Talent[HUNTER].FOCUSED_AIM)
-        end
-    elseif classId == SHAMAN then
-        if ECS.IsWotlk then
-            if Data:GetMeleeAttackSpeedOffHand() > 0 then
-                mod = 2 * DataUtils:GetActiveTalentSpell(Data.Talent[SHAMAN].DUAL_WIELD_SPECIALIZATION)
-            end
-        elseif ECS.IsClassic then
+    if ECS.IsClassic then
+        if classId == Data.SHAMAN then
             mod = 1 * DataUtils:GetActiveTalentSpell(Data.Talent[SHAMAN].NATURES_GUIDANCE)
-        end
-    elseif classId == ROGUE then
-        if ECS.IsClassic then
+        elseif classId == Data.ROGUE then
             mod = 1 * DataUtils:GetActiveTalentSpell(Data.Talent[ROGUE].PRECISION)
-        end
-    elseif classId == DEATHKNIGHT then
-        -- This assumes a DK is dual wielding and not only using a one-hand main hand weapon
-        if Data:GetMeleeAttackSpeedOffHand() > 0 then
-            mod = 1 * DataUtils:GetActiveTalentSpell(Data.Talent[DEATHKNIGHT].NERVES_OF_COLD_STEEL)
         end
     end
 
