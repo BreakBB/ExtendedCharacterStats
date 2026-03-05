@@ -6,12 +6,12 @@ local DataUtils = ECSLoader:ImportModule("DataUtils")
 local _SpellCrit = {}
 
 local _, _, classId = UnitClass("player")
-local WARLOCK = Data.WARLOCK
-local PALADIN = Data.PALADIN
-local SHAMAN = Data.SHAMAN
 local DRUID = Data.DRUID
 local MAGE = Data.MAGE
+local PALADIN = Data.PALADIN
 local PRIEST = Data.PRIEST
+local SHAMAN = Data.SHAMAN
+local WARLOCK = Data.WARLOCK
 
 ---@param school number
 ---@return string
