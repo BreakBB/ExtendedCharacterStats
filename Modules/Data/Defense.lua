@@ -27,6 +27,7 @@ local Utils = ECSLoader:ImportModule("Utils")
 local _Defense = {}
 
 local _, _, classId = UnitClass("player")
+local groupedPaladinHasImprovedConcentrationAura = {}
 
 local MAX_SKILL = (UnitLevel("player")) * 5
 -- Every 25 defense reduce the chance to be critically hit by 1 %
@@ -312,9 +313,11 @@ function Data:GetMechanicResistance()
         if aura and aura.spellId then
             resistance.interrupt = resistance.interrupt + (Data.Aura.ResistInterrupt[aura.spellId] or 0)
             -- if aura.spellId == 19746 then
-            --     TODO: improved concentration aura
-            --     resistance.silence = resistance.silence + (IsWotlk and 0 or 15)  -- Concentration Aura
-            --     resistance.interrupt
+            --     if groupedPaladinHasImprovedConcentrationAura[aura.sourceUnit] then
+            --         local mod = (IsWotlk and 0 or 15)  -- Concentration Aura
+            --         resistance.silence = resistance.silence + mod
+            --         resistance.interrupt = resistance.interrupt + mod
+            --     end
             -- end
         end
     until not aura
