@@ -24,7 +24,6 @@
 ---@field refName string
 ---@field text string
 
----@alias CreatureType number
 ---@alias EquipSlot string
 ---@alias ItemLink string
 ---@alias Color string

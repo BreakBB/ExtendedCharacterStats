@@ -7,11 +7,6 @@ local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
 local DataUtils = ECSLoader:ImportModule("DataUtils")
 
-local BEAST = Data.CreatureType.BEAST
-local DEMON = Data.CreatureType.DEMON
-local ELEMENTAL = Data.CreatureType.ELEMENTAL
-local UNDEAD = Data.CreatureType.UNDEAD
-
 ---@param school number
 ---@return number
 function Data:GetSpellDamage(school)
@@ -19,48 +14,45 @@ function Data:GetSpellDamage(school)
     return DataUtils:Round(spellDmg, 0)
 end
 
----@param creature CreatureType
----@return number
-function Data:GetSpellPowerVsCreature(creature)
-    local spellDmg = 0
+---@return table<CreatureType,number>
+function Data:GetSpellPowerVsCreature()
+   local dmg = {0,0,0,0,0,0,0,0,0}
+
     -- auras
     local j = 1
     repeat
         local aura = GetBuffDataByIndex("player", j)
         j = j + 1
         if aura and aura.spellId then
-            if creature == UNDEAD then
-                spellDmg = spellDmg + (Data.Aura.UndeadSpellPower[aura.spellId] or 0)
+            for _,type in pairs(Data.CreatureType) do
+                if Data.Aura.SpellDamageVsCreature[type] then
+                    dmg[type] = dmg[type] + (Data.Aura.SpellDamageVsCreature[type][aura.spellId] or 0)
+                end
             end
         end
     until (not aura)
     for i = 1, 18 do
         -- items
         local id, _ = GetInventoryItemID("player", i)
-        if creature == UNDEAD then
-            spellDmg = spellDmg + (Data.Item.IncreaseSpellDamageUndead[id] or 0)
-            spellDmg = spellDmg + (Data.Item.IncreaseSpellDamageUndeadDemon[id] or 0)
-        elseif creature == DEMON then
-            if id == 30787 then spellDmg = spellDmg + 185 end -- Illidari-Bane Mageblade
-            spellDmg = spellDmg + (Data.Item.IncreaseSpellDamageUndeadDemon[id] or 0)
+        for _,type in pairs(Data.CreatureType) do
+            if Data.Item.SpellDamageVsCreature[type] then
+                dmg[type] = dmg[type] + (Data.Item.SpellDamageVsCreature[type][id] or 0)
+            end
         end
         -- enchants
         local itemLink = GetInventoryItemLink("player", i)
         if itemLink then
             local enchant = DataUtils:GetEnchantFromItemLink(itemLink)
             if enchant then
-                if creature == UNDEAD then
-                    spellDmg = spellDmg + (Data.Enchant.UndeadSlayer[enchant] or 0)
-                    spellDmg = spellDmg + (Data.Enchant.IncreaseSpellDamageUndead[enchant] or 0)
-                elseif creature == BEAST then
-                    spellDmg = spellDmg + (Data.Enchant.BeastSlayer[enchant] or 0)
-                elseif creature == ELEMENTAL then
-                    spellDmg = spellDmg + (Data.Enchant.ElementalSlayer[enchant] or 0)
+                for _,type in pairs(Data.CreatureType) do
+                    if Data.Enchant.SpellDamageVsCreature[type] then
+                        dmg[type] = dmg[type] + (Data.Enchant.SpellDamageVsCreature[type][enchant] or 0)
+                    end
                 end
             end
         end
     end
-    return spellDmg
+    return dmg
 end
 
 ---@return number

@@ -21,7 +21,7 @@ Data.WARLOCK = 9
 Data.DRUID = 11
 
 --- same as wowhead
----@class table<CreatureType>
+---@class table<number>
 Data.CreatureType = {
     BEAST = 1,
     DRAGONKIN = 2,
@@ -656,6 +656,7 @@ Data.Item =  {
     SpellDamageVsCreature = { -- spell
         [Data.CreatureType.DEMON] = {
             [23207] = 85, -- Champion of the Dawn
+            [30708] = 185, -- Illidari-Bane Mageblade
             [236351] = 89, -- Champion of the Dawn
         },
         [Data.CreatureType.UNDEAD] = {
