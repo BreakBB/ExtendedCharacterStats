@@ -1,6 +1,7 @@
 local GetBuffDataByIndex = C_UnitAuras.GetBuffDataByIndex
 local GetInventoryItemID = GetInventoryItemID
 local GetInventoryItemLink = GetInventoryItemLink
+local pairs = pairs
 
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
@@ -11,6 +12,8 @@ local Utils = ECSLoader:ImportModule("Utils")
 
 local _Melee = {}
 local _, _, classId = UnitClass("player")
+local DEMON = Data.CreatureType.DEMON
+local UNDEAD = Data.CreatureType.UNDEAD
 
 ---@return number
 function Data:GetMeleeAttackPower()
@@ -18,62 +21,51 @@ function Data:GetMeleeAttackPower()
     return melee + posBuff + negBuff
 end
 
----@param creature number
----@return string
-function Data:GetMeleeAttackPowerVsCreature(creature)
-    local dmg = 0
+---@return table<CreatureType,number>
+function Data:GetMeleeAttackPowerVsCreature()
+    local dmg = {0,0,0,0,0,0,0,0,0}
+
     -- auras
     local j = 1
     repeat
         local aura = GetBuffDataByIndex("player", j)
         j = j + 1
         if aura and aura.spellId then
-            if creature == Data.UNDEAD then
-                dmg = dmg + (Data.Aura.UndeadAttackPower[aura.spellId] or 0)
-            elseif creature == Data.DEMON then
-                if aura.spellId == 11406 then dmg = dmg + 265 end -- Elixir of Demonslaying
+            for _,type in pairs(Data.CreatureType) do
+                if Data.Aura.AttackPowerVsCreature[type] then
+                    dmg[type] = dmg[type] + (Data.Aura.AttackPowerVsCreature[type][aura.spellId] or 0)
+                end
+                if Data.Aura.PhysicalDamageVsCreature[type] then
+                    dmg[type] = dmg[type] + (Data.Aura.PhysicalDamageVsCreature[type][aura.spellId] or 0)
+                end
             end
         end
     until (not aura)
     for i = 1, 18 do
         -- items
         local id, _ = GetInventoryItemID("player", i)
-        if creature == Data.UNDEAD then
-            dmg = dmg + (Data.Item.UndeadSlaying[id] or 0)
-            dmg = dmg + (Data.Item.UndeadDeamonSlaying[id] or 0)
-        elseif creature == Data.DEMON then
-            dmg = dmg + (Data.Item.DemonSlaying[id] or 0)
-            dmg = dmg + (Data.Item.UndeadDeamonSlaying[id] or 0)
-        elseif creature == Data.DRAGONKIN then
-            dmg = dmg + (Data.Item.DragonSlaying[id] or 0)
-        elseif creature == Data.MECHANICAL then
-             if id == 213319 then dmg = dmg + 30 end -- Machinist's Gloves
+        for _,type in pairs(Data.CreatureType) do
+            if Data.Item.PhysicalDamageVsCreature[type] then
+                dmg[type] = dmg[type] + (Data.Item.PhysicalDamageVsCreature[type][id] or 0)
+            end
         end
         -- enchants
         local itemLink = GetInventoryItemLink("player", i)
         if itemLink then
             local enchant = DataUtils:GetEnchantFromItemLink(itemLink)
             if enchant then
-                if creature == Data.UNDEAD then
-                    dmg = dmg + (Data.Enchant.UndeadSlayer[enchant] or 0)
-                    if enchant and enchant == Data.Enchant.Ids.UNDEAD_DEMON_SLAYER_150 then dmg = dmg + 150 end
-                elseif creature == Data.DEMON then
-                    if enchant and enchant == Data.Enchant.Ids.UNDEAD_DEMON_SLAYER_150 then dmg = dmg + 150 end
-                elseif creature == Data.BEAST then
-                    dmg = dmg + (Data.Enchant.BeastSlayer[enchant] or 0)
-                elseif creature == Data.ELEMENTAL then
-                    dmg = dmg + (Data.Enchant.ElementalSlayer[enchant] or 0)
-                    if enchant and enchant == Data.Enchant.Ids.LESSER_ELEMENTAL_SLAYER then dmg = dmg + 6 end
+                for _,type in pairs(Data.CreatureType) do
+                    if Data.Enchant.PhysicalDamageVsCreature[type] then
+                        dmg[type] = dmg[type] + (Data.Enchant.PhysicalDamageVsCreature[type][enchant] or 0)
+                    end
                 end
             end
         end
     end
     -- sets
-    if creature == Data.UNDEAD then
-        if Data:HasUndeadSlayer15() then dmg = dmg + 15 end
-    elseif creature == Data.DEMON then
-        if Data:HasDemonSlaying200() then dmg = dmg + 200 end
-    end
+    if Data:HasUndeadSlayer15() then dmg[UNDEAD] = dmg[UNDEAD] + 15 end
+    if Data:HasDemonSlaying200() then dmg[DEMON] = dmg[DEMON] + 200 end
+
     return dmg
 end
 

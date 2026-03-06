@@ -21,14 +21,17 @@ Data.WARLOCK = 9
 Data.DRUID = 11
 
 --- same as wowhead
-Data.BEAST = 1
-Data.DRAGONKIN = 2
-Data.DEMON = 3
-Data.ELEMENTAL = 4
-Data.GIANT = 5
-Data.UNDEAD = 6
-Data.HUMANOID = 7
-Data.MECHANICAL = 9
+---@class table<CreatureType>
+Data.CreatureType = {
+    BEAST = 1,
+    DRAGONKIN = 2,
+    DEMON = 3,
+    ELEMENTAL = 4,
+--    GIANT = 5,
+    UNDEAD = 6,
+    HUMANOID = 7,
+    MECHANICAL = 9,
+}
 
 Data.Aura = {
     AllowCastingManaRegeneration = {
@@ -55,6 +58,13 @@ Data.Aura = {
         [456195] = 1, -- Innervate
         [468466] = 1, -- Unmaking the Simulacrum
         [1213422] = 1, -- Aura of the Blue Dragon
+    },
+    AttackPowerVsCreature = { -- melee
+        [Data.CreatureType.UNDEAD] = {
+            [17352] = 200, -- Argent Avenger
+            [24833] = 300, -- holy mightstone
+            [28486] = 30, -- Scourgebane Draught
+        },
     },
     CritReductionAll = {
         [21183] = (ECS.IsWotlk and -1 or nil), -- Hearth of the Crusader
@@ -361,6 +371,18 @@ Data.Aura = {
         [25894] = (ECS.IsClassic and 1 or nil), -- Greater Blessing of Wisdom rank 1
         [25918] = (ECS.IsClassic and 1 or nil), -- Greater Blessing of Wisdom rank 2
     },
+    PhysicalDamageVsCreature = { -- ranged/melee
+        [Data.CreatureType.DEMON] = {
+            [11406] = 265, -- Elixir of Demonslaying
+        },
+    },
+    SpellDamageVsCreature = { -- spell
+        [Data.CreatureType.UNDEAD] = {
+            [24833] = 400, -- holy mightstone
+            [28488] = 15, -- Scourgebane Infusion
+            [60597] = 12000, -- Blessing of the Crusade
+        },
+    },
     SpellCrit = {
         [24907] = ((not ECS.IsClassic) and 5 or nil), -- Moonkin Aura
         [29177] = 6, -- Elemental Devastation Rank 2
@@ -432,30 +454,8 @@ Data.Aura = {
         [1227200] = 20, -- Wickedness
         [1236220] = -50, -- Slow
     },
-    UndeadAttackPower = { -- melee
-        [17352] = 200, -- Argent Avenger
-        [24833] = 300, -- holy mightstone
-        [28486] = 30, -- Scourgebane Draught
-    },
-    UndeadSpellPower = { -- spell
-        [24833] = 400, -- holy mightstone
-        [28488] = 15, -- Scourgebane Infusion
-        [60597] = 12000, -- Blessing of the Crusade
-    },
   }
 Data.Enchant = {
-    BeastSlayer = { -- physical/spell
-        [31] = 2,
-        [188] = 2,
-        [189] = 4,
-        [190] = 6,
-        [191] = 8,
-        [192] = 10,
-        [193] = 12,
-        [194] = 14,
-        [249] = 2, -- Enchant Weapon - Minor Beastslayer
-        [853] = 6, -- Enchant Weapon - Lesser Beastslayer
-    },
     BlockValue = {
         [2583] = 15, -- Presence of Might
         [2653] = 18, -- Enchant Shield - Tough Shield
@@ -465,12 +465,51 @@ Data.Enchant = {
     },
     Ids = {
         BIZNICK_SCOPE = 2523, -- 3% Hit from Biznicks 247x128 Accurascope
-        LESSER_ELEMENTAL_SLAYER = 854, -- +6 Enchant Weapon - Lesser Elemental Slayer
-        UNDEAD_DEMON_SLAYER_150 = 3093, -- Consecrated Weapon
     },
-    IncreaseSpellDamageUndead = { -- spell
-        [2685] = 60, -- Blessed Wizard Oil
-        [3592] = 100, -- Blessed Wizard Oil
+    PhysicalDamageVsCreature = { -- ranged/melee
+        [Data.CreatureType.BEAST] = {
+            [31] = 2,
+            [188] = 2,
+            [189] = 4,
+            [190] = 6,
+            [191] = 8,
+            [192] = 10,
+            [193] = 12,
+            [194] = 14,
+            [249] = 2, -- Enchant Weapon - Minor Beastslayer
+            [853] = 6, -- Enchant Weapon - Lesser Beastslayer
+        },
+        [Data.CreatureType.DEMON] = {
+            [3093] = 150, -- Consecrated Weapon
+        },
+        [Data.CreatureType.ELEMENTAL] = {
+            [854] = 6, -- Enchant Weapon - Lesser Elemental Slayer
+        },
+        [Data.CreatureType.UNDEAD] = {
+            [2684] = 100, -- Consecrated Weapon
+            [3093] = 150, -- Consecrated Weapon
+            [3247] = 140, -- Enchant 2H Weapon - Scourgebane
+            [3593] = 170,
+            [7896] = 200, -- Consecrated Two-Handed Weapon
+        },
+    },
+    SpellDamageVsCreature = { -- spell
+        [Data.CreatureType.BEAST] = {
+            [31] = 2,
+            [188] = 2,
+            [189] = 4,
+            [190] = 6,
+            [191] = 8,
+            [192] = 10,
+            [193] = 12,
+            [194] = 14,
+            [249] = 2, -- Enchant Weapon - Minor Beastslayer
+            [853] = 6, -- Enchant Weapon - Lesser Beastslayer
+        },
+        [Data.CreatureType.UNDEAD] = {
+            [2685] = 60, -- Blessed Wizard Oil
+            [3592] = 100, -- Blessed Wizard Oil
+        },
     },
     MP5 = {
         [2381] = 10, -- Enchant Chest - Greater Mana Restoration
@@ -495,12 +534,6 @@ Data.Enchant = {
         [3819] = 10, -- Arcanum of Blissful Mending
         [3836] = 8, -- Master's Inscription of the Crag
         [7099] = 12, -- Blackfathom Mana Oil. This effect only applies within Blackfathom Deeps.
-    },
-    UndeadSlayer = { -- melee/ranged
-        [2684] = 100, -- Consecrated Weapon
-        [3247] = 140, -- Enchant 2H Weapon - Scourgebane
-        [3593] = 170,
-        [7896] = 200, -- Consecrated Two-Handed Weapon
     },
 }
 Data.Gem = {
@@ -565,81 +598,90 @@ Data.Gem = {
     },
 }
 Data.Item =  {
-    BeastSlaying = { -- ranged/melee
-        [1465] = 18, -- tigerbane
-        [3566] = 30, -- Raptorbane Armor
-        [7710] = 60, -- Loksey's Training Stick
-        [7756] = 30, -- Dog Training Gloves
-        [11628] = 24, -- Houndmaster's Bow
-        [11629] = 24, -- Houndmaster's Rifle
-        [11906] = 30, -- Beastsmasher
-        [11907] = 72, -- Beastslayer
-        [12709] = 45, -- pip's skinner
-        [13212] = 48, -- Halycon's Spiked Collar
-        [15782] = 33, -- Beaststalker Blade
-        [15783] = 33, -- Beasthunter Dagger
-        [16658] = 18, -- Wildhunter Cloak
-        [19946] = 60, -- Tigule's Harpoon
-        [37018] = -40, -- G.E.H.T.A.
-        [231272] = 99, -- Tigule's Harpoon
-        [231849] = 99, -- Tigule's Harpoon
+    PhysicalDamageVsCreature = { -- ranged/melee
+        [Data.CreatureType.BEAST] = {
+            [1465] = 18, -- tigerbane
+            [3566] = 30, -- Raptorbane Armor
+            [7710] = 60, -- Loksey's Training Stick
+            [7756] = 30, -- Dog Training Gloves
+            [11628] = 24, -- Houndmaster's Bow
+            [11629] = 24, -- Houndmaster's Rifle
+            [11906] = 30, -- Beastsmasher
+            [11907] = 72, -- Beastslayer
+            [12709] = 45, -- pip's skinner
+            [13212] = 48, -- Halycon's Spiked Collar
+            [15782] = 33, -- Beaststalker Blade
+            [15783] = 33, -- Beasthunter Dagger
+            [16658] = 18, -- Wildhunter Cloak
+            [19946] = 60, -- Tigule's Harpoon
+            [37018] = -40, -- G.E.H.T.A.
+            [231272] = 99, -- Tigule's Harpoon
+            [231849] = 99, -- Tigule's Harpoon
+        },
+        [Data.CreatureType.DEMON] = {
+            [10696] = 33, -- Enchanted Azsharite Felbane Sword
+            [10697] = 33, -- Enchanted Azsharite Felbane Dagger
+            [10698] = 78, -- Enchanted Azsharite Felbane Staff
+            [13044] = 99, -- Demonslayer
+            [18715] = 45, -- Lok'delar, Stave of the Ancient Keepers
+            [19963] = 117, -- Pitchfork of Madness
+            [20487] = 45, -- Lok'delar, Stave of the Ancient Keepers DEP
+            [29398] = 39, -- Circle of Banishing
+            [30788] = 93, -- Illidari-Bane Dagger
+            [31745] = 93, -- Illidari-Bane Broadsword
+            [220575] = 39, -- Eater of the Damned
+            [228332] = 45, -- Lok'delar, Stave of the Ancient Keepers
+            [231277] = 141, -- Pitchfork of Madness
+            [231864] = 141, -- Pitchfork of Madness
+        },
+        [Data.CreatureType.DRAGONKIN] = {
+            [19961] = 48, -- Gri'lek's Grinder
+            [19962] = 117, -- Gri'lek's Carver
+            [220965] = 117, -- Scalebane Greataxe
+            [221457] = 36, -- Libram of Draconic Destruction
+            [231273] = 141, -- Gri'lek's Carver
+            [231274] = 60, -- Gri'lek's Grinder
+            [231846] = 141, -- Gri'lek's Carver
+            [231847] = 60, -- Gri'lek's Grinder
+        },
+        [Data.CreatureType.ELEMENTAL] = {
+            [18310] = 36, -- Fiendish Machete
+            [228056] = 36, -- Fiendish Machete
+            [228486] = 75, -- Treant's Bane
+        },
+        [Data.CreatureType.MECHANICAL] = {
+            [213319] = 30, -- Machinist's Gloves
+        },
     },
-    DemonSlaying = { -- ranged/melee
-        [10696] = 33, -- Enchanted Azsharite Felbane Sword
-        [10697] = 33, -- Enchanted Azsharite Felbane Dagger
-        [10698] = 78, -- Enchanted Azsharite Felbane Staff
-        [13044] = 99, -- Demonslayer
-        [18715] = 45, -- Lok'delar, Stave of the Ancient Keepers
-        [19963] = 117, -- Pitchfork of Madness
-        [20487] = 45, -- Lok'delar, Stave of the Ancient Keepers DEP
-        [29398] = 39, -- Circle of Banishing
-        [30788] = 93, -- Illidari-Bane Dagger
-        [31745] = 93, -- Illidari-Bane Broadsword
-        [220575] = 39, -- Eater of the Damned
-        [228332] = 45, -- Lok'delar, Stave of the Ancient Keepers
-        [231277] = 141, -- Pitchfork of Madness
-        [231864] = 141, -- Pitchfork of Madness
-    },
-    DragonSlaying = { -- ranged/melee
-        [19961] = 48, -- Gri'lek's Grinder
-        [19962] = 117, -- Gri'lek's Carver
-        [220965] = 117, -- Scalebane Greataxe
-        [221457] = 36, -- Libram of Draconic Destruction
-        [231273] = 141, -- Gri'lek's Carver
-        [231274] = 60, -- Gri'lek's Grinder
-        [231846] = 141, -- Gri'lek's Carver
-        [231847] = 60, -- Gri'lek's Grinder
-    },
-    ElementalSlaying = { -- ranged/melee
-        [18310] = 36, -- Fiendish Machete
-        [228056] = 36, -- Fiendish Machete
-        [228486] = 75, -- Treant's Bane
-    },
-    IncreaseSpellDamageUndead = { -- spell
-        [18346] = 35, -- Threadbare Trousers
-        [19812] = 48, -- Rune of the Dawn
-        [23084] = 35, -- Gloves of Undead Cleansing
-        [23085] = 48, -- Robe of Undead Cleansing
-        [23091] = 26, -- Bracers of Undead Cleansing
-        [236716] = 35, -- Bracers of Undead Cleansing
-        [236717] = 48, -- Gloves of Undead Cleansing
-        [236718] = 65, -- Robe of Undead Cleansing
-        [236722] = 26, -- Bracers of Undead Warding
-        [236723] = 26, -- Gloves of Undead Warding
-        [236724] = 26, -- Robe of Undead Warding
-        [236725] = 35, -- Wristwraps of Undead Cleansing
-        [236726] = 48, -- Handwraps of Undead Cleansing
-        [236727] = 65, -- Tunic of Undead Cleansing
-        [236734] = 35, -- Wristguards of Undead Cleansing
-        [236735] = 48, -- Handguards of Undead Cleansing
-        [236736] = 65, -- Chestguard of Undead Cleansing
-        [236737] = 26, -- Wristguards of Undead Warding
-        [236738] = 26, -- Handguards of Undead Warding
-        [236739] = 26, -- Chestguard of Undead Warding
-    },
-    IncreaseSpellDamageUndeadDemon = { -- spell
-        [23207] = 85, -- Champion of the Dawn
-        [236351] = 89, -- Champion of the Dawn
+    SpellDamageVsCreature = { -- spell
+        [Data.CreatureType.DEMON] = {
+            [23207] = 85, -- Champion of the Dawn
+            [236351] = 89, -- Champion of the Dawn
+        },
+        [Data.CreatureType.UNDEAD] = {
+            [18346] = 35, -- Threadbare Trousers
+            [19812] = 48, -- Rune of the Dawn
+            [23084] = 35, -- Gloves of Undead Cleansing
+            [23085] = 48, -- Robe of Undead Cleansing
+            [23091] = 26, -- Bracers of Undead Cleansing
+            [23207] = 85, -- Champion of the Dawn
+            [236351] = 89, -- Champion of the Dawn
+            [236716] = 35, -- Bracers of Undead Cleansing
+            [236717] = 48, -- Gloves of Undead Cleansing
+            [236718] = 65, -- Robe of Undead Cleansing
+            [236722] = 26, -- Bracers of Undead Warding
+            [236723] = 26, -- Gloves of Undead Warding
+            [236724] = 26, -- Robe of Undead Warding
+            [236725] = 35, -- Wristwraps of Undead Cleansing
+            [236726] = 48, -- Handwraps of Undead Cleansing
+            [236727] = 65, -- Tunic of Undead Cleansing
+            [236734] = 35, -- Wristguards of Undead Cleansing
+            [236735] = 48, -- Handguards of Undead Cleansing
+            [236736] = 65, -- Chestguard of Undead Cleansing
+            [236737] = 26, -- Wristguards of Undead Warding
+            [236738] = 26, -- Handguards of Undead Warding
+            [236739] = 26, -- Chestguard of Undead Warding
+        },
     },
     IsTimeworn = {
         [233496] = true,
