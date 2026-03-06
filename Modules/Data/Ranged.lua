@@ -11,7 +11,6 @@ local DataUtils = ECSLoader:ImportModule("DataUtils")
 
 local _Ranged = {}
 
-local _, _, classId = UnitClass("player")
 local DEMON = Data.CreatureType.DEMON
 local UNDEAD = Data.CreatureType.UNDEAD
 
@@ -131,20 +130,7 @@ function _Ranged:GetHitBonus()
         hitValue = hitValue + GetCombatRatingBonus(CR_HIT_RANGED)
     end
 
-    return hitValue + (GetHitModifier() or 0) + _Ranged:GetHitTalentBonus()
-end
-
----If a talent spell has the "Apply Aura: Modifies Hit Chance" effect, then we need to handle it here.
----If the effect is "Apply Aura: Mod Spell Hit Chance %", then GetHitModifier() already accounts for it and we don't need to handle it here.
----@return number
-function _Ranged:GetHitTalentBonus()
-    local bonus = 0
-
-    if ECS.IsWotlk and classId == Data.HUNTER then
-        bonus = bonus + 1 * DataUtils:GetActiveTalentSpell({53620,53621,53622}) -- Focused Aim
-    end
-
-    return bonus
+    return hitValue + (GetHitModifier() or 0)
 end
 
 ---@return string
