@@ -1,12 +1,12 @@
 local GetBuffDataByIndex = C_UnitAuras.GetBuffDataByIndex
 local GetDebuffDataByIndex = C_UnitAuras.GetDebuffDataByIndex
+local GetInventoryItemID = GetInventoryItemID
 local IsClassic = ECS.IsClassic
 local IsWotlk = ECS.IsWotlk
 local max = math.max
 local pairs = pairs
 local playerLevel = UnitLevel("player")
 local UnitClass = UnitClass
-local GetInventoryItemID = GetInventoryItemID
 
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
