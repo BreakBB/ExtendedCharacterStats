@@ -132,13 +132,13 @@ function DataUtils.GetRuneForEquipSlot(equipSlot)
 end
 
 ---@param itemLink ItemLink
----@return string | nil, string | nil, string | nil
+---@return table<number | nil> | nil
 function DataUtils:GetSocketedGemsFromItemLink(itemLink)
     if itemLink then
-        local _, itemStringLink = C_Item.GetItemInfo(itemLink)
+        local _, itemStringLink = GetItemInfo(itemLink)
         if itemStringLink then
             local _, _, gem1, gem2, gem3, _ = strsplit(":", itemStringLink, 6)
-            return gem1, gem2, gem3
+            return {gem1 and tonumber(gem1) or nil, gem2 and tonumber(gem2) or nil, gem3 and tonumber(gem3) or nil}
         end
     end
     return nil
