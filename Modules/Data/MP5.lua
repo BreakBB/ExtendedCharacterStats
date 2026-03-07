@@ -1,3 +1,5 @@
+local band = bit.band
+
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
@@ -61,6 +63,11 @@ function _MP5:GetMP5ValueOnItems()
             end
             if gem3 then
                 mp5 = mp5 + (Data.Gem.MP5[tonumber(gem3)] or 0)
+            end
+            local id, _ = GetInventoryItemID("player", i)
+            local sockets = Data.Item.Socket[id]
+            if DataUtils:HasSocketBonus(gems,sockets) then
+                mp5 = mp5 + (Data.Enchant.MP5[sockets[0]] or 0)
             end
         end
     end

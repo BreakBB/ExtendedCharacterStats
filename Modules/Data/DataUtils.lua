@@ -1,3 +1,5 @@
+local band = bit.band
+
 ---@class DataUtils
 local DataUtils = ECSLoader:CreateModule("DataUtils")
 ---@type Data
@@ -176,6 +178,20 @@ function DataUtils:CountTimewornItems()
         end
     end
     return timeworn
+end
+
+---@return boolean
+function DataUtils:HasSocketBonus(gems,sockets)
+    local hasBonus = true
+    for i=1,#gems do
+        -- 0 means that there isn't a socket
+        if sockets[i] > 0 then
+            if band(Data.Gem.Colours[i], sockets[i]) == 0x0 then
+                hasBonus = (hasBonus and false)
+            end
+        end
+    end
+    return hasBonus
 end
 
 return DataUtils
