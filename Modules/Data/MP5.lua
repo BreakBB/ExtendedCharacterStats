@@ -1,5 +1,3 @@
-local band = bit.band
-
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
