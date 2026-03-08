@@ -1,3 +1,5 @@
+local GetInventoryItemID = GetInventoryItemID
+
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils

@@ -484,7 +484,7 @@ Data.Enchant = {
         [3809] = 8, -- Greater Inscription of the Crag
         [3819] = 10, -- Arcanum of Blissful Mending
         [3836] = 8, -- Master's Inscription of the Crag
-        [7099] = 12, -- Blackfathom Mana Oil. This effect only applies within Blackfathom Deeps.,
+        [7099] = 12, -- Blackfathom Mana Oil. This effect only applies within Blackfathom Deeps.
     },
 }
 Data.Gem = {

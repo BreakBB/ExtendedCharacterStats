@@ -1,4 +1,5 @@
 local band = bit.band
+local GetItemInfo = GetItemInfo
 
 ---@class DataUtils
 local DataUtils = ECSLoader:CreateModule("DataUtils")
