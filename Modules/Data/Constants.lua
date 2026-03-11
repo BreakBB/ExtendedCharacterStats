@@ -1,3 +1,6 @@
+local IsTBC = ECS.IsTBC
+local IsWotlk = ECS.IsWotlk
+
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
 
@@ -78,6 +81,65 @@ Data.Aura = {
         [17799] = (ECS.IsWotlk and -4 or nil), -- Shadow Mastery 4/5
         [17800] = (ECS.IsWotlk and -5 or nil), -- Shadow Mastery 5/5
         [22959] = (ECS.IsWotlk and -5 or nil), -- Improved Scorch
+    },
+    ---@type table<Bitmask>
+    HitReductionMelee = {
+        [0] = {
+            [35346] = 50, -- Warp
+            [54956] = 100, -- Impaling Charge
+            [59827] = 100, -- Impaling Charge
+            [50240] = 200, -- Evasive Maneuvers
+            [2651] = (IsTBC and 20 or nil), -- Elune's Grace
+            [455868] = -1, -- Revealed Weakness
+            [445875] = -100, -- Gloom
+            [460725] = -100, -- Gloom
+        },
+        [127] = {
+            [54603] = 25, -- Serpent's Agility
+        },
+        [95] = {
+            [50280] = 20, -- Oily Coat
+        },
+        [14] = {
+            [47000] = (IsWotlk and 15 or 13), -- Improved Blink
+            [46989] = (IsWotlk and 30 or 25), -- Improved Blink
+        },
+    },
+    HitReductionRanged = {
+        [50280] = 20, -- Oily Coat
+        [455868] = -1, -- Revealed Weakness
+        [2651] = (IsTBC and 20 or nil), -- Elune's Grace
+        [26669] = 25, -- Evasion
+        [47000] = (IsWotlk and 15 or 13), -- Improved Blink
+        [46989] = (IsWotlk and 30 or 25), -- Improved Blink
+        [54603] = 25, -- Serpent's Agility
+        [67801] = 100, -- Deterrence
+    },
+    ---@type table<Bitmask>
+    HitReductionSpell = {
+        [0] = {
+            [54603] = 25, -- Serpent's Agility
+            [50280] = 20, -- Oily Coat
+            [445875] = -100, -- Gloom
+            [460725] = -100, -- Gloom
+            [56673] = -100, -- Fight Wyrm
+        },
+        [127] = {
+            [33196] = (IsWotlk and -1 or nil), -- Misery
+            [33197] = (IsWotlk and -2 or nil), -- Misery
+            [33198] = (IsWotlk and -1 or nil), -- Misery
+        },
+        [126] = {
+            [47000] = (IsWotlk and 15 or 13), -- Improved Blink
+            [31965] = -3, -- Spell Debuffs 2 (80)
+            [46989] = (IsWotlk and 30 or 25), -- Improved Blink
+            [455868] = -1, -- Revealed Weakness
+            [31224] = 90, -- Cloak of Shadows
+            [39666] = 90, -- Cloak of Shadows
+            [462873] = 90, -- Cloak of Shadows
+            [65961] = 90, -- Cloak of Shadows
+            [50240] = 200, -- Evasive Maneuvers
+        },
     },
     IsFeralForm = {
         [768] = true, -- Cat Form
@@ -784,6 +846,30 @@ Data.Item = {
         [234024] = 2,
         [234028] = 2,
         [234032] = 2,
+    },
+}
+Data.Talent = {
+    [Data.MAGE] = {
+        ARCTIC_WINDS = {31674,31675,31676,31677,31678}
+    },
+    [Data.DEATHKNIGHT] = {
+        FRIGID_DREADPLATE = {49186,51108,51109},
+    },
+    [Data.HUNTER] = {
+        DISPLACEMENT = {34478,34479,34481},
+    },
+    [Data.ROGUE] = {
+        HEIGHTENED_SENSES = {30894,30895},
+    },
+    [Data.PALADIN] = {
+        PURSUIT_OF_JUSTICE = {26022,26023,44414},
+        DIVINE_PURPOSE = {31871,31872},
+    },
+    [Data.PALADIN] = {
+        BALANCE_OF_POWER = {33592,33596},
+    },
+    [Data.WARRIOR] = {
+        IMPROVED_SPELL_REFLECTION = {59088,59089},
     },
 }
 Data.setNames = {
