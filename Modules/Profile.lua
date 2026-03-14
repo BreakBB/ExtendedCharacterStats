@@ -22,7 +22,7 @@ local function GetDefaultStatsProfile()
             movementSpeed = {
                 display = true,
                 refName = "MovementSpeed",
-                text = "Movement speed"
+                text = "Movement Speed"
             },
         },
 
@@ -70,7 +70,7 @@ local function GetDefaultStatsProfile()
                 display = true,
                 isSubGroup = true,
                 refName = "GlanceChanceHeader",
-                text = "Glancing blow",
+                text = "Glancing Blow",
                 sameLevel = {
                     display = true,
                     refName = "GlanceHitChanceSameLevel",
@@ -103,28 +103,28 @@ local function GetDefaultStatsProfile()
             attackPower = {
                 display = true,
                 refName = "MeleeAttackPower",
-                text = "Attack power",
+                text = "Attack Power",
                 textColor = colors.ATTACK_POWER_SECONDARY,
                 statColor = colors.ATTACK_POWER_PRIMARY
             },
             crit = {
                 display = true,
                 refName = "MeleeCritChance",
-                text = "Crit. chance",
+                text = "Crit. Chance",
                 textColor = colors.CRIT_SECONDARY,
                 statColor = colors.CRIT_PRIMARY
             },
             penetration = {
                 display = true,
                 refName = "MeleeArmorPenetration",
-                text = "Armor pen.",
+                text = "Armor Pen.",
                 textColor = colors.ATTACK_SPEED_SECONDARY,
                 statColor = colors.ATTACK_SPEED_PRIMARY,
             },
             penetrationRating = {
                 display = true,
                 refName = "MeleeArmorPenetrationRating",
-                text = "Armor pen. rating",
+                text = "Armor Pen. Rating",
                 textColor = colors.ATTACK_SPEED_SECONDARY,
                 statColor = colors.ATTACK_SPEED_PRIMARY,
             },
@@ -136,19 +136,19 @@ local function GetDefaultStatsProfile()
             expertiseRating = {
                 display = true,
                 refName = "ExpertiseRating",
-                text = "Expertise rating"
+                text = "Expertise Rating"
             },
             hasteRating = {
                 display = true,
                 refName = "MeleeHasteRating",
-                text = "Haste rating",
+                text = "Haste Rating",
                 textColor = colors.HASTE_RATING_SECONDARY,
                 statColor = colors.HASTE_RATING_PRIMARY
             },
             hasteBonus = {
                 display = true,
                 refName = "MeleeHasteBonus",
-                text = "Haste bonus",
+                text = "Haste Bonus",
                 textColor = colors.HASTE_RATING_SECONDARY,
                 statColor = colors.HASTE_RATING_PRIMARY
             },
@@ -156,19 +156,19 @@ local function GetDefaultStatsProfile()
                 display = true,
                 isSubGroup = true,
                 refName = "MeleeAttackSpeedHeader",
-                text = "Attack speed",
+                text = "Attack Speed",
 
                 mainHand = {
                     display = true,
                     refName = "MeleeAttackSpeedMainHand",
-                    text = "Main hand",
+                    text = "Main Hand",
                     textColor = colors.ATTACK_SPEED_SECONDARY,
                     statColor = colors.ATTACK_SPEED_PRIMARY
                 },
                 offHand = {
                     display = true,
                     refName = "MeleeAttackSpeedOffHand",
-                    text = "Off hand",
+                    text = "Off Hand",
                     textColor = colors.ATTACK_SPEED_SECONDARY,
                     statColor = colors.ATTACK_SPEED_PRIMARY
                 },
@@ -219,49 +219,49 @@ local function GetDefaultStatsProfile()
             attackPower = {
                 display = true,
                 refName = "RangeAttackpower",
-                text = "Attack power",
+                text = "Attack Power",
                 textColor = colors.ATTACK_POWER_SECONDARY,
                 statColor = colors.ATTACK_POWER_PRIMARY
             },
             crit = {
                 display = true,
                 refName = "RangedCritChance",
-                text = "Crit. chance",
+                text = "Crit. Chance",
                 textColor = colors.CRIT_SECONDARY,
                 statColor = colors.CRIT_PRIMARY
             },
             penetration = {
                 display = true,
                 refName = "RangedArmorPenetration",
-                text = "Armor pen.",
+                text = "Armor Pen.",
                 textColor = colors.ATTACK_SPEED_SECONDARY,
                 statColor = colors.ATTACK_SPEED_PRIMARY,
             },
             penetrationRating = {
                 display = true,
                 refName = "RangedArmorPenetrationRating",
-                text = "Armor pen. rating",
+                text = "Armor Pen. Rating",
                 textColor = colors.ATTACK_SPEED_SECONDARY,
                 statColor = colors.ATTACK_SPEED_PRIMARY,
             },
             hasteRating = {
                 display = true,
                 refName = "RangedHasteRating",
-                text = "Haste rating",
+                text = "Haste Rating",
                 textColor = colors.HASTE_RATING_SECONDARY,
                 statColor = colors.HASTE_RATING_PRIMARY
             },
             hasteBonus = {
                 display = true,
                 refName = "RangedHasteBonus",
-                text = "Haste bonus",
+                text = "Haste Bonus",
                 textColor = colors.HASTE_RATING_SECONDARY,
                 statColor = colors.HASTE_RATING_PRIMARY
             },
             attackSpeed = {
                 display = true,
                 refName = "RangedAttackSpeed",
-                text = "Attack speed",
+                text = "Attack Speed",
                 textColor = colors.ATTACK_SPEED_SECONDARY,
                 statColor = colors.ATTACK_SPEED_PRIMARY
             },
@@ -276,17 +276,17 @@ local function GetDefaultStatsProfile()
             meleeCritReduction = {
                 display = true,
                 refName = "MeleeCritReduction",
-                text = "Melee crit. reduction"
+                text = "Melee Crit. Reduction"
             },
             rangedCritReduction = {
                 display = true,
                 refName = "RangedCritReduction",
-                text = "Ranged crit. reduction"
+                text = "Ranged Crit. Reduction"
             },
             spellCritReduction = {
                 display = true,
                 refName = "SpellCritReduction",
-                text = "Spell crit. reduction"
+                text = "Spell Crit. Reduction"
             },
             avoidance = {
                 display = true,
@@ -301,7 +301,7 @@ local function GetDefaultStatsProfile()
             defenseRating = {
                 display = true,
                 refName = "DefenseRating",
-                text = "Defense rating"
+                text = "Defense Rating"
             },
             defense = {
                 display = true,
@@ -311,22 +311,22 @@ local function GetDefaultStatsProfile()
             blockChance = {
                 display = true,
                 refName = "BlockChance",
-                text = "Block chance"
+                text = "Block Chance"
             },
             blockValue = {
                 display = true,
                 refName = "BlockValue",
-                text = "Block value"
+                text = "Block Value"
             },
             parry = {
                 display = true,
                 refName = "ParryChance",
-                text = "Parry chance"
+                text = "Parry Chance"
             },
             dodge = {
                 display = true,
                 refName = "DodgeChance",
-                text = "Dodge chance"
+                text = "Dodge Chance"
             },
             resilienceRating = {
                 display = true,
@@ -414,14 +414,14 @@ local function GetDefaultStatsProfile()
                 rating = {
                     display = true,
                     refName = "SpellHitRating",
-                    text = "Hit rating",
+                    text = "Hit Rating",
                     textColor = colors.HIT_SECONDARY,
                     statColor = colors.HIT_PRIMARY
                 },
                 bonus = {
                     display = true,
                     refName = "SpellHitBonus",
-                    text = "Hit bonus",
+                    text = "Hit Bonus",
                     textColor = colors.HIT_SECONDARY,
                     statColor = colors.HIT_PRIMARY
                 },
@@ -442,147 +442,147 @@ local function GetDefaultStatsProfile()
                 arcaneHitBonus = {
                     display = true,
                     refName = "ArcaneHitBonus",
-                    text = "Arcane hit bonus",
+                    text = "Arcane Hit Bonus",
                     textColor = colors.ARCANE_SECONDARY,
                     statColor = colors.ARCANE_PRIMARY
                 },
                 arcaneMissChance = {
                     display = true,
                     refName = "ArcaneMissChance",
-                    text = "Arcane miss",
+                    text = "Arcane Miss",
                     textColor = colors.ARCANE_SECONDARY,
                     statColor = colors.ARCANE_PRIMARY
                 },
                 arcaneMissChanceBoss = {
                     display = true,
                     refName = "ArcaneMissChanceBoss",
-                    text = "Arcane miss (Lvl + 3)",
+                    text = "Arcane Miss (Lvl + 3)",
                     textColor = colors.ARCANE_SECONDARY,
                     statColor = colors.ARCANE_PRIMARY
                 },
                 fireHitBonus = {
                     display = true,
                     refName = "FireHitBonus",
-                    text = "Fire hit bonus",
+                    text = "Fire Hit Bonus",
                     textColor = colors.FIRE_SECONDARY,
                     statColor = colors.FIRE_PRIMARY
                 },
                 fireMissChance = {
                     display = true,
                     refName = "FireMissChance",
-                    text = "Fire miss",
+                    text = "Fire Miss",
                     textColor = colors.FIRE_SECONDARY,
                     statColor = colors.FIRE_PRIMARY
                 },
                 fireMissChanceBoss = {
                     display = true,
                     refName = "FireMissChanceBoss",
-                    text = "Fire miss (Lvl + 3)",
+                    text = "Fire Miss (Lvl + 3)",
                     textColor = colors.FIRE_SECONDARY,
                     statColor = colors.FIRE_PRIMARY
                 },
                 frostHitBonus = {
                     display = true,
                     refName = "FrostHitBonus",
-                    text = "Frost hit bonus",
+                    text = "Frost Hit Bonus",
                     textColor = colors.FROST_SECONDARY,
                     statColor = colors.FROST_PRIMARY
                 },
                 frostMissChance = {
                     display = true,
                     refName = "FrostMissChance",
-                    text = "Frost miss",
+                    text = "Frost Miss",
                     textColor = colors.FROST_SECONDARY,
                     statColor = colors.FROST_PRIMARY
                 },
                 frostMissChanceBoss = {
                     display = true,
                     refName = "FrostMissChanceBoss",
-                    text = "Frost miss (Lvl + 3)",
+                    text = "Frost Miss (Lvl + 3)",
                     textColor = colors.FROST_SECONDARY,
                     statColor = colors.FROST_PRIMARY
                 },
                 holyHitBonus = {
                     display = true,
                     refName = "HolyHitBonus",
-                    text = "Holy hit bonus",
+                    text = "Holy Hit Bonus",
                     textColor = colors.HOLY_SECONDARY,
                     statColor = colors.HOLY_PRIMARY
                 },
                 holyMissChance = {
                     display = true,
                     refName = "HolyMissChance",
-                    text = "Holy miss",
+                    text = "Holy Miss",
                     textColor = colors.HOLY_SECONDARY,
                     statColor = colors.HOLY_PRIMARY
                 },
                 holyMissChanceBoss = {
                     display = true,
                     refName = "HolyMissChanceBoss",
-                    text = "Holy miss (Lvl + 3)",
+                    text = "Holy Miss (Lvl + 3)",
                     textColor = colors.HOLY_SECONDARY,
                     statColor = colors.HOLY_PRIMARY
                 },
                 natureHitBonus = {
                     display = true,
                     refName = "NatureHitBonus",
-                    text = "Nature hit bonus",
+                    text = "Nature Hit Bonus",
                     textColor = colors.NATURE_SECONDARY,
                     statColor = colors.NATURE_PRIMARY
                 },
                 natureMissChance = {
                     display = true,
                     refName = "NatureMissChance",
-                    text = "Nature miss",
+                    text = "Nature Miss",
                     textColor = colors.NATURE_SECONDARY,
                     statColor = colors.NATURE_PRIMARY
                 },
                 natureMissChanceBoss = {
                     display = true,
                     refName = "NatureMissChanceBoss",
-                    text = "Nature miss (Lvl + 3)",
+                    text = "Nature Miss (Lvl + 3)",
                     textColor = colors.NATURE_SECONDARY,
                     statColor = colors.NATURE_PRIMARY
                 },
                 physicalHitBonus = {
                     display = true,
                     refName = "PhysicalHitBonus",
-                    text = "Physical hit bonus",
+                    text = "Physical Hit Bonus",
                     textColor = colors.PHYSICAL_SECONDARY,
                     statColor = colors.PHYSICAL_PRIMARY
                 },
                 physicalMissChance = {
                     display = true,
                     refName = "PhysicalMissChance",
-                    text = "Physical miss",
+                    text = "Physical Miss",
                     textColor = colors.PHYSICAL_SECONDARY,
                     statColor = colors.PHYSICAL_PRIMARY
                 },
                 physicalMissChanceBoss = {
                     display = true,
                     refName = "PhysicalMissChanceBoss",
-                    text = "Physical miss (Lvl + 3)",
+                    text = "Physical Miss (Lvl + 3)",
                     textColor = colors.PHYSICAL_SECONDARY,
                     statColor = colors.PHYSICAL_PRIMARY
                 },
                 shadowHitBonus = {
                     display = true,
                     refName = "ShadowHitBonus",
-                    text = "Shadow hit bonus",
+                    text = "Shadow Hit Bonus",
                     textColor = colors.SHADOW_SECONDARY,
                     statColor = colors.SHADOW_PRIMARY
                 },
                 shadowMissChance = {
                     display = true,
                     refName = "ShadowMissChance",
-                    text = "Shadow miss",
+                    text = "Shadow Miss",
                     textColor = colors.SHADOW_SECONDARY,
                     statColor = colors.SHADOW_PRIMARY
                 },
                 shadowMissChanceBoss = {
                     display = true,
                     refName = "ShadowMissChanceBoss",
-                    text = "Shadow miss (Lvl + 3)",
+                    text = "Shadow Miss (Lvl + 3)",
                     textColor = colors.SHADOW_SECONDARY,
                     statColor = colors.SHADOW_PRIMARY
                 },
@@ -590,14 +590,14 @@ local function GetDefaultStatsProfile()
             hasteRating = {
                 display = true,
                 refName = "SpellHasteRating",
-                text = "Haste rating",
+                text = "Haste Rating",
                 textColor = colors.HASTE_RATING_SECONDARY,
                 statColor = colors.HASTE_RATING_PRIMARY
             },
             hasteBonus = {
                 display = true,
                 refName = "SpellHasteBonus",
-                text = "Haste bonus",
+                text = "Haste Bonus",
                 textColor = colors.HASTE_RATING_SECONDARY,
                 statColor = colors.HASTE_RATING_PRIMARY
             },
@@ -608,49 +608,49 @@ local function GetDefaultStatsProfile()
                 arcane = {
                     display = true,
                     refName = "ArcaneCritChance",
-                    text = "Arcane crit.",
+                    text = "Arcane Crit.",
                     textColor = colors.ARCANE_SECONDARY,
                     statColor = colors.ARCANE_PRIMARY
                 },
                 fire = {
                     display = true,
                     refName = "FireCritChance",
-                    text = "Fire crit.",
+                    text = "Fire Crit.",
                     textColor = colors.FIRE_SECONDARY,
                     statColor = colors.FIRE_PRIMARY
                 },
                 frost = {
                     display = true,
                     refName = "FrostCritChance",
-                    text = "Frost crit.",
+                    text = "Frost Crit.",
                     textColor = colors.FROST_SECONDARY,
                     statColor = colors.FROST_PRIMARY
                 },
                 holy = {
                     display = true,
                     refName = "HolyCritChance",
-                    text = "Holy crit.",
+                    text = "Holy Crit.",
                     textColor = colors.HOLY_SECONDARY,
                     statColor = colors.HOLY_PRIMARY
                 },
                 nature = {
                     display = true,
                     refName = "NatureCritChance",
-                    text = "Nature crit.",
+                    text = "Nature Crit.",
                     textColor = colors.NATURE_SECONDARY,
                     statColor = colors.NATURE_PRIMARY
                 },
                 physical = {
                     display = true,
                     refName = "PhysicalCritChance",
-                    text = "Physical crit.",
+                    text = "Physical Crit.",
                     textColor = colors.PHYSICAL_SECONDARY,
                     statColor = colors.PHYSICAL_PRIMARY
                 },
                 shadow = {
                     display = true,
                     refName = "ShadowCritChance",
-                    text = "Shadow crit.",
+                    text = "Shadow Crit.",
                     textColor = colors.SHADOW_SECONDARY,
                     statColor = colors.SHADOW_PRIMARY
                 },
@@ -664,56 +664,56 @@ local function GetDefaultStatsProfile()
             bonusHealing = {
                 display = true,
                 refName = "BonusHealing",
-                text = "Healing power",
+                text = "Healing Power",
                 textColor = colors.HEALING_SECONDARY,
                 statColor = colors.HEALING_PRIMARY
             },
             arcaneDmg = {
                 display = true,
                 refName = "ArcaneDmg",
-                text = "Arcane damage",
+                text = "Arcane Damage",
                 textColor = colors.ARCANE_SECONDARY,
                 statColor = colors.ARCANE_PRIMARY
             },
             fireDmg = {
                 display = true,
                 refName = "FireDmg",
-                text = "Fire damage",
+                text = "Fire Damage",
                 textColor = colors.FIRE_SECONDARY,
                 statColor = colors.FIRE_PRIMARY
             },
             frostDmg = {
                 display = true,
                 refName = "FrostDmg",
-                text = "Frost damage",
+                text = "Frost Damage",
                 textColor = colors.FROST_SECONDARY,
                 statColor = colors.FROST_PRIMARY
             },
             holyDmg = {
                 display = true,
                 refName = "HolyDmg",
-                text = "Holy damage",
+                text = "Holy Damage",
                 textColor = colors.HOLY_SECONDARY,
                 statColor = colors.HOLY_PRIMARY
             },
             natureDmg = {
                 display = true,
                 refName = "NatureDmg",
-                text = "Nature damage",
+                text = "Nature Damage",
                 textColor = colors.NATURE_SECONDARY,
                 statColor = colors.NATURE_PRIMARY
             },
             physicalDmg = {
                 display = true,
                 refName = "PhysicalDmg",
-                text = "Physical damage",
+                text = "Physical Damage",
                 textColor = colors.PHYSICAL_SECONDARY,
                 statColor = colors.PHYSICAL_PRIMARY
             },
             shadowDmg = {
                 display = true,
                 refName = "ShadowDmg",
-                text = "Shadow damage",
+                text = "Shadow Damage",
                 textColor = colors.SHADOW_SECONDARY,
                 statColor = colors.SHADOW_PRIMARY
             },

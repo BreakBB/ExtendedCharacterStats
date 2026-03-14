@@ -22,7 +22,7 @@ local meleeConfigTranslations = {
         ["esMX"] = "Muestra/oculta todas estadísticas cuerpo a cuerpo.",
         ["ptBR"] = "Mostra/oculta todas as estatísticas corpo a corpo."
     },
-    ["Melee attack power"] = {
+    ["Melee Attack Power"] = {
         ["enUS"] = true,
         ["deDE"] = "Nahkampf Angriffskraft",
         ["frFR"] = "Puissance d'attaque en mêlée",
@@ -152,7 +152,7 @@ local meleeConfigTranslations = {
         ["esMX"] = "Muestra/oculta la velocidad de ataque de la mano izquierda.",
         ["ptBR"] = "Mostra/oculta a velocidade de ataque da mão secundária."
     },
-    ["Melee hit"] = {
+    ["Melee Hit"] = {
         ["enUS"] = true,
         ["deDE"] = "Nahkampf Trefferwertung",
         ["frFR"] = "Toucher en mêlée",
@@ -162,7 +162,7 @@ local meleeConfigTranslations = {
         ["esMX"] = "Probabilidad de golpear",
         ["ptBR"] = "Chance de acerto"
     },
-    ["Melee hit values"] = {
+    ["Melee Hit Values"] = {
         ["enUS"] = true,
         ["deDE"] = "Nahkampf Trefferwertung",
         ["frFR"] = "Valeurs de toucher en mêlée",
@@ -182,7 +182,7 @@ local meleeConfigTranslations = {
         ["esMX"] = "Muestra/oculta la probabilidad de golpear.",
         ["ptBR"] = "Mostra/oculta a chance de acerto."
     },
-    ["Hit rating"] = {
+    ["Hit Rating"] = {
         ["enUS"] = true,
         ["deDE"] = "Trefferwertung",
         ["frFR"] = "Score de toucher",
@@ -202,7 +202,7 @@ local meleeConfigTranslations = {
         ["esMX"] = "Muestra/oculta el índice de golpear.",
         ["ptBR"] = "Mostra/oculta a taxa de acerto."
     },
-    ["Hit bonus"] = {
+    ["Hit Bonus"] = {
         ["enUS"] = true,
         ["deDE"] = "Trefferwertungsbonus",
         ["frFR"] = "Bonus de toucher",
@@ -222,7 +222,7 @@ local meleeConfigTranslations = {
         ["esMX"] = "Muestra/oculta el bonus de golpear.",
         ["ptBR"] = "Mostra/oculta o bônus de acerto."
     },
-    ["Miss chance"] = {
+    ["Miss Chance"] = {
         ["enUS"] = true,
         ["deDE"] = "Chance zu verfehlen",
         ["frFR"] = "Chances de rater",
@@ -242,7 +242,7 @@ local meleeConfigTranslations = {
         ["esMX"] = "Muestra/oculta la probabilidad de fallo contra enemigos del mismo nivel.",
         ["ptBR"] = "Mostra/oculta a chance de erro contra inimigos do mesmo nível."
     },
-    ["Miss chance boss"] = {
+    ["Miss Chance Boss"] = {
         ["enUS"] = true,
         ["deDE"] = "Chance zu verfehlen (Boss)",
         ["frFR"] = "Chances de rater (Boss)",
@@ -262,7 +262,7 @@ local meleeConfigTranslations = {
         ["esMX"] = "Muestra/oculta la probabilidad de fallo contra jefes (Nivel +3).",
         ["ptBR"] = "Mostra/oculta a chance de erro contra chefes (Nível +3)."
     },
-    ["Glancing blow chance"] = {
+    ["Glancing Blow Chance"] = {
         ["enUS"] = true,
         ["deDE"] = "Streifschlagchance",
         ["frFR"] = "Chance de coup d'éraflure",
@@ -282,7 +282,7 @@ local meleeConfigTranslations = {
         ["esMX"] = "Muestra/oculta la probabilidad de golpe de refilón contra enemigos del mismo nivel.",
         ["ptBR"] = "Mostra/oculta a chance de pancada de relance contra inimigos do mesmo nível."
     },
-    ["Glancing blow chance boss"] = {
+    ["Glancing Blow Chance Boss"] = {
         ["enUS"] = true,
         ["deDE"] = "Streifschlagchance (Boss)",
         ["frFR"] = "Chance de coup d'éraflure (Boss)",
@@ -302,7 +302,7 @@ local meleeConfigTranslations = {
         ["esMX"] = "Muestra/oculta la probabilidad de golpe de refilón contra jefes (Nivel +3).",
         ["ptBR"] = "Mostra/oculta a chance de pancada de relance contra chefes (Nível +3)."
     },
-    ["Glancing blow damage"] = {
+    ["Glancing Blow Damage"] = {
         ["enUS"] = true,
         ["deDE"] = "Streifschlagschaden",
         ["frFR"] = "Dégâts du coup d'éraflure",
@@ -322,7 +322,7 @@ local meleeConfigTranslations = {
         ["esMX"] = "Muestra/oculta el daño de golpe de refilón contra enemigos del mismo nivel.",
         ["ptBR"] = "Mostra/oculta o dano de pancada de relance contra inimigos do mesmo nível."
     },
-    ["Glancing blow damage boss"] = {
+    ["Glancing Blow Damage Boss"] = {
         ["enUS"] = true,
         ["deDE"] = "Streifschlagschaden (Boss)",
         ["frFR"] = "Dégâts du coup d'éraflure (Boss)",
@@ -342,7 +342,7 @@ local meleeConfigTranslations = {
         ["esMX"] = "Muestra/oculta el daño de golpe de refilón contra jefes (Nivel +3).",
         ["ptBR"] = "Mostra/oculta o dano de pancada de relance contra chefes (Nível +3)."
     },
-    ["Melee glance values"] = {
+    ["Melee Glance Values"] = {
         ["enUS"] = true,
         ["deDE"] = "Nahkampf-Streifwerte",
         ["frFR"] = "Valeurs de coup d'éraflure en mêlée",

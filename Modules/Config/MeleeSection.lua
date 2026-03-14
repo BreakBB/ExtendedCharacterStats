@@ -70,7 +70,7 @@ function _Config:LoadMeleeSection()
             penetrationRating = {
                 type = "toggle",
                 order = 2.4,
-                name = function() return i18n("Armor Penen. Rating") end,
+                name = function() return i18n("Armor Pen. Rating") end,
                 desc = function() return i18n("Shows/Hides the armor penetration rating value.") end,
                 width = 1.5,
                 hidden = function() return not ECS.IsWotlk end,
@@ -241,7 +241,7 @@ function _Config:LoadMeleeSection()
                 type = "group",
                 order = 6,
                 inline = true,
-                name = function() return i18n("Melee glance values") end,
+                name = function() return i18n("Melee Glance Values") end,
                 hidden = function() return ECS.IsWotlk end,
                 args = {
                     meleeGlance = {

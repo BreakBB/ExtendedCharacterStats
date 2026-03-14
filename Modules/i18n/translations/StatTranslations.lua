@@ -12,7 +12,7 @@ local statTranslations = {
         ["esMX"] = true,
         ["ptBR"] = "Geral"
     },
-    ["Movement speed"] = {
+    ["Movement Speed"] = {
         ["enUS"] = true,
         ["deDE"] = "Geschwindigkeit",
         ["frFR"] = "Vitesse de déplacement",
@@ -32,7 +32,7 @@ local statTranslations = {
         ["esMX"] = "Cuerpo a cuerpo",
         ["ptBR"] = "Corpo a corpo"
     },
-    ["Attack power"] = {
+    ["Attack Power"] = {
         ["enUS"] = true,
         ["deDE"] = "Angriffskraft",
         ["frFR"] = "Puissance d'attaque",
@@ -42,7 +42,7 @@ local statTranslations = {
         ["esMX"] = "Poder de ataque",
         ["ptBR"] = "Poder de ataque"
     },
-    ["Crit. chance"] = {
+    ["Crit. Chance"] = {
         ["enUS"] = true,
         ["deDE"] = "Kritische Chance",
         ["frFR"] = "Chances de critique",
@@ -52,7 +52,7 @@ local statTranslations = {
         ["esMX"] = "Probabilidad de golpe crítico",
         ["ptBR"] = "Chance de acerto crítico"
     },
-    ["Armor pen."] = {
+    ["Armor Pen."] = {
         ["enUS"] = true,
         ["deDE"] = "Rüstungsdurchschlagskraft",
         ["frFR"] = "Pénétration d'armure",
@@ -62,7 +62,7 @@ local statTranslations = {
         ["esMX"] = "Penetración de armadura",
         ["ptBR"] = "Penetração em armadura"
     },
-    ["Armor pen. rating"] = {
+    ["Armor Pen. Rating"] = {
         ["enUS"] = true,
         ["deDE"] = "Rüstungsdurchschlagwertung",
         ["frFR"] = "Score de pénétration d'armure",
@@ -82,7 +82,7 @@ local statTranslations = {
         ["esMX"] = "Pericia",
         ["ptBR"] = "Aptidão"
     },
-    ["Expertise rating"] = {
+    ["Expertise Rating"] = {
         ["enUS"] = true,
         ["deDE"] = "Waffenkundewertung",
         ["frFR"] = "Score d'expertise",
@@ -142,7 +142,7 @@ local statTranslations = {
         ["esMX"] = "Fallo (Niv. + 3)",
         ["ptBR"] = "Erro (Nív. + 3)",
     },
-    ["Glancing blow"] = {
+    ["Glancing Blow"] = {
         ["enUS"] = true,
         ["deDE"] = "Streifschlag",
         ["frFR"] = "Coup d'éraflure",
@@ -192,7 +192,7 @@ local statTranslations = {
         ["esMX"] = "Daño (Niv. + 3)",
         ["ptBR"] = "Dano (Nív. + 3)"
     },
-    ["Haste rating"] = {
+    ["Haste Rating"] = {
         ["enUS"] = true,
         ["deDE"] = "Tempowertung",
         ["frFR"] = "Score de hâte",
@@ -202,7 +202,7 @@ local statTranslations = {
         ["esMX"] = "Índice de celeridad",
         ["ptBR"] = "Taxa de aceleração"
     },
-    ["Haste bonus"] = {
+    ["Haste Bonus"] = {
         ["enUS"] = true,
         ["deDE"] = "Tempobonus",
         ["frFR"] = "Bonus de hâte",
@@ -212,7 +212,7 @@ local statTranslations = {
         ["esMX"] = "Bonus de celeridad",
         ["ptBR"] = "Bônus de aceleração"
     },
-    ["Attack speed"] = {
+    ["Attack Speed"] = {
         ["enUS"] = true,
         ["deDE"] = "Angriffstempo",
         ["frFR"] = "Vitesse d'attaque",
@@ -222,7 +222,7 @@ local statTranslations = {
         ["esMX"] = "Velocidad de ataque",
         ["ptBR"] = "Velocidade de ataque"
     },
-    ["Main hand"] = {
+    ["Main Hand"] = {
         ["enUS"] = true,
         ["deDE"] = "Waffenhand",
         ["frFR"] = "Main droite",
@@ -232,7 +232,7 @@ local statTranslations = {
         ["esMX"] = "Mano derecha",
         ["ptBR"] = "Mão principal"
     },
-    ["Off hand"] = {
+    ["Off Hand"] = {
         ["enUS"] = true,
         ["deDE"] = "Schildhand",
         ["frFR"] = "Main gauche",
@@ -262,17 +262,7 @@ local statTranslations = {
         ["esMX"] = "Armadura",
         ["ptBR"] = "Armadura"
     },
-    ["Crit. immune"] = {
-        ["enUS"] = true,
-        ["deDE"] = "Krit. Immun",
-        ["frFR"] = "Immunisé des critiques",
-        ["zhCN"] = false,
-        ["ruRU"] = "Крит. иммун",
-        ["esES"] = "Inmune crít",
-        ["esMX"] = "Inmune crít",
-        ["ptBR"] = "Imune a críticos"
-    },
-    ["Crit. reduction"] = {
+    ["Crit. Reduction"] = {
         ["enUS"] = true,
         ["deDE"] = "Krit. Reduzierung",
         ["frFR"] = "Réduction des critiques",
@@ -302,7 +292,7 @@ local statTranslations = {
         ["esMX"] = "Eludir (Niv. +3)",
         ["ptBR"] = "Evasiva (Nív. +3)"
     },
-    ["Defense rating"] = {
+    ["Defense Rating"] = {
         ["enUS"] = true,
         ["deDE"] = "Verteidigungswertung",
         ["frFR"] = "Score de défense",
@@ -322,7 +312,7 @@ local statTranslations = {
         ["esMX"] = "Defensa",
         ["ptBR"] = "Defesa"
     },
-    ["Block chance"] = {
+    ["Block Chance"] = {
         ["enUS"] = true,
         ["deDE"] = "Blockchance",
         ["frFR"] = "Chances de bloquer",
@@ -332,7 +322,7 @@ local statTranslations = {
         ["esMX"] = "Probabilidad de bloquear",
         ["ptBR"] = "Chance de bloquear"
     },
-    ["Block value"] = {
+    ["Block Value"] = {
         ["enUS"] = true,
         ["deDE"] = "Blockwertung",
         ["frFR"] = "Bloquer",
@@ -342,7 +332,7 @@ local statTranslations = {
         ["esMX"] = "Bloqueo",
         ["ptBR"] = "Bloqueio"
     },
-    ["Parry chance"] = {
+    ["Parry Chance"] = {
         ["enUS"] = true,
         ["deDE"] = "Parrierchance",
         ["frFR"] = "Chances de parer",
@@ -352,7 +342,7 @@ local statTranslations = {
         ["esMX"] = "Probabilidad de parar",
         ["ptBR"] = "Chance de aparar"
     },
-    ["Dodge chance"] = {
+    ["Dodge Chance"] = {
         ["enUS"] = true,
         ["deDE"] = "Ausweichchance",
         ["frFR"] = "Chances d'esquiver",
@@ -452,7 +442,7 @@ local statTranslations = {
         ["esMX"] = "Penetración",
         ["ptBR"] = "Penetração"
     },
-    ["Healing power"] = {
+    ["Healing Power"] = {
         ["enUS"] = true,
         ["deDE"] = "Heilungskraft",
         ["frFR"] = "Pouvoir de guérison",
@@ -462,7 +452,7 @@ local statTranslations = {
         ["esMX"] = "Sanación",
         ["ptBR"] = "Poder de cura"
     },
-    ["Arcane damage"] = {
+    ["Arcane Damage"] = {
         ["enUS"] = true,
         ["deDE"] = "Arkanschaden",
         ["frFR"] = "Dégats des arcanes",
@@ -472,7 +462,7 @@ local statTranslations = {
         ["esMX"] = "Daño arcano",
         ["ptBR"] = "Dano arcano"
     },
-    ["Arcane crit."] = {
+    ["Arcane Crit."] = {
         ["enUS"] = true,
         ["deDE"] = "Arkan Kritisch",
         ["frFR"] = "Critique des arcanes",
@@ -482,7 +472,7 @@ local statTranslations = {
         ["esMX"] = "Crítico arcano",
         ["ptBR"] = "Crítico arcano"
     },
-    ["Arcane hit bonus"] = {
+    ["Arcane Hit Bonus"] = {
         ["enUS"] = true,
         ["deDE"] = "Arkan Trefferchancebonus",
         ["frFR"] = "Bonus de toucher des arcanes",
@@ -492,7 +482,7 @@ local statTranslations = {
         ["esMX"] = "Bonificación de golpe arcano",
         ["ptBR"] = "Bônus de acerto arcano"
     },
-    ["Arcane miss"] = {
+    ["Arcane Miss"] = {
         ["enUS"] = true,
         ["deDE"] = "Arkan Verfehlen",
         ["frFR"] = "Rater des arcanes",
@@ -502,7 +492,7 @@ local statTranslations = {
         ["esMX"] = "Fallo arcano",
         ["ptBR"] = "Erro arcano"
     },
-    ["Arcane miss (Lvl + 3)"] = {
+    ["Arcane Miss (Lvl + 3)"] = {
         ["enUS"] = true,
         ["deDE"] = "Arkan Verfehlen (Lvl + 3)",
         ["frFR"] = "Rater des arcanes (Niv. + 3)",
@@ -512,7 +502,7 @@ local statTranslations = {
         ["esMX"] = "Fallo arcano (Niv. + 3)",
         ["ptBR"] = "Erro arcano (Nív. + 3)"
     },
-    ["Fire damage"] = {
+    ["Fire Damage"] = {
         ["enUS"] = true,
         ["deDE"] = "Feuerschaden",
         ["frFR"] = "Dégats du feu",
@@ -522,7 +512,7 @@ local statTranslations = {
         ["esMX"] = "Daño de fuego",
         ["ptBR"] = "Dano de fogo"
     },
-    ["Fire crit."] = {
+    ["Fire Crit."] = {
         ["enUS"] = true,
         ["deDE"] = "Feuer Kritisch",
         ["frFR"] = "Critique du feu",
@@ -532,7 +522,7 @@ local statTranslations = {
         ["esMX"] = "Crítico de fuego",
         ["ptBR"] = "Crítico de fogo"
     },
-    ["Fire hit bonus"] = {
+    ["Fire Hit Bonus"] = {
         ["enUS"] = true,
         ["deDE"] = "Feuer Trefferchancebonus",
         ["frFR"] = "Bonus de toucher du feu",
@@ -542,7 +532,7 @@ local statTranslations = {
         ["esMX"] = "Bonificación de golpe de fuego",
         ["ptBR"] = "Bônus de acerto de fogo"
     },
-    ["Fire miss"] = {
+    ["Fire Miss"] = {
         ["enUS"] = true,
         ["deDE"] = "Feuer Verfehlen",
         ["frFR"] = "Rater du feu",
@@ -552,7 +542,7 @@ local statTranslations = {
         ["esMX"] = "Fallo de fuego",
         ["ptBR"] = "Erro de fogo"
     },
-    ["Fire miss (Lvl + 3)"] = {
+    ["Fire Miss (Lvl + 3)"] = {
         ["enUS"] = true,
         ["deDE"] = "Feuer Verfehlen (Lvl + 3)",
         ["frFR"] = "Rater du feu (Niv. + 3)",
@@ -562,7 +552,7 @@ local statTranslations = {
         ["esMX"] = "Fallo de fuego (Niv. + 3)",
         ["ptBR"] = "Erro de fogo (Nív. + 3)"
     },
-    ["Frost damage"] = {
+    ["Frost Damage"] = {
         ["enUS"] = true,
         ["deDE"] = "Frostschaden",
         ["frFR"] = "Dégats du givre",
@@ -572,7 +562,7 @@ local statTranslations = {
         ["esMX"] = "Daño de escarcha",
         ["ptBR"] = "Dano de gelo"
     },
-    ["Frost crit."] = {
+    ["Frost Crit."] = {
         ["enUS"] = true,
         ["deDE"] = "Frost Kritisch",
         ["frFR"] = "Critique du givre",
@@ -582,7 +572,7 @@ local statTranslations = {
         ["esMX"] = "Crítico de escarcha",
         ["ptBR"] = "Crítico de gelo"
     },
-    ["Frost hit bonus"] = {
+    ["Frost Hit Bonus"] = {
         ["enUS"] = true,
         ["deDE"] = "Frost Trefferchancebonus",
         ["frFR"] = "Bonus de toucher du givre",
@@ -592,7 +582,7 @@ local statTranslations = {
         ["esMX"] = "Bonificación de golpe de escarcha",
         ["ptBR"] = "Bônus de acerto de gelo"
     },
-    ["Frost miss"] = {
+    ["Frost Miss"] = {
         ["enUS"] = true,
         ["deDE"] = "Frost Verfehlen",
         ["frFR"] = "Rater du givre",
@@ -602,7 +592,7 @@ local statTranslations = {
         ["esMX"] = "Fallo de escarcha",
         ["ptBR"] = "Erro de gelo"
     },
-    ["Frost miss (Lvl + 3)"] = {
+    ["Frost Miss (Lvl + 3)"] = {
         ["enUS"] = true,
         ["deDE"] = "Frost Verfehlen (Lvl + 3)",
         ["frFR"] = "Rater du givre (Niv. + 3)",
@@ -612,7 +602,7 @@ local statTranslations = {
         ["esMX"] = "Fallo de escarcha (Niv. + 3)",
         ["ptBR"] = "Erro de gelo (Nív. + 3)"
     },
-    ["Holy damage"] = {
+    ["Holy Damage"] = {
         ["enUS"] = true,
         ["deDE"] = "Heiligschaden",
         ["frFR"] = "Dégats du sacré",
@@ -622,7 +612,7 @@ local statTranslations = {
         ["esMX"] = "Daño sagrado",
         ["ptBR"] = "Dano sagrado"
     },
-    ["Holy crit."] = {
+    ["Holy Crit."] = {
         ["enUS"] = true,
         ["deDE"] = "Heilig Kritisch",
         ["frFR"] = "Critique du sacré",
@@ -632,7 +622,7 @@ local statTranslations = {
         ["esMX"] = "Crítico sagrado",
         ["ptBR"] = "Crítico sagrado"
     },
-    ["Holy hit bonus"] = {
+    ["Holy Hit Bonus"] = {
         ["enUS"] = true,
         ["deDE"] = "Heilig Trefferchancebonus",
         ["frFR"] = "Bonus de toucher du sacré",
@@ -642,7 +632,7 @@ local statTranslations = {
         ["esMX"] = "Bonificación de golpe sagrado",
         ["ptBR"] = "Bônus de acerto sagrado"
     },
-    ["Holy miss"] = {
+    ["Holy Miss"] = {
         ["enUS"] = true,
         ["deDE"] = "Heilig Verfehlen",
         ["frFR"] = "Rater du sacré",
@@ -652,7 +642,7 @@ local statTranslations = {
         ["esMX"] = "Fallo sagrado",
         ["ptBR"] = "Erro sagrado"
     },
-    ["Holy miss (Lvl + 3)"] = {
+    ["Holy Miss (Lvl + 3)"] = {
         ["enUS"] = true,
         ["deDE"] = "Heilig Verfehlen (Lvl + 3)",
         ["frFR"] = "Rater du sacré (Niv. + 3)",
@@ -662,7 +652,7 @@ local statTranslations = {
         ["esMX"] = "Fallo sagrado (Niv. + 3)",
         ["ptBR"] = "Erro sagrado (Nív. + 3)"
     },
-    ["Nature damage"] = {
+    ["Nature Damage"] = {
         ["enUS"] = true,
         ["deDE"] = "Naturschaden",
         ["frFR"] = "Dégats de la nature",
@@ -672,7 +662,7 @@ local statTranslations = {
         ["esMX"] = "Daño de la naturaleza",
         ["ptBR"] = "Dano de natureza"
     },
-    ["Nature crit."] = {
+    ["Nature Crit."] = {
         ["enUS"] = true,
         ["deDE"] = "Natur Kritisch",
         ["frFR"] = "Critique de la nature",
@@ -682,7 +672,7 @@ local statTranslations = {
         ["esMX"] = "Crítico de la naturaleza",
         ["ptBR"] = "Crítico de natureza"
     },
-    ["Nature hit bonus"] = {
+    ["Nature Hit Bonus"] = {
         ["enUS"] = true,
         ["deDE"] = "Natur Trefferchancebonus",
         ["frFR"] = "Bonus de toucher de la nature",
@@ -692,7 +682,7 @@ local statTranslations = {
         ["esMX"] = "Bonificación de golpe de la naturaleza",
         ["ptBR"] = "Bônus de acerto de natureza"
     },
-    ["Nature miss"] = {
+    ["Nature Miss"] = {
         ["enUS"] = true,
         ["deDE"] = "Natur Verfehlen",
         ["frFR"] = "Rater de la nature",
@@ -702,7 +692,7 @@ local statTranslations = {
         ["esMX"] = "Fallo de la naturaleza",
         ["ptBR"] = "Erro de natureza"
     },
-    ["Nature miss (Lvl + 3)"] = {
+    ["Nature Miss (Lvl + 3)"] = {
         ["enUS"] = true,
         ["deDE"] = "Natur Verfehlen (Lvl + 3)",
         ["frFR"] = "Rater de la nature (Niv. + 3)",
@@ -712,7 +702,7 @@ local statTranslations = {
         ["esMX"] = "Fallo de la naturaleza (Niv. + 3)",
         ["ptBR"] = "Erro de natureza (Nív. + 3)"
     },
-    ["Physical damage"] = {
+    ["Physical Damage"] = {
         ["enUS"] = true,
         ["deDE"] = "Physischer Schaden",
         ["frFR"] = "Dégats physiques",
@@ -722,7 +712,7 @@ local statTranslations = {
         ["esMX"] = "Daño físico",
         ["ptBR"] = "Dano físico"
     },
-    ["Physical crit."] = {
+    ["Physical Crit."] = {
         ["enUS"] = true,
         ["deDE"] = "Physisch Kritisch",
         ["frFR"] = "Critique physique",
@@ -732,7 +722,7 @@ local statTranslations = {
         ["esMX"] = "Crítico físico",
         ["ptBR"] = "Crítico físico"
     },
-    ["Physical hit bonus"] = {
+    ["Physical Hit Bonus"] = {
         ["enUS"] = true,
         ["deDE"] = "Physischer Trefferchancebonus",
         ["frFR"] = "Bonus de toucher physique",
@@ -742,7 +732,7 @@ local statTranslations = {
         ["esMX"] = "Bonificación de golpe físico",
         ["ptBR"] = "Bônus de acerto físico"
     },
-    ["Physical miss"] = {
+    ["Physical Miss"] = {
         ["enUS"] = true,
         ["deDE"] = "Physisch Verfehlen",
         ["frFR"] = "Rater physique",
@@ -752,7 +742,7 @@ local statTranslations = {
         ["esMX"] = "Fallo físico",
         ["ptBR"] = "Erro físico"
     },
-    ["Physical miss (Lvl + 3)"] = {
+    ["Physical Miss (Lvl + 3)"] = {
         ["enUS"] = true,
         ["deDE"] = "Physisch Verfehlen (Lvl + 3)",
         ["frFR"] = "Rater physique (Niv. + 3)",
@@ -762,7 +752,7 @@ local statTranslations = {
         ["esMX"] = "Fallo físico (Niv. + 3)",
         ["ptBR"] = "Erro físico (Nív. + 3)"
     },
-    ["Shadow damage"] = {
+    ["Shadow Damage"] = {
         ["enUS"] = true,
         ["deDE"] = "Schattenschaden",
         ["frFR"] = "Dégats des ombres",
@@ -772,7 +762,7 @@ local statTranslations = {
         ["esMX"] = "Daño de las sombras",
         ["ptBR"] = "Dano de sombra"
     },
-    ["Shadow crit."] = {
+    ["Shadow Crit."] = {
         ["enUS"] = true,
         ["deDE"] = "Schatten Kritisch",
         ["frFR"] = "Critique des ombres",
@@ -782,7 +772,7 @@ local statTranslations = {
         ["esMX"] = "Crítico de las sombras",
         ["ptBR"] = "Crítico de sombra"
     },
-    ["Shadow hit bonus"] = {
+    ["Shadow Hit Bonus"] = {
         ["enUS"] = true,
         ["deDE"] = "Schatten Trefferchancebonus",
         ["frFR"] = "Bonus de toucher des ombres",
@@ -792,7 +782,7 @@ local statTranslations = {
         ["esMX"] = "Bonificación de golpe de las sombras",
         ["ptBR"] = "Bônus de acerto de sombra"
     },
-    ["Shadow miss"] = {
+    ["Shadow Miss"] = {
         ["enUS"] = true,
         ["deDE"] = "Schatten Verfehlen",
         ["frFR"] = "Rater des ombres",
@@ -802,7 +792,7 @@ local statTranslations = {
         ["esMX"] = "Fallo de las sombras",
         ["ptBR"] = "Erro de sombra"
     },
-    ["Shadow miss (Lvl + 3)"] = {
+    ["Shadow Miss (Lvl + 3)"] = {
         ["enUS"] = true,
         ["deDE"] = "Schatten Verfehlen (Lvl + 3)",
         ["frFR"] = "Rater des ombres (Niv. + 3)",

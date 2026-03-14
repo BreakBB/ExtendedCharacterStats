@@ -2,7 +2,7 @@
 local i18n = ECSLoader:ImportModule("i18n")
 
 local defenseConfigTranslations = {
-    ["Melee crit. reduction"] = {
+    ["Melee Crit. Reduction"] = {
         ["enUS"] = true,
         ["deDE"] = false,
         ["frFR"] = false,
@@ -12,7 +12,7 @@ local defenseConfigTranslations = {
         ["esMX"] = false,
         ["ptBR"] = false
     },
-    ["Ranged crit. reduction"] = {
+    ["Ranged Crit. Reduction"] = {
         ["enUS"] = true,
         ["deDE"] = false,
         ["frFR"] = false,
@@ -22,7 +22,7 @@ local defenseConfigTranslations = {
         ["esMX"] = false,
         ["ptBR"] = false
     },
-    ["Spell crit. reduction"] = {
+    ["Spell Crit. Reduction"] = {
         ["enUS"] = true,
         ["deDE"] = false,
         ["frFR"] = false,
