@@ -268,8 +268,8 @@ local statTranslations = {
         ["frFR"] = "Réduction des critiques",
         ["zhCN"] = false,
         ["ruRU"] = "Снижение крита",
-        ["esES"] = "Reducción de crít",
-        ["esMX"] = "Reducción de crít",
+        ["esES"] = "Reducción de crít.",
+        ["esMX"] = "Reducción de crít.",
         ["ptBR"] = "Redução de crítico"
     },
     ["Avoidance"] = {
