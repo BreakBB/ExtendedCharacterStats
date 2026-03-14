@@ -71,7 +71,7 @@ function _Config:LoadDefenseSection()
             spellCritReduction = {
                 type = "toggle",
                 order = 1.83,
-                name = function() return i18n("Spell crit. reduction") end,
+                name = function() return i18n("Spell Crit. Reduction") end,
                 desc = function() return i18n("Shows/Hides the reduction percentage of being critically hit by spells.") end,
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
