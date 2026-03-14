@@ -60,7 +60,7 @@ _GeneralTab = function()
             generalHeader = {
                 type = "header",
                 order = 1,
-                name = function() return i18n("General settings") end,
+                name = function() return i18n("General Settings") end,
             },
             statsWindowClosedOnOpen = {
                 type = "toggle",
