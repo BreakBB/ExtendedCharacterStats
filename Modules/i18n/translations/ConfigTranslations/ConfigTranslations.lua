@@ -82,7 +82,7 @@ local configTranslations = {
         ["esMX"] = "Añade colores a la vista de estadísticas.",
         ["ptBR"] = "Adiciona cores à visão geral das estatísticas."
     },
-    ["Stats colorization"] = {
+    ["Stats Colorization"] = {
         ["enUS"] = true,
         ["deDE"] = "Werte Farbe",
         ["frFR"] = "Couleurs des statistiques",

@@ -42,7 +42,7 @@ local meleeConfigTranslations = {
         ["esMX"] = "Muestra/oculta el valor de poder de ataque cuerpo a cuerpo.",
         ["ptBR"] = "Mostra/oculta o valor de poder de ataque corpo a corpo."
     },
-    ["Melee crit."] = {
+    ["Melee Crit."] = {
         ["enUS"] = true,
         ["deDE"] = "Nahkampf Kritisch",
         ["frFR"] = "Critique en mêlée",
