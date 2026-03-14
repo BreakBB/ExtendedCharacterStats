@@ -76,7 +76,7 @@ _GeneralTab = function()
             addColorsToStatTexts = {
                 type = "toggle",
                 order = 2,
-                name = function() return i18n("Colorize stats") end,
+                name = function() return i18n("Colorize Stats") end,
                 desc = function() return i18n("Adds colors to the stats overview.") end,
                 width = "full",
                 get = function () return ExtendedCharacterStats.general.addColorsToStatTexts; end,
@@ -95,7 +95,7 @@ _GeneralTab = function()
                 },
                 style = "dropdown",
                 disabled = function() return (not ExtendedCharacterStats.general.addColorsToStatTexts) end,
-                name = function() return i18n("Stats colorization") end,
+                name = function() return i18n("Stats Colorization") end,
                 get = function()
                     if (not ExtendedCharacterStats.general.statColorSelection) then
                         return "full"
