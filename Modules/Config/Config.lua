@@ -153,7 +153,7 @@ _GeneralTab = function()
             statFontSize = {
                 type = "range",
                 order = 6,
-                name = function() return i18n("Stat font size") end,
+                name = function() return i18n("Stat Font Size") end,
                 desc = function() return i18n("Changes the font size of the stat lines (e.g. Crit.).") end,
                 width = "double",
                 min = 8,
@@ -241,7 +241,7 @@ _StatsTab = function ()
             statsHeader = {
                 type = "header",
                 order = 1,
-                name = function() return i18n("Stats settings") end,
+                name = function() return i18n("Stats Settings") end,
             },
             generalGroup = _Config:LoadGeneralSection(),
             meleeGroup = _Config:LoadMeleeSection(),
