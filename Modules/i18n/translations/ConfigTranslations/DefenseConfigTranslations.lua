@@ -32,15 +32,15 @@ local defenseConfigTranslations = {
         ["esMX"] = false,
         ["ptBR"] = false
     },
-    ["Show defense stats."] = {
+    ["Show defense stats"] = {
         ["enUS"] = true,
-        ["deDE"] = "Verteidigungswerte anzeigen.",
-        ["frFR"] = "Afficher défense.",
+        ["deDE"] = "Verteidigungswerte anzeigen",
+        ["frFR"] = "Afficher défense",
         ["zhCN"] = "显示防御属性",
         ["ruRU"] = "Защита",
-        ["esES"] = "Mostrar defensa.",
-        ["esMX"] = "Mostrar defensa.",
-        ["ptBR"] = "Mostrar defesa."
+        ["esES"] = "Mostrar defensa",
+        ["esMX"] = "Mostrar defensa",
+        ["ptBR"] = "Mostrar defesa"
     },
     ["Shows/Hides all defense stats."] = {
         ["enUS"] = true,
