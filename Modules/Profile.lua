@@ -287,7 +287,7 @@ local function GetDefaultStatsProfile()
             resilienceRating = {
                 display = true,
                 refName = "ResilienceRating",
-                text = "Resilience rating"
+                text = "Resilience Rating"
             },
             resilience = {
                 display = true,

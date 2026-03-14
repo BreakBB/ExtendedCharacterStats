@@ -194,7 +194,7 @@ function _Config:LoadDefenseSection()
             resilienceRating = {
                 type = "toggle",
                 order = 7,
-                name = function() return i18n("Resilience rating") end,
+                name = function() return i18n("Resilience Rating") end,
                 desc = function() return i18n("Shows/Hides the resilience rating.") end,
                 width = 1.5,
                 hidden = function() return IsClassic end,

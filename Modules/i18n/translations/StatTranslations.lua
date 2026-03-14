@@ -362,7 +362,7 @@ local statTranslations = {
         ["esMX"] = "Probabilidad de esquivar",
         ["ptBR"] = "Chance de esquivar"
     },
-    ["Resilience rating"] = {
+    ["Resilience Rating"] = {
         ["enUS"] = true,
         ["deDE"] = false,
         ["frFR"] = false,
