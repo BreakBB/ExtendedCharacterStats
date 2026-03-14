@@ -62,15 +62,15 @@ local configTranslations = {
         ["esMX"] = "Oculta la ventana de estadísticas cuando abriendo la información del personaje.",
         ["ptBR"] = "Oculta as janelas de estatísticas ao abrir as informações do personagem."
     },
-    ["Colorize stats"] = {
+    ["Colorize stats."] = {
         ["enUS"] = true,
-        ["deDE"] = "Werte färben",
-        ["frFR"] = "Coloriser les statistiques",
+        ["deDE"] = "Werte färben.",
+        ["frFR"] = "Coloriser les statistiques.",
         ["zhCN"] = "染色统计信息",
-        ["ruRU"] = "Окрашивание характеристик",
-        ["esES"] = "Colorear estadísticas",
-        ["esMX"] = "Colorear estadísticas",
-        ["ptBR"] = "Colorir estatísticas"
+        ["ruRU"] = "Окрашивание характеристик.",
+        ["esES"] = "Colorear estadísticas.",
+        ["esMX"] = "Colorear estadísticas.",
+        ["ptBR"] = "Colorir estatísticas."
     },
     ["Adds colors to the stats overview."] = {
         ["enUS"] = true,
@@ -122,15 +122,15 @@ local configTranslations = {
         ["esMX"] = "Valores de estadísticas",
         ["ptBR"] = "Valores das estatísticas"
     },
-    ["Show item quality colors"] = {
+    ["Show item quality colors."] = {
         ["enUS"] = true,
-        ["deDE"] = "Zeige Item Qualitätsfarben",
-        ["frFR"] = "Affiche la couleur de rareté des objets",
+        ["deDE"] = "Zeige Item Qualitätsfarben.",
+        ["frFR"] = "Affiche la couleur de rareté des objets.",
         ["zhCN"] = "显示物品等级颜色",
-        ["ruRU"] = "Окрашивание предметов",
-        ["esES"] = "Mostrar color de la calidad del objeto",
-        ["esMX"] = "Mostrar color de la calidad del objeto",
-        ["ptBR"] = "Mostrar cores de qualidade dos itens"
+        ["ruRU"] = "Окрашивание предметов.",
+        ["esES"] = "Mostrar color de la calidad del objeto.",
+        ["esMX"] = "Mostrar color de la calidad del objeto.",
+        ["ptBR"] = "Mostrar cores de qualidade dos itens."
     },
     ["Shows/Hides the colored frames around equipped items."] = {
         ["enUS"] = true,
