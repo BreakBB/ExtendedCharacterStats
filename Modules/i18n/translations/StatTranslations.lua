@@ -12,7 +12,7 @@ local statTranslations = {
         ["esMX"] = true,
         ["ptBR"] = "Geral"
     },
-    ["Movement speed"] = {
+    ["Movement Speed"] = {
         ["enUS"] = true,
         ["deDE"] = "Geschwindigkeit",
         ["frFR"] = "Vitesse de déplacement",
@@ -32,7 +32,7 @@ local statTranslations = {
         ["esMX"] = "Cuerpo a cuerpo",
         ["ptBR"] = "Corpo a corpo"
     },
-    ["Attack power"] = {
+    ["Attack Power"] = {
         ["enUS"] = true,
         ["deDE"] = "Angriffskraft",
         ["frFR"] = "Puissance d'attaque",
@@ -42,7 +42,7 @@ local statTranslations = {
         ["esMX"] = "Poder de ataque",
         ["ptBR"] = "Poder de ataque"
     },
-    ["Melee crit. rating"] = {
+    ["Melee Crit. Rating"] = {
         ["enUS"] = true,
         ["deDE"] = false,
         ["frFR"] = false,
@@ -52,7 +52,7 @@ local statTranslations = {
         ["esMX"] = false,
         ["ptBR"] = false,
     },
-    ["Crit. rating"] = {
+    ["Crit. Rating"] = {
         ["enUS"] = true,
         ["deDE"] = false,
         ["frFR"] = false,
@@ -72,7 +72,7 @@ local statTranslations = {
         ["esMX"] = "Probabilidad de golpe crítico",
         ["ptBR"] = "Chance de acerto crítico"
     },
-    ["Armor pen."] = {
+    ["Armor Pen."] = {
         ["enUS"] = true,
         ["deDE"] = "Rüstungsdurchschlagskraft",
         ["frFR"] = "Pénétration d'armure",
@@ -82,7 +82,7 @@ local statTranslations = {
         ["esMX"] = "Penetración de armadura",
         ["ptBR"] = "Penetração em armadura"
     },
-    ["Armor pen. rating"] = {
+    ["Armor Pen. Rating"] = {
         ["enUS"] = true,
         ["deDE"] = "Rüstungsdurchschlagwertung",
         ["frFR"] = "Score de pénétration d'armure",
@@ -102,7 +102,7 @@ local statTranslations = {
         ["esMX"] = "Pericia",
         ["ptBR"] = "Aptidão"
     },
-    ["Expertise rating"] = {
+    ["Expertise Rating"] = {
         ["enUS"] = true,
         ["deDE"] = "Waffenkundewertung",
         ["frFR"] = "Score d'expertise",
@@ -162,7 +162,7 @@ local statTranslations = {
         ["esMX"] = "Fallo (Niv. + 3)",
         ["ptBR"] = "Erro (Nív. + 3)",
     },
-    ["Glancing blow"] = {
+    ["Glancing Blow"] = {
         ["enUS"] = true,
         ["deDE"] = "Streifschlag",
         ["frFR"] = "Coup d'éraflure",
@@ -212,7 +212,7 @@ local statTranslations = {
         ["esMX"] = "Daño (Niv. + 3)",
         ["ptBR"] = "Dano (Nív. + 3)"
     },
-    ["Haste rating"] = {
+    ["Haste Rating"] = {
         ["enUS"] = true,
         ["deDE"] = "Tempowertung",
         ["frFR"] = "Score de hâte",
@@ -222,7 +222,7 @@ local statTranslations = {
         ["esMX"] = "Índice de celeridad",
         ["ptBR"] = "Taxa de aceleração"
     },
-    ["Haste bonus"] = {
+    ["Haste Bonus"] = {
         ["enUS"] = true,
         ["deDE"] = "Tempobonus",
         ["frFR"] = "Bonus de hâte",
@@ -232,7 +232,7 @@ local statTranslations = {
         ["esMX"] = "Bonus de celeridad",
         ["ptBR"] = "Bônus de aceleração"
     },
-    ["Attack speed"] = {
+    ["Attack Speed"] = {
         ["enUS"] = true,
         ["deDE"] = "Angriffstempo",
         ["frFR"] = "Vitesse d'attaque",
@@ -242,7 +242,7 @@ local statTranslations = {
         ["esMX"] = "Velocidad de ataque",
         ["ptBR"] = "Velocidade de ataque"
     },
-    ["Main hand"] = {
+    ["Main Hand"] = {
         ["enUS"] = true,
         ["deDE"] = "Waffenhand",
         ["frFR"] = "Main droite",
@@ -252,7 +252,7 @@ local statTranslations = {
         ["esMX"] = "Mano derecha",
         ["ptBR"] = "Mão principal"
     },
-    ["Off hand"] = {
+    ["Off Hand"] = {
         ["enUS"] = true,
         ["deDE"] = "Schildhand",
         ["frFR"] = "Main gauche",
@@ -272,7 +272,7 @@ local statTranslations = {
         ["esMX"] = "A distancia",
         ["ptBR"] = "Longo alcance"
     },
-    ["Ranged crit. rating"] = {
+    ["Ranged Crit. Rating"] = {
         ["enUS"] = true,
         ["deDE"] = false,
         ["frFR"] = false,
@@ -312,7 +312,7 @@ local statTranslations = {
         ["esMX"] = "Eludir (Niv. +3)",
         ["ptBR"] = "Evasiva (Nív. +3)"
     },
-    ["Defense rating"] = {
+    ["Defense Rating"] = {
         ["enUS"] = true,
         ["deDE"] = "Verteidigungswertung",
         ["frFR"] = "Score de défense",
@@ -332,7 +332,7 @@ local statTranslations = {
         ["esMX"] = "Defensa",
         ["ptBR"] = "Defesa"
     },
-    ["Parry rating"] = {
+    ["Parry Rating"] = {
         ["enUS"] = true,
         ["deDE"] = false,
         ["frFR"] = false,
@@ -342,7 +342,7 @@ local statTranslations = {
         ["esMX"] = false,
         ["ptBR"] = false,
     },
-    ["Dodge rating"] = {
+    ["Dodge Rating"] = {
         ["enUS"] = true,
         ["deDE"] = false,
         ["frFR"] = false,
@@ -362,7 +362,7 @@ local statTranslations = {
         ["esMX"] = false,
         ["ptBR"] = false,
     },
-    ["Parry chance"] = {
+    ["Parry Chance"] = {
         ["enUS"] = true,
         ["deDE"] = "Parrierchance",
         ["frFR"] = "Chances de parer",
@@ -372,7 +372,7 @@ local statTranslations = {
         ["esMX"] = "Probabilidad de parar",
         ["ptBR"] = "Chance de aparar"
     },
-    ["Dodge chance"] = {
+    ["Dodge Chance"] = {
         ["enUS"] = true,
         ["deDE"] = "Ausweichchance",
         ["frFR"] = "Chances d'esquiver",
@@ -382,7 +382,7 @@ local statTranslations = {
         ["esMX"] = "Probabilidad de esquivar",
         ["ptBR"] = "Chance de esquivar"
     },
-    ["Resilience rating"] = {
+    ["Resilience Rating"] = {
         ["enUS"] = true,
         ["deDE"] = false,
         ["frFR"] = false,
@@ -402,7 +402,7 @@ local statTranslations = {
         ["esMX"] = "Temple",
         ["ptBR"] = "Resiliência"
     },
-    ["Crit. reduction"] = {
+    ["Crit. Reduction"] = {
         ["enUS"] = true,
         ["deDE"] = false,
         ["frFR"] = false,
@@ -482,7 +482,7 @@ local statTranslations = {
         ["esMX"] = "Hechizo",
         ["ptBR"] = "Feitiço"
     },
-    ["Spell crit. rating"] = {
+    ["Spell Crit. Rating"] = {
         ["enUS"] = true,
         ["deDE"] = false,
         ["frFR"] = false,
@@ -502,7 +502,7 @@ local statTranslations = {
         ["esMX"] = "Penetración",
         ["ptBR"] = "Penetração"
     },
-    ["Healing power"] = {
+    ["Healing Power"] = {
         ["enUS"] = true,
         ["deDE"] = "Heilungskraft",
         ["frFR"] = "Pouvoir de guérison",

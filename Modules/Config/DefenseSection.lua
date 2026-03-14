@@ -45,7 +45,7 @@ function _Config:LoadDefenseSection()
             resilienceRating = {
                 type = "toggle",
                 order = 2,
-                name = function() return i18n("Resilience rating") end,
+                name = function() return i18n("Resilience Rating") end,
                 desc = function() return i18n("Shows/Hides the resilience rating.") end,
                 width = 1.5,
                 hidden = function() return ECS.IsClassic end,
@@ -73,7 +73,7 @@ function _Config:LoadDefenseSection()
             defenseRating = {
                 type = "toggle",
                 order = 3,
-                name = function() return i18n("Defense rating") end,
+                name = function() return i18n("Defense Rating") end,
                 desc = function() return i18n("Shows/Hides the defense rating.") end,
                 width = 1.5,
                 hidden = function() return ECS.IsClassic end,
@@ -126,7 +126,7 @@ function _Config:LoadDefenseSection()
             dodgeRating = {
                 type = "toggle",
                 order = 5,
-                name = function() return i18n("Dodge rating") end,
+                name = function() return i18n("Dodge Rating") end,
                 desc = function() return i18n("Shows/Hides the dodge rating.") end,
                 width = 1.5,
                 hidden = function() return ECS.IsClassic end,
@@ -140,7 +140,7 @@ function _Config:LoadDefenseSection()
             dodge = {
                 type = "toggle",
                 order = 5.1,
-                name = function() return i18n("Dodge chance") end,
+                name = function() return i18n("Dodge Chance") end,
                 desc = function() return i18n("Shows/Hides the dodge chance.") end,
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
@@ -153,7 +153,7 @@ function _Config:LoadDefenseSection()
             parryRating = {
                 type = "toggle",
                 order = 6,
-                name = function() return i18n("Parry rating") end,
+                name = function() return i18n("Parry Rating") end,
                 desc = function() return i18n("Shows/Hides the parry rating.") end,
                 width = 1.5,
                 hidden = function() return ECS.IsClassic end,
@@ -167,7 +167,7 @@ function _Config:LoadDefenseSection()
             parry = {
                 type = "toggle",
                 order = 6.1,
-                name = function() return i18n("Parry chance") end,
+                name = function() return i18n("Parry Chance") end,
                 desc = function() return i18n("Shows/Hides the parry chance.") end,
                 width = 1.5,
                 hidden = function() return not DataUtils:CanParry() end,
@@ -182,13 +182,13 @@ function _Config:LoadDefenseSection()
                 type = "group",
                 order = 7,
                 inline = true,
-                name = function() return i18n("Block values") end,
+                name = function() return i18n("Block Values") end,
                 hidden = function() return not DataUtils:CanBlock() end,
                 args = {
                     rating = {
                         type = "toggle",
                         order = 1,
-                        name = function() return i18n("Block rating") end,
+                        name = function() return i18n("Block Rating") end,
                         desc = function() return i18n("Shows/Hides the block rating.") end,
                         width = 1.5,
                         hidden = function() return ECS.IsClassic end,
@@ -205,7 +205,7 @@ function _Config:LoadDefenseSection()
                     chance = {
                         type = "toggle",
                         order = 1.1,
-                        name = function() return i18n("Block chance") end,
+                        name = function() return i18n("Block Chance") end,
                         desc = function() return i18n("Shows/Hides the block chance.") end,
                         width = 1.5,
                         disabled = function()
@@ -221,7 +221,7 @@ function _Config:LoadDefenseSection()
                     amount = {
                         type = "toggle",
                         order = 1.2,
-                        name = function() return i18n("Blocked amount") end,
+                        name = function() return i18n("Blocked Amount") end,
                         desc = function() return i18n("Shows/Hides the blocked amount.") end,
                         width = 1.5,
                         disabled = function()
@@ -240,12 +240,12 @@ function _Config:LoadDefenseSection()
                 type = "group",
                 order = 8,
                 inline = true,
-                name = function() return i18n("Crit. reduction values") end,
+                name = function() return i18n("Crit. Reduction Values") end,
                 args = {
                     melee = {
                         type = "toggle",
                         order = 1,
-                        name = function() return i18n("Melee crit. reduction") end,
+                        name = function() return i18n("Melee Crit. Reduction") end,
                         desc = function() return i18n("Shows/Hides the reduction percentage of being critically hit by melee attacks.") end,
                         width = 1.5,
                         disabled = function()
@@ -261,7 +261,7 @@ function _Config:LoadDefenseSection()
                     ranged = {
                         type = "toggle",
                         order = 1.1,
-                        name = function() return i18n("Ranged crit. reduction") end,
+                        name = function() return i18n("Ranged Crit. Reduction") end,
                         desc = function() return i18n("Shows/Hides the reduction percentage of being critically hit by ranged attacks.") end,
                         width = 1.5,
                         disabled = function()
@@ -277,7 +277,7 @@ function _Config:LoadDefenseSection()
                     spell = {
                         type = "toggle",
                         order = 1.2,
-                        name = function() return i18n("Spell crit. reduction") end,
+                        name = function() return i18n("Spell Crit. Reduction") end,
                         desc = function() return i18n("Shows/Hides the reduction percentage of being critically hit by spells.") end,
                         width = 1.5,
                         disabled = function()

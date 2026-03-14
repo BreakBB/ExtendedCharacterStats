@@ -2,15 +2,15 @@
 local i18n = ECSLoader:ImportModule("i18n")
 
 local manaConfigTranslations = {
-    ["Show mana stats"] = {
+    ["Show mana stats."] = {
         ["enUS"] = true,
-        ["deDE"] = "Manawerte anzeigen",
-        ["frFR"] = "Afficher mana",
+        ["deDE"] = "Manawerte anzeigen.",
+        ["frFR"] = "Afficher mana.",
         ["zhCN"] = "显示法力回复",
         ["ruRU"] = "Мана",
-        ["esES"] = "Mostrar maná",
-        ["esMX"] = "Mostrar maná",
-        ["ptBR"] = "Mostrar mana"
+        ["esES"] = "Mostrar maná.",
+        ["esMX"] = "Mostrar maná.",
+        ["ptBR"] = "Mostrar mana."
     },
     ["Shows/Hides all mana stats."] = {
         ["enUS"] = true,

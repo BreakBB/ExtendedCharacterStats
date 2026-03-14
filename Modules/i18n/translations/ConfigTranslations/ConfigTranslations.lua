@@ -32,7 +32,7 @@ local configTranslations = {
         ["esMX"] = "Estadísticas",
         ["ptBR"] = "Estatísticas"
     },
-    ["General settings"] = {
+    ["General Settings"] = {
         ["enUS"] = true,
         ["deDE"] = "Allgemeine Einstellungen",
         ["frFR"] = "Paramètres généraux",
@@ -62,15 +62,15 @@ local configTranslations = {
         ["esMX"] = "Oculta la ventana de estadísticas cuando abriendo la información del personaje",
         ["ptBR"] = "Oculta as janelas de estatísticas ao abrir as informações do personagem"
     },
-    ["Colorize stats"] = {
+    ["Colorize stats."] = {
         ["enUS"] = true,
-        ["deDE"] = "Werte färben",
-        ["frFR"] = "Coloriser les statistiques",
+        ["deDE"] = "Werte färben.",
+        ["frFR"] = "Coloriser les statistiques.",
         ["zhCN"] = "染色统计信息",
-        ["ruRU"] = "Окрашивание характеристик",
-        ["esES"] = "Colorear estadísticas",
-        ["esMX"] = "Colorear estadísticas",
-        ["ptBR"] = "Colorir estatísticas"
+        ["ruRU"] = "Окрашивание характеристик.",
+        ["esES"] = "Colorear estadísticas.",
+        ["esMX"] = "Colorear estadísticas.",
+        ["ptBR"] = "Colorir estatísticas."
     },
     ["Adds colors to the stats overview."] = {
         ["enUS"] = true,
@@ -122,7 +122,7 @@ local configTranslations = {
         ["esMX"] = "Valores de estadísticas",
         ["ptBR"] = "Valores das estatísticas"
     },
-    ["Show item quality colors"] = {
+    ["Show item quality colors."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeige Item Qualitätsfarben",
         ["frFR"] = "Affiche la couleur de rareté des objets",
@@ -142,7 +142,7 @@ local configTranslations = {
         ["esMX"] = "Muestra/oculta los marcos coloreados alrededor de los objetos equipados",
         ["ptBR"] = "Mostra/oculta os quadros coloridos ao redor dos itens equipados"
     },
-    ["Quality colors' intensity"] = {
+    ["Quality Colors' Intensity"] = {
         ["enUS"] = true,
         ["deDE"] = "Intensität der Qualitätsfarben",
         ["frFR"] = "Intensité des couleurs de qualité",
@@ -162,7 +162,7 @@ local configTranslations = {
         ["esMX"] = "Cambia la intensidad del brillo de los marcos coloreados.",
         ["ptBR"] = "Altera a intensidade do brilho dos quadros coloridos."
     },
-    ["Header font size"] = {
+    ["Header Font Size"] = {
         ["enUS"] = true,
         ["deDE"] = "Überschriften Schriftgröße",
         ["frFR"] = "Taille de la police d'entête",
@@ -182,7 +182,7 @@ local configTranslations = {
         ["esMX"] = "Cambia el tamaño de fuente de los encabezados (p. ej., cuerpo a cuerpo)",
         ["ptBR"] = "Altera o tamanho da fonte dos cabeçalhos (por exemplo, corpo a corpo)"
     },
-    ["Stat font size"] = {
+    ["Stat Font Size"] = {
         ["enUS"] = true,
         ["deDE"] = "Werte Schriftgröße",
         ["frFR"] = "Taille de la police des statistiques",
@@ -192,7 +192,7 @@ local configTranslations = {
         ["esMX"] = "Tamaño de fuente de estadística",
         ["ptBR"] = "Tamanho da fonte das estatísticas"
     },
-    ["Changes the font size of the stat lines (e.g. Crit.)"] = {
+    ["Changes the font size of the stat lines (e.g. Crit.)."] = {
         ["enUS"] = true,
         ["deDE"] = "Ändert die Schriftgröße der Werte (z.B. Kritische Chance)",
         ["frFR"] = "Modifie la taille de la police des statistiques (ex. Critique)",
@@ -202,7 +202,7 @@ local configTranslations = {
         ["esMX"] = "Cambia el tamaño de fuente de las líneas de estadísticas (p. ej., crítico)",
         ["ptBR"] = "Altera o tamanho da fonte das linhas de estatísticas (por exemplo, crítico)"
     },
-    ["Window width"] = {
+    ["Window Width"] = {
         ["enUS"] = true,
         ["deDE"] = "Fensterbreite",
         ["frFR"] = "Largeur de fenêtre",
@@ -232,7 +232,7 @@ local configTranslations = {
         ["esMX"] = "Idioma",
         ["ptBR"] = "Idioma"
     },
-    ["Stats settings"] = {
+    ["Stats Settings"] = {
         ["enUS"] = true,
         ["deDE"] = "Werte Einstellungen",
         ["frFR"] = "Paramètres des statistiques",

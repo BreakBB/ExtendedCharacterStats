@@ -2,15 +2,15 @@
 local i18n = ECSLoader:ImportModule("i18n")
 
 local generalConfigTranslations = {
-    ["Show general stats"] = {
+    ["Show general stats."] = {
         ["enUS"] = true,
-        ["deDE"] = "Allgemeine Werte anzeigen",
-        ["frFR"] = "Afficher les statistiques",
+        ["deDE"] = "Allgemeine Werte anzeigen.",
+        ["frFR"] = "Afficher les statistiques.",
         ["zhCN"] = "显示常规属性信息",
-        ["ruRU"] = "Основные характеристики",
-        ["esES"] = "Mostrar estadísticas",
-        ["esMX"] = "Mostrar estadísticas",
-        ["ptBR"] = "Mostrar estatísticas"
+        ["ruRU"] = "Основные характеристики.",
+        ["esES"] = "Mostrar estadísticas.",
+        ["esMX"] = "Mostrar estadísticas.",
+        ["ptBR"] = "Mostrar estatísticas."
     },
     ["Shows/Hides all general stats."] = {
         ["enUS"] = true,
@@ -22,15 +22,15 @@ local generalConfigTranslations = {
         ["esMX"] = "Muestra/oculta todas estadísticas generales",
         ["ptBR"] = "Mostra/oculta todas as estatísticas gerais"
     },
-    ["Show movement speed"] = {
+    ["Show movement speed."] = {
         ["enUS"] = true,
-        ["deDE"] = "Bewegungsgeschwindigkeit anzeigen",
-        ["frFR"] = "Afficher la vitesse de déplacement",
+        ["deDE"] = "Bewegungsgeschwindigkeit anzeigen.",
+        ["frFR"] = "Afficher la vitesse de déplacement.",
         ["zhCN"] = "显示移动速度",
-        ["ruRU"] = "Скорость движения",
-        ["esES"] = "Mostrar velocidad de movimiento",
-        ["esMX"] = "Mostrar velocidad de movimiento",
-        ["ptBR"] = "Mostrar velocidade de movimento"
+        ["ruRU"] = "Скорость движения.",
+        ["esES"] = "Mostrar velocidad de movimiento.",
+        ["esMX"] = "Mostrar velocidad de movimiento.",
+        ["ptBR"] = "Mostrar velocidade de movimento."
     },
     ["Shows/Hides the movement speed value."] = {
         ["enUS"] = true,

@@ -2,7 +2,7 @@
 local i18n = ECSLoader:ImportModule("i18n")
 
 local defenseConfigTranslations = {
-    ["Parry rating"] = {
+    ["Parry Rating"] = {
         ["enUS"] = true,
         ["deDE"] = false,
         ["frFR"] = false,
@@ -12,7 +12,7 @@ local defenseConfigTranslations = {
         ["esMX"] = false,
         ["ptBR"] = false,
     },
-    ["Dodge rating"] = {
+    ["Dodge Rating"] = {
         ["enUS"] = true,
         ["deDE"] = false,
         ["frFR"] = false,
@@ -22,7 +22,7 @@ local defenseConfigTranslations = {
         ["esMX"] = false,
         ["ptBR"] = false,
     },
-    ["Blocked amount"] = {
+    ["Blocked Amount"] = {
         ["enUS"] = true,
         ["deDE"] = false,
         ["frFR"] = false,
@@ -32,7 +32,7 @@ local defenseConfigTranslations = {
         ["esMX"] = false,
         ["ptBR"] = false,
     },
-    ["Resilience rating"] = {
+    ["Resilience Rating"] = {
         ["enUS"] = true,
         ["deDE"] = false,
         ["frFR"] = false,
@@ -42,7 +42,7 @@ local defenseConfigTranslations = {
         ["esMX"] = false,
         ["ptBR"] = false,
     },
-    ["Crit. reduction values"] = {
+    ["Crit. Reduction Values"] = {
         ["enUS"] = true,
         ["deDE"] = false,
         ["frFR"] = false,
@@ -52,15 +52,15 @@ local defenseConfigTranslations = {
         ["esMX"] = false,
         ["ptBR"] = false
     },
-    ["Show defense stats"] = {
+    ["Show defense stats."] = {
         ["enUS"] = true,
-        ["deDE"] = "Verteidigungswerte anzeigen",
-        ["frFR"] = "Afficher défense",
+        ["deDE"] = "Verteidigungswerte anzeigen.",
+        ["frFR"] = "Afficher défense.",
         ["zhCN"] = "显示防御属性",
-        ["ruRU"] = "Защита",
-        ["esES"] = "Mostrar defensa",
-        ["esMX"] = "Mostrar defensa",
-        ["ptBR"] = "Mostrar defesa"
+        ["ruRU"] = "Защита.",
+        ["esES"] = "Mostrar defensa.",
+        ["esMX"] = "Mostrar defensa.",
+        ["ptBR"] = "Mostrar defesa."
     },
     ["Shows/Hides all defense stats."] = {
         ["enUS"] = true,

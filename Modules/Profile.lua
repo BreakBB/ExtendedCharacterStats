@@ -22,7 +22,7 @@ local function GetDefaultStatsProfile()
             movementSpeed = {
                 display = true,
                 refName = "MovementSpeed",
-                text = "Movement speed"
+                text = "Movement Speed"
             },
         },
 
@@ -70,7 +70,7 @@ local function GetDefaultStatsProfile()
                 display = true,
                 isSubGroup = true,
                 refName = "GlanceChanceHeader",
-                text = "Glancing blow",
+                text = "Glancing Blow",
                 sameLevel = {
                     display = true,
                     refName = "GlanceHitChanceSameLevel",
@@ -103,35 +103,35 @@ local function GetDefaultStatsProfile()
             attackPower = {
                 display = true,
                 refName = "MeleeAttackPower",
-                text = "Attack power",
+                text = "Attack Power",
                 textColor = colors.ATTACK_POWER_SECONDARY,
                 statColor = colors.ATTACK_POWER_PRIMARY
             },
             critRating = {
                 display = true,
                 refName = "RangedCritRating",
-                text = "Crit. rating",
+                text = "Crit. Rating",
                 textColor = colors.CRIT_SECONDARY,
                 statColor = colors.CRIT_PRIMARY
             },
             crit = {
                 display = true,
                 refName = "MeleeCritChance",
-                text = "Crit. chance",
+                text = "Crit. Chance",
                 textColor = colors.CRIT_SECONDARY,
                 statColor = colors.CRIT_PRIMARY
             },
             penetration = {
                 display = true,
                 refName = "MeleeArmorPenetration",
-                text = "Armor pen.",
+                text = "Armor Pen.",
                 textColor = colors.ATTACK_SPEED_SECONDARY,
                 statColor = colors.ATTACK_SPEED_PRIMARY,
             },
             penetrationRating = {
                 display = true,
                 refName = "MeleeArmorPenetrationRating",
-                text = "Armor pen. rating",
+                text = "Armor Pen. Rating",
                 textColor = colors.ATTACK_SPEED_SECONDARY,
                 statColor = colors.ATTACK_SPEED_PRIMARY,
             },
@@ -143,19 +143,19 @@ local function GetDefaultStatsProfile()
             expertiseRating = {
                 display = true,
                 refName = "ExpertiseRating",
-                text = "Expertise rating"
+                text = "Expertise Rating"
             },
             hasteRating = {
                 display = true,
                 refName = "MeleeHasteRating",
-                text = "Haste rating",
+                text = "Haste Rating",
                 textColor = colors.HASTE_RATING_SECONDARY,
                 statColor = colors.HASTE_RATING_PRIMARY
             },
             hasteBonus = {
                 display = true,
                 refName = "MeleeHasteBonus",
-                text = "Haste bonus",
+                text = "Haste Bonus",
                 textColor = colors.HASTE_RATING_SECONDARY,
                 statColor = colors.HASTE_RATING_PRIMARY
             },
@@ -163,19 +163,19 @@ local function GetDefaultStatsProfile()
                 display = true,
                 isSubGroup = true,
                 refName = "MeleeAttackSpeedHeader",
-                text = "Attack speed",
+                text = "Attack Speed",
 
                 mainHand = {
                     display = true,
                     refName = "MeleeAttackSpeedMainHand",
-                    text = "Main hand",
+                    text = "Main Hand",
                     textColor = colors.ATTACK_SPEED_SECONDARY,
                     statColor = colors.ATTACK_SPEED_PRIMARY
                 },
                 offHand = {
                     display = true,
                     refName = "MeleeAttackSpeedOffHand",
-                    text = "Off hand",
+                    text = "Off Hand",
                     textColor = colors.ATTACK_SPEED_SECONDARY,
                     statColor = colors.ATTACK_SPEED_PRIMARY
                 },
@@ -226,56 +226,56 @@ local function GetDefaultStatsProfile()
             attackPower = {
                 display = true,
                 refName = "RangeAttackpower",
-                text = "Attack power",
+                text = "Attack Power",
                 textColor = colors.ATTACK_POWER_SECONDARY,
                 statColor = colors.ATTACK_POWER_PRIMARY
             },
             critRating = {
                 display = true,
                 refName = "RangedCritRating",
-                text = "Crit. rating",
+                text = "Crit. Rating",
                 textColor = colors.CRIT_SECONDARY,
                 statColor = colors.CRIT_PRIMARY
             },
             crit = {
                 display = true,
                 refName = "RangedCritChance",
-                text = "Crit. chance",
+                text = "Crit. Chance",
                 textColor = colors.CRIT_SECONDARY,
                 statColor = colors.CRIT_PRIMARY
             },
             penetration = {
                 display = true,
                 refName = "RangedArmorPenetration",
-                text = "Armor pen.",
+                text = "Armor Pen.",
                 textColor = colors.ATTACK_SPEED_SECONDARY,
                 statColor = colors.ATTACK_SPEED_PRIMARY,
             },
             penetrationRating = {
                 display = true,
                 refName = "RangedArmorPenetrationRating",
-                text = "Armor pen. rating",
+                text = "Armor Pen. Rating",
                 textColor = colors.ATTACK_SPEED_SECONDARY,
                 statColor = colors.ATTACK_SPEED_PRIMARY,
             },
             hasteRating = {
                 display = true,
                 refName = "RangedHasteRating",
-                text = "Haste rating",
+                text = "Haste Rating",
                 textColor = colors.HASTE_RATING_SECONDARY,
                 statColor = colors.HASTE_RATING_PRIMARY
             },
             hasteBonus = {
                 display = true,
                 refName = "RangedHasteBonus",
-                text = "Haste bonus",
+                text = "Haste Bonus",
                 textColor = colors.HASTE_RATING_SECONDARY,
                 statColor = colors.HASTE_RATING_PRIMARY
             },
             attackSpeed = {
                 display = true,
                 refName = "RangedAttackSpeed",
-                text = "Attack speed",
+                text = "Attack Speed",
                 textColor = colors.ATTACK_SPEED_SECONDARY,
                 statColor = colors.ATTACK_SPEED_PRIMARY
             },
@@ -293,7 +293,7 @@ local function GetDefaultStatsProfile()
             resilienceRating = {
                 display = true,
                 refName = "ResilienceRating",
-                text = "Resilience rating"
+                text = "Resilience Rating"
             },
             resilience = {
                 display = true,
@@ -303,7 +303,7 @@ local function GetDefaultStatsProfile()
             defenseRating = {
                 display = true,
                 refName = "DefenseRating",
-                text = "Defense rating"
+                text = "Defense Rating"
             },
             defense = {
                 display = true,
@@ -323,22 +323,22 @@ local function GetDefaultStatsProfile()
             dodgeRating = {
                 display = true,
                 refName = "DodgeRating",
-                text = "Dodge rating"
+                text = "Dodge Rating"
             },
             dodge = {
                 display = true,
                 refName = "DodgeChance",
-                text = "Dodge chance"
+                text = "Dodge Chance"
             },
             parryRating = {
                 display = true,
                 refName = "ParryRating",
-                text = "Parry rating"
+                text = "Parry Rating"
             },
             parry = {
                 display = true,
                 refName = "ParryChance",
-                text = "Parry chance"
+                text = "Parry Chance"
             },
             ---@type SubCategory
             block = {
@@ -367,7 +367,7 @@ local function GetDefaultStatsProfile()
                 display = true,
                 isSubGroup = true,
                 refName = "CritReductionHeader",
-                text = "Crit. reduction",
+                text = "Crit. Reduction",
                 melee = {
                     display = true,
                     refName = "MeleeCritReduction",
@@ -643,14 +643,14 @@ local function GetDefaultStatsProfile()
             hasteRating = {
                 display = true,
                 refName = "SpellHasteRating",
-                text = "Haste rating",
+                text = "Haste Rating",
                 textColor = colors.HASTE_RATING_SECONDARY,
                 statColor = colors.HASTE_RATING_PRIMARY
             },
             hasteBonus = {
                 display = true,
                 refName = "SpellHasteBonus",
-                text = "Haste bonus",
+                text = "Haste Bonus",
                 textColor = colors.HASTE_RATING_SECONDARY,
                 statColor = colors.HASTE_RATING_PRIMARY
             },
@@ -730,7 +730,7 @@ local function GetDefaultStatsProfile()
             bonusHealing = {
                 display = true,
                 refName = "BonusHealing",
-                text = "Healing power",
+                text = "Healing Power",
                 textColor = colors.HEALING_SECONDARY,
                 statColor = colors.HEALING_PRIMARY
             },

@@ -2,7 +2,7 @@
 local i18n = ECSLoader:ImportModule("i18n")
 
 local rangedConfigTranslations = {
-    ["Show ranged stats"] = {
+    ["Show ranged stats."] = {
         ["enUS"] = true,
         ["deDE"] = "Fernkampfwerte anzeigen",
         ["frFR"] = "Afficher à distance",
@@ -21,7 +21,7 @@ local rangedConfigTranslations = {
         ["esES"] = "Muestra/oculta todas estadísticas a distancia",
         ["esMX"] = "Muestra/oculta todas estadísticas a distancia"
     },
-    ["Ranged attack power"] = {
+    ["Ranged Attack Power"] = {
         ["enUS"] = true,
         ["deDE"] = "Fernkampf Angriffskraft",
         ["frFR"] = "Puissance d'attaque à distance",
@@ -41,7 +41,7 @@ local rangedConfigTranslations = {
         ["esMX"] = "Muestra/oculta el valor de poder de ataque a distancia",
         ["ptBR"] = "Mostra/oculta o valor de poder de ataque de longo alcance"
     },
-    ["Ranged crit."] = {
+    ["Ranged Crit."] = {
         ["enUS"] = true,
         ["deDE"] = "Fernkampf Kritisch",
         ["frFR"] = "Critique à distance",
@@ -91,7 +91,7 @@ local rangedConfigTranslations = {
         ["esMX"] = "Muestra/oculta la velocidad de ataque a distancia",
         ["ptBR"] = "Mostra/oculta a velocidade de ataque de longo alcance"
     },
-    ["Ranged hit"] = {
+    ["Ranged Hit"] = {
         ["enUS"] = true,
         ["deDE"] = "Fernkampf Trefferwertung",
         ["frFR"] = "Toucher à distance",
@@ -101,7 +101,7 @@ local rangedConfigTranslations = {
         ["esMX"] = "Probabilidad de golpear",
         ["ptBR"] = "Chance de acerto"
     },
-    ["Ranged hit values"] = {
+    ["Ranged Hit Values"] = {
         ["enUS"] = true,
         ["deDE"] = "Fernkampf Trefferwertung",
         ["frFR"] = "Valeurs de toucher à distance",
@@ -161,7 +161,7 @@ local rangedConfigTranslations = {
         ["esMX"] = "Muestra/oculta la probabilidad de fallo contra jefes (nivel +3)",
         ["ptBR"] = "Mostra/oculta a chance de erro contra chefes (nível +3)"
     },
-    ["Ranged crit. rating"] = {
+    ["Ranged Crit. Rating"] = {
         ["enUS"] = true,
         ["deDE"] = false,
         ["frFR"] = false,

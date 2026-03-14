@@ -2,7 +2,7 @@
 local i18n = ECSLoader:ImportModule("i18n")
 
 local spellSchoolsConfigTranslations = {
-    ["Spell schools"] = {
+    ["Spell Schools"] = {
         ["enUS"] = true,
         ["deDE"] = "Zauber Schulen",
         ["frFR"] = "Écoles de magie",

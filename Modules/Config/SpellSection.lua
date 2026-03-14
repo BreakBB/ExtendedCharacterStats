@@ -18,7 +18,7 @@ function _Config:LoadSpellSection()
             showSpellStats = {
                 type = "toggle",
                 order = 0,
-                name = function() return i18n("Show spell stats") end,
+                name = function() return i18n("Show spell stats.") end,
                 desc = function() return i18n("Shows/Hides all spell stats.") end,
                 width = 1.5,
                 get = function () return ExtendedCharacterStats.profile.spell.display; end,
@@ -30,7 +30,7 @@ function _Config:LoadSpellSection()
             hasteRating = {
                 type = "toggle",
                 order = 2,
-                name = function() return i18n("Haste rating") end,
+                name = function() return i18n("Haste Rating") end,
                 desc = function() return i18n("Shows/Hides the spell haste rating value.") end,
                 width = 1.5,
                 hidden = function() return ECS.IsClassic end,
@@ -44,7 +44,7 @@ function _Config:LoadSpellSection()
             hasteBonus = {
                 type = "toggle",
                 order = 3,
-                name = function() return i18n("Haste bonus") end,
+                name = function() return i18n("Haste Bonus") end,
                 desc = function() return i18n("Shows/Hides the spell haste bonus value.") end,
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.spell.display); end,
@@ -57,7 +57,7 @@ function _Config:LoadSpellSection()
             spellPenetration = {
                 type = "toggle",
                 order = 4,
-                name = function() return i18n("Spell penetration") end,
+                name = function() return i18n("Spell Penetration") end,
                 desc = function() return i18n("Shows/Hides the spell penetration value.") end,
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.spell.display); end,
@@ -71,12 +71,12 @@ function _Config:LoadSpellSection()
                 type = "group",
                 order = 5,
                 inline = true,
-                name = function() return i18n("Spell power") end,
+                name = function() return i18n("Spell Power") end,
                 args = {
                     bonusHealing = {
                         type = "toggle",
                         order = 1,
-                        name = function() return i18n("Healing power") end,
+                        name = function() return i18n("Healing Power") end,
                         desc = function() return i18n("Shows/Hides the healing power value.") end,
                         width = 1.5,
                         disabled = function() return (not ExtendedCharacterStats.profile.spell.display); end,
@@ -183,12 +183,12 @@ function _Config:LoadSpellSection()
                 type = "group",
                 order = 6,
                 inline = true,
-                name = function() return i18n("Spell crit. values") end,
+                name = function() return i18n("Spell Crit. Values") end,
                 args = {
                     spellCritRating = {
                         type = "toggle",
                         order = 1,
-                        name = function() return i18n("Spell crit. rating") end,
+                        name = function() return i18n("Spell Crit. Rating") end,
                         desc = function() return i18n("Shows/Hides the spell crit. rating.") end,
                         width = 1.5,
                         hidden = function() return ECS.IsClassic end,
@@ -202,7 +202,7 @@ function _Config:LoadSpellSection()
                     spellCrit = {
                         type = "toggle",
                         order = 1.1,
-                        name = function() return i18n("Spell crit.") end,
+                        name = function() return i18n("Spell Crit.") end,
                         desc = function() return i18n("Shows/Hides the spell crit. chance.") end,
                         width = 1.5,
                         disabled = function() return (not ExtendedCharacterStats.profile.spell.display); end,
@@ -218,12 +218,12 @@ function _Config:LoadSpellSection()
                 type = "group",
                 order = 7,
                 inline = true,
-                name = function() return i18n("Spell hit values") end,
+                name = function() return i18n("Spell Hit Values") end,
                 args = {
                     spellHitRating = {
                         type = "toggle",
                         order = 1,
-                        name = function() return i18n("Hit rating") end,
+                        name = function() return i18n("Hit Rating") end,
                         desc = function() return i18n("Shows/Hides the spell hit rating.") end,
                         width = 1.5,
                         hidden = function() return ECS.IsClassic end,
@@ -240,7 +240,7 @@ function _Config:LoadSpellSection()
                     spellHitBonus = {
                         type = "toggle",
                         order = 2,
-                        name = function() return i18n("Hit bonus") end,
+                        name = function() return i18n("Hit Bonus") end,
                         desc = function() return i18n("Shows/Hides the spell hit bonus.") end,
                         width = 1.5,
                         disabled = function()
@@ -256,7 +256,7 @@ function _Config:LoadSpellSection()
                     spellMiss = {
                         type = "toggle",
                         order = 3,
-                        name = function() return i18n("Miss chance") end,
+                        name = function() return i18n("Miss Chance") end,
                         desc = function() return i18n("Shows/Hides the spell miss chance against enemies on the same level.") end,
                         width = 1.5,
                         disabled = function()
@@ -272,7 +272,7 @@ function _Config:LoadSpellSection()
                     spellMissBoss = {
                         type = "toggle",
                         order = 4,
-                        name = function() return i18n("Miss chance boss") end,
+                        name = function() return i18n("Miss Chance Boss") end,
                         desc = function() return i18n("Shows/Hides the spell miss chance against boss enemies (+3 Level).") end,
                         width = 1.5,
                         disabled = function()
