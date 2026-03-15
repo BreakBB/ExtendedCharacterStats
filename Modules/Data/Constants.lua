@@ -526,7 +526,9 @@ Data.Gem = {
     },
 }
 Data.Item = {
+    -- keep-sorted start block=yes case=no
     IncreaseExpertise = {
+        -- keep-sorted start numeric=yes
         [233376] = 1, -- Conqueror's Spaulders
         [233397] = 1, -- Avenger's Breastplate
         [233401] = 1, -- Avenger's Pauldrons
@@ -739,8 +741,10 @@ Data.Item = {
         [246060] = 1, -- Inquisition Cuirass
         [246061] = 1, -- Inquisition Epaulets
         [246062] = 1, -- Inquisition Faceguard
+        -- keep-sorted end
     },
     IsTimeworn = {
+        -- keep-sorted start numeric=yes
         [233496] = true, -- Barrage Shoulders
         [233505] = true, -- Leggings of Immersion
         [233506] = true, -- Beetle Scaled Wristguards
@@ -861,6 +865,7 @@ Data.Item = {
         [234962] = true, -- Jade Inlaid Vestments
         [234963] = true, -- Strangely Glyphed Legplates
         [235047] = true, -- Gloves of the Fallen Prophet
+        -- keep-sorted end
     },
     SpellHaste = {
         [235874] = 2,
@@ -998,12 +1003,14 @@ Data.Item = {
         [242317] = 3,
     },
     TimewornExpertise = {
+        -- keep-sorted start numeric=yes
         [234018] = 1, -- Signet Ring of the Bronze Dragonflight
         [234022] = 1, -- Signet Ring of the Bronze Dragonflight
         [234027] = 1, -- Signet Ring of the Bronze Dragonflight
         [234031] = 1, -- Signet Ring of the Bronze Dragonflight
         [234035] = 1, -- Signet Ring of the Bronze Dragonflight
-    },
+        -- keep-sorted end
+   },
     TimewornSpellHaste = {
         [234016] = 2,
         [234020] = 2,
@@ -1011,14 +1018,16 @@ Data.Item = {
         [234028] = 2,
         [234032] = 2,
     },
+    -- keep-sorted end
 }
 Data.setNames = {
+    -- keep-sorted start
     AUGURS_REGALIA = "Augur's Regalia",
     BLOODSOUL_EMBRACE = "Bloodsoul Embrace",
     BONESCYTHE_LEATHERS = "Bonescythe Leathers",
     DAWN_OF_TRANSCENDENCE = "Dawn of Transcendence",
-    DREAMWALKER_GUARDIAN = "Dreamwalker Guardian",
     DREADNOUGHTS_BATTLEGEAR = "Dreadnought's Battlegear",
+    DREAMWALKER_GUARDIAN = "Dreamwalker Guardian",
     FEL_IRON_CHAIN = "Fel Iron Chain",
     FREETHINKERS_ARMOR = "Freethinker's Armor",
     GREEN_DRAGON_MAIL = "Green Dragon Mail",
@@ -1034,4 +1043,5 @@ Data.setNames = {
     THE_EARTHSHATTERERS_RESOLVE = "The Earthshatterer Resolve",
     VESTMENTS_OF_TRANSCENDENCE = "Vestments of Transcendence",
     WINDHAWK_ARMOR = "Windhawk Armor",
+    -- keep-sorted end
 }
