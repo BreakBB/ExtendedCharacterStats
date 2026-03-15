@@ -5,6 +5,7 @@ local _, _, classId = UnitClass("player")
 local setNames = Data.setNames
 
 local itemSets = {
+    -- keep-sorted start block=yes
     [setNames.AUGURS_REGALIA] = {
         [19609] = true,
         [19828] = true,
@@ -18,6 +19,7 @@ local itemSets = {
         [19692] = true,
     },
     [setNames.BONESCYTHE_LEATHERS] = {
+        -- keep-sorted start numeric=yes
         [236032] = true,
         [236033] = true,
         [236034] = true,
@@ -26,7 +28,8 @@ local itemSets = {
         [236037] = true,
         [236038] = true,
         [236039] = true,
-        [236040] = true
+        [236040] = true,
+        -- keep-sorted end
     },
     [setNames.DAWN_OF_TRANSCENDENCE] = {
         [231155] = true,
@@ -39,6 +42,7 @@ local itemSets = {
         [231162] = true,
     },
     [setNames.DREADNOUGHTS_BATTLEGEAR] = {
+        -- keep-sorted start numeric=yes
         [236005] = true,
         [246006] = true,
         [236007] = true,
@@ -47,9 +51,11 @@ local itemSets = {
         [236010] = true,
         [236011] = true,
         [236012] = true,
-        [236013] = true
+        [236013] = true,
+        -- keep-sorted end
     },
     [setNames.DREAMWALKER_GUARDIAN] = {
+        -- keep-sorted start numeric=yes
         [236201] = true,
         [236202] = true,
         [236203] = true,
@@ -58,7 +64,8 @@ local itemSets = {
         [236206] = true,
         [236207] = true,
         [236208] = true,
-        [236209] = true
+        [236209] = true,
+        -- keep-sorted end
     },
     [setNames.FEL_IRON_CHAIN] = {
         [23490] = true,
@@ -96,6 +103,7 @@ local itemSets = {
         [21875] = true,
     },
     [setNames.PLAGUEHEART_STITCHINGS] = {
+        -- keep-sorted start numeric=yes
         [236068] = true,
         [236069] = true,
         [236070] = true,
@@ -104,9 +112,11 @@ local itemSets = {
         [236073] = true,
         [236074] = true,
         [236075] = true,
-        [236076] = true
+        [236076] = true,
+        -- keep-sorted end
     },
     [setNames.REDEMPTION_BULWARK] = {
+        -- keep-sorted start numeric=yes
         [236133] = true,
         [236134] = true,
         [236135] = true,
@@ -115,7 +125,8 @@ local itemSets = {
         [236138] = true,
         [236139] = true,
         [236140] = true,
-        [236141] = true
+        [236141] = true,
+        -- keep-sorted end
     },
     [setNames.STORMRAGE_RAIMENT] = {
         [16897] = true,
@@ -128,9 +139,11 @@ local itemSets = {
         [16904] = true,
     },
     [setNames.SYMBOLS_OF_UNENDING_LIFE] = {
+        -- keep-sorted start numeric=yes
         [233417] = true,
         [233418] = true,
-        [233419] = true
+        [233419] = true,
+        -- keep-sorted end
     },
     [setNames.TEN_STORMS] = {
         [16943] = true,
@@ -143,6 +156,7 @@ local itemSets = {
         [16950] = true
     },
     [setNames.THE_EARTHSHATTERER] = {
+        -- keep-sorted start numeric=yes
         [22464] = true,
         [22465] = true,
         [22466] = true,
@@ -151,9 +165,11 @@ local itemSets = {
         [22469] = true,
         [22470] = true,
         [22471] = true,
-        [23065] = true
+        [23065] = true,
+        -- keep-sorted end
     },
     [setNames.THE_EARTHSHATTERERS_RESOLVE] = {
+        -- keep-sorted start numeric=yes
         [236160] = true,
         [236162] = true,
         [236163] = true,
@@ -162,7 +178,8 @@ local itemSets = {
         [236166] = true,
         [236167] = true,
         [236168] = true,
-        [236169] = true
+        [236169] = true,
+        -- keep-sorted end
     },
     [setNames.VESTMENTS_OF_TRANSCENDENCE] = {
         [16919] = true,
@@ -179,12 +196,12 @@ local itemSets = {
         [29523] = true,
         [29524] = true,
     },
+    -- keep-sorted end
 }
 
 function Data:HasSetBonusIncreasedExpertise2()
-    if classId == Data.WARRIOR then
-        return Data:IsSetBonusActive(setNames.DREADNOUGHTS_BATTLEGEAR, 2)
-    elseif classId == Data.DRUID then
+    -- keep-sorted start block=yes
+    if classId == Data.DRUID then
         return Data:IsSetBonusActive(setNames.DREAMWALKER_GUARDIAN, 2)
     elseif classId == Data.SHAMAN then
         return Data:IsSetBonusActive(setNames.THE_EARTHSHATTERERS_RESOLVE, 2)
@@ -194,13 +211,18 @@ function Data:HasSetBonusIncreasedExpertise2()
         return Data:IsSetBonusActive(setNames.BONESCYTHE_LEATHERS, 2)
     elseif classId == Data.WARLOCK then
         return Data:IsSetBonusActive(setNames.PLAGUEHEART_STITCHINGS, 2)
+    elseif classId == Data.WARRIOR then
+        return Data:IsSetBonusActive(setNames.DREADNOUGHTS_BATTLEGEAR, 2)
     end
+    -- keep-sorted end
 end
 
 function Data:HasSetBonusIncreasedExpertise5()
+    -- keep-sorted start block=yes
     if classId == Data.DRUID then
         return Data:IsSetBonusActive(setNames.SYMBOLS_OF_UNENDING_LIFE, 3)
     end
+    -- keep-sorted end
 end
 
 ---@return number

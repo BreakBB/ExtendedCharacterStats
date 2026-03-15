@@ -424,6 +424,7 @@ Data.Aura = {
     },
 }
 Data.Enchant = {
+    -- keep-sorted start block=yes case=no
     BlockValue = {
         [2583] = 15, -- Presence of Might
         [2653] = 18, -- Enchant Shield - Tough Shield
@@ -432,8 +433,10 @@ Data.Enchant = {
         [7633] = 15, -- Presence of Valor
     },
     Ids = {
+        -- keep-sorted start
         ANIMALISTIC_EXPERTISE = 7875, -- Your melee attacks have 5% less chance to be Dodged or Parried.
         BIZNICK_SCOPE = 2523, -- 3% Hit from Biznicks 247x128 Accurascope
+        -- keep-sorted end
     },
     MP5 = {
         [2381] = 10, -- Enchant Chest - Greater Mana Restoration
@@ -459,6 +462,7 @@ Data.Enchant = {
         [3836] = 8, -- Master's Inscription of the Crag
         [7099] = 12, -- Blackfathom Mana Oil. This effect only applies within Blackfathom Deeps.
     },
+    -- keep-sorted end
 }
 Data.Gem = {
     MP5 = {
