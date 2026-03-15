@@ -2,7 +2,7 @@
 local i18n = ECSLoader:ImportModule("i18n")
 
 local rangedConfigTranslations = {
-    ["Show ranged stats."] = {
+    ["Show ranged stats"] = {
         ["enUS"] = true,
         ["deDE"] = "Fernkampfwerte anzeigen",
         ["frFR"] = "Afficher à distance",
@@ -41,7 +41,7 @@ local rangedConfigTranslations = {
         ["esMX"] = "Muestra/oculta el valor de poder de ataque a distancia",
         ["ptBR"] = "Mostra/oculta o valor de poder de ataque de longo alcance"
     },
-    ["Ranged Crit."] = {
+    ["Ranged Crit"] = {
         ["enUS"] = true,
         ["deDE"] = "Fernkampf Kritisch",
         ["frFR"] = "Critique à distance",

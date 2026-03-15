@@ -2,7 +2,7 @@
 local i18n = ECSLoader:ImportModule("i18n")
 
 local spellConfigTranslations = {
-    ["Show spell stats."] = {
+    ["Show spell stats"] = {
         ["enUS"] = true,
         ["deDE"] = "Zauberwerte anzeigen",
         ["frFR"] = "Afficher sorts",

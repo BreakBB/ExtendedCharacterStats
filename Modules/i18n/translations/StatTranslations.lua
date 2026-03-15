@@ -62,7 +62,7 @@ local statTranslations = {
         ["esMX"] = false,
         ["ptBR"] = false,
     },
-    ["Crit. chance"] = {
+    ["Crit. Chance"] = {
         ["enUS"] = true,
         ["deDE"] = "Kritische Chance",
         ["frFR"] = "Chances de critique",

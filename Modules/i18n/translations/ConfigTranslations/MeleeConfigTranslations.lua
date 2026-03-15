@@ -2,15 +2,15 @@
 local i18n = ECSLoader:ImportModule("i18n")
 
 local meleeConfigTranslations = {
-    ["Show melee stats."] = {
+    ["Show melee stats"] = {
         ["enUS"] = true,
-        ["deDE"] = "Nahkampfwerte anzeigen.",
-        ["frFR"] = "Afficher mêlée.",
+        ["deDE"] = "Nahkampfwerte anzeigen",
+        ["frFR"] = "Afficher mêlée",
         ["zhCN"] = "显示近战属性",
-        ["ruRU"] = "Ближний бой.",
-        ["esES"] = "Mostrar cuerpo a cuerpo.",
-        ["esMX"] = "Mostrar cuerpo a cuerpo.",
-        ["ptBR"] = "Mostrar corpo a corpo."
+        ["ruRU"] = "Ближний бой",
+        ["esES"] = "Mostrar cuerpo a cuerpo",
+        ["esMX"] = "Mostrar cuerpo a cuerpo",
+        ["ptBR"] = "Mostrar corpo a corpo"
     },
     ["Shows/Hides all melee stats."] = {
         ["enUS"] = true,

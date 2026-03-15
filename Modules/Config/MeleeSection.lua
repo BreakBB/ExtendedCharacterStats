@@ -18,7 +18,7 @@ function _Config:LoadMeleeSection()
             showMeleeStats = {
                 type = "toggle",
                 order = 0,
-                name = function() return i18n("Show melee stats.") end,
+                name = function() return i18n("Show melee stats") end,
                 desc = function() return i18n("Shows/Hides all melee stats.") end,
                 width = 1.5,
                 get = function () return ExtendedCharacterStats.profile.melee.display; end,

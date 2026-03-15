@@ -19,7 +19,7 @@ function _Config:LoadRangeSection()
             showRangeStats = {
                 type = "toggle",
                 order = 0,
-                name = function() return i18n("Show ranged stats.") end,
+                name = function() return i18n("Show ranged stats") end,
                 desc = function() return i18n("Shows/Hides all ranged stats.") end,
                 width = 1.5,
                 get = function () return ExtendedCharacterStats.profile.ranged.display; end,

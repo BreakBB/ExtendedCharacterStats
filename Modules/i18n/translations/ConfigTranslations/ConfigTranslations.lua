@@ -62,15 +62,15 @@ local configTranslations = {
         ["esMX"] = "Oculta la ventana de estadísticas cuando abriendo la información del personaje",
         ["ptBR"] = "Oculta as janelas de estatísticas ao abrir as informações do personagem"
     },
-    ["Colorize stats."] = {
+    ["Colorize stats"] = {
         ["enUS"] = true,
-        ["deDE"] = "Werte färben.",
-        ["frFR"] = "Coloriser les statistiques.",
+        ["deDE"] = "Werte färben",
+        ["frFR"] = "Coloriser les statistiques",
         ["zhCN"] = "染色统计信息",
-        ["ruRU"] = "Окрашивание характеристик.",
-        ["esES"] = "Colorear estadísticas.",
-        ["esMX"] = "Colorear estadísticas.",
-        ["ptBR"] = "Colorir estatísticas."
+        ["ruRU"] = "Окрашивание характеристик",
+        ["esES"] = "Colorear estadísticas",
+        ["esMX"] = "Colorear estadísticas",
+        ["ptBR"] = "Colorir estatísticas"
     },
     ["Adds colors to the stats overview."] = {
         ["enUS"] = true,
@@ -122,7 +122,7 @@ local configTranslations = {
         ["esMX"] = "Valores de estadísticas",
         ["ptBR"] = "Valores das estatísticas"
     },
-    ["Show item quality colors."] = {
+    ["Show item quality colors"] = {
         ["enUS"] = true,
         ["deDE"] = "Zeige Item Qualitätsfarben",
         ["frFR"] = "Affiche la couleur de rareté des objets",
@@ -192,7 +192,7 @@ local configTranslations = {
         ["esMX"] = "Tamaño de fuente de estadística",
         ["ptBR"] = "Tamanho da fonte das estatísticas"
     },
-    ["Changes the font size of the stat lines (e.g. Crit.)."] = {
+    ["Changes the font size of the stat lines (e.g. Crit.)"] = {
         ["enUS"] = true,
         ["deDE"] = "Ändert die Schriftgröße der Werte (z.B. Kritische Chance)",
         ["frFR"] = "Modifie la taille de la police des statistiques (ex. Critique)",

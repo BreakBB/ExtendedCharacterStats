@@ -18,7 +18,7 @@ function _Config:LoadSpellSection()
             showSpellStats = {
                 type = "toggle",
                 order = 0,
-                name = function() return i18n("Show spell stats.") end,
+                name = function() return i18n("Show spell stats") end,
                 desc = function() return i18n("Shows/Hides all spell stats.") end,
                 width = 1.5,
                 get = function () return ExtendedCharacterStats.profile.spell.display; end,
