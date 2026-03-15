@@ -1,4 +1,6 @@
+-- keep-sorted start
 local IsWotlk = ECS.IsWotlk
+-- keep-sorted end
 
 ---@class Data
 local Data = ECSLoader:CreateModule("Data")

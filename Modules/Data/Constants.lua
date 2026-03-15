@@ -1,4 +1,6 @@
+-- keep-sorted start
 local IsTBC = ECS.IsTBC
+-- keep-sorted end
 
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
@@ -23,6 +25,7 @@ Data.WARLOCK = 9
 Data.DRUID = 11
 
 Data.Aura = {
+    -- keep-sorted start block=yes case=no
     AllowCastingManaRegeneration = {
         [6117] = (ECS.IsWotlk and 0.5 or 0.3), -- Mage Armor rank 1
         [12051] = 1, -- Evocation
@@ -354,6 +357,7 @@ Data.Aura = {
         [25918] = (ECS.IsClassic and 1 or nil), -- Greater Blessing of Wisdom rank 2
     },
     ReduceTargetArmor = {
+        -- keep-sorted start numeric=yes
         [37174] = (IsTBC and 1000 or nil), -- Perceived Weakness
         [37482] = (IsTBC and 600 or nil), -- Exploited Weakness
         [40477] = (IsTBC and 300 or nil), -- Forceful Strike
@@ -364,6 +368,7 @@ Data.Aura = {
         [461252] = 2000, -- Shadowflame Fury
         [1231894] = 1000, -- Ferocity of the Crocolisk
         [1231896] = 500, -- Brilliance of Mr. Bigglesworth
+        -- keep-sorted end
     },
     SpellCrit = {
         [24907] = ((not ECS.IsClassic) and 5 or nil), -- Moonkin Aura
@@ -436,6 +441,7 @@ Data.Aura = {
         [1227200] = 20, -- Wickedness
         [1236220] = -50, -- Slow
     },
+    -- keep-sorted end
 }
 Data.Enchant = {
     BlockValue = {

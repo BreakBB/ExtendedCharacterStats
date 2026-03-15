@@ -1,18 +1,22 @@
+-- keep-sorted start case=no
 local GetArmorPenetration = GetArmorPenetration
 local GetBuffDataByIndex = C_UnitAuras.GetBuffDataByIndex
-local GetShapeshiftFormInfo = GetShapeshiftFormInfo
 local GetCombatRating = GetCombatRating
+local GetShapeshiftFormInfo = GetShapeshiftFormInfo
 local IsWotlk = ECS.IsWotlk
 local UnitClass = UnitClass
 local UnitLevel = UnitLevel
+-- keep-sorted end
 
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
 local DataUtils = ECSLoader:ImportModule("DataUtils")
 
+-- keep-sorted start case=no
 local _, _, classId = UnitClass("player")
 local playerLevel = UnitLevel("player")
+-- keep-sorted end
 
 ---@return string
 function Data:GetMovementSpeed()
