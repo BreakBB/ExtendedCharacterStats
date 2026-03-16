@@ -71,6 +71,9 @@ function Data:GetSpellHasteBonus()
         local aura = C_UnitAuras.GetDebuffDataByIndex("player", i)
         if aura and aura.spellId then
             hasteBonus = hasteBonus + (Data.Aura.SpellHaste[aura.spellId] or 0)
+            if aura.spellId == 32264 then
+                mod = mod -50 * aura.applications -- Inhibit Magic
+            end
         end
         i = i + 1
     until (not aura)

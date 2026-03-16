@@ -423,7 +423,6 @@ Data.Aura = {
         [32002] = 25, -- Lingering Presence
         [32013] = -50, -- Mucky Sludge
         [32182] = 30, -- Heroism
-        [32264] = -50, -- Inhibit Magic
         [32317] = -50, -- Mucky Sludge
         [32693] = 50, -- Arcane Haste
         [32940] = -30, -- Shadow Rush
