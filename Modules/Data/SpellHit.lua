@@ -5,9 +5,9 @@ local DataUtils = ECSLoader:ImportModule("DataUtils")
 ---@type Utils
 local Utils = ECSLoader:ImportModule("Utils")
 
-local _SpellHit = {}
-
+-- keep-sorted start case=no
 local _, _, classId = UnitClass("player")
+local _SpellHit = {}
 local DEATHKNIGHT = Data.DEATHKNIGHT
 local DRUID = Data.DRUID
 local MAGE = Data.MAGE
@@ -15,6 +15,7 @@ local PALADIN = Data.PALADIN
 local PRIEST = Data.PRIEST
 local SHAMAN = Data.SHAMAN
 local WARLOCK = Data.WARLOCK
+-- keep-sorted end
 
 ---@param school number
 ---@param levelDifference number

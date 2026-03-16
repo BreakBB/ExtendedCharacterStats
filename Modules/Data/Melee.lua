@@ -5,14 +5,15 @@ local DataUtils = ECSLoader:ImportModule("DataUtils")
 ---@type Utils
 local Utils = ECSLoader:ImportModule("Utils")
 
-local _Melee = {}
-
+-- keep-sorted start case=no
 local _, _, classId = UnitClass("player")
+local _Melee = {}
 local DEATHKNIGHT = Data.DEATHKNIGHT
 local DRUID = Data.DRUID
 local ROGUE = Data.ROGUE
 local SHAMAN = Data.SHAMAN
 local WARRIOR = Data.WARRIOR
+-- keep-sorted end
 
 ---@return number
 function Data:GetMeleeAttackPower()

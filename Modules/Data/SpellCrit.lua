@@ -3,15 +3,16 @@ local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
 local DataUtils = ECSLoader:ImportModule("DataUtils")
 
-local _SpellCrit = {}
-
+-- keep-sorted start case=no
 local _, _, classId = UnitClass("player")
+local _SpellCrit = {}
 local DRUID = Data.DRUID
 local MAGE = Data.MAGE
 local PALADIN = Data.PALADIN
 local PRIEST = Data.PRIEST
 local SHAMAN = Data.SHAMAN
 local WARLOCK = Data.WARLOCK
+-- keep-sorted end
 
 ---@param school number
 ---@return string

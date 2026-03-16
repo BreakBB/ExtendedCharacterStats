@@ -5,12 +5,13 @@ local DataUtils = ECSLoader:ImportModule("DataUtils")
 ---@type Utils
 local Utils = ECSLoader:ImportModule("Utils")
 
-local _MP5 = {}
-
+-- keep-sorted start case=no
 local _, _, classId = UnitClass("player")
+local _MP5 = {}
 local DRUID = Data.DRUID
 local MAGE = Data.MAGE
 local PRIEST = Data.PRIEST
+-- keep-sorted end
 
 ---@return number
 function Data:GetValueFromAuraTooltip(index,type)

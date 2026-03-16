@@ -5,16 +5,17 @@ local DataUtils = ECSLoader:ImportModule("DataUtils")
 ---@type Utils
 local Utils = ECSLoader:ImportModule("Utils")
 
-local _Defense = {}
-
+-- keep-sorted start case=no
 local _, _, classId = UnitClass("player")
+local _Defense = {}
+-- Every 25 defense reduce the chance to be critically hit by 1 %
+local DEFENSE_FOR_CRIT_REDUCTION = 25
 local DRUID = Data.DRUID
+local MAX_SKILL = (UnitLevel("player")) * 5
 local PRIEST = Data.PRIEST
 local ROGUE = Data.ROGUE
 local WARLOCK = Data.WARLOCK
-local MAX_SKILL = (UnitLevel("player")) * 5
--- Every 25 defense reduce the chance to be critically hit by 1 %
-local DEFENSE_FOR_CRIT_REDUCTION = 25
+-- keep-sorted end
 
 ---@return number
 function Data:GetArmorValue()
