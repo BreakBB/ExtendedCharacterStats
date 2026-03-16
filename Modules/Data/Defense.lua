@@ -1,6 +1,8 @@
+-- keep-sorted start case=no
 local GetCombatRating = GetCombatRating
 local GetCombatRatingBonus = GetCombatRatingBonus
 local GetModResilienceDamageReduction = GetModResilienceDamageReduction
+-- keep-sorted end
 
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")

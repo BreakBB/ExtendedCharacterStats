@@ -1,4 +1,6 @@
+-- keep-sorted start case=no
 local IsClassic = ECS.IsClassic
+-- keep-sorted end
 
 ------------------------------------------------------------------
 -- Modules

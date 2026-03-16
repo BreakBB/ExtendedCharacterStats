@@ -1,4 +1,6 @@
+-- keep-sorted start case=no
 local IsClassic = ECS.IsClassic
+-- keep-sorted end
 
 ---@class Data
 local Data = ECSLoader:CreateModule("Data")
