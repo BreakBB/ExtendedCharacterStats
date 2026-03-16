@@ -200,7 +200,6 @@ local itemSets = {
 }
 
 function Data:HasSetBonusIncreasedExpertise2()
-    -- keep-sorted start block=yes
     if classId == Data.DRUID then
         return Data:IsSetBonusActive(setNames.DREAMWALKER_GUARDIAN, 2)
     elseif classId == Data.SHAMAN then
@@ -214,15 +213,12 @@ function Data:HasSetBonusIncreasedExpertise2()
     elseif classId == Data.WARRIOR then
         return Data:IsSetBonusActive(setNames.DREADNOUGHTS_BATTLEGEAR, 2)
     end
-    -- keep-sorted end
 end
 
 function Data:HasSetBonusIncreasedExpertise5()
-    -- keep-sorted start block=yes
     if classId == Data.DRUID then
         return Data:IsSetBonusActive(setNames.SYMBOLS_OF_UNENDING_LIFE, 3)
     end
-    -- keep-sorted end
 end
 
 ---@return number
