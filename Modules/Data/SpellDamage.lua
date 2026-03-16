@@ -1,13 +1,17 @@
+-- keep-sorted start case=no
 local IsWotlk = ECS.IsWotlk
 local UnitClass = UnitClass
+-- keep-sorted end
 
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
 local DataUtils = ECSLoader:ImportModule("DataUtils")
 
-local _SpellHaste = {}
+-- keep-sorted start case=no
 local _, _, classId = UnitClass("player")
+local _SpellHaste = {}
+-- keep-sorted end
 
 ---@param school number
 ---@return number
@@ -89,10 +93,10 @@ function _SpellHaste:GetTalentSpellHaste()
         if classId == Data.DRUID then
             bonus = bonus + 1 * DataUtils:GetActiveTalentSpell({16850,16923,16924}) -- Celestial Focus
             bonus = bonus + 2 * DataUtils:GetActiveTalentSpell({51179,51180,51181,51182,51183}) -- Gift of the Earthmother
-        elseif classId == Data.PRIEST then
-            bonus = bonus + 2 * DataUtils:GetActiveTalentSpell({34908,34909,34910}) -- Enlightenment
         elseif classId == Data.MAGE then
             bonus = bonus + 2 * DataUtils:GetActiveTalentSpell({44400,44402,44403}) -- Netherwind Presence
+        elseif classId == Data.PRIEST then
+            bonus = bonus + 2 * DataUtils:GetActiveTalentSpell({34908,34909,34910}) -- Enlightenment
         end
     end
     return bonus

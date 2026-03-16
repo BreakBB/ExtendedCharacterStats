@@ -1,5 +1,7 @@
+-- keep-sorted start case=no
 local IsClassic = ECS.IsClassic
 local IsWotlk = ECS.IsWotlk
+-- keep-sorted end
 
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
@@ -24,6 +26,7 @@ Data.WARLOCK = 9
 Data.DRUID = 11
 
 Data.Aura = {
+    -- keep-sorted start block=yes case=no
     AllowCastingManaRegeneration = {
         [6117] = (ECS.IsWotlk and 0.5 or 0.3), -- Mage Armor rank 1
         [12051] = 1, -- Evocation
@@ -363,6 +366,7 @@ Data.Aura = {
         [51470] = 5, -- Elemental Oath Rank 2
     },
     SpellHaste = {
+        -- keep-sorted start numeric=yes
         [1098] = -30, -- Subjugate Demon
         [1714] = -50, -- Curse of Tongues Rank 1
         [2825] = 30, -- Bloodlust
@@ -507,7 +511,9 @@ Data.Aura = {
         [1226451] = 20, -- Emergency
         [1227200] = 20, -- Wickedness
         [1236220] = -50, -- Slow
+        -- keep-sorted end
     },
+    -- keep-sorted end
 }
 Data.Enchant = {
     BlockValue = {
