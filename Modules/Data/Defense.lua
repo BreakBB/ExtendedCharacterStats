@@ -1,6 +1,11 @@
+-- keep-sorted start case=no
+local EQUIPPED_FIRST = EQUIPPED_FIRST
+local EQUIPPED_LAST = EQUIPPED_LAST
 local GetBuffDataByIndex = C_UnitAuras.GetBuffDataByIndex
 local GetDebuffDataByIndex = C_UnitAuras.GetDebuffDataByIndex
 local GetInventoryItemID = GetInventoryItemID
+local MAX_SPELL_SCHOOLS = MAX_SPELL_SCHOOLS
+-- keep-sorted end
 
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
@@ -244,7 +249,7 @@ end
 ---@return table<number>
 function Data:GetDamageReductionFlat()
     local mod = {0,0,0,0,0,0,0}
-    for i = 1, 18 do
+    for i = EQUIPPED_FIRST,EQUIPPED_LAST do
         local id, _ = GetInventoryItemID("player", i)
         for s=1,7 do
             mod[s] = mod[s] + (Data.Item.DamageReductionFlat[id] or 0)
@@ -270,7 +275,7 @@ function Data:GetDamageReductionFlat()
         i = i + 1
         if aura and aura.spellId then
             local modAll = (Data.Aura.DamageReductionFlat[0][aura.spellId] or 0)
-            for s=1,7 do
+            for s=1,MAX_SPELL_SCHOOLS do
                 mod[s] = mod[s] + modAll
                 if Data.Aura.DamageReductionFlat[s] then
                     mod[s] = mod[s] + (Data.Aura.DamageReductionFlat[s][aura.spellId] or 0)
@@ -278,6 +283,8 @@ function Data:GetDamageReductionFlat()
             end
             if aura.spellId == 23341 then
                 mod[Data.FIRE_SCHOOL] = mod[Data.FIRE_SCHOOL] - 150 * aura.applications -- Flame Buffet
+            elseif aura.spellId == 24339 then
+                mod[Data.PHYSICAL_SCHOOL] = mod[Data.PHYSICAL_SCHOOL] - 100 * aura.applications -- Infected Bite
             end
         end
     until (not aura)
