@@ -1,5 +1,7 @@
+-- keep-sorted start case=no
 local IsTBC = ECS.IsTBC
 local IsWotlk = ECS.IsWotlk
+-- keep-started end
 
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
@@ -24,6 +26,7 @@ Data.WARLOCK = 9
 Data.DRUID = 11
 
 Data.Aura = {
+    -- keep-sorted start block=yes case=no
     AllowCastingManaRegeneration = {
         [6117] = (ECS.IsWotlk and 0.5 or 0.3), -- Mage Armor rank 1
         [12051] = 1, -- Evocation
@@ -84,62 +87,82 @@ Data.Aura = {
     },
     ---@type table<Bitmask>
     HitReductionMelee = {
+        -- keep-sorted start block=yes numeric=yes
         [0] = {
+            -- keep-sorted start numeric=yes
+            [2651] = (IsTBC and 20 or nil), -- Elune's Grace
             [35346] = 50, -- Warp
+            [50240] = 200, -- Evasive Maneuvers
             [54956] = 100, -- Impaling Charge
             [59827] = 100, -- Impaling Charge
-            [50240] = 200, -- Evasive Maneuvers
-            [2651] = (IsTBC and 20 or nil), -- Elune's Grace
-            [455868] = -1, -- Revealed Weakness
             [445875] = -100, -- Gloom
+            [455868] = -1, -- Revealed Weakness
             [460725] = -100, -- Gloom
-        },
-        [127] = {
-            [54603] = 25, -- Serpent's Agility
-        },
-        [95] = {
-            [50280] = 20, -- Oily Coat
+            -- keep-sorted end
         },
         [14] = {
-            [47000] = (IsWotlk and 15 or 13), -- Improved Blink
+            -- keep-sorted start numeric=yes
             [46989] = (IsWotlk and 30 or 25), -- Improved Blink
+            [47000] = (IsWotlk and 15 or 13), -- Improved Blink
+            -- keep-sorted end
         },
+        [95] = {
+            -- keep-sorted start numeric=yes
+            [50280] = 20, -- Oily Coat
+            -- keep-sorted end
+        },
+        [127] = {
+            -- keep-sorted start numeric=yes
+            [54603] = 25, -- Serpent's Agility
+            -- keep-sorted end
+        },
+        -- keep-sorted end
     },
     HitReductionRanged = {
-        [50280] = 20, -- Oily Coat
-        [455868] = -1, -- Revealed Weakness
+        -- keep-sorted start numeric=yes
         [2651] = (IsTBC and 20 or nil), -- Elune's Grace
         [26669] = 25, -- Evasion
-        [47000] = (IsWotlk and 15 or 13), -- Improved Blink
         [46989] = (IsWotlk and 30 or 25), -- Improved Blink
+        [47000] = (IsWotlk and 15 or 13), -- Improved Blink
+        [50280] = 20, -- Oily Coat
         [54603] = 25, -- Serpent's Agility
         [67801] = 100, -- Deterrence
+        [455868] = -1, -- Revealed Weakness
+        -- keep-sorted end
     },
     ---@type table<Bitmask>
     HitReductionSpell = {
+        -- keep-sorted start block=yes numeric=yes
         [0] = {
-            [54603] = 25, -- Serpent's Agility
+            -- keep-sorted start numeric=yes
             [50280] = 20, -- Oily Coat
+            [54603] = 25, -- Serpent's Agility
+            [56673] = -100, -- Fight Wyrm
             [445875] = -100, -- Gloom
             [460725] = -100, -- Gloom
-            [56673] = -100, -- Fight Wyrm
+            -- keep-sorted end
+        },
+        [126] = {
+            -- keep-sorted start numeric=yes
+            [31224] = 90, -- Cloak of Shadows
+            [31965] = -3, -- Spell Debuffs 2 (80)
+            [39666] = 90, -- Cloak of Shadows
+            [46989] = (IsWotlk and 30 or 25), -- Improved Blink
+            [47000] = (IsWotlk and 15 or 13), -- Improved Blink
+            [50240] = 200, -- Evasive Maneuvers
+            [65961] = 90, -- Cloak of Shadows
+            [455868] = -1, -- Revealed Weakness
+            [462873] = 90, -- Cloak of Shadows
+            -- keep-sorted end
         },
         [127] = {
+            -- keep-sorted start numeric=yes
             [33196] = (IsWotlk and -1 or nil), -- Misery
             [33197] = (IsWotlk and -2 or nil), -- Misery
             [33198] = (IsWotlk and -1 or nil), -- Misery
+            -- keep-sorted end
         },
-        [126] = {
-            [47000] = (IsWotlk and 15 or 13), -- Improved Blink
-            [31965] = -3, -- Spell Debuffs 2 (80)
-            [46989] = (IsWotlk and 30 or 25), -- Improved Blink
-            [455868] = -1, -- Revealed Weakness
-            [31224] = 90, -- Cloak of Shadows
-            [39666] = 90, -- Cloak of Shadows
-            [462873] = 90, -- Cloak of Shadows
-            [65961] = 90, -- Cloak of Shadows
-            [50240] = 200, -- Evasive Maneuvers
-        },
+        -- keep-sorted end
     },
     IsFeralForm = {
         [768] = true, -- Cat Form
@@ -484,6 +507,7 @@ Data.Aura = {
         [1227200] = 20, -- Wickedness
         [1236220] = -50, -- Slow
     },
+    -- keep-sorted end
 }
 Data.Enchant = {
     BlockValue = {
@@ -849,28 +873,44 @@ Data.Item = {
     },
 }
 Data.Talent = {
-    [Data.MAGE] = {
-        ARCTIC_WINDS = {31674,31675,31676,31677,31678}
-    },
+    -- keep-sorted start block=yes
     [Data.DEATHKNIGHT] = {
+        -- keep-sorted start
         FRIGID_DREADPLATE = {49186,51108,51109},
+        -- keep-sorted end
     },
     [Data.HUNTER] = {
+        -- keep-sorted start
         DISPLACEMENT = {34478,34479,34481},
+        -- keep-sorted end
+    },
+    [Data.MAGE] = {
+        -- keep-sorted start
+        ARCTIC_WINDS = {31674,31675,31676,31677,31678}
+        -- keep-sorted end
+    },
+    [Data.PALADIN] = {
+        -- keep-sorted start
+        BALANCE_OF_POWER = {33592,33596},
+        -- keep-sorted end
+    },
+    [Data.PALADIN] = {
+        -- keep-sorted start
+        DIVINE_PURPOSE = {31871,31872},
+        PURSUIT_OF_JUSTICE = {26022,26023,44414},
+        -- keep-sorted end
     },
     [Data.ROGUE] = {
+        -- keep-sorted start
         HEIGHTENED_SENSES = {30894,30895},
-    },
-    [Data.PALADIN] = {
-        PURSUIT_OF_JUSTICE = {26022,26023,44414},
-        DIVINE_PURPOSE = {31871,31872},
-    },
-    [Data.PALADIN] = {
-        BALANCE_OF_POWER = {33592,33596},
+        -- keep-sorted end
     },
     [Data.WARRIOR] = {
+        -- keep-sorted start
         IMPROVED_SPELL_REFLECTION = {59088,59089},
+        -- keep-sorted end
     },
+    -- keep-sorted end
 }
 Data.setNames = {
     AUGURS_REGALIA = "Augur's Regalia",

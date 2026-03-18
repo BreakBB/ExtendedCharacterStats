@@ -1,10 +1,13 @@
+-- keep-sorted start case=no
+local band = bit.band
+local GetBuffDataByIndex = C_UnitAuras.GetBuffDataByIndex
+local GetDebuffDataByIndex = C_UnitAuras.GetDebuffDataByIndex
+local IsSpellKnown = C_SpellBook.IsSpellKnown
 local IsTBC = ECS.IsTBC
 local IsWotlk = ECS.IsWotlk
-local IsSpellKnown = C_SpellBook.IsSpellKnown
-local GetDebuffDataByIndex = C_UnitAuras.GetDebuffDataByIndex
-local GetBuffDataByIndex = C_UnitAuras.GetBuffDataByIndex
-local band = bit.band
+local MAX_SPELL_SCHOOLS = MAX_SPELL_SCHOOLS
 local pairs = pairs
+-- keep-sorted end
 
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
@@ -13,24 +16,25 @@ local DataUtils = ECSLoader:ImportModule("DataUtils")
 ---@type Utils
 local Utils = ECSLoader:ImportModule("Utils")
 
-local _Defense = {}
-
+-- keep-sorted start case=no
 local _, _, classId = UnitClass("player")
-local DRUID = Data.DRUID
-local DEATHKNIGHT = Data.DEATHKNIGHT
-local WARRIOR = Data.WARRIOR
-local MAGE = Data.MAGE
-local PALADIN = Data.PALADIN
-local HUNTER = Data.HUNTER
-local ROGUE = Data.ROGUE
-local Talent = Data.Talent
-local FROST = Data.FROST_SCHOOL
-local NATURE = Data.NATURE_SCHOOL
+local _Defense = {}
 local ARCANE = Data.ARCANE_SCHOOL
-local SHADOW = Data.SHADOW_SCHOOL
-local MAX_SKILL = (UnitLevel("player")) * 5
+local DEATHKNIGHT = Data.DEATHKNIGHT
 -- Every 25 defense reduce the chance to be critically hit by 1 %
 local DEFENSE_FOR_CRIT_REDUCTION = 25
+local DRUID = Data.DRUID
+local FROST = Data.FROST_SCHOOL
+local HUNTER = Data.HUNTER
+local MAGE = Data.MAGE
+local MAX_SKILL = (UnitLevel("player")) * 5
+local NATURE = Data.NATURE_SCHOOL
+local PALADIN = Data.PALADIN
+local ROGUE = Data.ROGUE
+local SHADOW = Data.SHADOW_SCHOOL
+local Talent = Data.Talent
+local WARRIOR = Data.WARRIOR
+-- keep-sorted end
 
 ---@return number
 function Data:GetArmorValue()
@@ -273,7 +277,7 @@ function _Defense:GetHitReduction()
             hitReduction.ranged = hitReduction.ranged + (Data.Aura.HitReductionRanged[aura.spellId] or 0)
 
             for k,v in pairs(Data.Aura.HitReductionSpell) do
-                for s=1,7 do
+                for s=1,MAX_SPELL_SCHOOLS do
                     if ((k == 0) or band(k,s-1) ~= 0x0) then
                         hitReduction.spell[s] = hitReduction.spell[s] + (v[aura.spellId] or 0)
                     end
@@ -290,7 +294,7 @@ function _Defense:GetHitReduction()
             hitReduction.ranged = hitReduction.ranged + (Data.Aura.HitReductionRanged[aura.spellId] or 0)
 
             for k,v in pairs(Data.Aura.HitReductionSpell) do
-                for s=1,7 do
+                for s=1,MAX_SPELL_SCHOOLS do
                     if ((k == 0) or band(k,s-1) ~= 0x0) then
                         hitReduction.spell[s] = hitReduction.spell[s] + (v[aura.spellId] or 0)
                     end
@@ -305,14 +309,14 @@ function _Defense:GetHitReduction()
             hitReduction.ranged = hitReduction.ranged + 2
         end
         if IsSpellKnown(822) then -- Magic Resistance
-            for s=1,7 do
+            for s=1,MAX_SPELL_SCHOOLS do
                 if band(126,s-1) ~= 0x0 then
                     hitReduction.spell[s] = hitReduction.spell[s] + 2
                 end
             end
         end
         if IsSpellKnown(20579) then -- Magic Resistance
-            for s=1,7 do
+            for s=1,MAX_SPELL_SCHOOLS do
                 if band(126,s-1) ~= 0x0 then
                     hitReduction.spell[s] = hitReduction.spell[s] + 2
                 end
@@ -331,22 +335,10 @@ function _Defense:GetHitReduction()
     end
 
     local spellMod = 0
-    if classId == DRUID then
-        spellMod = 3 * DataUtils:GetActiveTalentSpell(Talent[DRUID].BALANCE_OF_POWER) -- 126
-    elseif classId == ROGUE then
-        local mod = 2 * DataUtils:GetActiveTalentSpell(Talent[ROGUE].HEIGHTENED_SENSES)
-        spellMod = mod -- 126
-        hitReduction.ranged = hitReduction.ranged + mod
-    elseif classId == PALADIN then
-        if IsTBC then
-            spellMod = 1 * DataUtils:GetActiveTalentSpell(Talent[PALADIN].PURSUIT_OF_JUSTICE) -- 126
-        elseif IsWotlk then
-            local mod = 2 * DataUtils:GetActiveTalentSpell(Talent[PALADIN].DIVINE_PURPOSE)
-            spellMod = mod -- 126
-            hitReduction.ranged = hitReduction.ranged + mod -- 127
-        end
-    elseif classId == DEATHKNIGHT then
+    if classId == DEATHKNIGHT then
         hitReduction.melee = hitReduction.melee + 1 * DataUtils:GetActiveTalentSpell(Talent[DEATHKNIGHT].FRIGID_DREADPLATE)
+    elseif classId == DRUID then
+        spellMod = 3 * DataUtils:GetActiveTalentSpell(Talent[DRUID].BALANCE_OF_POWER) -- 126
     elseif classId == HUNTER then
         if not ECS.IsClassic then
             local mod = 1 * DataUtils:GetActiveTalentSpell(Talent[HUNTER].DISPLACEMENT)
@@ -360,11 +352,23 @@ function _Defense:GetHitReduction()
             hitReduction.ranged = hitReduction.ranged + mod
             hitReduction.melee = hitReduction.melee + mod
         end
+    elseif classId == PALADIN then
+        if IsTBC then
+            spellMod = 1 * DataUtils:GetActiveTalentSpell(Talent[PALADIN].PURSUIT_OF_JUSTICE) -- 126
+        elseif IsWotlk then
+            local mod = 2 * DataUtils:GetActiveTalentSpell(Talent[PALADIN].DIVINE_PURPOSE)
+            spellMod = mod -- 126
+            hitReduction.ranged = hitReduction.ranged + mod -- 127
+        end
+    elseif classId == ROGUE then
+        local mod = 2 * DataUtils:GetActiveTalentSpell(Talent[ROGUE].HEIGHTENED_SENSES)
+        spellMod = mod -- 126
+        hitReduction.ranged = hitReduction.ranged + mod
     elseif classId == WARRIOR then
         spellMod = 2 * DataUtils:GetActiveTalentSpell(Talent[WARRIOR].IMPROVED_SPELL_REFLECTION) -- 126
     end
 
-    for s=1,7 do
+    for s=1,MAX_SPELL_SCHOOLS do
         if band(126,s-1) ~= 0x0 then
             hitReduction.spell[s] = hitReduction.spell[s] + spellMod
         end
