@@ -1,3 +1,6 @@
+-- keep-sorted start case=no
+local EQUIPPED_FIRST = EQUIPPED_FIRST
+local EQUIPPED_LAST = EQUIPPED_LAST
 local GetBuffDataByIndex = C_UnitAuras.GetBuffDataByIndex
 local GetDebuffDataByIndex = C_UnitAuras.GetDebuffDataByIndex
 local GetInventoryItemID = GetInventoryItemID
@@ -7,17 +10,19 @@ local max = math.max
 local pairs = pairs
 local playerLevel = UnitLevel("player")
 local UnitClass = UnitClass
+-- keep-sorted end
 
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
 local DataUtils = ECSLoader:ImportModule("DataUtils")
 
-local _General = {}
-
+-- keep-sorted start case=no
 local _, _, classId = UnitClass("player")
+local _General = {}
 local DRUID = Data.DRUID
 local ROGUE = Data.ROGUE
+-- keep-sorted end
 
 ---@return string
 function Data:GetMovementSpeed()
@@ -78,7 +83,7 @@ function _General:GetStealth()
     local stealth = 0
     local prowlOrStealth = false
 
-    for i = 1, 18 do
+    for i = EQUIPPED_FIRST,EQUIPPED_LAST do
         local id, _ = GetInventoryItemID("player", i)
         stealth = stealth + (Data.Item.StealthEffectiveness[id] or 0)
         local itemLink = GetInventoryItemLink("player", i)

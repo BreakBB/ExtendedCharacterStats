@@ -1,6 +1,8 @@
+-- keep-sorted start case=no
 local IsClassic = ECS.IsClassic
 local IsTBC = ECS.IsTBC
 local IsWotlk = ECS.IsWotlk
+-- keep-sorted end
 
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
@@ -26,6 +28,7 @@ Data.DRUID = 11
 
 --- auras with attributes "Passive spell" or "Aura is hidden" should not be listed here
 Data.Aura = {
+    -- keep-sorted start case=no block=yes
     AllowCastingManaRegeneration = {
         [6117] = (ECS.IsWotlk and 0.5 or 0.3), -- Mage Armor rank 1
         [12051] = 1, -- Evocation
@@ -87,8 +90,11 @@ Data.Aura = {
     --- index 0 is for "Apply Aura: Invisibility"
     --- index n is for "Apply Aura: Invisibility (n)"
     Invisibility = {
+        -- keep-sorted start case=no block=yes numeric=yes
         [0] = {
+            -- keep-sorted start numeric=yes
             [66] = IsClassic and 100 or nil, -- Lesser Invisibility
+            [885] = 200, -- Invisibility
             [3680] = 100, -- Lesser Invisibility
             [4079] = 200, -- Cloaking
             [4952] = 200, -- Helcular's War
@@ -96,7 +102,6 @@ Data.Aura = {
             [6298] = 200, -- Form of the Moonstalker
             [7870] = IsWotlk and 200 or 100, -- Lesser Invisibility
             [8611] = 5000, -- Phase Shift
-            [885] = 200, -- Invisibility
             [9095] = -1000, -- Cantation of Manifestation
             [9587] = 200, -- Magic Potion
             [9738] = -1000, -- Rift Spawn Becomes Visible
@@ -113,13 +118,13 @@ Data.Aura = {
             [26222] = 10000, -- Super Invis
             [28500] = 200, -- Invisibility
             [29309] = 5000, -- Phase Shift
-            [32943] = 300, -- Phasing Invisibility
             [29627] = 200, -- Nether Step
             [29921] = 150, -- Phasing Invisibility
             [30447] = 50, -- Shadow of the Forest
             [30448] = 100, -- Shadow of the Forest
             [32612] = 340, -- Invisibility
             [32811] = 300, -- Greater Invisibility
+            [32943] = 300, -- Phasing Invisibility
             [41253] = 300, -- Greater Invisibility
             [44312] = 9999, -- Head of the Horseman Invisible
             [46021] = 350, -- Spectral Realm
@@ -134,11 +139,15 @@ Data.Aura = {
             [1221579] = 201, -- Super Invis
             [1227700] = 201, -- Invisibility
             [1231389] = 10000, -- Vanish
+            -- keep-sorted end
         },
         [1] = {
+            -- keep-sorted start numeric=yes
             [8203] = 1000, -- Elemental Spirit Invisibility
+            -- keep-sorted end
         },
         [2] = {
+            -- keep-sorted start numeric=yes
             [17680] = 1, -- Spirit Spawn-out
             [24221] = 1, -- Quest - Teleport Spawn-out
             [24699] = 10000, -- Vanish
@@ -146,8 +155,10 @@ Data.Aura = {
             [448779] = 5001, -- Wake Up Dead
             [459280] = 101, -- Transiting Realities
             [1234595] = 10000, -- Vanish
+            -- keep-sorted end
         },
         [4] = {
+            -- keep-sorted start numeric=yes
             [12495] = 1000, -- Eranikus the Chained Invisibility
             [29448] = 9999, -- Vanish
             [32727] = 100, -- Arena Preparation
@@ -163,11 +174,15 @@ Data.Aura = {
             [50015] = 9999, -- You're a ...! (NPC) Death Scene
             [55964] = 9999, -- Vanish
             [74069] = 100, -- Spawn Invisibility Aura
+            -- keep-sorted end
         },
         [5] = {
+            -- keep-sorted start numeric=yes
             [56783] = 50, -- Quest Invis Tier 4
+            -- keep-sorted end
         },
         [7] = {
+            -- keep-sorted start numeric=yes
             [23303] = 100, -- Vaelen the Flayed [The Shadow Vault] - Invisibility
             [27622] = 100, -- Get the Key: Vaelen's Invisibility & See Invisibility
             [37754] = 5000, -- Through The Eyes of Gorefiend
@@ -188,8 +203,10 @@ Data.Aura = {
             [74980] = 1000, -- Spy Frog Invisibility
             [75779] = 1000, -- [DND] Marker
             [1221135] = 101, -- Torment's Illusion
+            -- keep-sorted end
         },
         [8] = {
+            -- keep-sorted start numeric=yes
             [34840] = 1000, -- Triangulation Point One Invisibility
             [34858] = 2000, -- Triangulation Point Two Invisibility
             [40194] = 1000, -- Bombing Run: Invisibility
@@ -202,8 +219,10 @@ Data.Aura = {
             [60481] = 9, -- Cloaked Horde Peeps
             [73973] = 1000, -- Poster Location Marker
             [75433] = 100, -- Spawn Invisibility Aura (QZS 2)
+            -- keep-sorted end
         },
         [9] = {
+            -- keep-sorted start numeric=yes
             [39596] = 1000, -- Ethereum Relay
             [39680] = 5000, -- Sai'kkal Invisibility
             [42175] = 5000, -- Evidence Marker Invis
@@ -214,8 +233,10 @@ Data.Aura = {
             [75165] = 1000, -- Spirit of the Tiger Aura
             [75166] = 1000, -- Spirit of the Tiger Aura (Rider)
             [75179] = 1000, -- Matriarch's Shroud
+            -- keep-sorted end
         },
         [10] = {
+            -- keep-sorted start numeric=yes
             [44856] = 100, -- Bash'ir Phasing Device
             [45614] = 300, -- Shroud of the Scourge
             [48809] = 48812, -- Binding Life
@@ -226,10 +247,14 @@ Data.Aura = {
             [426062] = 101, -- Quest Invisibility
             [462593] = 101, -- Quest Invisibility
             [468882] = 101, -- Quest Invisibility
+            -- keep-sorted end
         },
         [28] = {
+            -- keep-sorted start numeric=yes
            [425147] = 101, -- Quest Invisibility
+            -- keep-sorted end
         },
+    -- keep-sorted end
     },
     IsFeralForm = {
         [768] = true, -- Cat Form
@@ -265,6 +290,7 @@ Data.Aura = {
         [49281] = true, -- Lightning Shield rank 11
     },
     IsProwlOrStealth = {
+        -- keep-sorted start numeric=yes
         [1784] = true, -- Stealth
         [1785] = true, -- Stealth
         [1786] = true, -- Stealth
@@ -272,6 +298,7 @@ Data.Aura = {
         [5215] = true, -- Prowl
         [6783] = true, -- Prowl
         [9913] = true, -- Prowl
+        -- keep-sorted end
     },
     MP5 = {
         [430] = 42, -- drink
@@ -584,6 +611,7 @@ Data.Aura = {
         [1236220] = -50, -- Slow
     },
     Stealth = {
+        -- keep-sorted start numeric=yes
         [1784] = 5, -- Stealth
         [1785] = 100, -- Stealth
         [1786] = 200, -- Stealth
@@ -648,14 +676,19 @@ Data.Aura = {
         [1220930] = 10000, -- Phantom's Veil
         [1221341] = 6, -- Poorly Camouflaged
         [1231389] = 10000, -- Vanish
+        -- keep-sorted end
     },
     StealthEffectiveness = {
+        -- keep-sorted start numeric=yes
         [28492] = 30, -- Sneaking
         [38552] = 8, -- Improved Stealth
         [1220708] = 8, -- Displaced
+        -- keep-sorted end
     },
+-- keep-sorted end
 }
 Data.Enchant = {
+    -- keep-sorted start case=no block=yes
     BlockValue = {
         [2583] = 15, -- Presence of Might
         [2653] = 18, -- Enchant Shield - Tough Shield
@@ -691,9 +724,12 @@ Data.Enchant = {
         [7099] = 12, -- Blackfathom Mana Oil. This effect only applies within Blackfathom Deeps.
     },
     StealthEffectiveness = {
+        -- keep-sorted start numeric=yes
         [910] = 5, -- Enchant Cloak - Stealth
         [3256] = 5, -- Enchant Cloak - Shadow Armor
+        -- keep-sorted end
     },
+-- keep-sorted end
 }
 Data.Gem = {
     MP5 = {
@@ -757,6 +793,7 @@ Data.Gem = {
     },
 }
 Data.Item = {
+    -- keep-sorted start case=no block=yes
     IsTimeworn = {
         [233496] = true,
         [233505] = true,
@@ -1015,6 +1052,7 @@ Data.Item = {
         [242317] = 3,
     },
     StealthEffectiveness = {
+        -- keep-sorted start numeric=yes
         [8197] = 5, -- Nightscape Boots
         [20255] = 5, -- Whisperwalk Boots
         [21758] = 3, -- Figurine - Black Pearl Panther
@@ -1032,6 +1070,7 @@ Data.Item = {
         [226831] = 8, -- Darkmantle Footpads
         [226851] = 8, -- Darkmantle Boots
         [236314] = 8, -- Boots of Displacement
+    -- keep-sorted end
     },
     TimewornSpellHaste = {
         [234016] = 2,
@@ -1040,6 +1079,7 @@ Data.Item = {
         [234028] = 2,
         [234032] = 2,
     },
+    -- keep-sorted end
 }
 Data.setNames = {
     AUGURS_REGALIA = "Augur's Regalia",
@@ -1058,11 +1098,17 @@ Data.setNames = {
     WINDHAWK_ARMOR = "Windhawk Armor",
 }
 Data.Talent = {
+    -- keep-sorted start block=yes
     [Data.DRUID] = {
+        -- keep-sorted start
         FERAL_INSTINCT = (IsClassic and {16947,16948,16949,16950,16951} or {16947,16948,16949})
+        -- keep-sorted end
     },
     [Data.ROGUE] ={
+        -- keep-sorted start
         MASTER_OF_DECEPTION = (IsWotlk and {13958,13970,13971} or {13958,13970,13971,13972,13973})
+        -- keep-sorted end
     },
+    -- keep-sorted end
 }
 
