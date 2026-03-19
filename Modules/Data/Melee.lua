@@ -1,3 +1,11 @@
+-- keep-sorted start case=no
+local EQUIPPED_FIRST = EQUIPPED_FIRST
+local EQUIPPED_LAST = EQUIPPED_LAST
+local GetInventoryItemID = GetInventoryItemID
+local GetInventoryItemLink = GetInventoryItemLink
+local IsSoD = ECS.IsSoD
+-- keep-sorted end
+
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
@@ -190,10 +198,10 @@ end
 function Data:GetExpertise()
     local expertise, _ = GetExpertise()
 
-    if ECS.IsSoD then
+    if IsSoD then
         local timeworn = DataUtils:CountTimewornItems()
 
-        for i = 1, 18 do
+        for i = EQUIPPED_FIRST,EQUIPPED_LAST do
             local id, _ = GetInventoryItemID("player", i)
             expertise = expertise + (Data.Item.IncreaseExpertise[id] or 0)
             expertise = expertise + timeworn * (Data.Item.TimewornExpertise[id] or 0)
