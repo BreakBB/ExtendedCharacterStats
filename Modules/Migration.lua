@@ -25,11 +25,11 @@ function Migration:ToLatestProfileVersion(profileVersion)
         ExtendedCharacterStats.profile.defense.resilience = nil
     end
     if profileVersion < 25 then
+        -- keep-sorted start case=no
+        ExtendedCharacterStats.profile.defense.blockRating = defaultProfile.profile.defense.blockRating
+        ExtendedCharacterStats.profile.defense.critReduction = defaultProfile.profile.defense.critReduction
         ExtendedCharacterStats.profile.defense.resilience = ExtendedCharacterStats.profile.defense.resilience
         ExtendedCharacterStats.profile.defense.resilienceRating = ExtendedCharacterStats.profile.defense.resilienceRating
-        ExtendedCharacterStats.profile.spell.miss = defaultProfile.profile.spell.miss
-        ExtendedCharacterStats.profile.defense.critReduction = defaultProfile.profile.defense.critReduction
-        ExtendedCharacterStats.profile.defense.blockRating = defaultProfile.profile.defense.blockRating
         ExtendedCharacterStats.profile.melee.critRating = defaultProfile.profile.melee.critRating
         ExtendedCharacterStats.profile.melee.penetration = defaultProfile.profile.melee.penetration
         ExtendedCharacterStats.profile.melee.penetrationRating = defaultProfile.profile.melee.penetrationRating
@@ -37,7 +37,9 @@ function Migration:ToLatestProfileVersion(profileVersion)
         ExtendedCharacterStats.profile.ranged.penetration = defaultProfile.profile.ranged.penetration
         ExtendedCharacterStats.profile.ranged.penetrationRating = defaultProfile.profile.ranged.penetrationRating
         ExtendedCharacterStats.profile.spell.crit.rating = defaultProfile.profile.spell.crit.rating
+        ExtendedCharacterStats.profile.spell.miss = defaultProfile.profile.spell.miss
         ExtendedCharacterStats.profile.spell.penetration = defaultProfile.profile.spell.penetration
         ExtendedCharacterStats.profile.spell.penetrationRating = defaultProfile.profile.spell.penetrationRating
+        -- keep-sorted end
     end
 end
