@@ -1,7 +1,3 @@
--- keep-sorted start case=no
-local IsWotlk = ECS.IsWotlk
--- keep-sorted end
-
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
 
