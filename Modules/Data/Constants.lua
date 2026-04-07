@@ -824,7 +824,7 @@ Data.Talent = {
     },
     [Data.MAGE] = {
         -- keep-sorted start
-        ARCANE_FOCUS = (IsWotlk and {11222,12839,12840} or {11222,12839,12840,12841,12842}),
+        ARCANE_FOCUS = {11222,12839,12840,12841,12842},
         ARCANE_INSTABILITY = {15058,15059,15060},
         ARCANE_MEDITATION = {14521,18463,18464},
         CRITICAL_MASS = {11115,11367,11368},
