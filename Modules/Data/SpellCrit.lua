@@ -97,13 +97,14 @@ end
 ---@return number
 function _SpellCrit:GetTalentModifierHolyCrit()
     local mod = 0
-
-    if classId == Data.PRIEST then
-        -- Holy Specialization
-        mod = 1 * DataUtils:GetActiveTalentSpell({14889,15008,15009,15010,15011})
-    elseif classId == Data.PALADIN then
-        -- Holy Power
-        mod = 1 * DataUtils:GetActiveTalentSpell({5923,5924,5925,5926,25829})
+    if ECS.IsClassic then
+        if classId == Data.PRIEST then
+            -- Holy Specialization
+            mod = 1 * DataUtils:GetActiveTalentSpell({14889,15008,15009,15010,15011})
+        elseif classId == Data.PALADIN then
+            -- Holy Power
+            mod = 1 * DataUtils:GetActiveTalentSpell({5923,5924,5925,5926,25829})
+        end
     end
     return mod
 end
@@ -111,15 +112,10 @@ end
 ---@return number
 function _SpellCrit:GetTalentModifierFireCrit()
     local mod = 0
-
-    if classId == Data.MAGE then
-        mod = mod + 2 * DataUtils:GetActiveTalentSpell({11115,11367,11368}) -- Critical Mass
-
-        if ECS.IsWotlk then
-            mod = mod + 1 * DataUtils:GetActiveTalentSpell({34293,34295,34296}) -- Pyromaniac
-        end
-    elseif classId == Data.WARLOCK then
-        if ECS.IsClassic then
+    if ECS.IsClassic then
+        if classId == Data.MAGE then
+            mod = mod + 2 * DataUtils:GetActiveTalentSpell({11115,11367,11368}) -- Critical Mass
+        elseif classId == Data.WARLOCK then
             -- Devastation (while this increases the crit chance of "Destruction spells" there are no fire spells, which are not destruction spells)
             mod = mod + 1 * DataUtils:GetActiveTalentSpell({18130,18131,18132,18133,18134})
         end
