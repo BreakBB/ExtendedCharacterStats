@@ -54,7 +54,7 @@ function _SpellCrit:GetGeneralTalentModifier()
     local mod = 0
 
     if classId == Data.MAGE then
-        if not ECS.IsClassic then
+        if ECS.IsClassic then
             mod = mod + 1 * DataUtils:GetActiveTalentSpell({15058,15059,15060}) -- Arcane Instability
         end
     elseif classId == Data.DRUID then
