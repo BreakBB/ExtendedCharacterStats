@@ -66,8 +66,6 @@ function _SpellCrit:GetGeneralTalentModifier()
             mod = mod + 2 * DataUtils:GetActiveTalentSpell({30242,30245,30246,30247,30248}) -- Demonic Tactics
             mod = mod + 1 * DataUtils:GetActiveTalentSpell({34935,34938,34939}) -- Backlash
         end
-
-        mod = mod + 1 * DataUtils:GetActiveTalentSpell({18130,18131,18132,18133,18134}) -- Devastation
     elseif classId == Data.SHAMAN then
         if ECS.IsWotlk then
             mod = mod + 1 * DataUtils:GetActiveTalentSpell({16255,16302,16303,16304,16305}) -- Thundering Strikes
