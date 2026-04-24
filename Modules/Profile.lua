@@ -6,7 +6,7 @@ local Utils = ECSLoader:ImportModule("Utils")
 
 ---@return number
 function Profile.GetProfileVersion()
-    return 24
+    return 25
 end
 
 ---@return ECSProfile
