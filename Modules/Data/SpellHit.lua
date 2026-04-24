@@ -85,8 +85,8 @@ function _SpellHit:GetTalentSpellHitBonus(school)
         end
     elseif classId == Data.PRIEST then
         if school == Data.SHADOW_SCHOOL then
-            local coeff = IsWotlk and 1 or 2
-            bonus = bonus + coeff * DataUtils:GetActiveTalentSpell({15260,15327,15328}) -- Shadow Focus
+            local coeff = ECS.IsWotlk and 1 or 2
+            bonus = bonus + coeff * DataUtils:GetActiveTalentSpell({15260,15327,15328,15329,15330}) -- Shadow Focus
         end
     elseif classId == Data.SHAMAN then
         if (school == Data.FIRE_SCHOOL or school == Data.FROST_SCHOOL or school == Data.NATURE_SCHOOL) then
