@@ -61,7 +61,7 @@ function _SpellCrit:GetGeneralTalentModifier()
     local mod = 0
 
     if classId == MAGE then
-        if not ECS.IsClassic then
+        if ECS.IsClassic then
             mod = mod + 1 * DataUtils:GetActiveTalentSpell(Data.Talent[MAGE].ARCANE_INSTABILITY)
         end
     elseif classId == DRUID then
@@ -73,9 +73,7 @@ function _SpellCrit:GetGeneralTalentModifier()
             mod = mod + 2 * DataUtils:GetActiveTalentSpell(Data.Talent[WARLOCK].DEMONIC_TACTICS)
             mod = mod + 1 * DataUtils:GetActiveTalentSpell(Data.Talent[WARLOCK].BACKLASH)
         end
-
-        mod = mod + 1 * DataUtils:GetActiveTalentSpell(Data.Talent[WARLOCK].DEVASTATION)
-    elseif classId == SHAMAN then
+    elseif classId == Data.SHAMAN then
         if ECS.IsWotlk then
             mod = mod + 1 * DataUtils:GetActiveTalentSpell(Data.Talent[SHAMAN].THUNDERING_STRIKES)
         end
@@ -104,11 +102,12 @@ end
 ---@return number
 function _SpellCrit:GetTalentModifierHolyCrit()
     local mod = 0
-
-    if classId == PRIEST then
-        mod = 1 * DataUtils:GetActiveTalentSpell(Data.Talent[PRIEST].HOLY_SPECIALIZATION)
-    elseif classId == PALADIN then
-        mod = 1 * DataUtils:GetActiveTalentSpell(Data.Talent[PALADIN].HOLY_POWER)
+    if ECS.IsClassic then
+      if classId == PRIEST then
+          mod = 1 * DataUtils:GetActiveTalentSpell(Data.Talent[PRIEST].HOLY_SPECIALIZATION)
+      elseif classId == PALADIN then
+          mod = 1 * DataUtils:GetActiveTalentSpell(Data.Talent[PALADIN].HOLY_POWER)
+      end
     end
     return mod
 end
@@ -118,9 +117,9 @@ function _SpellCrit:GetTalentModifierFireCrit()
     local mod = 0
 
     if classId == MAGE then
-        mod = mod + 2 * DataUtils:GetActiveTalentSpell(Data.Talent[MAGE].CRITICAL_MASS)
-
-        if ECS.IsWotlk then
+        if ECS.IsClassic then
+          mod = mod + 2 * DataUtils:GetActiveTalentSpell(Data.Talent[MAGE].CRITICAL_MASS)
+        elseif ECS.IsWotlk then
             mod = mod + 1 * DataUtils:GetActiveTalentSpell(Data.Talent[MAGE].PYROMANIAC)
         end
     elseif classId == WARLOCK then
