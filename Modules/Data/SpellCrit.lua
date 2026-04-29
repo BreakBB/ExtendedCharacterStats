@@ -61,7 +61,7 @@ function _SpellCrit:GetGeneralTalentModifier()
     local mod = 0
 
     if classId == Data.MAGE then
-        if not IsClassic then
+        if IsClassic then
             mod = mod + 1 * DataUtils:GetActiveTalentSpell({15058,15059,15060}) -- Arcane Instability
         end
     elseif classId == Data.DRUID then
@@ -73,8 +73,6 @@ function _SpellCrit:GetGeneralTalentModifier()
             mod = mod + 2 * DataUtils:GetActiveTalentSpell({30242,30245,30246,30247,30248}) -- Demonic Tactics
             mod = mod + 1 * DataUtils:GetActiveTalentSpell({34935,34938,34939}) -- Backlash
         end
-
-        mod = mod + 1 * DataUtils:GetActiveTalentSpell({18130,18131,18132,18133,18134}) -- Devastation
     elseif classId == Data.SHAMAN then
         if IsWotlk then
             mod = mod + 1 * DataUtils:GetActiveTalentSpell({16255,16302,16303,16304,16305}) -- Thundering Strikes
@@ -104,13 +102,14 @@ end
 ---@return number
 function _SpellCrit:GetTalentModifierHolyCrit()
     local mod = 0
-
-    if classId == Data.PRIEST then
-        -- Holy Specialization
-        mod = 1 * DataUtils:GetActiveTalentSpell({14889,15008,15009,15010,15011})
-    elseif classId == Data.PALADIN then
-        -- Holy Power
-        mod = 1 * DataUtils:GetActiveTalentSpell({5923,5924,5925,5926,25829})
+    if IsClassic then
+        if classId == Data.PRIEST then
+            -- Holy Specialization
+            mod = 1 * DataUtils:GetActiveTalentSpell({14889,15008,15009,15010,15011})
+        elseif classId == Data.PALADIN then
+            -- Holy Power
+            mod = 1 * DataUtils:GetActiveTalentSpell({5923,5924,5925,5926,25829})
+        end
     end
     return mod
 end
@@ -118,15 +117,10 @@ end
 ---@return number
 function _SpellCrit:GetTalentModifierFireCrit()
     local mod = 0
-
-    if classId == Data.MAGE then
-        mod = mod + 2 * DataUtils:GetActiveTalentSpell({11115,11367,11368}) -- Critical Mass
-
-        if IsWotlk then
-            mod = mod + 1 * DataUtils:GetActiveTalentSpell({34293,34295,34296}) -- Pyromaniac
-        end
-    elseif classId == Data.WARLOCK then
-        if IsClassic then
+    if IsClassic then
+        if classId == Data.MAGE then
+            mod = mod + 2 * DataUtils:GetActiveTalentSpell({11115,11367,11368}) -- Critical Mass
+        elseif classId == Data.WARLOCK then
             -- Devastation (while this increases the crit chance of "Destruction spells" there are no fire spells, which are not destruction spells)
             mod = mod + 1 * DataUtils:GetActiveTalentSpell({18130,18131,18132,18133,18134})
         end
