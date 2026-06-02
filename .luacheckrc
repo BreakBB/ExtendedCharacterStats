@@ -2768,6 +2768,7 @@ stds.ecs = {
         "WOW_PROJECT_WRATH_CLASSIC",
         "-----------------------------------------------------> Enums",
         "LE_EXPANSION_BURNING_CRUSADE",
+        "LE_UNIT_STAT_SPIRIT",
         "-----------------------------------------------------> GlobalStrings",
         "CLOSE",
         "DEFENSE",
