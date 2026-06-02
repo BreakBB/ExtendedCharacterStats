@@ -78,12 +78,7 @@ local lastManaReg = 0
 
 ---@return number
 function Data:GetMP5FromSpirit()
-    local base, _ = GetManaRegen() -- Returns mana reg per 1 second (including talent and buff modifiers)
-    if base < 1 then
-        base = lastManaReg
-    end
-    lastManaReg = base
-
+    local base = GetUnitManaRegenRateFromSpirit("player")
     return DataUtils:Round(base * 5, 2)
 end
 
