@@ -76,7 +76,7 @@ end
 
 ---@return number
 function Data:GetMP5FromSpirit()
-    local regen = 0
+    local regen
     if ECS.IsClassic then
         local _, spirit, _, _ = UnitStat("unit", LE_UNIT_STAT_SPIRIT)
         if spirit < 50 then
