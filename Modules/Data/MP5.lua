@@ -97,9 +97,10 @@ function Data:GetMP5WhileCasting()
 
     local castingModifier, mp5BuffBonus, periodicMana = Data:GetMP5FromBuffs()
     castingModifier = min(1,castingModifier + _MP5:GetTalentModifier() + Data:GetSetBonusModifierMP5()) -- capped at 100%
-    local mp5Items = Data:GetMP5FromItems()
-    casting = (casting * 5) + mp5Items + mp5BuffBonus * castingModifier + periodicMana
-
+    casting = (casting * 5) + mp5BuffBonus * castingModifier + periodicMana
+    if ECS.IsClassic then
+        casting = casting + Data:GetMP5FromItems()
+    end
     return DataUtils:Round(casting, 2)
 end
 
@@ -107,9 +108,10 @@ end
 function Data:GetMP5OutsideCasting()
     local mp5FromSpirit = Data:GetMP5FromSpirit()
     local _, mp5BuffBonus, periodicMana = Data:GetMP5FromBuffs()
-    local mp5FromItems = Data:GetMP5FromItems()
-
-    local totalMP5 = mp5FromSpirit + mp5FromItems + mp5BuffBonus + periodicMana
+    local totalMP5 = mp5FromSpirit + mp5BuffBonus + periodicMana
+    if ECS.IsClassic then
+        totalMP5 = totalMP5 + Data:GetMP5FromItems()
+    end
     return DataUtils:Round(totalMP5, 2)
 end
 
