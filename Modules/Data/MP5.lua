@@ -76,8 +76,25 @@ end
 
 ---@return number
 function Data:GetMP5FromSpirit()
-    local base = GetUnitManaRegenRateFromSpirit("player")
-    return DataUtils:Round(base * 5, 2)
+    local regen = 0
+    if ECS.IsClassic then
+        local _, spirit, _, _ = UnitStat("unit", LE_UNIT_STAT_SPIRIT)
+        if spirit < 50 then
+            regen = 0.25 * spirit
+        else
+            if classId == Data.PRIEST or classId == Data.MAGE then
+                regen = (12.5 + spirit/4)/2
+            elseif classId == Data.DRUID and (not DataUtils:IsShapeshifted()) then
+                regen = (15 + spirit/4.5)/2
+            else
+                regen = (15 + spirit/5)/2
+            end
+        end
+    else
+        -- GetUnitManaRegenRateFromSpirit uses TBC formula in classic
+        regen = GetUnitManaRegenRateFromSpirit("player")
+    end
+    return DataUtils:Round(regen * 5, 2)
 end
 
 -- Get mana regen while casting
