@@ -74,8 +74,6 @@ function _MP5:GetMP5ValueOnItems()
     return mp5
 end
 
-local lastManaReg = 0
-
 ---@return number
 function Data:GetMP5FromSpirit()
     local base = GetUnitManaRegenRateFromSpirit("player")
