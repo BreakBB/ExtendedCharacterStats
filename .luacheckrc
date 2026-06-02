@@ -1497,6 +1497,7 @@ stds.ecs = {
         "GetUICameraInfo",
         "GetUITextureKitInfo",
         "GetUnitHealthModifier",
+        "GetUnitManaRegenRateFromSpirit",
         "GetUnitMaxHealthModifier",
         "GetUnitPowerModifier",
         "GetUnitSpeed",
