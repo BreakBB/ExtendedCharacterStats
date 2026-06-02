@@ -84,9 +84,7 @@ end
 ---@return number
 function Data:GetMP5WhileCasting()
     local _, casting = GetManaRegen() -- Returns mana reg per 1 second (including talent and buff modifiers)
-    if casting < 0.1 then
-        casting = 0
-    end
+    casting = math.max(0,casting)
 
     local castingModifier, mp5BuffBonus, periodicMana = Data:GetMP5FromBuffs()
     castingModifier = min(1,castingModifier + _MP5:GetTalentModifier() + Data:GetSetBonusModifierMP5()) -- capped at 100%
@@ -99,9 +97,9 @@ end
 
 ---@return number
 function Data:GetMP5OutsideCasting()
-    local mp5FromSpirit = Data:GetMP5FromSpirit()
+    local base, _ = GetManaRegen()
     local _, mp5BuffBonus, periodicMana = Data:GetMP5FromBuffs()
-    local totalMP5 = mp5FromSpirit + mp5BuffBonus + periodicMana
+    local totalMP5 = (base * 5) + mp5BuffBonus + periodicMana
     if ECS.IsClassic then
         totalMP5 = totalMP5 + Data:GetMP5FromItems()
     end
