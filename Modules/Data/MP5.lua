@@ -103,9 +103,9 @@ function Data:GetMP5WhileCasting()
     local _, casting = GetManaRegen() -- Returns mana reg per 1 second (including talent and buff modifiers)
     casting = math.max(0,casting)
 
-    local castingModifier, mp5BuffBonus, periodicMana = Data:GetMP5FromBuffs()
-    castingModifier = min(1,castingModifier + _MP5:GetTalentModifier() + Data:GetSetBonusModifierMP5()) -- capped at 100%
-    casting = (casting * 5) + mp5BuffBonus * castingModifier + periodicMana
+    local modifier, mp5BuffBonus, periodicMana = Data:GetMP5FromBuffs()
+    -- castingModifier = min(1,castingModifier + _MP5:GetTalentModifier() + Data:GetSetBonusModifierMP5()) -- capped at 100%
+    casting = (casting * 5) * (1 + modifier) + mp5BuffBonus + periodicMana
     if ECS.IsClassic then
         casting = casting + Data:GetMP5FromItems()
     end
@@ -115,8 +115,8 @@ end
 ---@return number
 function Data:GetMP5OutsideCasting()
     local base, _ = GetManaRegen()
-    local _, mp5BuffBonus, periodicMana = Data:GetMP5FromBuffs()
-    local totalMP5 = (base * 5) + mp5BuffBonus + periodicMana
+    local modifier, mp5BuffBonus, periodicMana = Data:GetMP5FromBuffs()
+    local totalMP5 = (base * 5) * (1 + modifier) + mp5BuffBonus + periodicMana
     if ECS.IsClassic then
         totalMP5 = totalMP5 + Data:GetMP5FromItems()
     end
@@ -137,7 +137,7 @@ function Data:GetMP5FromBuffs()
             bonus = bonus + (Data.Aura.MP5[aura.spellId] or 0)
             bonus = bonus + (Data.Aura.PercentageMp5[aura.spellId] or 0) * maxmana
             periodic = periodic + (Data.Aura.PeriodicallyGiveMana[aura.spellId] or 0)
-            mod = mod + (Data.Aura.AllowCastingManaRegeneration[aura.spellId] or 0) -- assuming buffs stacking, to be investigated
+            mod = mod + (Data.Aura.PowerRegenPercentModifier[Enum.PowerType.Mana][aura.spellId] or 0)
             if Data.Aura.IsLightningShield[aura.spellId] and Data:IsSetBonusActive(Data.setNames.THE_EARTHSHATTERER, 8) then
                 bonus = bonus + 15 -- 15 MP5 from Shaman T3 8 piece bonus when Lightning Shield is active
             end
