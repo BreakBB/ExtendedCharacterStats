@@ -78,6 +78,7 @@ end
 function Data:GetMP5FromSpirit()
     local regen
     if ECS.IsClassic then
+        -- GetUnitManaRegenRateFromSpirit uses TBC formula in classic
         local _, spirit, _, _ = UnitStat("player", LE_UNIT_STAT_SPIRIT)
         if spirit < 50 then
             regen = 0.25 * spirit
@@ -91,41 +92,43 @@ function Data:GetMP5FromSpirit()
             end
         end
     else
-        -- GetUnitManaRegenRateFromSpirit uses TBC formula in classic
         regen = GetUnitManaRegenRateFromSpirit("player")
     end
-    return DataUtils:Round(regen * 5, 2)
+    return DataUtils:Round(regen * 5, 1)
 end
 
 -- Get mana regen while casting
 ---@return number
 function Data:GetMP5WhileCasting()
-    local _, casting = GetManaRegen() -- Returns mana reg per 1 second (including talent and buff modifiers)
-    casting = math.max(0,casting)
-
+    -- Returns mana reg per 1 second (including talent and buff casting modifiers)
+    local _, casting = GetManaRegen()
     local modifier, mp5BuffBonus, periodicMana = Data:GetMP5FromBuffs()
     -- castingModifier = min(1,castingModifier + _MP5:GetTalentModifier() + Data:GetSetBonusModifierMP5()) -- capped at 100%
-    casting = (casting * 5) * (1 + modifier) + mp5BuffBonus + periodicMana
+    casting = casting * 5
     if ECS.IsClassic then
+        -- mp5 from items isn't accounted in classic
         casting = casting + Data:GetMP5FromItems()
     end
-    return DataUtils:Round(casting, 2)
+    casting = casting * modifier + mp5BuffBonus + periodicMana
+    return DataUtils:Round(casting, 1)
 end
 
 ---@return number
 function Data:GetMP5OutsideCasting()
     local base, _ = GetManaRegen()
     local modifier, mp5BuffBonus, periodicMana = Data:GetMP5FromBuffs()
-    local totalMP5 = (base * 5) * (1 + modifier) + mp5BuffBonus + periodicMana
+    local totalMP5 = base * 5
     if ECS.IsClassic then
+        -- mp5 from items isn't accounted in classic
         totalMP5 = totalMP5 + Data:GetMP5FromItems()
     end
-    return DataUtils:Round(totalMP5, 2)
+    local totalMP5 = totalMP5 * modifier + mp5BuffBonus + periodicMana
+    return DataUtils:Round(totalMP5, 1)
 end
 
 ---@return number, number, number
 function Data:GetMP5FromBuffs()
-    local mod = 0
+    local mod = 1
     local bonus = 0
     local periodic = 0
     local maxmana = UnitPowerMax("player", Enum.PowerType.Mana)
@@ -163,7 +166,7 @@ function Data:GetMP5FromBuffs()
         end
         i = i + 1
     until (not aura)
-    return min(mod,1), bonus, periodic
+    return max(mod,0), bonus, periodic
 end
 
 ---@return number
