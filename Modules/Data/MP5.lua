@@ -106,7 +106,7 @@ function Data:GetMP5WhileCasting()
     -- castingModifier = min(1,castingModifier + _MP5:GetTalentModifier() + Data:GetSetBonusModifierMP5()) -- capped at 100%
     casting = casting * 5
     if ECS.IsClassic then
-        -- mp5 from items isn't accounted in classic
+        -- in classic GetManaRegen doesn't account for mp5 from items
         casting = casting + Data:GetMP5FromItems()
     end
     casting = casting * modifier + mp5BuffBonus + periodicMana
@@ -119,10 +119,10 @@ function Data:GetMP5OutsideCasting()
     local modifier, mp5BuffBonus, periodicMana = Data:GetMP5FromBuffs()
     local totalMP5 = base * 5
     if ECS.IsClassic then
-        -- mp5 from items isn't accounted in classic
+        -- in classic GetManaRegen doesn't account for mp5 from items
         totalMP5 = totalMP5 + Data:GetMP5FromItems()
     end
-    local totalMP5 = totalMP5 * modifier + mp5BuffBonus + periodicMana
+    totalMP5 = totalMP5 * modifier + mp5BuffBonus + periodicMana
     return DataUtils:Round(totalMP5, 1)
 end
 
