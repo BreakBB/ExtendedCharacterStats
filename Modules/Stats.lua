@@ -129,8 +129,8 @@ function Stats.CreateWindow()
         end
     end)
 
-    if ElvUI then
-        local E = ElvUI[1]
+    if _G.ElvUI then
+        local E = _G.ElvUI[1]
         local S = E:GetModule("Skins")
         if S then
             S:HandleFrame(mainFrame)
