@@ -1,3 +1,4 @@
+-- keep-sorted start case=no
 local ECSLoader = ECSLoader
 local floor = math.floor
 local GetBuffDataByIndex = C_UnitAuras.GetBuffDataByIndex
@@ -16,6 +17,7 @@ local UnitArmor = UnitArmor
 local UnitClass = UnitClass
 local UnitDefense = UnitDefense
 local UnitLevel = UnitLevel
+-- keep-sorted end
 
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
@@ -24,14 +26,18 @@ local DataUtils = ECSLoader:ImportModule("DataUtils")
 ---@type Utils
 local Utils = ECSLoader:ImportModule("Utils")
 
-local _Defense = {}
-
+-- keep-sorted start case=no
 local _, _, classId = UnitClass("player")
-local groupedPaladinHasImprovedConcentrationAura = {}
-
-local MAX_SKILL = (UnitLevel("player")) * 5
+local _Defense = {}
 -- Every 25 defense reduce the chance to be critically hit by 1 %
 local DEFENSE_FOR_CRIT_REDUCTION = 25
+local DRUID = Data.DRUID
+local groupedPaladinHasImprovedConcentrationAura = {}
+local MAX_SKILL = (UnitLevel("player")) * 5
+local PRIEST = Data.PRIEST
+local ROGUE = Data.ROGUE
+local WARLOCK = Data.WARLOCK
+-- keep-sorted end
 
 ---@return number
 function Data:GetArmorValue()
@@ -82,27 +88,27 @@ function _Defense:GetCritReduction()
     end
     local critReducingFromResilience = GetCombatRatingBonus(15)
 
-    if classId == Data.DRUID then
+    if classId == DRUID then
         local coeff = IsWotlk and 2 or 1
-        meleeCritReduction = meleeCritReduction + coeff * DataUtils:GetActiveTalentSpell({33853,33855,33856}) -- Survival of the Fittest
-    elseif classId == Data.PRIEST then
+        meleeCritReduction = meleeCritReduction + coeff * DataUtils:GetActiveTalentSpell(Data.Talent[DRUID].SURVIVAL_OF_THE_FITTEST)
+    elseif classId == PRIEST then
         if IsTBC then
-            spellCritReduction = spellCritReduction + 2 * DataUtils:GetActiveTalentSpell({14910,33371})  -- shadow resilience
+            spellCritReduction = spellCritReduction + 2 * DataUtils:GetActiveTalentSpell(Data.Talent[PRIEST].SHADOW_RESILIENCE)
         end
-    elseif classId == Data.ROGUE then
-        local mod = 1 * DataUtils:GetActiveTalentSpell({30892,30893}) -- Sleight of Hand
+    elseif classId == ROGUE then
+        local mod = 1 * DataUtils:GetActiveTalentSpell(Data.Talent[ROGUE].SLEIGHT_OF_HAND)
         meleeCritReduction = meleeCritReduction + mod
         rangedCritReduction = rangedCritReduction + mod
-    elseif classId == Data.WARLOCK then
+    elseif classId == WARLOCK then
         if not IsClassic then
-            local mod = 1 * DataUtils:GetActiveTalentSpell({30319,30320,30321}) -- Demonic Resilience
+            local mod = 1 * DataUtils:GetActiveTalentSpell(Data.Talent[WARLOCK].DEMONIC_RESILIENCE)
             meleeCritReduction = meleeCritReduction + mod
             rangedCritReduction = rangedCritReduction + mod
         end
     end
 
     if IsSoD then
-        if classId == Data.DRUID or classId == Data.ROGUE then
+        if classId == DRUID or classId == ROGUE then
             local chestRune = DataUtils.GetRuneForEquipSlot(Utils.CHAR_EQUIP_SLOTS.Chest)
             if chestRune and (chestRune == 6710 or chestRune == 6972) then
                 meleeCritReduction = meleeCritReduction + 6 -- survival of the fittest / Just a Flesh Wound
@@ -142,9 +148,9 @@ function _Defense:GetEnemyMissChance(enemyLevel)
 
     local miss
     if IsWotlk then
-        local defense = floor(GetCombatRatingBonus(CR_DEFENSE_SKILL))
-        local enemyMissCoef = classId == Data.DRUID and 0.972 or 0.956 -- 0.972 for bears
-        local baseMissChance = 5 - (enemyAttackRating - select(1, UnitDefense("player"))) * 0.04 -- vs lvl 80
+        local defense = math.floor(GetCombatRatingBonus(CR_DEFENSE_SKILL));
+        local enemyMissCoef = classId == DRUID and 0.972 or 0.956; -- 0.972 for bears
+        local baseMissChance = 5 - (enemyAttackRating - select(1, UnitDefense("player"))) * 0.04; -- vs lvl 80
         if defense > 0 then -- avoid possible division by 0
             local enemyMissChance = baseMissChance + 1 / (0.0625 + enemyMissCoef / (defense * 0.04))
             miss = enemyMissChance

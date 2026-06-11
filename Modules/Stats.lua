@@ -155,6 +155,33 @@ function Stats.CreateWindow()
         end
     end)
 
+    if _G.ElvUI then
+        local E = _G.ElvUI[1]
+        local S = E:GetModule("Skins")
+        if S then
+            S:HandleFrame(mainFrame)
+            if mainFrame.CloseButton then
+                mainFrame.CloseButton:SetPoint("TOPRIGHT", 2, 2)
+            end
+            mainFrame.title:ClearAllPoints()
+            mainFrame.title:SetPoint("TOP", mainFrame, "TOP", 0, -8)
+            mainFrame.title:SetFont(E.media.normFont, 13)
+
+            S:HandleButton(mainFrame.configButton)
+            mainFrame.configButton:SetPoint("CENTER", mainFrame, "TOP", -1, -32)
+
+            S:HandleButton(toggleButton)
+
+            local scrollBar = mainFrame.ScrollFrame.ScrollBar
+            if scrollBar then
+                S:HandleScrollBar(scrollBar)
+            end
+
+            mainFrame.ScrollFrame:SetPoint("TOPLEFT", mainFrame, "TOPLEFT", -28, -50)
+            mainFrame.ScrollFrame:SetPoint("BOTTOMRIGHT", mainFrame, "BOTTOMRIGHT", -28, 10)
+        end
+    end
+
     _CreateStatInfos()
     Config.CreateWindow()
 end
