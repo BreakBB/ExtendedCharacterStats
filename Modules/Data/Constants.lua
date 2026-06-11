@@ -1,3 +1,9 @@
+-- keep-sorted start case=no
+local IsClassic = ECS.IsClassic
+local IsTBC = ECS.IsTBC
+local IsWotlk = ECS.IsWotlk
+-- keep-sorted end
+
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
 
@@ -20,7 +26,9 @@ Data.MAGE = 8
 Data.WARLOCK = 9
 Data.DRUID = 11
 
+--- auras with attributes "Passive spell" or "Aura is hidden" should not be listed here
 Data.Aura = {
+    -- keep-sorted start case=no block=yes
     AllowCastingManaRegeneration = {
         [6117] = (ECS.IsWotlk and 0.5 or 0.3), -- Mage Armor rank 1
         [12051] = 1, -- Evocation
@@ -79,6 +87,175 @@ Data.Aura = {
         [17800] = (ECS.IsWotlk and -5 or nil), -- Shadow Mastery 5/5
         [22959] = (ECS.IsWotlk and -5 or nil), -- Improved Scorch
     },
+    --- index 0 is for "Apply Aura: Invisibility"
+    --- index n is for "Apply Aura: Invisibility (n)"
+    Invisibility = {
+        -- keep-sorted start case=no block=yes numeric=yes
+        [0] = {
+            -- keep-sorted start numeric=yes
+            [66] = IsClassic and 100 or nil, -- Lesser Invisibility
+            [885] = 200, -- Invisibility
+            [3680] = 100, -- Lesser Invisibility
+            [4079] = 200, -- Cloaking
+            [4952] = 200, -- Helcular's War
+            [5543] = 500, -- Fade Out
+            [6298] = 200, -- Form of the Moonstalker
+            [7870] = IsWotlk and 200 or 100, -- Lesser Invisibility
+            [8611] = 5000, -- Phase Shift
+            [9095] = -1000, -- Cantation of Manifestation
+            [9587] = 200, -- Magic Potion
+            [9738] = -1000, -- Rift Spawn Becomes Visible
+            [10228] = 300, -- Greater Invisibility
+            [11392] = 200, -- Invisibility
+            [12332] = 10000, -- Lathoric the Black
+            [12845] = 100, -- Lesser Invisibility
+            [16380] = 300, -- Greater Invisibility
+            [17651] = 5000, -- Image Projection
+            [20672] = 500, -- Fade
+            [23452] = 300, -- Invisibility
+            [24235] = 10000, -- Super Invis
+            [25905] = 10000, -- Invis Self
+            [26222] = 10000, -- Super Invis
+            [28500] = 200, -- Invisibility
+            [29309] = 5000, -- Phase Shift
+            [29627] = 200, -- Nether Step
+            [29921] = 150, -- Phasing Invisibility
+            [30447] = 50, -- Shadow of the Forest
+            [30448] = 100, -- Shadow of the Forest
+            [32612] = 340, -- Invisibility
+            [32811] = 300, -- Greater Invisibility
+            [32943] = 300, -- Phasing Invisibility
+            [41253] = 300, -- Greater Invisibility
+            [44312] = 9999, -- Head of the Horseman Invisible
+            [46021] = 350, -- Spectral Realm
+            [49399] = 100, -- Skeleton Invis
+            [50700] = 350, -- Copy of Spectral Realm (Test)
+            [54436] = 600, -- Demonic Empowerment
+            [55848] = 1000, -- Invisibility
+            [69107] = 300, -- Killing Spree Invis Aura
+            [72343] = 400, -- Hallucination
+            [440505] = 200, -- Invisibility
+            [441785] = 101, -- Drained of Blood
+            [1221579] = 201, -- Super Invis
+            [1227700] = 201, -- Invisibility
+            [1231389] = 10000, -- Vanish
+            -- keep-sorted end
+        },
+        [1] = {
+            -- keep-sorted start numeric=yes
+            [8203] = 1000, -- Elemental Spirit Invisibility
+            -- keep-sorted end
+        },
+        [2] = {
+            -- keep-sorted start numeric=yes
+            [17680] = 1, -- Spirit Spawn-out
+            [24221] = 1, -- Quest - Teleport Spawn-out
+            [24699] = 10000, -- Vanish
+            [36748] = 1, -- Smoke Spawn-out
+            [448779] = 5001, -- Wake Up Dead
+            [459280] = 101, -- Transiting Realities
+            [1234595] = 10000, -- Vanish
+            -- keep-sorted end
+        },
+        [4] = {
+            -- keep-sorted start numeric=yes
+            [12495] = 1000, -- Eranikus the Chained Invisibility
+            [29448] = 9999, -- Vanish
+            [32727] = 100, -- Arena Preparation
+            [32754] = 100, -- Invisibility
+            [34341] = 9999, -- Ember Blast
+            [38544] = 300, -- Coax Marmot
+            [39667] = 9999, -- Vanish
+            [41476] = 9999, -- Vanish
+            [44036] = 340, -- Fade
+            [44199] = 9999, -- Ember Blast
+            [49337] = 1000, -- Racer Slam death scene: car flip Parent
+            [50008] = 1, -- BOTM - Jungle Brew - Jungle Invisibility Aura
+            [50015] = 9999, -- You're a ...! (NPC) Death Scene
+            [55964] = 9999, -- Vanish
+            [74069] = 100, -- Spawn Invisibility Aura
+            -- keep-sorted end
+        },
+        [5] = {
+            -- keep-sorted start numeric=yes
+            [56783] = 50, -- Quest Invis Tier 4
+            -- keep-sorted end
+        },
+        [7] = {
+            -- keep-sorted start numeric=yes
+            [23303] = 100, -- Vaelen the Flayed [The Shadow Vault] - Invisibility
+            [27622] = 100, -- Get the Key: Vaelen's Invisibility & See Invisibility
+            [37754] = 5000, -- Through The Eyes of Gorefiend
+            [38012] = 5000, -- Garm Wolfbrother: Invisibility
+            [43890] = 1000, -- Flying Machine Invisibility
+            [45636] = 100, -- Mist of the Kvaldir
+            [50734] = 1000, -- Frenzyheart Chicken: Invisibility
+            [52060] = 300, -- Invisibility
+            [54500] = 1000, -- Quest Invisibility 1
+            [56304] = 350, -- Hodir's Helm Bunny: Invisibility
+            [56768] = 50, -- Quest Invis Tier 1
+            [56779] = 50, -- Quest Invis Tier 1
+            [57744] = 1000, -- Quest Invisibility 1
+            [59649] = 99, -- Icecrown Bomber - Cloak Dome Bunny
+            [60190] = 1000, -- Invisibility
+            [60464] = 9, -- Cloaked Alliance Peeps
+            [70693] = 1000, -- Uther Despawn
+            [74980] = 1000, -- Spy Frog Invisibility
+            [75779] = 1000, -- [DND] Marker
+            [1221135] = 101, -- Torment's Illusion
+            -- keep-sorted end
+        },
+        [8] = {
+            -- keep-sorted start numeric=yes
+            [34840] = 1000, -- Triangulation Point One Invisibility
+            [34858] = 2000, -- Triangulation Point Two Invisibility
+            [40194] = 1000, -- Bombing Run: Invisibility
+            [51113] = 500, -- Monte Muzzleshot's Invisibility (Mangal)
+            [51114] = 250, -- Monte Muzzleshot's Invisibility (Camp)
+            [54503] = 1000, -- Quest Invisibility 2
+            [56058] = 100, -- Get the Key: Instructor Hroegar's Invisibility
+            [59660] = 999, -- Inside Cloak Dome Individual
+            [60191] = 1000, -- Invisibility
+            [60481] = 9, -- Cloaked Horde Peeps
+            [73973] = 1000, -- Poster Location Marker
+            [75433] = 100, -- Spawn Invisibility Aura (QZS 2)
+            -- keep-sorted end
+        },
+        [9] = {
+            -- keep-sorted start numeric=yes
+            [39596] = 1000, -- Ethereum Relay
+            [39680] = 5000, -- Sai'kkal Invisibility
+            [42175] = 5000, -- Evidence Marker Invis
+            [52213] = 1000, -- Rainspeaker Treasures: Invisibility
+            [61208] = 300, -- Fjorn's Anvil - Quest Invisibility 3
+            [74144] = 1000, -- Poster Location Marker
+            [74466] = 1000, -- Raging Fire Elemental Invisibility
+            [75165] = 1000, -- Spirit of the Tiger Aura
+            [75166] = 1000, -- Spirit of the Tiger Aura (Rider)
+            [75179] = 1000, -- Matriarch's Shroud
+            -- keep-sorted end
+        },
+        [10] = {
+            -- keep-sorted start numeric=yes
+            [44856] = 100, -- Bash'ir Phasing Device
+            [45614] = 300, -- Shroud of the Scourge
+            [48809] = 48812, -- Binding Life
+            [49097] = 100, -- Out of Body Experience
+            [52215] = 1000, -- Kartak and Sparktouched: Invisibility
+            [75513] = 1000, --  Spawn Invisibility Aura (QZM)
+            [364459] = 1000, -- Shroud of Death
+            [426062] = 101, -- Quest Invisibility
+            [462593] = 101, -- Quest Invisibility
+            [468882] = 101, -- Quest Invisibility
+            -- keep-sorted end
+        },
+        [28] = {
+            -- keep-sorted start numeric=yes
+           [425147] = 101, -- Quest Invisibility
+            -- keep-sorted end
+        },
+    -- keep-sorted end
+    },
     IsFeralForm = {
         [768] = true, -- Cat Form
         [5487] = true, -- Bear Form
@@ -112,8 +289,19 @@ Data.Aura = {
         [49280] = true, -- Lightning Shield rank 10
         [49281] = true, -- Lightning Shield rank 11
     },
+    IsProwlOrStealth = {
+        -- keep-sorted start numeric=yes
+        [1784] = true, -- Stealth
+        [1785] = true, -- Stealth
+        [1786] = true, -- Stealth
+        [1787] = true, -- Stealth
+        [5215] = true, -- Prowl
+        [6783] = true, -- Prowl
+        [9913] = true, -- Prowl
+        -- keep-sorted end
+    },
     MP5 = ECS.IsClassic and {
-        [430] = 42, -- Drink
+        [430] = 42, -- drink
         [431] = 104, -- drink
         [432] = 174, -- drink
         [833] = 30, -- Green Tea
@@ -355,8 +543,85 @@ Data.Aura = {
         [1227200] = 20, -- Wickedness
         [1236220] = -50, -- Slow
     },
+    Stealth = {
+        -- keep-sorted start numeric=yes
+        [1784] = 5, -- Stealth
+        [1785] = 100, -- Stealth
+        [1786] = 200, -- Stealth
+        [1787] = 300, -- Stealth
+        [2425] = -100, -- Spotted
+        [3648] = 5, -- Phase Out
+        [5215] = 100, -- Prowl
+        [5916] = 1, -- Shadowstalker Stealth
+        [6408] = 1, -- Faded
+        [6538] = 140, -- Dig Trap
+        [6634] = (IsClassic and 6 or 300), -- Phasing Stealth
+        [6783] = 200, -- Prowl
+        [6920] = 100, -- Hide
+        [8152] = 5, -- Prowl
+        [8218] = 5, -- Sneak
+        [8822] = 9999, -- Stealth
+        [9736] = 180, -- Arantir's Deception
+        [9740] = 180, -- Arantir's Deception
+        [9913] = 300, -- Prowl
+        [10032] = 9999, -- Uber Stealth
+        [11327] = 170, -- Vanish
+        [11329] = 270, -- Vanish
+        [16122] = 99999, -- Phasing
+        [20540] = 5, -- Ashenvale Outrunner Sneak
+        [20580] = 50, -- Shadowmeld
+        [22766] = 1, -- Sneak
+        [24450] = 150, -- Prowl
+        [24452] = 200, -- Prowl
+        [24453] = 250, -- Prowl
+        [24690] = 1000, -- Aspect of Arlokk
+        [26381] = 10000, -- Burrow
+        [26888] = 370, -- Vanish
+        [29448] = 9999, -- Vanish
+        [30831] = 1, -- Stealth
+        [30991] = 1, -- Stealth
+        [31526] = 9999, -- Stealth
+        [31621] = 9999, -- Stealth
+        [32199] = 65, -- Stealth
+        [32615] = 1, -- Stealth
+        [34189] = -50, -- Stealth
+        [35205] = 9999, -- Vanish
+        [39581] = 10000, -- Storm Blink
+        [42347] = 1, -- Stealth
+        [42866] = 9999, -- Stealth
+        [42932] = 1, -- Prowl
+        [42943] = 9999, -- Stealth
+        [47521] = 9999, -- Mole Machine Player Hide and Root
+        [51755] = 600, -- Camouflage
+        [52006] = 5000, -- Shroud
+        [53061] = 1000, -- Cover
+        [58548] = 4200, -- Ethereal
+        [59045] = 300, -- Camoflogue
+        [61704] = 1, -- Sneaky Walk
+        [66296] = 350, -- Shadow Veil
+        [66305] = 300, -- Shadow Veil
+        [67340] = 100, -- Hide
+        [448471] = 101, -- Lledra's Vehicle Test [DNT]
+        [460631] = 251, -- (DNT) Pyranis Add Fog Stealth
+        [467049] = 301, -- Blessing of Bethekk
+        [469182] = 11, -- Lying Low
+        [473544] = 5, -- Sneaking
+        [1220930] = 10000, -- Phantom's Veil
+        [1221341] = 6, -- Poorly Camouflaged
+        [1231389] = 10000, -- Vanish
+        -- keep-sorted end
+    },
+    StealthEffectiveness = {
+        -- keep-sorted start numeric=yes
+        [28492] = 30, -- Sneaking
+        [38552] = 8, -- Improved Stealth
+        [1220708] = 8, -- Displaced
+        -- keep-sorted end
+    },
+-- keep-sorted end
 }
 Data.Enchant = {
+    -- keep-sorted start case=no block=yes
     BlockValue = {
         [2583] = 15, -- Presence of Might
         [2653] = 18, -- Enchant Shield - Tough Shield
@@ -391,6 +656,13 @@ Data.Enchant = {
         [3836] = 8, -- Master's Inscription of the Crag
         [7099] = 12, -- Blackfathom Mana Oil. This effect only applies within Blackfathom Deeps.
     },
+    StealthEffectiveness = {
+        -- keep-sorted start numeric=yes
+        [910] = 5, -- Enchant Cloak - Stealth
+        [3256] = 5, -- Enchant Cloak - Shadow Armor
+        -- keep-sorted end
+    },
+-- keep-sorted end
 }
 Data.Gem = {
     MP5 = {
@@ -454,6 +726,7 @@ Data.Gem = {
     },
 }
 Data.Item = {
+    -- keep-sorted start case=no block=yes
     IsTimeworn = {
         [233496] = true,
         [233505] = true,
@@ -711,6 +984,27 @@ Data.Item = {
         [242315] = 3,
         [242317] = 3,
     },
+    StealthEffectiveness = {
+        -- keep-sorted start numeric=yes
+        [8197] = 5, -- Nightscape Boots
+        [20255] = 5, -- Whisperwalk Boots
+        [21758] = 3, -- Figurine - Black Pearl Panther
+        [22003] = 8, -- Darkmantle Boots
+        [23073] = 8, -- Boots of Displacement
+        [24128] = (IsTBC and 5 or nil), -- Figurine - Nightseye Panther
+        [27467] = 5, -- Silent-Strider Kneeboots
+        [31228] = 5, -- The Master's Treads
+        [35702] = (IsTBC and 5 or nil), -- Figurine - Shadowsong Panther
+        [213341] = 5, -- Insulated Workboots
+        [219343] = 3, -- Filcher's Cowl
+        [220860] = 5, -- Sergeant Major's Leather Boots
+        [220861] = 5, -- First Sergeant's Leather Boots
+        [221409] = 5, -- Emerald Leather Sabatons
+        [226831] = 8, -- Darkmantle Footpads
+        [226851] = 8, -- Darkmantle Boots
+        [236314] = 8, -- Boots of Displacement
+    -- keep-sorted end
+    },
     TimewornSpellHaste = {
         [234016] = 2,
         [234020] = 2,
@@ -718,6 +1012,7 @@ Data.Item = {
         [234028] = 2,
         [234032] = 2,
     },
+    -- keep-sorted end
 }
 Data.setNames = {
     AUGURS_REGALIA = "Augur's Regalia",
@@ -746,6 +1041,7 @@ Data.Talent = {
     [Data.DRUID] = {
         -- keep-sorted start
         BALANCE_OF_POWER = {33592,33596},
+        FERAL_INSTINCT = (IsClassic and {16947,16948,16949,16950,16951} or {16947,16948,16949})
         INTENSITY_REFLECTION = {17106,17107,17108},
         NATURAL_PERFECTION = {33881,33882,33883},
         SURVIVAL_OF_THE_FITTEST = {33853,33855,33856},
@@ -779,6 +1075,7 @@ Data.Talent = {
     },
     [Data.ROGUE] = {
         -- keep-sorted start
+        MASTER_OF_DECEPTION = (IsWotlk and {13958,13970,13971} or {13958,13970,13971,13972,13973})
         PRECISION = {13705,13832,13843,13844,13845},
         SLEIGHT_OF_HAND = {30892,30893},
         -- keep-sorted end
