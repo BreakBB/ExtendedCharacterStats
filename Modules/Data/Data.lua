@@ -77,7 +77,7 @@ dataFunctionRefs = {
     ["SpellHasteBonus"] = function() return Data:GetSpellHasteBonus() end,
     ["SpellPenetration"] = function() return Data:GetSpellPenetration() end,
     -- MP5
-    ["MP5Periodic"] = function() function()
+    ["MP5Periodic"] = function()
         local _, _, _, periodicMana = Data:GetMP5FromBuffs()
         return periodicMana
     end,
