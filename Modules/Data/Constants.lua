@@ -978,3 +978,69 @@ Data.setNames = {
     WINDHAWK_ARMOR = "Windhawk Armor",
     -- keep-sorted end
 }
+Data.Talent = {
+    -- keep-sorted start block=yes
+    [Data.DEATHKNIGHT] = {
+        -- keep-sorted start
+        BLOOD_GORGED = {61274,61275,61276,61277,61278},
+        VIRULENCE = {48962,49567,49568},
+        -- keep-sorted end
+    },
+    [Data.DRUID] = {
+        -- keep-sorted start
+        BALANCE_OF_POWER = {33592,33596},
+        INTENSITY_REFLECTION = {17106,17107,17108},
+        NATURAL_PERFECTION = {33881,33882,33883},
+        SURVIVAL_OF_THE_FITTEST = {33853,33855,33856},
+        -- keep-sorted end
+    },
+    [Data.MAGE] = {
+        -- keep-sorted start
+        ARCANE_FOCUS = {11222,12839,12840,12841,12842},
+        ARCANE_INSTABILITY = {15058,15059,15060},
+        ARCANE_MEDITATION = {14521,18463,18464},
+        CRITICAL_MASS = {11115,11367,11368},
+        ELEMENTAL_PRECISION = {29438,29439,29440},
+        PYROMANIAC = {34293,34295,34296},
+        -- keep-sorted end
+    },
+    [Data.PALADIN] = {
+        -- keep-sorted start
+        CONVICTION = {20117,20118,20119,20120,20121},
+        ENLIGHTENED_JUDGEMENTS = {53556,53557},
+        SANCTITY_OF_BATTLE = {32043,35396,35397},
+        -- keep-sorted end
+    },
+    [Data.PRIEST] = {
+        -- keep-sorted start
+        HOLY_POWER = {5923,5924,5925,5926,25829},
+        HOLY_SPECIALIZATION = {14889,15008,15009,15010,15011},
+        MEDITATION = {14521,14776,14777},
+        SHADOW_FOCUS = {15260,15327,15328},
+        SHADOW_RESILIENCE = {14910,33371},
+        -- keep-sorted end
+    },
+    [Data.ROGUE] = {
+        -- keep-sorted start
+        PRECISION = {13705,13832,13843,13844,13845},
+        SLEIGHT_OF_HAND = {30892,30893},
+        -- keep-sorted end
+    },
+    [Data.SHAMAN] = {
+        -- keep-sorted start
+        ELEMENTAL_PRECISION = {30672,30673,30674},
+        NATURES_GUIDANCE = {16180,16196,16198},
+        THUNDERING_STRIKES = {16255,16302,16303,16304,16305},
+        -- keep-sorted end
+    },
+    [Data.WARLOCK] = {
+        -- keep-sorted start
+        BACKLASH = {34935,34938,34939},
+        DEMONIC_RESILIENCE = {30319,30320,30321},
+        DEMONIC_TACTICS = {30242,30245,30246,30247,30248},
+        DEVASTATION = {18130,18131,18132,18133,18134},
+        SUPPRESSION = {18174,18175,18176},
+        -- keep-sorted end
+    },
+    -- keep-sorted end
+}
