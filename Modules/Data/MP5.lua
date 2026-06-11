@@ -5,9 +5,13 @@ local DataUtils = ECSLoader:ImportModule("DataUtils")
 ---@type Utils
 local Utils = ECSLoader:ImportModule("Utils")
 
-local _MP5 = {}
-
+-- keep-sorted start case=no
 local _, _, classId = UnitClass("player")
+local _MP5 = {}
+local DRUID = Data.DRUID
+local MAGE = Data.MAGE
+local PRIEST = Data.PRIEST
+-- keep-sorted end
 
 ---@return number
 function Data:GetValueFromAuraTooltip(index,type)
@@ -189,19 +193,19 @@ end
 function _MP5:GetTalentModifier()
     local mod = 0
 
-    if classId == Data.PRIEST then
+    if classId == PRIEST then
         local coeff = ECS.IsTBC and 0.1 or (ECS.IsWotlk and 0.5/3 or 0.05)
-        mod = mod + coeff * DataUtils:GetActiveTalentSpell({14521,14776,14777}) -- meditation
-    elseif classId == Data.MAGE then
+        mod = mod + coeff * DataUtils:GetActiveTalentSpell(Data.Talent[PRIEST].MEDITATION)
+    elseif classId == MAGE then
         local coeff = ECS.IsTBC and 0.1 or (ECS.IsWotlk and 0.5/3 or 0.05)
-        mod = mod + coeff * DataUtils:GetActiveTalentSpell({14521,18463,18464}) -- arcane meditation
+        mod = mod + coeff * DataUtils:GetActiveTalentSpell(Data.Talent[MAGE].ARCANE_MEDITATION)
 
         if ECS.IsWotlk then
-            mod = mod + 0.5/3 * DataUtils:GetActiveTalentSpell({34293,34295,34296}) -- pyromaniac
+            mod = mod + 0.5/3 * DataUtils:GetActiveTalentSpell(Data.Talent[MAGE].PYROMANIAC)
         end
-    elseif classId == Data.DRUID then
+    elseif classId == DRUID then
         local coeff = ECS.IsTBC and 0.1 or (ECS.IsWotlk and 0.5/3 or 0.05)
-        mod = mod + coeff * DataUtils:GetActiveTalentSpell({17106,17107,17108}) -- intensity/reflection
+        mod = mod + coeff * DataUtils:GetActiveTalentSpell(Data.Talent[DRUID].INTENSITY_REFLECTION)
     end
     return mod
 end
