@@ -28,16 +28,16 @@ function _Config:LoadManaSection()
                     Stats.RebuildStatInfos()
                 end,
             },
-            mp5Items = {
+            mp5CastingModifier = {
                 type = "toggle",
                 order = 1,
-                name = function() return i18n("MP5 Items") end,
-                desc = function() return i18n("Shows/Hides the MP5 value from items.") end,
+                name = function() return i18n("MP5 Casting Modifier") end,
+                desc = function() return i18n("Shows/Hides the MP5 casting modifier.") end,
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.regen.display); end,
-                get = function () return ExtendedCharacterStats.profile.regen.mp5Items.display; end,
+                get = function () return ExtendedCharacterStats.profile.regen.mp5CastingModifier.display; end,
                 set = function (_, value)
-                    ExtendedCharacterStats.profile.regen.mp5Items.display = value
+                    ExtendedCharacterStats.profile.regen.mp5CastingModifier.display = value
                     Stats.RebuildStatInfos()
                 end,
             },
@@ -54,16 +54,16 @@ function _Config:LoadManaSection()
                     Stats.RebuildStatInfos()
                 end,
             },
-            mp5Buffs = {
+            mp5Periodic = {
                 type = "toggle",
                 order = 3,
-                name = function() return i18n("MP5 Buffs") end,
-                desc = function() return i18n("Shows/Hides the MP5 value from buffs.") end,
+                name = function() return i18n("MP5 Periodic") end,
+                desc = function() return i18n("Shows/Hides the periodic MP5 value.") end,
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.regen.display); end,
-                get = function () return ExtendedCharacterStats.profile.regen.mp5Buffs.display; end,
+                get = function () return ExtendedCharacterStats.profile.regen.mp5Periodic.display; end,
                 set = function (_, value)
-                    ExtendedCharacterStats.profile.regen.mp5Buffs.display = value
+                    ExtendedCharacterStats.profile.regen.mp5Periodic.display = value
                     Stats.RebuildStatInfos()
                 end,
             },
