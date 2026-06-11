@@ -1,3 +1,14 @@
+-- keep-sorted start case=no
+local band = bit.band
+local GetBuffDataByIndex = C_UnitAuras.GetBuffDataByIndex
+local GetDebuffDataByIndex = C_UnitAuras.GetDebuffDataByIndex
+local IsSpellKnown = C_SpellBook.IsSpellKnown
+local IsTBC = ECS.IsTBC
+local IsWotlk = ECS.IsWotlk
+local MAX_SPELL_SCHOOLS = MAX_SPELL_SCHOOLS
+local pairs = pairs
+-- keep-sorted end
+
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
@@ -8,13 +19,23 @@ local Utils = ECSLoader:ImportModule("Utils")
 -- keep-sorted start case=no
 local _, _, classId = UnitClass("player")
 local _Defense = {}
+local ARCANE = Data.ARCANE_SCHOOL
+local DEATHKNIGHT = Data.DEATHKNIGHT
 -- Every 25 defense reduce the chance to be critically hit by 1 %
 local DEFENSE_FOR_CRIT_REDUCTION = 25
 local DRUID = Data.DRUID
+local FROST = Data.FROST_SCHOOL
+local HUNTER = Data.HUNTER
+local MAGE = Data.MAGE
 local MAX_SKILL = (UnitLevel("player")) * 5
+local NATURE = Data.NATURE_SCHOOL
+local PALADIN = Data.PALADIN
 local PRIEST = Data.PRIEST
 local ROGUE = Data.ROGUE
+local SHADOW = Data.SHADOW_SCHOOL
+local Talent = Data.Talent
 local WARLOCK = Data.WARLOCK
+local WARRIOR = Data.WARRIOR
 -- keep-sorted end
 
 ---@return number
@@ -239,4 +260,121 @@ function _Defense:GetEnchantsBlockValue()
         end
     end
     return mod
+end
+
+---@return table<number>
+function _Defense:GetHitReduction()
+    local hitReduction = {
+        spell = {0,0,0,0,0,0,0},
+        melee= 0,
+        ranged = 0
+    }
+
+    local i = 1
+    repeat
+        local aura = GetBuffDataByIndex("player", i)
+        i = i + 1
+        if aura and aura.spellId then
+            hitReduction.melee = hitReduction.melee + (Data.Aura.HitReductionMelee[aura.spellId] or 0)
+            hitReduction.ranged = hitReduction.ranged + (Data.Aura.HitReductionRanged[aura.spellId] or 0)
+
+            for k,v in pairs(Data.Aura.HitReductionSpell) do
+                for s=1,MAX_SPELL_SCHOOLS do
+                    if ((k == 0) or band(k,s-1) ~= 0x0) then
+                        hitReduction.spell[s] = hitReduction.spell[s] + (v[aura.spellId] or 0)
+                    end
+                end
+            end
+        end
+    until (not aura)
+    i = 1
+    repeat
+        local aura = GetDebuffDataByIndex("player", i)
+        i = i + 1
+        if aura and aura.spellId then
+            hitReduction.melee = hitReduction.melee + (Data.Aura.HitReductionMelee[aura.spellId] or 0)
+            hitReduction.ranged = hitReduction.ranged + (Data.Aura.HitReductionRanged[aura.spellId] or 0)
+
+            for k,v in pairs(Data.Aura.HitReductionSpell) do
+                for s=1,MAX_SPELL_SCHOOLS do
+                    if ((k == 0) or band(k,s-1) ~= 0x0) then
+                        hitReduction.spell[s] = hitReduction.spell[s] + (v[aura.spellId] or 0)
+                    end
+                end
+            end
+        end
+    until (not aura)
+
+    if IsWotlk then
+        if IsSpellKnown(20582) then -- Quickness
+            hitReduction.melee = hitReduction.melee + 2
+            hitReduction.ranged = hitReduction.ranged + 2
+        end
+        if IsSpellKnown(822) then -- Magic Resistance
+            for s=1,MAX_SPELL_SCHOOLS do
+                if band(126,s-1) ~= 0x0 then
+                    hitReduction.spell[s] = hitReduction.spell[s] + 2
+                end
+            end
+        end
+        if IsSpellKnown(20579) then -- Magic Resistance
+            for s=1,MAX_SPELL_SCHOOLS do
+                if band(126,s-1) ~= 0x0 then
+                    hitReduction.spell[s] = hitReduction.spell[s] + 2
+                end
+            end
+        end
+        hitReduction.spell[ARCANE] = hitReduction.spell[ARCANE] + (IsSpellKnown(20592) and 2 or 0) -- Arcane Resistance
+        hitReduction.spell[FROST] = hitReduction.spell[FROST] + (IsSpellKnown(20596) and 2 or 0) -- Frost Resistance
+        hitReduction.spell[NATURE] = hitReduction.spell[NATURE] + (IsSpellKnown(20583) and 2 or 0) -- Nature Resistance
+        hitReduction.spell[NATURE] = hitReduction.spell[NATURE] + (IsSpellKnown(20551) and 2 or 0) -- Nature Resistance
+        hitReduction.spell[SHADOW] = hitReduction.spell[SHADOW] + (IsSpellKnown(59535) and 2 or 0) -- Shadow Resistance
+        hitReduction.spell[SHADOW] = hitReduction.spell[SHADOW] + (IsSpellKnown(59540) and 2 or 0) -- Shadow Resistance
+        hitReduction.spell[SHADOW] = hitReduction.spell[SHADOW] + (IsSpellKnown(59538) and 2 or 0) -- Shadow Resistance
+        hitReduction.spell[SHADOW] = hitReduction.spell[SHADOW] + (IsSpellKnown(59221) and 2 or 0) -- Shadow Resistance
+        hitReduction.spell[SHADOW] = hitReduction.spell[SHADOW] + (IsSpellKnown(59541) and 2 or 0) -- Shadow Resistance
+        hitReduction.spell[SHADOW] = hitReduction.spell[SHADOW] + (IsSpellKnown(59536) and 2 or 0) -- Shadow Resistance
+    end
+
+    local spellMod = 0
+    if classId == DEATHKNIGHT then
+        hitReduction.melee = hitReduction.melee + 1 * DataUtils:GetActiveTalentSpell(Talent[DEATHKNIGHT].FRIGID_DREADPLATE)
+    elseif classId == DRUID then
+        spellMod = 3 * DataUtils:GetActiveTalentSpell(Talent[DRUID].BALANCE_OF_POWER) -- 126
+    elseif classId == HUNTER then
+        if not ECS.IsClassic then
+            local mod = 1 * DataUtils:GetActiveTalentSpell(Talent[HUNTER].DISPLACEMENT)
+            spellMod = mod -- 126
+            hitReduction.ranged = hitReduction.ranged + mod
+            hitReduction.melee = hitReduction.melee + mod
+        end
+    elseif classId == MAGE then
+        if not ECS.IsClassic then
+            local mod = 1 * DataUtils:GetActiveTalentSpell(Talent[MAGE].ARCTIC_WINDS)
+            hitReduction.ranged = hitReduction.ranged + mod
+            hitReduction.melee = hitReduction.melee + mod
+        end
+    elseif classId == PALADIN then
+        if IsTBC then
+            spellMod = 1 * DataUtils:GetActiveTalentSpell(Talent[PALADIN].PURSUIT_OF_JUSTICE) -- 126
+        elseif IsWotlk then
+            local mod = 2 * DataUtils:GetActiveTalentSpell(Talent[PALADIN].DIVINE_PURPOSE)
+            spellMod = mod -- 126
+            hitReduction.ranged = hitReduction.ranged + mod -- 127
+        end
+    elseif classId == ROGUE then
+        local mod = 2 * DataUtils:GetActiveTalentSpell(Talent[ROGUE].HEIGHTENED_SENSES)
+        spellMod = mod -- 126
+        hitReduction.ranged = hitReduction.ranged + mod
+    elseif classId == WARRIOR then
+        spellMod = 2 * DataUtils:GetActiveTalentSpell(Talent[WARRIOR].IMPROVED_SPELL_REFLECTION) -- 126
+    end
+
+    for s=1,MAX_SPELL_SCHOOLS do
+        if band(126,s-1) ~= 0x0 then
+            hitReduction.spell[s] = hitReduction.spell[s] + spellMod
+        end
+    end
+
+    return hitReduction
 end
