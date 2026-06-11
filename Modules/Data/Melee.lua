@@ -1,3 +1,4 @@
+-- keep-sorted start case=no
 local ECSLoader = ECSLoader
 local GetCombatRating = GetCombatRating
 local GetCombatRatingBonus = GetCombatRatingBonus
@@ -13,6 +14,7 @@ local UnitAttackPower = UnitAttackPower
 local UnitAttackSpeed = UnitAttackSpeed
 local UnitClass = UnitClass
 local UnitLevel = UnitLevel
+-- keep-sorted end
 
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
@@ -21,8 +23,15 @@ local DataUtils = ECSLoader:ImportModule("DataUtils")
 ---@type Utils
 local Utils = ECSLoader:ImportModule("Utils")
 
-local _Melee = {}
+-- keep-sorted start case=no
 local _, _, classId = UnitClass("player")
+local _Melee = {}
+local DEATHKNIGHT = Data.DEATHKNIGHT
+local DRUID = Data.DRUID
+local ROGUE = Data.ROGUE
+local SHAMAN = Data.SHAMAN
+local WARRIOR = Data.WARRIOR
+-- keep-sorted end
 
 ---@return number
 function Data:GetMeleeAttackPower()
@@ -77,11 +86,9 @@ function _Melee:GetHitTalentBonus()
     local mod = 0
     if IsClassic then
         if classId == Data.SHAMAN then
-            -- Nature's Guidance
-            mod = 1 * DataUtils:GetActiveTalentSpell({16180,16196,16198})
+            mod = 1 * DataUtils:GetActiveTalentSpell(Data.Talent[SHAMAN].NATURES_GUIDANCE)
         elseif classId == Data.ROGUE then
-            -- precision
-            mod = 1 * DataUtils:GetActiveTalentSpell({13705,13832,13843,13844,13845})
+            mod = 1 * DataUtils:GetActiveTalentSpell(Data.Talent[ROGUE].PRECISION)
         end
     end
 
@@ -99,7 +106,7 @@ function _Melee.GetHitFromRunes()
     local finger1Rune = DataUtils.GetRuneForEquipSlot(Utils.CHAR_EQUIP_SLOTS.Finger1)
     local finger2Rune = DataUtils.GetRuneForEquipSlot(Utils.CHAR_EQUIP_SLOTS.Finger2)
 
-    if classId == Data.DRUID and (finger1Rune == 7520 or finger2Rune == 7520) and DataUtils:IsShapeshifted() then
+    if classId == DRUID and (finger1Rune == 7520 or finger2Rune == 7520) and DataUtils:IsShapeshifted() then
         mod = mod + 3 -- 3% from Feral Combat Specialization Rune
     end
 
@@ -222,15 +229,15 @@ end
 function Data:GetArmorPenetration()
     local armorPenetration = GetArmorPenetration()
 
-    if IsWotlk and classId == Data.WARRIOR then
+    if IsWotlk and classId == WARRIOR then
         local _, isActive = GetShapeshiftFormInfo(1)
         if isActive then
             armorPenetration = armorPenetration + 10 -- 10% from Battle Stance
         end
     end
 
-    if classId == Data.DEATHKNIGHT then
-        armorPenetration = armorPenetration + 2 * DataUtils:GetActiveTalentSpell({61274,61275,61276,61277,61278}) -- Blood Gorged
+    if classId == DEATHKNIGHT then
+        armorPenetration = armorPenetration + 2 * DataUtils:GetActiveTalentSpell(Data.Talent[DEATHKNIGHT].BLOOD_GORGED)
     end
 
     return DataUtils:Round(armorPenetration, 2) .. "%"

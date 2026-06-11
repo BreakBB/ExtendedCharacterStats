@@ -1,4 +1,4 @@
-local CR_DEFENSE_SKILL = CR_DEFENSE_SKILL
+-- keep-sorted start case=no
 local ECSLoader = ECSLoader
 local floor = math.floor
 local GetBlockChance = GetBlockChance
@@ -19,6 +19,7 @@ local OffhandHasShield = C_PaperDollInfo.OffhandHasShield
 local UnitArmor = UnitArmor
 local UnitClass = UnitClass
 local UnitLevel = UnitLevel
+-- keep-started end
 
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
@@ -27,13 +28,17 @@ local DataUtils = ECSLoader:ImportModule("DataUtils")
 ---@type Utils
 local Utils = ECSLoader:ImportModule("Utils")
 
-local _Defense = {}
-
+-- keep-sorted start case=no
 local _, _, classId = UnitClass("player")
-
-local MAX_SKILL = (UnitLevel("player")) * 5
+local _Defense = {}
 -- Every 25 defense reduce the chance to be critically hit by 1 %
 local DEFENSE_FOR_CRIT_REDUCTION = 25
+local DRUID = Data.DRUID
+local MAX_SKILL = (UnitLevel("player")) * 5
+local PRIEST = Data.PRIEST
+local ROGUE = Data.ROGUE
+local WARLOCK = Data.WARLOCK
+-- keep-sorted end
 
 ---@return number
 function Data:GetArmorValue()
@@ -84,20 +89,20 @@ function _Defense:GetCritReduction()
     end
     local critReducingFromResilience = GetCombatRatingBonus(15)
 
-    if classId == Data.DRUID then
+    if classId == DRUID then
         local coeff = IsWotlk and 2 or 1
-        meleeCritReduction = meleeCritReduction + coeff * DataUtils:GetActiveTalentSpell({33853,33855,33856}) -- Survival of the Fittest
-    elseif classId == Data.PRIEST then
+        meleeCritReduction = meleeCritReduction + coeff * DataUtils:GetActiveTalentSpell(Data.Talent[DRUID].SURVIVAL_OF_THE_FITTEST)
+    elseif classId == PRIEST then
         if IsTBC then
-            spellCritReduction = spellCritReduction + 2 * DataUtils:GetActiveTalentSpell({14910,33371})  -- shadow resilience
+            spellCritReduction = spellCritReduction + 2 * DataUtils:GetActiveTalentSpell(Data.Talent[PRIEST].SHADOW_RESILIENCE)
         end
-    elseif classId == Data.ROGUE then
-        local mod = 1 * DataUtils:GetActiveTalentSpell({30892,30893}) -- Sleight of Hand
+    elseif classId == ROGUE then
+        local mod = 1 * DataUtils:GetActiveTalentSpell(Data.Talent[ROGUE].SLEIGHT_OF_HAND)
         meleeCritReduction = meleeCritReduction + mod
         rangedCritReduction = rangedCritReduction + mod
-    elseif classId == Data.WARLOCK then
+    elseif classId == WARLOCK then
         if not IsClassic then
-            local mod = 1 * DataUtils:GetActiveTalentSpell({30319,30320,30321}) -- Demonic Resilience
+            local mod = 1 * DataUtils:GetActiveTalentSpell(Data.Talent[WARLOCK].DEMONIC_RESILIENCE)
             meleeCritReduction = meleeCritReduction + mod
             rangedCritReduction = rangedCritReduction + mod
         end
