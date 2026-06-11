@@ -182,6 +182,126 @@ local defenseConfigTranslations = {
         ["esMX"] = false,
         ["ptBR"] = false
     },
+    ["Shows/Hides the resistance to curses."] = {
+        ["enUS"] = true,
+        ["deDE"] = false,
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false
+    },
+    ["Shows/Hides the resistance to poisons."] = {
+        ["enUS"] = true,
+        ["deDE"] = false,
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false
+    },
+    ["Shows/Hides the resistance to diseases."] = {
+        ["enUS"] = true,
+        ["deDE"] = false,
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false
+    },
+    ["Shows/Hides the resistance to interrupts mechanics."] = {
+        ["enUS"] = true,
+        ["deDE"] = false,
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false
+    },
+    ["Shows/Hides the resistance to silence mechanics."] = {
+        ["enUS"] = true,
+        ["deDE"] = false,
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false
+    },
+    ["Shows/Hides the resistance to charm mechanics."] = {
+        ["enUS"] = true,
+        ["deDE"] = false,
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false
+    },
+    ["Shows/Hides the resistance to disorient mechanics."] = {
+        ["enUS"] = true,
+        ["deDE"] = false,
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false
+    },
+    ["Shows/Hides the resistance to root mechanics."] = {
+        ["enUS"] = true,
+        ["deDE"] = false,
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false
+    },
+    ["Shows/Hides the resistance to stun mechanics."] = {
+        ["enUS"] = true,
+        ["deDE"] = false,
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false
+    },
+    ["Shows/Hides the resistance to horror mechanics."] = {
+        ["enUS"] = true,
+        ["deDE"] = false,
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false
+    },
+    ["Shows/Hides the resistance to fear mechanics."] = {
+        ["enUS"] = true,
+        ["deDE"] = false,
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false
+    },
+    ["Shows/Hides the resistance to snare mechanics."] = {
+        ["enUS"] = true,
+        ["deDE"] = false,
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false
+    },
 }
 
 for k, v in pairs(defenseConfigTranslations) do
