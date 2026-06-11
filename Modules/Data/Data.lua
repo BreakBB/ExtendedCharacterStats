@@ -77,12 +77,12 @@ dataFunctionRefs = {
     ["SpellHasteBonus"] = function() return Data:GetSpellHasteBonus() end,
     ["SpellPenetration"] = function() return Data:GetSpellPenetration() end,
     -- MP5
-    ["MP5Items"] = function() return Data:GetMP5FromItems() end,
-    ["MP5Spirit"] = function() return Data:GetMP5FromSpirit() end,
-    ["MP5Buffs"] = function()
-        local _, mp5Buffs = Data:GetMP5FromBuffs()
-        return mp5Buffs
+    ["MP5Periodic"] = function() function()
+        local _, _, _, periodicMana = Data:GetMP5FromBuffs()
+        return periodicMana
     end,
+    ["MP5Spirit"] = function() return Data:GetMP5FromSpirit() end,
+    ["MP5CastingModifier"] = function() return Data:GetMP5CastingModifier() end,
     ["MP5Casting"] = function() return Data:GetMP5WhileCasting() end,
     ["MP5NotCasting"] = function() return Data:GetMP5OutsideCasting() end,
     -- Spell Power by school
