@@ -328,7 +328,7 @@ _CreateStatInfos = function()
             category.mp5Periodic,
             category.mp5CastingModifier,
             category.mp5Casting,
-            category.mp5NotCasting,
+            category.mp5NotCasting
         )
     end
 
