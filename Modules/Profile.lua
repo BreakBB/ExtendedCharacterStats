@@ -6,7 +6,7 @@ local Utils = ECSLoader:ImportModule("Utils")
 
 ---@return number
 function Profile.GetProfileVersion()
-    return 25
+    return 26
 end
 
 ---@return ECSProfile
@@ -19,7 +19,11 @@ local function GetDefaultStatsProfile()
             refName = "GeneralHeader",
             text = "General",
 
-            movementSpeed = {display = true, refName = "MovementSpeed", text = "Movement Speed"},
+            movementSpeed = {
+                display = true,
+                refName = "MovementSpeed",
+                text = "Movement Speed"
+            },
         },
 
         melee = {
@@ -106,7 +110,7 @@ local function GetDefaultStatsProfile()
             crit = {
                 display = true,
                 refName = "MeleeCritChance",
-                text = "Crit Chance",
+                text = "Crit. Chance",
                 textColor = colors.CRIT_SECONDARY,
                 statColor = colors.CRIT_PRIMARY
             },
@@ -222,7 +226,7 @@ local function GetDefaultStatsProfile()
             crit = {
                 display = true,
                 refName = "RangedCritChance",
-                text = "Crit Chance",
+                text = "Crit. Chance",
                 textColor = colors.CRIT_SECONDARY,
                 statColor = colors.CRIT_PRIMARY
             },
@@ -269,21 +273,61 @@ local function GetDefaultStatsProfile()
             text = "Defense",
 
             armor = {display = true, refName = "Armor", text = "Armor"},
-            meleeCritReduction = {display = true, refName = "MeleeCritReduction", text = "Melee Crit Reduction"},
-            rangedCritReduction = {display = true, refName = "RangedCritReduction", text = "Ranged Crit Reduction"},
-            spellCritReduction = {display = true, refName = "SpellCritReduction", text = "Spell Crit Reduction"},
-            avoidance = {display = true, refName = "Avoidance", text = "Avoidance"},
-            avoidanceBoss = {display = true, refName = "AvoidanceBoss", text = "Avoidance (Lvl +3)"},
+            meleeCritReduction = {
+                display = true,
+                refName = "MeleeCritReduction",
+                text = "Melee Crit. Reduction"
+            },
+            rangedCritReduction = {
+                display = true,
+                refName = "RangedCritReduction",
+                text = "Ranged Crit. Reduction"
+            },
+            spellCritReduction = {
+                display = true,
+                refName = "SpellCritReduction",
+                text = "Spell Crit. Reduction"
+            },
+            avoidance = {
+                display = true,
+                refName = "Avoidance",
+                text = "Avoidance"
+            },
+            avoidanceBoss = {
+                display = true,
+                refName = "AvoidanceBoss",
+                text = "Avoidance (Lvl +3)"
+            },
             defenseRating = {
                 display = true,
                 refName = "DefenseRating",
                 text = "Defense Rating"
             },
-            defense = {display = true, refName = "DefenseValue", text = "Defense"},
-            blockChance = {display = true, refName = "BlockChance", text = "Block Chance"},
-            blockValue = {display = true, refName = "BlockValue", text = "Block Value"},
-            parry = {display = true, refName = "ParryChance", text = "Parry Chance"},
-            dodge = {display = true, refName = "DodgeChance", text = "Dodge Chance"},
+            defense = {
+                display = true,
+                refName = "DefenseValue",
+                text = "Defense"
+            },
+            blockChance = {
+                display = true,
+                refName = "BlockChance",
+                text = "Block Chance"
+            },
+            blockValue = {
+                display = true,
+                refName = "BlockValue",
+                text = "Block Value"
+            },
+            parry = {
+                display = true,
+                refName = "ParryChance",
+                text = "Parry Chance"
+            },
+            dodge = {
+                display = true,
+                refName = "DodgeChance",
+                text = "Dodge Chance"
+            },
             resilienceRating = {
                 display = true,
                 refName = "ResilienceValue",
@@ -564,49 +608,49 @@ local function GetDefaultStatsProfile()
                 arcane = {
                     display = true,
                     refName = "ArcaneCritChance",
-                    text = "Arcane Crit",
+                    text = "Arcane Crit.",
                     textColor = colors.ARCANE_SECONDARY,
                     statColor = colors.ARCANE_PRIMARY
                 },
                 fire = {
                     display = true,
                     refName = "FireCritChance",
-                    text = "Fire Crit",
+                    text = "Fire Crit.",
                     textColor = colors.FIRE_SECONDARY,
                     statColor = colors.FIRE_PRIMARY
                 },
                 frost = {
                     display = true,
                     refName = "FrostCritChance",
-                    text = "Frost Crit",
+                    text = "Frost Crit.",
                     textColor = colors.FROST_SECONDARY,
                     statColor = colors.FROST_PRIMARY
                 },
                 holy = {
                     display = true,
                     refName = "HolyCritChance",
-                    text = "Holy Crit",
+                    text = "Holy Crit.",
                     textColor = colors.HOLY_SECONDARY,
                     statColor = colors.HOLY_PRIMARY
                 },
                 nature = {
                     display = true,
                     refName = "NatureCritChance",
-                    text = "Nature Crit",
+                    text = "Nature Crit.",
                     textColor = colors.NATURE_SECONDARY,
                     statColor = colors.NATURE_PRIMARY
                 },
                 physical = {
                     display = true,
                     refName = "PhysicalCritChance",
-                    text = "Physical Crit",
+                    text = "Physical Crit.",
                     textColor = colors.PHYSICAL_SECONDARY,
                     statColor = colors.PHYSICAL_PRIMARY
                 },
                 shadow = {
                     display = true,
                     refName = "ShadowCritChance",
-                    text = "Shadow Crit",
+                    text = "Shadow Crit.",
                     textColor = colors.SHADOW_SECONDARY,
                     statColor = colors.SHADOW_PRIMARY
                 },
