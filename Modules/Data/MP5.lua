@@ -103,7 +103,7 @@ end
 function Data:GetMP5WhileCasting()
     -- Returns mana reg per 1 second (including talent and buff casting modifiers)
     local _, casting = GetManaRegen()
-    local modifier, _, mp5BuffBonus, periodicMan = Data:GetMP5FromBuffs()
+    local modifier, _, mp5BuffBonus, periodicMana = Data:GetMP5FromBuffs()
     casting = casting * 5
     if ECS.IsClassic then
         -- in classic GetManaRegen doesn't account for mp5 from items nor buffs
