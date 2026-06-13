@@ -382,15 +382,15 @@ local statTranslations = {
         ["esMX"] = "Maná",
         ["ptBR"] = true
     },
-    ["MP5 (Items)"] = {
+    ["MP5 Casting Modifier"] = {
         ["enUS"] = true,
-        ["deDE"] = "MP5 (Gegenstände)",
-        ["frFR"] = "MP5 (Objets)",
-        ["zhCN"] = "装备回蓝",
-        ["ruRU"] = "MP5 (экип.)",
-        ["esES"] = "MP5 (Objetos)",
-        ["esMX"] = "MP5 (Objetos)",
-        ["ptBR"] = "MP5 (Itens)"
+        ["deDE"] = "",
+        ["frFR"] = "",
+        ["zhCN"] = "",
+        ["ruRU"] = "",
+        ["esES"] = "",
+        ["esMX"] = "",
+        ["ptBR"] = "",
     },
     ["MP5 (Spirit)"] = {
         ["enUS"] = true,
@@ -402,15 +402,15 @@ local statTranslations = {
         ["esMX"] = "MP5 (Espíritu)",
         ["ptBR"] = "MP5 (Espírito)"
     },
-    ["MP5 (Buffs)"] = {
+    ["MP5 (Periodic)"] = {
         ["enUS"] = true,
-        ["deDE"] = "MP5 (Stärkungszauber)",
-        ["frFR"] = "MP5 (Améliorations)",
-        ["zhCN"] = "增益回蓝",
-        ["ruRU"] = "MP5 (баффы)",
-        ["esES"] = "MP5 (Beneficios)",
-        ["esMX"] = "MP5 (Beneficios)",
-        ["ptBR"] = "MP5 (Bônus)"
+        ["deDE"] = "",
+        ["frFR"] = "",
+        ["zhCN"] = "",
+        ["ruRU"] = "",
+        ["esES"] = "",
+        ["esMX"] = "",
+        ["ptBR"] = "",
     },
     ["MP5 (Casting)"] = {
         ["enUS"] = true,
