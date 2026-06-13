@@ -25,9 +25,9 @@ function Migration:ToLatestProfileVersion(profileVersion)
         ExtendedCharacterStats.profile.defense.resilience = nil
     end
     if profileVersion < 26 then
-        ExtendedCharacterStats.profile.regen.MP5Buffs = nil
-        ExtendedCharacterStats.profile.regen.MP5Items = nil
-        ExtendedCharacterStats.profile.regen.MP5Periodic = defaultProfile.profile.regen.MP5Periodic
-        ExtendedCharacterStats.profile.regen.MP5CastingModifier = defaultProfile.profile.MP5CastingModifier
+        ExtendedCharacterStats.profile.regen.mp5Buffs = nil
+        ExtendedCharacterStats.profile.regen.mp5Items = nil
+        ExtendedCharacterStats.profile.regen.mp5Periodic = defaultProfile.profile.regen.mp5Periodic
+        ExtendedCharacterStats.profile.regen.mp5CastingModifier = defaultProfile.profile.mp5CastingModifier
     end
 end
