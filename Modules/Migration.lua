@@ -28,6 +28,6 @@ function Migration:ToLatestProfileVersion(profileVersion)
         ExtendedCharacterStats.profile.regen.mp5Buffs = nil
         ExtendedCharacterStats.profile.regen.mp5Items = nil
         ExtendedCharacterStats.profile.regen.mp5Periodic = defaultProfile.profile.regen.mp5Periodic
-        ExtendedCharacterStats.profile.regen.mp5CastingModifier = defaultProfile.profile.mp5CastingModifier
+        ExtendedCharacterStats.profile.regen.mp5CastingModifier = defaultProfile.profile.regen.mp5CastingModifier
     end
 end
