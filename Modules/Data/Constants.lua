@@ -765,12 +765,12 @@ Data.Talent = {
         -- keep-sorted start
         CONVICTION = {20117,20118,20119,20120,20121},
         ENLIGHTENED_JUDGEMENTS = {53556,53557},
+        HOLY_POWER = {5923,5924,5925,5926,25829},
         SANCTITY_OF_BATTLE = {32043,35396,35397},
         -- keep-sorted end
     },
     [Data.PRIEST] = {
         -- keep-sorted start
-        HOLY_POWER = {5923,5924,5925,5926,25829},
         HOLY_SPECIALIZATION = {14889,15008,15009,15010,15011},
         MEDITATION = {14521,14776,14777},
         SHADOW_FOCUS = {15260,15327,15328},
