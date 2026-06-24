@@ -19,7 +19,7 @@ function _Config:LoadManaSection()
             showManaStats = {
                 type = "toggle",
                 order = 0,
-                name = function() return i18n("Show Mana Stats") end,
+                name = function() return i18n("Show mana stats") end,
                 desc = function() return i18n("Shows/Hides all mana stats.") end,
                 width = 1.5,
                 get = function () return ExtendedCharacterStats.profile.regen.display; end,
