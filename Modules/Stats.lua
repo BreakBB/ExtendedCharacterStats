@@ -1,3 +1,27 @@
+local After = C_Timer.After
+local CanDualWield = CanDualWield
+local CharacterModelFrame = CharacterModelFrame
+local ECSConfigFrame = ECSConfigFrame
+local ECSLoader = ECSLoader
+local error = error
+local ExtendedCharacterStats = ExtendedCharacterStats
+local insert = table.insert
+local IsClassic = ECS.IsClassic
+local IsSoD = ECS.IsSoD
+local IsTBC = ECS.IsTBC
+local IsWotlk = ECS.IsWotlk
+local LeaPlusDB = LeaPlusDB
+local OutfitterButton = OutfitterButton
+local OutfitterButtonFrame = OutfitterButtonFrame
+local OutfitterFrame = OutfitterFrame
+local pairs = pairs
+local PaperDollItemsFrame = PaperDollItemsFrame
+local PawnInitialize = PawnInitialize
+local remove = table.remove
+local type = type
+local UnitClass = UnitClass
+local UnitHasMana = UnitHasMana
+
 ------------------------------------------------------------------
 -- Modules
 ------------------------------------------------------------------
@@ -36,6 +60,8 @@ local colors = Utils.colors
 local framePool = {}
 local lastYOffset = 20
 local engravingFrameHooked = false
+
+local _, _, classId = UnitClass("player")
 ------------------------------------------------------------------
 
 
@@ -104,9 +130,9 @@ function Stats.CreateWindow()
             Stats:HideWindow()
         end
 
-        if ECS.IsSoD then
+        if IsSoD then
             -- next frame
-            C_Timer.After(0, function ()
+            After(0, function ()
                 if EngravingFrame then
                     if EngravingFrame:IsShown() then
                         mainFrame:ClearAllPoints()
@@ -244,24 +270,24 @@ _CreateStatInfos = function()
         category,
         category.attackPower,
         category.crit,
-        ECS.IsWotlk and category.penetrationRating or nil,
-        (not ECS.IsClassic) and category.penetration or nil,
-        (not ECS.IsClassic) and category.expertiseRating or nil,
-        (not ECS.IsClassic) and category.expertise or nil,
-        (not ECS.IsClassic) and category.hasteRating or nil,
-        (not ECS.IsClassic) and category.hasteBonus or nil
+        IsWotlk and category.penetrationRating or nil,
+        (not IsClassic) and category.penetration or nil,
+        (not IsClassic) and category.expertiseRating or nil,
+        (not IsClassic) and category.expertise or nil,
+        (not IsClassic) and category.hasteRating or nil,
+        (not IsClassic) and category.hasteBonus or nil
     )
     if category.display then
         category = category.hit
         _CreateStatInfo(
             category,
-            (not ECS.IsClassic) and category.rating or nil,
+            (not IsClassic) and category.rating or nil,
             category.bonus,
             category.sameLevel,
             category.bossLevel
         )
 
-        if (not ECS.IsWotlk) then
+        if (not IsWotlk) then
             category = profile.melee.glance
             _CreateStatInfo(category, category.sameLevel, category.damageSameLevel, category.bossLevel, category.damageBossLevel)
         end
@@ -280,10 +306,10 @@ _CreateStatInfos = function()
             category,
             category.attackPower,
             category.crit,
-            ECS.IsWotlk and category.penetrationRating or nil,
-            (not ECS.IsClassic) and category.penetration or nil,
-            (not ECS.IsClassic) and category.hasteRating or nil,
-            (not ECS.IsClassic) and category.hasteBonus or nil,
+            IsWotlk and category.penetrationRating or nil,
+            (not IsClassic) and category.penetration or nil,
+            (not IsClassic) and category.hasteRating or nil,
+            (not IsClassic) and category.hasteBonus or nil,
             category.attackSpeed
         )
 
@@ -291,7 +317,7 @@ _CreateStatInfos = function()
             category = category.hit
             _CreateStatInfo(
                 category,
-                (not ECS.IsClassic) and category.rating or nil,
+                (not IsClassic) and category.rating or nil,
                 category.bonus,
                 category.sameLevel,
                 category.bossLevel
@@ -308,17 +334,35 @@ _CreateStatInfos = function()
         category.spellCritReduction,
         category.avoidance,
         category.avoidanceBoss,
-        (not ECS.IsClassic) and category.defenseRating or nil,
+        (not IsClassic) and category.defenseRating or nil,
         category.defense,
-        (not ECS.IsClassic and DataUtils:CanBlock()) and category.blockRating or nil,
+        (not IsClassic and DataUtils:CanBlock()) and category.blockRating or nil,
         DataUtils:CanBlock() and category.blockChance or nil,
         DataUtils:CanBlock() and category.blockValue or nil,
-        (not ECS.IsClassic and DataUtils:CanParry()) and category.parryRating or nil,
+        (not IsClassic and DataUtils:CanParry()) and category.parryRating or nil,
         DataUtils:CanParry() and category.parry or nil,
-        (not ECS.IsClassic) and category.dodgeRating or nil,
+        (not IsClassic) and category.dodgeRating or nil,
         category.dodge or nil,
-        (not ECS.IsClassic) and category.resilienceRating or nil
+        (not IsClassic) and category.resilienceRating or nil
     )
+    if category.display then
+        category = category.mechanicResistance
+        _CreateStatInfo(
+            category,
+            category.stun,
+            ((not IsWotlk) and (classId == Data.WARRIOR)) and category.charm or nil,
+            ((not IsClassic) or (classId == Data.PALADIN)) and category.disorient or nil,
+            ((not IsWotlk) and IsClassic and (classId == Data.HUNTER)) and category.root or nil,
+            ((not IsWotlk) and IsClassic and (classId == Data.HUNTER)) and category.snare or nil,
+            (IsClassic or (classId == Data.PRIEST or classId == Data.MAGE or classId == Data.WARLOCK)) and category.silence or nil,
+            category.interrupt,
+            category.fleeing,
+            IsTBC and category.horror or nil,
+            (not IsTBC) or (classId ~= Data.PALADIN) and category.curse or nil,
+            (not IsTBC) or (classId ~= Data.PALADIN) and category.disease or nil,
+            (not IsTBC) or (classId ~= Data.ROGUE) and category.poison or nil
+        )
+    end
 
     if UnitHasMana("player") then
         category = profile.regen
@@ -332,12 +376,12 @@ _CreateStatInfos = function()
     local spellHit = spell.hit
     _CreateStatInfo(
         category,
-        (not ECS.IsClassic) and category.hasteRating or nil,
+        (not IsClassic) and category.hasteRating or nil,
         category.hasteBonus,
-        (not ECS.IsClassic) and category.penetrationRating or nil,
-        (not ECS.IsClassic) and category.penetration or nil,
+        (not IsClassic) and category.penetrationRating or nil,
+        (not IsClassic) and category.penetration or nil,
         spellBonus.bonusHealing,
-        (not ECS.IsClassic) and spellHit.rating or nil,
+        (not IsClassic) and spellHit.rating or nil,
         spell.arcane.display and spellBonus.arcaneDmg or nil,
         spell.arcane.display and spellCrit.display and spellCrit.arcane or nil,
         spell.arcane.display and spellHit.bonus.display and spellHit.arcaneHitBonus or nil,
@@ -387,7 +431,7 @@ _CreateHeader = function(name, displayText, isSubHeader)
     end
     lastYOffset = lastYOffset - 20
     ---@class StatsHeader
-    local header = table.remove(framePool)
+    local header = remove(framePool)
     if not header then
         header = _Stats.frame.ScrollChild:CreateFontString(name, "OVERLAY", headerFont)
     else
@@ -412,7 +456,7 @@ _CreateText = function(name, displayText, isSubText)
 
     lastYOffset = lastYOffset - 15
     ---@class StatsText
-    local stat = table.remove(framePool)
+    local stat = remove(framePool)
     if not stat then
         stat = _Stats.frame.ScrollChild:CreateFontString(name, "OVERLAY", statFont)
     else
@@ -429,7 +473,7 @@ end
 ---@param frame StatsHeader|StatsText
 function Stats:RecycleFrame(frame)
     frame:Hide()
-    table.insert(framePool, frame)
+    insert(framePool, frame)
 end
 
 --- Resets the Y-Offset and rebuilds the displayed frames
