@@ -143,29 +143,37 @@ function _Defense:GetEnemyMissChance(enemyLevel)
     return miss
 end
 
+---@param enemyLevel number
 ---@return number
-function _Defense:GetBlockChance()
+function _Defense:GetBlockChance(enemyLevel)
     local block = 0
     if C_SpellBook.IsSpellKnown(107) and C_PaperDollInfo.OffhandHasShield() then
-       block = GetBlockChance()
+        block = GetBlockChance() + ((UnitLevel("player") - enemyLevel) * .20)
     end
     return block
 end
 
+---@param enemyLevel number
 ---@return number
-function _Defense:GetParryChance()
+function _Defense:GetParryChance(enemyLevel)
     local parry = 0
     if C_SpellBook.IsSpellKnown(3127) or C_SpellBook.IsSpellKnown(18848) or C_SpellBook.IsSpellKnown(3124) then
-        parry = GetParryChance()
+        -- In theory we should compare the player's base defense skill with
+        -- the attacker's weapon skill. Unfortunately there's no API function
+        -- to retrieve the former. The following formula leads to the same
+        -- results except when the player just gained a level and his/her
+        -- defense skill did not catch up yet.
+        parry = GetParryChance() + ((UnitLevel("player") - enemyLevel) * .20)
     end
     return parry
 end
 
+---@param enemyLevel number
 ---@return number
-function _Defense:GetDodgeChance()
+function _Defense:GetDodgeChance(enemyLevel)
     local dodge = 0
     if C_SpellBook.IsSpellKnown(81) then
-        dodge = GetDodgeChance()
+        dodge = GetDodgeChance() + ((UnitLevel("player") - enemyLevel) * .20)
     end
     return dodge
 end
@@ -173,7 +181,7 @@ end
 ---@param enemyLevel number
 ---@return number
 function _Defense:GetAvoidance(enemyLevel)
-    return _Defense:GetEnemyMissChance(enemyLevel) + _Defense:GetBlockChance() + _Defense:GetParryChance() + _Defense:GetDodgeChance()
+    return _Defense:GetEnemyMissChance(enemyLevel) + _Defense:GetBlockChance(enemyLevel) + _Defense:GetParryChance(enemyLevel) + _Defense:GetDodgeChance(enemyLevel)
 end
 
 ---@return number
@@ -191,19 +199,22 @@ function Data:GetDefenseValue()
     return skillRank + skillModifier
 end
 
+---@param enemyLevel number
 ---@return string
-function Data:GetDodgeChance()
-    return DataUtils:Round(_Defense:GetDodgeChance(), 2) .. "%"
+function Data:GetDodgeChance(enemyLevel)
+    return DataUtils:Round(_Defense:GetDodgeChance(enemyLevel), 2) .. "%"
 end
 
+---@param enemyLevel number
 ---@return string
-function Data:GetParryChance()
-    return DataUtils:Round(_Defense:GetParryChance(), 2) .. "%"
+function Data:GetParryChance(enemyLevel)
+    return DataUtils:Round(_Defense:GetParryChance(enemyLevel), 2) .. "%"
 end
 
+---@param enemyLevel number
 ---@return string
-function Data:GetBlockChance()
-    return DataUtils:Round(_Defense:GetBlockChance(), 2) .. "%"
+function Data:GetBlockChance(enemyLevel)
+    return DataUtils:Round(_Defense:GetBlockChance(enemyLevel), 2) .. "%"
 end
 
 ---@param enemyLevel number
