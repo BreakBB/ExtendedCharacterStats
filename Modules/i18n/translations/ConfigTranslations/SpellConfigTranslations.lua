@@ -2,7 +2,7 @@
 local i18n = ECSLoader:ImportModule("i18n")
 
 local spellConfigTranslations = {
-    ["Show Spell Stats"] = {
+    ["Show spell stats"] = {
         ["enUS"] = true,
         ["deDE"] = "Zauberwerte anzeigen",
         ["frFR"] = "Afficher sorts",
@@ -22,7 +22,7 @@ local spellConfigTranslations = {
         ["esMX"] = "Muestra/oculta todas estadísticas de hechizos",
         ["ptBR"] = "Mostra/oculta todas as estatísticas de feitiços"
     },
-    ["Spell Crit"] = {
+    ["Spell Crit."] = {
         ["enUS"] = true,
         ["deDE"] = "Zauber Kritisch",
         ["frFR"] = "Critique des sorts",
@@ -32,7 +32,7 @@ local spellConfigTranslations = {
         ["esMX"] = "Crítico con hechizos",
         ["ptBR"] = "Crítico com feitiços",
     },
-    ["Shows/Hides the spell crit chance."] = {
+    ["Shows/Hides the spell crit. chance."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt die Chance mit einem Zauber kritisch zu treffen.",
         ["frFR"] = "Affiche/cache les chances d'infliger un coup critique avec les sorts.",
@@ -221,6 +221,26 @@ local spellConfigTranslations = {
         ["esES"] = "Muestra/oculta el valor de poder de curación",
         ["esMX"] = "Muestra/oculta el valor de poder de sanación",
         ["ptBR"] = "Mostra/oculta o valor de poder de cura"
+    },
+    ["Spell Crit. Values"] = {
+        ["enUS"] = true,
+        ["deDE"] = false,
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false,
+    },
+    ["Shows/Hides the spell crit. rating."] = {
+        ["enUS"] = true,
+        ["deDE"] = false,
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false,
     },
 }
 
