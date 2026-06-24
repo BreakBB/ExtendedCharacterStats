@@ -1,3 +1,26 @@
+-- keep-sorted start case=no
+local ECSLoader = ECSLoader
+local floor = math.floor
+local GetBlockChance = GetBlockChance
+local GetBuffDataByIndex = C_UnitAuras.GetBuffDataByIndex
+local GetCombatRating = GetCombatRating
+local GetCombatRatingBonus = GetCombatRatingBonus
+local GetDebuffDataByIndex = C_UnitAuras.GetDebuffDataByIndex
+local GetDodgeChance = GetBlockChance
+local GetInventoryItemLink = GetInventoryItemLink
+local GetParryChance  = GetBlockChance
+local GetShieldBlock = GetShieldBlock
+local IsClassic = ECS.IsClassic
+local IsSoD = ECS.IsSoD
+local IsSpellKnown = C_SpellBook.IsSpellKnown
+local IsTBC = ECS.IsTBC
+local IsWotlk = ECS.IsWotlk
+local OffhandHasShield = C_PaperDollInfo.OffhandHasShield
+local UnitArmor = UnitArmor
+local UnitClass = UnitClass
+local UnitLevel = UnitLevel
+-- keep-started end
+
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
@@ -33,27 +56,27 @@ function _Defense:GetCritReduction()
     local spellCritReduction = 0
     local i = 1
     repeat
-        local aura = C_UnitAuras.GetAuraDataByIndex("player", i, "HELPFUL")
+        local aura = GetBuffDataByIndex("player", i)
         i = i + 1
         if aura and aura.spellId then
             buffBonus = buffBonus + (Data.Aura.CritReductionAll[aura.spellId] or 0)
             meleeCritReduction = meleeCritReduction + (Data.Aura.CritReductionMelee[aura.spellId] or 0)
-            if ECS.IsWotlk and aura.spellId == 22812 and C_SpellBook.IsSpellKnown(63058) then
+            if IsWotlk and aura.spellId == 22812 and IsSpellKnown(63058) then
                 buffBonus = buffBonus + 25 -- Glyph of Barkskin
             end
         end
     until (not aura)
     i = 1
     repeat
-        local aura = C_UnitAuras.GetAuraDataByIndex("player", i, "HARMFUL")
+        local aura = GetDebuffDataByIndex("player", i)
         i = i + 1
         if aura and aura.spellId then
             buffBonus = buffBonus + (Data.Aura.CritReductionAll[aura.spellId] or 0)
             meleeCritReduction = meleeCritReduction + (Data.Aura.CritReductionMelee[aura.spellId] or 0)
             spellCritReduction = spellCritReduction + (Data.Aura.CritReductionSpell[aura.spellId] or 0)
-            if ECS.IsWotlk and aura.spellId == 12579 then
+            if IsWotlk and aura.spellId == 12579 then
                 spellCritReduction = spellCritReduction - 1 * aura.applications -- Winter's Chill
-            elseif ECS.IsSoD and aura.spellId == 1231399 then -- Legislate
+            elseif IsSoD and aura.spellId == 1231399 then -- Legislate
                 buffBonus = buffBonus - 3 * aura.applications
             end
         end
@@ -67,10 +90,10 @@ function _Defense:GetCritReduction()
     local critReducingFromResilience = GetCombatRatingBonus(15)
 
     if classId == DRUID then
-        local coeff = ECS.IsWotlk and 2 or 1
+        local coeff = IsWotlk and 2 or 1
         meleeCritReduction = meleeCritReduction + coeff * DataUtils:GetActiveTalentSpell(Data.Talent[DRUID].SURVIVAL_OF_THE_FITTEST)
     elseif classId == PRIEST then
-        if ECS.IsTBC then
+        if IsTBC then
             spellCritReduction = spellCritReduction + 2 * DataUtils:GetActiveTalentSpell(Data.Talent[PRIEST].SHADOW_RESILIENCE)
         end
     elseif classId == ROGUE then
@@ -78,15 +101,15 @@ function _Defense:GetCritReduction()
         meleeCritReduction = meleeCritReduction + mod
         rangedCritReduction = rangedCritReduction + mod
     elseif classId == WARLOCK then
-        if not ECS.IsClassic then
+        if not IsClassic then
             local mod = 1 * DataUtils:GetActiveTalentSpell(Data.Talent[WARLOCK].DEMONIC_RESILIENCE)
             meleeCritReduction = meleeCritReduction + mod
             rangedCritReduction = rangedCritReduction + mod
         end
     end
 
-    if ECS.IsSoD then
-        if classId == DRUID or classId == ROGUE then
+    if IsSoD then
+        if classId == Data.DRUID or classId == Data.ROGUE then
             local chestRune = DataUtils.GetRuneForEquipSlot(Utils.CHAR_EQUIP_SLOTS.Chest)
             if chestRune and (chestRune == 6710 or chestRune == 6972) then
                 meleeCritReduction = meleeCritReduction + 6 -- survival of the fittest / Just a Flesh Wound
@@ -125,9 +148,9 @@ function _Defense:GetEnemyMissChance(enemyLevel)
     local enemyAttackRating = enemyLevel * 5
 
     local miss
-    if ECS.IsWotlk then
-        local defense = math.floor(GetCombatRatingBonus(CR_DEFENSE_SKILL));
-        local enemyMissCoef = classId == DRUID and 0.972 or 0.956; -- 0.972 for bears
+    if IsWotlk then
+        local defense = floor(GetCombatRatingBonus(CR_DEFENSE_SKILL));
+        local enemyMissCoef = classId == Data.DRUID and 0.972 or 0.956; -- 0.972 for bears
         local baseMissChance = 5 - (enemyAttackRating - select(1, UnitDefense("player"))) * 0.04; -- vs lvl 80
         if defense > 0 then -- avoid possible division by 0
             local enemyMissChance = baseMissChance + 1 / (0.0625 + enemyMissCoef / (defense * 0.04))
@@ -146,7 +169,7 @@ end
 ---@return number
 function _Defense:GetBlockChance()
     local block = 0
-    if C_SpellBook.IsSpellKnown(107) and C_PaperDollInfo.OffhandHasShield() then
+    if IsSpellKnown(107) and OffhandHasShield() then
        block = GetBlockChance()
     end
     return block
@@ -155,7 +178,7 @@ end
 ---@return number
 function _Defense:GetParryChance()
     local parry = 0
-    if C_SpellBook.IsSpellKnown(3127) or C_SpellBook.IsSpellKnown(18848) or C_SpellBook.IsSpellKnown(3124) then
+    if IsSpellKnown(3127) or IsSpellKnown(18848) or IsSpellKnown(3124) then
         parry = GetParryChance()
     end
     return parry
@@ -164,7 +187,7 @@ end
 ---@return number
 function _Defense:GetDodgeChance()
     local dodge = 0
-    if C_SpellBook.IsSpellKnown(81) then
+    if IsSpellKnown(81) then
         dodge = GetDodgeChance()
     end
     return dodge
@@ -215,7 +238,7 @@ end
 ---@return number
 function Data:GetBlockValue()
     local blockValue = 0
-    if C_SpellBook.IsSpellKnown(107) and C_PaperDollInfo.OffhandHasShield() then
+    if IsSpellKnown(107) and OffhandHasShield() then
         blockValue = blockValue + GetShieldBlock() + _Defense:GetEnchantsBlockValue()
     end
     return DataUtils:Round(blockValue, 2)
