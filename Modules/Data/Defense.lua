@@ -148,7 +148,7 @@ end
 function _Defense:GetBlockChance(enemyLevel)
     local block = 0
     if C_SpellBook.IsSpellKnown(107) and C_PaperDollInfo.OffhandHasShield() then
-        block = GetBlockChance() + ((UnitLevel("player") - enemyLevel) * .20)
+       block = GetBlockChance() + ((UnitLevel("player") - enemyLevel) * .20)
     end
     return block
 end
