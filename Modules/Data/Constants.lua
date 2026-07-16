@@ -773,7 +773,7 @@ Data.Talent = {
         -- keep-sorted start
         HOLY_SPECIALIZATION = {14889,15008,15009,15010,15011},
         MEDITATION = {14521,14776,14777},
-        SHADOW_FOCUS = {15260,15327,15328},
+        SHADOW_FOCUS = {15260,15327,15328,15329,15330},
         SHADOW_RESILIENCE = {14910,33371},
         -- keep-sorted end
     },
