@@ -322,7 +322,14 @@ _CreateStatInfos = function()
 
     if UnitHasMana("player") then
         category = profile.regen
-        _CreateStatInfo(category, category.mp5Items, category.mp5Spirit, category.mp5Buffs, category.mp5Casting, category.mp5NotCasting)
+        _CreateStatInfo(
+            category,
+            category.mp5Spirit,
+            category.mp5Periodic,
+            category.mp5CastingModifier,
+            category.mp5Casting,
+            category.mp5NotCasting
+        )
     end
 
     category = profile.spell
