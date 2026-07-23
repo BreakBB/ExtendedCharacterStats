@@ -27,3 +27,4 @@
 ---@alias EquipSlot string
 ---@alias ItemLink string
 ---@alias Color string
+---@alias Bitmask number
