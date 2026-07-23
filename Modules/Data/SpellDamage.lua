@@ -1,3 +1,15 @@
+local ECSLoader = ECSLoader
+local GetBuffDataByIndex = C_UnitAuras.GetBuffDataByIndex
+local GetCombatRating = GetCombatRating
+local GetDebuffDataByIndex = C_UnitAuras.GetDebuffDataByIndex
+local GetHaste = GetHaste
+local GetInventoryItemID = GetInventoryItemID
+local GetPlayerAuraBySpellID = C_UnitAuras.GetPlayerAuraBySpellID
+local GetSpellBonusDamage = GetSpellBonusDamage
+local GetSpellBonusHealing = GetSpellBonusHealing
+local GetSpellPenetration = GetSpellPenetration
+local IsSoD = ECS.IsSoD
+
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
@@ -35,7 +47,7 @@ function Data:GetSpellHasteBonus()
     local hasteBonus = GetHaste()
 
     -- items
-    if ECS.IsSoD then
+    if IsSoD then
         local timeworn = DataUtils:CountTimewornItems()
         for i = 1, 18 do
             local id, _ = GetInventoryItemID("player", i)
@@ -47,7 +59,7 @@ function Data:GetSpellHasteBonus()
     -- buffs
     local i = 1
     repeat
-        local aura = C_UnitAuras.GetBuffDataByIndex("player", i)
+        local aura = GetBuffDataByIndex("player", i)
         if aura and aura.spellId then
             hasteBonus = hasteBonus + (Data.Aura.SpellHaste[aura.spellId] or 0)
         end
@@ -57,7 +69,7 @@ function Data:GetSpellHasteBonus()
     -- debuffs
     i = 1
     repeat
-        local aura = C_UnitAuras.GetDebuffDataByIndex("player", i)
+        local aura = GetDebuffDataByIndex("player", i)
         if aura and aura.spellId then
             hasteBonus = hasteBonus + (Data.Aura.SpellHaste[aura.spellId] or 0)
         end
@@ -65,8 +77,8 @@ function Data:GetSpellHasteBonus()
     until (not aura)
 
     -- not stacking buffs
-    if ECS.IsSoD then
-        local aura = C_UnitAuras.GetPlayerAuraBySpellID(1219557) -- Power of the Guardian
+    if IsSoD then
+        local aura = GetPlayerAuraBySpellID(1219557) -- Power of the Guardian
         if aura then
             hasteBonus = hasteBonus + 2
         end

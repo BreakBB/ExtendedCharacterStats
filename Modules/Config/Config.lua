@@ -1,3 +1,9 @@
+local ECS = ECS
+local ECSLoader = ECSLoader
+local insert = table.insert
+local LibStub = LibStub
+local ReloadUI = ReloadUI
+
 ------------------------------------------------------------------
 -- Modules
 ------------------------------------------------------------------
@@ -35,7 +41,7 @@ function Config.CreateWindow()
     configFrame:Hide();
 
     ECSConfigFrame = configFrame.frame;
-    table.insert(UISpecialFrames, "ECSConfigFrame");
+    insert(UISpecialFrames, "ECSConfigFrame");
 end
 
 _CreateGUI = function()

@@ -1,3 +1,6 @@
+local ECSLoader = ECSLoader
+local pairs = pairs
+
 ---@type i18n
 local i18n = ECSLoader:ImportModule("i18n")
 
