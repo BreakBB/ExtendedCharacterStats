@@ -226,16 +226,6 @@ function Data:GetArmorPenetration()
 end
 
 ---@return number
-function Data:GetArmorPenetrationRating()
-    if (not CR_ARMOR_PENETRATION) then
-        return 0
-    end
-
-    local armorPenetrationRating = GetCombatRating(CR_ARMOR_PENETRATION)
-    return DataUtils:Round(armorPenetrationRating, 0)
-end
-
----@return number
 function Data:GetMeleeHasteRating()
     if (not CR_HASTE_MELEE) then
         return 0
@@ -254,4 +244,3 @@ function Data:GetMeleeHasteBonus()
     local hasteBonus = GetCombatRatingBonus(CR_HASTE_MELEE)
     return DataUtils:Round(hasteBonus, 2) .. "%"
 end
-
