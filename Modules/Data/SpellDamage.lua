@@ -1,7 +1,17 @@
+-- keep-sorted start case=no
+local IsWotlk = ECS.IsWotlk
+local UnitClass = UnitClass
+-- keep-sorted end
+
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
 local DataUtils = ECSLoader:ImportModule("DataUtils")
+
+-- keep-sorted start case=no
+local _, _, classId = UnitClass("player")
+local _SpellHaste = {}
+-- keep-sorted end
 
 ---@param school number
 ---@return number
@@ -33,6 +43,7 @@ end
 ---@return string
 function Data:GetSpellHasteBonus()
     local hasteBonus = GetHaste()
+    hasteBonus = hasteBonus + _SpellHaste:GetTalentSpellHaste()
 
     -- items
     if ECS.IsSoD then
@@ -60,6 +71,9 @@ function Data:GetSpellHasteBonus()
         local aura = C_UnitAuras.GetDebuffDataByIndex("player", i)
         if aura and aura.spellId then
             hasteBonus = hasteBonus + (Data.Aura.SpellHaste[aura.spellId] or 0)
+            if aura.spellId == 32264 then
+                mod = mod -50 * aura.applications -- Inhibit Magic
+            end
         end
         i = i + 1
     until (not aura)
@@ -73,4 +87,20 @@ function Data:GetSpellHasteBonus()
     end
 
     return DataUtils:Round(hasteBonus, 2) .. "%"
+end
+
+---@return number
+function _SpellHaste:GetTalentSpellHaste()
+    local bonus = 0
+    if IsWotlk then
+        if classId == Data.DRUID then
+            bonus = bonus + 1 * DataUtils:GetActiveTalentSpell({16850,16923,16924}) -- Celestial Focus
+            bonus = bonus + 2 * DataUtils:GetActiveTalentSpell({51179,51180,51181,51182,51183}) -- Gift of the Earthmother
+        elseif classId == Data.MAGE then
+            bonus = bonus + 2 * DataUtils:GetActiveTalentSpell({44400,44402,44403}) -- Netherwind Presence
+        elseif classId == Data.PRIEST then
+            bonus = bonus + 2 * DataUtils:GetActiveTalentSpell({34908,34909,34910}) -- Enlightenment
+        end
+    end
+    return bonus
 end
