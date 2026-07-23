@@ -2,7 +2,7 @@
 local i18n = ECSLoader:ImportModule("i18n")
 
 local manaConfigTranslations = {
-    ["Show Mana Stats"] = {
+    ["Show mana stats"] = {
         ["enUS"] = true,
         ["deDE"] = "Manawerte anzeigen",
         ["frFR"] = "Afficher mana",

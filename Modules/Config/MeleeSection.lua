@@ -18,7 +18,7 @@ function _Config:LoadMeleeSection()
             showMeleeStats = {
                 type = "toggle",
                 order = 0,
-                name = function() return i18n("Show Melee Stats") end,
+                name = function() return i18n("Show melee stats") end,
                 desc = function() return i18n("Shows/Hides all melee stats.") end,
                 width = 1.5,
                 get = function () return ExtendedCharacterStats.profile.melee.display; end,
@@ -40,11 +40,25 @@ function _Config:LoadMeleeSection()
                     Stats.RebuildStatInfos()
                 end,
             },
-            meleeCrit = {
+            meleeCritRating = {
                 type = "toggle",
                 order = 2,
-                name = function() return i18n("Melee Crit") end,
-                desc = function() return i18n("Shows/Hides the melee crit chance.") end,
+                name = function() return i18n("Melee Crit. Rating") end,
+                desc = function() return i18n("Shows/Hides the melee crit. rating.") end,
+                width = 1.5,
+                hidden = function() return ECS.IsClassic end,
+                disabled = function() return (not ExtendedCharacterStats.profile.melee.display); end,
+                get = function () return ExtendedCharacterStats.profile.melee.critRating.display; end,
+                set = function (_, value)
+                    ExtendedCharacterStats.profile.melee.critRating.display = value
+                    Stats.RebuildStatInfos()
+                end,
+            },
+            meleeCrit = {
+                type = "toggle",
+                order = 2.1,
+                name = function() return i18n("Melee Crit.") end,
+                desc = function() return i18n("Shows/Hides the melee crit. chance.") end,
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.melee.display); end,
                 get = function () return ExtendedCharacterStats.profile.melee.crit.display; end,
