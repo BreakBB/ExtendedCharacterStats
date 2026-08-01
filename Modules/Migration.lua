@@ -15,11 +15,18 @@ function Migration:ToLatestProfileVersion(profileVersion)
         return
     end
 
+    local defaultProfile = Profile:GetDefaultProfile()
+
     if profileVersion < 24 then
         ExtendedCharacterStats.profile.defense.resilienceRating = ExtendedCharacterStats.profile.defense.resilience
         ExtendedCharacterStats.profile.defense.resilience = nil
     end
     if profileVersion < 25 then
         ExtendedCharacterStats.profile.defense.resilience = nil
+    end
+    if profileVersion < 26 then
+        ExtendedCharacterStats.profile.spellBonus.baseSpellDmg = defaultProfile.profile.spellBonus.baseSpellDmg
+        ExtendedCharacterStats.profile.defense.enemyMissChance = defaultProfile.profile.defense.enemyMissChance
+        ExtendedCharacterStats.profile.defense.enemyMissChanceBoss = defaultProfile.profile.defense.enemyMissChanceBoss
     end
 end
