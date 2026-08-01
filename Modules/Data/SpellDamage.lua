@@ -25,6 +25,18 @@ function Data:SpellPenetration()
     return DataUtils:Round(GetSpellPenetration(), 2) .. "%"
 end
 
+local schools = { Data.FIRE_SCHOOL, Data.NATURE_SCHOOL, Data.FROST_SCHOOL, Data.SHADOW_SCHOOL, Data.ARCANE_SCHOOL }
+
+--- We ignore Physical here to match Blizzards UI
+---@return number
+function Data:GetBaseSpellDamage()
+    local spellDmg = GetSpellBonusDamage(Data.HOLY_SCHOOL)
+    for _, school in ipairs(schools) do
+        spellDmg = math.min(spellDmg, GetSpellBonusDamage(school))
+    end
+    return DataUtils:Round(spellDmg or 0, 0)
+end
+
 ---@return number
 function Data:GetHealingPower()
     return GetSpellBonusHealing()
