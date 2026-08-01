@@ -93,6 +93,7 @@ dataFunctionRefs = {
     ["FrostDmg"] = function() return Data:GetSpellDamage(Data.FROST_SCHOOL) end,
     ["ShadowDmg"] = function() return Data:GetSpellDamage(Data.SHADOW_SCHOOL) end,
     ["ArcaneDmg"] = function() return Data:GetSpellDamage(Data.ARCANE_SCHOOL) end,
+    ["BaseSpellDmg"] = function() return Data:GetBaseSpellDamage() end,
     ["BonusHealing"] = function() return Data:GetHealingPower() end,
     -- Spell Crit by school
     ["PhysicalCritChance"] = function() return Data:GetSpellCrit(Data.PHYSICAL_SCHOOL) end,

@@ -452,6 +452,16 @@ local statTranslations = {
         ["esMX"] = "Penetración",
         ["ptBR"] = "Penetração"
     },
+    ["Spell Damage"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Zauberschaden",
+        ["frFR"] = "Dégâts des sorts",
+        ["zhCN"] = "法术伤害",
+        ["ruRU"] = "Доп. урон от заклинаний",
+        ["esES"] = "Daño de hechizos",
+        ["esMX"] = "Daño de hechizos",
+        ["ptBR"] = "Dano de magia"
+    },
     ["Healing Power"] = {
         ["enUS"] = true,
         ["deDE"] = "Heilungskraft",

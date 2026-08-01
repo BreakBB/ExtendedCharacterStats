@@ -336,6 +336,7 @@ _CreateStatInfos = function()
         category.hasteBonus,
         (not ECS.IsClassic) and category.penetrationRating or nil,
         (not ECS.IsClassic) and category.penetration or nil,
+        spellBonus.baseSpellDmg,
         spellBonus.bonusHealing,
         (not ECS.IsClassic) and spellHit.rating or nil,
         spell.arcane.display and spellBonus.arcaneDmg or nil,

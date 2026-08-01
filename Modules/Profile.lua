@@ -6,7 +6,7 @@ local Utils = ECSLoader:ImportModule("Utils")
 
 ---@return number
 function Profile.GetProfileVersion()
-    return 25
+    return 26
 end
 
 ---@return ECSProfile
@@ -617,6 +617,13 @@ local function GetDefaultStatsProfile()
             display = true,
             refName = "SpellBonusHeader",
 
+            baseSpellDmg = {
+                display = true,
+                refName = "BaseSpellDmg",
+                text = "Spell Damage",
+                textColor = colors.GRAY,
+                statColor = colors.WHITE
+            },
             bonusHealing = {
                 display = true,
                 refName = "BonusHealing",
