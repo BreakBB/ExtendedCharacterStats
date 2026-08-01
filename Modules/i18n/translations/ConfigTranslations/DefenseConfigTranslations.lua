@@ -182,6 +182,26 @@ local defenseConfigTranslations = {
         ["esMX"] = false,
         ["ptBR"] = false
     },
+    ["Shows/Hides the enemy miss chance."] = {
+        ["enUS"] = true,
+        ["deDE"] = "Zeigt/Versteckt die Verfehlen-Chance des Gegners.",
+        ["frFR"] = "Affiche/cache la chance de manquer de l'ennemi.",
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false
+    },
+    ["Shows/Hides the enemy miss chance (Lvl +3)."] = {
+        ["enUS"] = true,
+        ["deDE"] = "Zeigt/Versteckt die Verfehlen-Chance des Gegners. (Lvl + 3)",
+        ["frFR"] = "Affiche/cache la chance de manquer de l'ennemi (Niv. +3).",
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false
+    },
 }
 
 for k, v in pairs(defenseConfigTranslations) do

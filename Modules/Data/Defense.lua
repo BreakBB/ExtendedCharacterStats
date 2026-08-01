@@ -219,6 +219,12 @@ end
 
 ---@param enemyLevel number
 ---@return string
+function Data:GetEnemyMissChance(enemyLevel)
+    return DataUtils:Round(_Defense:GetEnemyMissChance(enemyLevel), 2) .. "%"
+end
+
+---@param enemyLevel number
+---@return string
 function Data:GetAvoidance(enemyLevel)
     return DataUtils:Round(_Defense:GetAvoidance(enemyLevel), 2) .. "%"
 end

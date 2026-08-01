@@ -19,7 +19,7 @@ local function GetDefaultStatsProfile()
             refName = "GeneralHeader",
             text = "General",
 
-            movementSpeed = {display = true, refName = "MovementSpeed", text = "Movement Speed"},
+            movementSpeed = { display = true, refName = "MovementSpeed", text = "Movement Speed" },
         },
 
         melee = {
@@ -268,22 +268,24 @@ local function GetDefaultStatsProfile()
             refName = "DefenseHeader",
             text = "Defense",
 
-            armor = {display = true, refName = "Armor", text = "Armor"},
-            meleeCritReduction = {display = true, refName = "MeleeCritReduction", text = "Melee Crit Reduction"},
-            rangedCritReduction = {display = true, refName = "RangedCritReduction", text = "Ranged Crit Reduction"},
-            spellCritReduction = {display = true, refName = "SpellCritReduction", text = "Spell Crit Reduction"},
-            avoidance = {display = true, refName = "Avoidance", text = "Avoidance"},
-            avoidanceBoss = {display = true, refName = "AvoidanceBoss", text = "Avoidance (Lvl +3)"},
+            armor = { display = true, refName = "Armor", text = "Armor" },
+            meleeCritReduction = { display = true, refName = "MeleeCritReduction", text = "Melee Crit Reduction" },
+            rangedCritReduction = { display = true, refName = "RangedCritReduction", text = "Ranged Crit Reduction" },
+            spellCritReduction = { display = true, refName = "SpellCritReduction", text = "Spell Crit Reduction" },
+            avoidance = { display = true, refName = "Avoidance", text = "Avoidance" },
+            avoidanceBoss = { display = true, refName = "AvoidanceBoss", text = "Avoidance (Lvl +3)" },
+            enemyMissChance = { display = true, refName = "EnemyMissChance", text = "Enemy Miss" },
+            enemyMissChanceBoss = { display = true, refName = "EnemyMissChanceBoss", text = "Enemy Miss (Lvl +3)" },
             defenseRating = {
                 display = true,
                 refName = "DefenseRating",
                 text = "Defense Rating"
             },
-            defense = {display = true, refName = "DefenseValue", text = "Defense"},
-            blockChance = {display = true, refName = "BlockChance", text = "Block Chance"},
-            blockValue = {display = true, refName = "BlockValue", text = "Block Value"},
-            parry = {display = true, refName = "ParryChance", text = "Parry Chance"},
-            dodge = {display = true, refName = "DodgeChance", text = "Dodge Chance"},
+            defense = { display = true, refName = "DefenseValue", text = "Defense" },
+            blockChance = { display = true, refName = "BlockChance", text = "Block Chance" },
+            blockValue = { display = true, refName = "BlockValue", text = "Block Value" },
+            parry = { display = true, refName = "ParryChance", text = "Parry Chance" },
+            dodge = { display = true, refName = "DodgeChance", text = "Dodge Chance" },
             resilienceRating = {
                 display = true,
                 refName = "ResilienceValue",
@@ -557,7 +559,7 @@ local function GetDefaultStatsProfile()
                 textColor = colors.HASTE_RATING_SECONDARY,
                 statColor = colors.HASTE_RATING_PRIMARY
             },
-            penetration = {display = true, refName = "SpellPenetration", text = "Penetration"},
+            penetration = { display = true, refName = "SpellPenetration", text = "Penetration" },
 
             crit = {
                 display = true,

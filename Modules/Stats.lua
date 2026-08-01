@@ -308,6 +308,8 @@ _CreateStatInfos = function()
         category.spellCritReduction,
         category.avoidance,
         category.avoidanceBoss,
+        category.enemyMissChance,
+        category.enemyMissChanceBoss,
         (not ECS.IsClassic) and category.defenseRating or nil,
         category.defense,
         (not ECS.IsClassic and DataUtils:CanBlock()) and category.blockRating or nil,
