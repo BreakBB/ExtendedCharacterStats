@@ -25,7 +25,6 @@ local function GetDefaultStatsProfile()
                 text = "Movement Speed"
             },
         },
-
         melee = {
             display = true,
             refName = "MeleeHeader",
@@ -272,7 +271,7 @@ local function GetDefaultStatsProfile()
             refName = "DefenseHeader",
             text = "Defense",
 
-            armor = {display = true, refName = "Armor", text = "Armor"},
+            armor = { display = true, refName = "Armor", text = "Armor" },
             meleeCritReduction = {
                 display = true,
                 refName = "MeleeCritReduction",
@@ -297,6 +296,16 @@ local function GetDefaultStatsProfile()
                 display = true,
                 refName = "AvoidanceBoss",
                 text = "Avoidance (Lvl +3)"
+            },
+            enemyMissChance = {
+              display = true,
+              refName = "EnemyMissChance",
+              text = "Enemy Miss"
+            },
+            enemyMissChanceBoss = {
+              display = true,
+              refName = "EnemyMissChanceBoss",
+              text = "Enemy Miss (Lvl +3)"
             },
             defenseRating = {
                 display = true,
@@ -601,7 +610,7 @@ local function GetDefaultStatsProfile()
                 textColor = colors.HASTE_RATING_SECONDARY,
                 statColor = colors.HASTE_RATING_PRIMARY
             },
-            penetration = {display = true, refName = "SpellPenetration", text = "Penetration"},
+            penetration = { display = true, refName = "SpellPenetration", text = "Penetration" },
 
             crit = {
                 display = true,
@@ -661,6 +670,13 @@ local function GetDefaultStatsProfile()
             display = true,
             refName = "SpellBonusHeader",
 
+            baseSpellDmg = {
+                display = true,
+                refName = "BaseSpellDmg",
+                text = "Spell Damage",
+                textColor = colors.GRAY,
+                statColor = colors.WHITE
+            },
             bonusHealing = {
                 display = true,
                 refName = "BonusHealing",
