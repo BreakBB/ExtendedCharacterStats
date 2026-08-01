@@ -42,6 +42,26 @@ local generalConfigTranslations = {
         ["esMX"] = "Muestra/oculta el valor de velocidad de movimiento",
         ["ptBR"] = "Mostra/oculta o valor da velocidade de movimento"
     },
+    ["Shows/Hides the stealth value."] = {
+        ["enUS"] = true,
+        ["deDE"] = false,
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false
+    },
+    ["Shows/Hides the invisibility value."] = {
+        ["enUS"] = true,
+        ["deDE"] = false,
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false
+    },
 }
 
 for k, v in pairs(generalConfigTranslations) do
