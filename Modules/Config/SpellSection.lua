@@ -159,9 +159,22 @@ function _Config:LoadSpellSection()
                 inline = true,
                 name = function() return i18n("Spell Power") end,
                 args = {
-                    bonusHealing = {
+                    baseSpellDmg = {
                         type = "toggle",
                         order = 1,
+                        name = function() return i18n("Spell Damage") end,
+                        desc = function() return i18n("Shows/Hides the base spell damage value (lowest of all spell schools).") end,
+                        width = 1.5,
+                        disabled = function() return (not ExtendedCharacterStats.profile.spell.display); end,
+                        get = function () return ExtendedCharacterStats.profile.spellBonus.baseSpellDmg.display; end,
+                        set = function (_, value)
+                            ExtendedCharacterStats.profile.spellBonus.baseSpellDmg.display = value
+                            Stats.RebuildStatInfos()
+                        end,
+                    },
+                    bonusHealing = {
+                        type = "toggle",
+                        order = 2,
                         name = function() return i18n("Healing Power") end,
                         desc = function() return i18n("Shows/Hides the healing power value.") end,
                         width = 1.5,
@@ -174,7 +187,7 @@ function _Config:LoadSpellSection()
                     },
                     arcaneDmg = {
                         type = "toggle",
-                        order = 2,
+                        order = 3,
                         name = function() return i18n("Arcane Damage") end,
                         desc = function() return i18n("Shows/Hides the arcane damage value.") end,
                         width = 1.5,
@@ -187,7 +200,7 @@ function _Config:LoadSpellSection()
                     },
                     fireDmg = {
                         type = "toggle",
-                        order = 3,
+                        order = 4,
                         name = function() return i18n("Fire Damage") end,
                         desc = function() return i18n("Shows/Hides the fire damage value.") end,
                         width = 1.5,
@@ -200,7 +213,7 @@ function _Config:LoadSpellSection()
                     },
                     frostDmg = {
                         type = "toggle",
-                        order = 4,
+                        order = 5,
                         name = function() return i18n("Frost Damage") end,
                         desc = function() return i18n("Shows/Hides the frost damage value.") end,
                         width = 1.5,
@@ -213,7 +226,7 @@ function _Config:LoadSpellSection()
                     },
                     holyDmg = {
                         type = "toggle",
-                        order = 5,
+                        order = 6,
                         name = function() return i18n("Holy Damage") end,
                         desc = function() return i18n("Shows/Hides the holy damage value.") end,
                         width = 1.5,
@@ -226,7 +239,7 @@ function _Config:LoadSpellSection()
                     },
                     natureDmg = {
                         type = "toggle",
-                        order = 6,
+                        order = 7,
                         name = function() return i18n("Nature Damage") end,
                         desc = function() return i18n("Shows/Hides the nature damage value.") end,
                         width = 1.5,
@@ -239,7 +252,7 @@ function _Config:LoadSpellSection()
                     },
                     physicalDmg = {
                         type = "toggle",
-                        order = 7,
+                        order = 8,
                         name = function() return i18n("Physical Damage") end,
                         desc = function() return i18n("Shows/Hides the physical damage value.") end,
                         width = 1.5,
@@ -252,7 +265,7 @@ function _Config:LoadSpellSection()
                     },
                     shadowDmg = {
                         type = "toggle",
-                        order = 8,
+                        order = 9,
                         name = function() return i18n("Shadow Damage") end,
                         desc = function() return i18n("Shows/Hides the shadow damage value.") end,
                         width = 1.5,
