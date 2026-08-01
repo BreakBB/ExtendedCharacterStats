@@ -132,7 +132,7 @@ function Stats.CreateWindow()
     if _G.ElvUI then
         local E = _G.ElvUI[1]
         local S = E:GetModule("Skins")
-        if S then
+        if S and E.private.skins and E.private.skins.blizzard.enable and E.private.skins.blizzard.character then
             S:HandleFrame(mainFrame)
             if mainFrame.CloseButton then
                 mainFrame.CloseButton:SetPoint("TOPRIGHT", 2, 2)
