@@ -1,3 +1,15 @@
+local ECSLoader = ECSLoader
+local GetCombatRating = GetCombatRating
+local GetCombatRatingBonus = GetCombatRatingBonus
+local GetHitModifier = GetHitModifier
+local GetRangedCritChance = GetRangedCritChance
+local IsClassic = ECS.IsClassic
+local UnitHasRelicSlot = UnitHasRelicSlot
+local UnitLevel = UnitLevel
+local UnitRangedAttack = UnitRangedAttack
+local UnitRangedAttackPower = UnitRangedAttackPower
+local UnitRangedDamage = UnitRangedDamage
+
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
 ---@type Utils
@@ -67,7 +79,7 @@ function _Ranged:GetHitBonus()
     local hitValue = 0
 
     -- Biznick Scope awards Hit rating in TBC and is part of CR_HIT_RANGED
-    if ECS.IsClassic then
+    if IsClassic then
         local rangedEnchant = DataUtils:GetEnchantForEquipSlot(Utils.CHAR_EQUIP_SLOTS["Range"])
         if rangedEnchant and rangedEnchant == Data.Enchant.Ids.BIZNICK_SCOPE then
             hitValue = hitValue + 3

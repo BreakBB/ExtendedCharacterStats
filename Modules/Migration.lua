@@ -1,3 +1,6 @@
+local ECS = ECS
+local ECSLoader = ECSLoader
+
 ---@class Migration
 local Migration = ECSLoader:CreateModule("Migration")
 

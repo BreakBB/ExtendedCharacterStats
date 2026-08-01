@@ -1,3 +1,6 @@
+local ECSLoader = ECSLoader
+local lower = string.lower
+
 ---@type i18n
 local i18n = ECSLoader:ImportModule("i18n")
 ---@type Config
@@ -6,7 +9,7 @@ local Config = ECSLoader:ImportModule("Config")
 local Stats = ECSLoader:ImportModule("Stats")
 
 local function _HandleSlash(msg)
-    local cmd = string.lower(msg) or "help"
+    local cmd = lower(msg) or "help"
 
     if cmd == "toggle" then
         Stats:ToggleWindow()

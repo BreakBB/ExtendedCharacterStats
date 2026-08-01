@@ -1,7 +1,11 @@
+local ECSLoader = ECSLoader
+local tostring = tostring
+local GetAddOnInfo = C_AddOns.GetAddOnInfo
+local match = string.match
+local tonumber = tonumber
+
 ---@class Utils
 local Utils = ECSLoader:CreateModule("Utils")
-
-local GetAddOnInfo = C_AddOns and C_AddOns.GetAddOnInfo or GetAddOnInfo
 
 ---@class table<string, EquipSlot>
 Utils.CHAR_EQUIP_SLOTS = {
@@ -81,7 +85,7 @@ function Utils:GetAddonVersionInfo()
         cachedTitle = title
     end
     -- %d = digit, %p = punctuation character, %x = hexadecimal digits.
-    local major, minor, patch, _ = string.match(cachedTitle, "(%d+)%p(%d+)%p(%d+)")
+    local major, minor, patch, _ = match(cachedTitle, "(%d+)%p(%d+)%p(%d+)")
     return tonumber(major), tonumber(minor), tonumber(patch)
 end
 

@@ -1,3 +1,12 @@
+local ECS = ECS
+local ECSLoader = ECSLoader
+local format = string.format
+local GetLocale = GetLocale
+local ipairs = ipairs
+local setmetatable = setmetatable
+local tostring = tostring
+local unpack = unpack
+
 ---@class i18n
 local i18n = ECSLoader:CreateModule("i18n")
 i18n.translations = {}
@@ -28,21 +37,21 @@ local function translate(key, ...)
     if translationEntry == nil then
         -- Translation for the key is missing completely
         ECS:Error("The translation for <".. tostring(key) .. "> is missing completely. Please report this!")
-        return string.format(key, unpack(args))
+        return format(key, unpack(args))
     end
 
     local translationValue = translationEntry[selectedLocale]
     if (not translationValue) then
         -- The translation for the selected locale is missing
-        return string.format(key, unpack(args))
+        return format(key, unpack(args))
     end
 
     if translationValue == true then
         -- Fallback to enUS which is the key
-        return string.format(key, unpack(args))
+        return format(key, unpack(args))
     end
 
-    return string.format(translationValue, unpack(args))
+    return format(translationValue, unpack(args))
 end
 
 setmetatable(i18n, {__call = function(_, ...) return translate(...) end})
