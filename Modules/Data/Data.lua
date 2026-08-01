@@ -62,9 +62,9 @@ dataFunctionRefs = {
     ["AvoidanceBoss"] = function() return Data:GetAvoidance(enemyLevel) end,
     ["DefenseRating"] = function() return ECS.IsClassic and 0 or Data:GetDefenseRating() end,
     ["DefenseValue"] = function() return Data:GetDefenseValue() end,
-    ["DodgeChance"] = function() return Data:GetDodgeChance() end,
-    ["ParryChance"] = function() return Data:GetParryChance() end,
-    ["BlockChance"] = function() return Data:GetBlockChance() end,
+    ["DodgeChance"] = function() return Data:GetDodgeChance(playerLevel) end,
+    ["ParryChance"] = function() return Data:GetParryChance(playerLevel) end,
+    ["BlockChance"] = function() return Data:GetBlockChance(playerLevel) end,
     ["BlockValue"] = function() return Data:GetBlockValue() end,
     ["ResilienceValue"] = function() return ECS.IsClassic and 0 or Data:GetResilienceRating() end,
     -- Spell
