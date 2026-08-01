@@ -13,7 +13,7 @@ WAGO_METADATA=$(cat <<-EOF
    "changelog": $CHANGELOG,
    "supported_classic_patch": "1.15.9",
    "supported_bc_patch": "2.5.6",
-   "supported_wotlk_patch": "3.80.0"
+   "supported_wotlk_patch": "3.80.2"
 }
 EOF
 )
