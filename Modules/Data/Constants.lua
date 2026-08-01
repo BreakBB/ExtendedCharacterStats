@@ -1075,7 +1075,7 @@ Data.Talent = {
     },
     [Data.ROGUE] = {
         -- keep-sorted start
-        MASTER_OF_DECEPTION = (IsWotlk and {13958,13970,13971} or {13958,13970,13971,13972,13973})
+        MASTER_OF_DECEPTION = (IsWotlk and {13958,13970,13971} or {13958,13970,13971,13972,13973}),
         PRECISION = {13705,13832,13843,13844,13845},
         SLEIGHT_OF_HAND = {30892,30893},
         -- keep-sorted end
