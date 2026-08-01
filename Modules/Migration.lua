@@ -24,6 +24,10 @@ function Migration:ToLatestProfileVersion(profileVersion)
     if profileVersion < 25 then
         ExtendedCharacterStats.profile.defense.resilience = nil
     end
+    if profileVersion < 26 then
+        ExtendedCharacterStats.profile.spellBonus.baseSpellDmg = defaultProfile.profile.spellBonus.baseSpellDmg
+        ExtendedCharacterStats.profile.defense.enemyMissChance = defaultProfile.profile.defense.enemyMissChance
+        ExtendedCharacterStats.profile.defense.enemyMissChanceBoss = defaultProfile.profile.defense.enemyMissChanceBoss
     if profileVersion < 100 then
         ExtendedCharacterStats.profile.defense.stunReduction = defaultProfile.profile.defense.stunReduction
         ExtendedCharacterStats.profile.defense.snareReduction = defaultProfile.profile.defense.snareReduction
