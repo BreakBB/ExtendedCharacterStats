@@ -212,6 +212,16 @@ local spellConfigTranslations = {
         ["esMX"] = "Muestra/oculta el valor de daño de las sombras",
         ["ptBR"] = "Mostra/oculta o valor de dano de sombra"
     },
+    ["Shows/Hides the base spell damage value (lowest of all spell schools)."] = {
+        ["enUS"] = true,
+        ["deDE"] = "Zeigt/Versteckt den Basis-Zauberschadenswert (niedrigster aller Schulen).",
+        ["frFR"] = "Affiche/cache la valeur de base des dégâts des sorts (la plus basse de toutes les écoles).",
+        ["zhCN"] = "显示/隐藏 基础法术伤害（所有法术学派中最低值）",
+        ["ruRU"] = "Показать/скрыть базовый урон от заклинаний (наименьший из всех школ)",
+        ["esES"] = "Muestra/oculta el valor de daño de hechizos base (el más bajo de todas las escuelas)",
+        ["esMX"] = "Muestra/oculta el valor de daño de hechizos base (el más bajo de todas las escuelas)",
+        ["ptBR"] = "Mostra/oculta o valor de dano de magia base (o menor de todas as escolas)"
+    },
     ["Shows/Hides the healing power value."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt den Heilungsmachtwert.",
