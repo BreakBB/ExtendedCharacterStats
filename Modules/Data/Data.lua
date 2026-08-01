@@ -1,3 +1,7 @@
+-- keep-sorted start case=no
+local IsClassic = ECS.IsClassic
+-- keep-sorted end
+
 ---@class Data
 local Data = ECSLoader:CreateModule("Data")
 
@@ -68,7 +72,8 @@ dataFunctionRefs = {
     ["ParryChance"] = function() return Data:GetParryChance(playerLevel) end,
     ["BlockChance"] = function() return Data:GetBlockChance(playerLevel) end,
     ["BlockValue"] = function() return Data:GetBlockValue() end,
-    ["ResilienceValue"] = function() return ECS.IsClassic and 0 or Data:GetResilienceRating() end,
+    ["ResilienceRating"] = function() return IsClassic and 0 or Data:GetResilienceRating() end,
+    ["Resilience"] = function() return IsClassic and 0 or Data:GetResilience() end,
     -- Spell
     ["SpellHitRating"] = function() return ECS.IsClassic and 0 or Data:SpellHitRating() end,
     ["SpellHitBonus"] = function() return Data.SpellHitBonus(Data.HOLY_SCHOOL) end,

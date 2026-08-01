@@ -182,6 +182,16 @@ local defenseConfigTranslations = {
         ["esMX"] = false,
         ["ptBR"] = false
     },
+    ["Shows/Hides the resilience rating."] = {
+        ["enUS"] = true,
+        ["deDE"] = false,
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false,
+    },
     ["Shows/Hides the enemy miss chance."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt die Verfehlen-Chance des Gegners.",
@@ -190,17 +200,7 @@ local defenseConfigTranslations = {
         ["ruRU"] = false,
         ["esES"] = false,
         ["esMX"] = false,
-        ["ptBR"] = false
-    },
-    ["Shows/Hides the enemy miss chance (Lvl +3)."] = {
-        ["enUS"] = true,
-        ["deDE"] = "Zeigt/Versteckt die Verfehlen-Chance des Gegners. (Lvl + 3)",
-        ["frFR"] = "Affiche/cache la chance de manquer de l'ennemi (Niv. +3).",
-        ["zhCN"] = false,
-        ["ruRU"] = false,
-        ["esES"] = false,
-        ["esMX"] = false,
-        ["ptBR"] = false
+        ["ptBR"] = false,
     },
 }
 
