@@ -7,7 +7,7 @@ local i18n = ECSLoader:ImportModule("i18n")
 local defenseConfigTranslations = {
     ["Melee Crit Reduction"] = {
         ["enUS"] = true,
-        ["deDE"] = false,
+        ["deDE"] = "Nahkampf-Krit-Reduktion",
         ["frFR"] = false,
         ["zhCN"] = false,
         ["ruRU"] = false,
@@ -17,7 +17,7 @@ local defenseConfigTranslations = {
     },
     ["Ranged Crit Reduction"] = {
         ["enUS"] = true,
-        ["deDE"] = false,
+        ["deDE"] = "Fernkampf-Krit-Reduktion",
         ["frFR"] = false,
         ["zhCN"] = false,
         ["ruRU"] = false,
@@ -27,7 +27,7 @@ local defenseConfigTranslations = {
     },
     ["Spell Crit Reduction"] = {
         ["enUS"] = true,
-        ["deDE"] = false,
+        ["deDE"] = "Zauber-Krit-Reduktion",
         ["frFR"] = false,
         ["zhCN"] = false,
         ["ruRU"] = false,
@@ -67,7 +67,7 @@ local defenseConfigTranslations = {
     },
     ["Shows/Hides the reduction percentage of being critically hit by melee attacks."] = {
         ["enUS"] = true,
-        ["deDE"] = false,
+        ["deDE"] = "Zeigt/Versteckt die Reduzierung der Chance, von Nahkampfangriffen kritisch getroffen zu werden.",
         ["frFR"] = false,
         ["zhCN"] = false,
         ["ruRU"] = false,
@@ -77,7 +77,7 @@ local defenseConfigTranslations = {
     },
     ["Shows/Hides the reduction percentage of being critically hit by ranged attacks."] = {
         ["enUS"] = true,
-        ["deDE"] = false,
+        ["deDE"] = "Zeigt/Versteckt die Reduzierung der Chance, von Fernkampfangriffen kritisch getroffen zu werden.",
         ["frFR"] = false,
         ["zhCN"] = false,
         ["ruRU"] = false,
@@ -87,7 +87,7 @@ local defenseConfigTranslations = {
     },
     ["Shows/Hides the reduction percentage of being critically hit by spells."] = {
         ["enUS"] = true,
-        ["deDE"] = false,
+        ["deDE"] = "Zeigt/Versteckt die Reduzierung der Chance, von Zaubern kritisch getroffen zu werden.",
         ["frFR"] = false,
         ["zhCN"] = false,
         ["ruRU"] = false,
@@ -177,8 +177,28 @@ local defenseConfigTranslations = {
     },
     ["Shows/Hides the total avoidance (Lvl +3)."] = {
         ["enUS"] = true,
-        ["deDE"] = false,
+        ["deDE"] = "Zeigt/Versteckt den Vermeidungswert. (Lvl + 3)",
         ["frFR"] = "Affiche/cache l'évitement total (Niv. +3).",
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false
+    },
+    ["Shows/Hides the enemy miss chance."] = {
+        ["enUS"] = true,
+        ["deDE"] = "Zeigt/Versteckt die Verfehlen-Chance des Gegners.",
+        ["frFR"] = "Affiche/cache la chance de manquer de l'ennemi.",
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false
+    },
+    ["Shows/Hides the enemy miss chance (Lvl +3)."] = {
+        ["enUS"] = true,
+        ["deDE"] = "Zeigt/Versteckt die Verfehlen-Chance des Gegners. (Lvl + 3)",
+        ["frFR"] = "Affiche/cache la chance de manquer de l'ennemi (Niv. +3).",
         ["zhCN"] = false,
         ["ruRU"] = false,
         ["esES"] = false,

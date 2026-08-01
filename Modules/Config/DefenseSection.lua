@@ -111,6 +111,32 @@ function _Config:LoadDefenseSection()
                     Stats.RebuildStatInfos()
                 end,
             },
+            enemyMissChance = {
+                type = "toggle",
+                order = 1.87,
+                name = function() return i18n("Enemy Miss") end,
+                desc = function() return i18n("Shows/Hides the enemy miss chance.") end,
+                width = 1.5,
+                disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
+                get = function () return ExtendedCharacterStats.profile.defense.enemyMissChance.display; end,
+                set = function (_, value)
+                    ExtendedCharacterStats.profile.defense.enemyMissChance.display = value
+                    Stats.RebuildStatInfos()
+                end,
+            },
+            enemyMissChanceBoss = {
+                type = "toggle",
+                order = 1.88,
+                name = function() return i18n("Enemy Miss (Lvl +3)") end,
+                desc = function() return i18n("Shows/Hides the enemy miss chance (Lvl +3).") end,
+                width = 1.5,
+                disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
+                get = function () return ExtendedCharacterStats.profile.defense.enemyMissChanceBoss.display; end,
+                set = function (_, value)
+                    ExtendedCharacterStats.profile.defense.enemyMissChanceBoss.display = value
+                    Stats.RebuildStatInfos()
+                end,
+            },
             defenseRating = {
                 type = "toggle",
                 order = 1.9,
