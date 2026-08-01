@@ -18,7 +18,7 @@ function _Config:LoadGeneralSection()
             showGeneralStats = {
                 type = "toggle",
                 order = 0,
-                name = function() return i18n("Show General Stats") end,
+                name = function() return i18n("Show general stats") end,
                 desc = function() return i18n("Shows/Hides all general stats.") end,
                 width = 1.5,
                 get = function () return ExtendedCharacterStats.profile.general.display; end,
@@ -30,7 +30,7 @@ function _Config:LoadGeneralSection()
             movementSpeed = {
                 type = "toggle",
                 order = 1,
-                name = function() return i18n("Show Movement Speed") end,
+                name = function() return i18n("Show movement speed") end,
                 desc = function() return i18n("Shows/Hides the movement speed value.") end,
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.general.display); end,

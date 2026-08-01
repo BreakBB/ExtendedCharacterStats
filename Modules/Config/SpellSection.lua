@@ -18,7 +18,7 @@ function _Config:LoadSpellSection()
             showSpellStats = {
                 type = "toggle",
                 order = 0,
-                name = function() return i18n("Show Spell Stats") end,
+                name = function() return i18n("Show spell stats") end,
                 desc = function() return i18n("Shows/Hides all spell stats.") end,
                 width = 1.5,
                 get = function () return ExtendedCharacterStats.profile.spell.display; end,
@@ -30,8 +30,8 @@ function _Config:LoadSpellSection()
             spellCrit = {
                 type = "toggle",
                 order = 1,
-                name = function() return i18n("Spell Crit") end,
-                desc = function() return i18n("Shows/Hides the spell crit chance.") end,
+                name = function() return i18n("Spell Crit.") end,
+                desc = function() return i18n("Shows/Hides the spell crit. chance.") end,
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.spell.display); end,
                 get = function () return ExtendedCharacterStats.profile.spell.crit.display; end,

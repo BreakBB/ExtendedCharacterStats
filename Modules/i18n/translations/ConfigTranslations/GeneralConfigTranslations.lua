@@ -2,7 +2,7 @@
 local i18n = ECSLoader:ImportModule("i18n")
 
 local generalConfigTranslations = {
-    ["Show General Stats"] = {
+    ["Show general stats"] = {
         ["enUS"] = true,
         ["deDE"] = "Allgemeine Werte anzeigen",
         ["frFR"] = "Afficher les statistiques",
@@ -17,12 +17,12 @@ local generalConfigTranslations = {
         ["deDE"] = "Zeigt/Versteckt die allgemeinen Werte.",
         ["frFR"] = "Affiche/cache toutes les statistiques générales.",
         ["zhCN"] = "显示/隐藏 所有常规属性信息。",
-        ["ruRU"] = "Показать/скрыть все основные характеристики",
-        ["esES"] = "Muestra/oculta todas estadísticas generales",
-        ["esMX"] = "Muestra/oculta todas estadísticas generales",
-        ["ptBR"] = "Mostra/oculta todas as estatísticas gerais"
+        ["ruRU"] = "Показать/скрыть все основные характеристики.",
+        ["esES"] = "Muestra/oculta todas estadísticas generales.",
+        ["esMX"] = "Muestra/oculta todas estadísticas generales.",
+        ["ptBR"] = "Mostra/oculta todas as estatísticas gerais."
     },
-    ["Show Movement Speed"] = {
+    ["Show movement speed"] = {
         ["enUS"] = true,
         ["deDE"] = "Bewegungsgeschwindigkeit anzeigen",
         ["frFR"] = "Afficher la vitesse de déplacement",
@@ -37,10 +37,10 @@ local generalConfigTranslations = {
         ["deDE"] = "Zeigt/Versteckt die Bewegungsgeschwindigkeit.",
         ["frFR"] = "Affiche/cache la vitesse de déplacement.",
         ["zhCN"] = "显示/隐藏 移动速度",
-        ["ruRU"] = "Показать/скрыть значение скорости движения",
-        ["esES"] = "Muestra/oculta el valor de velocidad de movimiento",
-        ["esMX"] = "Muestra/oculta el valor de velocidad de movimiento",
-        ["ptBR"] = "Mostra/oculta o valor da velocidade de movimento"
+        ["ruRU"] = "Показать/скрыть значение скорости движения.",
+        ["esES"] = "Muestra/oculta el valor de velocidad de movimiento.",
+        ["esMX"] = "Muestra/oculta el valor de velocidad de movimiento.",
+        ["ptBR"] = "Mostra/oculta o valor da velocidade de movimento."
     },
 }
 

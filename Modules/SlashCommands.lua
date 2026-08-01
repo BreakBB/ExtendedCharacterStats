@@ -12,16 +12,16 @@ local function _HandleSlash(msg)
         Stats:ToggleWindow()
 
         if Stats:GetFrame():IsShown() then
-            ECS:Print("The ECS stats window is now visible next to the character frame")
+            ECS:Print("The ECS stats window is now visible next to the character frame.")
         else
-            ECS:Print("The ECS stats window is now hidden")
+            ECS:Print("The ECS stats window is now hidden.")
         end
     elseif cmd == "config" then
         Config:ToggleWindow()
     else
         print(i18n("Available Commands"))
-        print(i18n("/ecs toggle") .. " - " .. i18n("Toggles the visibility of the stats window"))
-        print(i18n("/ecs config") .. " - " .. i18n("Shows the configuration window"))
+        print(i18n("/ecs toggle") .. " - " .. i18n("Toggles the visibility of the stats window."))
+        print(i18n("/ecs config") .. " - " .. i18n("Shows the configuration window."))
     end
 end
 

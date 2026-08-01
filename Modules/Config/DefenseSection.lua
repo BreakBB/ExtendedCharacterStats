@@ -20,7 +20,7 @@ function _Config:LoadDefenseSection()
             showDefenseStats = {
                 type = "toggle",
                 order = 0,
-                name = function() return i18n("Show Defense Stats") end,
+                name = function() return i18n("Show defense stats") end,
                 desc = function() return i18n("Shows/Hides all defense stats.") end,
                 width = 1.5,
                 get = function () return ExtendedCharacterStats.profile.defense.display; end,
@@ -45,7 +45,7 @@ function _Config:LoadDefenseSection()
             meleeCritReduction = {
                 type = "toggle",
                 order = 1.81,
-                name = function() return i18n("Melee Crit Reduction") end,
+                name = function() return i18n("Melee Crit. Reduction") end,
                 desc = function() return i18n("Shows/Hides the reduction percentage of being critically hit by melee attacks.") end,
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
@@ -58,7 +58,7 @@ function _Config:LoadDefenseSection()
             rangedCritReduction = {
                 type = "toggle",
                 order = 1.82,
-                name = function() return i18n("Ranged Crit Reduction") end,
+                name = function() return i18n("Ranged Crit. Reduction") end,
                 desc = function() return i18n("Shows/Hides the reduction percentage of being critically hit by ranged attacks.") end,
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,
@@ -71,7 +71,7 @@ function _Config:LoadDefenseSection()
             spellCritReduction = {
                 type = "toggle",
                 order = 1.83,
-                name = function() return i18n("Spell Crit Reduction") end,
+                name = function() return i18n("Spell Crit. Reduction") end,
                 desc = function() return i18n("Shows/Hides the reduction percentage of being critically hit by spells.") end,
                 width = 1.5,
                 disabled = function() return (not ExtendedCharacterStats.profile.defense.display); end,

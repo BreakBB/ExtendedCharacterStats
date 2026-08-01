@@ -173,7 +173,7 @@ end
 function Stats:ToggleWindow()
     local toggleButton = _G["ECS_ToggleButton"]
     if (not toggleButton) then
-        error("ECS Toggle Button could not be found")
+        error("ECS Toggle Button could not be found.")
         return
     end
 
@@ -183,7 +183,7 @@ end
 function Stats:HideWindow()
     local toggleButton = _G["ECS_ToggleButton"]
     if (not toggleButton) then
-        error("ECS Toggle Button could not be found")
+        error("ECS Toggle Button could not be found.")
         return
     end
     _Stats.frame:SetShown(false)
