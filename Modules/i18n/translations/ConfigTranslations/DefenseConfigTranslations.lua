@@ -2,7 +2,7 @@
 local i18n = ECSLoader:ImportModule("i18n")
 
 local defenseConfigTranslations = {
-    ["Melee Crit Reduction"] = {
+    ["Parry Rating"] = {
         ["enUS"] = true,
         ["deDE"] = "Nahkampf-Krit-Reduktion",
         ["frFR"] = false,
@@ -10,9 +10,9 @@ local defenseConfigTranslations = {
         ["ruRU"] = false,
         ["esES"] = false,
         ["esMX"] = false,
-        ["ptBR"] = false
+        ["ptBR"] = false,
     },
-    ["Ranged Crit Reduction"] = {
+    ["Dodge Rating"] = {
         ["enUS"] = true,
         ["deDE"] = "Fernkampf-Krit-Reduktion",
         ["frFR"] = false,
@@ -20,9 +20,29 @@ local defenseConfigTranslations = {
         ["ruRU"] = false,
         ["esES"] = false,
         ["esMX"] = false,
-        ["ptBR"] = false
+        ["ptBR"] = false,
     },
-    ["Spell Crit Reduction"] = {
+    ["Blocked Amount"] = {
+        ["enUS"] = true,
+        ["deDE"] = false,
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false,
+    },
+    ["Resilience Rating"] = {
+        ["enUS"] = true,
+        ["deDE"] = false,
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false,
+    },
+    ["Crit. Reduction Values"] = {
         ["enUS"] = true,
         ["deDE"] = "Zauber-Krit-Reduktion",
         ["frFR"] = false,
@@ -32,7 +52,7 @@ local defenseConfigTranslations = {
         ["esMX"] = false,
         ["ptBR"] = false
     },
-    ["Show Defense Stats"] = {
+    ["Show defense stats"] = {
         ["enUS"] = true,
         ["deDE"] = "Verteidigungswerte anzeigen",
         ["frFR"] = "Afficher défense",
@@ -122,15 +142,15 @@ local defenseConfigTranslations = {
         ["esMX"] = "Muestra/oculta la probababilidad de bloquear",
         ["ptBR"] = "Mostra/oculta a chance de bloquear"
     },
-    ["Shows/Hides the block value."] = {
+    ["Shows/Hides the blocked amount."] = {
         ["enUS"] = true,
-        ["deDE"] = "Zeigt/Versteckt die Blockwertung.",
-        ["frFR"] = "Affiche/cache le score de blocage.",
-        ["zhCN"] = "显示/隐藏 格挡值",
-        ["ruRU"] = "Показать/скрыть значение рейтинга блокирования",
-        ["esES"] = "Muestra/oculta el valor de bloqueo",
-        ["esMX"] = "Muestra/oculta el valor de bloqueo",
-        ["ptBR"] = "Muestra/oculta o valor de bloqueio"
+        ["deDE"] = false,
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false,
     },
     ["Shows/Hides the parry chance."] = {
         ["enUS"] = true,
@@ -152,7 +172,7 @@ local defenseConfigTranslations = {
         ["esMX"] = "Muestra/oculta la probabilidad de esquivar",
         ["ptBR"] = "Mostra/oculta a chance de esquivar"
     },
-    ["Shows/Hides the resilience value."] = {
+    ["Shows/Hides the resilience damage reduction."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt den Abhärtungswert.",
         ["frFR"] = "Affiche/cache la valeur de résilience.",
@@ -182,6 +202,16 @@ local defenseConfigTranslations = {
         ["esMX"] = false,
         ["ptBR"] = false
     },
+    ["Shows/Hides the resilience rating."] = {
+        ["enUS"] = true,
+        ["deDE"] = false,
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false,
+    },
     ["Shows/Hides the enemy miss chance."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt die Verfehlen-Chance des Gegners.",
@@ -190,7 +220,17 @@ local defenseConfigTranslations = {
         ["ruRU"] = false,
         ["esES"] = false,
         ["esMX"] = false,
-        ["ptBR"] = false
+        ["ptBR"] = false,
+    },
+    ["Shows/Hides the parry rating."] = {
+        ["enUS"] = true,
+        ["deDE"] = false,
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false,
     },
     ["Shows/Hides the enemy miss chance (Lvl +3)."] = {
         ["enUS"] = true,
@@ -200,7 +240,27 @@ local defenseConfigTranslations = {
         ["ruRU"] = false,
         ["esES"] = false,
         ["esMX"] = false,
-        ["ptBR"] = false
+        ["ptBR"] = false,
+    },
+    ["Shows/Hides the dodge rating."] = {
+        ["enUS"] = true,
+        ["deDE"] = false,
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false,
+    },
+    ["Shows/Hides the block rating."] = {
+        ["enUS"] = true,
+        ["deDE"] = false,
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false,
     },
 }
 

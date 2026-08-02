@@ -2,7 +2,7 @@
 local i18n = ECSLoader:ImportModule("i18n")
 
 local meleeConfigTranslations = {
-    ["Show Melee Stats"] = {
+    ["Show melee stats"] = {
         ["enUS"] = true,
         ["deDE"] = "Nahkampfwerte anzeigen",
         ["frFR"] = "Afficher mêlée",
@@ -42,7 +42,7 @@ local meleeConfigTranslations = {
         ["esMX"] = "Muestra/oculta el valor de poder de ataque cuerpo a cuerpo",
         ["ptBR"] = "Mostra/oculta o valor de poder de ataque corpo a corpo"
     },
-    ["Melee Crit"] = {
+    ["Melee Crit."] = {
         ["enUS"] = true,
         ["deDE"] = "Nahkampf Kritisch",
         ["frFR"] = "Critique en mêlée",
@@ -52,7 +52,7 @@ local meleeConfigTranslations = {
         ["esMX"] = "Probabilidad de golpe crítico",
         ["ptBR"] = "Chance de acerto crítico"
     },
-    ["Shows/Hides the melee crit chance."] = {
+    ["Shows/Hides the melee crit. chance."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt die Chance im Nahkampf kritisch zu treffen.",
         ["frFR"] = "Affiche/cache les chances d'infliger un coup critique en mêlée.",
@@ -361,7 +361,27 @@ local meleeConfigTranslations = {
         ["esES"] = "Muestra/oculta todas las estadísticas de golpes de refilón",
         ["esMX"] = "Muestra/oculta todas las estadísticas de golpes de refilón",
         ["ptBR"] = "Mostra/oculta todas as estatísticas de pancada de relance"
-    }
+    },
+    ["Melee Crit. Rating"] = {
+        ["enUS"] = true,
+        ["deDE"] = false,
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false,
+    },
+    ["Shows/Hides the melee crit. rating."] = {
+        ["enUS"] = true,
+        ["deDE"] = false,
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false,
+    },
 }
 
 for k, v in pairs(meleeConfigTranslations) do
