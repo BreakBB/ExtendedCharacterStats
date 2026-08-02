@@ -261,7 +261,6 @@ local defenseConfigTranslations = {
         ["esES"] = false,
         ["esMX"] = false,
         ["ptBR"] = false,
-        ["ptBR"] = false
     },
 }
 
