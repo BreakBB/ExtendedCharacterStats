@@ -6,7 +6,7 @@ local Utils = ECSLoader:ImportModule("Utils")
 
 ---@return number
 function Profile.GetProfileVersion()
-    return 25
+    return 27
 end
 
 ---@return ECSProfile
@@ -306,6 +306,11 @@ local function GetDefaultStatsProfile()
                 text = "Defense Rating"
             },
             defense = {
+              display = true,
+              refName = "DefenseValue",
+              text = "Defense"
+            },
+            resilienceRating = {
                 display = true,
                 refName = "DefenseValue",
                 text = "Defense"
@@ -319,6 +324,16 @@ local function GetDefaultStatsProfile()
                 display = true,
                 refName = "AvoidanceBoss",
                 text = "Avoidance (Lvl +3)"
+            },
+            enemyMissChance = {
+              display = true,
+              refName = "EnemyMissChance",
+              text = "Enemy Miss"
+            },
+            enemyMissChanceBoss = {
+              display = true,
+              refName = "EnemyMissChanceBoss",
+              text = "Enemy Miss (Lvl +3)"
             },
             dodgeRating = {
                 display = true,
@@ -727,6 +742,13 @@ local function GetDefaultStatsProfile()
             display = true,
             refName = "SpellBonusHeader",
 
+            baseSpellDmg = {
+                display = true,
+                refName = "BaseSpellDmg",
+                text = "Spell Damage",
+                textColor = colors.GRAY,
+                statColor = colors.WHITE
+            },
             bonusHealing = {
                 display = true,
                 refName = "BonusHealing",

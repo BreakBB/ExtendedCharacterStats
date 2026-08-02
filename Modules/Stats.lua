@@ -132,7 +132,7 @@ function Stats.CreateWindow()
     if _G.ElvUI then
         local E = _G.ElvUI[1]
         local S = E:GetModule("Skins")
-        if S then
+        if S and E.private.skins and E.private.skins.blizzard.enable and E.private.skins.blizzard.character then
             S:HandleFrame(mainFrame)
             if mainFrame.CloseButton then
                 mainFrame.CloseButton:SetPoint("TOPRIGHT", 2, 2)
@@ -307,6 +307,13 @@ _CreateStatInfos = function()
         category.armor,
         (not ECS.IsClassic) and category.resilienceRating or nil,
         (not ECS.IsClassic) and category.resilience or nil,
+        category.meleeCritReduction,
+        category.rangedCritReduction,
+        category.spellCritReduction,
+        category.avoidance,
+        category.avoidanceBoss,
+        category.enemyMissChance,
+        category.enemyMissChanceBoss,
         (not ECS.IsClassic) and category.defenseRating or nil,
         category.defense,
         category.avoidance,
@@ -349,6 +356,7 @@ _CreateStatInfos = function()
         category.hasteBonus,
         (not ECS.IsClassic) and category.penetrationRating or nil,
         category.penetration,
+        spellBonus.baseSpellDmg,
         spellBonus.bonusHealing,
         spell.arcane.display and spellBonus.arcane or nil,
         spell.fire.display and spellBonus.fire or nil,

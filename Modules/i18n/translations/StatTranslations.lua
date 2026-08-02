@@ -312,6 +312,26 @@ local statTranslations = {
         ["esMX"] = "Eludir (Niv. +3)",
         ["ptBR"] = "Evasiva (Nív. +3)"
     },
+    ["Enemy Miss"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Gegnerisches Verfehlen",
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false,
+    },
+    ["Enemy Miss (Lvl +3)"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Gegnerisches Verfehlen (Lvl + 3)",
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false
+    },
     ["Defense Rating"] = {
         ["enUS"] = true,
         ["deDE"] = "Verteidigungswertung",
@@ -501,6 +521,16 @@ local statTranslations = {
         ["esES"] = "Penetración",
         ["esMX"] = "Penetración",
         ["ptBR"] = "Penetração"
+    },
+    ["Spell Damage"] = {
+        ["enUS"] = true,
+        ["deDE"] = "Zauberschaden",
+        ["frFR"] = "Dégâts des sorts",
+        ["zhCN"] = "法术伤害",
+        ["ruRU"] = "Доп. урон от заклинаний",
+        ["esES"] = "Daño de hechizos",
+        ["esMX"] = "Daño de hechizos",
+        ["ptBR"] = "Dano de magia"
     },
     ["Healing Power"] = {
         ["enUS"] = true,
