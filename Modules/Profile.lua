@@ -310,11 +310,6 @@ local function GetDefaultStatsProfile()
               refName = "DefenseValue",
               text = "Defense"
             },
-            resilienceRating = {
-                display = true,
-                refName = "DefenseValue",
-                text = "Defense"
-            },
             avoidance = {
                 display = true,
                 refName = "Avoidance",
