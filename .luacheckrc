@@ -2779,19 +2779,21 @@ stds.ecs = {
         "OutfitterFrame",
         "PawnInitialize",
         "-----------------------------------------------------> Project Specific",
-        "assert.are_same",
-        "assert.is_nil",
-        "assert.spy",
-        "before_each",
-        "describe",
         "ECS",
         "ECSConfigFrame",
         "ECSLoader",
         "ExtendedCharacterStats",
-        "it",
         "SLASH_ECS1",
         "SlashCmdList",
+        -----------------------------------------------------> busted unit testing
+        "describe",
+        "it",
+        "before_each",
+        "after_each",
+        "setup",
+        "teardown",
         "spy",
+        "mock",
     }
 }
 std = "max+ecs"

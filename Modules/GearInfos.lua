@@ -1,4 +1,3 @@
-
 ---@class GearInfos
 local GearInfos = ECSLoader:CreateModule("GearInfos")
 
@@ -32,7 +31,7 @@ end
 ---Creates the colored frames around each gear slot indicating the item quality
 _CreateGearColorFrames = function()
     for _, gearFrame in ipairs(GEAR_SLOT_FRAMES) do
-        gearFrame.qualityTexture = gearFrame:CreateTexture(nil,"OVERLAY",nil)
+        gearFrame.qualityTexture = gearFrame:CreateTexture(nil, "OVERLAY", nil)
         gearFrame.qualityTexture:SetPoint("TOPLEFT", gearFrame, "TOPLEFT", -2, 2)
         gearFrame.qualityTexture:SetPoint("BOTTOMRIGHT", gearFrame, "BOTTOMRIGHT", 2, -2)
         gearFrame.qualityTexture:SetTexture("Interface\\Addons\\ExtendedCharacterStats\\Icons\\WhiteIconFrame.blp")
@@ -48,10 +47,22 @@ function GearInfos.UpdateGearColorFrames()
     end
 end
 
-_UpdateColorFrame = function (gearFrame, unit)
+local MAX_COLOR_FRAME_RETRIES = 5
+
+---@param gearFrame table @The gear slot frame to update
+---@param unit "player"|"target"
+---@param retries number? @The current retry count
+_UpdateColorFrame = function(gearFrame, unit, retries)
+    retries = retries or 0
     gearFrame.qualityTexture:SetVertexColor(0, 0, 0, 0)
 
-    local itemLink = GetInventoryItemLink(unit, gearFrame:GetID())
+    local slotId = gearFrame:GetID()
+    if GetInventoryItemID(unit, slotId) == nil then
+        -- We skip slots without gear
+        return
+    end
+
+    local itemLink = GetInventoryItemLink(unit, slotId)
     if itemLink ~= nil then
         local _, itemInfo = C_Item.GetItemInfo(itemLink)
         if itemInfo ~= nil then
@@ -59,10 +70,10 @@ _UpdateColorFrame = function (gearFrame, unit)
             local r, g, b, _ = C_Item.GetItemQualityColor(itemQuality)
             gearFrame.qualityTexture:SetVertexColor(r, g, b, ExtendedCharacterStats.general.qualityColorsIntensity)
         end
-    else
+    elseif retries < MAX_COLOR_FRAME_RETRIES then
         -- next frame
-        C_Timer.After(0, function ()
-            _UpdateColorFrame(gearFrame, unit)
+        C_Timer.After(0, function()
+            _UpdateColorFrame(gearFrame, unit, retries + 1)
         end)
     end
 end
@@ -115,7 +126,7 @@ end
 function GearInfos:UpdateInspectGearColorFrames()
     for _, gearFrame in ipairs(_GetInspectGearSlots()) do
         if gearFrame.qualityTexture == nil then
-            gearFrame.qualityTexture = gearFrame:CreateTexture(nil,"OVERLAY",nil)
+            gearFrame.qualityTexture = gearFrame:CreateTexture(nil, "OVERLAY", nil)
             gearFrame.qualityTexture:SetPoint("TOPLEFT", gearFrame, "TOPLEFT", -2, 2)
             gearFrame.qualityTexture:SetPoint("BOTTOMRIGHT", gearFrame, "BOTTOMRIGHT", 2, -2)
             gearFrame.qualityTexture:SetTexture("Interface\\Addons\\ExtendedCharacterStats\\Icons\\WhiteIconFrame.blp")
@@ -126,3 +137,5 @@ function GearInfos:UpdateInspectGearColorFrames()
         end
     end
 end
+
+return GearInfos
