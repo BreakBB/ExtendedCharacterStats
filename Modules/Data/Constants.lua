@@ -286,9 +286,6 @@ Data.Aura = {
     },
     SpellCrit = {
         [24907] = ((not ECS.IsClassic) and 5 or nil), -- Moonkin Aura
-        [29177] = 6, -- Elemental Devastation Rank 2
-        [29178] = 9, -- Elemental Devastation Rank 3
-        [30165] = 3, -- Elemental Devastation Rank 1
         [51466] = 3, -- Elemental Oath Rank 1
         [51470] = 5, -- Elemental Oath Rank 2
     },
