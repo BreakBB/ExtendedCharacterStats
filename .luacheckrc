@@ -3,6 +3,7 @@ exclude_files = {
     ".github/",
     ".history/",
     ".idea/",
+    ".types/",
     "Libs/",
     "releases/",
     ".luacheckrc",
