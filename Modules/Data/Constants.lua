@@ -284,11 +284,6 @@ Data.Aura = {
         [25894] = (ECS.IsClassic and 1 or nil), -- Greater Blessing of Wisdom rank 1
         [25918] = (ECS.IsClassic and 1 or nil), -- Greater Blessing of Wisdom rank 2
     },
-    SpellCrit = {
-        [24907] = ((not ECS.IsClassic) and 5 or nil), -- Moonkin Aura
-        [51466] = 3, -- Elemental Oath Rank 1
-        [51470] = 5, -- Elemental Oath Rank 2
-    },
     SpellHaste = {
         [1714] = -50, -- Curse of Tongues Rank 1
         [3603] = -35, -- Distracting Pain
