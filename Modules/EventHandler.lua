@@ -59,6 +59,7 @@ function EventHandler.HandleOnEvent(self,event, ...)
                 event == "UNIT_ATTACK_SPEED" or
                 event == "UNIT_AURA" or
                 event == "UNIT_DAMAGE" or
+                event == "UNIT_MAXHEALTH" or
                 (event == "UNIT_MAXPOWER" and args[2] == "MANA") or
                 event == "UNIT_SPELL_HASTE" or
                 event == "UNIT_STATS" or
@@ -70,7 +71,6 @@ function EventHandler.HandleOnEvent(self,event, ...)
             statsFrame:SetScript("OnUpdate", DelayedUpdateInformation)
         end
     end
-
     if (event == "INSPECT_READY" and args[1] == UnitGUID("player")) or event == "PLAYER_EQUIPMENT_CHANGED" then
         DelayedUpdateGearColorFrames()
     end
