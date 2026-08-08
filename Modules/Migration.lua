@@ -29,4 +29,10 @@ function Migration:ToLatestProfileVersion(profileVersion)
         ExtendedCharacterStats.profile.defense.enemyMissChance = defaultProfile.profile.defense.enemyMissChance
         ExtendedCharacterStats.profile.defense.enemyMissChanceBoss = defaultProfile.profile.defense.enemyMissChanceBoss
     end
+    if profileVersion < 27 then
+        ExtendedCharacterStats.profile.regen.mp5Buffs = nil
+        ExtendedCharacterStats.profile.regen.mp5Items = nil
+        ExtendedCharacterStats.profile.regen.mp5Periodic = defaultProfile.profile.regen.mp5Periodic
+        ExtendedCharacterStats.profile.regen.mp5CastingModifier = defaultProfile.profile.regen.mp5CastingModifier
+    end
 end

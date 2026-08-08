@@ -6,7 +6,7 @@ local Utils = ECSLoader:ImportModule("Utils")
 
 ---@return number
 function Profile.GetProfileVersion()
-    return 26
+    return 27
 end
 
 ---@return ECSProfile
@@ -298,10 +298,10 @@ local function GetDefaultStatsProfile()
             refName = "ManaHeader",
             text = "Mana",
 
-            mp5Items = {
+            mp5CastingModifier = {
                 display = true,
-                refName = "MP5Items",
-                text = "MP5 (Items)",
+                refName = "MP5CastingModifier",
+                text = "MP5 Casting Modifier",
                 textColor = colors.MP5_SECONDARY,
                 statColor = colors.MP5_PRIMARY
             },
@@ -312,10 +312,10 @@ local function GetDefaultStatsProfile()
                 textColor = colors.MP5_SECONDARY,
                 statColor = colors.MP5_PRIMARY
             },
-            mp5Buffs = {
+            mp5Periodic = {
                 display = true,
-                refName = "MP5Buffs",
-                text = "MP5 (Buffs)",
+                refName = "MP5Periodic",
+                text = "MP5 (Periodic)",
                 textColor = colors.MP5_SECONDARY,
                 statColor = colors.MP5_PRIMARY
             },
