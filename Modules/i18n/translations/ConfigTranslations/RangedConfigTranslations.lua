@@ -2,7 +2,7 @@
 local i18n = ECSLoader:ImportModule("i18n")
 
 local rangedConfigTranslations = {
-    ["Show Ranged Stats"] = {
+    ["Show ranged stats"] = {
         ["enUS"] = true,
         ["deDE"] = "Fernkampfwerte anzeigen",
         ["frFR"] = "Afficher à distance",
@@ -51,7 +51,7 @@ local rangedConfigTranslations = {
         ["esMX"] = "Crítico a distancia",
         ["ptBR"] = "Crítico de longo alcance"
     },
-    ["Shows/Hides the ranged crit chance."] = {
+    ["Shows/Hides the ranged crit. chance."] = {
         ["enUS"] = true,
         ["deDE"] = "Zeigt/Versteckt die Chance im Fernkampf kritisch zu treffen.",
         ["frFR"] = "Affiche/cache les chances de coup critique à distance.",
@@ -160,6 +160,26 @@ local rangedConfigTranslations = {
         ["esES"] = "Muestra/oculta la probabilidad de fallo contra jefes (nivel +3)",
         ["esMX"] = "Muestra/oculta la probabilidad de fallo contra jefes (nivel +3)",
         ["ptBR"] = "Mostra/oculta a chance de erro contra chefes (nível +3)"
+    },
+    ["Ranged Crit. Rating"] = {
+        ["enUS"] = true,
+        ["deDE"] = false,
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false,
+    },
+    ["Shows/Hides the ranged crit. rating."] = {
+        ["enUS"] = true,
+        ["deDE"] = false,
+        ["frFR"] = false,
+        ["zhCN"] = false,
+        ["ruRU"] = false,
+        ["esES"] = false,
+        ["esMX"] = false,
+        ["ptBR"] = false,
     },
 }
 
