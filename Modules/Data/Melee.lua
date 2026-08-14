@@ -1,3 +1,11 @@
+-- keep-sorted start case=no
+local EQUIPPED_FIRST = EQUIPPED_FIRST
+local EQUIPPED_LAST = EQUIPPED_LAST
+local GetInventoryItemID = GetInventoryItemID
+local GetInventoryItemLink = GetInventoryItemLink
+local IsSoD = ECS.IsSoD
+-- keep-sorted end
+
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
@@ -194,6 +202,26 @@ end
 ---@return number
 function Data:GetExpertise()
     local expertise, _ = GetExpertise()
+
+    if IsSoD then
+        local timeworn = DataUtils:CountTimewornItems()
+
+        for i = EQUIPPED_FIRST,EQUIPPED_LAST do
+            local id, _ = GetInventoryItemID("player", i)
+            expertise = expertise + (Data.Item.IncreaseExpertise[id] or 0)
+            expertise = expertise + timeworn * (Data.Item.TimewornExpertise[id] or 0)
+            if classId == Data.DRUID then
+                local itemLink = GetInventoryItemLink("player", i)
+                if itemLink then
+                    local enchant = DataUtils:GetEnchantFromItemLink(itemLink)
+                    if enchant and enchant == Data.Enchant.Ids.ANIMALISTIC_EXPERTISE then
+                        expertise = expertise + 5
+                    end
+                end
+            end
+        end
+    end
+
     return DataUtils:Round(expertise, 0)
 end
 
@@ -254,4 +282,3 @@ function Data:GetMeleeHasteBonus()
     local hasteBonus = GetCombatRatingBonus(CR_HASTE_MELEE)
     return DataUtils:Round(hasteBonus, 2) .. "%"
 end
-

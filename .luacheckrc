@@ -2553,6 +2553,8 @@ stds.ecs = {
         "DurabilityFrame",
         "EmbeddedItemTooltip",
         "EngravingFrame",
+        "EQUIPPED_FIRST",
+        "EQUIPPED_LAST",
         "EventTraceFrame",
         "FauxScrollFrame_GetOffset",
         "FlightMapFrame",

@@ -29,4 +29,8 @@ function Migration:ToLatestProfileVersion(profileVersion)
         ExtendedCharacterStats.profile.defense.enemyMissChance = defaultProfile.profile.defense.enemyMissChance
         ExtendedCharacterStats.profile.defense.enemyMissChanceBoss = defaultProfile.profile.defense.enemyMissChanceBoss
     end
+    if profileVersion < 27 then
+        ExtendedCharacterStats.profile.melee.expertise = defaultProfile.profile.melee.expertise
+        ExtendedCharacterStats.profile.melee.expertiseRating = defaultProfile.profile.melee.expertiseRating
+  end
 end
