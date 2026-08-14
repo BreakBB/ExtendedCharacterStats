@@ -1,3 +1,7 @@
+-- keep-sorted start
+local IsWotlk = ECS.IsWotlk
+-- keep-sorted end
+
 ---@class Data
 local Data = ECSLoader:CreateModule("Data")
 
@@ -24,7 +28,8 @@ dataFunctionRefs = {
     ["MeleeCritChance"] = function() return Data:MeleeCrit() end,
     ["Expertise"] = function() return ECS.IsClassic and 0 or Data:GetExpertise() end,
     ["ExpertiseRating"] = function() return ECS.IsClassic and 0 or Data:GetExpertiseRating() end,
-    ["MeleeArmorPenetration"] = function() return Data:GetArmorPenetration() end,
+    ["MeleeArmorPenetrationFlat"] = function() return Data:GetArmorPenetrationFlat() end,
+    ["MeleeArmorPenetrationPercentage"] = function() return IsWotlk and Data:GetArmorPenetrationPercentage() or 0 end,
     ["MeleeArmorPenetrationRating"] = function() return ECS.IsWotlk and Data:GetArmorPenetrationRating() or 0 end,
     ["MeleeHitRating"] = function() return ECS.IsClassic and 0 or Data:MeleeHitRating() end,
     ["MeleeHitBonus"] = function() return Data:MeleeHitBonus() end,
