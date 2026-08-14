@@ -2626,6 +2626,7 @@ stds.ecs = {
         "MainMenuBar",
         "MapQuestInfoRewardsFrame",
         "MasterLooterFrame",
+        "MAX_SPELL_SCHOOLS",
         "MerchantFrame",
         "Minimap",
         "MinimapCluster",
