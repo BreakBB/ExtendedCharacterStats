@@ -29,4 +29,8 @@ function Migration:ToLatestProfileVersion(profileVersion)
         ExtendedCharacterStats.profile.defense.enemyMissChance = defaultProfile.profile.defense.enemyMissChance
         ExtendedCharacterStats.profile.defense.enemyMissChanceBoss = defaultProfile.profile.defense.enemyMissChanceBoss
     end
+    if profileVersion < 27 then
+        ExtendedCharacterStats.profile.general.invisibility = defaultProfile.profile.general.invisibility
+        ExtendedCharacterStats.profile.general.stealth = defaultProfile.profile.general.stealth
+    end
 end
