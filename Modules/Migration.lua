@@ -8,25 +8,10 @@ local i18n = ECSLoader:ImportModule("i18n")
 
 ---@param profileVersion number
 function Migration:ToLatestProfileVersion(profileVersion)
-    if profileVersion < 23 then
+    if profileVersion < 26 then
         ---@class ECSProfile
         Profile:Reset()
         ECS:Print(i18n("Profile has been reset due to a major update.")) -- because of TBC anniversary
         return
-    end
-
-    local defaultProfile = Profile:GetDefaultProfile()
-
-    if profileVersion < 24 then
-        ExtendedCharacterStats.profile.defense.resilienceRating = ExtendedCharacterStats.profile.defense.resilience
-        ExtendedCharacterStats.profile.defense.resilience = nil
-    end
-    if profileVersion < 25 then
-        ExtendedCharacterStats.profile.defense.resilience = nil
-    end
-    if profileVersion < 26 then
-        ExtendedCharacterStats.profile.spellBonus.baseSpellDmg = defaultProfile.profile.spellBonus.baseSpellDmg
-        ExtendedCharacterStats.profile.defense.enemyMissChance = defaultProfile.profile.defense.enemyMissChance
-        ExtendedCharacterStats.profile.defense.enemyMissChanceBoss = defaultProfile.profile.defense.enemyMissChanceBoss
     end
 end
