@@ -1,3 +1,10 @@
+local ECSLoader = ECSLoader
+local GetInventoryItemID = GetInventoryItemID
+local IsClassic = ECS.IsClassic
+local IsSoD = ECS.IsSoD
+local IsWotlk = ECS.IsWotlk
+local UnitClass = UnitClass
+
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
 
@@ -11,6 +18,10 @@ local itemSets = {
         [19829] = true,
         [19830] = true,
         [19956] = true
+    },
+    [setNames.BATTLECAST_GARB] = {
+        [24263] = true,
+        [24267] = true,
     },
     [setNames.BLOODSOUL_EMBRACE] = {
         [19690] = true,
@@ -51,6 +62,26 @@ local itemSets = {
         [19839] = true,
         [19840] = true,
         [19955] = true,
+    },
+    [setNames.IRONWEAVE_BATTLESUIT] = {
+        [22301] = true,
+        [22302] = true,
+        [22303] = true,
+        [22304] = true,
+        [22305] = true,
+        [22306] = true,
+        [22311] = true,
+        [22313] = true,
+    },
+    [setNames.IRONWEAVE_BATTLESUIT_SOD] = {
+        [228066] = true,
+        [228083] = true,
+        [228547] = true,
+        [228596] = true,
+        [228597] = true,
+        [228598] = true,
+        [228681] = true,
+        [228700] = true,
     },
     [setNames.LIVING_GREEN_DRAGON_MAIL] = {
         [227877] = true,
@@ -120,22 +151,38 @@ local itemSets = {
     },
 }
 
+---@return boolean
+function Data:HasSetResistInterrupt()
+    return ((not IsClassic) and Data:IsSetBonusActive(setNames.BATTLECAST_GARB, 2))
+end
+
+---@return boolean
+function Data:HasSetResistSilenceInterrupt()
+    if classId == Data.PRIEST or classId == Data.MAGE or classId == Data.WARLOCK then
+        return (
+        Data:IsSetBonusActive(setNames.IRONWEAVE_BATTLESUIT, 4)
+            or (IsSoD and Data:IsSetBonusActive(setNames.IRONWEAVE_BATTLESUIT_SOD, 2))
+        )
+    end
+    return false
+end
+
 ---@return number
 function Data:GetSetBonusModifierMP5()
     local mod = 0
-    if (ECS.IsClassic and Data:IsSetBonusActive(setNames.GREEN_DRAGON_MAIL, 3)) then
+    if (IsClassic and Data:IsSetBonusActive(setNames.GREEN_DRAGON_MAIL, 3)) then
         mod = mod + 0.15
     end
-    if (ECS.IsClassic and (
+    if (IsClassic and (
         (classId == Data.DRUID and Data:IsSetBonusActive(setNames.STORMRAGE_RAIMENT, 3)) or
         (classId == Data.PRIEST and Data:IsSetBonusActive(setNames.VESTMENTS_OF_TRANSCENDENCE, 3))
     )) then
         mod = mod + 0.15
     end
-    if (ECS.IsSoD and Data:IsSetBonusActive(setNames.LIVING_GREEN_DRAGON_MAIL, 3)) then
+    if (IsSoD and Data:IsSetBonusActive(setNames.LIVING_GREEN_DRAGON_MAIL, 3)) then
         mod = mod + 0.15
     end
-    if (ECS.IsSoD and Data:IsSetBonusActive(setNames.DAWN_OF_TRANSCENDENCE, 2)) then
+    if (IsSoD and Data:IsSetBonusActive(setNames.DAWN_OF_TRANSCENDENCE, 2)) then
         mod = mod + 0.15
     end
     if Data:IsSetBonusActive(setNames.PRIMAL_MOONCLOTH, 3) then
@@ -151,32 +198,32 @@ function Data:GetSetBonusValueMP5()
         (classId == Data.SHAMAN and Data:IsSetBonusActive(setNames.AUGURS_REGALIA, 2)) or
         (classId == Data.PALADIN and Data:IsSetBonusActive(setNames.FREETHINKERS_ARMOR, 2)
     ) then
-        bonus = bonus + (ECS.IsWotlk and 5 or 4)
+        bonus = bonus + (IsWotlk and 5 or 4)
     end
-    if (ECS.IsSoD and Data:IsSetBonusActive(setNames.LIVING_GREEN_DRAGON_MAIL, 2)) then
+    if (IsSoD and Data:IsSetBonusActive(setNames.LIVING_GREEN_DRAGON_MAIL, 2)) then
         bonus = bonus + 3
     end
     if Data:IsSetBonusActive(setNames.GREEN_DRAGON_MAIL, 2) then
-        bonus = bonus + (ECS.IsWotlk and 4 or 3)
+        bonus = bonus + (IsWotlk and 4 or 3)
     end
-    if (not ECS.IsClassic and Data:IsSetBonusActive(setNames.GREEN_DRAGON_MAIL, 3)) then
-        bonus = bonus + (ECS.IsWotlk and 25 or 20)
+    if (not IsClassic and Data:IsSetBonusActive(setNames.GREEN_DRAGON_MAIL, 3)) then
+        bonus = bonus + (IsWotlk and 25 or 20)
     end
-    if (not ECS.IsClassic and (
+    if (not IsClassic and (
             (classId == Data.DRUID and Data:IsSetBonusActive(setNames.STORMRAGE_RAIMENT, 3)) or
             (classId == Data.PRIEST and Data:IsSetBonusActive(setNames.VESTMENTS_OF_TRANSCENDENCE, 3))
         )
     ) then
-        bonus = bonus + (ECS.IsWotlk and 25 or 20)
+        bonus = bonus + (IsWotlk and 25 or 20)
     end
     if Data:IsSetBonusActive(setNames.BLOODSOUL_EMBRACE, 3) then
-        bonus = bonus + (ECS.IsWotlk and 15 or 12)
+        bonus = bonus + (IsWotlk and 15 or 12)
     end
     if Data:IsSetBonusActive(setNames.FEL_IRON_CHAIN, 4) then
-        bonus = bonus + (ECS.IsWotlk and 10 or 8)
+        bonus = bonus + (IsWotlk and 10 or 8)
     end
     if Data:IsSetBonusActive(setNames.WINDHAWK_ARMOR, 3) then
-        bonus = bonus + (ECS.IsWotlk and 10 or 8)
+        bonus = bonus + (IsWotlk and 10 or 8)
     end
     return bonus
 end

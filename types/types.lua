@@ -8,6 +8,20 @@
 ---@class Config
 ---@field private table
 
+---@class MechanicResistance
+---@field charm number
+---@field curse number
+---@field disease number
+---@field disorient number
+---@field fleeing number
+---@field horror number
+---@field interrupt number
+---@field poison number
+---@field root number
+---@field silence number
+---@field snare number
+---@field stun number
+
 ---@class Stats
 ---@field private table
 
