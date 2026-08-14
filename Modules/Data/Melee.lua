@@ -1,3 +1,8 @@
+local GetBuffDataByIndex = C_UnitAuras.GetBuffDataByIndex
+local GetInventoryItemID = GetInventoryItemID
+local GetInventoryItemLink = GetInventoryItemLink
+local pairs = pairs
+
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
@@ -9,9 +14,11 @@ local Utils = ECSLoader:ImportModule("Utils")
 local _, _, classId = UnitClass("player")
 local _Melee = {}
 local DEATHKNIGHT = Data.DEATHKNIGHT
+local DEMON = Data.CreatureType.DEMON
 local DRUID = Data.DRUID
 local ROGUE = Data.ROGUE
 local SHAMAN = Data.SHAMAN
+local UNDEAD = Data.CreatureType.UNDEAD
 local WARRIOR = Data.WARRIOR
 -- keep-sorted end
 
@@ -21,7 +28,55 @@ function Data:GetMeleeAttackPower()
     return melee + posBuff + negBuff
 end
 
----@return number
+---@return table<CreatureType,number>
+function Data:GetMeleeAttackPowerVsCreature()
+    local dmg = {0,0,0,0,0,0,0,0,0}
+
+    -- auras
+    local j = 1
+    repeat
+        local aura = GetBuffDataByIndex("player", j)
+        j = j + 1
+        if aura and aura.spellId then
+            for _,type in pairs(Data.CreatureType) do
+                if Data.Aura.AttackPowerVsCreature[type] then
+                    dmg[type] = dmg[type] + (Data.Aura.AttackPowerVsCreature[type][aura.spellId] or 0)
+                end
+                if Data.Aura.PhysicalDamageVsCreature[type] then
+                    dmg[type] = dmg[type] + (Data.Aura.PhysicalDamageVsCreature[type][aura.spellId] or 0)
+                end
+            end
+        end
+    until (not aura)
+    for i = 1, 18 do
+        -- items
+        local id, _ = GetInventoryItemID("player", i)
+        for _,type in pairs(Data.CreatureType) do
+            if Data.Item.PhysicalDamageVsCreature[type] then
+                dmg[type] = dmg[type] + (Data.Item.PhysicalDamageVsCreature[type][id] or 0)
+            end
+        end
+        -- enchants
+        local itemLink = GetInventoryItemLink("player", i)
+        if itemLink then
+            local enchant = DataUtils:GetEnchantFromItemLink(itemLink)
+            if enchant then
+                for _,type in pairs(Data.CreatureType) do
+                    if Data.Enchant.PhysicalDamageVsCreature[type] then
+                        dmg[type] = dmg[type] + (Data.Enchant.PhysicalDamageVsCreature[type][enchant] or 0)
+                    end
+                end
+            end
+        end
+    end
+    -- sets
+    if Data:HasUndeadSlayer15() then dmg[UNDEAD] = dmg[UNDEAD] + 15 end
+    if Data:HasDemonSlaying200() then dmg[DEMON] = dmg[DEMON] + 200 end
+
+    return dmg
+end
+
+---@return string
 function Data:GetMeleeAttackSpeedMainHand()
     local mainHand, _ = UnitAttackSpeed("player")
     return DataUtils:Round(mainHand, 2)
