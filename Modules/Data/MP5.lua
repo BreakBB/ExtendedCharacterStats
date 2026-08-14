@@ -55,17 +55,6 @@ function _MP5:GetMP5ValueOnItems()
             if enchant then
                 mp5 = mp5 + (Data.Enchant.MP5[enchant] or 0)
             end
-            -- Check for socketed gems (TODO: check for socket bonus)
-            local gem1, gem2, gem3 = DataUtils:GetSocketedGemsFromItemLink(itemLink)
-            if gem1 then
-                mp5 = mp5 + (Data.Gem.MP5[tonumber(gem1)] or 0)
-            end
-            if gem2 then
-                mp5 = mp5 + (Data.Gem.MP5[tonumber(gem2)] or 0)
-            end
-            if gem3 then
-                mp5 = mp5 + (Data.Gem.MP5[tonumber(gem3)] or 0)
-            end
         end
     end
 
@@ -78,48 +67,69 @@ function _MP5:GetMP5ValueOnItems()
     return mp5
 end
 
-local lastManaReg = 0
-
 ---@return number
 function Data:GetMP5FromSpirit()
-    local base, _ = GetManaRegen() -- Returns mana reg per 1 second (including talent and buff modifiers)
-    if base < 1 then
-        base = lastManaReg
+    local regen
+    if ECS.IsClassic then
+        -- GetUnitManaRegenRateFromSpirit uses TBC formula in classic
+        local _, spirit, _, _ = UnitStat("player", LE_UNIT_STAT_SPIRIT)
+        if spirit < 50 then
+            regen = 0.25 * spirit
+        else
+            if classId == Data.PRIEST or classId == Data.MAGE then
+                regen = (12.5 + spirit/4)/2
+            elseif classId == Data.DRUID and (not DataUtils:IsShapeshifted()) then
+                regen = (15 + spirit/4.5)/2
+            else
+                regen = (15 + spirit/5)/2
+            end
+        end
+    else
+        regen = GetUnitManaRegenRateFromSpirit("player")
     end
-    lastManaReg = base
+    return DataUtils:Round(regen * 5, 1)
+end
 
-    return DataUtils:Round(base * 5, 2)
+-- Get mana regen while casting
+---@return number
+function Data:GetMP5CastingModifier()
+    local _, castingModifier, _, _ = Data:GetMP5FromBuffs()
+    castingModifier = min(1,castingModifier + _MP5:GetTalentModifier() + Data:GetSetBonusModifierMP5()) -- capped at 100%
+    return DataUtils:Round(castingModifier, 2)
 end
 
 -- Get mana regen while casting
 ---@return number
 function Data:GetMP5WhileCasting()
-    local _, casting = GetManaRegen() -- Returns mana reg per 1 second (including talent and buff modifiers)
-    if casting < 0.1 then
-        casting = 0
+    -- Returns mana reg per 1 second (including talent and buff casting modifiers)
+    local _, casting = GetManaRegen()
+    local modifier, _, mp5BuffBonus, periodicMana = Data:GetMP5FromBuffs()
+    casting = casting * 5
+    if ECS.IsClassic then
+        -- in classic GetManaRegen doesn't account for mp5 from items nor buffs
+        casting = casting + Data:GetMP5FromItems() + mp5BuffBonus
     end
-
-    local castingModifier, mp5BuffBonus, periodicMana = Data:GetMP5FromBuffs()
-    castingModifier = min(1,castingModifier + _MP5:GetTalentModifier() + Data:GetSetBonusModifierMP5()) -- capped at 100%
-    local mp5Items = Data:GetMP5FromItems()
-    casting = (casting * 5) + mp5Items + mp5BuffBonus * castingModifier + periodicMana
-
-    return DataUtils:Round(casting, 2)
+    casting = casting * modifier + mp5BuffBonus + periodicMana
+    return DataUtils:Round(casting, 1)
 end
 
 ---@return number
 function Data:GetMP5OutsideCasting()
-    local mp5FromSpirit = Data:GetMP5FromSpirit()
-    local _, mp5BuffBonus, periodicMana = Data:GetMP5FromBuffs()
-    local mp5FromItems = Data:GetMP5FromItems()
-
-    local totalMP5 = mp5FromSpirit + mp5FromItems + mp5BuffBonus + periodicMana
-    return DataUtils:Round(totalMP5, 2)
+    local base, _ = GetManaRegen()
+    local modifier, mp5BuffBonus, periodicMana = Data:GetMP5FromBuffs()
+    local totalMP5 = base * 5
+    if ECS.IsClassic then
+        -- in classic GetManaRegen doesn't account for mp5 from items nor buffs
+        totalMP5 = totalMP5 + Data:GetMP5FromItems() + mp5BuffBonus
+    end
+    totalMP5 = totalMP5 * modifier + periodicMana
+    return DataUtils:Round(totalMP5, 1)
 end
 
 ---@return number, number, number
 function Data:GetMP5FromBuffs()
-    local mod = 0
+    local mod = 1
+    local castingMod = 0
     local bonus = 0
     local periodic = 0
     local maxmana = UnitPowerMax("player", Enum.PowerType.Mana)
@@ -131,7 +141,8 @@ function Data:GetMP5FromBuffs()
             bonus = bonus + (Data.Aura.MP5[aura.spellId] or 0)
             bonus = bonus + (Data.Aura.PercentageMp5[aura.spellId] or 0) * maxmana
             periodic = periodic + (Data.Aura.PeriodicallyGiveMana[aura.spellId] or 0)
-            mod = mod + (Data.Aura.AllowCastingManaRegeneration[aura.spellId] or 0) -- assuming buffs stacking, to be investigated
+            castingMod = castingMod + (Data.Aura.AllowCastingManaRegeneration[aura.spellId] or 0)
+            mod = mod + (Data.Aura.PowerRegenPercentModifier[Enum.PowerType.Mana][aura.spellId] or 0)
             if Data.Aura.IsLightningShield[aura.spellId] and Data:IsSetBonusActive(Data.setNames.THE_EARTHSHATTERER, 8) then
                 bonus = bonus + 15 -- 15 MP5 from Shaman T3 8 piece bonus when Lightning Shield is active
             end
@@ -157,7 +168,7 @@ function Data:GetMP5FromBuffs()
         end
         i = i + 1
     until (not aura)
-    return min(mod,1), bonus, periodic
+    return max(mod,0), min(castingMod,1), bonus, periodic
 end
 
 ---@return number

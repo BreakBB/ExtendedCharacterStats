@@ -1483,6 +1483,7 @@ stds.ecs = {
         "GetUICameraInfo",
         "GetUITextureKitInfo",
         "GetUnitHealthModifier",
+        "GetUnitManaRegenRateFromSpirit",
         "GetUnitMaxHealthModifier",
         "GetUnitPowerModifier",
         "GetUnitSpeed",
@@ -2777,6 +2778,7 @@ stds.ecs = {
         "-----------------------------------------------------> Enums",
         -- keep-sorted start case=no
         "LE_EXPANSION_BURNING_CRUSADE",
+        "LE_UNIT_STAT_SPIRIT",
         -- keep-sorted end
         "-----------------------------------------------------> GlobalStrings",
         -- keep-sorted start case=no

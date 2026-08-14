@@ -284,6 +284,27 @@ Data.Aura = {
         [25894] = (ECS.IsClassic and 1 or nil), -- Greater Blessing of Wisdom rank 1
         [25918] = (ECS.IsClassic and 1 or nil), -- Greater Blessing of Wisdom rank 2
     },
+    PowerRegenPercentModifier = {
+        [Enum.PowerType.Mana] = {
+            [5419] = (ECS.IsTBC and -0.11 or nil), -- Travel Form (Passive)
+            [5421] = (ECS.IsTBC and -0.11 or nil), -- Aquatic Form (Passive)
+            [12051] = (ECS.IsClassic and 15 or nil), -- Evocation
+            [18371] = (ECS.IsClassic and 0.5 or nil), -- Soul Siphon
+            [24705] = (ECS.IsClassic and 0.25 or nil), -- Invocation of the Wickerman
+            [27747] = -1, -- Steam Tank Passive
+            [29166] = ((not ECS.IsWotlk) and 4 or nil), -- Innervate
+            [33948] = (ECS.IsTBC and -0.11 or nil), -- Flight Form (Passive)
+            [34754] = (ECS.IsWotlk and 0.16 or nil), -- Holy Concentration
+            [40121] = (ECS.IsTBC and -0.11 or nil), -- Swift Flight Form (Passive)
+            [42514] = 1, -- Arcane Surge
+            [49307] = 1, -- Full Mana Regen
+            [51623] = 5, -- Sholazar Guardian Heartbeat
+            [63724] = 0.32, -- Holy Concentration
+            [63725] = 0.5, -- Holy Concentration
+            [456195] = 4, -- Innervate
+            [468466] = 1, -- Unmaking the Simulacrum
+        },
+    },
     SpellHaste = {
         [1714] = -50, -- Curse of Tongues Rank 1
         [3603] = -35, -- Distracting Pain
