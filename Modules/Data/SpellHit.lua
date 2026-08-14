@@ -1,3 +1,14 @@
+local ECSLoader = ECSLoader
+local GetCombatRating = GetCombatRating
+local GetCombatRatingBonus = GetCombatRatingBonus
+local GetSpellHitModifier = GetSpellHitModifier
+local IsClassic = ECS.IsClassic
+local IsSoD = ECS.IsSoD
+local IsWotlk = ECS.IsWotlk
+local max = math.max
+local min = math.min
+local UnitClass = UnitClass
+
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
@@ -24,7 +35,7 @@ local WARLOCK = Data.WARLOCK
 function Data:SpellMissChance(school,levelDifference,IsPvP)
     -- https://royalgiraffe.github.io/resist-guide
     local missChance = 0
-    local minimumMissChance = ECS.IsWotlk and 0 or 1
+    local minimumMissChance = IsWotlk and 0 or 1
     local maximumMissChance = 90 -- uncertain, may be different for PvP
 
     if levelDifference >= -3 and levelDifference <= 2 then
@@ -62,23 +73,23 @@ function _SpellHit:GetTalentSpellHitBonus(school)
     if classId == DRUID then
             bonus = bonus + 2 * DataUtils:GetActiveTalentSpell(Data.Talent[DRUID].BALANCE_OF_POWER)
     elseif classId == DEATHKNIGHT then
-        if ECS.IsWotlk then
+        if IsWotlk then
             bonus = bonus + 1 * DataUtils:GetActiveTalentSpell(Data.Talent[DEATHKNIGHT].VIRULENCE)
         end
     elseif classId == MAGE then
-        if ECS.IsWotlk then
+        if IsWotlk then
             bonus = bonus + 1 * DataUtils:GetActiveTalentSpell(Data.Talent[MAGE].ELEMENTAL_PRECISION)
             bonus = bonus + 1 * DataUtils:GetActiveTalentSpell(Data.Talent[MAGE].ARCANE_FOCUS)
         else
             if (school == Data.FIRE_SCHOOL or school == Data.FROST_SCHOOL) then
-                local coeff = ECS.IsClassic and 2 or 1
+                local coeff = IsClassic and 2 or 1
                 bonus = bonus + coeff * DataUtils:GetActiveTalentSpell(Data.Talent[MAGE].ELEMENTAL_PRECISION)
             elseif school == Data.ARCANE_SCHOOL then
                 bonus = bonus + 2 * DataUtils:GetActiveTalentSpell(Data.Talent[MAGE].ARCANE_FOCUS)
             end
         end
     elseif classId == PALADIN then
-        if ECS.IsWotlk then
+        if IsWotlk then
             bonus = bonus + 2 * DataUtils:GetActiveTalentSpell(Data.Talent[PALADIN].ENLIGHTENED_JUDGEMENTS)
         end
     elseif classId == PRIEST then
@@ -88,14 +99,14 @@ function _SpellHit:GetTalentSpellHitBonus(school)
         end
     elseif classId == SHAMAN then
         if (school == Data.FIRE_SCHOOL or school == Data.FROST_SCHOOL or school == Data.NATURE_SCHOOL) then
-            local coeff = ECS.IsWotlk and 1 or 2
+            local coeff = IsWotlk and 1 or 2
             bonus = bonus + coeff * DataUtils:GetActiveTalentSpell(Data.Talent[SHAMAN].ELEMENTAL_PRECISION)
         end
-        if ECS.IsClassic then
+        if IsClassic then
             bonus = bonus + 1 * DataUtils:GetActiveTalentSpell(Data.Talent[SHAMAN].NATURES_GUIDANCE)
         end
     elseif classId == WARLOCK then
-        if ECS.IsWotlk then
+        if IsWotlk then
             bonus = bonus + 1 * DataUtils:GetActiveTalentSpell(Data.Talent[WARLOCK].SUPPRESSION)
         end
     end
@@ -118,7 +129,7 @@ end
 function _SpellHit.GetSpellHitFromRunes(school)
     local mod = 0
 
-    if (not ECS.IsSoD) then
+    if (not IsSoD) then
         return mod
     end
 

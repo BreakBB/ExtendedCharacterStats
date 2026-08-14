@@ -1,3 +1,21 @@
+-- keep-sorted start case=no
+local ECSLoader = ECSLoader
+local GetCombatRating = GetCombatRating
+local GetCombatRatingBonus = GetCombatRatingBonus
+local GetCritChance = GetCritChance
+local GetExpertise = GetExpertise
+local GetHitModifier = GetHitModifier
+local GetShapeshiftFormInfo = GetShapeshiftFormInfo
+local IsClassic = ECS.IsClassic
+local IsSoD = ECS.IsSoD
+local IsWotlk = ECS.IsWotlk
+local UnitAttackBothHands = UnitAttackBothHands
+local UnitAttackPower = UnitAttackPower
+local UnitAttackSpeed = UnitAttackSpeed
+local UnitClass = UnitClass
+local UnitLevel = UnitLevel
+-- keep-sorted end
+
 ---@class Data
 local Data = ECSLoader:ImportModule("Data")
 ---@type DataUtils
@@ -66,7 +84,7 @@ end
 ---@return number
 function _Melee:GetHitTalentBonus()
     local mod = 0
-    if ECS.IsClassic then
+    if IsClassic then
         if classId == Data.SHAMAN then
             mod = 1 * DataUtils:GetActiveTalentSpell(Data.Talent[SHAMAN].NATURES_GUIDANCE)
         elseif classId == Data.ROGUE then
@@ -81,7 +99,7 @@ end
 function _Melee.GetHitFromRunes()
     local mod = 0
 
-    if (not ECS.IsSoD) then
+    if (not IsSoD) then
         return mod
     end
 
@@ -132,7 +150,7 @@ function Data:MeleeHitMissChanceBossLevel()
 
     local missChance
     if DataUtils:IsShapeshifted() then
-        missChance = ECS.IsWotlk and 8 or 9
+        missChance = IsWotlk and 8 or 9
     else
         missChance = DataUtils.GetMissChanceByDifference(mainBase + mainMod, enemyDefenseValue)
     end
@@ -211,7 +229,7 @@ end
 function Data:GetArmorPenetration()
     local armorPenetration = GetArmorPenetration()
 
-    if ECS.IsWotlk and classId == WARRIOR then
+    if IsWotlk and classId == WARRIOR then
         local _, isActive = GetShapeshiftFormInfo(1)
         if isActive then
             armorPenetration = armorPenetration + 10 -- 10% from Battle Stance

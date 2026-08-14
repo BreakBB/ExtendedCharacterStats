@@ -1,3 +1,5 @@
+local ECSLoader = ECSLoader
+
 ---@class Profile
 local Profile = ECSLoader:CreateModule("Profile")
 
